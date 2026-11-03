@@ -1,0 +1,15 @@
+# Unity-generated files and local editor state
+**/[Ll]ibrary/
+**/[Tt]emp/
+**/[Oo]bj/
+**/[Ll]ogs/
+**/[Uu]ser[Ss]ettings/
+**/Builds/
+**/MemoryCaptures/
+**/Recordings/
+*.csproj
+*.sln
+*.user
+*.log
+.vs/
+.idea/
