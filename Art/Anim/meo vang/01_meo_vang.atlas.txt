@@ -1,0 +1,76 @@
+
+01_meo_vang.png
+size: 494,575
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01_tail
+  rotate: false
+  xy: 308, 249
+  size: 147, 140
+  orig: 153, 146
+  offset: 3, 3
+  index: -1
+03_leg_far
+  rotate: false
+  xy: 302, 116
+  size: 88, 131
+  orig: 88, 132
+  offset: 0, 1
+  index: -1
+03_leg_far copy
+  rotate: false
+  xy: 302, 116
+  size: 88, 131
+  orig: 88, 132
+  offset: 0, 1
+  index: -1
+05_body
+  rotate: false
+  xy: 308, 391
+  size: 184, 182
+  orig: 192, 188
+  offset: 4, 3
+  index: -1
+06_arm_near
+  rotate: true
+  xy: 2, 2
+  size: 96, 128
+  orig: 96, 128
+  offset: 0, 0
+  index: -1
+06_arm_near copy
+  rotate: true
+  xy: 132, 2
+  size: 96, 128
+  orig: 96, 128
+  offset: 0, 0
+  index: -1
+07_head
+  rotate: false
+  xy: 2, 100
+  size: 298, 271
+  orig: 308, 280
+  offset: 5, 4
+  index: -1
+08_headgear
+  rotate: false
+  xy: 2, 373
+  size: 304, 200
+  orig: 305, 200
+  offset: 1, 0
+  index: -1
+Pistol_01
+  rotate: true
+  xy: 392, 129
+  size: 118, 85
+  orig: 128, 128
+  offset: 4, 18
+  index: -1
+axe_01
+  rotate: false
+  xy: 262, 7
+  size: 226, 91
+  orig: 256, 128
+  offset: 16, 16
+  index: -1
