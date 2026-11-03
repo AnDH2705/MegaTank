@@ -1,0 +1,58 @@
+[
+  {
+    "character": "01_meo_vang",
+    "part": "leg_near",
+    "pivot_px": [
+      67.17,
+      65.938
+    ],
+    "circle_radius_px": 40.903,
+    "top_boundary_samples_px": [
+      33,
+      25,
+      33
+    ]
+  },
+  {
+    "character": "01_meo_vang",
+    "part": "leg_far",
+    "pivot_px": [
+      61.149,
+      65.458
+    ],
+    "circle_radius_px": 40.469,
+    "top_boundary_samples_px": [
+      32,
+      25,
+      32
+    ]
+  },
+  {
+    "character": "02_meo_muop",
+    "part": "leg_near",
+    "pivot_px": [
+      67.437,
+      59.99
+    ],
+    "circle_radius_px": 40.909,
+    "top_boundary_samples_px": [
+      27,
+      19,
+      27
+    ]
+  },
+  {
+    "character": "02_meo_muop",
+    "part": "leg_far",
+    "pivot_px": [
+      61.835,
+      59.874
+    ],
+    "circle_radius_px": 40.833,
+    "top_boundary_samples_px": [
+      27,
+      19,
+      27
+    ]
+  }
+]

@@ -1,0 +1,12 @@
+z_order	name	x	y	pivot_local_x	pivot_local_y
+0	01_track_chassis	252	1047	400	109
+1	02_wheel_01	343	1092	67.5	67
+2	03_wheel_02	468	1092	69	66.5
+3	04_wheel_03	688	1091	69	67
+4	05_wheel_04	819	1092	71	66.5
+5	06_main_cannon_barrel	1114	417	11	79
+6	07_body_static	205	79	440	961
+7	11_front_hull_frame	194	159	451	881
+8	08_roof_machine_gun	726	84	184	147
+9	09_mortar_barrel	105	247	108.14	314.9
+10	10_mortar_front_support	108	364	105.14	197.9
