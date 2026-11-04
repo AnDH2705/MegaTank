@@ -1,0 +1,12 @@
+z	name	x	y	pivot_x	pivot_y
+0	01_track_chassis	268	808	492	64
+1	02_wheel_01	428	807	76.5	65
+2	03_wheel_02	579	807	77	65
+3	04_wheel_03	736	807	76.5	65
+4	05_wheel_04	886	807	76.5	65
+5	06_main_cannon_barrel	1251	384	4	69
+6	07_body_static	298	89	462	711
+7	11_front_hull_frame	111	157	649	643
+8	08_roof_machine_gun	839	90	150	128
+9	09_mortar_barrel	387	281	51	235
+10	10_mortar_front_support	386	362	52	154

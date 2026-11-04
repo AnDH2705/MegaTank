@@ -1,0 +1,74 @@
+{
+  "asset": "car",
+  "canvas_px": [
+    1536,
+    1024
+  ],
+  "coordinates": "Top-left origin; +x right; +y down; cropped PNGs reassemble using position_px.",
+  "layers": [
+    {
+      "name": "01_body_static",
+      "file": "parts/01_body_static.png",
+      "position_px": [
+        87,
+        61
+      ],
+      "size_px": [
+        1308,
+        810
+      ],
+      "pivot_canvas_px": [
+        748,
+        800
+      ],
+      "pivot_local_px": [
+        661,
+        739
+      ],
+      "role": "Static car, driver and fittings; restored wheel-well backings"
+    },
+    {
+      "name": "02_wheel_rear",
+      "file": "parts/02_wheel_rear.png",
+      "position_px": [
+        172,
+        633
+      ],
+      "size_px": [
+        369,
+        367
+      ],
+      "pivot_canvas_px": [
+        355,
+        822
+      ],
+      "pivot_local_px": [
+        183,
+        189
+      ],
+      "role": "Complete independently rotating rear tire"
+    },
+    {
+      "name": "03_wheel_front",
+      "file": "parts/03_wheel_front.png",
+      "position_px": [
+        893,
+        633
+      ],
+      "size_px": [
+        367,
+        367
+      ],
+      "pivot_canvas_px": [
+        1079,
+        822
+      ],
+      "pivot_local_px": [
+        186,
+        189
+      ],
+      "role": "Complete independently rotating front tire"
+    }
+  ],
+  "note": "Static driver and all other fixed details stay combined in one body sprite. Original visible artwork is retained; hidden moving-parts surfaces have been restored."
+}

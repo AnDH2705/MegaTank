@@ -1,0 +1,240 @@
+{
+  "hull": "01_Tank_Do_Toc_Do",
+  "reference_canvas_px": [
+    1536,
+    1024
+  ],
+  "coordinates": "Native reference coordinates. Layer positions below do not include preview padding. +X right; +Y down.",
+  "replacement_count": 6,
+  "remove_original_layers": [
+    "01_track_chassis",
+    "02_wheel_01",
+    "03_wheel_02",
+    "04_wheel_03",
+    "05_wheel_04"
+  ],
+  "replacement_layers": [
+    {
+      "name": "01_offroad_chassis",
+      "file": "parts/01_offroad_chassis.png",
+      "position_px": [
+        268,
+        808
+      ],
+      "size_px": [
+        915,
+        177
+      ],
+      "pivot_canvas_px": [
+        725.5,
+        813.2915662650603
+      ],
+      "pivot_local_px": [
+        457.5,
+        5.291566265060241
+      ],
+      "parent": "root",
+      "role": "Static frame and two suspension struts; no track belt",
+      "z_order": 0,
+      "upgrade_asset": "05_offroad_chassis",
+      "master_scale_xy": [
+        0.44096385542168676,
+        0.44096385542168676
+      ],
+      "gameplay_intent": {
+        "movement_speed": "increased"
+      }
+    },
+    {
+      "name": "02_offroad_wheel_rear",
+      "file": "parts/02_offroad_wheel_rear.png",
+      "position_px": [
+        408,
+        835
+      ],
+      "size_px": [
+        250,
+        250
+      ],
+      "pivot_canvas_px": [
+        531.255421686747,
+        960.3530120481928
+      ],
+      "pivot_local_px": [
+        123.25542168674701,
+        125.3530120481928
+      ],
+      "parent": "root",
+      "role": "Independent complete off-road wheel",
+      "z_order": 1,
+      "upgrade_asset": "01_offroad_wheel",
+      "master_scale_xy": [
+        0.2039151712887439,
+        0.20080321285140562
+      ],
+      "gameplay_intent": {
+        "movement_speed": "increased"
+      }
+    },
+    {
+      "name": "03_offroad_wheel_front",
+      "file": "parts/03_offroad_wheel_front.png",
+      "position_px": [
+        796,
+        835
+      ],
+      "size_px": [
+        250,
+        250
+      ],
+      "pivot_canvas_px": [
+        919.3036144578314,
+        960.3530120481928
+      ],
+      "pivot_local_px": [
+        123.30361445783137,
+        125.3530120481928
+      ],
+      "parent": "root",
+      "role": "Independent complete off-road wheel",
+      "z_order": 2,
+      "upgrade_asset": "01_offroad_wheel",
+      "master_scale_xy": [
+        0.2039151712887439,
+        0.20080321285140562
+      ],
+      "gameplay_intent": {
+        "movement_speed": "increased"
+      }
+    },
+    {
+      "name": "06_main_cannon_barrel",
+      "file": "parts/06_main_cannon_barrel.png",
+      "position_px": [
+        1252,
+        368
+      ],
+      "size_px": [
+        318,
+        156
+      ],
+      "pivot_canvas_px": [
+        1255,
+        453
+      ],
+      "pivot_local_px": [
+        3,
+        85
+      ],
+      "parent": "body",
+      "role": "Cannon tube with independent horizontal recoil",
+      "z_order": 3,
+      "upgrade_asset": "03_heavy_cannon",
+      "master_scale_xy": [
+        0.18181818181818182,
+        0.18181818181818182
+      ],
+      "gameplay_intent": {
+        "cannon_damage": "increased"
+      },
+      "muzzle_canvas_px": [
+        1562.36,
+        446.0
+      ]
+    },
+    {
+      "name": "08_roof_machine_gun",
+      "file": "parts/08_roof_machine_gun.png",
+      "position_px": [
+        812,
+        58
+      ],
+      "size_px": [
+        441,
+        163
+      ],
+      "pivot_canvas_px": [
+        989,
+        218
+      ],
+      "pivot_local_px": [
+        177,
+        160
+      ],
+      "parent": "body",
+      "role": "Roof machine gun combined; fixed base remains on frame",
+      "z_order": 6,
+      "upgrade_asset": "02_heavy_machine_gun",
+      "master_scale_xy": [
+        0.21447368421052632,
+        0.21447368421052632
+      ],
+      "gameplay_intent": {
+        "damage_per_shot": "increased",
+        "fire_rate": "reduced"
+      }
+    },
+    {
+      "name": "09_mortar_barrel",
+      "file": "parts/09_mortar_barrel.png",
+      "position_px": [
+        396,
+        285
+      ],
+      "size_px": [
+        82,
+        244
+      ],
+      "pivot_canvas_px": [
+        438,
+        516
+      ],
+      "pivot_local_px": [
+        42,
+        231
+      ],
+      "parent": "body",
+      "role": "Full continuous mortar tube behind fixed front collars",
+      "z_order": 7,
+      "upgrade_asset": "04_poison_mortar",
+      "master_scale_xy": [
+        0.13160733549083065,
+        0.13160733549083065
+      ],
+      "gameplay_intent": {
+        "status_effect": "poison",
+        "damage_over_time": true
+      },
+      "muzzle_canvas_px": [
+        436.93,
+        301.98
+      ]
+    }
+  ],
+  "instructions": "Remove the original track chassis and all four road-wheel layers. Insert the new static off-road chassis and two off-road wheels before the tank body. Replace the three weapon layers by their existing names. Retain all other body/frame/support layers.",
+  "preview_canvas_px": [
+    1650,
+    1165
+  ],
+  "preview_offset_px": [
+    40,
+    40
+  ],
+  "scope": "Sprite artwork and animation preview only; gameplay values are set in the game project.",
+  "complete_layer_order_back_to_front": [
+    "01_offroad_chassis",
+    "02_offroad_wheel_rear",
+    "03_offroad_wheel_front",
+    "06_main_cannon_barrel",
+    "07_body_static",
+    "11_front_hull_frame",
+    "08_roof_machine_gun",
+    "09_mortar_barrel",
+    "10_mortar_front_support"
+  ],
+  "keep_original_layers": [
+    "07_body_static",
+    "11_front_hull_frame",
+    "10_mortar_front_support"
+  ]
+}

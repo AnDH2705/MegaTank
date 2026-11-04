@@ -1,0 +1,46 @@
+{
+  "art_direction": "Cute retro anime/comic cel shading; rounded silhouettes, dark warm outlines, gunmetal, bronze/cream accents.",
+  "modules": [
+    {
+      "id": "01_offroad_wheel",
+      "label": "BỘ BÁNH ĐỊA HÌNH",
+      "behavior": "Thay xích bằng 2 bánh gai và giảm xóc",
+      "intent": {
+        "movement_speed": "increased"
+      }
+    },
+    {
+      "id": "02_heavy_machine_gun",
+      "label": "MACHINE GUN NẶNG",
+      "behavior": "Mỗi phát mạnh hơn, bắn chậm hơn",
+      "intent": {
+        "damage_per_shot": "increased",
+        "fire_rate": "reduced"
+      }
+    },
+    {
+      "id": "03_heavy_cannon",
+      "label": "PHÁO HẠNG NẶNG",
+      "behavior": "Sát thương pháo mạnh hơn",
+      "intent": {
+        "cannon_damage": "increased"
+      }
+    },
+    {
+      "id": "04_poison_mortar",
+      "label": "MORTAR ĐỘC",
+      "behavior": "Gây độc, mất máu theo thời gian",
+      "intent": {
+        "status_effect": "poison",
+        "damage_over_time": true
+      }
+    }
+  ],
+  "image_generation_mode": "Built-in image generation",
+  "characteristics": {
+    "wheel": "Two large knobby off-road wheels plus a separate suspension frame replacing the entire track assembly",
+    "machine_gun": "One chunky barrel, bulky receiver, slow deliberate recoil",
+    "cannon": "Large reinforced muzzle and insertion sleeve",
+    "mortar": "Smooth purple tube, lime poison window and bubble emblem"
+  }
+}

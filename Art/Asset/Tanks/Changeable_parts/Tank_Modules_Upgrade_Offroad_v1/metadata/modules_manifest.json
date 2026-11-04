@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "upgrade_type_count": 4,
+  "sprite_asset_count": 5,
+  "assets": [
+    {
+      "id": "01_offroad_wheel",
+      "label": "BỘ BÁNH ĐỊA HÌNH",
+      "behavior": "Thay xích bằng 2 bánh gai và giảm xóc",
+      "intent": {
+        "movement_speed": "increased"
+      },
+      "file": "master/01_offroad_wheel.png",
+      "size_px": [
+        1226,
+        1245
+      ],
+      "pivot_local_px": [
+        606.5,
+        622
+      ]
+    },
+    {
+      "id": "02_heavy_machine_gun",
+      "label": "MACHINE GUN NẶNG",
+      "behavior": "Mỗi phát mạnh hơn, bắn chậm hơn",
+      "intent": {
+        "damage_per_shot": "increased",
+        "fire_rate": "reduced"
+      },
+      "file": "master/02_heavy_machine_gun.png",
+      "size_px": [
+        2055,
+        760
+      ],
+      "pivot_local_px": [
+        826,
+        748
+      ]
+    },
+    {
+      "id": "03_heavy_cannon",
+      "label": "PHÁO HẠNG NẶNG",
+      "behavior": "Sát thương pháo mạnh hơn",
+      "intent": {
+        "cannon_damage": "increased"
+      },
+      "file": "master/03_heavy_cannon.png",
+      "size_px": [
+        1750,
+        858
+      ],
+      "pivot_local_px": [
+        18,
+        468
+      ],
+      "muzzle_local_px": [
+        1707,
+        429
+      ]
+    },
+    {
+      "id": "04_poison_mortar",
+      "label": "MORTAR ĐỘC",
+      "behavior": "Gây độc, mất máu theo thời gian",
+      "intent": {
+        "status_effect": "poison",
+        "damage_over_time": true
+      },
+      "file": "master/04_poison_mortar.png",
+      "size_px": [
+        621,
+        1854
+      ],
+      "pivot_local_px": [
+        311,
+        1796
+      ],
+      "muzzle_local_px": [
+        311,
+        129
+      ]
+    },
+    {
+      "id": "05_offroad_chassis",
+      "label": "GẦM BÁNH ĐỊA HÌNH",
+      "behavior": "Gầm và hai bộ giảm xóc; không có xích",
+      "intent": {
+        "movement_speed": "increased"
+      },
+      "file": "master/05_offroad_chassis.png",
+      "size_px": [
+        2075,
+        402
+      ],
+      "pivot_local_px": [
+        1037.5,
+        12
+      ],
+      "hub_local_px": [
+        [
+          597,
+          345.5
+        ],
+        [
+          1477,
+          345.5
+        ]
+      ]
+    }
+  ],
+  "coordinates": "Master PNG pixels; +X right, +Y down.",
+  "generation": "Built-in image generation; artwork cleaned to its original alpha silhouette and cropped.",
+  "binding": "native_fits contains pre-sized replacements for the original, red and blue tanks.",
+  "balance": "Gameplay intent only. No invented damage, movement speed or poison duration values."
+}
