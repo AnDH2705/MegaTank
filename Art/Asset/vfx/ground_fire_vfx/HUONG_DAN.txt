@@ -1,0 +1,71 @@
+VFX LỬA MẶT ĐẤT – CÙNG STYLE BG KHU PHỐ CÔNG NGHIỆP
+
+CÁCH KIỂM SOÁT KHOẢNG CHÁY
+Đặt xStart, xEnd và groundY bằng tọa độ world, cùng hệ tọa độ với mặt đường.
+Độ dài = abs(xEnd - xStart). Không kéo giãn cả ảnh lửa.
+Hai mép được đặt ở hai đầu. Phần giữa được lặp và cắt tại mép khoảng cháy.
+Nếu hai đầu trùng nhau, không vẽ và không có vùng sát thương.
+
+BỘ ASSET
+- 8 frame, lặp 12 fps. Nền PNG alpha trong suốt.
+- Chân lửa đã căn cùng y = 224 trong cell cao 256 px.
+- fire_left_8f.png: 1 cột × 8 hàng; cell 80×256.
+- fire_right_8f.png: 1 cột × 8 hàng; cell 80×256.
+- fire_middle_3variants_8f.png: 3 cột biến thể × 8 hàng frame; cell 192×256.
+- fire_strip_8f.png: ảnh nguyên dải, 2 cột × 4 hàng; cell 736×256.
+- frames/: PNG riêng từng frame và từng part, để import linh hoạt.
+- ground_fire.json: thông số atlas và pivot.
+
+Ghép đoạn giữa: mỗi tile rộng 192 px, chồng mép 32 px, bước lặp 160 px.
+Mép nối được làm mềm 16 px; hai đầu ngoài vẫn có hình lửa thu nhỏ tự nhiên.
+Tô bằng alpha normal/source-over để giữ nét viền nâu; không bắt buộc additive.
+Đổi chiều cao bằng scale, đổi độ dài bằng xStart/xEnd.
+
+VÍ DỤ JAVASCRIPT CANVAS
+Load ground_fire.js trước, rồi:
+
+const textures = await loadGroundFireTextures('assets');
+const fire = new GroundFireVFX(textures, {
+  xStart: 320,
+  xEnd: 1280,
+  groundY: 1000,
+  fps: 12,
+  durationSeconds: 5
+});
+
+// Mỗi frame game; dt tính bằng giây:
+fire.update(dt);
+fire.draw(ctx, cameraX, cameraY);
+
+// Đổi khoảng cháy bất cứ lúc nào:
+fire.setRange(500, 1400, 1000);
+
+// Vùng va chạm/sát thương, cao 32 px tính từ mặt đất:
+const damageRect = fire.getDamageRect(32);
+
+// Chạy lại 3 giây, hoặc dùng Infinity cho cháy liên tục:
+fire.restart(3);
+
+// Bật/tắt; sau khi hết thời gian dùng restart() để chạy lại:
+fire.setActive(false);
+
+groundY neo tại chân lửa, không phải đáy ảnh có glow.
+Canvas renderer dùng đơn vị pixel, vẽ trước các phép scale/rotate của camera;
+nếu engine có scene graph, áp dụng công thức world-to-screen tương đương.
+Lửa đi theo cùng camera/mặt phẳng với đường, không gắn vào lớp BG xa.
+
+ĐỐI VỚI UNITY/GODOT/PHASER HAY ENGINE KHÁC
+Đọc atlas theo thông số trong ground_fire.json, lặp frame cùng tốc độ.
+Tâm vùng cháy = (xStart + xEnd) / 2; chiều rộng = abs(xEnd - xStart).
+Collider phải được đặt theo chính khoảng này, tách riêng với alpha ngọn lửa.
+Code mẫu chỉ trả vùng sát thương; game tự xử lý overlap, lượng damage và tick.
+Đoạn giữa được neo theo world để khi tăng giảm hai mép, lửa đang có không trượt.
+
+XEM THỬ
+Giải nén toàn bộ ZIP và mở preview.html bằng trình duyệt.
+Có thể chỉnh hai mép, groundY, độ cao và xem vùng sát thương.
+ground_fire_range_demo.gif minh họa khoảng cháy tăng giảm bằng code.
+
+Style dựa trên BG mới nhất: nét viền nâu đậm, mảng màu cel-shading,
+đỏ gạch/cam cháy/vàng ấm. Lửa được tạo bằng image generation, sau đó cắt atlas,
+căn chân lửa và chuẩn bị mép nối để dùng trong code.
