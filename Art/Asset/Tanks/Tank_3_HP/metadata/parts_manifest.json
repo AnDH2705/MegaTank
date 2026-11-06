@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "variant": "02_Tank_Xanh_Chong_Chiu",
   "canvas_px": [
     1421,
@@ -12,254 +12,353 @@
       "name": "01_track_chassis",
       "file": "parts/01_track_chassis.png",
       "position_px": [
-        214,
-        943
+        202,
+        931
       ],
       "size_px": [
-        886,
-        164
+        910,
+        188
       ],
       "pivot_canvas_px": [
         680,
         1004
       ],
       "pivot_local_px": [
-        466,
-        61
+        478,
+        73
       ],
       "parent": "root",
       "role": "Track belt, backing and fixed suspension",
-      "z_order": 0
+      "z_order": 0,
+      "original_position_px": [
+        214,
+        943
+      ],
+      "original_size_px": [
+        886,
+        164
+      ],
+      "padding_px": 12
     },
     {
       "name": "02_wheel_01",
       "file": "parts/02_wheel_01.png",
       "position_px": [
-        344,
-        938
+        332,
+        926
       ],
       "size_px": [
-        151,
-        132
+        175,
+        156
       ],
       "pivot_canvas_px": [
         419.5,
         1004
       ],
       "pivot_local_px": [
-        75.5,
-        66
+        87.5,
+        78
       ],
       "parent": "root",
       "role": "Complete independently rotating road wheel",
-      "z_order": 1
+      "z_order": 1,
+      "original_position_px": [
+        344,
+        938
+      ],
+      "original_size_px": [
+        151,
+        132
+      ],
+      "padding_px": 12
     },
     {
       "name": "03_wheel_02",
       "file": "parts/03_wheel_02.png",
       "position_px": [
-        486,
-        938
+        474,
+        926
       ],
       "size_px": [
-        152,
-        132
+        176,
+        156
       ],
       "pivot_canvas_px": [
         562,
         1004
       ],
       "pivot_local_px": [
-        76,
-        66
+        88,
+        78
       ],
       "parent": "root",
       "role": "Complete independently rotating road wheel",
-      "z_order": 2
+      "z_order": 2,
+      "original_position_px": [
+        486,
+        938
+      ],
+      "original_size_px": [
+        152,
+        132
+      ],
+      "padding_px": 12
     },
     {
       "name": "04_wheel_03",
       "file": "parts/04_wheel_03.png",
       "position_px": [
-        683,
-        938
+        671,
+        926
       ],
       "size_px": [
-        152,
-        132
+        176,
+        156
       ],
       "pivot_canvas_px": [
         758.5,
         1004
       ],
       "pivot_local_px": [
-        75.5,
-        66
+        87.5,
+        78
       ],
       "parent": "root",
       "role": "Complete independently rotating road wheel",
-      "z_order": 3
+      "z_order": 3,
+      "original_position_px": [
+        683,
+        938
+      ],
+      "original_size_px": [
+        152,
+        132
+      ],
+      "padding_px": 12
     },
     {
       "name": "05_wheel_04",
       "file": "parts/05_wheel_04.png",
       "position_px": [
-        827,
-        938
+        815,
+        926
       ],
       "size_px": [
-        152,
-        132
+        176,
+        156
       ],
       "pivot_canvas_px": [
         903,
         1004
       ],
       "pivot_local_px": [
-        76,
-        66
+        88,
+        78
       ],
       "parent": "root",
       "role": "Complete independently rotating road wheel",
-      "z_order": 4
+      "z_order": 4,
+      "original_position_px": [
+        827,
+        938
+      ],
+      "original_size_px": [
+        152,
+        132
+      ],
+      "padding_px": 12
     },
     {
       "name": "06_main_cannon_barrel",
       "file": "parts/06_main_cannon_barrel.png",
       "position_px": [
-        1188,
-        341
+        1176,
+        329
       ],
       "size_px": [
-        178,
-        164
+        202,
+        188
       ],
       "pivot_canvas_px": [
         1191,
         423
       ],
       "pivot_local_px": [
-        3,
-        82
+        15,
+        94
       ],
       "parent": "body",
       "role": "Cannon tube with independent horizontal recoil",
-      "z_order": 5
+      "z_order": 5,
+      "original_position_px": [
+        1188,
+        341
+      ],
+      "original_size_px": [
+        178,
+        164
+      ],
+      "padding_px": 12
     },
     {
       "name": "07_body_static",
       "file": "parts/07_body_static.png",
       "position_px": [
-        211,
-        9
+        199,
+        -3
       ],
       "size_px": [
-        800,
-        852
+        824,
+        876
       ],
       "pivot_canvas_px": [
         680,
         922
       ],
       "pivot_local_px": [
-        469,
-        913
+        481,
+        925
       ],
       "parent": "root",
       "role": "All fixed interiors, seats, ammunition, controls, pipes and exhaust combined",
-      "z_order": 6
+      "z_order": 6,
+      "original_position_px": [
+        211,
+        9
+      ],
+      "original_size_px": [
+        800,
+        852
+      ],
+      "padding_px": 12
     },
     {
       "name": "11_front_hull_frame",
       "file": "parts/11_front_hull_frame.png",
       "position_px": [
-        117,
-        72
+        105,
+        60
       ],
       "size_px": [
-        1173,
-        924
+        1197,
+        948
       ],
       "pivot_canvas_px": [
         680,
         922
       ],
       "pivot_local_px": [
-        563,
-        850
+        575,
+        862
       ],
       "parent": "body",
       "role": "Outer armor, middle floor beam, fixed cannon housing and fenders, with two transparent cabin openings",
-      "z_order": 7
+      "z_order": 7,
+      "original_position_px": [
+        117,
+        72
+      ],
+      "original_size_px": [
+        1173,
+        924
+      ],
+      "padding_px": 12
     },
     {
       "name": "08_roof_machine_gun",
       "file": "parts/08_roof_machine_gun.png",
       "position_px": [
-        787,
-        8
+        775,
+        -4
       ],
       "size_px": [
-        406,
-        138
+        430,
+        162
       ],
       "pivot_canvas_px": [
         938,
         142
       ],
       "pivot_local_px": [
-        151,
-        134
+        163,
+        146
       ],
       "parent": "body",
       "role": "Roof machine gun combined; fixed base remains on frame",
-      "z_order": 8
+      "z_order": 8,
+      "original_position_px": [
+        787,
+        8
+      ],
+      "original_size_px": [
+        406,
+        138
+      ],
+      "padding_px": 12
     },
     {
       "name": "09_mortar_barrel",
       "file": "parts/09_mortar_barrel.png",
       "position_px": [
-        117,
-        187
+        105,
+        175
       ],
       "size_px": [
-        113,
-        322
+        137,
+        346
       ],
       "pivot_canvas_px": [
         174,
         490
       ],
       "pivot_local_px": [
-        57,
-        303
+        69,
+        315
       ],
       "parent": "body",
       "role": "Full continuous mortar tube behind fixed front collars",
-      "z_order": 9
+      "z_order": 9,
+      "original_position_px": [
+        117,
+        187
+      ],
+      "original_size_px": [
+        113,
+        322
+      ],
+      "padding_px": 12
     },
     {
       "name": "10_mortar_front_support",
       "file": "parts/10_mortar_front_support.png",
       "position_px": [
-        121,
-        292
+        109,
+        280
       ],
       "size_px": [
-        141,
-        232
+        165,
+        256
       ],
       "pivot_canvas_px": [
         174,
         490
       ],
       "pivot_local_px": [
-        53,
-        198
+        65,
+        210
       ],
       "parent": "body",
       "role": "Two front collars and bottom cradle as one fixed foreground sprite",
-      "z_order": 10
+      "z_order": 10,
+      "original_position_px": [
+        121,
+        292
+      ],
+      "original_size_px": [
+        141,
+        232
+      ],
+      "padding_px": 12
     }
   ],
   "character_layer_order": "Insert characters ABOVE 07_body_static and BELOW 11_front_hull_frame.",
@@ -313,5 +412,7 @@
       ]
     }
   },
-  "note": "Original visible tank artwork is reused; the continuous mortar tube, hidden tire caps and chassis backing were restored. Artwork layers only; not bound to an engine or Spine project."
+  "note": "Original visible tank artwork is reused; the continuous mortar tube, hidden tire caps and chassis backing were restored. Artwork layers only; not bound to an engine or Spine project.",
+  "appearance_revision": "Higher contrast and heavy foreground ink",
+  "appearance_note": "Original canvas, world pivots and VFX sockets preserved. PNGs have 12px padding. Use updated positions, sizes and local pivots. Geometry of part silhouettes retained using source extraction masks; colors/ink repainted."
 }
