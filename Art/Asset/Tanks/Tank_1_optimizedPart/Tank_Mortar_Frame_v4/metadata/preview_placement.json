@@ -1,0 +1,21 @@
+{
+  "backgroundSize": [
+    1920,
+    1080
+  ],
+  "tankCanvas": [
+    1351,
+    1277
+  ],
+  "tankScale": 0.43,
+  "canvasPosition": [
+    670,
+    403.06000000000006
+  ],
+  "groundAnchor": [
+    652,
+    1258
+  ],
+  "groundY": 944,
+  "comparison": "same scale and world position for original and edited tank on both supplied backgrounds"
+}

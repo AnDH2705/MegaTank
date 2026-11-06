@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "canvas_px": [
     1351,
     1277
@@ -9,20 +9,20 @@
       "name": "01_track_chassis",
       "file": "parts/01_track_chassis.png",
       "position_px": [
-        252,
-        1047
+        240,
+        1035
       ],
       "size_px": [
-        795,
-        211
+        819,
+        235
       ],
       "pivot_canvas_px": [
         652,
         1156
       ],
       "pivot_local_px": [
-        400,
-        109
+        412,
+        121
       ],
       "role": "Track belt and undercarriage backing combined",
       "parent": "root",
@@ -30,156 +30,210 @@
         "01_track_backplate",
         "02_track_belt"
       ],
-      "z_order": 0
+      "z_order": 0,
+      "original_position_px": [
+        252,
+        1047
+      ],
+      "original_size_px": [
+        795,
+        211
+      ],
+      "padding_px": 12
     },
     {
       "name": "02_wheel_01",
       "file": "parts/02_wheel_01.png",
       "position_px": [
-        343,
-        1092
+        331,
+        1080
       ],
       "size_px": [
-        137,
-        134
+        161,
+        158
       ],
       "pivot_canvas_px": [
         410.5,
         1159
       ],
       "pivot_local_px": [
-        67.5,
-        67
+        79.5,
+        79
       ],
       "role": "Independent road wheel",
       "parent": "root",
       "source_parts": [
         "03_wheel_01"
       ],
-      "z_order": 1
+      "z_order": 1,
+      "original_position_px": [
+        343,
+        1092
+      ],
+      "original_size_px": [
+        137,
+        134
+      ],
+      "padding_px": 12
     },
     {
       "name": "03_wheel_02",
       "file": "parts/03_wheel_02.png",
       "position_px": [
-        468,
-        1092
+        456,
+        1080
       ],
       "size_px": [
-        139,
-        133
+        163,
+        157
       ],
       "pivot_canvas_px": [
         537,
         1158.5
       ],
       "pivot_local_px": [
-        69,
-        66.5
+        81,
+        78.5
       ],
       "role": "Independent road wheel",
       "parent": "root",
       "source_parts": [
         "03_wheel_02"
       ],
-      "z_order": 2
+      "z_order": 2,
+      "original_position_px": [
+        468,
+        1092
+      ],
+      "original_size_px": [
+        139,
+        133
+      ],
+      "padding_px": 12
     },
     {
       "name": "04_wheel_03",
       "file": "parts/04_wheel_03.png",
       "position_px": [
-        688,
-        1091
+        676,
+        1079
       ],
       "size_px": [
-        138,
-        134
+        162,
+        158
       ],
       "pivot_canvas_px": [
         757,
         1158
       ],
       "pivot_local_px": [
-        69,
-        67
+        81,
+        79
       ],
       "role": "Independent road wheel",
       "parent": "root",
       "source_parts": [
         "03_wheel_03"
       ],
-      "z_order": 3
+      "z_order": 3,
+      "original_position_px": [
+        688,
+        1091
+      ],
+      "original_size_px": [
+        138,
+        134
+      ],
+      "padding_px": 12
     },
     {
       "name": "05_wheel_04",
       "file": "parts/05_wheel_04.png",
       "position_px": [
-        819,
-        1092
+        807,
+        1080
       ],
       "size_px": [
-        143,
-        133
+        167,
+        157
       ],
       "pivot_canvas_px": [
         890,
         1158.5
       ],
       "pivot_local_px": [
-        71,
-        66.5
+        83,
+        78.5
       ],
       "role": "Independent road wheel",
       "parent": "root",
       "source_parts": [
         "03_wheel_04"
       ],
-      "z_order": 4
+      "z_order": 4,
+      "original_position_px": [
+        819,
+        1092
+      ],
+      "original_size_px": [
+        143,
+        133
+      ],
+      "padding_px": 12
     },
     {
       "name": "06_main_cannon_barrel",
       "file": "parts/06_main_cannon_barrel.png",
       "position_px": [
-        1114,
-        417
+        1102,
+        405
       ],
       "size_px": [
-        222,
-        164
+        246,
+        188
       ],
       "pivot_canvas_px": [
         1125,
         496
       ],
       "pivot_local_px": [
-        11,
-        79
+        23,
+        91
       ],
       "role": "Main barrel, independent recoil",
       "parent": "body",
       "source_parts": [
         "08_main_gun_barrel"
       ],
-      "z_order": 5
+      "z_order": 5,
+      "original_position_px": [
+        1114,
+        417
+      ],
+      "original_size_px": [
+        222,
+        164
+      ],
+      "padding_px": 12
     },
     {
       "name": "07_body_static",
       "file": "parts/07_body_static.png",
       "position_px": [
-        205,
-        79
+        193,
+        67
       ],
       "size_px": [
-        933,
-        954
+        957,
+        978
       ],
       "pivot_canvas_px": [
         645,
         1040
       ],
       "pivot_local_px": [
-        440,
-        961
+        452,
+        973
       ],
       "role": "Static interior and body backing combined; outer rim/floor beam supplied as separate foreground frame",
       "parent": "root",
@@ -212,26 +266,35 @@
         "29_driver_console",
         "30_driver_floor_platform"
       ],
-      "z_order": 6
+      "z_order": 6,
+      "original_position_px": [
+        205,
+        79
+      ],
+      "original_size_px": [
+        933,
+        954
+      ],
+      "padding_px": 12
     },
     {
       "name": "11_front_hull_frame",
       "file": "parts/11_front_hull_frame.png",
       "position_px": [
-        194,
-        159
+        182,
+        147
       ],
       "size_px": [
-        895,
-        904
+        919,
+        928
       ],
       "pivot_canvas_px": [
         645,
         1040
       ],
       "pivot_local_px": [
-        451,
-        881
+        463,
+        893
       ],
       "role": "Outer cutaway armor rim, floor separator and fixed roof mounts; both room apertures transparent; exhaust source contributes only its fixed base",
       "parent": "body",
@@ -241,26 +304,35 @@
         "32_front_hull_frame",
         "33_roof_gun_mount"
       ],
-      "z_order": 7
+      "z_order": 7,
+      "original_position_px": [
+        194,
+        159
+      ],
+      "original_size_px": [
+        895,
+        904
+      ],
+      "padding_px": 12
     },
     {
       "name": "08_roof_machine_gun",
       "file": "parts/08_roof_machine_gun.png",
       "position_px": [
-        726,
-        84
+        714,
+        72
       ],
       "size_px": [
-        425,
-        156
+        449,
+        180
       ],
       "pivot_canvas_px": [
         910,
         231
       ],
       "pivot_local_px": [
-        184,
-        147
+        196,
+        159
       ],
       "role": "Roof gun body, grips and barrel combined; fixed feet now belong to the foreground frame",
       "parent": "body",
@@ -269,52 +341,70 @@
         "36_roof_gun_barrel",
         "35_roof_gun_receiver"
       ],
-      "z_order": 8
+      "z_order": 8,
+      "original_position_px": [
+        726,
+        84
+      ],
+      "original_size_px": [
+        425,
+        156
+      ],
+      "padding_px": 12
     },
     {
       "name": "09_mortar_barrel",
       "file": "parts/09_mortar_barrel.png",
       "position_px": [
-        105,
-        247
+        93,
+        235
       ],
       "size_px": [
-        121,
-        336
+        145,
+        360
       ],
       "pivot_canvas_px": [
         213.14,
         561.9
       ],
       "pivot_local_px": [
-        108.14,
-        314.9
+        120.14,
+        326.9
       ],
       "role": "Complete mortar barrel; moved 64 px toward rear wall",
       "parent": "body",
       "source_parts": [
         "38_mortar_barrel"
       ],
-      "z_order": 9
+      "z_order": 9,
+      "original_position_px": [
+        105,
+        247
+      ],
+      "original_size_px": [
+        121,
+        336
+      ],
+      "padding_px": 12
     },
     {
       "name": "10_mortar_front_support",
       "file": "parts/10_mortar_front_support.png",
       "position_px": [
-        108,
-        364
+        96,
+        352
       ],
       "size_px": [
-        132,
-        233
+        156,
+        257
       ],
       "pivot_canvas_px": [
         213.14,
         561.9
       ],
       "pivot_local_px": [
-        105.14,
-        197.9
+        117.14,
+        209.9
       ],
       "role": "Both fixed collars and base cradle combined; foreground occluder for sliding barrel",
       "parent": "body",
@@ -323,7 +413,16 @@
         "40_mortar_clamp_lower",
         "41_mortar_base_cradle"
       ],
-      "z_order": 10
+      "z_order": 10,
+      "original_position_px": [
+        108,
+        364
+      ],
+      "original_size_px": [
+        132,
+        233
+      ],
+      "padding_px": 12
     }
   ],
   "coordinates": "Top-left origin, +x right, +y down; native pixels.",
@@ -352,7 +451,7 @@
   "pending_changes": [
     "Interior ammunition hatch and firing button have not been added; the image-generation tool blocked that requested accessory generation."
   ],
-  "note": "Static interiors remain baked into 07_body_static. The outer rim, floor separator, fixed gun feet and exhaust base belong to one foreground frame, without duplicate frame artwork. Disconnected roof extraction scraps are omitted.",
+  "note": "Static interiors remain baked into 07_body_static. The outer rim, floor separator, fixed gun feet and exhaust base belong to one foreground frame, without duplicate frame artwork. Disconnected roof extraction scraps are omitted. Contrast edition: teal armor, warm ivory backing, bolder charcoal contours. Import the updated position/size/pivot-local values because padding was added.",
   "front_frame": {
     "aligned_png": "Tank_Front_Frame.png",
     "canvas_px": [
@@ -366,5 +465,7 @@
     "cropped_png": "parts/11_front_hull_frame.png",
     "room_apertures_transparent": true,
     "includes_floor_separator": true
-  }
+  },
+  "appearance_revision": "teal high-contrast + heavier ink",
+  "appearance_note": "Each PNG has 12px padding; canvas coordinates of all pivots and the mortar muzzle are preserved. Artwork colors and linework repainted; static backing extracted from the approved assembled repaint."
 }
