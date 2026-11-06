@@ -1,0 +1,78 @@
+{
+  "canvas": {
+    "width": 1920,
+    "height": 1080
+  },
+  "anchor": "top-left",
+  "draw_order": "array order, back to front",
+  "position_formula": "x = -cameraX * factor; y = 0",
+  "demo_repeat": "alternating mirrored tiles",
+  "layers": [
+    {
+      "file": "layers/00_sky_static.png",
+      "name": "Trời mây đứng yên",
+      "z_index": 0,
+      "parallax_factor": 0,
+      "repeat_x": "none",
+      "offset": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "file": "layers/01_far_factories.png",
+      "name": "Nhà máy phía xa",
+      "z_index": 1,
+      "parallax_factor": 0.15,
+      "repeat_x": "mirror",
+      "offset": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "file": "layers/02_mid_industry.png",
+      "name": "Xưởng và đường ống trung cảnh",
+      "z_index": 2,
+      "parallax_factor": 0.35,
+      "repeat_x": "mirror",
+      "offset": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "file": "layers/03_road.png",
+      "name": "Mặt đường",
+      "z_index": 3,
+      "parallax_factor": 1,
+      "repeat_x": "mirror",
+      "offset": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "file": "layers/04_street_buildings.png",
+      "name": "Dãy phố và vật thể gắn tường",
+      "z_index": 4,
+      "parallax_factor": 0.7,
+      "repeat_x": "mirror",
+      "offset": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "file": "layers/05_rubble_weeds.png",
+      "name": "Đá vụn và cỏ phía trước",
+      "z_index": 5,
+      "parallax_factor": 1.1,
+      "repeat_x": "mirror",
+      "offset": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  ]
+}

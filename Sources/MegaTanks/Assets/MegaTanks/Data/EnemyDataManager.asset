@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9caf9d2d6c16de44a8c78f96403f9885, type: 3}
+  m_Name: EnemyDataManager
+  m_EditorClassIdentifier: 
+  enemies:
+  - id: FlyingEnemy1
+    kind: 1
+    baseHealth: 26
+    healthPerWave: 4
+    baseSpeed: 0.75
+    speedPerWave: 0
+    maxSpeedBonus: 0.5
+    advanceInsideRange: {x: 1, y: 5}
+    score: 75
+    baseScraps: 20
+    scrapsPerWave: 2
+    color: {r: 1, g: 0.63, b: 0.25, a: 1}
+    artworkPrefab: {fileID: 8160580182256755550, guid: bcd6c8d21d2f1bb4b8f954ae00edf34a, type: 3}
+    artworkWidth: 2.4
+    scale: 1
+    weapon:
+      type: 0
+      damage: 2
+      range: 30
+      salvoSize: 3
+      shotDelay: 0.1
+      reloadTime: 1.8
+      projectileSpeed: 22
+      gravity: 0.35
+  - id: GroundEnemy1
+    kind: 0
+    baseHealth: 70
+    healthPerWave: 7
+    baseSpeed: 0.6
+    speedPerWave: 0
+    maxSpeedBonus: 0.5
+    advanceInsideRange: {x: 1, y: 5}
+    score: 100
+    baseScraps: 30
+    scrapsPerWave: 3
+    color: {r: 0.96, g: 0.37, b: 0.4, a: 1}
+    artworkPrefab: {fileID: 8415482458435174311, guid: 3b507aaf765a67b48ae65ee7a1d7b791, type: 3}
+    artworkWidth: 2.2
+    scale: 1
+    weapon:
+      type: 1
+      damage: 8
+      range: 40
+      salvoSize: 1
+      shotDelay: 0.1
+      reloadTime: 4
+      projectileSpeed: 18
+      gravity: 3

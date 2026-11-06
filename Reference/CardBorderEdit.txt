@@ -1,0 +1,4 @@
+Card border edit (built-in imagegen)
+Target: Sources/MegaTanks/Assets/MegaTanks/Art/Cards/CardAtlas.png
+Prompt: Remove rainbow foil streaks and iridescence from Normal, Rare and Epic card borders and frame ornaments. Keep shaded frame details and white/silver, blue and purple rarity colors. Preserve central icons, dark blank text panels, the 1536x1024 six-column/three-row layout, and all Legendary orange cards and their foil.
+Preservation: Original Legendary cells (indices 3, 7, 11, zero-based) were copied back verbatim after generation. Original atlas backed up beside this note as CardAtlas-before-matte-borders.png. Sprite slicing metadata retained.

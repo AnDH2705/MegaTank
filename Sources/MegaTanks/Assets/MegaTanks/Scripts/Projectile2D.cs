@@ -1,7 +1,10 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace MegaTanks
 {
+    public enum ProjectileTeam { Player, Enemy }
+
     public sealed class Projectile2D : MonoBehaviour
     {
         Vector2 velocity, launchOrigin;
@@ -13,9 +16,33 @@ namespace MegaTanks
         int trailCount;
         float trailTimer;
         Transform shellVisual;
-        public void Initialize(Vector2 origin, Vector2 forward, float speed, float hitDamage, Color tint, bool heavy, float maxDistance, float downwardGravity = 0)
+        ProjectileTeam team;
+        static readonly List<RaycastHit2D> hits = new List<RaycastHit2D>(32);
+        public ProjectileTeam Team => team;
+        public bool IsMortar { get; private set; }
+        bool detonated;
+        float fullDamageRadius, halfDamageRadius;
+        public void InitializeMortar(Vector2 origin, Vector2 launchVelocity, float hitDamage, float downwardGravity,
+            float fullRadius, float halfRadius, float width, Sprite projectileSprite = null)
+        {
+            Initialize(origin, launchVelocity.normalized, launchVelocity.magnitude, hitDamage, new Color(1, .8f, .3f), true,
+                float.PositiveInfinity, downwardGravity, ProjectileTeam.Player, projectileSprite, width);
+            IsMortar = true; fullDamageRadius = fullRadius; halfDamageRadius = halfRadius;
+            var renderer = shellVisual.GetComponent<SpriteRenderer>();
+            shellVisual.localScale = Vector3.one * (width / renderer.sprite.bounds.size.x);
+        }
+        void Detonate(Vector2 position)
+        {
+            if (detonated) return;
+            detonated = true;
+            BattleGame.Instance.DetonateMortar(position, damage, fullDamageRadius, halfDamageRadius);
+            Destroy(gameObject);
+        }
+        public void Initialize(Vector2 origin, Vector2 forward, float speed, float hitDamage, Color tint, bool heavy, float maxDistance, float downwardGravity = 0,
+            ProjectileTeam faction = ProjectileTeam.Player, Sprite projectileSprite = null, float projectileWidth = -1, bool inheritCannonArt = true)
         {
             transform.position = origin;
+            team = faction;
             launchOrigin = origin;
             velocity = forward.normalized * speed;
             maxRange = maxDistance;
@@ -25,15 +52,16 @@ namespace MegaTanks
             radius = heavy ? .14f : .055f;
             SpriteRenderer visual;
             var game = BattleGame.Instance;
-            if (heavy && game.CannonProjectileSprite != null)
+            Sprite sprite = projectileSprite != null ? projectileSprite : heavy && inheritCannonArt ? game.CannonProjectileSprite : null;
+            if (sprite != null)
             {
                 var shell = new GameObject("Cannon shell art");
                 shell.transform.SetParent(transform, false);
                 visual = shell.AddComponent<SpriteRenderer>();
-                visual.sprite = game.CannonProjectileSprite;
+                visual.sprite = sprite;
                 visual.color = Color.white;
                 visual.sortingOrder = 70;
-                float scale = game.CannonProjectileWidth / visual.sprite.bounds.size.x;
+                float scale = (projectileWidth > 0 ? projectileWidth : game.CannonProjectileWidth) / visual.sprite.bounds.size.x;
                 shell.transform.localScale = Vector3.one * scale;
             }
             else visual = ShapeFactory.Create("Shell", transform, Vector2.zero, Vector2.one * radius * 2, color, true, 70);
@@ -64,7 +92,12 @@ namespace MegaTanks
         {
             if (!BattleGame.Instance.Running) return;
             // Contact is at the shell's lower edge, rather than waiting for its center to sink below ground.
-            if (transform.position.y - radius <= BattleGame.GroundHeight) { Destroy(gameObject); return; }
+            if (transform.position.y - radius <= BattleGame.GroundHeight)
+            {
+                if (IsMortar) Detonate(new Vector2(transform.position.x, BattleGame.GroundHeight));
+                else Destroy(gameObject);
+                return;
+            }
             // Small exact ballistic steps keep curved sweeps accurate even on slow frames.
             Physics2D.SyncTransforms();
             float remainingTime = Time.deltaTime;
@@ -92,19 +125,36 @@ namespace MegaTanks
                     float fraction = (transform.position.y - radius - BattleGame.GroundHeight) / -displacement.y;
                     displacement *= Mathf.Clamp01(fraction);
                 }
-                var hit = Physics2D.CircleCast(transform.position, radius, displacement.normalized, displacement.magnitude);
-                if (hit.collider != null)
+                var filter = new ContactFilter2D().NoFilter();
+                Physics2D.CircleCast(transform.position, radius, displacement.normalized, filter, hits, displacement.magnitude);
+                float closest = float.PositiveInfinity;
+                EnemyEntity targetEnemy = null;
+                TankHitbox targetHull = null;
+                Vector2 impact = Vector2.zero;
+                foreach (var hit in hits)
                 {
                     var enemy = hit.collider.GetComponent<EnemyEntity>();
-                    if (enemy != null && enemy.Alive)
+                    var hull = hit.collider.GetComponent<TankHitbox>();
+                    bool valid = team == ProjectileTeam.Player ? enemy != null && enemy.Alive : hull != null;
+                    if (valid && hit.distance < closest)
                     {
-                        enemy.Damage(damage);
-                        BattleGame.Instance.Flash(hit.point, color, .22f);
-                        Destroy(gameObject);
-                        return;
+                        closest = hit.distance;
+                        targetEnemy = enemy;
+                        targetHull = hull;
+                        impact = hit.point;
                     }
                 }
+                if (targetEnemy != null || targetHull != null)
+                {
+                    if (IsMortar) { Detonate(impact); return; }
+                    if (team == ProjectileTeam.Player) targetEnemy.Damage(damage);
+                    else BattleGame.Instance.DamageHull(damage);
+                    BattleGame.Instance.Flash(impact, color, .22f);
+                    Destroy(gameObject);
+                    return;
+                }
                 transform.position += (Vector3)displacement;
+                if (hitGround && IsMortar) { Detonate(new Vector2(transform.position.x, BattleGame.GroundHeight)); return; }
                 if (expired || hitGround) { Destroy(gameObject); return; }
             }
             AlignVisual();

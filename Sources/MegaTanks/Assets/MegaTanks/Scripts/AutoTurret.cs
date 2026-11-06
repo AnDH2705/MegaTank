@@ -1,21 +1,22 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace MegaTanks
 {
     public sealed class AutoTurret : MonoBehaviour
     {
-        [SerializeField] string displayName = "MG / AA";
-        [SerializeField] EnemyKind preferredTarget = EnemyKind.Flyer;
-        [FormerlySerializedAs("fireInterval")]
-        [SerializeField, Min(.02f), Tooltip("Time from the final shot of a salvo to the next salvo.")] float reloadTime = 1.25f;
-        [SerializeField, Min(1), Tooltip("Number of shots fired in each salvo.")] int salvoSize = 3;
-        [SerializeField, Min(.01f), Tooltip("Time between shots within the same salvo.")] float shotDelay = .1f;
-        [SerializeField, Min(1)] float damage = 6;
-        [SerializeField, Min(1)] float range = 50;
+        string displayName = "MG / AA";
+        GunStats stats = new GunStats();
+        float damage;
+        public GunDefinition Definition { get; private set; }
+        public GunStats Stats => stats;
+        EnemyKind preferredTarget => stats.preferredTarget;
+        float reloadTime => stats.reloadTime;
+        int salvoSize => stats.salvoSize;
+        float shotDelay => stats.shotDelay;
+        float range => stats.range;
+        float projectileSpeed => stats.projectileSpeed;
+        float projectileGravity => stats.gravity;
         public float MaxRange => range;
-        [SerializeField, Min(1)] float projectileSpeed = 18;
-        [SerializeField, Min(0), Tooltip("Downward acceleration in world units per second squared. Zero gives a straight shot.")] float projectileGravity = .35f;
         public float ProjectileGravity => projectileGravity;
         [SerializeField] GunArtwork artwork;
         public GunArtwork Artwork => artwork;
@@ -25,6 +26,9 @@ namespace MegaTanks
         public int SalvoSize => salvoSize;
         public float ShotDelay => shotDelay;
         public int ShotsFired { get; private set; }
+        public int Ammo { get; private set; }
+        public int ReserveCapacity { get; private set; }
+        float baseDamage;
         public event System.Action<float> ShotFired;
         public EnemyEntity Target { get; private set; }
         public float CooldownFraction => Mathf.Clamp01(cooldown / (shotsRemaining > 0 ? shotDelay : reloadTime));
@@ -34,25 +38,46 @@ namespace MegaTanks
 
         public void BindArtwork(GunArtwork visual) { artwork = visual; artwork.ResetVisual(); }
 
+        public void Configure(GunDefinition definition)
+        {
+            Definition = definition;
+            displayName = definition.displayName;
+            stats = definition.stats.Copy();
+            baseDamage = stats.damage;
+            ReserveCapacity = Mathf.Max(0, stats.reserveCapacity);
+            shotColor = stats.heavyProjectile ? new Color(1, .72f, .28f) : new Color(.34f, .91f, 1);
+            ResetWeapon();
+        }
+
         public void Configure(string label, EnemyKind priority, float reload, float hitDamage, int shotsPerSalvo, float delayBetweenShots, float maximumRange, float gravity)
         {
             displayName = label;
-            preferredTarget = priority;
-            reloadTime = Mathf.Max(.02f, reload);
-            damage = hitDamage;
-            salvoSize = Mathf.Max(1, shotsPerSalvo);
-            shotDelay = Mathf.Max(.01f, delayBetweenShots);
-            range = Mathf.Max(1, maximumRange);
-            projectileGravity = Mathf.Max(0, gravity);
-            shotColor = priority == EnemyKind.Ground ? new Color(1, .72f, .28f) : new Color(.34f, .91f, 1);
+            stats = stats.Copy();
+            stats.preferredTarget = priority;
+            stats.reloadTime = Mathf.Max(.02f, reload);
+            stats.damage = hitDamage;
+            baseDamage = hitDamage;
+            stats.salvoSize = Mathf.Max(1, shotsPerSalvo);
+            stats.shotDelay = Mathf.Max(.01f, delayBetweenShots);
+            stats.range = Mathf.Max(1, maximumRange);
+            stats.gravity = Mathf.Max(0, gravity);
+            if (Definition == null) stats.heavyProjectile = priority == EnemyKind.Ground;
+            shotColor = stats.heavyProjectile ? new Color(1, .72f, .28f) : new Color(.34f, .91f, 1);
             ResetWeapon();
         }
 
         public void ResetWeapon()
         {
             cooldown = 0; shotsRemaining = 0; ShotsFired = 0; Target = null;
+            Ammo = ReserveCapacity;
+            damage = baseDamage;
             if (artwork != null) artwork.ResetVisual();
         }
+
+        public void ConfigureAmmunition(int capacity) { stats.reserveCapacity = ReserveCapacity = Mathf.Max(0, capacity); Ammo = ReserveCapacity; }
+        public bool TryConsumeRound() { if (Ammo <= 0) return false; Ammo--; return true; }
+        public void Resupply(float fraction) { Ammo = Mathf.Min(ReserveCapacity, Ammo + Mathf.CeilToInt(ReserveCapacity * Mathf.Max(0, fraction))); }
+        public void IncreaseDamage(float fraction) { damage += baseDamage * Mathf.Max(0, fraction); }
 
         void Update()
         {
@@ -69,7 +94,7 @@ namespace MegaTanks
                     projectileSpeed, projectileGravity, out Vector2 launchVelocity)) return;
                 artwork.Aim(launchVelocity);
             }
-            if (cooldown > 0) return;
+            if (cooldown > 0 || !TryConsumeRound()) return;
             // Preserve a partial salvo while reacquiring; reload starts after its final shot.
             if (shotsRemaining == 0) shotsRemaining = salvoSize;
             shotsRemaining--;
@@ -78,7 +103,8 @@ namespace MegaTanks
             Vector2 direction = artwork.FireDirection;
             Vector2 origin = (Vector2)artwork.Muzzle.position + direction * .04f;
             var shell = new GameObject(displayName + " shell").AddComponent<Projectile2D>();
-            shell.Initialize(origin, direction, projectileSpeed, damage, shotColor, preferredTarget == EnemyKind.Ground, range, projectileGravity);
+            shell.Initialize(origin, direction, projectileSpeed, damage, shotColor, stats.heavyProjectile, range, projectileGravity,
+                ProjectileTeam.Player, stats.projectileSprite, stats.projectileWidth, false);
             artwork.Fire();
             ShotFired?.Invoke(Time.time);
         }

@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61cd224fc6ce9c94d865f4f0389fbfe4, type: 3}
+  m_Name: BattleBackgrounds
+  m_EditorClassIdentifier:
+  presets:
+  - id: Industrial
+    layers:
+    - sprite: {fileID: 21300000, guid: ee87e3df1c2a6b645909d8f351afe1e4, type: 3}
+      parallaxFactor: 0
+      repeatHorizontally: 0
+    - sprite: {fileID: 21300000, guid: c52648551f1e2254ba50247ab44e4dab, type: 3}
+      parallaxFactor: 0.15
+      repeatHorizontally: 1
+    - sprite: {fileID: 21300000, guid: a72ea9f47dbd37846be6a1acabca3476, type: 3}
+      parallaxFactor: 0.35
+      repeatHorizontally: 1
+    - sprite: {fileID: 21300000, guid: c9435492755d46242bb6cf9d7c9ae3b0, type: 3}
+      parallaxFactor: 1
+      repeatHorizontally: 1
+    - sprite: {fileID: 21300000, guid: 9cefe80e678f4b34ba2e2334fbf0fa31, type: 3}
+      parallaxFactor: 0.7
+      repeatHorizontally: 1
+    - sprite: {fileID: 21300000, guid: c2927999f26c0464d96812369c729aa8, type: 3}
+      parallaxFactor: 1.1
+      repeatHorizontally: 1
+  - id: RuinedCity
+    layers:
+    - sprite: {fileID: 21300000, guid: 8514f42e5962b9245b9deb8ecc3c9e26, type: 3}
+      parallaxFactor: 0
+      repeatHorizontally: 0
+    - sprite: {fileID: 21300000, guid: 3091c58c9937a1f4e8d52f7b3bbf164f, type: 3}
+      parallaxFactor: 0.15
+      repeatHorizontally: 1
+    - sprite: {fileID: 21300000, guid: 57fe2583e0e277c41921ccdcd1d970b9, type: 3}
+      parallaxFactor: 0.35
+      repeatHorizontally: 1
+    - sprite: {fileID: 21300000, guid: d19582ff91b5ad84c99e65fcdb3ab4f8, type: 3}
+      parallaxFactor: 1
+      repeatHorizontally: 1
+    - sprite: {fileID: 21300000, guid: c63fbb42a887d30449c9086e16b56e39, type: 3}
+      parallaxFactor: 0.7
+      repeatHorizontally: 1
+    - sprite: {fileID: 21300000, guid: da9795e331f95764b8bf4b62fac96cf2, type: 3}
+      parallaxFactor: 1.25
+      repeatHorizontally: 1
+    - sprite: {fileID: 21300000, guid: eab5de97445c3404aa890f4e145304e8, type: 3}
+      parallaxFactor: 1.15
+      repeatHorizontally: 1

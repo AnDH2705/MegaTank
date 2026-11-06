@@ -1,5 +1,38 @@
 {
   "dependencies": {
+    "com.esotericsoftware.spine.spine-csharp": {
+      "version": "file:com.esotericsoftware.spine.spine-csharp",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.esotericsoftware.spine.spine-unity": {
+      "version": "file:com.esotericsoftware.spine.spine-unity",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0",
+        "com.unity.modules.animation": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.physics2d": "1.0.0",
+        "com.esotericsoftware.spine.spine-csharp": "4.2.0"
+      }
+    },
+    "com.unity.ugui": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.ui": "1.0.0",
+        "com.unity.modules.imgui": "1.0.0"
+      }
+    },
+    "com.unity.modules.animation": {
+      "version": "1.0.0",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.modules.audio": {
       "version": "1.0.0",
       "depth": 0,
@@ -24,6 +57,12 @@
       "source": "builtin",
       "dependencies": {}
     },
+    "com.unity.modules.physics": {
+      "version": "1.0.0",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.modules.physics2d": {
       "version": "1.0.0",
       "depth": 0,
@@ -37,6 +76,12 @@
       "dependencies": {
         "com.unity.modules.imageconversion": "1.0.0"
       }
+    },
+    "com.unity.modules.ui": {
+      "version": "1.0.0",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {}
     }
   }
 }

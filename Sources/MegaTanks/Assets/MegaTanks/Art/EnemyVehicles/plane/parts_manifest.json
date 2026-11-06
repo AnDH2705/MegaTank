@@ -1,0 +1,113 @@
+{
+  "asset": "plane",
+  "canvas_px": [
+    1536,
+    1024
+  ],
+  "coordinates": "Top-left origin; +x right; +y down; cropped PNGs reassemble using position_px.",
+  "layers": [
+    {
+      "name": "01_propeller_blades",
+      "file": "parts/01_propeller_blades.png",
+      "position_px": [
+        1272,
+        153
+      ],
+      "size_px": [
+        97,
+        792
+      ],
+      "pivot_canvas_px": [
+        1326,
+        576
+      ],
+      "pivot_local_px": [
+        54,
+        423
+      ],
+      "role": "Two continuous propeller blades, hidden center restored; spinner remains fixed"
+    },
+    {
+      "name": "02_wheel_rear",
+      "file": "parts/02_wheel_rear.png",
+      "position_px": [
+        197,
+        738
+      ],
+      "size_px": [
+        95,
+        95
+      ],
+      "pivot_canvas_px": [
+        244,
+        785
+      ],
+      "pivot_local_px": [
+        47,
+        47
+      ],
+      "role": "Complete tail wheel under fixed strut"
+    },
+    {
+      "name": "03_wheel_main",
+      "file": "parts/03_wheel_main.png",
+      "position_px": [
+        723,
+        825
+      ],
+      "size_px": [
+        198,
+        197
+      ],
+      "pivot_canvas_px": [
+        822,
+        923
+      ],
+      "pivot_local_px": [
+        99,
+        98
+      ],
+      "role": "Complete main landing wheel under fixed strut"
+    },
+    {
+      "name": "04_body_static",
+      "file": "parts/04_body_static.png",
+      "position_px": [
+        68,
+        48
+      ],
+      "size_px": [
+        1356,
+        840
+      ],
+      "pivot_canvas_px": [
+        763,
+        780
+      ],
+      "pivot_local_px": [
+        695,
+        732
+      ],
+      "role": "Static aircraft and pilot, gear struts and nose spinner"
+    }
+  ],
+  "note": "Static driver and all other fixed details stay combined in one body sprite. Original visible artwork is retained; hidden moving-parts surfaces have been restored.",
+  "propeller_animation": {
+    "axis": "aircraft longitudinal X axis",
+    "projection": "Scale the blade sprite in Y by cos(angle), including a sign flip; keep the nose spinner fixed. Do not spin this side-view blade flat in image XY.",
+    "frame_count": 12,
+    "frame_canvas_px": [
+      160,
+      900
+    ],
+    "frame_pivot_px": [
+      80,
+      450
+    ],
+    "frame_time_ms": 40,
+    "attachment_canvas_px": [
+      1326,
+      576
+    ]
+  }
+}

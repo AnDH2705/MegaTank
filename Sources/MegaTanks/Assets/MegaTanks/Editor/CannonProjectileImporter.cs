@@ -1,5 +1,4 @@
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace MegaTanks.Editor
@@ -23,12 +22,10 @@ namespace MegaTanks.Editor
             importer.maxTextureSize = 512;
             importer.textureCompression = TextureImporterCompression.Uncompressed;
             importer.SaveAndReimport();
-            var scene = EditorSceneManager.OpenScene(MegaTanksSetup.ScenePath);
-            var game = Object.FindObjectOfType<BattleGame>();
-            var serialized = new SerializedObject(game);
-            serialized.FindProperty("cannonProjectileSprite").objectReferenceValue = AssetDatabase.LoadAssetAtPath<Sprite>(SpritePath);
-            serialized.ApplyModifiedPropertiesWithoutUndo();
-            EditorSceneManager.SaveScene(scene);
+            var loadout = AssetDatabase.LoadAssetAtPath<WeaponLoadout>(StatsProfileImporter.LoadoutPath);
+            if (loadout == null) throw new System.InvalidOperationException("Migrate player stats to profiles first.");
+            loadout.cannon.stats.projectileSprite = AssetDatabase.LoadAssetAtPath<Sprite>(SpritePath);
+            EditorUtility.SetDirty(loadout.cannon);
             AssetDatabase.SaveAssets();
             Debug.Log("MEGATANKS_CANNON_SPRITE_OK: transparent cannon projectile sprite imported and linked.");
         }

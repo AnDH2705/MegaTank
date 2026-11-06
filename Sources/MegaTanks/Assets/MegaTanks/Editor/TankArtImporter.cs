@@ -13,6 +13,7 @@ namespace MegaTanks.Editor
         public const string PrefabPath = "Assets/MegaTanks/Prefabs/TankCutaway.prefab";
         const string ArtPath = "Assets/MegaTanks/Art/";
         const float PixelsPerUnit = 180;
+        public const float CannonPivotInset = .45f;
         [Serializable] sealed class Group { public float[] pivot_px; public string parent; }
         [Serializable] sealed class Groups { public Group root, body, cannon, roof_gun, driver_controls; }
         [Serializable] sealed class Part
@@ -74,7 +75,7 @@ namespace MegaTanks.Editor
                 var definitions = new Dictionary<string, Group>
                 {
                     {"root", manifest.groups.root}, {"body", manifest.groups.body},
-                    {"cannon", new Group { parent = "body", pivot_px = manifest.layers.First(p => p.name == "08_main_gun_barrel").pivot_canvas_px }},
+                    {"cannon", new Group { parent = "body", pivot_px = InsetCannonPivot(manifest.layers.First(p => p.name == "08_main_gun_barrel").pivot_canvas_px) }},
                     {"roof_gun", manifest.groups.roof_gun},
                     {"driver_controls", manifest.groups.driver_controls}
                 };
@@ -126,6 +127,8 @@ namespace MegaTanks.Editor
                     if (main) cannon = gun; else machineGun = gun;
                 }
                 root.AddComponent<TankArtwork>().Configure(machineGun, cannon, groups["body"], smoke);
+                MortarArtImporter.AttachTo(root);
+                TrackAnimationImporter.AttachTo(root);
                 Directory.CreateDirectory("Assets/MegaTanks/Prefabs");
                 PrefabUtility.SaveAsPrefabAsset(root, PrefabPath);
             }
@@ -155,14 +158,16 @@ namespace MegaTanks.Editor
                 mantlet.SetParent(cannon.parent, true);
                 var children = cannon.Cast<Transform>().ToArray();
                 var positions = children.Select(child => child.position).ToArray();
-                cannon.position = barrel.position;
+                cannon.position = barrel.position - cannon.parent.TransformVector(Vector3.right * CannonPivotInset);
                 for (int i = 0; i < children.Length; i++) children[i].position = positions[i];
                 PrefabUtility.SaveAsPrefabAsset(root, PrefabPath);
             }
             finally { PrefabUtility.UnloadPrefabContents(root); }
             AssetDatabase.SaveAssets();
-            Debug.Log("MEGATANKS_CANNON_MOUNT_OK: mantlet fixed to body; cannon aiming pivot moved to barrel base.");
+            Debug.Log("MEGATANKS_CANNON_MOUNT_OK: mantlet fixed to body; cannon pivot inset 0.45 local units left behind mantlet; barrel and muzzle rest positions preserved.");
         }
+
+        static float[] InsetCannonPivot(float[] barrelPivot) => new[] { barrelPivot[0] - CannonPivotInset * PixelsPerUnit, barrelPivot[1] };
 
         static void ConfigureTexture(TextureImporter importer)
         {

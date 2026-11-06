@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd57f0d1f280e2840a7b8f4833a5926b, type: 3}
+  m_Name: LayerLabSkin
+  m_EditorClassIdentifier:
+  buttonBlue: {fileID: 21300000, guid: a0b0ae59f0c014ed381d6cfef6aee28d, type: 3}
+  buttonDark: {fileID: 21300000, guid: c9c7e2599594a48ab8216ee3bf7e7912, type: 3}
+  buttonDisabled: {fileID: 21300000, guid: 3817ed24122f74c45b6815084b7bf1a0, type: 3}
+  buttonMint: {fileID: 21300000, guid: a000c4e763ab749399d6edfc9a424718, type: 3}
+  buttonRed: {fileID: 21300000, guid: 24a37202cf8a143a0bf8ca494ff3b6ec, type: 3}
+  buttonSky: {fileID: 21300000, guid: fb9b001f46fb043f4a4f6450d7d3e6c1, type: 3}
+  buttonYellow: {fileID: 21300000, guid: 6cdadcc1a39954748abf7d3d4351e1e6, type: 3}
+  panel: {fileID: 21300000, guid: 2bd06dd44f28c41ebac87b908313e284, type: 3}
+  panelHeader: {fileID: 21300000, guid: 620879c9ab62c447b82f0c54e1e88fee, type: 3}
+  roundFrame: {fileID: 21300000, guid: 34dac20198f504d9aa9669248e19917f, type: 3}
+  itemFrame: {fileID: 21300000, guid: 199b3eccd4b474329a11fdca5ae76123, type: 3}
+  check: {fileID: 21300000, guid: 5368592eacfda44c191265e7475562df, type: 3}
+  close: {fileID: 21300000, guid: c7c98a2b50d944d2d933ad3c1f60ad39, type: 3}
+  menu: {fileID: 21300000, guid: 06c0bf4af0e024992868e7cebcbe248c, type: 3}
+  pause: {fileID: 21300000, guid: e12c291ffd5f8436d8a3f04510189563, type: 3}
+  previous: {fileID: 21300000, guid: a9d09d9a3d0d442079a130341db6be90, type: 3}
+  next: {fileID: 21300000, guid: 84c3adc90c0da4f009a1cfa76fa9363c, type: 3}
+  music: {fileID: 21300000, guid: 8a2dd05abcc864635a416b1bc77f484b, type: 3}
+  sound: {fileID: 21300000, guid: a7ba924f3c5034f7abd72e16c2779afb, type: 3}
+  settings: {fileID: 21300000, guid: b9b257dbe6e8147fc8a45226e735b6e1, type: 3}
+  sliderBackground: {fileID: 21300000, guid: b6214b3607a8249a4923a01ab663aa77, type: 3}
+  sliderFill: {fileID: 21300000, guid: 606aeedfec61644d695bdc097f3c9387, type: 3}
+  sliderHandle: {fileID: 21300000, guid: 3431eae1add1a4fe59b88366a9d20397, type: 3}
+  barBackground: {fileID: 21300000, guid: 78875cfe9c90d48e8852dad7515f9e8a, type: 3}
+  barFill: {fileID: 21300000, guid: 1239f8f04d7284872a26efb298263a6d, type: 3}
+  switchBackground: {fileID: 21300000, guid: 55f8dedbcdd184d0fa87ece74639f2b8, type: 3}
+  switchFill: {fileID: 21300000, guid: 5f2f1db11bb9d4a2094f41a43faf9d88, type: 3}
+  switchHandle: {fileID: 21300000, guid: 4db1ab1258c2d42bbac11f9f67aa2e21, type: 3}

@@ -1,0 +1,25 @@
+{
+  "sourceUrl": "https://docs.google.com/spreadsheets/d/1JoIspgth7KeGzcHgBdwluRhmUyCh7FG83wH2ZbsP9iw/edit?gid=0#gid=0",
+  "sheet": "Cards",
+  "snapshotDate": "2026-11-03",
+  "cards": [
+    {"id":"1","name":"Cannon damage","description":"Increase cannon damage","rarity":"Normal","value":"10%","shopValue":100},
+    {"id":"2","name":"Cannon damage","description":"Increase cannon damage","rarity":"Rare","value":"20%","shopValue":200},
+    {"id":"3","name":"Cannon damage","description":"Increase cannon damage","rarity":"Epic","value":"50%","shopValue":500},
+    {"id":"4","name":"Cannon damage","description":"Increase cannon damage","rarity":"Legendary","value":"100%","shopValue":1000},
+    {"id":"5","name":"MG damage","description":"Increase MG damage","rarity":"Normal","value":"10%","shopValue":100},
+    {"id":"6","name":"MG damage","description":"Increase MG damage","rarity":"Rare","value":"20%","shopValue":200},
+    {"id":"7","name":"MG damage","description":"Increase MG damage","rarity":"Epic","value":"50%","shopValue":500},
+    {"id":"8","name":"MG damage","description":"Increase MG damage","rarity":"Legendary","value":"100%","shopValue":1000},
+    {"id":"9","name":"Tank HP","description":"Increase Tank HP","rarity":"Normal","value":"10%","shopValue":100},
+    {"id":"10","name":"Tank HP","description":"Increase Tank HP","rarity":"Rare","value":"20%","shopValue":200},
+    {"id":"11","name":"Tank HP","description":"Increase Tank HP","rarity":"Epic","value":"50%","shopValue":500},
+    {"id":"12","name":"Tank HP","description":"Increase Tank HP","rarity":"Legendary","value":"100%","shopValue":1000},
+    {"id":"13","name":"Resupply order","description":"Recover ammunition reserves","rarity":"Normal","value":"33%","shopValue":100},
+    {"id":"14","name":"Resupply order","description":"Recover ammunition reserves","rarity":"Rare","value":"66%","shopValue":200},
+    {"id":"15","name":"Resupply order","description":"Recover ammunition reserves","rarity":"Epic","value":"100%","shopValue":500},
+    {"id":"16","name":"Repair order","description":"Recover tank HP","rarity":"Normal","value":"33%","shopValue":100},
+    {"id":"17","name":"Repair order","description":"Recover tank HP","rarity":"Rare","value":"66%","shopValue":200},
+    {"id":"18","name":"Repair order","description":"Recover tank HP","rarity":"Epic","value":"100%","shopValue":500}
+  ]
+}
