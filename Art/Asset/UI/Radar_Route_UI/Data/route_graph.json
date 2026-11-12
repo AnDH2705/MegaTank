@@ -1,0 +1,344 @@
+{
+  "reference_resolution": [
+    1920,
+    1080
+  ],
+  "world_size": [
+    2280,
+    1080
+  ],
+  "viewport_rect_xywh": [
+    46,
+    170,
+    1828,
+    740
+  ],
+  "coordinate_origin": "top-left",
+  "initial_node": "n00",
+  "nodes": [
+    {
+      "id": "n00",
+      "column": 0,
+      "type": "battle",
+      "x": 150,
+      "y": 520
+    },
+    {
+      "id": "n01",
+      "column": 1,
+      "type": "heal",
+      "x": 340,
+      "y": 290
+    },
+    {
+      "id": "n02",
+      "column": 1,
+      "type": "hard_battle",
+      "x": 340,
+      "y": 752
+    },
+    {
+      "id": "n03",
+      "column": 2,
+      "type": "supply",
+      "x": 530,
+      "y": 290
+    },
+    {
+      "id": "n04",
+      "column": 2,
+      "type": "battle",
+      "x": 530,
+      "y": 752
+    },
+    {
+      "id": "n05",
+      "column": 3,
+      "type": "supply",
+      "x": 720,
+      "y": 290
+    },
+    {
+      "id": "n06",
+      "column": 3,
+      "type": "unknown",
+      "x": 720,
+      "y": 520
+    },
+    {
+      "id": "n07",
+      "column": 3,
+      "type": "battle",
+      "x": 720,
+      "y": 752
+    },
+    {
+      "id": "n08",
+      "column": 4,
+      "type": "heal",
+      "x": 910,
+      "y": 290
+    },
+    {
+      "id": "n09",
+      "column": 4,
+      "type": "hard_battle",
+      "x": 910,
+      "y": 442
+    },
+    {
+      "id": "n10",
+      "column": 4,
+      "type": "unknown",
+      "x": 910,
+      "y": 597
+    },
+    {
+      "id": "n11",
+      "column": 4,
+      "type": "battle",
+      "x": 910,
+      "y": 752
+    },
+    {
+      "id": "n12",
+      "column": 5,
+      "type": "heal",
+      "x": 1100,
+      "y": 290
+    },
+    {
+      "id": "n13",
+      "column": 5,
+      "type": "hard_battle",
+      "x": 1100,
+      "y": 520
+    },
+    {
+      "id": "n14",
+      "column": 5,
+      "type": "battle",
+      "x": 1100,
+      "y": 752
+    },
+    {
+      "id": "n15",
+      "column": 6,
+      "type": "supply",
+      "x": 1290,
+      "y": 290
+    },
+    {
+      "id": "n16",
+      "column": 6,
+      "type": "hard_battle",
+      "x": 1290,
+      "y": 520
+    },
+    {
+      "id": "n17",
+      "column": 6,
+      "type": "battle",
+      "x": 1290,
+      "y": 752
+    },
+    {
+      "id": "n18",
+      "column": 7,
+      "type": "battle",
+      "x": 1480,
+      "y": 290
+    },
+    {
+      "id": "n19",
+      "column": 7,
+      "type": "heal",
+      "x": 1480,
+      "y": 752
+    },
+    {
+      "id": "n20",
+      "column": 8,
+      "type": "heal",
+      "x": 1670,
+      "y": 290
+    },
+    {
+      "id": "n21",
+      "column": 8,
+      "type": "hard_battle",
+      "x": 1670,
+      "y": 752
+    },
+    {
+      "id": "n22",
+      "column": 9,
+      "type": "supply",
+      "x": 1860,
+      "y": 290
+    },
+    {
+      "id": "n23",
+      "column": 9,
+      "type": "unknown",
+      "x": 1860,
+      "y": 520
+    },
+    {
+      "id": "n24",
+      "column": 9,
+      "type": "heal",
+      "x": 1860,
+      "y": 752
+    }
+  ],
+  "edges": [
+    {
+      "from": "n00",
+      "to": "n01"
+    },
+    {
+      "from": "n00",
+      "to": "n02"
+    },
+    {
+      "from": "n01",
+      "to": "n03"
+    },
+    {
+      "from": "n02",
+      "to": "n03"
+    },
+    {
+      "from": "n02",
+      "to": "n04"
+    },
+    {
+      "from": "n03",
+      "to": "n05"
+    },
+    {
+      "from": "n03",
+      "to": "n06"
+    },
+    {
+      "from": "n04",
+      "to": "n06"
+    },
+    {
+      "from": "n04",
+      "to": "n07"
+    },
+    {
+      "from": "n05",
+      "to": "n08"
+    },
+    {
+      "from": "n06",
+      "to": "n09"
+    },
+    {
+      "from": "n06",
+      "to": "n10"
+    },
+    {
+      "from": "n07",
+      "to": "n10"
+    },
+    {
+      "from": "n07",
+      "to": "n11"
+    },
+    {
+      "from": "n08",
+      "to": "n12"
+    },
+    {
+      "from": "n09",
+      "to": "n12"
+    },
+    {
+      "from": "n09",
+      "to": "n13"
+    },
+    {
+      "from": "n10",
+      "to": "n13"
+    },
+    {
+      "from": "n11",
+      "to": "n13"
+    },
+    {
+      "from": "n11",
+      "to": "n14"
+    },
+    {
+      "from": "n12",
+      "to": "n15"
+    },
+    {
+      "from": "n12",
+      "to": "n16"
+    },
+    {
+      "from": "n13",
+      "to": "n16"
+    },
+    {
+      "from": "n14",
+      "to": "n17"
+    },
+    {
+      "from": "n15",
+      "to": "n18"
+    },
+    {
+      "from": "n16",
+      "to": "n18"
+    },
+    {
+      "from": "n16",
+      "to": "n19"
+    },
+    {
+      "from": "n17",
+      "to": "n19"
+    },
+    {
+      "from": "n18",
+      "to": "n20"
+    },
+    {
+      "from": "n19",
+      "to": "n20"
+    },
+    {
+      "from": "n19",
+      "to": "n21"
+    },
+    {
+      "from": "n20",
+      "to": "n22"
+    },
+    {
+      "from": "n20",
+      "to": "n23"
+    },
+    {
+      "from": "n21",
+      "to": "n23"
+    },
+    {
+      "from": "n21",
+      "to": "n24"
+    }
+  ],
+  "role_labels": {
+    "battle": "Battle",
+    "hard_battle": "Hard battle",
+    "supply": "Supply",
+    "unknown": "Unknown",
+    "heal": "Repair"
+  }
+}

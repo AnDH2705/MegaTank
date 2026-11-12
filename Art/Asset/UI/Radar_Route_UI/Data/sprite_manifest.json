@@ -1,0 +1,274 @@
+{
+  "sprites": [
+    {
+      "file": "Sprites/Icons/01_battle.png",
+      "size": [
+        374,
+        379
+      ],
+      "alpha": true,
+      "text_baked": false,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image_type": "Simple",
+      "preserve_aspect": true
+    },
+    {
+      "file": "Sprites/Icons/02_hard_battle.png",
+      "size": [
+        353,
+        370
+      ],
+      "alpha": true,
+      "text_baked": false,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image_type": "Simple",
+      "preserve_aspect": true
+    },
+    {
+      "file": "Sprites/Icons/03_supply.png",
+      "size": [
+        388,
+        372
+      ],
+      "alpha": true,
+      "text_baked": false,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image_type": "Simple",
+      "preserve_aspect": true
+    },
+    {
+      "file": "Sprites/Icons/04_unknown.png",
+      "size": [
+        304,
+        406
+      ],
+      "alpha": true,
+      "text_baked": false,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image_type": "Simple",
+      "preserve_aspect": true
+    },
+    {
+      "file": "Sprites/Icons/05_heal.png",
+      "size": [
+        382,
+        383
+      ],
+      "alpha": true,
+      "text_baked": false,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image_type": "Simple",
+      "preserve_aspect": true
+    },
+    {
+      "file": "Sprites/Frames/node_normal.png",
+      "size": [
+        128,
+        128
+      ],
+      "alpha": true,
+      "text_baked": false,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image_type": "Simple",
+      "border_left_bottom_right_top": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "Sprites/Frames/node_available.png",
+      "size": [
+        128,
+        128
+      ],
+      "alpha": true,
+      "text_baked": false,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image_type": "Simple",
+      "border_left_bottom_right_top": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "Sprites/Frames/node_current.png",
+      "size": [
+        128,
+        128
+      ],
+      "alpha": true,
+      "text_baked": false,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image_type": "Simple",
+      "border_left_bottom_right_top": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "Sprites/Frames/node_locked.png",
+      "size": [
+        128,
+        128
+      ],
+      "alpha": true,
+      "text_baked": false,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image_type": "Simple",
+      "border_left_bottom_right_top": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "Sprites/Frames/header_full_width_gray.png",
+      "size": [
+        1920,
+        114
+      ],
+      "alpha": true,
+      "text_baked": false,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image_type": "Sliced",
+      "border_left_bottom_right_top": [
+        6,
+        6,
+        6,
+        6
+      ]
+    },
+    {
+      "file": "Sprites/Frames/header_stage_plate.png",
+      "size": [
+        346,
+        114
+      ],
+      "alpha": true,
+      "text_baked": false,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image_type": "Simple",
+      "border_left_bottom_right_top": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "Sprites/Frames/header_back_plate.png",
+      "size": [
+        140,
+        114
+      ],
+      "alpha": true,
+      "text_baked": false,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image_type": "Simple",
+      "border_left_bottom_right_top": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "Sprites/Frames/legend_panel.png",
+      "size": [
+        1800,
+        98
+      ],
+      "alpha": true,
+      "text_baked": false,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image_type": "Sliced",
+      "border_left_bottom_right_top": [
+        18,
+        18,
+        18,
+        18
+      ]
+    },
+    {
+      "file": "Sprites/Controls/back_arrow.png",
+      "size": [
+        75,
+        105
+      ],
+      "alpha": true,
+      "text_baked": false,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image_type": "Simple",
+      "preserve_aspect": true
+    },
+    {
+      "file": "Sprites/Controls/player_tank_marker.png",
+      "size": [
+        420,
+        401
+      ],
+      "alpha": true,
+      "text_baked": false,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image_type": "Simple",
+      "preserve_aspect": true
+    }
+  ],
+  "notes": [
+    "Icons have transparent alpha and no text.",
+    "Node frames have no icons or labels baked in.",
+    "Radar uses green phosphor-glow horizontal/vertical grid lines only, with no rings, arcs, diagonal sweep or terrain contours. Routes are separate."
+  ]
+}
