@@ -16,9 +16,11 @@ namespace CatTanks
         Sprite square, disk, ring;
         Material lineMaterial;
         int shownFloors = -1;
+        public CombatVfxPlayer combatVfx;
         public BattleView(Camera cam)
         {
             camera = cam; root = new GameObject("Battle World");
+            combatVfx=new CombatVfxPlayer(root.transform);
             square = UnityEngine.Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 1, 1), Vector2.one * .5f, 1);
             disk = Shape(false); ring = Shape(true); lineMaterial = new Material(Shader.Find("Sprites/Default"));
             Landscape();
@@ -245,6 +247,7 @@ namespace CatTanks
             }
             foreach (var id in projectiles.Keys.Where(k => !alive.Contains(k)).ToArray()) {Object.Destroy(projectiles[id].gameObject); projectiles.Remove(id);}
             spriteFxCursor = 0; lineFxCursor = 0;
+            combatVfx.Render(b);
             foreach (var e in b.effects)
             {
                 if (e.kind == "text") continue;
@@ -257,6 +260,7 @@ namespace CatTanks
                 }
                 else
                 {
+                    if(combatVfx.Handles(e))continue;
                     float size = e.size * (1 + frac * 2);
                     FxSprite(e.kind, e.kind == "ring" || e.kind == "explosion" ? ring : disk, e.position, size, color, 46);
                     if (e.kind == "explosion" || e.kind == "impact")

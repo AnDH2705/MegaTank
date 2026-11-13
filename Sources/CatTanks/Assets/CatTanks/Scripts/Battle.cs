@@ -29,7 +29,8 @@ namespace CatTanks
     }
     public class BattleEffect
     {
-        public string kind, text;
+        public int id;
+        public string kind, text, visual;
         public Vector2 position, end;
         public Color color;
         public float size, life, maxLife;
@@ -45,6 +46,7 @@ namespace CatTanks
     }
     public sealed class Battle
     {
+        int nextEffectId=1;
         public readonly Catalog db;
         public readonly Profile profile;
         public readonly bool classic, arena;
@@ -390,7 +392,7 @@ namespace CatTanks
                 if (b.position.x < playerX + 115 && b.position.x > playerX - 145 && b.position.y > 175 && b.position.y < 700)
                 {
                     EnemyHit(b.position, w.damage); if (w.kind == "poison") buffs["poison"] = 4; if (w.kind == "web") buffs["slow"] = 4; if (w.kind == "ice") buffs["frost"] = 4;
-                    b.dead = true; Effect("impact", b.position, b.position, w.color, 35, .3f);
+                    b.dead = true; Effect("impact", b.position, b.position, w.color, 35, .3f, visual:ImpactVisual(w));
                 }
             }
             else if (!b.dead && w.kind != "mortar" && w.kind != "bomb")
@@ -419,8 +421,9 @@ namespace CatTanks
                 b.dead = true;
             }
             if (--b.pierce <= 0) b.dead = true;
-            Effect("impact", b.position, b.position, w.color, w.splash > 0 ? Mathf.Min(100, w.splash * .55f) : w.kind == "flame" ? 26 : 15, .32f);
+            Effect("impact", b.position, b.position, w.color, w.splash > 0 ? Mathf.Min(100, w.splash * .55f) : w.kind == "flame" ? 26 : 15, .32f, visual:ImpactVisual(w));
         }
+        static string ImpactVisual(Weapon w)=>w.kind=="flame"?"fire":w.kind=="ice"?"ice":w.kind=="poison"?"poison":w.splash>0?"blast":"impact";
         public void Damage(Actor e, float amount, string kind)
         {
             if (e.dead) return; float defense = e.def.armor;
@@ -463,7 +466,7 @@ namespace CatTanks
             if (energy < s.cost) {message = "Chưa đủ năng lượng"; return false;}
             energy -= s.cost; cooldowns[id] = s.cooldown; if (s.duration > 0) buffs[id] = s.duration;
             if (id == "heal") {hp = Mathf.Min(maxHp, hp + (classic ? 9000 : s.healVehicle)); buffs["poison"] = 0; foreach (var u in units) if (!u.dead) u.hp = Mathf.Min(u.maxHp, u.hp + u.maxHp * .4f);}
-            if (id == "freeze") foreach (var e in enemies.Where(e => !e.dead).ToArray()) {e.slow = 6; Damage(e, classic ? 120 : s.damage, "ice");}
+            if (id == "freeze") foreach (var e in enemies.Where(e => !e.dead).ToArray()) {e.slow = 6; Damage(e, classic ? 120 : s.damage, "ice");Effect("impact",e.position,e.position,"#99efff",e.def.size*.4f,.65f,visual:"ice");}
             if (id == "barrage")
             {
                 var targets = enemies.Where(e => !e.dead).ToArray();
@@ -480,11 +483,12 @@ namespace CatTanks
                 {
                     if (id == "orbital") {Damage(target, s.damage * (target.def.boss ? s.bossMult : 1), "laser"); Effect("beam", new Vector2(target.position.x, 1000), target.position, "#87f7ff", 35, .5f);}
                     else foreach (var e in enemies.Where(e => !e.dead && Vector2.Distance(e.position, target.position) < s.splash + e.def.size * .2f).ToArray()) Damage(e, s.damage, "bomb");
+                    Effect("impact",target.position,target.position,"#ffcf75",90,.65f,visual:"blast");
                 }
             }
             if (id == "decoy") decoy = new Actor {position = new Vector2(playerX + 150, 220), hp = 800, maxHp = 800, age = time + s.duration};
             if (id == "magnet") foreach (var orb in orbs) CollectOrb(orb);
-            Effect("ring", new Vector2(playerX, 350), Vector2.zero, id == "heal" ? "#99ffc0" : "#69efff", 240, .7f); message = s.name; return true;
+            if(id!="freeze")Effect("ring", new Vector2(playerX, 350), Vector2.zero, id == "heal" ? "#99ffc0" : "#69efff", 240, .7f, visual:id=="heal"?"heal":id=="shield"?"shield":"buff"); message = s.name; return true;
         }
         public bool Catch(bool moon)
         {
@@ -501,14 +505,14 @@ namespace CatTanks
             throwsUsed++; if (moon) {moonCages--; moonUsed++; profile.Add("moonCage", -1);} else {cages--; cageUsed++; profile.Add("beastCage", -1);} profile.Save();
             if (UnityEngine.Random.value < Mathf.Min(.9f, chance))
             {
-                caught.Add(e.asset); e.dead = true; e.deathTime = e.age; kills++; targetId = -1; message = "Đã bắt tạm " + e.def.name + " · Thắng trận để nhận!"; Effect("ring", e.position, Vector2.zero, "#ffce75", e.def.size, .8f); return true;
+                caught.Add(e.asset); e.dead = true; e.deathTime = e.age; kills++; targetId = -1; message = "Đã bắt tạm " + e.def.name + " · Thắng trận để nhận!"; Effect("ring", e.position, Vector2.zero, "#ffce75", e.def.size, .8f, visual:"capture"); return true;
             }
             e.stun = .4f; message = "Thoát rồi!"; return false;
         }
-        public void Effect(string kind, Vector2 pos, Vector2 end, string color, float size, float life, string text = null)
+        public void Effect(string kind, Vector2 pos, Vector2 end, string color, float size, float life, string text = null, string visual = null)
         {
             if (effects.Count >= 350) effects.RemoveAt(0);
-            effects.Add(new BattleEffect {kind = kind, position = pos, end = end, color = Catalog.Color(color), size = size, life = life, maxLife = life, text = text});
+            effects.Add(new BattleEffect {id=nextEffectId++,kind = kind, position = pos, end = end, color = Catalog.Color(color), size = size, life = life, maxLife = life, text = text,visual=visual});
         }
         void CollectOrb(LootOrb orb)
         {

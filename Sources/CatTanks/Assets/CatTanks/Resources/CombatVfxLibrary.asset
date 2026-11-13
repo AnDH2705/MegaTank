@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de38282e0d318314bae7a660c08df01a, type: 3}
+  m_Name: CombatVfxLibrary
+  m_EditorClassIdentifier: 
+  maxActive: 48
+  entries:
+  - key: muzzle
+    source: Assets/118 sprite effects bundle/MuzzleFlashes/ef_1_red.prefab
+    prefab: {fileID: 7839011146632877473, guid: 37cd83551d1ccf44e82bb109adcbce0e, type: 3}
+    duration: 0.1
+    sizeMultiplier: 2
+    maxInstances: 10
+  - key: impact
+    source: Assets/Epic Toon FX/Prefabs 2D/Explosions/MetalHit2D.prefab
+    prefab: {fileID: 2181637981130949572, guid: c0857948e24eb034cbc4a2e0682cdd37, type: 3}
+    duration: 0.55
+    sizeMultiplier: 2.8
+    maxInstances: 10
+  - key: blast
+    source: Assets/FX Quest/_Mobile/Prefabs/2D/Explosions/M_2D_AirExplode_01.prefab
+    prefab: {fileID: 6781599220523618148, guid: 3643b71be8e7df648b0b0303a94e80ea, type: 3}
+    duration: 0.8
+    sizeMultiplier: 2.8
+    maxInstances: 8
+  - key: death
+    source: Assets/FX Quest/_Mobile/Prefabs/2D/Misc/M_2D_SmokePuff_01.prefab
+    prefab: {fileID: 5962829779448389582, guid: 00512d095556d6d439474de71a5a9186, type: 3}
+    duration: 0.75
+    sizeMultiplier: 3
+    maxInstances: 8
+  - key: fire
+    source: Assets/FX Quest/_Mobile/Prefabs/2D/Magics/M_2D_FireHit_01.prefab
+    prefab: {fileID: 2697056095616069025, guid: 0df60eb2cb7e80c4ab13834655857b37, type: 3}
+    duration: 0.65
+    sizeMultiplier: 3
+    maxInstances: 8
+  - key: ice
+    source: Assets/Epic Toon FX/Prefabs/Combat/Explosions/FrostExplosion/FrostExplosionBlue.prefab
+    prefab: {fileID: 3496825287147830278, guid: f8519df985404ed45a4bf000fc610ac7, type: 3}
+    duration: 0.85
+    sizeMultiplier: 3
+    maxInstances: 6
+  - key: poison
+    source: Assets/Epic Toon FX/Prefabs 2D/Blood/Green/GreenBloodExplosion2D.prefab
+    prefab: {fileID: 2199678364813262236, guid: 7d34bc037b274414b80ef324fc757ec4, type: 3}
+    duration: 0.8
+    sizeMultiplier: 2.8
+    maxInstances: 6
+  - key: electric
+    source: Assets/FX Quest/_Mobile/Prefabs/2D/Magics/M_2D_ThunderHit_01.prefab
+    prefab: {fileID: 6718761996531148642, guid: 4010bfd094207d94885da66047cb234b, type: 3}
+    duration: 0.5
+    sizeMultiplier: 9
+    maxInstances: 8
+  - key: heal
+    source: Assets/FX Quest/_Mobile/Prefabs/2D/Abilities/M_2D_Recovery_01.prefab
+    prefab: {fileID: 1344331457331418533, guid: ada88f8b85acc1d4eaeb2368ccea6872, type: 3}
+    duration: 1.2
+    sizeMultiplier: 1.15
+    maxInstances: 3
+  - key: shield
+    source: Assets/FX Quest/_Mobile/Prefabs/2D/Abilities/M_2D_BoostDefense_01.prefab
+    prefab: {fileID: 1618529167264069380, guid: c0b5669a415657f4084d607e24c8a6f3, type: 3}
+    duration: 0.9
+    sizeMultiplier: 1.1
+    maxInstances: 3
+  - key: buff
+    source: Assets/FX Quest/_Mobile/Prefabs/2D/Abilities/M_2D_Buff_01.prefab
+    prefab: {fileID: 5807593525330723233, guid: 4f6847f331f6e744d81becbb46d0dbc8, type: 3}
+    duration: 0.9
+    sizeMultiplier: 0.85
+    maxInstances: 4
+  - key: capture
+    source: Assets/FX Quest/_Mobile/Prefabs/2D/Misc/M_2D_PickItem_02.prefab
+    prefab: {fileID: 8342821742992292778, guid: 5d122badeac55f94e92087b3f006bde4, type: 3}
+    duration: 0.8
+    sizeMultiplier: 1.6
+    maxInstances: 3
