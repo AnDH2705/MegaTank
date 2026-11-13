@@ -1,0 +1,20 @@
+{
+  "source": "Art/complete_cat/CHOI_NGAY.html",
+  "sha256": "57e73cf7a9818b4c97737b49aaaba7e6410630e1f6012d7f1c8fcf4bda910a19",
+  "unityVersion": "2022.3.62f1",
+  "embeddedResources": 218,
+  "pngAssets": 156,
+  "catalog": {
+    "weapons": 40,
+    "monsters": 20,
+    "cats": 10,
+    "stages": 20
+  },
+  "mcp": {
+    "package": "com.coplaydev.unity-mcp",
+    "version": "10.1.0",
+    "installation": "embedded",
+    "source": "existing local package from AdMaker/Packages/com.coplaydev.unity-mcp",
+    "server": "http://127.0.0.1:8080/mcp"
+  }
+}

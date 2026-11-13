@@ -1,0 +1,3338 @@
+{
+  "weapons": [
+    {
+      "name": "Pháo xuyên giáp",
+      "kind": "shell",
+      "rate": 1.6,
+      "damage": 100,
+      "color": "#ffc34b",
+      "description": "Đạn pháo nổ, bỏ qua một phần giáp.",
+      "speed": 780,
+      "range": 1450,
+      "splash": 90,
+      "pierce": 1,
+      "id": "turret-0",
+      "asset": "turret-0",
+      "family": "THÁP PHÁO",
+      "flip": true
+    },
+    {
+      "name": "Pháo nòng đôi",
+      "kind": "double",
+      "rate": 1.3,
+      "damage": 58,
+      "color": "#ffe68a",
+      "description": "Hai viên bắn lệch nhịp, tập trung một mục tiêu.",
+      "speed": 780,
+      "range": 1450,
+      "id": "turret-1",
+      "asset": "turret-1",
+      "family": "THÁP PHÁO",
+      "flip": true
+    },
+    {
+      "name": "Chùm tên lửa",
+      "kind": "rocket",
+      "rate": 3.1,
+      "damage": 90,
+      "color": "#ff8350",
+      "description": "Ba tên lửa bám mục tiêu; nổ lan.",
+      "speed": 480,
+      "range": 1450,
+      "count": 3,
+      "splash": 100,
+      "id": "turret-2",
+      "asset": "turret-2",
+      "family": "THÁP PHÁO",
+      "flip": true
+    },
+    {
+      "name": "Gatling cầu vồng",
+      "kind": "rapid",
+      "rate": 0.15,
+      "damage": 12,
+      "color": "#ffe49b",
+      "description": "Đạn liên thanh; tốc độ cao, độ tản nhỏ.",
+      "speed": 780,
+      "range": 1450,
+      "id": "turret-3",
+      "asset": "turret-3",
+      "family": "THÁP PHÁO",
+      "flip": true
+    },
+    {
+      "name": "Pháo ion",
+      "kind": "laser",
+      "rate": 2.6,
+      "damage": 115,
+      "color": "#69efff",
+      "description": "Chùm sáng xuyên hàng quái; phá giáp.",
+      "speed": 780,
+      "range": 1450,
+      "pierce": 5,
+      "id": "turret-4",
+      "asset": "turret-4",
+      "family": "THÁP PHÁO",
+      "flip": true
+    },
+    {
+      "name": "Hỏa long",
+      "kind": "flame",
+      "rate": 0.3,
+      "damage": 28,
+      "color": "#ff862e",
+      "description": "Phun lửa hình nón; thiêu đốt liên tục.",
+      "speed": 540,
+      "range": 670,
+      "burn": 4,
+      "splash": 80,
+      "id": "turret-5",
+      "asset": "turret-5",
+      "family": "THÁP PHÁO",
+      "flip": true
+    },
+    {
+      "name": "Cối cầu vồng",
+      "kind": "mortar",
+      "rate": 2.7,
+      "damage": 160,
+      "color": "#ffce75",
+      "description": "Đạn cầu vồng bay cao rồi nổ rộng.",
+      "speed": 390,
+      "range": 1450,
+      "splash": 160,
+      "id": "turret-6",
+      "asset": "turret-6",
+      "family": "THÁP PHÁO",
+      "flip": true
+    },
+    {
+      "name": "Mắt đại bàng",
+      "kind": "sniper",
+      "rate": 2.6,
+      "damage": 230,
+      "color": "#b3f5ff",
+      "description": "Ngắm quái ít máu; đạn xuyên giáp chính xác.",
+      "speed": 780,
+      "range": 1450,
+      "pierce": 3,
+      "id": "turret-7",
+      "asset": "turret-7",
+      "family": "THÁP PHÁO",
+      "flip": true
+    },
+    {
+      "name": "Tesla liên hoàn",
+      "kind": "tesla",
+      "rate": 2.1,
+      "damage": 76,
+      "color": "#59f6ff",
+      "description": "Sét giật tối đa bốn mục tiêu, gây choáng.",
+      "speed": 780,
+      "range": 1450,
+      "chain": 4,
+      "stun": 0.5,
+      "id": "turret-8",
+      "asset": "turret-8",
+      "family": "THÁP PHÁO",
+      "flip": true
+    },
+    {
+      "name": "Trạm chỉ huy",
+      "kind": "drone",
+      "rate": 3.8,
+      "damage": 70,
+      "color": "#ffde7b",
+      "description": "Điều khiển hai drone bắn đạn dẫn đường.",
+      "speed": 550,
+      "range": 1450,
+      "count": 2,
+      "id": "turret-9",
+      "asset": "turret-9",
+      "family": "THÁP PHÁO",
+      "flip": true
+    },
+    {
+      "name": "Paw-47",
+      "kind": "rapid",
+      "rate": 0.6,
+      "damage": 20,
+      "color": "#ffd675",
+      "description": "Loạt ba viên đạn từ mèo bộ binh.",
+      "speed": 780,
+      "range": 1450,
+      "count": 3,
+      "id": "gun-0",
+      "asset": "gun-0",
+      "family": "VŨ KHÍ CÁ NHÂN",
+      "flip": false
+    },
+    {
+      "name": "Mini Gatling",
+      "kind": "rapid",
+      "rate": 0.17,
+      "damage": 9,
+      "color": "#ffe5a3",
+      "description": "Bắn liên thanh, ưu tiên quái bay.",
+      "speed": 780,
+      "range": 1450,
+      "id": "gun-1",
+      "asset": "gun-1",
+      "family": "VŨ KHÍ CÁ NHÂN",
+      "flip": false
+    },
+    {
+      "name": "Bazooka cá ngừ",
+      "kind": "rocket",
+      "rate": 3.6,
+      "damage": 150,
+      "color": "#ff975b",
+      "description": "Tên lửa bám đuôi, nổ lan.",
+      "speed": 450,
+      "range": 1450,
+      "splash": 110,
+      "id": "gun-2",
+      "asset": "gun-2",
+      "family": "VŨ KHÍ CÁ NHÂN",
+      "flip": false
+    },
+    {
+      "name": "Súng trường trinh sát",
+      "kind": "sniper",
+      "rate": 2.4,
+      "damage": 145,
+      "color": "#cbf6a2",
+      "description": "Một phát đạn tốc độ cao, xuyên hai quái.",
+      "speed": 780,
+      "range": 1450,
+      "pierce": 2,
+      "id": "gun-3",
+      "asset": "gun-3",
+      "family": "VŨ KHÍ CÁ NHÂN",
+      "flip": false
+    },
+    {
+      "name": "Shotgun đỏ",
+      "kind": "shotgun",
+      "rate": 1.4,
+      "damage": 24,
+      "color": "#ffad78",
+      "description": "Chùm năm viên tỏa quạt ở cự ly gần.",
+      "speed": 780,
+      "range": 680,
+      "count": 5,
+      "id": "gun-4",
+      "asset": "gun-4",
+      "family": "VŨ KHÍ CÁ NHÂN",
+      "flip": false
+    },
+    {
+      "name": "Súng plasma",
+      "kind": "plasma",
+      "rate": 1.2,
+      "damage": 75,
+      "color": "#61ebff",
+      "description": "Quả cầu plasma nổ, xuyên giáp.",
+      "speed": 510,
+      "range": 1450,
+      "splash": 75,
+      "id": "gun-5",
+      "asset": "gun-5",
+      "family": "VŨ KHÍ CÁ NHÂN",
+      "flip": false
+    },
+    {
+      "name": "Súng phun lửa",
+      "kind": "flame",
+      "rate": 0.35,
+      "damage": 18,
+      "color": "#ffa342",
+      "description": "Ngọn lửa duy trì thiêu đốt.",
+      "speed": 520,
+      "range": 570,
+      "burn": 4,
+      "id": "gun-6",
+      "asset": "gun-6",
+      "family": "VŨ KHÍ CÁ NHÂN",
+      "flip": false
+    },
+    {
+      "name": "Súng phóng lựu",
+      "kind": "mortar",
+      "rate": 2.3,
+      "damage": 110,
+      "color": "#ffde68",
+      "description": "Lựu đạn cầu vồng, sát thương vùng.",
+      "speed": 400,
+      "range": 1450,
+      "splash": 130,
+      "id": "gun-7",
+      "asset": "gun-7",
+      "family": "VŨ KHÍ CÁ NHÂN",
+      "flip": false
+    },
+    {
+      "name": "Nỏ thợ săn",
+      "kind": "arrow",
+      "rate": 1.5,
+      "damage": 95,
+      "color": "#f5deb2",
+      "description": "Mũi tên xuyên hai mục tiêu, gây chảy máu.",
+      "speed": 780,
+      "range": 1450,
+      "pierce": 2,
+      "burn": 2,
+      "id": "gun-8",
+      "asset": "gun-8",
+      "family": "VŨ KHÍ CÁ NHÂN",
+      "flip": false
+    },
+    {
+      "name": "Drone bỏ túi",
+      "kind": "drone",
+      "rate": 1.6,
+      "damage": 45,
+      "color": "#79ecff",
+      "description": "Drone cá nhân bay lên và khóa quái bay.",
+      "speed": 570,
+      "range": 1450,
+      "id": "gun-9",
+      "asset": "gun-9",
+      "family": "VŨ KHÍ CÁ NHÂN",
+      "flip": false
+    },
+    {
+      "name": "Ba lô Gatling",
+      "kind": "rapid",
+      "rate": 0.2,
+      "damage": 12,
+      "color": "#ffdc80",
+      "description": "Xả đạn liên thanh từ bệ phụ.",
+      "speed": 780,
+      "range": 1450,
+      "id": "pack-0",
+      "asset": "pack-0",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Hỏa tiễn bốn nòng",
+      "kind": "rocket",
+      "rate": 3.6,
+      "damage": 54,
+      "color": "#ff965d",
+      "description": "Bốn quả đạn tỏa ra rồi bám mục tiêu.",
+      "speed": 420,
+      "range": 1450,
+      "count": 4,
+      "splash": 75,
+      "id": "pack-1",
+      "asset": "pack-1",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Đại bác hỗ trợ",
+      "kind": "shell",
+      "rate": 2.5,
+      "damage": 125,
+      "color": "#ffd378",
+      "description": "Đạn pháo hạng nặng, nổ lan.",
+      "speed": 780,
+      "range": 1450,
+      "splash": 100,
+      "id": "pack-2",
+      "asset": "pack-2",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Cuộn Tesla",
+      "kind": "tesla",
+      "rate": 2.4,
+      "damage": 70,
+      "color": "#55eaff",
+      "description": "Sét chuyền qua ba mục tiêu.",
+      "speed": 780,
+      "range": 1450,
+      "chain": 3,
+      "stun": 0.6,
+      "id": "pack-3",
+      "asset": "pack-3",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Tên lửa song sinh",
+      "kind": "rocket",
+      "rate": 2.8,
+      "damage": 86,
+      "color": "#ffb281",
+      "description": "Hai tên lửa dẫn đường.",
+      "speed": 470,
+      "range": 1450,
+      "count": 2,
+      "splash": 90,
+      "id": "pack-4",
+      "asset": "pack-4",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Hỏa diệm",
+      "kind": "flame",
+      "rate": 0.4,
+      "damage": 25,
+      "color": "#ff8c39",
+      "description": "Phun lửa và đốt quái.",
+      "speed": 490,
+      "range": 620,
+      "burn": 5,
+      "id": "pack-5",
+      "asset": "pack-5",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Băng cực quang",
+      "kind": "ice",
+      "rate": 0.9,
+      "damage": 50,
+      "color": "#a3f5ff",
+      "description": "Đạn băng làm chậm 65% trong ba giây.",
+      "speed": 620,
+      "range": 1450,
+      "slow": 3,
+      "id": "pack-6",
+      "asset": "pack-6",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Độc tố xanh",
+      "kind": "poison",
+      "rate": 1.6,
+      "damage": 40,
+      "color": "#b6fa58",
+      "description": "Mây độc lan rộng, gây độc sáu giây.",
+      "speed": 450,
+      "range": 1450,
+      "poison": 6,
+      "splash": 130,
+      "id": "pack-7",
+      "asset": "pack-7",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Cưa vòng",
+      "kind": "saw",
+      "rate": 2.1,
+      "damage": 105,
+      "color": "#e4e6ff",
+      "description": "Lưỡi cưa quay, xuyên ba quái.",
+      "speed": 590,
+      "range": 1450,
+      "pierce": 3,
+      "id": "pack-8",
+      "asset": "pack-8",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Mũi khoan",
+      "kind": "drill",
+      "rate": 2.5,
+      "damage": 155,
+      "color": "#ffcd66",
+      "description": "Mũi khoan xuyên giáp dày.",
+      "speed": 650,
+      "range": 1450,
+      "pierce": 2,
+      "id": "pack-9",
+      "asset": "pack-9",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Laser đỏ",
+      "kind": "laser",
+      "rate": 2.4,
+      "damage": 120,
+      "color": "#ff596c",
+      "description": "Tia laser xuyên đội hình.",
+      "speed": 780,
+      "range": 1450,
+      "pierce": 5,
+      "id": "pack-10",
+      "asset": "pack-10",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Hạt nhân tím",
+      "kind": "plasma",
+      "rate": 2.6,
+      "damage": 160,
+      "color": "#d48aff",
+      "description": "Cầu năng lượng nổ lớn.",
+      "speed": 350,
+      "range": 1450,
+      "splash": 155,
+      "id": "pack-11",
+      "asset": "pack-11",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Vuốt thép",
+      "kind": "claw",
+      "rate": 1.4,
+      "damage": 110,
+      "color": "#ffa798",
+      "description": "Ba lưỡi vuốt lao ra ở cự ly ngắn.",
+      "speed": 600,
+      "range": 510,
+      "count": 3,
+      "id": "pack-12",
+      "asset": "pack-12",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Khiên năng lượng",
+      "kind": "shield",
+      "rate": 8,
+      "damage": 0,
+      "color": "#6af2ff",
+      "description": "Phát xung khiên bảo vệ pháo đài hai giây.",
+      "speed": 780,
+      "range": 1450,
+      "id": "pack-13",
+      "asset": "pack-13",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Sóng trọng lực",
+      "kind": "gravity",
+      "rate": 3,
+      "damage": 75,
+      "color": "#a2b8ff",
+      "description": "Kéo quái lại quanh điểm va chạm, làm chậm.",
+      "speed": 420,
+      "range": 1450,
+      "splash": 190,
+      "slow": 3,
+      "id": "pack-14",
+      "asset": "pack-14",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Súng cối chiến thuật",
+      "kind": "mortar",
+      "rate": 2.8,
+      "damage": 160,
+      "color": "#ffdc8b",
+      "description": "Đạn rơi từ trên cao, nổ vùng rộng.",
+      "speed": 360,
+      "range": 1450,
+      "splash": 150,
+      "id": "pack-15",
+      "asset": "pack-15",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Thiện xạ cam",
+      "kind": "sniper",
+      "rate": 3,
+      "damage": 215,
+      "color": "#fff4c1",
+      "description": "Xuyên giáp, ưu tiên quái tinh anh.",
+      "speed": 780,
+      "range": 1450,
+      "pierce": 3,
+      "id": "pack-16",
+      "asset": "pack-16",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Bom đầu lâu",
+      "kind": "bomb",
+      "rate": 3.8,
+      "damage": 225,
+      "color": "#ffb57d",
+      "description": "Bom bay chậm, vụ nổ diện rộng.",
+      "speed": 320,
+      "range": 1450,
+      "splash": 190,
+      "id": "pack-17",
+      "asset": "pack-17",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Mảnh tinh thạch",
+      "kind": "crystal",
+      "rate": 2,
+      "damage": 50,
+      "color": "#ffdd74",
+      "description": "Năm mảnh tinh thạch tỏa quạt.",
+      "speed": 780,
+      "range": 1450,
+      "count": 5,
+      "pierce": 1,
+      "id": "pack-18",
+      "asset": "pack-18",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    },
+    {
+      "name": "Trạm cứu thương",
+      "kind": "heal",
+      "rate": 7,
+      "damage": 240,
+      "color": "#99ffc0",
+      "description": "Hồi máu pháo đài và tăng năng lượng.",
+      "speed": 780,
+      "range": 1450,
+      "id": "pack-19",
+      "asset": "pack-19",
+      "family": "VŨ KHÍ PHỤ",
+      "flip": true
+    }
+  ],
+  "monsters": [
+    {
+      "name": "Kiến tiên phong",
+      "asset": "bug-0",
+      "size": 154,
+      "hp": 780,
+      "speed": 55,
+      "damage": 104,
+      "behavior": "swarm",
+      "description": "Nhỏ nhất, chạy nhanh thành đàn.",
+      "color": "#ff9d65"
+    },
+    {
+      "name": "Sói bóng đêm",
+      "asset": "beast-0",
+      "size": 264,
+      "hp": 1800,
+      "speed": 58,
+      "damage": 208,
+      "behavior": "wolf",
+      "description": "Tăng tốc khi đồng loại ở gần.",
+      "color": "#bca6d0"
+    },
+    {
+      "name": "Ong sát thủ",
+      "asset": "bug-4",
+      "size": 188,
+      "hp": 1020,
+      "speed": 61,
+      "damage": 144,
+      "behavior": "bee",
+      "description": "Bay cao theo đường sin, lao xuống chích.",
+      "color": "#ffdc6b",
+      "flying": true
+    },
+    {
+      "name": "Bọ sừng đỏ",
+      "asset": "bug-1",
+      "size": 310,
+      "hp": 3000,
+      "speed": 23,
+      "damage": 280,
+      "behavior": "armor",
+      "description": "Vỏ cứng giảm 48% đạn thường.",
+      "color": "#ff777d",
+      "armor": 0.48
+    },
+    {
+      "name": "Lợn rừng cuồng nộ",
+      "asset": "beast-1",
+      "size": 314,
+      "hp": 2700,
+      "speed": 31,
+      "damage": 392,
+      "behavior": "charge",
+      "description": "Báo hiệu trước khi lao nhanh về phía xe.",
+      "color": "#e8ae76"
+    },
+    {
+      "name": "Nhện giăng tơ",
+      "asset": "bug-2",
+      "size": 280,
+      "hp": 1890,
+      "speed": 29,
+      "damage": 128,
+      "behavior": "web",
+      "description": "Phun tơ từ xa, làm chậm di chuyển xe.",
+      "color": "#c79ae0",
+      "range": 760
+    },
+    {
+      "name": "Bọ ngựa đao",
+      "asset": "bug-3",
+      "size": 272,
+      "hp": 1950,
+      "speed": 42,
+      "damage": 288,
+      "behavior": "leap",
+      "description": "Nhảy qua tiền tuyến, tấn công liên tiếp.",
+      "color": "#c5f47c"
+    },
+    {
+      "name": "Gấu cuồng chiến",
+      "asset": "beast-2",
+      "size": 392,
+      "hp": 5700,
+      "speed": 20,
+      "damage": 416,
+      "behavior": "enrage",
+      "description": "Càng ít máu càng chạy nhanh và đánh mạnh.",
+      "color": "#f4a776"
+    },
+    {
+      "name": "Ấu trùng đất",
+      "asset": "bug-5",
+      "size": 222,
+      "hp": 1980,
+      "speed": 33,
+      "damage": 200,
+      "behavior": "burrow",
+      "description": "Chui xuống đất theo chu kỳ, né phần lớn sát thương.",
+      "color": "#ffe0a7"
+    },
+    {
+      "name": "Hổ kiếm",
+      "asset": "beast-4",
+      "size": 342,
+      "hp": 3450,
+      "speed": 51,
+      "damage": 296,
+      "behavior": "tiger",
+      "description": "Lướt ngắn, né đạn khi đang lao.",
+      "color": "#ffca57"
+    },
+    {
+      "name": "Bọ cạp độc",
+      "asset": "bug-6",
+      "size": 290,
+      "hp": 3300,
+      "speed": 23,
+      "damage": 152,
+      "behavior": "venom",
+      "description": "Phun nọc tầm xa, gây độc pháo đài.",
+      "color": "#c298ed",
+      "range": 720
+    },
+    {
+      "name": "Khỉ băng",
+      "asset": "beast-3",
+      "size": 432,
+      "hp": 7500,
+      "speed": 18,
+      "damage": 280,
+      "behavior": "frost",
+      "description": "Ném băng từ xa, làm chậm tốc độ súng.",
+      "color": "#8eeaff",
+      "range": 790
+    },
+    {
+      "name": "Bướm thôi miên",
+      "asset": "bug-7",
+      "size": 244,
+      "hp": 2100,
+      "speed": 39,
+      "damage": 120,
+      "behavior": "moth",
+      "description": "Bay cao, rải bụi độc theo ba hướng.",
+      "color": "#edb569",
+      "flying": true,
+      "range": 730
+    },
+    {
+      "name": "Rùa dung nham",
+      "asset": "beast-5",
+      "size": 414,
+      "hp": 8400,
+      "speed": 12,
+      "damage": 360,
+      "behavior": "lava",
+      "description": "Giáp dày, phản xung lửa khi bị đánh gần.",
+      "color": "#ffaf47",
+      "armor": 0.6
+    },
+    {
+      "name": "Tê giác bọc giáp",
+      "asset": "beast-6",
+      "size": 460,
+      "hp": 9600,
+      "speed": 17,
+      "damage": 584,
+      "behavior": "rhino",
+      "description": "Tích lực rồi húc cực mạnh, có giáp trước.",
+      "color": "#c3a0ef",
+      "armor": 0.38
+    },
+    {
+      "name": "Bọ tinh thạch",
+      "asset": "bug-8",
+      "size": 336,
+      "hp": 5100,
+      "speed": 20,
+      "damage": 232,
+      "behavior": "crystal",
+      "description": "Vỏ tinh thể giảm năng lượng, bắn mảnh pha lê.",
+      "color": "#ffce69",
+      "range": 680
+    },
+    {
+      "name": "Đại bàng sư tử",
+      "asset": "beast-7",
+      "size": 402,
+      "hp": 6300,
+      "speed": 37,
+      "damage": 288,
+      "behavior": "griffin",
+      "description": "Bay lượn, bắn lông vũ theo loạt.",
+      "color": "#ffd99b",
+      "flying": true,
+      "range": 800
+    },
+    {
+      "name": "Hươu cổ thụ",
+      "asset": "beast-9",
+      "size": 450,
+      "hp": 8700,
+      "speed": 16,
+      "damage": 160,
+      "behavior": "healer",
+      "description": "Phát hào quang hồi máu cho quái xung quanh.",
+      "color": "#b5ed8e",
+      "range": 880
+    },
+    {
+      "name": "Bọ chúa giáp gai",
+      "asset": "bug-9",
+      "size": 498,
+      "hp": 12600,
+      "speed": 14,
+      "damage": 496,
+      "behavior": "queen",
+      "description": "Triệu hồi kiến; bắn đạn độc từng đợt.",
+      "color": "#ed8e9c",
+      "armor": 0.32,
+      "range": 760
+    },
+    {
+      "name": "Bạo long hắc nguyệt",
+      "asset": "beast-8",
+      "size": 660,
+      "hp": 90000,
+      "speed": 13,
+      "damage": 680,
+      "behavior": "boss",
+      "description": "Ba pha: phun lửa, gọi quái, cuồng nộ dưới 35% máu.",
+      "color": "#ff767d",
+      "range": 850,
+      "armor": 0.2,
+      "boss": true
+    }
+  ],
+  "cats": [
+    {
+      "id": "cat-0",
+      "name": "Mướp",
+      "specialty": "operator",
+      "role": "TANK",
+      "rarity": "ELITE",
+      "baseStats": {
+        "maxHp": 420,
+        "atk": 36,
+        "def": 30,
+        "speed": 84
+      },
+      "growth": {
+        "maxHp": 36,
+        "atk": 2.8,
+        "def": 2,
+        "speed": 0.4
+      },
+      "sprite": "cat-0",
+      "classic": true
+    },
+    {
+      "id": "cat-1",
+      "name": "Khói",
+      "specialty": "infantry",
+      "role": "MAGE",
+      "rarity": "RARE",
+      "baseStats": {
+        "maxHp": 260,
+        "atk": 54,
+        "def": 14,
+        "speed": 102
+      },
+      "growth": {
+        "maxHp": 22,
+        "atk": 4.2,
+        "def": 1,
+        "speed": 0.5
+      },
+      "sprite": "cat-1",
+      "classic": true
+    },
+    {
+      "id": "cat-2",
+      "name": "Bông",
+      "specialty": "infantry",
+      "role": "HEALER",
+      "rarity": "ELITE",
+      "baseStats": {
+        "maxHp": 300,
+        "atk": 40,
+        "def": 18,
+        "speed": 92
+      },
+      "growth": {
+        "maxHp": 28,
+        "atk": 3.2,
+        "def": 1.4,
+        "speed": 0.4
+      },
+      "sprite": "cat-2",
+      "classic": true
+    },
+    {
+      "id": "cat-3",
+      "name": "Tam Thể",
+      "specialty": "operator",
+      "role": "WARRIOR",
+      "rarity": "RARE",
+      "baseStats": {
+        "maxHp": 360,
+        "atk": 46,
+        "def": 24,
+        "speed": 90
+      },
+      "growth": {
+        "maxHp": 30,
+        "atk": 3.6,
+        "def": 1.6,
+        "speed": 0.45
+      },
+      "sprite": "cat-3",
+      "classic": true
+    },
+    {
+      "id": "cat-4",
+      "name": "Mun",
+      "specialty": "infantry",
+      "role": "ASSASSIN",
+      "rarity": "ELITE",
+      "baseStats": {
+        "maxHp": 240,
+        "atk": 62,
+        "def": 12,
+        "speed": 116
+      },
+      "growth": {
+        "maxHp": 20,
+        "atk": 4.6,
+        "def": 0.9,
+        "speed": 0.6
+      },
+      "sprite": "cat-4",
+      "classic": true
+    },
+    {
+      "id": "cat-5",
+      "name": "Xiêm",
+      "specialty": "infantry",
+      "role": "RANGER",
+      "rarity": "RARE",
+      "baseStats": {
+        "maxHp": 280,
+        "atk": 50,
+        "def": 16,
+        "speed": 108
+      },
+      "growth": {
+        "maxHp": 24,
+        "atk": 3.8,
+        "def": 1.1,
+        "speed": 0.55
+      },
+      "sprite": "cat-5",
+      "classic": true
+    },
+    {
+      "id": "cat-6",
+      "name": "Vằn",
+      "specialty": "operator",
+      "role": "WARRIOR",
+      "rarity": "COMMON",
+      "baseStats": {
+        "maxHp": 320,
+        "atk": 38,
+        "def": 20,
+        "speed": 88
+      },
+      "growth": {
+        "maxHp": 26,
+        "atk": 3,
+        "def": 1.4,
+        "speed": 0.4
+      },
+      "sprite": "cat-6",
+      "classic": true
+    },
+    {
+      "id": "cat-7",
+      "name": "Tux",
+      "specialty": "operator",
+      "role": "TANK",
+      "rarity": "COMMON",
+      "baseStats": {
+        "maxHp": 400,
+        "atk": 30,
+        "def": 28,
+        "speed": 78
+      },
+      "growth": {
+        "maxHp": 34,
+        "atk": 2.4,
+        "def": 1.8,
+        "speed": 0.3
+      },
+      "sprite": "cat-7",
+      "classic": true
+    },
+    {
+      "id": "cat-8",
+      "name": "Mochi",
+      "specialty": "operator",
+      "role": "HEALER",
+      "rarity": "RARE",
+      "baseStats": {
+        "maxHp": 330,
+        "atk": 42,
+        "def": 22,
+        "speed": 90
+      },
+      "growth": {
+        "maxHp": 28,
+        "atk": 3.2,
+        "def": 1.5,
+        "speed": 0.4
+      },
+      "sprite": "cat-8",
+      "classic": true
+    },
+    {
+      "id": "cat-9",
+      "name": "Mây",
+      "specialty": "infantry",
+      "role": "RANGER",
+      "rarity": "COMMON",
+      "baseStats": {
+        "maxHp": 270,
+        "atk": 44,
+        "def": 15,
+        "speed": 100
+      },
+      "growth": {
+        "maxHp": 23,
+        "atk": 3.4,
+        "def": 1,
+        "speed": 0.5
+      },
+      "sprite": "cat-9",
+      "classic": true
+    }
+  ],
+  "stages": [
+    {
+      "id": "stage-1",
+      "index": 1,
+      "name": "Thung lũng Trăng",
+      "boss": false,
+      "recommendedPower": 500,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Thung lũng Trăng",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4"
+          ],
+          "boss": false,
+          "count": 24,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 6,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 8,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 10,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.13,
+          "enemyAtkMult": 0.17,
+          "bossHpMult": 0.018
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 130,
+        "catXp": 25,
+        "spiritDust": 38,
+        "accountXp": 105
+      },
+      "repeatRewards": {
+        "coins": 52,
+        "catXp": 10,
+        "spiritDust": 16,
+        "accountXp": 48
+      }
+    },
+    {
+      "id": "stage-2",
+      "index": 2,
+      "name": "Đường mòn sương",
+      "boss": false,
+      "recommendedPower": 560,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Đường mòn sương",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1"
+          ],
+          "boss": false,
+          "count": 24,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 6,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 8,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 10,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.1456,
+          "enemyAtkMult": 0.19040000000000004,
+          "bossHpMult": 0.02016
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 160,
+        "catXp": 30,
+        "spiritDust": 46,
+        "accountXp": 130
+      },
+      "repeatRewards": {
+        "coins": 64,
+        "catXp": 12,
+        "spiritDust": 20,
+        "accountXp": 56
+      },
+      "gearReward": "gun-1",
+      "moduleReward": "pack-0"
+    },
+    {
+      "id": "stage-3",
+      "index": 3,
+      "name": "Bìa rừng xanh",
+      "boss": false,
+      "recommendedPower": 627.2,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Bìa rừng xanh",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1"
+          ],
+          "boss": false,
+          "count": 24,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 6,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 8,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 10,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.16307200000000002,
+          "enemyAtkMult": 0.21324800000000005,
+          "bossHpMult": 0.0225792
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 190,
+        "catXp": 35,
+        "spiritDust": 54,
+        "accountXp": 155
+      },
+      "repeatRewards": {
+        "coins": 76,
+        "catXp": 14,
+        "spiritDust": 24,
+        "accountXp": 64
+      },
+      "gearReward": "gear-helm",
+      "moduleReward": "pack-1"
+    },
+    {
+      "id": "stage-4",
+      "index": 4,
+      "name": "Cổng đá cổ",
+      "boss": false,
+      "recommendedPower": 702.4640000000002,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Cổng đá cổ",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1",
+            "bug-2"
+          ],
+          "boss": false,
+          "count": 24,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 6,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 8,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 10,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.18264064000000005,
+          "enemyAtkMult": 0.2388377600000001,
+          "bossHpMult": 0.025288704000000006
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 220,
+        "catXp": 40,
+        "spiritDust": 62,
+        "accountXp": 180
+      },
+      "repeatRewards": {
+        "coins": 88,
+        "catXp": 16,
+        "spiritDust": 28,
+        "accountXp": 72
+      },
+      "gearReward": "gear-chest",
+      "moduleReward": "pack-2"
+    },
+    {
+      "id": "stage-5",
+      "index": 5,
+      "name": "Bạo long thức giấc",
+      "boss": true,
+      "recommendedPower": 786.7596800000003,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Bạo long thức giấc",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1",
+            "bug-2",
+            "bug-3",
+            "beast-8"
+          ],
+          "boss": true,
+          "count": 27,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 7,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 9,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 11,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.2045575168000001,
+          "enemyAtkMult": 0.2674982912000001,
+          "bossHpMult": 0.02832334848000001
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 250,
+        "catXp": 45,
+        "spiritDust": 70,
+        "accountXp": 205,
+        "gem": 20,
+        "summonScroll": 1,
+        "skillCore": 2
+      },
+      "repeatRewards": {
+        "coins": 100,
+        "catXp": 18,
+        "spiritDust": 32,
+        "accountXp": 80,
+        "skillCore": 1
+      },
+      "moduleReward": "pack-4"
+    },
+    {
+      "id": "stage-6",
+      "index": 6,
+      "name": "Hẻm núi gió",
+      "boss": false,
+      "recommendedPower": 881.1708416000004,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Hẻm núi gió",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1",
+            "bug-2",
+            "bug-3",
+            "beast-2"
+          ],
+          "boss": false,
+          "count": 27,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 7,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 9,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 11,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.2291044188160001,
+          "enemyAtkMult": 0.29959808614400013,
+          "bossHpMult": 0.03172215029760001
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 280,
+        "catXp": 50,
+        "spiritDust": 78,
+        "accountXp": 230
+      },
+      "repeatRewards": {
+        "coins": 112,
+        "catXp": 20,
+        "spiritDust": 36,
+        "accountXp": 88
+      },
+      "gearReward": "gear-boots",
+      "moduleReward": "pack-6"
+    },
+    {
+      "id": "stage-7",
+      "index": 7,
+      "name": "Xưởng bỏ hoang",
+      "boss": false,
+      "recommendedPower": 986.9113425920006,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Xưởng bỏ hoang",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1",
+            "bug-2",
+            "bug-3",
+            "beast-2",
+            "bug-5"
+          ],
+          "boss": false,
+          "count": 27,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 7,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 9,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 11,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.25659694907392017,
+          "enemyAtkMult": 0.3355498564812802,
+          "bossHpMult": 0.03552880833331202
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 310,
+        "catXp": 55,
+        "spiritDust": 86,
+        "accountXp": 255
+      },
+      "repeatRewards": {
+        "coins": 124,
+        "catXp": 22,
+        "spiritDust": 40,
+        "accountXp": 96
+      },
+      "gearReward": "gun-4",
+      "moduleReward": "pack-19"
+    },
+    {
+      "id": "stage-8",
+      "index": 8,
+      "name": "Đầm lầy tím",
+      "boss": false,
+      "recommendedPower": 1105.3407037030406,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Đầm lầy tím",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1",
+            "bug-2",
+            "bug-3",
+            "beast-2",
+            "bug-5",
+            "beast-4"
+          ],
+          "boss": false,
+          "count": 27,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 7,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 9,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 11,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.2873885829627906,
+          "enemyAtkMult": 0.3758158392590339,
+          "bossHpMult": 0.039792265333309464
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 340,
+        "catXp": 60,
+        "spiritDust": 94,
+        "accountXp": 280
+      },
+      "repeatRewards": {
+        "coins": 136,
+        "catXp": 24,
+        "spiritDust": 44,
+        "accountXp": 104
+      }
+    },
+    {
+      "id": "stage-9",
+      "index": 9,
+      "name": "Đồi pha lê",
+      "boss": false,
+      "recommendedPower": 1237.9815881474058,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Đồi pha lê",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1",
+            "bug-2",
+            "bug-3",
+            "beast-2",
+            "bug-5",
+            "beast-4",
+            "bug-6"
+          ],
+          "boss": false,
+          "count": 30,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 8,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 10,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 12,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.3218752129183255,
+          "enemyAtkMult": 0.42091373997011794,
+          "bossHpMult": 0.044567337173306604
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 370,
+        "catXp": 65,
+        "spiritDust": 102,
+        "accountXp": 305
+      },
+      "repeatRewards": {
+        "coins": 148,
+        "catXp": 26,
+        "spiritDust": 48,
+        "accountXp": 112
+      }
+    },
+    {
+      "id": "stage-10",
+      "index": 10,
+      "name": "Trăng máu",
+      "boss": true,
+      "recommendedPower": 1386.5393787250946,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Trăng máu",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1",
+            "bug-2",
+            "bug-3",
+            "beast-2",
+            "bug-5",
+            "beast-4",
+            "bug-6",
+            "beast-3",
+            "beast-8"
+          ],
+          "boss": true,
+          "count": 30,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 8,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 10,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 12,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.3605002384685246,
+          "enemyAtkMult": 0.47142338876653217,
+          "bossHpMult": 0.0499154176341034
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 400,
+        "catXp": 70,
+        "spiritDust": 110,
+        "accountXp": 330,
+        "gem": 20,
+        "summonScroll": 1,
+        "skillCore": 3
+      },
+      "repeatRewards": {
+        "coins": 160,
+        "catXp": 28,
+        "spiritDust": 52,
+        "accountXp": 120,
+        "skillCore": 1
+      }
+    },
+    {
+      "id": "stage-11",
+      "index": 11,
+      "name": "Lối mòn băng",
+      "boss": false,
+      "recommendedPower": 1552.9241041721061,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Lối mòn băng",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1",
+            "bug-2",
+            "bug-3",
+            "beast-2",
+            "bug-5",
+            "beast-4",
+            "bug-6",
+            "beast-3",
+            "bug-7"
+          ],
+          "boss": false,
+          "count": 30,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 8,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 10,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 12,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.4037602670847476,
+          "enemyAtkMult": 0.5279941954185161,
+          "bossHpMult": 0.05590526775019581
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 430,
+        "catXp": 75,
+        "spiritDust": 118,
+        "accountXp": 355
+      },
+      "repeatRewards": {
+        "coins": 172,
+        "catXp": 30,
+        "spiritDust": 56,
+        "accountXp": 128
+      }
+    },
+    {
+      "id": "stage-12",
+      "index": 12,
+      "name": "Khu mỏ sâu",
+      "boss": false,
+      "recommendedPower": 1739.274996672759,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Khu mỏ sâu",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1",
+            "bug-2",
+            "bug-3",
+            "beast-2",
+            "bug-5",
+            "beast-4",
+            "bug-6",
+            "beast-3",
+            "bug-7",
+            "beast-5"
+          ],
+          "boss": false,
+          "count": 30,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 8,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 10,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 12,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.45221149913491737,
+          "enemyAtkMult": 0.5913534988687381,
+          "bossHpMult": 0.06261389988021931
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 460,
+        "catXp": 80,
+        "spiritDust": 126,
+        "accountXp": 380
+      },
+      "repeatRewards": {
+        "coins": 184,
+        "catXp": 32,
+        "spiritDust": 60,
+        "accountXp": 136
+      }
+    },
+    {
+      "id": "stage-13",
+      "index": 13,
+      "name": "Rừng cổ thụ",
+      "boss": false,
+      "recommendedPower": 1947.9879962734904,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Rừng cổ thụ",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1",
+            "bug-2",
+            "bug-3",
+            "beast-2",
+            "bug-5",
+            "beast-4",
+            "bug-6",
+            "beast-3",
+            "bug-7",
+            "beast-5",
+            "beast-6"
+          ],
+          "boss": false,
+          "count": 33,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 9,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 11,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 13,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.5064768790311075,
+          "enemyAtkMult": 0.6623159187329868,
+          "bossHpMult": 0.07012756786584565
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 490,
+        "catXp": 85,
+        "spiritDust": 134,
+        "accountXp": 405
+      },
+      "repeatRewards": {
+        "coins": 196,
+        "catXp": 34,
+        "spiritDust": 64,
+        "accountXp": 144
+      }
+    },
+    {
+      "id": "stage-14",
+      "index": 14,
+      "name": "Bãi săn đêm",
+      "boss": false,
+      "recommendedPower": 2181.7465558263093,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Bãi săn đêm",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1",
+            "bug-2",
+            "bug-3",
+            "beast-2",
+            "bug-5",
+            "beast-4",
+            "bug-6",
+            "beast-3",
+            "bug-7",
+            "beast-5",
+            "beast-6",
+            "bug-8"
+          ],
+          "boss": false,
+          "count": 33,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 9,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 11,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 13,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.5672541045148405,
+          "enemyAtkMult": 0.7417938289809453,
+          "bossHpMult": 0.07854287600974713
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 520,
+        "catXp": 90,
+        "spiritDust": 142,
+        "accountXp": 430
+      },
+      "repeatRewards": {
+        "coins": 208,
+        "catXp": 36,
+        "spiritDust": 68,
+        "accountXp": 152
+      }
+    },
+    {
+      "id": "stage-15",
+      "index": 15,
+      "name": "Tiếng gầm thứ ba",
+      "boss": true,
+      "recommendedPower": 2443.5561425254664,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Tiếng gầm thứ ba",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1",
+            "bug-2",
+            "bug-3",
+            "beast-2",
+            "bug-5",
+            "beast-4",
+            "bug-6",
+            "beast-3",
+            "bug-7",
+            "beast-5",
+            "beast-6",
+            "bug-8",
+            "beast-7",
+            "beast-8"
+          ],
+          "boss": true,
+          "count": 33,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 9,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 11,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 13,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.6353245970566214,
+          "enemyAtkMult": 0.8308090884586588,
+          "bossHpMult": 0.08796802113091678
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 550,
+        "catXp": 95,
+        "spiritDust": 150,
+        "accountXp": 455,
+        "gem": 20,
+        "summonScroll": 1,
+        "skillCore": 4
+      },
+      "repeatRewards": {
+        "coins": 220,
+        "catXp": 38,
+        "spiritDust": 72,
+        "accountXp": 160,
+        "skillCore": 2
+      }
+    },
+    {
+      "id": "stage-16",
+      "index": 16,
+      "name": "Thành đá",
+      "boss": false,
+      "recommendedPower": 2736.7828796285226,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Thành đá",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1",
+            "bug-2",
+            "bug-3",
+            "beast-2",
+            "bug-5",
+            "beast-4",
+            "bug-6",
+            "beast-3",
+            "bug-7",
+            "beast-5",
+            "beast-6",
+            "bug-8",
+            "beast-7",
+            "beast-9"
+          ],
+          "boss": false,
+          "count": 33,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 9,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 11,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 13,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.711563548703416,
+          "enemyAtkMult": 0.9305061790736978,
+          "bossHpMult": 0.09852418366662681
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 580,
+        "catXp": 100,
+        "spiritDust": 158,
+        "accountXp": 480
+      },
+      "repeatRewards": {
+        "coins": 232,
+        "catXp": 40,
+        "spiritDust": 76,
+        "accountXp": 168
+      }
+    },
+    {
+      "id": "stage-17",
+      "index": 17,
+      "name": "Đèo sấm",
+      "boss": false,
+      "recommendedPower": 3065.1968251839457,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Đèo sấm",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1",
+            "bug-2",
+            "bug-3",
+            "beast-2",
+            "bug-5",
+            "beast-4",
+            "bug-6",
+            "beast-3",
+            "bug-7",
+            "beast-5",
+            "beast-6",
+            "bug-8",
+            "beast-7",
+            "beast-9",
+            "bug-9"
+          ],
+          "boss": false,
+          "count": 36,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 10,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 12,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 14,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.7969511745478259,
+          "enemyAtkMult": 1.0421669205625417,
+          "bossHpMult": 0.11034708570662204
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 610,
+        "catXp": 105,
+        "spiritDust": 166,
+        "accountXp": 505
+      },
+      "repeatRewards": {
+        "coins": 244,
+        "catXp": 42,
+        "spiritDust": 80,
+        "accountXp": 176
+      }
+    },
+    {
+      "id": "stage-18",
+      "index": 18,
+      "name": "Pháo tuyến cuối",
+      "boss": false,
+      "recommendedPower": 3433.0204442060194,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Pháo tuyến cuối",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1",
+            "bug-2",
+            "bug-3",
+            "beast-2",
+            "bug-5",
+            "beast-4",
+            "bug-6",
+            "beast-3",
+            "bug-7",
+            "beast-5",
+            "beast-6",
+            "bug-8",
+            "beast-7",
+            "beast-9",
+            "bug-9"
+          ],
+          "boss": false,
+          "count": 36,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 10,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 12,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 14,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.8925853154935651,
+          "enemyAtkMult": 1.1672269510300468,
+          "bossHpMult": 0.12358873599141669
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 640,
+        "catXp": 110,
+        "spiritDust": 174,
+        "accountXp": 530
+      },
+      "repeatRewards": {
+        "coins": 256,
+        "catXp": 44,
+        "spiritDust": 84,
+        "accountXp": 184
+      }
+    },
+    {
+      "id": "stage-19",
+      "index": 19,
+      "name": "Thung lũng quên",
+      "boss": false,
+      "recommendedPower": 3844.9828975107425,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Thung lũng quên",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1",
+            "bug-2",
+            "bug-3",
+            "beast-2",
+            "bug-5",
+            "beast-4",
+            "bug-6",
+            "beast-3",
+            "bug-7",
+            "beast-5",
+            "beast-6",
+            "bug-8",
+            "beast-7",
+            "beast-9",
+            "bug-9"
+          ],
+          "boss": false,
+          "count": 36,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 10,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 12,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 14,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 0.9996955533527931,
+          "enemyAtkMult": 1.3072941851536526,
+          "bossHpMult": 0.13841938431038672
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 670,
+        "catXp": 115,
+        "spiritDust": 182,
+        "accountXp": 555
+      },
+      "repeatRewards": {
+        "coins": 268,
+        "catXp": 46,
+        "spiritDust": 88,
+        "accountXp": 192
+      }
+    },
+    {
+      "id": "stage-20",
+      "index": 20,
+      "name": "Vua Hắc Nguyệt",
+      "boss": true,
+      "recommendedPower": 4306.380845212032,
+      "fortressHpMult": 1,
+      "waves": [
+        {
+          "name": "Vua Hắc Nguyệt",
+          "types": [
+            "bug-0",
+            "beast-0",
+            "bug-4",
+            "bug-1",
+            "beast-1",
+            "bug-2",
+            "bug-3",
+            "beast-2",
+            "bug-5",
+            "beast-4",
+            "bug-6",
+            "beast-3",
+            "bug-7",
+            "beast-5",
+            "beast-6",
+            "bug-8",
+            "beast-7",
+            "beast-9",
+            "bug-9",
+            "beast-8"
+          ],
+          "boss": true,
+          "count": 36,
+          "bursts": [
+            {
+              "after": 0,
+              "count": 10,
+              "spacing": 0.9
+            },
+            {
+              "after": 25,
+              "count": 12,
+              "spacing": 0.55
+            },
+            {
+              "after": 55,
+              "count": 14,
+              "spacing": 0.28
+            }
+          ],
+          "enemyHpMult": 1.1196590197551284,
+          "enemyAtkMult": 1.464169487372091,
+          "bossHpMult": 0.15502971042763314
+        }
+      ],
+      "firstClearRewards": {
+        "coins": 700,
+        "catXp": 120,
+        "spiritDust": 190,
+        "accountXp": 580,
+        "gem": 20,
+        "summonScroll": 1,
+        "skillCore": 6
+      },
+      "repeatRewards": {
+        "coins": 280,
+        "catXp": 48,
+        "spiritDust": 92,
+        "accountXp": 200,
+        "skillCore": 2
+      }
+    }
+  ],
+  "skills": [
+    {
+      "id": "heal",
+      "name": "Sửa chữa",
+      "unlock": {
+        "start": true
+      },
+      "baseCost": 80,
+      "baseCd": 8,
+      "kind": "heal",
+      "healVehicle": 9000,
+      "healUnitPct": 0.4
+    },
+    {
+      "id": "barrage",
+      "name": "Mưa tên lửa",
+      "unlock": {
+        "start": true
+      },
+      "baseCost": 140,
+      "baseCd": 10,
+      "kind": "barrage",
+      "rockets": 18,
+      "rocketDamage": 190
+    },
+    {
+      "id": "shield",
+      "name": "Lá chắn",
+      "unlock": {
+        "stage": 2
+      },
+      "baseCost": 80,
+      "baseCd": 8,
+      "kind": "shield",
+      "duration": 7
+    },
+    {
+      "id": "rally",
+      "name": "Tiếp viện",
+      "unlock": {
+        "stage": 4
+      },
+      "baseCost": 60,
+      "baseCd": 7,
+      "kind": "rally",
+      "duration": 10,
+      "fireMult": 1.8
+    },
+    {
+      "id": "freeze",
+      "name": "Bão băng",
+      "unlock": {
+        "stage": 5
+      },
+      "baseCost": 100,
+      "baseCd": 9,
+      "kind": "freeze",
+      "slow": 6,
+      "damage": 120
+    },
+    {
+      "id": "drone",
+      "name": "Drone",
+      "unlock": {
+        "stage": 10
+      },
+      "baseCost": 70,
+      "baseCd": 8,
+      "kind": "drone",
+      "duration": 14
+    },
+    {
+      "id": "orbital",
+      "name": "Không kích",
+      "unlock": {
+        "stage": 15
+      },
+      "baseCost": 150,
+      "baseCd": 10,
+      "kind": "orbital",
+      "damage": 4000,
+      "bossMult": 1.5,
+      "delay": 0.4
+    },
+    {
+      "id": "decoy",
+      "name": "Mồi nhử",
+      "unlock": {
+        "accountLevel": 20
+      },
+      "baseCost": 70,
+      "baseCd": 8,
+      "kind": "decoy",
+      "duration": 5,
+      "hp": 800,
+      "radius": 420
+    },
+    {
+      "id": "magnet",
+      "name": "Nam châm",
+      "unlock": {
+        "accountLevel": 40
+      },
+      "baseCost": 50,
+      "baseCd": 6,
+      "kind": "magnet"
+    },
+    {
+      "id": "kamikaze",
+      "name": "Mèo cảm tử",
+      "unlock": {
+        "accountLevel": 60
+      },
+      "baseCost": 90,
+      "baseCd": 9,
+      "kind": "kamikaze",
+      "damage": 2200,
+      "splash": 180
+    }
+  ],
+  "classicSkills": [
+    {
+      "id": "rally",
+      "name": "Tiếp viện",
+      "cost": 80,
+      "cooldown": 16,
+      "duration": 10
+    },
+    {
+      "id": "heal",
+      "name": "Sửa chữa",
+      "cost": 120,
+      "cooldown": 20
+    },
+    {
+      "id": "freeze",
+      "name": "Bão băng",
+      "cost": 150,
+      "cooldown": 24,
+      "duration": 6
+    },
+    {
+      "id": "drone",
+      "name": "Drone",
+      "cost": 100,
+      "cooldown": 20,
+      "duration": 14
+    },
+    {
+      "id": "barrage",
+      "name": "Mưa tên lửa",
+      "cost": 200,
+      "cooldown": 28
+    },
+    {
+      "id": "shield",
+      "name": "Lá chắn",
+      "cost": 120,
+      "cooldown": 22,
+      "duration": 7
+    }
+  ],
+  "waves": [
+    {
+      "name": "TIẾNG ĐỘNG TRONG SƯƠNG",
+      "types": [
+        0,
+        1,
+        2
+      ],
+      "count": 13,
+      "spacing": 2.2
+    },
+    {
+      "name": "LỚP GIÁP TIÊN PHONG",
+      "types": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "count": 13,
+      "spacing": 2.4
+    },
+    {
+      "name": "NANH VUỐT CUỒNG NỘ",
+      "types": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "count": 12,
+      "spacing": 2.7
+    },
+    {
+      "name": "BĂNG GIÁ & DUNG NHAM",
+      "types": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "count": 10,
+      "spacing": 3
+    },
+    {
+      "name": "BẦY ĐÀN DƯỚI TRĂNG",
+      "types": [
+        15,
+        16,
+        17,
+        18
+      ],
+      "count": 10,
+      "spacing": 3.4
+    },
+    {
+      "name": "BẠO LONG HẮC NGUYỆT",
+      "types": [
+        19
+      ],
+      "count": 1,
+      "spacing": 1
+    }
+  ],
+  "balance": {
+    "startingWallet": {
+      "coins": 2000,
+      "spiritDust": 800,
+      "soulEssence": 0,
+      "forgeStone": 10,
+      "gem": 300,
+      "summonScroll": 5,
+      "relicStone": 0,
+      "skillCore": 0,
+      "catXp": 200,
+      "arenaToken": 0
+    },
+    "gemsPerScroll": 100,
+    "currencyCap": 999999999,
+    "idle": {
+      "capSeconds": 43200,
+      "minDisplaySeconds": 60,
+      "goldBasePerMin": 7,
+      "goldGrowth": 1.065,
+      "dustBasePerMin": 2.6,
+      "dustGrowth": 1.06,
+      "catXpBasePerMin": 5,
+      "catXpGrowth": 1.055,
+      "forgeBasePerHour": 0.4,
+      "forgePerStageHour": 0.05,
+      "scrollPer12hBase": 1,
+      "scrollStageDiv": 5,
+      "unclearedMultiplier": 0.5,
+      "chowPerMin": 0.1,
+      "beastCagePer12hBase": 0,
+      "beastCageStageDiv": 4
+    },
+    "levelUp": {
+      "goldBase": 80,
+      "goldExp": 1.45,
+      "xpBase": 25,
+      "xpExp": 1.22,
+      "maxLevel": 240
+    },
+    "cats": {
+      "specialtyBonus": 0.15
+    },
+    "account": {
+      "xpBase": 15,
+      "xpPerLevel": 4,
+      "maxLevel": 300,
+      "floorsPerLevels": 20,
+      "maxFloors": 5,
+      "pvpWinXp": 25
+    },
+    "fortress": {
+      "hpBase": 12000,
+      "hpGrowth": 1.08,
+      "hpPerFloor": 800,
+      "upgradeGoldBase": 400,
+      "upgradeGoldExp": 1.4,
+      "defaultTurretId": "turret-0"
+    },
+    "turret": {
+      "goldBase": 60,
+      "goldExp": 1.4,
+      "dustBase": 30,
+      "dustExp": 1.3,
+      "starBonusPerStar": 0.14,
+      "levelCapBase": 40,
+      "levelCapPerStar": 8,
+      "emptyOperatorMult": 0.7,
+      "operatorAtkRef": 50,
+      "operatorAtkCoeff": 0.5,
+      "operatorFlatAtk": 0.15,
+      "operatorHasteCoeff": 0.25,
+      "hasteCap": 0.3,
+      "minFireInterval": 0.15
+    },
+    "gear": {
+      "maxStars": 5,
+      "starBonusPerStar": 0.12,
+      "factionMult": 1.1,
+      "rarityMult": {
+        "COMMON": 1,
+        "RARE": 1.25,
+        "ELITE": 1.55,
+        "LEGENDARY": 1.9,
+        "MYTHIC": 2.3
+      },
+      "enhance": {
+        "goldBase": 200,
+        "forgeBase": 5,
+        "forgeStep": 5
+      }
+    },
+    "gacha": {
+      "pityElite": 10,
+      "pityLegendary": 40,
+      "weights": {
+        "COMMON": 5000,
+        "RARE": 3500,
+        "ELITE": 1200,
+        "LEGENDARY": 270,
+        "MYTHIC": 30
+      }
+    },
+    "pvp": {
+      "ratingStart": 1000,
+      "ratingMin": 0,
+      "eloK": 32,
+      "eloDiv": 400,
+      "winCoins": 200,
+      "winDust": 80,
+      "winTokens": 8,
+      "loseTokens": 2,
+      "dailyTokenCap": 40,
+      "skillAiInterval": 0.5
+    },
+    "nexus": {
+      "startingSlots": 3,
+      "maxSlots": 8,
+      "slotUnlocks": [
+        {
+          "clear": 4,
+          "slots": 4
+        },
+        {
+          "clear": 6,
+          "slots": 5
+        },
+        {
+          "clear": 8,
+          "slots": 6
+        },
+        {
+          "clear": 10,
+          "slots": 7
+        },
+        {
+          "clear": 13,
+          "slots": 8
+        }
+      ]
+    },
+    "classic": {
+      "maxHp": 48000,
+      "energyMax": 600,
+      "energyRegen": 9,
+      "energyOnKill": 6
+    },
+    "loadoutEnergy": {
+      "max": 600,
+      "startFrac": 0.3333333333333333,
+      "regen": 16,
+      "onKill": 12
+    },
+    "militia": {
+      "maxHp": 240,
+      "damageMult": 0.75
+    },
+    "combat": {
+      "healUnitPct": 0.4,
+      "defendRadius": 140
+    },
+    "skills": {
+      "maxLevel": 8,
+      "costReducePerLevel": 0.06,
+      "minCostFrac": 0.55,
+      "effectPerLevel": 0.1,
+      "cdReduce": 0.25,
+      "minCd": 5,
+      "coreCostIsLevel": true,
+      "bossCoreFirst": {
+        "5": 2,
+        "10": 3,
+        "15": 4,
+        "20": 6
+      },
+      "bossCoreRepeat": {
+        "5": 1,
+        "10": 1,
+        "15": 2,
+        "20": 2
+      }
+    },
+    "monsters": {
+      "cages": {
+        "beastCage": {
+          "COMMON": 5500,
+          "RARE": 3000,
+          "ELITE": 1200,
+          "LEGENDARY": 300,
+          "MYTHIC": 0
+        },
+        "moonCage": {
+          "COMMON": 2000,
+          "RARE": 4000,
+          "ELITE": 2700,
+          "LEGENDARY": 1200,
+          "MYTHIC": 100
+        }
+      },
+      "pity": {
+        "elite": 10,
+        "legendary": 40,
+        "mythic": 80
+      },
+      "shardsByRarity": {
+        "COMMON": 10,
+        "RARE": 20,
+        "ELITE": 40,
+        "LEGENDARY": 80,
+        "MYTHIC": 150
+      },
+      "starShardCosts": [
+        20,
+        40,
+        80,
+        160,
+        280
+      ],
+      "chowBase": 12,
+      "chowExp": 1.3,
+      "levelCapBase": 20,
+      "levelCapPerStar": 16,
+      "evo": [
+        {
+          "minStars": 3,
+          "minLevel": 40,
+          "shards": 50
+        },
+        {
+          "minStars": 5,
+          "minLevel": 80,
+          "shards": 100
+        }
+      ],
+      "passiveMaxHpCap": 0.08,
+      "passiveRegenCap": 0.8,
+      "evoMultPerStage": 0.25,
+      "starBonusPerStar": 0.14,
+      "levelGrowth": 0.08,
+      "ivBonus": 0.2,
+      "slots": {
+        "secondAtCaught": 5,
+        "secondAtLevel": 10,
+        "thirdAtCaught": 10,
+        "thirdAtLevel": 25
+      },
+      "shop": {
+        "beastCageCoins": 1500,
+        "beastCageGems": 80,
+        "moonCageGems": 250,
+        "dailyBeastLimit": 5,
+        "dailyMoonLimit": 2,
+        "dailyRefresh": true
+      },
+      "arenaShop": {
+        "daily": true,
+        "stock": []
+      },
+      "rewards": {
+        "5": {
+          "beastCage": 2,
+          "monsterChow": 20,
+          "coins": 200
+        },
+        "10": {
+          "moonCage": 1,
+          "monsterChow": 40,
+          "coins": 500
+        },
+        "15": {
+          "moonCage": 2,
+          "monsterChow": 80,
+          "gem": 20
+        },
+        "20": {
+          "moonCage": 5,
+          "monsterChow": 200,
+          "gem": 100,
+          "relicStone": 1
+        }
+      },
+      "capture": {
+        "energyCost": 0,
+        "hpThreshold": 0.25,
+        "bossHpThreshold": 0.1,
+        "bossBaseChance": 0.02,
+        "maxThrows": 5,
+        "chanceCap": 0.9,
+        "hpSlope": 0.55,
+        "baseChance": {
+          "beastCage": {
+            "COMMON": 0.5,
+            "RARE": 0.28,
+            "ELITE": 0.14,
+            "LEGENDARY": 0.06,
+            "MYTHIC": 0
+          },
+          "moonCage": {
+            "COMMON": 0.8,
+            "RARE": 0.55,
+            "ELITE": 0.32,
+            "LEGENDARY": 0.16,
+            "MYTHIC": 0
+          }
+        }
+      },
+      "startingBag": {
+        "beastCage": 3,
+        "moonCage": 0,
+        "monsterChow": 15
+      },
+      "knockback": {
+        "distance": 130,
+        "stun": 0.6,
+        "flyingMult": 0.7,
+        "infantryMult": 0.6
+      },
+      "loot": {
+        "cageBonusChance": 0.15,
+        "moonChance": 0.08,
+        "chowBase": 8,
+        "chowKillDiv": 5
+      }
+    },
+    "startingRoster": [
+      "cat-0",
+      "cat-1",
+      "cat-2"
+    ],
+    "ascension": {
+      "levelCaps": {
+        "RECRUIT": 20,
+        "VETERAN": 40,
+        "ELITE": 60,
+        "ELITE_PLUS": 80,
+        "LEGENDARY": 100,
+        "LEGENDARY_PLUS": 120,
+        "MYTHIC": 140,
+        "MYTHIC_PLUS": 160,
+        "TRANSCENDENT": 180,
+        "TRANSCENDENT_1": 200,
+        "TRANSCENDENT_2": 220,
+        "TRANSCENDENT_3": 240
+      },
+      "tierMultipliers": {
+        "RECRUIT": 1,
+        "VETERAN": 1.1,
+        "ELITE": 1.22,
+        "ELITE_PLUS": 1.35,
+        "LEGENDARY": 1.5,
+        "LEGENDARY_PLUS": 1.66,
+        "MYTHIC": 1.85,
+        "MYTHIC_PLUS": 2.05,
+        "TRANSCENDENT": 2.3,
+        "TRANSCENDENT_1": 2.5,
+        "TRANSCENDENT_2": 2.7,
+        "TRANSCENDENT_3": 2.95
+      },
+      "needSelf": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1
+      ],
+      "essenceBase": 10,
+      "essenceStep": 15
+    },
+    "recycle": {
+      "COMMON": 5,
+      "RARE": 15,
+      "ELITE": 40,
+      "LEGENDARY": 120,
+      "MYTHIC": 250,
+      "perCopy": 20
+    },
+    "unlocks": {
+      "monsters": 1,
+      "skills": 2,
+      "town": 3,
+      "shop": 3,
+      "summon": 4,
+      "arena": 5
+    },
+    "daily": {
+      "bonus": {
+        "coins": 800,
+        "spiritDust": 200,
+        "gem": 20,
+        "summonScroll": 1,
+        "monsterChow": 10,
+        "accountXp": 150
+      },
+      "individual": {
+        "coins": 40,
+        "catXp": 10
+      },
+      "monsterGift": {
+        "beastCage": 1,
+        "monsterChow": 5
+      }
+    },
+    "campaign": {
+      "hpBase": 0.13,
+      "atkBase": 0.17,
+      "growth": 1.12,
+      "bossHpBase": 0.018,
+      "firstGoldBase": 100,
+      "firstGoldStep": 30,
+      "repeatGoldBase": 40,
+      "repeatGoldStep": 12
+    }
+  },
+  "monsterBook": [
+    {
+      "speciesId": "bug-0",
+      "catchRarity": "COMMON",
+      "element": "nature",
+      "baseAtk": 18,
+      "baseHp": 80,
+      "baseDef": 8,
+      "baseSpeed": 90,
+      "weapon": {
+        "name": "Đàn kiến",
+        "kind": "rapid",
+        "rate": 0.55,
+        "range": 700,
+        "color": "#ff9d65"
+      },
+      "passive": null
+    },
+    {
+      "speciesId": "beast-0",
+      "catchRarity": "RARE",
+      "element": "dark",
+      "baseAtk": 26,
+      "baseHp": 110,
+      "baseDef": 10,
+      "baseSpeed": 95,
+      "weapon": {
+        "name": "Nanh đêm",
+        "kind": "claw",
+        "rate": 1.1,
+        "range": 620,
+        "color": "#bca6d0",
+        "count": 3
+      },
+      "passive": null
+    },
+    {
+      "speciesId": "bug-4",
+      "catchRarity": "COMMON",
+      "element": "nature",
+      "baseAtk": 20,
+      "baseHp": 70,
+      "baseDef": 6,
+      "baseSpeed": 110,
+      "weapon": {
+        "name": "Kim chích",
+        "kind": "arrow",
+        "rate": 0.9,
+        "range": 820,
+        "color": "#ffdc6b"
+      },
+      "passive": null,
+      "flying": true
+    },
+    {
+      "speciesId": "bug-1",
+      "catchRarity": "RARE",
+      "element": "earth",
+      "baseAtk": 24,
+      "baseHp": 140,
+      "baseDef": 18,
+      "baseSpeed": 70,
+      "weapon": {
+        "name": "Giáp va",
+        "kind": "shell",
+        "rate": 1.6,
+        "range": 640,
+        "color": "#ff777d",
+        "splash": 50
+      },
+      "passive": {
+        "fortressDefPct": 0.02
+      }
+    },
+    {
+      "speciesId": "beast-1",
+      "catchRarity": "RARE",
+      "element": "earth",
+      "baseAtk": 28,
+      "baseHp": 130,
+      "baseDef": 12,
+      "baseSpeed": 80,
+      "weapon": {
+        "name": "Húc",
+        "kind": "shell",
+        "rate": 1.5,
+        "range": 600,
+        "color": "#e8ae76"
+      },
+      "passive": null
+    },
+    {
+      "speciesId": "bug-2",
+      "catchRarity": "COMMON",
+      "element": "dark",
+      "baseAtk": 19,
+      "baseHp": 85,
+      "baseDef": 8,
+      "baseSpeed": 75,
+      "weapon": {
+        "name": "Tơ",
+        "kind": "poison",
+        "rate": 1.3,
+        "range": 900,
+        "color": "#c79ae0",
+        "slow": 2
+      },
+      "passive": null
+    },
+    {
+      "speciesId": "bug-3",
+      "catchRarity": "RARE",
+      "element": "nature",
+      "baseAtk": 27,
+      "baseHp": 100,
+      "baseDef": 9,
+      "baseSpeed": 100,
+      "weapon": {
+        "name": "Đao nhảy",
+        "kind": "claw",
+        "rate": 1,
+        "range": 580,
+        "color": "#c5f47c"
+      },
+      "passive": null
+    },
+    {
+      "speciesId": "beast-2",
+      "catchRarity": "ELITE",
+      "element": "fire",
+      "baseAtk": 36,
+      "baseHp": 180,
+      "baseDef": 14,
+      "baseSpeed": 70,
+      "weapon": {
+        "name": "Cú vồ",
+        "kind": "shell",
+        "rate": 1.8,
+        "range": 620,
+        "color": "#f4a776"
+      },
+      "passive": null
+    },
+    {
+      "speciesId": "bug-5",
+      "catchRarity": "COMMON",
+      "element": "earth",
+      "baseAtk": 21,
+      "baseHp": 90,
+      "baseDef": 10,
+      "baseSpeed": 80,
+      "weapon": {
+        "name": "Khoan đất",
+        "kind": "drill",
+        "rate": 1.4,
+        "range": 640,
+        "color": "#ffe0a7",
+        "pierce": 2
+      },
+      "passive": null
+    },
+    {
+      "speciesId": "beast-4",
+      "catchRarity": "ELITE",
+      "element": "fire",
+      "baseAtk": 38,
+      "baseHp": 140,
+      "baseDef": 10,
+      "baseSpeed": 115,
+      "weapon": {
+        "name": "Nhát kiếm",
+        "kind": "sniper",
+        "rate": 1.7,
+        "range": 1000,
+        "color": "#ffca57",
+        "pierce": 2
+      },
+      "passive": null
+    },
+    {
+      "speciesId": "bug-6",
+      "catchRarity": "RARE",
+      "element": "poison",
+      "baseAtk": 25,
+      "baseHp": 120,
+      "baseDef": 11,
+      "baseSpeed": 70,
+      "weapon": {
+        "name": "Nọc",
+        "kind": "poison",
+        "rate": 1.5,
+        "range": 880,
+        "color": "#c298ed",
+        "poison": 4
+      },
+      "passive": null
+    },
+    {
+      "speciesId": "beast-3",
+      "catchRarity": "ELITE",
+      "element": "ice",
+      "baseAtk": 32,
+      "baseHp": 160,
+      "baseDef": 12,
+      "baseSpeed": 65,
+      "weapon": {
+        "name": "Băng ném",
+        "kind": "ice",
+        "rate": 1.4,
+        "range": 920,
+        "color": "#8eeaff",
+        "slow": 3
+      },
+      "passive": {
+        "energyRegen": 0.4
+      }
+    },
+    {
+      "speciesId": "bug-7",
+      "catchRarity": "ELITE",
+      "element": "poison",
+      "baseAtk": 30,
+      "baseHp": 110,
+      "baseDef": 8,
+      "baseSpeed": 100,
+      "weapon": {
+        "name": "Bụi ảo",
+        "kind": "poison",
+        "rate": 1.3,
+        "range": 860,
+        "color": "#edb569",
+        "splash": 80,
+        "poison": 3
+      },
+      "passive": null,
+      "flying": true
+    },
+    {
+      "speciesId": "beast-5",
+      "catchRarity": "LEGENDARY",
+      "element": "fire",
+      "baseAtk": 44,
+      "baseHp": 220,
+      "baseDef": 20,
+      "baseSpeed": 55,
+      "weapon": {
+        "name": "Dung nham",
+        "kind": "flame",
+        "rate": 0.9,
+        "range": 700,
+        "color": "#ffaf47",
+        "burn": 4,
+        "splash": 70
+      },
+      "passive": {
+        "maxHpPct": 0.02
+      }
+    },
+    {
+      "speciesId": "beast-6",
+      "catchRarity": "LEGENDARY",
+      "element": "earth",
+      "baseAtk": 48,
+      "baseHp": 240,
+      "baseDef": 22,
+      "baseSpeed": 60,
+      "weapon": {
+        "name": "Húc giáp",
+        "kind": "shell",
+        "rate": 2,
+        "range": 640,
+        "color": "#c3a0ef"
+      },
+      "passive": {
+        "fortressDefPct": 0.03
+      }
+    },
+    {
+      "speciesId": "bug-8",
+      "catchRarity": "ELITE",
+      "element": "crystal",
+      "baseAtk": 34,
+      "baseHp": 150,
+      "baseDef": 14,
+      "baseSpeed": 70,
+      "weapon": {
+        "name": "Mảnh pha lê",
+        "kind": "crystal",
+        "rate": 1.6,
+        "range": 840,
+        "color": "#ffce69",
+        "count": 5,
+        "pierce": 1
+      },
+      "passive": null
+    },
+    {
+      "speciesId": "beast-7",
+      "catchRarity": "LEGENDARY",
+      "element": "wind",
+      "baseAtk": 42,
+      "baseHp": 170,
+      "baseDef": 11,
+      "baseSpeed": 105,
+      "weapon": {
+        "name": "Lông vũ",
+        "kind": "arrow",
+        "rate": 1.2,
+        "range": 1100,
+        "color": "#ffd99b",
+        "count": 3
+      },
+      "passive": null,
+      "flying": true
+    },
+    {
+      "speciesId": "beast-9",
+      "catchRarity": "LEGENDARY",
+      "element": "nature",
+      "baseAtk": 30,
+      "baseHp": 200,
+      "baseDef": 14,
+      "baseSpeed": 70,
+      "weapon": {
+        "name": "Hào quang",
+        "kind": "plasma",
+        "rate": 1.6,
+        "range": 800,
+        "color": "#b5ed8e",
+        "splash": 60
+      },
+      "passive": {
+        "maxHpPct": 0.03
+      }
+    },
+    {
+      "speciesId": "bug-9",
+      "catchRarity": "LEGENDARY",
+      "element": "poison",
+      "baseAtk": 46,
+      "baseHp": 210,
+      "baseDef": 16,
+      "baseSpeed": 60,
+      "weapon": {
+        "name": "Đạn độc chúa",
+        "kind": "poison",
+        "rate": 1.7,
+        "range": 900,
+        "color": "#ed8e9c",
+        "splash": 90,
+        "poison": 5
+      },
+      "passive": null
+    },
+    {
+      "speciesId": "beast-8",
+      "catchRarity": "MYTHIC",
+      "element": "dark",
+      "baseAtk": 70,
+      "baseHp": 300,
+      "baseDef": 18,
+      "baseSpeed": 80,
+      "weapon": {
+        "name": "Hơi rồng",
+        "kind": "flame",
+        "rate": 1.5,
+        "range": 1000,
+        "color": "#ff767d",
+        "splash": 120,
+        "burn": 5
+      },
+      "passive": {
+        "maxHpPct": 0.04
+      }
+    }
+  ]
+}
