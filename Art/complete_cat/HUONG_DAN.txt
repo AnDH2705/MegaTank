@@ -1,0 +1,26 @@
+﻿PHÁO ĐÀI MÈO v3.7 — BẢN CHƠI OFFLINE
+
+CHẠY GAME
+Bấm đúp CHOI_NGAY.html, mở bằng Chrome hoặc Edge. Windows có thể bấm MO_GAME.cmd.
+Chỉ cần chép CHOI_NGAY.html sang máy khác là đủ. Không cần Internet, Node.js, npm hay cài thư viện.
+macOS/Linux: mở cùng file HTML bằng trình duyệt có import maps, ES modules và WebGL 2.
+Cần máy/trình duyệt có tăng tốc đồ họa WebGL 2; không thể bảo đảm mọi thiết bị hoặc trình duyệt cũ.
+Đã thử trực tiếp trên Chrome và Edge/Windows; chưa thử trên macOS/Linux hoặc điện thoại.
+
+ĐIỀU KHIỂN
+A/D hoặc mũi tên: di chuyển. Chuột: chọn mục tiêu. 1–4: kỹ năng.
+C: bắt quái. Shift+C: Lồng trăng. P/Space: tạm dừng. B: sổ. F: toàn màn hình.
+Hub: Hành quân / Doanh trại / Thành mèo. Classic: Cài đặt > Thử thách trăng.
+
+LƯU TIẾN TRÌNH
+Tiến trình nằm trong localStorage của trình duyệt, không nằm trong file HTML.
+Giữ nguyên đường dẫn và dùng cùng trình duyệt để tiếp tục. File local có cách lưu khác nhau giữa trình duyệt.
+Mở Cài đặt > XUẤT HỒ SƠ để giữ bản JSON dự phòng. Bản hiện tại chưa có nút nhập hồ sơ.
+Gói không tự lấy save từ bản đang chạy ở http://127.0.0.1:5175/.
+Chép game sang máy khác không tự chuyển tiến trình. Không dùng chế độ ẩn danh nếu muốn giữ save.
+
+THÔNG TIN
+Game giữ nguyên từ source 290a24231dce051677378569e6395551f42b850d.
+PvP là mô phỏng local, chưa có multiplayer online.
+Ảnh và Three.js được nhúng nguyên dữ liệu trong HTML. Không gọi CDN khi chơi.
+THIRD_PARTY_LICENSES.txt chứa giấy phép Three.js.
