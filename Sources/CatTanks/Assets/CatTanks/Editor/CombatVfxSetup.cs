@@ -42,6 +42,13 @@ namespace CatTanks.Editor
             foreach(var audio in wrapper.GetComponentsInChildren<AudioSource>(true))UnityEngine.Object.DestroyImmediate(audio);
             foreach(var light in wrapper.GetComponentsInChildren<Light>(true))UnityEngine.Object.DestroyImmediate(light);
             var systems=wrapper.GetComponentsInChildren<ParticleSystem>(true);
+            // The muzzle sheet points left. Keep it in the battle's XY plane and
+            // let the wrapper's firing angle rotate the particle artwork too.
+            if(key=="muzzle")
+            {
+                child.transform.localRotation=Quaternion.Euler(0,0,180);
+                foreach(var renderer in child.GetComponentsInChildren<ParticleSystemRenderer>(true))renderer.alignment=ParticleSystemRenderSpace.Local;
+            }
             foreach(var ps in systems)
             {
                 var main=ps.main;main.loop=false;main.playOnAwake=false;main.stopAction=ParticleSystemStopAction.None;main.scalingMode=ParticleSystemScalingMode.Hierarchy;main.simulationSpace=ParticleSystemSimulationSpace.Local;main.maxParticles=Mathf.Min(main.maxParticles,256);
