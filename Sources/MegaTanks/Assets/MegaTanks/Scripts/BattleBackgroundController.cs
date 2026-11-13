@@ -15,6 +15,8 @@ namespace MegaTanks
             public Transform root;
             public int order;
             public readonly List<SpriteRenderer> tiles = new List<SpriteRenderer>();
+            public readonly List<SpriteRenderer> roadExtensions = new List<SpriteRenderer>();
+            public Sprite roadEdge;
         }
         sealed class CameraView
         {
@@ -27,6 +29,7 @@ namespace MegaTanks
         readonly List<CameraView> views = new List<CameraView>();
         public int CurrentIndex { get; private set; } = -1;
         public int SelectionCount { get; private set; }
+        public float SceneryScale => Mathf.Clamp(catalog.sceneryScale,.1f,1);
         public BattleBackgroundPreset CurrentPreset => catalog.presets[CurrentIndex];
 
         public void Configure(BattleBackgroundCatalog data, Camera tank)
@@ -52,6 +55,7 @@ namespace MegaTanks
             CurrentIndex = index;
             foreach (var view in views)
             {
+                foreach(var previous in view.layers) if(previous.roadEdge!=null)Destroy(previous.roadEdge);
                 if (view.root != null) { view.root.SetActive(false); Destroy(view.root); }
                 view.root = new GameObject(view.camera.name + " background");
                 view.root.transform.SetParent(transform, false);
@@ -62,7 +66,15 @@ namespace MegaTanks
                     var data = preset.layers[i];
                     if (data.sprite == null) throw new InvalidOperationException("Missing layer sprite in " + preset.id);
                     var root = new GameObject(data.sprite.name).transform; root.SetParent(view.root.transform, false);
-                    view.layers.Add(new LayerView { data = data, root = root, order = -200 + i });
+                    var layer=new LayerView { data = data, root = root, order = -200 + i };
+                    if(data.sprite.name=="03_road")
+                    {
+                        // Reflect a textured road section below the canvas rather than stretching one pixel row.
+                        var rect=data.sprite.rect;rect.height=Mathf.Min(200,rect.height);
+                        layer.roadEdge=Sprite.Create(data.sprite.texture,rect,Vector2.one*.5f,data.sprite.pixelsPerUnit,0,SpriteMeshType.FullRect);
+                        layer.roadEdge.name="Road lower edge";
+                    }
+                    view.layers.Add(layer);
                 }
             }
             RefreshViews();
@@ -77,7 +89,17 @@ namespace MegaTanks
                 foreach (var layer in view.layers)
                 {
                     float scale = height / layer.data.sprite.bounds.size.y;
+                    float sceneryFactor=layer.data.repeatHorizontally?SceneryScale:1;
+                    scale*=sceneryFactor;
                     if (!layer.data.repeatHorizontally) scale = Mathf.Max(scale, viewWidth / layer.data.sprite.bounds.size.x);
+                    // Scale scenery around the ground line so the tank stays planted on the road.
+                    float centerY=layer.data.repeatHorizontally
+                        ? BattleGame.SceneryGroundHeight+(view.camera.transform.position.y-BattleGame.SceneryGroundHeight)*sceneryFactor
+                        : view.camera.transform.position.y;
+                    if(layer.data.sprite.name=="05_foreground_debris")
+                        centerY=view.camera.transform.position.y-height*.5f-layer.data.sprite.bounds.min.y*scale;
+                    else if(layer.data.sprite.name=="06_overhead_cables")
+                        centerY=view.camera.transform.position.y+height*.5f-layer.data.sprite.bounds.max.y*scale;
                     float width = layer.data.sprite.bounds.size.x * scale;
                     int radius = layer.data.repeatHorizontally ? Mathf.Max(1, Mathf.CeilToInt(viewWidth / width)) : 0;
                     int count = radius * 2 + 1;
@@ -101,16 +123,34 @@ namespace MegaTanks
                         var renderer = layer.tiles[i];
                         float x = layer.data.repeatHorizontally
                             ? view.camera.transform.position.x + (float)(tile * width - travel) : view.camera.transform.position.x;
-                        renderer.transform.position = new Vector3(x, view.camera.transform.position.y, 5);
+                        renderer.transform.position = new Vector3(x, centerY, 5);
                         renderer.transform.localScale = Vector3.one * scale;
                         // Alternating mirror tiles join identical edges; these source images are not seamless repeats.
                         renderer.flipX = layer.data.repeatHorizontally && Math.Abs(tile % 2) > .5;
+                        if(layer.roadEdge!=null)
+                        {
+                            if(layer.roadExtensions.Count<=i)
+                            {
+                                var edge=new GameObject("Road extension");edge.transform.SetParent(layer.root,false);edge.layer=view.layer;
+                                var fill=edge.AddComponent<SpriteRenderer>();fill.sprite=layer.roadEdge;fill.sortingOrder=layer.order;
+                                layer.roadExtensions.Add(fill);
+                            }
+                            var extension=layer.roadExtensions[i];extension.gameObject.SetActive(true);
+                            float bottom=view.camera.transform.position.y-height*.5f;
+                            float roadBottom=centerY-layer.data.sprite.bounds.size.y*scale*.5f;
+                            float fillHeight=Mathf.Max(0,roadBottom-bottom);
+                            extension.enabled=fillHeight>.001f;extension.flipX=renderer.flipX;extension.flipY=true;
+                            extension.transform.position=new Vector3(x,bottom+fillHeight*.5f-.005f,5);
+                            extension.transform.localScale=new Vector3(scale,(fillHeight+.01f)/layer.roadEdge.bounds.size.y,1);
+                        }
                     }
+                    for(int i=count;i<layer.roadExtensions.Count;i++)layer.roadExtensions[i].gameObject.SetActive(false);
                 }
             }
         }
         void OnDestroy()
         {
+            foreach(var view in views)foreach(var layer in view.layers)if(layer.roadEdge!=null)Destroy(layer.roadEdge);
             foreach (var view in views) if (view.camera != null) view.camera.cullingMask = view.originalMask;
         }
     }

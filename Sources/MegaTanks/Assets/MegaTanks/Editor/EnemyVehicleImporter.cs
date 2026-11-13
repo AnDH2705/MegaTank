@@ -50,6 +50,7 @@ namespace MegaTanks.Editor
 
         static void ImportVehicle(string folder, string id, float width, EnemyDataManager database)
         {
+            var definition=database.Get(id).Copy();
             var manifest = JsonUtility.FromJson<Manifest>(File.ReadAllText(ArtRoot + folder + "/parts_manifest.json"));
             foreach (Part part in manifest.layers)
                 ConfigureSprite(ArtRoot + folder + "/" + part.file, new Vector2(part.pivot_local_px[0] / part.size_px[0], 1 - part.pivot_local_px[1] / part.size_px[1]));
@@ -84,11 +85,14 @@ namespace MegaTanks.Editor
                 muzzle.localPosition = folder == "car" ? Position(1374, 391) : Position(1214, 744);
                 var wheels = root.GetComponentsInChildren<Transform>().Where(part => part.name.Contains("wheel")).ToArray();
                 root.AddComponent<EnemyVehicleArtwork>().Configure(muzzle, wheels, propeller, frames, folder == "car");
+                bool firstImport = definition.artworkPrefab == null;
+                definition.artworkPrefab=root.GetComponent<EnemyVehicleArtwork>();
+                if(firstImport)definition.artworkWidth=width;
+                root.AddComponent<EnemyStatsProfile>().stats=definition;
                 string path = PrefabRoot + id + "Vehicle.prefab";
                 PrefabUtility.SaveAsPrefabAsset(root, path);
-                var definition = database.Get(id);
-                definition.artworkPrefab = AssetDatabase.LoadAssetAtPath<EnemyVehicleArtwork>(path);
-                definition.artworkWidth = width;
+                var profile=AssetDatabase.LoadAssetAtPath<GameObject>(path).GetComponent<EnemyStatsProfile>();
+                var profiles=database.enemyPrefabs.Where(p=>p!=null&&p.stats.id!=id).ToList();profiles.Add(profile);database.enemyPrefabs=profiles.ToArray();
             }
             finally { UnityEngine.Object.DestroyImmediate(root); }
         }

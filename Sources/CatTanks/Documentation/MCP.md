@@ -9,11 +9,18 @@ Package lấy từ bản đã có trên máy tại `AdMaker/AdMaker/Packages/com
 - HTTP server base URL: `http://127.0.0.1:8080`
 - MCP client URL: `http://127.0.0.1:8080/mcp`
 - Client Codex trên máy này đã có server `unityMCP`; không cần tạo thêm server trùng cổng.
-- `Assets/CatTanks/Editor/ProjectSetup.cs` gọi kết nối khi mở Editor và sau domain reload. Không gọi khi Unity ở batch mode.
+- `Assets/CatTanks/Editor/ProjectSetup.cs` gọi kết nối khi mở Editor và sau domain reload. Nếu server local chưa chạy, khởi động server qua package và chờ tối đa 60 giây trước khi nối bridge. Không gọi khi Unity ở batch mode; không khởi động lại server đang có kết nối.
 - Menu **CatTanks → Connect MCP** để thử kết nối lại.
 - **Window → MCP for Unity** để quản lý server/transport hoặc chẩn đoán kết nối.
 
 Đã xác minh project xuất hiện trong `mcpforunity://instances` với Unity **2022.3.62f1**, chọn được instance, đọc Console, chạy C#, bật/tắt Play Mode, chụp screenshot và build macOS qua MCP.
+
+### Kiểm tra trên Windows ngày 2026-11-13
+
+- Đã cài server `mcpforunityserver==10.1.0` bằng `uvx`, đúng phiên bản embedded package. Cấu hình Codex `unityMCP` hiện có trỏ đúng endpoint nên không cần thay đổi.
+- Khởi động server nền tại `127.0.0.1:8080`; `/health` trả về `healthy`, phiên bản `10.1.0`.
+- Unity **2022.3.62f2** kết nối thành công với instance `CatTanks@391bc8dd3400071e`; Console báo `CatTanks MCP connected: True`.
+- Nếu cần cài lại server trước khi mở Unity: `uvx --from mcpforunityserver==10.1.0 mcp-for-unity --help`.
 
 ## Khi chuyển sang máy khác
 

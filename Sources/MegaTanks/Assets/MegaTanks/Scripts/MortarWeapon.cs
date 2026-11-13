@@ -3,14 +3,14 @@ using UnityEngine;
 namespace MegaTanks
 {
     [System.Serializable]
-    public sealed class MortarStats
+    public sealed class MortarStats : WeaponCombatStats
     {
-        [Min(1)] public float damage = 60;
+        [Min(1), InspectorName("Base Damage")] public float damage = 60;
         [Min(.1f)] public float reloadTime = 6;
         [Min(1)] public float range = 80;
         [Range(46, 85)] public float launchAngle = 70;
         [Min(.1f)] public float gravity = 12;
-        [Min(0)] public int reserveCapacity = 20;
+        [Min(0), InspectorName("Max Ammo")] public int reserveCapacity = 20;
         public Vector2 deviation = new Vector2(1, 3);
         [Min(0)] public float fullDamageRadius = 2.5f;
         [Min(0)] public float halfDamageRadius = 5;
@@ -78,6 +78,7 @@ namespace MegaTanks
                 if (!TryHighArc(origin, aim, angle, gravity, out _, out float time)) return;
                 float predictedX = target.transform.position.x;
                 if (target.Velocity.x < 0) predictedX = Mathf.Max(target.StoppingX, predictedX + target.Velocity.x * time);
+                else if (target.Velocity.x > 0) predictedX = Mathf.Min(target.StoppingX, predictedX + target.Velocity.x * time);
                 aim = new Vector2(predictedX, target.Kind == EnemyKind.Ground ? BattleGame.GroundHeight : target.transform.position.y);
             }
             LastIntendedTarget = aim;
@@ -86,7 +87,7 @@ namespace MegaTanks
             LastAimPoint = aim; LastLaunchVelocity = launch;
             Ammo--; ShotsFired++; cooldown = Mathf.Max(.1f, stats.reloadTime);
             var shell = new GameObject("Mortar shell").AddComponent<Projectile2D>();
-            shell.InitializeMortar(origin, launch, stats.damage, gravity, stats.fullDamageRadius, stats.halfDamageRadius, stats.shellWidth, projectileSprite);
+            shell.InitializeMortar(origin, launch, stats.damage, gravity, stats.fullDamageRadius, stats.halfDamageRadius, stats.shellWidth, projectileSprite, stats);
             artwork.Fire();
             game.Flash(origin, new Color(1, .8f, .3f), .35f);
         }

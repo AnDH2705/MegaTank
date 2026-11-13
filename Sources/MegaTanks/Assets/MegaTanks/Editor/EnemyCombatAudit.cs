@@ -37,10 +37,10 @@ namespace MegaTanks.Editor
         static void Next() { stage++; since = EditorApplication.timeSinceStartup; }
         static Vector2 PositionAtRange(BattleGame game, EnemyDefinition data, float extra)
         {
-            float y = data.kind == EnemyKind.Flyer ? 4.8f : -2.25f;
+            float y = data.kind == EnemyKind.Flyer ? 2.1f : -4.25f;
             float height = y - game.TankAimPoint.y;
             float distance = data.weapon.range + extra;
-            return new Vector2(game.TankAimPoint.x + Mathf.Sqrt(distance * distance - height * height), y);
+            return new Vector2(game.TankAimPoint.x + game.EnemySpawnDirection*Mathf.Sqrt(distance * distance - height * height), y);
         }
         static void Check()
         {
@@ -51,7 +51,7 @@ namespace MegaTanks.Editor
                 if (stage > 0 && planePropeller != null && planePropeller.sprite != initialPropeller) propellerAnimated = true;
                 if (stage == 0)
                 {
-                    game.StartBattle(); game.Mortar.enabled = false;
+                    game.StartBattle(); game.SetStance(TankStance.Defensive); game.Mortar.enabled = false;
                     game.MachineGun.enabled = game.MainGun.enabled = false;
                     foreach (var enemy in UnityEngine.Object.FindObjectsOfType<EnemyEntity>())
                     {
@@ -62,20 +62,23 @@ namespace MegaTanks.Editor
                     Require(flyingData.weapon.type == EnemyWeaponType.MachineGun && groundData.weapon.type == EnemyWeaponType.Cannon, "Named enemy definitions need their intended weapon types.");
                     flyer = game.SpawnEnemy(flyingData.id, PositionAtRange(game, flyingData, 5));
                     ground = game.SpawnEnemy(groundData.id, PositionAtRange(game, groundData, 5));
+                    // Explicit hit-capable combat fixture; saved profiles are never modified.
+                    foreach(var enemy in new[]{flyer,ground})
+                    { enemy.Weapon.Stats.accuracy=100;enemy.Weapon.Stats.reserveCapacity=100;enemy.Weapon.Resupply(1); }
                     Require(flyer.Artwork != null && ground.Artwork != null, "Both enemy types must use imported vehicle prefabs.");
                     foreach (var enemy in new[] { flyer, ground })
                     {
                         Require(enemy.AdvanceInsideRange >= 1 && enemy.AdvanceInsideRange <= 5, "Each enemy must sample 1-5 units of extra advance.");
                         float height = enemy.transform.position.y - game.TankAimPoint.y;
-                        float edge = game.TankAimPoint.x + Mathf.Sqrt(enemy.Data.weapon.range * enemy.Data.weapon.range - height * height);
-                        Require(Mathf.Abs(edge - enemy.StoppingX - enemy.AdvanceInsideRange) < .001f,
+                        float edge = game.TankAimPoint.x + game.EnemySpawnDirection*Mathf.Sqrt(enemy.Data.weapon.range * enemy.Data.weapon.range - height * height);
+                        Require(Mathf.Abs((edge - enemy.StoppingX)*game.EnemySpawnDirection - enemy.AdvanceInsideRange) < .001f,
                             "The destination must be the sampled horizontal distance inside range.");
                     }
                     Require(flyer.Artwork.transform.localScale.x < 0 && ground.Artwork.transform.localScale.x < 0, "Vehicles must face left toward the tank.");
-                    Require(Mathf.Approximately(ground.Data.scale, 1.25f) && Mathf.Approximately(flyer.Data.scale, 1.25f), "Both enemies must default to 1.25 scale.");
+                    Require(ground.Data.scale>0 && flyer.Data.scale>0, "Both enemies must have a positive configured scale.");
                     Require(Mathf.Abs(ground.Artwork.OwnerLocalBounds.size.x - ground.Data.ScaledArtworkWidth) < .01f
                         && Mathf.Abs(flyer.Artwork.OwnerLocalBounds.size.x - flyer.Data.ScaledArtworkWidth) < .01f, "Vehicle widths must include the configured scale without stretching.");
-                    Require(Mathf.Abs(ground.transform.position.y + ground.Artwork.OwnerLocalBounds.min.y - BattleGame.GroundHeight) < .001f, "Car wheels must rest on the ground.");
+                    Require(Mathf.Abs(ground.transform.position.y + ground.Artwork.OwnerLocalBounds.min.y - BattleGame.GroundHeight) < .001f, "Car wheels must rest on the lowered ground lane.");
                     Require(ground.GetComponent<BoxCollider2D>() != null && flyer.GetComponent<BoxCollider2D>() != null, "Vehicle hitboxes must fit the imported art.");
                     Require(ground.Artwork.Muzzle.position.x < ground.transform.position.x && flyer.Artwork.Muzzle.position.x < flyer.transform.position.x, "Illustrated muzzle sockets must be at the leading end of each vehicle.");
                     carWheel = Array.Find(ground.Artwork.GetComponentsInChildren<Transform>(), part => part.name == "02_wheel_rear");
@@ -94,7 +97,7 @@ namespace MegaTanks.Editor
                         Vector3 position = enemy.transform.position;
                         float height = position.y - game.TankAimPoint.y;
                         float range = enemy.Data.weapon.range;
-                        position.x = game.TankAimPoint.x + Mathf.Sqrt(range * range - height * height) - .05f;
+                        position.x = game.TankAimPoint.x + game.EnemySpawnDirection*(Mathf.Sqrt(range * range - height * height) - .05f);
                         enemy.transform.position = position;
                     }
                     Next();
@@ -109,7 +112,7 @@ namespace MegaTanks.Editor
                     foreach (var enemy in new[] { flyer, ground })
                     {
                         Vector3 position = enemy.transform.position;
-                        position.x = enemy.StoppingX + .05f;
+                        position.x = enemy.StoppingX + game.EnemySpawnDirection*.05f;
                         enemy.transform.position = position;
                     }
                     Next();

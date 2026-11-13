@@ -10,65 +10,119 @@
       "name": "01_body_static",
       "file": "parts/01_body_static.png",
       "position_px": [
-        87,
-        61
+        71,
+        45
       ],
       "size_px": [
-        1308,
-        810
+        1340,
+        842
       ],
       "pivot_canvas_px": [
         748,
         800
       ],
       "pivot_local_px": [
-        661,
-        739
+        677,
+        755
       ],
-      "role": "Static car, driver and fittings; restored wheel-well backings"
+      "role": "Static car, driver and fittings; restored wheel-well backings",
+      "source_position_px": [
+        87,
+        61
+      ],
+      "source_size_px": [
+        1308,
+        810
+      ],
+      "padding_px": 16
     },
     {
       "name": "02_wheel_rear",
       "file": "parts/02_wheel_rear.png",
       "position_px": [
-        172,
-        633
+        156,
+        617
       ],
       "size_px": [
-        369,
-        367
+        401,
+        399
       ],
       "pivot_canvas_px": [
         355,
         822
       ],
       "pivot_local_px": [
-        183,
-        189
+        199,
+        205
       ],
-      "role": "Complete independently rotating rear tire"
+      "role": "Complete independently rotating rear tire",
+      "source_position_px": [
+        172,
+        633
+      ],
+      "source_size_px": [
+        369,
+        367
+      ],
+      "padding_px": 16
     },
     {
       "name": "03_wheel_front",
       "file": "parts/03_wheel_front.png",
       "position_px": [
-        893,
-        633
+        877,
+        617
       ],
       "size_px": [
-        367,
-        367
+        399,
+        399
       ],
       "pivot_canvas_px": [
         1079,
         822
       ],
       "pivot_local_px": [
-        186,
-        189
+        202,
+        205
       ],
-      "role": "Complete independently rotating front tire"
+      "role": "Complete independently rotating front tire",
+      "source_position_px": [
+        893,
+        633
+      ],
+      "source_size_px": [
+        367,
+        367
+      ],
+      "padding_px": 16
     }
   ],
-  "note": "Static driver and all other fixed details stay combined in one body sprite. Original visible artwork is retained; hidden moving-parts surfaces have been restored."
+  "note": "Animation attachment points and canvas pivots retained. PNGs have 16 px additional transparent padding; import the updated local pivots and positions. Painted revisions were uniformly registered, with no anisotropic stretching.",
+  "appearance_revision": "Contrast v2: cobalt car / cool crimson plane, near-black heavy contours, ivory light planes",
+  "registration": [
+    {
+      "name": "01_body_static",
+      "uniform_scale_from_repaint": 0.8204158790170132,
+      "paste_xy": [
+        19,
+        21
+      ]
+    },
+    {
+      "name": "02_wheel_rear",
+      "uniform_scale_from_repaint": 1.03125,
+      "paste_xy": [
+        20,
+        24
+      ]
+    },
+    {
+      "name": "03_wheel_front",
+      "uniform_scale_from_repaint": 1.0255681818181819,
+      "paste_xy": [
+        23,
+        24
+      ]
+    }
+  ]
 }

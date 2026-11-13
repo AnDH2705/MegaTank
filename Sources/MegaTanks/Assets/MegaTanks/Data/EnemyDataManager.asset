@@ -11,53 +11,115 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9caf9d2d6c16de44a8c78f96403f9885, type: 3}
   m_Name: EnemyDataManager
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
+  healthBarPrefab: {fileID: 81858777786787906, guid: c9e4c1dfaac7b4a4b846a5196aab70ae, type: 3}
+  enemyPrefabs:
+  - {fileID: 1739948587163343259, guid: bcd6c8d21d2f1bb4b8f954ae00edf34a, type: 3}
+  - {fileID: 1044248449838714769, guid: 3b507aaf765a67b48ae65ee7a1d7b791, type: 3}
   enemies:
-  - id: FlyingEnemy1
+  - armor: 0
+    evasion: 0
+    criticalChanceReduction: 0
+    criticalDamageReduction: 0
+    id: FlyingEnemy1
     kind: 1
     baseHealth: 26
-    healthPerWave: 4
+    baseHealthGrow: 0
+    armorGrow: 0
+    evasionGrow: 0
+    criticalChanceReductionGrow: 0
+    criticalDamageReductionGrow: 0
     baseSpeed: 0.75
-    speedPerWave: 0
-    maxSpeedBonus: 0.5
+    baseSpeedGrow: 0
     advanceInsideRange: {x: 1, y: 5}
+    advanceInsideRangeGrow: {x: 0, y: 0}
     score: 75
+    scoreGrow: 0
     baseScraps: 20
-    scrapsPerWave: 2
+    baseScrapsGrow: 0
     color: {r: 1, g: 0.63, b: 0.25, a: 1}
     artworkPrefab: {fileID: 8160580182256755550, guid: bcd6c8d21d2f1bb4b8f954ae00edf34a, type: 3}
     artworkWidth: 2.4
     scale: 1
     weapon:
+      damageBonus: 0
+      accuracy: 100
+      armorPenetration: 0
+      criticalChance: 0
+      criticalDamage: 0
+      damageType: 0
       type: 0
       damage: 2
-      range: 30
+      damageGrow: 0
+      damageBonusGrow: 0
+      accuracyGrow: 0
+      armorPenetrationGrow: 0
+      criticalChanceGrow: 0
+      criticalDamageGrow: 0
+      reserveCapacity: 30
+      reserveCapacityGrow: 0
+      range: 7.5
+      rangeGrow: 0
       salvoSize: 3
+      salvoSizeGrow: 0
       shotDelay: 0.1
+      shotDelayGrow: 0
       reloadTime: 1.8
+      reloadTimeGrow: 0
       projectileSpeed: 22
+      projectileSpeedGrow: 0
       gravity: 0.35
-  - id: GroundEnemy1
+      gravityGrow: 0
+  - armor: 0
+    evasion: 0
+    criticalChanceReduction: 0
+    criticalDamageReduction: 0
+    id: GroundEnemy1
     kind: 0
     baseHealth: 70
-    healthPerWave: 7
+    baseHealthGrow: 0
+    armorGrow: 0
+    evasionGrow: 0
+    criticalChanceReductionGrow: 0
+    criticalDamageReductionGrow: 0
     baseSpeed: 0.6
-    speedPerWave: 0
-    maxSpeedBonus: 0.5
+    baseSpeedGrow: 0
     advanceInsideRange: {x: 1, y: 5}
+    advanceInsideRangeGrow: {x: 0, y: 0}
     score: 100
+    scoreGrow: 0
     baseScraps: 30
-    scrapsPerWave: 3
+    baseScrapsGrow: 0
     color: {r: 0.96, g: 0.37, b: 0.4, a: 1}
     artworkPrefab: {fileID: 8415482458435174311, guid: 3b507aaf765a67b48ae65ee7a1d7b791, type: 3}
     artworkWidth: 2.2
     scale: 1
     weapon:
+      damageBonus: 0
+      accuracy: 100
+      armorPenetration: 0
+      criticalChance: 0
+      criticalDamage: 0
+      damageType: 0
       type: 1
       damage: 8
-      range: 40
+      damageGrow: 0
+      damageBonusGrow: 0
+      accuracyGrow: 0
+      armorPenetrationGrow: 0
+      criticalChanceGrow: 0
+      criticalDamageGrow: 0
+      reserveCapacity: 10
+      reserveCapacityGrow: 0
+      range: 10
+      rangeGrow: 0
       salvoSize: 1
+      salvoSizeGrow: 0
       shotDelay: 0.1
+      shotDelayGrow: 0
       reloadTime: 4
+      reloadTimeGrow: 0
       projectileSpeed: 18
+      projectileSpeedGrow: 0
       gravity: 3
+      gravityGrow: 0

@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -13,6 +14,7 @@ namespace CatTanks.Editor
     [InitializeOnLoad]
     public static class ProjectSetup
     {
+        private static bool connectingMcp;
         static ProjectSetup()
         {
             if (Application.isBatchMode) return;
@@ -21,11 +23,35 @@ namespace CatTanks.Editor
         [MenuItem("CatTanks/Connect MCP")]
         public static async void ConnectMcp()
         {
+            if (Application.isBatchMode || connectingMcp) return;
+            connectingMcp = true;
             EditorPrefs.SetBool("MCPForUnity.UseHttpTransport", true);
             EditorPrefs.SetString("MCPForUnity.HttpUrl", "http://127.0.0.1:8080");
-            if (!EditorPrefs.HasKey("MCPForUnity.HttpTransportScope")) EditorPrefs.SetString("MCPForUnity.HttpTransportScope", "local");
-            try {bool connected = await MCPServiceLocator.Bridge.StartAsync(); Debug.Log("CatTanks MCP connected: " + connected);}
+            EditorPrefs.SetString("MCPForUnity.HttpTransportScope", "local");
+            try
+            {
+                var server = MCPServiceLocator.Server;
+                if (!server.IsLocalHttpServerReachable())
+                {
+                    if (!server.StartLocalHttpServer(quiet: true))
+                    {
+                        Debug.LogWarning("CatTanks MCP: could not start the local server. Use Window > MCP for Unity to check Python/uv settings.");
+                        return;
+                    }
+                    for (int attempt = 0; attempt < 120 && !server.IsLocalHttpServerReachable(); attempt++)
+                        await Task.Delay(500);
+                    if (!server.IsLocalHttpServerReachable())
+                    {
+                        Debug.LogWarning("CatTanks MCP: local server did not become ready within 60 seconds. Check " + server.GetLocalHttpServerLaunchLogPath());
+                        return;
+                    }
+                }
+                bool connected = await MCPServiceLocator.Bridge.StartAsync();
+                if (connected) Debug.Log("CatTanks MCP connected: True");
+                else Debug.LogWarning("CatTanks MCP: bridge could not connect. Use CatTanks > Connect MCP to retry.");
+            }
             catch (Exception e) {Debug.LogWarning("CatTanks MCP: " + e.Message + ". Use Window > MCP for Unity to reconnect.");}
+            finally { connectingMcp = false; }
         }
         [MenuItem("CatTanks/Create Main Scene")]
         public static void CreateProject()
@@ -129,7 +155,10 @@ namespace CatTanks.Editor
         void OnPreprocessTexture()
         {
             if (!assetPath.StartsWith("Assets/CatTanks/Resources/Art/")) return;
-            var importer = (TextureImporter)assetImporter; importer.textureType = TextureImporterType.Default;
+            var importer = (TextureImporter)assetImporter; importer.textureType = TextureImporterType.Sprite;
+            importer.spriteImportMode = SpriteImportMode.Single;
+            var settings = new TextureImporterSettings(); importer.ReadTextureSettings(settings);
+            settings.spriteMeshType = SpriteMeshType.FullRect; importer.SetTextureSettings(settings);
             importer.alphaIsTransparency = true; importer.mipmapEnabled = false; importer.wrapMode = TextureWrapMode.Clamp;
             importer.filterMode = FilterMode.Bilinear; importer.maxTextureSize = 2048; importer.textureCompression = TextureImporterCompression.Uncompressed;
         }

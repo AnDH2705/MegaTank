@@ -31,7 +31,7 @@ namespace MegaTanks
             owner = enemy;
             renderers = GetComponentsInChildren<SpriteRenderer>();
             float scale = Mathf.Max(.1f, width) / WorldBounds().size.x;
-            transform.localScale = new Vector3(-scale, scale, scale);
+            transform.localScale = new Vector3(enemy.ApproachDirection*scale, scale, scale);
             Bounds bounds = WorldBounds();
             Vector3 offset = enemy.transform.position - bounds.center;
             if (groundVehicle) offset.y = BattleGame.GroundHeight - bounds.min.y;

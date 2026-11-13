@@ -16,6 +16,8 @@ namespace MegaTanks
         public StageDefinition Definition => definition;
         public StageRoute Route { get; private set; }
         public StageNode Current { get; private set; }
+        public int CurrentRoundNumber => (Current?.round ?? 0) + 1;
+        public int Difficulty => definition.stageDifficulty + CurrentRoundNumber;
         public StageMode Mode { get; private set; }
         public int EncounterWave { get; private set; }
         public int EncounterWaves => Current != null && Current.EncounterType == StageNodeType.HardBattle ? 3 : 1;
@@ -143,4 +145,3 @@ namespace MegaTanks
 
     }
 }
-

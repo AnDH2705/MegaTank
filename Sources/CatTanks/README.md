@@ -31,6 +31,12 @@ Bản macOS đã build sẵn tại `Builds/macOS/CatTanks.app`. Bản build nằ
 
 Giao diện và phong cảnh đã dựng lại cho Unity. Xem [Documentation/PORT_NOTES.md](Documentation/PORT_NOTES.md) về các khác biệt với HTML và phạm vi đã kiểm chứng.
 
+## UI/UX LayerLab
+
+Giao diện sử dụng Canvas native có sẵn trong scene Main và sprite từ **LayerLab GUI Pro–SuperCasual**. `Assets/CatTanks/Resources/UI/CatTanksUI.prefab` chứa 15 màn hình và 6 popup Prefab riêng dưới `UI/Popups`, mở được trong Prefab Mode để chỉnh bố cục. Nút, khung, thanh và ô nhập dùng 9-slice; icon/hình nhân vật giữ tỉ lệ. Dùng **Tab / Shift+Tab** để chọn nút, **Enter** để xác nhận và **Esc** để quay lại. Bố cục landscape tự co theo vùng an toàn của màn hình.
+
+Các công cụ nằm tại **CatTanks → UI**: dựng lại theme LayerLab, kiểm tra các luồng UI và chụp bộ ảnh các màn hình (hai mục sau chạy trong Play Mode). Thiết kế, phạm vi và cách kiểm chứng ở [design/ux/ui-overhaul.md](design/ux/ui-overhaul.md); ảnh tại `Captures/StudioUI`.
+
 ## Lưu tiến trình
 
 Lưu JSON độc lập với localStorage của HTML, tại `Application.persistentDataPath/cattanks-profile.json`.

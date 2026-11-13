@@ -109,7 +109,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.26, y: 1.4}
+  m_Size: {x: 2.3133333, y: 1.4533334}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -193,7 +193,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.15833333, y: 0.15833333}
+  m_Size: {x: 0.21166667, y: 0.21166667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -209,6 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6781285634262275809}
   - component: {fileID: 8160580182256755550}
+  - component: {fileID: 1739948587163343259}
   m_Layer: 0
   m_Name: FlyingEnemy1Vehicle
   m_TagString: Untagged
@@ -246,8 +247,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1406f05b03f8be4498a38350b23de60f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   muzzle: {fileID: 8245908762752803206}
   wheels:
   - {fileID: 6777392623249598444}
@@ -267,6 +268,72 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a567814aeda01584ea993ef43397c5ac, type: 3}
   - {fileID: 21300000, guid: b491be30bcd55864299c0bc945c5a014, type: 3}
   groundVehicle: 0
+--- !u!114 &1739948587163343259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4393680316325318099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7759c48cdc2f2409b57e41ac27d080, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  stats:
+    armor: 0
+    evasion: 0
+    criticalChanceReduction: 0
+    criticalDamageReduction: 0
+    id: FlyingEnemy1
+    kind: 1
+    baseHealth: 26
+    baseHealthGrow: 0
+    armorGrow: 0
+    evasionGrow: 0
+    criticalChanceReductionGrow: 0
+    criticalDamageReductionGrow: 0
+    baseSpeed: 0.75
+    baseSpeedGrow: 0
+    advanceInsideRange: {x: 1, y: 5}
+    advanceInsideRangeGrow: {x: 0, y: 0}
+    score: 75
+    scoreGrow: 0
+    baseScraps: 20
+    baseScrapsGrow: 0
+    color: {r: 1, g: 0.63, b: 0.25, a: 1}
+    artworkPrefab: {fileID: 8160580182256755550}
+    artworkWidth: 2.4
+    scale: 1
+    weapon:
+      damageBonus: 0
+      accuracy: 100
+      armorPenetration: 0
+      criticalChance: 0
+      criticalDamage: 0
+      damageType: 0
+      type: 0
+      damage: 2
+      damageGrow: 0
+      damageBonusGrow: 0
+      accuracyGrow: 0
+      armorPenetrationGrow: 0
+      criticalChanceGrow: 0
+      criticalDamageGrow: 0
+      reserveCapacity: 30
+      reserveCapacityGrow: 0
+      range: 7.5
+      rangeGrow: 0
+      salvoSize: 3
+      salvoSizeGrow: 0
+      shotDelay: 0.1
+      shotDelayGrow: 0
+      reloadTime: 1.8
+      reloadTimeGrow: 0
+      projectileSpeed: 22
+      projectileSpeedGrow: 0
+      gravity: 0.35
+      gravityGrow: 0
 --- !u!1 &5515466188118657916
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +412,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.33, y: 0.32833335}
+  m_Size: {x: 0.38333333, y: 0.38166666}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -429,7 +496,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16166666, y: 1.32}
+  m_Size: {x: 0.215, y: 1.3733333}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

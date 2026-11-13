@@ -78,7 +78,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.6116667, y: 0.6116667}
+  m_Size: {x: 0.665, y: 0.665}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -162,7 +162,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.18, y: 1.35}
+  m_Size: {x: 2.2333333, y: 1.4033333}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -277,7 +277,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.615, y: 0.6116667}
+  m_Size: {x: 0.66833335, y: 0.665}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -293,6 +293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2889210563067122535}
   - component: {fileID: 8415482458435174311}
+  - component: {fileID: 1044248449838714769}
   m_Layer: 0
   m_Name: GroundEnemy1Vehicle
   m_TagString: Untagged
@@ -329,8 +330,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1406f05b03f8be4498a38350b23de60f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   muzzle: {fileID: 8945744995209267449}
   wheels:
   - {fileID: 5004657006906426227}
@@ -338,3 +339,69 @@ MonoBehaviour:
   propeller: {fileID: 0}
   propellerFrames: []
   groundVehicle: 1
+--- !u!114 &1044248449838714769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7441041478846987056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7759c48cdc2f2409b57e41ac27d080, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  stats:
+    armor: 0
+    evasion: 0
+    criticalChanceReduction: 0
+    criticalDamageReduction: 0
+    id: GroundEnemy1
+    kind: 0
+    baseHealth: 70
+    baseHealthGrow: 0
+    armorGrow: 0
+    evasionGrow: 0
+    criticalChanceReductionGrow: 0
+    criticalDamageReductionGrow: 0
+    baseSpeed: 0.6
+    baseSpeedGrow: 0
+    advanceInsideRange: {x: 1, y: 5}
+    advanceInsideRangeGrow: {x: 0, y: 0}
+    score: 100
+    scoreGrow: 0
+    baseScraps: 30
+    baseScrapsGrow: 0
+    color: {r: 0.96, g: 0.37, b: 0.4, a: 1}
+    artworkPrefab: {fileID: 8415482458435174311}
+    artworkWidth: 2.2
+    scale: 1
+    weapon:
+      damageBonus: 0
+      accuracy: 100
+      armorPenetration: 0
+      criticalChance: 0
+      criticalDamage: 0
+      damageType: 0
+      type: 1
+      damage: 8
+      damageGrow: 0
+      damageBonusGrow: 0
+      accuracyGrow: 0
+      armorPenetrationGrow: 0
+      criticalChanceGrow: 0
+      criticalDamageGrow: 0
+      reserveCapacity: 10
+      reserveCapacityGrow: 0
+      range: 10
+      rangeGrow: 0
+      salvoSize: 1
+      salvoSizeGrow: 0
+      shotDelay: 0.1
+      shotDelayGrow: 0
+      reloadTime: 4
+      reloadTimeGrow: 0
+      projectileSpeed: 18
+      projectileSpeedGrow: 0
+      gravity: 3
+      gravityGrow: 0

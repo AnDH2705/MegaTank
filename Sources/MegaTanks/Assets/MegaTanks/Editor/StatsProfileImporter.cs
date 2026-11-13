@@ -27,7 +27,7 @@ namespace MegaTanks.Editor
             var spriteGuid = Regex.Match(legacy, @"(?m)^  cannonProjectileSprite:.*guid: ([a-f0-9]+)").Groups[1].Value;
             Sprite shell = AssetDatabase.LoadAssetAtPath<Sprite>(string.IsNullOrEmpty(spriteGuid) ? CannonProjectileImporter.SpritePath : AssetDatabase.GUIDToAssetPath(spriteGuid));
             var tank = Asset<TankDefinition>(TankPath, asset => asset.stats = new TankStats
-                { maxHull = 100, advanceSpeed = Read("tankAdvanceSpeed", .5f), scale = Read("tankScale", 1.2f) });
+                { maxHull = 100, advanceSpeed = Read("tankAdvanceSpeed", .5f), scale = Read("tankScale", .75f) });
             GunStats Gun(string prefix, bool heavy) => new GunStats
             {
                 preferredTarget = heavy ? EnemyKind.Ground : EnemyKind.Flyer,

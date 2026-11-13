@@ -39,15 +39,15 @@ namespace MegaTanks.Editor
         static EnemyEntity Dummy(BattleGame game, Vector2 position)
         {
             var data = game.EnemyDatabase.Get(EnemyKind.Ground);
-            float health = data.baseHealth, growth = data.healthPerWave, speed = data.baseSpeed, bonus = data.maxSpeedBonus;
+            float health = data.baseHealth, growth = data.baseHealthGrow, speed = data.baseSpeed, bonus = data.baseSpeedGrow;
             try
             {
-                data.baseHealth = 1000; data.healthPerWave = data.baseSpeed = data.maxSpeedBonus = 0;
+                data.baseHealth = 1000; data.baseHealthGrow = data.baseSpeed = data.baseSpeedGrow = 0;
                 var enemy = game.SpawnEnemy(data.id, position);
                 enemy.transform.position = position; enemy.enabled = enemy.Weapon.enabled = false;
                 return enemy;
             }
-            finally { data.baseHealth = health; data.healthPerWave = growth; data.baseSpeed = speed; data.maxSpeedBonus = bonus; }
+            finally { data.baseHealth = health; data.baseHealthGrow = growth; data.baseSpeed = speed; data.baseSpeedGrow = bonus; }
         }
         static void Check()
         {
@@ -58,6 +58,7 @@ namespace MegaTanks.Editor
                 if (stage == 0)
                 {
                     game.StartBattle(); game.MachineGun.enabled = game.MainGun.enabled = game.Mortar.enabled = false;
+                    game.Mortar.Stats.accuracy=100; // Exercise impacts with an explicit hit-capable runtime fixture.
                     Require(game.Artwork.Mortar != null && game.Artwork.Mortar.Muzzle != null, "Imported mortar and socket are required.");
                     Require(game.Mortar.Stats.fullDamageRadius == 2.5f && game.Mortar.Stats.halfDamageRadius == 5, "AoE radii must default to 2.5 and 5 units.");
                     foreach (float x in new[] { 5f, 20f, 80f })
@@ -105,6 +106,9 @@ namespace MegaTanks.Editor
                         && Mathf.Abs(game.Mortar.LastAimPoint.x - game.Mortar.LastIntendedTarget.x) <= 3.001f,
                         "Actual launches must apply the configured scatter.");
                     shell = UnityEngine.Object.FindObjectsOfType<Projectile2D>().First(projectile => projectile.IsMortar);
+                    var visual=shell.GetComponentInChildren<SpriteRenderer>();
+                    Require(visual.sprite==AssetDatabase.LoadAssetAtPath<Sprite>(HomeArtworkImporter.MortarSpritePath),"Live mortar shells must use the supplied mortar_ammo sprite.");
+                    Require(Mathf.Abs(visual.transform.localScale.x*visual.sprite.bounds.size.x-game.Mortar.Stats.shellWidth)<.001f&&Vector2.Dot(visual.transform.right,shell.Velocity.normalized)>.999f,"Mortar shell size and nose direction must follow the existing projectile settings.");
                     Require(shell.Team == ProjectileTeam.Player && shell.Velocity.y > 0, "Mortar shells must rise as player projectiles.");
                     pausedShell = shell.transform.position;
                     game.SetPaused(true); Next();

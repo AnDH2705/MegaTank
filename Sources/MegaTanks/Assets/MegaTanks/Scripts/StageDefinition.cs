@@ -2,10 +2,18 @@ using UnityEngine;
 
 namespace MegaTanks
 {
-    [CreateAssetMenu(menuName = "MegaTanks/Stage Definition")]
     public sealed class StageDefinition : ScriptableObject
     {
         public string stageName = "Stage 1";
+        [Min(1)] public int stageNumber = 1;
+        [Tooltip("Battle difficulty = this value + the current round number (starting at 1).")]
+        public int stageDifficulty;
+        public static int DefaultDifficulty(int number) => (number - 1) * 10;
+        public void InitializeStage(int number)
+        {
+            stageNumber=Mathf.Max(1,number);stageName="Stage "+stageNumber;
+            stageDifficulty=DefaultDifficulty(stageNumber);
+        }
         [Min(2)] public int rounds = 10;
         [Header("Intermediate node weights")]
         [Min(0)] public int battleWeight = 45;

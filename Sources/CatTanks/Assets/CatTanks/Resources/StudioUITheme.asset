@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f7e79ddaf14d3438cb3fc1764dd9a1, type: 3}
+  m_Name: StudioUITheme
+  m_EditorClassIdentifier: 
+  assets:
+  - key: panel
+    sprite: {fileID: 21300000, guid: 6c9211bc1d90b4e35a3a080121e93d05, type: 3}
+  - key: card
+    sprite: {fileID: 21300000, guid: 4e1521f3695314935908ce0d6e8d13c7, type: 3}
+  - key: button
+    sprite: {fileID: 21300000, guid: 13bb59864f8ee4bd0948e2f4bebb30dd, type: 3}
+  - key: primary
+    sprite: {fileID: 21300000, guid: 92f979357cfea48fdb95f632e4a747f0, type: 3}
+  - key: selected
+    sprite: {fileID: 21300000, guid: 13ce375a1c35f4323ac9f3ae74f5f307, type: 3}
+  - key: input
+    sprite: {fileID: 21300000, guid: 783942efb4d284a61ad130562f931e69, type: 3}
+  - key: bar
+    sprite: {fileID: 21300000, guid: 6332433fb34294d58bfc835736ee8ac3, type: 3}
+  - key: fill
+    sprite: {fileID: 21300000, guid: a9ad9e691348a4e10b5245f6c0a4fbcb, type: 3}
+  - key: Map
+    sprite: {fileID: 21300000, guid: c945d72e02095443e8794a9f985f2edf, type: 3}
+  - key: Battle
+    sprite: {fileID: 21300000, guid: 0a71eb36b409140e28dd260cdd059f04, type: 3}
+  - key: Bag_Brown
+    sprite: {fileID: 21300000, guid: 35934e438c8504b74b55a3e114421b87, type: 3}
+  - key: Chest_Gold
+    sprite: {fileID: 21300000, guid: 44927745c5c88418fb5c605670c86d95, type: 3}
+  - key: Calendar_Check
+    sprite: {fileID: 21300000, guid: 1f11cf1fd637a4200b9aba08d552114e, type: 3}
+  - key: Book_1_Purple
+    sprite: {fileID: 21300000, guid: 4c524087b4b264499bb5ed36c76ae77b, type: 3}
+  - key: Money_Coin
+    sprite: {fileID: 21300000, guid: cb9ac5c430df5468c8ecf26434823ecb, type: 3}
+  - key: Gem_Diamond_Purple
+    sprite: {fileID: 21300000, guid: e0940f4e599044730b69eb2f0af6617d, type: 3}
+  - key: Ticket_Gold
+    sprite: {fileID: 21300000, guid: c92647f963fe74fe3be2c0b13d6a6d06, type: 3}
+  - key: Gear
+    sprite: {fileID: 21300000, guid: 3e5404ab916374a03a346c620fa7e034, type: 3}
+  - key: Badge_Crown
+    sprite: {fileID: 21300000, guid: 570d05e44af7942689101ce18765ec10, type: 3}
+  - key: Skull
+    sprite: {fileID: 21300000, guid: 6d6b321803872425f9c31a5a5d235a99, type: 3}
+  - key: Chest_Premium
+    sprite: {fileID: 21300000, guid: 1cb612701e37b4b5cbcfc5f73460aca9, type: 3}
+  - key: Damage
+    sprite: {fileID: 21300000, guid: b51213b5f1a314177be50fc92cfedb86, type: 3}
+  - key: Gear_Sword
+    sprite: {fileID: 21300000, guid: cee2ed6d1f89d417cad772822770ccd6, type: 3}
+  - key: Gem_Star_Blue
+    sprite: {fileID: 21300000, guid: 7565b08b3bb274309b10e2d9b1258aa5, type: 3}
+  - key: Gem_Circle
+    sprite: {fileID: 21300000, guid: fc9805043d5fa46ff81c6fbbbd587171, type: 3}
+  - key: Lock
+    sprite: {fileID: 21300000, guid: 1eb0217bf1f784956bbb96cf1663c557, type: 3}
+  - key: Check
+    sprite: {fileID: 21300000, guid: 12957220980af475aaa466b3cad6c7cc, type: 3}
+  - key: Arrow
+    sprite: {fileID: 21300000, guid: c4244705f88ce47f39ef8f8618ef8055, type: 3}
+  - key: Pause
+    sprite: {fileID: 21300000, guid: c8286f43fc11247a2b368f78f4a8e8f2, type: 3}
+  - key: Play
+    sprite: {fileID: 21300000, guid: ca64cb13cba51422680c43ba914cf706, type: 3}
+  - key: Setting
+    sprite: {fileID: 21300000, guid: 590ff085b0f07453a99edfca120e5817, type: 3}

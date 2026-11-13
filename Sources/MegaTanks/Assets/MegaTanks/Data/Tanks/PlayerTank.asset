@@ -11,8 +11,12 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3360945e29d77124681beea8b27d8483, type: 3}
   m_Name: PlayerTank
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
   stats:
+    armor: 0
+    evasion: 0
+    criticalChanceReduction: 0
+    criticalDamageReduction: 0
     maxHull: 100
     advanceSpeed: 0.5
-    scale: 1
+    scale: 0.75

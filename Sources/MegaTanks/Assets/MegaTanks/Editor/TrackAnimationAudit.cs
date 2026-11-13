@@ -49,7 +49,7 @@ namespace MegaTanks.Editor
                 var game = BattleGame.Instance; double elapsed = EditorApplication.timeSinceStartup - since;
                 if (stage == 0)
                 {
-                    game.StartBattle(); StageProgressionAudit.DisableWeapons(game);
+                    game.StartBattle(); game.SetStance(TankStance.Defensive); StageProgressionAudit.DisableWeapons(game);
                     foreach (var enemy in UnityEngine.Object.FindObjectsOfType<EnemyEntity>()) enemy.enabled = enemy.Weapon.enabled = false;
                     tracks = game.Artwork.Tracks;
                     Require(tracks != null && tracks.LinkCount == 36 && tracks.Data.path.Length == 577, "Track animation must use all 36 source links and the sampled source path.");
@@ -71,9 +71,9 @@ namespace MegaTanks.Editor
                 else if (stage == 3 && elapsed > .6)
                 {
                     float moved = game.Artwork.transform.position.x - startX;
-                    Require(Mathf.Abs(moved - (Time.time - began) * .5f) < .02f && Vector2.Distance(tracks.FirstLinkPosition, rest) > .02f,
+                    Require(Mathf.Abs(moved*game.EnemySpawnDirection - (Time.time - began) * .5f) < .02f && Vector2.Distance(tracks.FirstLinkPosition, rest) > .02f,
                         "The tank and imported links must advance together.");
-                    Require(Mathf.Abs(tracks.TravelledDistance - moved / tracks.transform.lossyScale.x) < .005f,
+                    Require(Mathf.Abs(tracks.TravelledDistance - Mathf.Repeat(moved / tracks.transform.lossyScale.x,tracks.Data.Length)) < .005f,
                         "Track speed must match actual travel and tank scale.");
                     Screenshot("TrackRunning"); Next();
                 }
@@ -93,8 +93,8 @@ namespace MegaTanks.Editor
                 }
                 else if (stage == 7 && elapsed > .2)
                 {
-                    Require(tracks.TravelledDistance > heldPhase, "Resuming advance must resume the track loop.");
-                    game.StartBattle(); StageProgressionAudit.DisableWeapons(game);
+                    Require(Mathf.DeltaAngle(heldPhase/tracks.Data.Length*360,tracks.TravelledDistance/tracks.Data.Length*360)*game.EnemySpawnDirection > .001f, "Resuming advance must resume the track loop in the travel direction.");
+                    game.StartBattle(); game.SetStance(TankStance.Defensive); StageProgressionAudit.DisableWeapons(game);
                     Require(tracks.TravelledDistance == 0 && tracks.FirstLinkPosition == rest && Mathf.Abs(game.Artwork.transform.position.x + 7.3f) < .001f,
                         "Restart must reset the track pose and shifted starting position.");
                     Require(!errors, "Runtime errors occurred.");

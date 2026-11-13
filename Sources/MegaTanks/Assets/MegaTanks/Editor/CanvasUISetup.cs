@@ -16,11 +16,11 @@ namespace MegaTanks.Editor
             var game=Object.FindObjectOfType<BattleGame>();var settings=new SerializedObject(game);var catalog=AssetDatabase.LoadAssetAtPath<FrontendCatalog>(CatalogPath);bool created=catalog==null;
             if(Object.FindObjectOfType<CanvasGameUI>()==null)
             {
-                var root=new GameObject("MegaTanks UI Canvas",typeof(RectTransform),typeof(Canvas),typeof(CanvasScaler),typeof(GraphicRaycaster),typeof(CanvasGameUI));
-                root.GetComponent<Canvas>().renderMode=RenderMode.ScreenSpaceOverlay;
-                var scaler=root.GetComponent<CanvasScaler>();scaler.uiScaleMode=CanvasScaler.ScaleMode.ScaleWithScreenSize;scaler.referenceResolution=new Vector2(1920,1080);scaler.matchWidthOrHeight=.5f;
+                var prefab=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/MegaTanks/Prefabs/UI/MegaTanksCanvas.prefab");
+                if(prefab==null)throw new System.InvalidOperationException("MegaTanksCanvas.prefab is missing. Restore the authored UI prefab.");
+                PrefabUtility.InstantiatePrefab(prefab);
             }
-            if(Object.FindObjectOfType<EventSystem>()==null)new GameObject("UI EventSystem",typeof(EventSystem),typeof(StandaloneInputModule));
+            if(Object.FindObjectOfType<EventSystem>()==null)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/MegaTanks/Prefabs/UI/UIEventSystem.prefab"));
             if(created){catalog=ScriptableObject.CreateInstance<FrontendCatalog>();AssetDatabase.CreateAsset(catalog,CatalogPath);}
             if(created||catalog.stages==null||catalog.stages.Length==0)catalog.stages=new[]{(StageDefinition)settings.FindProperty("stageDefinition").objectReferenceValue};
             if(created||catalog.inventory==null||catalog.inventory.Length==0)catalog.inventory=AssetDatabase.FindAssets("t:WeaponDefinition",new[]{"Assets/MegaTanks/Data/Weapons"}).Select(id=>AssetDatabase.LoadAssetAtPath<EquipmentDefinition>(AssetDatabase.GUIDToAssetPath(id))).Where(item=>item!=null).ToArray();

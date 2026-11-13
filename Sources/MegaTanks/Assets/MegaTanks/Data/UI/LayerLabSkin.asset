@@ -40,3 +40,10 @@ MonoBehaviour:
   switchBackground: {fileID: 21300000, guid: 55f8dedbcdd184d0fa87ece74639f2b8, type: 3}
   switchFill: {fileID: 21300000, guid: 5f2f1db11bb9d4a2094f41a43faf9d88, type: 3}
   switchHandle: {fileID: 21300000, guid: 4db1ab1258c2d42bbac11f9f67aa2e21, type: 3}
+  homeCrew: {fileID: 21300000, guid: a936a39bda065eb4d844ad278094d71a, type: 3}
+  homeTech: {fileID: 21300000, guid: ea12a724b749d9940b6497d2fac05e5d, type: 3}
+  homeGarage: {fileID: 21300000, guid: 6b9a1ddd44d13c840bfc0afa8c7e8bc8, type: 3}
+  homeStageSelector: {fileID: 21300000, guid: eccafec33b072dc438d537f70660a5e0, type: 3}
+  homeMenu: {fileID: 21300000, guid: 8579ddbd745d7204593d60180a34fd3b, type: 3}
+  homeButtonBase: {fileID: 21300000, guid: bcf6a0ea51f0bf749a32e8b63b6792a4, type: 3}
+  homeYellowPanel: {fileID: 21300000, guid: 4d66fe231a98fe447a66cd5745e3f33f, type: 3}

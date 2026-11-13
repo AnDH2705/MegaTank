@@ -55,6 +55,11 @@ namespace MegaTanks.Editor
             var sky = sprites.Single(renderer => renderer.sprite.name == "00_sky_static");
             var road = sprites.Where(renderer => renderer.sprite.name == "03_road").OrderBy(renderer => Mathf.Abs(renderer.transform.position.x)).First();
             var far = sprites.Where(renderer => renderer.sprite.name == "01_far_factories").OrderBy(renderer => Mathf.Abs(renderer.transform.position.x)).First();
+            Require(Mathf.Approximately(game.Backgrounds.SceneryScale,.5f)&&Mathf.Abs(road.bounds.size.y-game.TankCamera.orthographicSize)<.001f,"Scenery must render at half the previous height and width.");
+            float roadLine=road.transform.position.y+(BattleGame.SceneryGroundHeight-game.TankCamera.transform.position.y)*game.Backgrounds.SceneryScale;
+            Require(Mathf.Abs(roadLine-BattleGame.SceneryGroundHeight)<.001f,"Shrinking scenery must preserve the ground alignment.");
+            var extension=sprites.First(r=>r.sprite.name=="Road lower edge");
+            Require(extension.bounds.min.y<=game.TankCamera.transform.position.y-game.TankCamera.orthographicSize&&extension.bounds.max.y>=road.bounds.min.y,"The road must continue to the bottom of the screen without a gap.");
             game.TankCamera.transform.position += Vector3.right; game.Backgrounds.RefreshViews();
             Require(Mathf.Abs(sky.transform.position.x - 1) < .001f && Mathf.Abs(road.transform.position.x) < .001f
                 && Mathf.Abs(far.transform.position.x - .85f) < .001f,
@@ -67,6 +72,25 @@ namespace MegaTanks.Editor
             game.TankCamera.aspect = 2.7f; game.Backgrounds.RefreshViews();
             Require(sky.bounds.size.x >= game.TankCamera.orthographicSize * 2 * game.TankCamera.aspect - .001f, "Static sky must also fill extra-wide viewports.");
             game.TankCamera.ResetAspect();
+            CheckViewportAnchors(game);
+        }
+        static void CheckViewportAnchors(BattleGame game)
+        {
+            var camera=game.TankCamera;var originalPosition=camera.transform.position;float originalSize=camera.orthographicSize;
+            game.Backgrounds.ApplyPreset(1);
+            for(int pass=0;pass<2;pass++)
+            {
+                if(pass==1){camera.transform.position+=new Vector3(13,2,0);camera.orthographicSize*=1.3f;}
+                game.Backgrounds.RefreshViews();
+                var tiles=Tiles(game,BattleBackgroundController.TankLayerName);
+                foreach(var tile in tiles.Where(r=>r.sprite.name=="05_foreground_debris"))
+                    Require(Mathf.Abs(tile.bounds.min.y-(camera.transform.position.y-camera.orthographicSize))<.001f,"Debris must remain on the camera viewport bottom while panning or resizing.");
+                foreach(var tile in tiles.Where(r=>r.sprite.name=="06_overhead_cables"))
+                    Require(Mathf.Abs(tile.bounds.max.y-(camera.transform.position.y+camera.orthographicSize))<.001f,"Cables must remain on the camera viewport top while panning or resizing.");
+                Require(tiles.Any(r=>r.sprite.name=="05_foreground_debris")&&tiles.Any(r=>r.sprite.name=="06_overhead_cables"),"Both anchored art layers must be present.");
+            }
+            camera.transform.position=originalPosition;camera.orthographicSize=originalSize;
+            game.Backgrounds.ApplyPreset(0);
         }
         static void Screenshot(string name)
         {
@@ -80,7 +104,7 @@ namespace MegaTanks.Editor
                 var game = BattleGame.Instance; double elapsed = EditorApplication.timeSinceStartup - since;
                 if (stage == 0)
                 {
-                    game.StartBattle(); StageProgressionAudit.DisableWeapons(game); CheckGeometry(game);
+                    game.StartBattle(); game.SetStance(TankStance.Defensive); StageProgressionAudit.DisableWeapons(game); CheckGeometry(game);
                     var savedRandom = UnityEngine.Random.state; UnityEngine.Random.InitState(421);
                     bool[] seen = new bool[2];
                     for (int i = 0; i < 16; i++) { game.Backgrounds.SelectRandom(); seen[game.Backgrounds.CurrentIndex] = true; }
@@ -121,7 +145,7 @@ namespace MegaTanks.Editor
                         StageProgressionAudit.ClearWave(game);
                         if (game.Stage.Mode != StageMode.Victory) game.Rewards.ChooseReward(0);
                     }
-                    game.StartBattle(); StageProgressionAudit.DisableWeapons(game);
+                    game.StartBattle(); game.SetStance(TankStance.Defensive); StageProgressionAudit.DisableWeapons(game);
                     Require(game.Backgrounds.SelectionCount == selections + 1, "Restart must select a background for the new first battle.");
                     Require(!errors, "Runtime errors occurred.");
                     Debug.Log("MEGATANKS_BACKGROUNDS_OK: 6/7-layer art, original canvas, independent cameras, parallax factors, gap-free mirror repeats, wide-screen sky, random battle/boss/restart selection and hard-wave retention.");

@@ -24,7 +24,12 @@ namespace MegaTanks.Editor
             serializedGame.FindProperty("cardCatalog").objectReferenceValue = AssetDatabase.LoadAssetAtPath<CardCatalog>(CardDataImporter.CatalogPath);
             serializedGame.FindProperty("stageDefinition").objectReferenceValue = AssetDatabase.LoadAssetAtPath<StageDefinition>("Assets/MegaTanks/Data/Stages/Stage1.asset");
             serializedGame.FindProperty("backgroundCatalog").objectReferenceValue = AssetDatabase.LoadAssetAtPath<BattleBackgroundCatalog>(BattleBackgroundImporter.CatalogPath);
+            serializedGame.FindProperty("frontendCatalog").objectReferenceValue = AssetDatabase.LoadAssetAtPath<FrontendCatalog>(CanvasUISetup.CatalogPath);
             serializedGame.ApplyModifiedPropertiesWithoutUndo();
+            var uiPrefab=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/MegaTanks/Prefabs/UI/MegaTanksCanvas.prefab");
+            var eventPrefab=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/MegaTanks/Prefabs/UI/UIEventSystem.prefab");
+            if(uiPrefab!=null)PrefabUtility.InstantiatePrefab(uiPrefab);
+            if(eventPrefab!=null)PrefabUtility.InstantiatePrefab(eventPrefab);
             EditorSceneManager.SaveScene(scene, ScenePath);
             EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(ScenePath, true) };
             EditorSettings.defaultBehaviorMode = EditorBehaviorMode.Mode2D;

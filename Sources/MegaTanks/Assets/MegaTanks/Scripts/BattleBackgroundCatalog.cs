@@ -19,6 +19,8 @@ namespace MegaTanks
     [CreateAssetMenu(menuName = "MegaTanks/Battle Background Catalog")]
     public sealed class BattleBackgroundCatalog : ScriptableObject
     {
+        [Range(.1f,1f), Tooltip("Scenery size relative to the full-screen backdrop. Sky remains full-screen.")]
+        public float sceneryScale=.5f;
         public BattleBackgroundPreset[] presets;
     }
 }

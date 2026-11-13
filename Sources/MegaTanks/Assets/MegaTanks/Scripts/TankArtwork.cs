@@ -6,6 +6,8 @@ namespace MegaTanks
     {
         [SerializeField] GunArtwork machineGun;
         [SerializeField] GunArtwork mainGun;
+        [SerializeField, HideInInspector] GunArtwork replacementMachineGun;
+        [SerializeField, HideInInspector] GunArtwork machineGunVisualPrefab;
         [SerializeField] MortarArtwork mortar;
         [SerializeField] TankTrackAnimator tracks;
         [SerializeField] Transform body;
@@ -16,12 +18,34 @@ namespace MegaTanks
         bool initialized;
         float smokeTimer;
         int nextPuff;
-        public GunArtwork MachineGun => machineGun;
+        public GunArtwork MachineGun => replacementMachineGun != null ? replacementMachineGun : machineGun;
         public GunArtwork MainGun => mainGun;
         public MortarArtwork Mortar => mortar;
         public void BindMortar(MortarArtwork visual) { mortar = visual; }
         public TankTrackAnimator Tracks => tracks;
         public void BindTracks(TankTrackAnimator animation) { tracks = animation; }
+
+        public void EquipMachineGunVisual(GunDefinition definition)
+        {
+            var prefab = definition != null ? definition.artworkPrefab : null;
+            if (prefab == machineGunVisualPrefab) return;
+            machineGun.ResetVisual();
+            // Keep the mount and its AutoTurret alive while hiding the original artwork.
+            foreach (Transform part in machineGun.transform) part.gameObject.SetActive(prefab == null);
+            if (replacementMachineGun != null)
+            {
+                replacementMachineGun.gameObject.SetActive(false);
+                Destroy(replacementMachineGun.gameObject);
+            }
+            replacementMachineGun = null;
+            machineGunVisualPrefab = prefab;
+            if (prefab == null) return;
+            replacementMachineGun = Instantiate(prefab, machineGun.transform.parent, false);
+            replacementMachineGun.transform.localPosition = machineGun.transform.localPosition;
+            foreach (var part in replacementMachineGun.GetComponentsInChildren<Transform>(true))
+                part.gameObject.layer = machineGun.gameObject.layer;
+            replacementMachineGun.ResetVisual();
+        }
 
         public void Configure(GunArtwork mg, GunArtwork cannon, Transform hull, SpriteClipPlayer[] smoke)
         {
@@ -43,7 +67,7 @@ namespace MegaTanks
             }
             for (int i = 0; i < wheels.Length; i++) wheels[i].transform.localRotation = wheelRest[i];
             body.localPosition = bodyRest;
-            machineGun.ResetVisual();
+            MachineGun.ResetVisual();
             mainGun.ResetVisual();
             if (mortar != null) mortar.ResetVisual();
             if (tracks != null) tracks.ResetVisual();

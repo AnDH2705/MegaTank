@@ -10,88 +10,124 @@
       "name": "01_propeller_blades",
       "file": "parts/01_propeller_blades.png",
       "position_px": [
-        1272,
-        153
+        1256,
+        137
       ],
       "size_px": [
-        97,
-        792
+        129,
+        824
       ],
       "pivot_canvas_px": [
         1326,
         576
       ],
       "pivot_local_px": [
-        54,
-        423
+        70,
+        439
       ],
-      "role": "Two continuous propeller blades, hidden center restored; spinner remains fixed"
+      "role": "Two continuous propeller blades, hidden center restored; spinner remains fixed",
+      "source_position_px": [
+        1272,
+        153
+      ],
+      "source_size_px": [
+        97,
+        792
+      ],
+      "padding_px": 16
     },
     {
       "name": "02_wheel_rear",
       "file": "parts/02_wheel_rear.png",
       "position_px": [
-        197,
-        738
+        181,
+        722
       ],
       "size_px": [
-        95,
-        95
+        127,
+        127
       ],
       "pivot_canvas_px": [
         244,
         785
       ],
       "pivot_local_px": [
-        47,
-        47
+        63,
+        63
       ],
-      "role": "Complete tail wheel under fixed strut"
+      "role": "Complete tail wheel under fixed strut",
+      "source_position_px": [
+        197,
+        738
+      ],
+      "source_size_px": [
+        95,
+        95
+      ],
+      "padding_px": 16
     },
     {
       "name": "03_wheel_main",
       "file": "parts/03_wheel_main.png",
       "position_px": [
-        723,
-        825
+        707,
+        809
       ],
       "size_px": [
-        198,
-        197
+        230,
+        229
       ],
       "pivot_canvas_px": [
         822,
         923
       ],
       "pivot_local_px": [
-        99,
-        98
+        115,
+        114
       ],
-      "role": "Complete main landing wheel under fixed strut"
+      "role": "Complete main landing wheel under fixed strut",
+      "source_position_px": [
+        723,
+        825
+      ],
+      "source_size_px": [
+        198,
+        197
+      ],
+      "padding_px": 16
     },
     {
       "name": "04_body_static",
       "file": "parts/04_body_static.png",
       "position_px": [
-        68,
-        48
+        52,
+        32
       ],
       "size_px": [
-        1356,
-        840
+        1388,
+        872
       ],
       "pivot_canvas_px": [
         763,
         780
       ],
       "pivot_local_px": [
-        695,
-        732
+        711,
+        748
       ],
-      "role": "Static aircraft and pilot, gear struts and nose spinner"
+      "role": "Static aircraft and pilot, gear struts and nose spinner",
+      "source_position_px": [
+        68,
+        48
+      ],
+      "source_size_px": [
+        1356,
+        840
+      ],
+      "padding_px": 16
     }
   ],
-  "note": "Static driver and all other fixed details stay combined in one body sprite. Original visible artwork is retained; hidden moving-parts surfaces have been restored.",
+  "note": "Animation attachment points and canvas pivots retained. PNGs have 16 px additional transparent padding; import the updated local pivots and positions. Painted revisions were uniformly registered, with no anisotropic stretching.",
   "propeller_animation": {
     "axis": "aircraft longitudinal X axis",
     "projection": "Scale the blade sprite in Y by cos(angle), including a sign flip; keep the nose spinner fixed. Do not spin this side-view blade flat in image XY.",
@@ -109,5 +145,40 @@
       1326,
       576
     ]
-  }
+  },
+  "appearance_revision": "Contrast v2: cobalt car / cool crimson plane, near-black heavy contours, ivory light planes",
+  "registration": [
+    {
+      "name": "01_propeller_blades",
+      "uniform_scale_from_repaint": 0.7660818713450293,
+      "paste_xy": [
+        12,
+        19
+      ]
+    },
+    {
+      "name": "02_wheel_rear",
+      "uniform_scale_from_repaint": 0.26646706586826346,
+      "paste_xy": [
+        20,
+        18
+      ]
+    },
+    {
+      "name": "03_wheel_main",
+      "uniform_scale_from_repaint": 0.5565217391304348,
+      "paste_xy": [
+        20,
+        18
+      ]
+    },
+    {
+      "name": "04_body_static",
+      "uniform_scale_from_repaint": 0.8580246913580247,
+      "paste_xy": [
+        25,
+        19
+      ]
+    }
+  ]
 }

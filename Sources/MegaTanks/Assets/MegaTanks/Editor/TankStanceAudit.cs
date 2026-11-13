@@ -40,21 +40,21 @@ namespace MegaTanks.Editor
         static EnemyEntity Dummy(BattleGame game)
         {
             var data = game.EnemyDatabase.Get(EnemyKind.Ground);
-            float speed = data.baseSpeed, bonus = data.maxSpeedBonus;
+            float speed = data.baseSpeed, bonus = data.baseSpeedGrow;
             try
             {
-                data.baseSpeed = data.maxSpeedBonus = 0;
-                var enemy = game.SpawnEnemy(data.id, (Vector2)game.Artwork.transform.position + Vector2.right * 60);
+                data.baseSpeed = data.baseSpeedGrow = 0;
+                var enemy = game.SpawnEnemy(data.id, (Vector2)game.Artwork.transform.position + Vector2.right * (game.EnemySpawnDirection*60));
                 enemy.enabled = enemy.Weapon.enabled = false;
                 return enemy;
             }
-            finally { data.baseSpeed = speed; data.maxSpeedBonus = bonus; }
+            finally { data.baseSpeed = speed; data.baseSpeedGrow = bonus; }
         }
         static void PlaceJustOutside(Vector2 origin, float range)
         {
             Vector3 position = target.transform.position;
             float dy = position.y - origin.y;
-            position.x = origin.x + Mathf.Sqrt(range * range - dy * dy) + .15f;
+            position.x = origin.x + BattleGame.Instance.EnemySpawnDirection*(Mathf.Sqrt(range * range - dy * dy) + .15f);
             target.transform.position = position;
         }
         static void Check()
@@ -66,7 +66,8 @@ namespace MegaTanks.Editor
                 if (stage == 0)
                 {
                     game.StartBattle(); DisableWeapons(game); Clear(game); target = Dummy(game);
-                    Require(game.Stance == TankStance.Defensive && game.TankAdvanceSpeed == .5f, "Start in Defensive with 0.5 unit/second advance speed.");
+                    Require(game.Stance == TankStance.Aggressive && game.TankAdvanceSpeed == .5f, "Start in Aggressive with 0.5 unit/second advance speed.");
+                    game.SetStance(TankStance.Defensive);
                     initialX = heldX = game.Artwork.transform.position.x;
                     hullOffset = game.TankAimPoint.x - initialX;
                     wheel = game.Artwork.GetComponentsInChildren<Transform>().Single(part => part.name == "03_wheel_01");
@@ -80,12 +81,12 @@ namespace MegaTanks.Editor
                 }
                 else if (stage == 2 && elapsed > .6)
                 {
-                    float moved = game.Artwork.transform.position.x - heldX;
+                    float moved = (game.Artwork.transform.position.x - heldX)*game.EnemySpawnDirection;
                     Require(Mathf.Abs(moved - (Time.time - began) * .5f) < .02f, "Aggressive must advance at exactly 0.5 units/second.");
-                    Require(Mathf.Approximately(game.TankVelocity.x, .5f) && Quaternion.Angle(wheelStart, wheel.localRotation) > .1f, "Movement velocity and wheel animation must match travel.");
+                    Require(Mathf.Approximately(game.TankVelocity.x, game.EnemySpawnDirection*.5f) && Quaternion.Angle(wheelStart, wheel.localRotation) > .1f, "Movement velocity and wheel animation must match travel.");
                     Require(Mathf.Abs(game.TankAimPoint.x - game.Artwork.transform.position.x - hullOffset) < .001f,
                         "The hull hitbox must move with the tank.");
-                    Require(game.TankCamera.transform.position.x==game.CameraPan.StartX && game.TankCamera.transform.position.y==1.4f,
+                    Require(game.TankCamera.transform.position.x==game.CameraPan.StartX && game.TankCamera.transform.position.y==-.05f,
                         "Tank movement must not override the manually panned camera or alter its horizon.");
                     game.SetStance(TankStance.Defensive); heldX = game.Artwork.transform.position.x; wheelStart = wheel.localRotation; Next();
                 }
@@ -109,11 +110,11 @@ namespace MegaTanks.Editor
                 else if (stage == 6 && elapsed > .2)
                 {
                     Require(Mathf.Abs(game.Artwork.transform.position.x - heldX) < .01f, "Aggressive must hold while all weapons remain in range.");
-                    target.transform.position += Vector3.right * 2; Next();
+                    target.transform.position += Vector3.right * (game.EnemySpawnDirection*2); Next();
                 }
                 else if (stage == 7 && elapsed > .2)
                 {
-                    Require(game.Artwork.transform.position.x > heldX && game.Stance == TankStance.Aggressive, "Aggressive must resume when an enemy leaves range.");
+                    Require((game.Artwork.transform.position.x-heldX)*game.EnemySpawnDirection > 0 && game.Stance == TankStance.Aggressive, "Aggressive must resume when an enemy leaves range.");
                     mortarRange = game.Mortar.Stats.range; game.Mortar.Stats.range = 8;
                     PlaceJustOutside(game.Artwork.Mortar.Muzzle.position, 8);
                     Require(!game.AllWeaponsInRange, "The mortar's range must also gate movement.");
@@ -142,9 +143,9 @@ namespace MegaTanks.Editor
                     StageProgressionAudit.EnterNextBattle(game);
                     float spawnDistance = new SerializedObject(game).FindProperty("enemySpawnDistance").floatValue;
                     float nearestX = UnityEngine.Object.FindObjectsOfType<EnemyEntity>().Where(enemy => enemy.Alive).Min(enemy => enemy.transform.position.x);
-                    Require(game.Wave == 2 && Mathf.Abs(nearestX - heldX - spawnDistance) < .001f, "The next wave must spawn relative to the advanced tank.");
+                    Require(game.Wave == 2 && Mathf.Abs(nearestX - heldX - game.EnemySpawnDirection*spawnDistance) < .001f, "The next wave must spawn relative to the advanced tank.");
                     game.StartBattle(); DisableWeapons(game);
-                    Require(game.Stance == TankStance.Defensive && game.Artwork.transform.position.x == initialX, "Restart must restore starting position and Defensive stance.");
+                    Require(game.Stance == TankStance.Aggressive && game.Artwork.transform.position.x == initialX, "Restart must restore starting position and Aggressive stance.");
                     Clear(game); game.SetStance(TankStance.Aggressive); heldX = initialX; Next();
                 }
                 else if (stage == 11 && elapsed > .2)

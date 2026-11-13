@@ -8,7 +8,8 @@ namespace MegaTanks
     public sealed class Projectile2D : MonoBehaviour
     {
         Vector2 velocity, launchOrigin;
-        float damage, radius, maxRange, gravity;
+        float radius, maxRange, gravity;
+        public DamageAttack Attack { get; private set; }
         public Vector2 Velocity => velocity;
         Color color;
         LineRenderer trail;
@@ -23,10 +24,10 @@ namespace MegaTanks
         bool detonated;
         float fullDamageRadius, halfDamageRadius;
         public void InitializeMortar(Vector2 origin, Vector2 launchVelocity, float hitDamage, float downwardGravity,
-            float fullRadius, float halfRadius, float width, Sprite projectileSprite = null)
+            float fullRadius, float halfRadius, float width, Sprite projectileSprite = null, WeaponCombatStats combatStats = null)
         {
             Initialize(origin, launchVelocity.normalized, launchVelocity.magnitude, hitDamage, new Color(1, .8f, .3f), true,
-                float.PositiveInfinity, downwardGravity, ProjectileTeam.Player, projectileSprite, width);
+                float.PositiveInfinity, downwardGravity, ProjectileTeam.Player, projectileSprite, width, true, combatStats);
             IsMortar = true; fullDamageRadius = fullRadius; halfDamageRadius = halfRadius;
             var renderer = shellVisual.GetComponent<SpriteRenderer>();
             shellVisual.localScale = Vector3.one * (width / renderer.sprite.bounds.size.x);
@@ -35,11 +36,11 @@ namespace MegaTanks
         {
             if (detonated) return;
             detonated = true;
-            BattleGame.Instance.DetonateMortar(position, damage, fullDamageRadius, halfDamageRadius);
+            BattleGame.Instance.DetonateMortar(position, Attack, fullDamageRadius, halfDamageRadius);
             Destroy(gameObject);
         }
         public void Initialize(Vector2 origin, Vector2 forward, float speed, float hitDamage, Color tint, bool heavy, float maxDistance, float downwardGravity = 0,
-            ProjectileTeam faction = ProjectileTeam.Player, Sprite projectileSprite = null, float projectileWidth = -1, bool inheritCannonArt = true)
+            ProjectileTeam faction = ProjectileTeam.Player, Sprite projectileSprite = null, float projectileWidth = -1, bool inheritCannonArt = true, WeaponCombatStats combatStats = null)
         {
             transform.position = origin;
             team = faction;
@@ -47,7 +48,7 @@ namespace MegaTanks
             velocity = forward.normalized * speed;
             maxRange = maxDistance;
             gravity = Mathf.Max(0, downwardGravity);
-            damage = hitDamage;
+            Attack = new DamageAttack(hitDamage,combatStats??new WeaponCombatStats());
             color = tint;
             radius = heavy ? .14f : .055f;
             SpriteRenderer visual;
@@ -147,8 +148,8 @@ namespace MegaTanks
                 if (targetEnemy != null || targetHull != null)
                 {
                     if (IsMortar) { Detonate(impact); return; }
-                    if (team == ProjectileTeam.Player) targetEnemy.Damage(damage);
-                    else BattleGame.Instance.DamageHull(damage);
+                    if (team == ProjectileTeam.Player) targetEnemy.ReceiveAttack(Attack);
+                    else BattleGame.Instance.ReceiveAttack(Attack);
                     BattleGame.Instance.Flash(impact, color, .22f);
                     Destroy(gameObject);
                     return;

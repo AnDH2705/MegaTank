@@ -8,5 +8,6 @@ namespace MegaTanks
         public Sprite panel,panelHeader,roundFrame,itemFrame;
         public Sprite check,close,menu,pause,previous,next,music,sound,settings;
         public Sprite sliderBackground,sliderFill,sliderHandle,barBackground,barFill,switchBackground,switchFill,switchHandle;
+        public Sprite homeCrew,homeTech,homeGarage,homeStageSelector,homeMenu,homeButtonBase,homeYellowPanel;
     }
 }

@@ -27,7 +27,7 @@ namespace MegaTanks
         public BattleBackgroundController Backgrounds { get; private set; }
         public MortarWeapon Mortar { get; private set; }
         public float TankAdvanceSpeed => tankStats.advanceSpeed;
-        public TankStance Stance { get; private set; } = TankStance.Defensive;
+        public TankStance Stance { get; private set; } = TankStance.Aggressive;
         Vector2 tankVelocity;
         Vector3 tankStartPosition;
         public Vector2 TankVelocity => Running && Stance == TankStance.Aggressive ? tankVelocity : Vector2.zero;
@@ -40,10 +40,16 @@ namespace MegaTanks
         [Header("Enemy approach")]
         [SerializeField] EnemyDataManager enemyDataManager;
         public EnemyDataManager EnemyDatabase => enemyDataManager;
+        public int BattleDifficulty { get; private set; }
+        readonly Dictionary<string,EnemyDefinition> battleEnemyStats=new Dictionary<string,EnemyDefinition>();
         public TankHitbox HullHitbox { get; private set; }
         public Vector2 TankAimPoint => HullHitbox.AimPoint;
         [SerializeField, Min(1), Tooltip("Horizontal distance from the tank anchor to the front of each wave.")] float enemySpawnDistance = 90;
         public float EnemySpawnDistance => enemySpawnDistance;
+        [SerializeField, Tooltip("Flying enemy lanes stay below the top battle HUD.")] float flyingEnemyHeight=2.1f;
+        [SerializeField, Min(0)] float flyingEnemyLaneSpacing=.45f;
+        // Enemies spawn ahead of the right-facing tank; Aggressive advances toward them.
+        public float EnemySpawnDirection => 1;
         public Camera TankCamera => battleCamera;
         public BattleCameraPan CameraPan { get; private set; }
         [SerializeField, Range(.1f,.4f), Tooltip("Tank spawn position across the battle view at stage start. 0 is the left edge.")]
@@ -51,12 +57,15 @@ namespace MegaTanks
         public float TankStartViewportX => tankStartViewportX;
         [Header("Tank artwork")]
         [SerializeField] TankArtwork tankArtworkPrefab;
+        [SerializeField, Tooltip("Default tank anchor, including the approved 2-unit downward adjustment.")]
+        Vector3 tankSpawnPosition=new Vector3(-7.3f,-4.483333f,0);
+        public Vector3 TankSpawnPosition => tankSpawnPosition;
         float tankScale => tankStats.scale;
         public const float ReferenceWidth = 1920;
         public const float ReferenceHeight = 1080;
-        public const float GroundHeight = -3.05f;
-        const float HeaderHeight = 180;
-        const float FooterHeight = 180;
+        public const float GroundHeight = -5.05f;
+        // Backdrop placement stays fixed while gameplay entities use the lowered ground lane.
+        public const float SceneryGroundHeight = -3.05f;
         public sealed class DamageNumber
         {
             public Vector2 Position { get; internal set; }
@@ -89,7 +98,7 @@ namespace MegaTanks
         readonly List<FlashEffect> effects = new List<FlashEffect>();
         Transform scenery;
         Camera battleCamera;
-        bool deployed, paused;
+        bool deployed, paused, keepHomeBackdrop;
         float lastVibration=-1;
         int best;
 
@@ -104,7 +113,14 @@ namespace MegaTanks
             Physics2D.queriesHitTriggers = true;
             BuildScene();
             Equipment = new PlayerEquipment(startingLoadout, frontendCatalog);
+            RefreshEquipmentArtwork();
             UI = CanvasGameUI.Create(this);
+        }
+
+        public void RefreshEquipmentArtwork()
+        {
+            Artwork.EquipMachineGunVisual(Equipment.MachineGun);
+            MachineGun.BindArtwork(Artwork.MachineGun);
         }
 
         void BuildScene()
@@ -123,11 +139,10 @@ namespace MegaTanks
             if (tankArtworkPrefab == null) throw new System.InvalidOperationException("Tank artwork is missing. Run MegaTanks > Import Tank Artwork.");
             Artwork = Instantiate(tankArtworkPrefab, scenery);
             Artwork.transform.localScale = Vector3.one * tankScale;
-            // Anchor the enlarged treads to the ground instead of scaling them through it.
-            Artwork.transform.localPosition = new Vector3(-7.3f, GroundHeight + 102f / 180 * tankScale, 0);
+            Artwork.transform.localPosition = tankSpawnPosition;
             tankStartPosition = Artwork.transform.position;
             CameraPan=battleCamera.gameObject.AddComponent<BattleCameraPan>();
-            CameraPan.Configure(this,tankStartPosition.x,tankStartPosition.x+enemySpawnDistance);
+            CameraPan.Configure(this,tankStartPosition.x,tankStartPosition.x+EnemySpawnDirection*enemySpawnDistance);
             foreach (var renderer in Artwork.GetComponentsInChildren<SpriteRenderer>())
             {
                 if (renderer.name != "32_front_hull_frame") continue;
@@ -153,6 +168,7 @@ namespace MegaTanks
             FitCamera();
             Backgrounds = gameObject.AddComponent<BattleBackgroundController>();
             Backgrounds.Configure(backgroundCatalog, battleCamera);
+            Backgrounds.SelectRandom();
         }
 
         AutoTurret CreateTurret(GunDefinition definition, GunArtwork visual)
@@ -165,20 +181,19 @@ namespace MegaTanks
 
         void FitCamera()
         {
-            // Reserve the top and bottom safe area for HUD and stance controls.
+            // Home and combat share the same view; Canvas controls overlay the live scene.
             Rect safe = Screen.safeArea;
-            float uiScale = Mathf.Min(safe.width / ReferenceWidth, safe.height / ReferenceHeight);
-            float bottom = safe.yMin + FooterHeight * uiScale;
-            float height = safe.height - (FooterHeight + HeaderHeight) * uiScale;
-            battleCamera.rect = new Rect(safe.xMin / Screen.width, bottom / Screen.height, safe.width / Screen.width, height / Screen.height);
+            float height=Screen.height-safe.yMin;
+            battleCamera.rect = new Rect(safe.xMin / Screen.width, safe.yMin / Screen.height, safe.width / Screen.width, height / Screen.height);
             float aspect = safe.width / Mathf.Max(1, height);
             battleCamera.orthographicSize = Mathf.Max(5.8f, 4.6f / aspect);
             CameraPan.UpdateFraming(2*battleCamera.orthographicSize*aspect);
-            battleCamera.transform.position = new Vector3(CameraPan.X, 1.4f, -10);
+            battleCamera.transform.position = new Vector3(CameraPan.X, -.05f, -10);
         }
 
         public void StartBattle()
         {
+            keepHomeBackdrop = !deployed;
             Time.timeScale = 1;
             foreach (EnemyEntity enemy in enemies) if (enemy != null) Destroy(enemy.gameObject);
             enemies.Clear();
@@ -189,15 +204,16 @@ namespace MegaTanks
             startingLoadout.Validate();
             tankStats = tankDefinition.stats.Copy();
             Artwork.transform.localScale = Vector3.one * tankScale;
-            tankStartPosition.y = GroundHeight + 102f / 180 * tankScale;
+            tankStartPosition = tankSpawnPosition;
+            RefreshEquipmentArtwork();
             MachineGun.Configure(Equipment != null ? Equipment.MachineGun : startingLoadout.machineGun);
             MainGun.Configure(Equipment != null ? Equipment.Cannon : startingLoadout.cannon);
             Mortar.Configure(Artwork.Mortar, Equipment != null ? Equipment.Mortar : startingLoadout.mortar);
             Artwork.ResetVisual();
             Artwork.transform.position = tankStartPosition;
-            Stance = TankStance.Defensive;
+            Stance = TankStance.Aggressive;
             tankVelocity = Vector2.zero;
-            CameraPan.ResetToSpawn(tankStartPosition.x,tankStartPosition.x+enemySpawnDistance);
+            CameraPan.ResetToSpawn(tankStartPosition.x,tankStartPosition.x+EnemySpawnDirection*enemySpawnDistance);
             FitCamera();
             MaxHull = BaseHull;
             Hull = MaxHull;
@@ -217,8 +233,9 @@ namespace MegaTanks
         {
             var entity = new GameObject(definitionId).AddComponent<EnemyEntity>();
             entity.transform.position = position;
-            entity.Initialize(enemyDataManager.Get(definitionId), Wave);
-            enemies.Add(entity);
+            if(!battleEnemyStats.TryGetValue(definitionId,out var stats))stats=enemyDataManager.Get(definitionId).AtDifficulty(BattleDifficulty);
+            entity.Initialize(stats, Wave, BattleDifficulty);
+            if(entity.Alive)enemies.Add(entity);else Destroy(entity.gameObject);
             return entity;
         }
 
@@ -227,14 +244,15 @@ namespace MegaTanks
             Wave++;
             int ground = Mathf.Min(3 + Wave, 12);
             int flyers = Mathf.Min(1 + Wave, 8);
-            float spawnX = Artwork.transform.position.x + enemySpawnDistance;
+            float spawnX = Artwork.transform.position.x + EnemySpawnDirection*enemySpawnDistance;
             CameraPan.SetEnemySpawn(spawnX);
             float groundSpacing = Mathf.Max(1.7f, enemyDataManager.Get(EnemyKind.Ground).ScaledArtworkWidth + .3f);
             float flyerSpacing = Mathf.Max(2, enemyDataManager.Get(EnemyKind.Flyer).ScaledArtworkWidth + .4f);
             for (int i = 0; i < ground; i++)
-                SpawnEnemy(EnemyKind.Ground, new Vector2(spawnX + i * groundSpacing, -2.25f + i % 2 * .25f));
+                SpawnEnemy(EnemyKind.Ground, new Vector2(spawnX + EnemySpawnDirection*i * groundSpacing, -4.25f + i % 2 * .25f));
             for (int i = 0; i < flyers; i++)
-                SpawnEnemy(EnemyKind.Flyer, new Vector2(spawnX + i * flyerSpacing, 4.8f + i % 2 * .65f));
+                SpawnEnemy(EnemyKind.Flyer, new Vector2(spawnX + EnemySpawnDirection*i * flyerSpacing, flyingEnemyHeight + i % 2 * flyingEnemyLaneSpacing));
+            if(enemies.Count==0)Stage.OnWaveCleared();
         }
 
         public void ContinueAfterRewards()
@@ -258,6 +276,9 @@ namespace MegaTanks
             foreach(var enemy in enemies) if(enemy!=null) Destroy(enemy.gameObject);
             enemies.Clear();
             tankVelocity = Vector2.zero;
+            Artwork.transform.position=tankStartPosition;Artwork.ResetVisual();
+            CameraPan.ResetToSpawn(tankStartPosition.x,tankStartPosition.x+EnemySpawnDirection*enemySpawnDistance);FitCamera();
+            Backgrounds.SelectRandom();
         }
         public void SelectStage(StageDefinition definition)
         {
@@ -268,7 +289,13 @@ namespace MegaTanks
         public void BeginStageWave()
         {
             ClearEncounterTransient();
-            if (Stage.EncounterWave == 1) Backgrounds.SelectRandom();
+            if(Stage.EncounterWave==1)
+            {
+                BattleDifficulty=Stage.Difficulty;
+                battleEnemyStats.Clear();
+                foreach(var definition in enemyDataManager.Definitions)battleEnemyStats.Add(definition.id,definition.AtDifficulty(BattleDifficulty));
+            }
+            if (Stage.EncounterWave == 1 && !(Wave==0 && keepHomeBackdrop)) Backgrounds.SelectRandom();
             SpawnWave();
         }
 
@@ -345,18 +372,28 @@ namespace MegaTanks
         }
 
         public void DetonateMortar(Vector2 position, float damage, float fullRadius, float halfRadius)
+            => DetonateMortar(position,new DamageAttack(damage,Mortar.Stats),fullRadius,halfRadius);
+
+        public void DetonateMortar(Vector2 position, DamageAttack attack, float fullRadius, float halfRadius)
         {
             // Snapshot before applying damage: kills can remove enemies and open the wave reward screen.
             foreach (var enemy in enemies.ToArray())
             {
                 if (enemy == null || !enemy.Alive) continue;
-                float amount = MortarDamageAtDistance(Vector2.Distance(position, enemy.transform.position), damage, fullRadius, halfRadius);
-                if (amount > 0) enemy.Damage(amount);
+                float multiplier = MortarDamageAtDistance(Vector2.Distance(position, enemy.transform.position), 1, fullRadius, halfRadius);
+                if (multiplier > 0) enemy.ReceiveAttack(attack,multiplier);
             }
             Flash(position, new Color(1, .55f, .15f, .12f), Mathf.Max(fullRadius, halfRadius) * 2);
             Flash(position, new Color(1, .8f, .25f, .35f), fullRadius * 2);
         }
 
+        public DamageResult ReceiveAttack(DamageAttack attack)
+        {
+            if(!Running)return new DamageResult(false,false,0,attack.DamageType);
+            var result=CombatDamage.Resolve(attack,tankStats);DamageHull(result.Damage);return result;
+        }
+
+        // Direct HP loss remains available for scripted effects and debug helpers.
         public void DamageHull(float damage)
         {
             if (!Running || damage <= 0) return;
@@ -391,6 +428,7 @@ namespace MegaTanks
             {
                 if (enemy == null || !enemy.Alive) continue;
                 Vector2 offset = (Vector2)enemy.transform.position - origin;
+                offset.x *= EnemySpawnDirection;
                 if (Mathf.Abs(offset.y) > reach) continue;
                 float horizontalReach = Mathf.Sqrt(Mathf.Max(0, reach * reach - offset.y * offset.y));
                 if (offset.x < -horizontalReach) continue;
@@ -408,8 +446,8 @@ namespace MegaTanks
                 AdvanceNeededForWeapon(Artwork.Mortar.Muzzle.position, Mortar.Stats.range));
             if (float.IsInfinity(distance) || Time.deltaTime <= 0) return;
             float step = Mathf.Min(distance, Mathf.Max(0, TankAdvanceSpeed) * Time.deltaTime);
-            Artwork.transform.position += Vector3.right * step;
-            tankVelocity = Vector2.right * (step / Time.deltaTime);
+            Artwork.transform.position += Vector3.right * (EnemySpawnDirection*step);
+            tankVelocity = Vector2.right * (EnemySpawnDirection*step / Time.deltaTime);
         }
 
         void Update()

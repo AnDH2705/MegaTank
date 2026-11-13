@@ -6,7 +6,7 @@ namespace MegaTanks
     {
         string displayName = "MG / AA";
         GunStats stats = new GunStats();
-        float damage;
+        float initialDamageBonus;
         public GunDefinition Definition { get; private set; }
         public GunStats Stats => stats;
         EnemyKind preferredTarget => stats.preferredTarget;
@@ -21,14 +21,13 @@ namespace MegaTanks
         [SerializeField] GunArtwork artwork;
         public GunArtwork Artwork => artwork;
         public string DisplayName => displayName;
-        public float DamagePerShot => damage;
+        public float DamagePerShot => new DamageAttack(stats.damage,stats).WeaponDamage;
         public float ReloadTime => reloadTime;
         public int SalvoSize => salvoSize;
         public float ShotDelay => shotDelay;
         public int ShotsFired { get; private set; }
         public int Ammo { get; private set; }
         public int ReserveCapacity { get; private set; }
-        float baseDamage;
         public event System.Action<float> ShotFired;
         public EnemyEntity Target { get; private set; }
         public float CooldownFraction => Mathf.Clamp01(cooldown / (shotsRemaining > 0 ? shotDelay : reloadTime));
@@ -43,7 +42,7 @@ namespace MegaTanks
             Definition = definition;
             displayName = definition.displayName;
             stats = definition.stats.Copy();
-            baseDamage = stats.damage;
+            initialDamageBonus = stats.damageBonus;
             ReserveCapacity = Mathf.Max(0, stats.reserveCapacity);
             shotColor = stats.heavyProjectile ? new Color(1, .72f, .28f) : new Color(.34f, .91f, 1);
             ResetWeapon();
@@ -56,7 +55,7 @@ namespace MegaTanks
             stats.preferredTarget = priority;
             stats.reloadTime = Mathf.Max(.02f, reload);
             stats.damage = hitDamage;
-            baseDamage = hitDamage;
+            initialDamageBonus = stats.damageBonus;
             stats.salvoSize = Mathf.Max(1, shotsPerSalvo);
             stats.shotDelay = Mathf.Max(.01f, delayBetweenShots);
             stats.range = Mathf.Max(1, maximumRange);
@@ -70,14 +69,14 @@ namespace MegaTanks
         {
             cooldown = 0; shotsRemaining = 0; ShotsFired = 0; Target = null;
             Ammo = ReserveCapacity;
-            damage = baseDamage;
+            stats.damageBonus = initialDamageBonus;
             if (artwork != null) artwork.ResetVisual();
         }
 
         public void ConfigureAmmunition(int capacity) { stats.reserveCapacity = ReserveCapacity = Mathf.Max(0, capacity); Ammo = ReserveCapacity; }
         public bool TryConsumeRound() { if (Ammo <= 0) return false; Ammo--; return true; }
         public void Resupply(float fraction) { Ammo = Mathf.Min(ReserveCapacity, Ammo + Mathf.CeilToInt(ReserveCapacity * Mathf.Max(0, fraction))); }
-        public void IncreaseDamage(float fraction) { damage += baseDamage * Mathf.Max(0, fraction); }
+        public void IncreaseDamage(float fraction) { stats.damageBonus += 100*Mathf.Max(0,fraction); }
 
         void Update()
         {
@@ -103,8 +102,8 @@ namespace MegaTanks
             Vector2 direction = artwork.FireDirection;
             Vector2 origin = (Vector2)artwork.Muzzle.position + direction * .04f;
             var shell = new GameObject(displayName + " shell").AddComponent<Projectile2D>();
-            shell.Initialize(origin, direction, projectileSpeed, damage, shotColor, stats.heavyProjectile, range, projectileGravity,
-                ProjectileTeam.Player, stats.projectileSprite, stats.projectileWidth, false);
+            shell.Initialize(origin, direction, projectileSpeed, stats.damage, shotColor, stats.heavyProjectile, range, projectileGravity,
+                ProjectileTeam.Player, stats.projectileSprite, stats.projectileWidth, false, stats);
             artwork.Fire();
             ShotFired?.Invoke(Time.time);
         }
