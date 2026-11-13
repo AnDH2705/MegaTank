@@ -68,6 +68,7 @@ namespace CatTanks
         Dictionary<string, float> enemyCooldowns = new Dictionary<string, float>(), enemyBuffs = new Dictionary<string, float>();
         public int wave, spawned, kills, coins, targetId = -1, nextId = 1, bank = -1, throwsUsed;
         int[] burstCounts;
+        float burstTimeOffset, burstClearTimer = 1;
         Dictionary<string, int> finishedRewards;
         public int cages, moonCages, cageUsed, moonUsed;
         public string message;
@@ -272,23 +273,33 @@ namespace CatTanks
                 if (burstCounts == null) burstCounts = new int[w.bursts.Count];
                 for (int i = 0; i < w.bursts.Count; i++)
                 {
-                    var b = w.bursts[i]; if (burstCounts[i] >= b.count || time < b.after) continue;
+                    var b = w.bursts[i]; if (burstCounts[i] >= b.count) continue;
+                    if (time + burstTimeOffset < b.after)
+                    {
+                        // A cleared group brings the next scheduled group forward after one second.
+                        if (spawned == 0 || enemies.Any(e => !e.dead)) burstClearTimer = 1;
+                        else burstClearTimer -= dt;
+                        if (burstClearTimer > 0) break;
+                        burstTimeOffset = b.after - time;
+                        spawnTimer = 0;
+                    }
                     if (spawnTimer <= 0)
                     {
                         string species = (string)w.types[spawned % w.types.Count];
                         if (w.boss && spawned == w.count - 1) species = "beast-8";
                         else if (species == "beast-8") species = (string)w.types.First(t => (string)t != "beast-8");
-                        Spawn(species); spawned++; burstCounts[i]++; spawnTimer = b.spacing;
+                        Spawn(species); spawned++; burstCounts[i]++; spawnTimer = b.spacing; burstClearTimer = 1;
                     }
                     break;
                 }
             }
             if (spawned < w.count || enemies.Any(e => !e.dead)) return;
-            if (waveGap <= 0) {waveGap = 4; energy = Mathf.Min(600, energy + 90); hp = Mathf.Min(maxHp, hp + (classic ? 1600 : 0));}
+            if (waveGap <= 0) {waveGap = 1; energy = Mathf.Min(600, energy + 90); hp = Mathf.Min(maxHp, hp + (classic ? 1600 : 0));}
             waveGap -= dt;
             if (waveGap > 0) return;
             if (wave == waves.Count - 1) {foreach (var orb in orbs) CollectOrb(orb); state = BattleState.Won; return;}
-            wave++; spawned = 0; spawnTimer = 1; burstCounts = null; waveGap = 0;
+            wave++; spawned = 0; spawnTimer = 0; burstCounts = null; waveGap = 0; burstTimeOffset = 0; burstClearTimer = 1;
+            UpdateWave(0);
         }
         void UpdateEnemy(Actor e, float dt)
         {
