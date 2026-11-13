@@ -1,0 +1,79 @@
+{
+  "relics": [
+    {
+      "hero_id": "kael",
+      "name": "Bulwark Sigil",
+      "per_level_stats": {
+        "max_hp": 18,
+        "def": 1.2
+      },
+      "ult_heal_pct_at": {}
+    },
+    {
+      "hero_id": "serin",
+      "name": "Pale Quartz",
+      "per_level_stats": {
+        "atk": 2.4
+      },
+      "ult_heal_pct_at": {}
+    },
+    {
+      "hero_id": "nila",
+      "name": "Grove Heart",
+      "per_level_stats": {
+        "atk": 1.4,
+        "max_hp": 10
+      },
+      "ult_heal_pct_at": {
+        "10": 0.04
+      }
+    },
+    {
+      "hero_id": "ruga",
+      "name": "Blood Tusk",
+      "per_level_stats": {
+        "atk": 2.2,
+        "lifesteal": 0.004
+      },
+      "ult_heal_pct_at": {}
+    },
+    {
+      "hero_id": "thorn",
+      "name": "Quiet Thorn",
+      "per_level_stats": {
+        "atk": 2,
+        "speed": 0.4
+      },
+      "ult_heal_pct_at": {}
+    },
+    {
+      "hero_id": "morwen",
+      "name": "Violet Codex",
+      "per_level_stats": {
+        "atk": 2.5
+      },
+      "ult_heal_pct_at": {}
+    },
+    {
+      "hero_id": "solenne",
+      "name": "Star Chalice",
+      "per_level_stats": {
+        "atk": 1.8,
+        "max_hp": 12
+      },
+      "ult_heal_pct_at": {
+        "5": 0.03,
+        "10": 0.06
+      }
+    },
+    {
+      "hero_id": "drax",
+      "name": "Red Eclipse",
+      "per_level_stats": {
+        "atk": 2.8,
+        "crit_rate": 0.004
+      },
+      "ult_heal_pct_at": {}
+    }
+  ]
+}

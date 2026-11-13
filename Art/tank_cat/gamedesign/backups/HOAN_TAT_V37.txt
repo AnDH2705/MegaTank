@@ -1,0 +1,12 @@
+﻿HOAN TAT BAN V3.7 - 12/11/2026
+Branch: feature/tank-cat-meta-v3.7
+Commit: 4f7323b8ce7d51222332137d02f6eed90cb7a740
+Open: ../tank-cat-meta-v37/MO_BAN_MOI.cmd (port 5175)
+Morning baseline unchanged: main / 27f59f2 / port 5174
+Verified: check:all, browser UI/integration, classic animation/background, build.
+Source backup: tank-cat-meta-v37-2026-11-12.bundle (git bundle verify PASS)
+Build backup: tank-cat-meta-v37-build-2026-11-12.zip (223 entries, index/vendor verified)
+Screenshots and handoff: ../tank-cat-meta-v37/docs/preview-v37 and README.md
+PvP is local mock defense waves, not online multiplayer. Long-term balance still requires human playtesting.
+Shutdown: requested after all checks, commit and backups.
+Shutdown result: FAILED. Windows denied permission (Access is denied, code 5). Computer was not shut down.

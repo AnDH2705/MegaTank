@@ -1,0 +1,636 @@
+{
+  "stages": [
+    {
+      "stage_id": "march_01",
+      "index": 1,
+      "name": "Pearl Gate",
+      "recommended_power": 400,
+      "enemy_ids": [
+        "e_bandit_tank",
+        "e_bandit_melee",
+        "e_bandit_ranged",
+        "e_bandit_ranged",
+        "e_bandit_mage"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 500,
+        "spirit_dust": 200,
+        "summon_scroll": 1,
+        "gem": 20
+      },
+      "repeat_rewards": {
+        "gold": 120,
+        "spirit_dust": 48
+      },
+      "difficulty_bias": 0.85
+    },
+    {
+      "stage_id": "march_02",
+      "index": 2,
+      "name": "Lowland Road",
+      "recommended_power": 472,
+      "enemy_ids": [
+        "e_bandit_tank",
+        "e_bandit_melee",
+        "e_bandit_ranged",
+        "e_bandit_ranged",
+        "e_bandit_mage"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 560,
+        "spirit_dust": 220
+      },
+      "repeat_rewards": {
+        "gold": 134,
+        "spirit_dust": 52
+      },
+      "difficulty_bias": 0.92,
+      "gear_reward": {
+        "gear_id": "iron_sword",
+        "rarity": "COMMON",
+        "stars": 0
+      }
+    },
+    {
+      "stage_id": "march_03",
+      "index": 3,
+      "name": "Ash Farm",
+      "recommended_power": 556,
+      "enemy_ids": [
+        "e_bandit_tank",
+        "e_bandit_melee",
+        "e_bandit_ranged",
+        "e_bandit_ranged",
+        "e_bandit_mage"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 627,
+        "spirit_dust": 242,
+        "forge_stone": 4
+      },
+      "repeat_rewards": {
+        "gold": 150,
+        "spirit_dust": 58
+      },
+      "difficulty_bias": 1,
+      "gear_reward": {
+        "gear_id": "leather_helm",
+        "rarity": "COMMON",
+        "stars": 0
+      }
+    },
+    {
+      "stage_id": "march_04",
+      "index": 4,
+      "name": "River Ford",
+      "recommended_power": 657,
+      "enemy_ids": [
+        "e_bandit_tank",
+        "e_bandit_melee",
+        "e_bandit_ranged",
+        "e_bandit_ranged",
+        "e_bandit_mage"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 702,
+        "spirit_dust": 266
+      },
+      "repeat_rewards": {
+        "gold": 168,
+        "spirit_dust": 63
+      },
+      "difficulty_bias": 1,
+      "gear_reward": {
+        "gear_id": "hide_chest",
+        "rarity": "COMMON",
+        "stars": 0
+      }
+    },
+    {
+      "stage_id": "march_05",
+      "index": 5,
+      "name": "Pine Watch",
+      "recommended_power": 775,
+      "enemy_ids": [
+        "e_beast_tank",
+        "e_beast_warrior",
+        "e_bandit_ranged",
+        "e_beast_ranger",
+        "e_bandit_mage"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 786,
+        "spirit_dust": 292,
+        "summon_scroll": 1,
+        "gem": 30
+      },
+      "repeat_rewards": {
+        "gold": 188,
+        "spirit_dust": 70,
+        "forge_stone": 1
+      },
+      "difficulty_bias": 1,
+      "artifact_reward": "art_dawn_charm"
+    },
+    {
+      "stage_id": "march_06",
+      "index": 6,
+      "name": "Broken Bridge",
+      "recommended_power": 915,
+      "enemy_ids": [
+        "e_beast_tank",
+        "e_beast_warrior",
+        "e_bandit_ranged",
+        "e_beast_ranger",
+        "e_bandit_mage"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 881,
+        "spirit_dust": 322,
+        "forge_stone": 5
+      },
+      "repeat_rewards": {
+        "gold": 211,
+        "spirit_dust": 77
+      },
+      "difficulty_bias": 1,
+      "gear_reward": {
+        "gear_id": "travel_boots",
+        "rarity": "COMMON",
+        "stars": 0
+      }
+    },
+    {
+      "stage_id": "march_07",
+      "index": 7,
+      "name": "Cinder Hamlet",
+      "recommended_power": 1079,
+      "enemy_ids": [
+        "e_beast_tank",
+        "e_beast_warrior",
+        "e_bandit_ranged",
+        "e_beast_ranger",
+        "e_bandit_mage"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 986,
+        "spirit_dust": 354
+      },
+      "repeat_rewards": {
+        "gold": 236,
+        "spirit_dust": 84
+      },
+      "difficulty_bias": 1,
+      "gear_reward": {
+        "gear_id": "dawn_blade",
+        "rarity": "RARE",
+        "stars": 0
+      }
+    },
+    {
+      "stage_id": "march_08",
+      "index": 8,
+      "name": "Thorn Pass",
+      "recommended_power": 1274,
+      "enemy_ids": [
+        "e_beast_tank",
+        "e_beast_warrior",
+        "e_bandit_ranged",
+        "e_beast_ranger",
+        "e_bandit_mage"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 1105,
+        "spirit_dust": 389,
+        "relic_stone": 10
+      },
+      "repeat_rewards": {
+        "gold": 265,
+        "spirit_dust": 93
+      },
+      "difficulty_bias": 1
+    },
+    {
+      "stage_id": "march_09",
+      "index": 9,
+      "name": "Echo Quarry",
+      "recommended_power": 1503,
+      "enemy_ids": [
+        "e_beast_tank",
+        "e_beast_warrior",
+        "e_bandit_ranged",
+        "e_beast_ranger",
+        "e_bandit_mage"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 1237,
+        "spirit_dust": 428,
+        "forge_stone": 6
+      },
+      "repeat_rewards": {
+        "gold": 296,
+        "spirit_dust": 102
+      },
+      "difficulty_bias": 1
+    },
+    {
+      "stage_id": "march_10",
+      "index": 10,
+      "name": "The First Warden",
+      "recommended_power": 1774,
+      "enemy_ids": [
+        "e_warden_boss",
+        "e_beast_warrior",
+        "e_shade_assassin",
+        "e_shade_mage",
+        "e_bandit_healer"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 1386,
+        "spirit_dust": 471,
+        "summon_scroll": 1,
+        "gem": 50
+      },
+      "repeat_rewards": {
+        "gold": 332,
+        "spirit_dust": 113,
+        "forge_stone": 1
+      },
+      "difficulty_bias": 1,
+      "artifact_reward": "art_iron_heart"
+    },
+    {
+      "stage_id": "march_11",
+      "index": 11,
+      "name": "Night Orchard",
+      "recommended_power": 2093,
+      "enemy_ids": [
+        "e_beast_tank",
+        "e_shade_assassin",
+        "e_shade_mage",
+        "e_beast_ranger",
+        "e_bandit_healer"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 1552,
+        "spirit_dust": 518
+      },
+      "repeat_rewards": {
+        "gold": 372,
+        "spirit_dust": 124
+      },
+      "difficulty_bias": 1
+    },
+    {
+      "stage_id": "march_12",
+      "index": 12,
+      "name": "Salt Flats",
+      "recommended_power": 2470,
+      "enemy_ids": [
+        "e_beast_tank",
+        "e_shade_assassin",
+        "e_shade_mage",
+        "e_beast_ranger",
+        "e_bandit_healer"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 1739,
+        "spirit_dust": 570,
+        "forge_stone": 7,
+        "relic_stone": 10
+      },
+      "repeat_rewards": {
+        "gold": 417,
+        "spirit_dust": 136
+      },
+      "difficulty_bias": 1
+    },
+    {
+      "stage_id": "march_13",
+      "index": 13,
+      "name": "Red Gully",
+      "recommended_power": 2915,
+      "enemy_ids": [
+        "e_beast_tank",
+        "e_shade_assassin",
+        "e_shade_mage",
+        "e_beast_ranger",
+        "e_bandit_healer"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 1947,
+        "spirit_dust": 627
+      },
+      "repeat_rewards": {
+        "gold": 467,
+        "spirit_dust": 150
+      },
+      "difficulty_bias": 1
+    },
+    {
+      "stage_id": "march_14",
+      "index": 14,
+      "name": "Hollow Keep",
+      "recommended_power": 3439,
+      "enemy_ids": [
+        "e_beast_tank",
+        "e_shade_assassin",
+        "e_shade_mage",
+        "e_beast_ranger",
+        "e_bandit_healer"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 2181,
+        "spirit_dust": 690
+      },
+      "repeat_rewards": {
+        "gold": 523,
+        "spirit_dust": 165
+      },
+      "difficulty_bias": 1
+    },
+    {
+      "stage_id": "march_15",
+      "index": 15,
+      "name": "Moonwell Stair",
+      "recommended_power": 4058,
+      "enemy_ids": [
+        "e_beast_tank",
+        "e_beast_warrior",
+        "e_shade_assassin",
+        "e_shade_mage",
+        "e_bandit_healer"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 2443,
+        "spirit_dust": 759,
+        "summon_scroll": 1,
+        "gem": 50,
+        "forge_stone": 8
+      },
+      "repeat_rewards": {
+        "gold": 586,
+        "spirit_dust": 182,
+        "forge_stone": 1
+      },
+      "difficulty_bias": 1,
+      "artifact_reward": "art_sylvan_leaf"
+    },
+    {
+      "stage_id": "march_16",
+      "index": 16,
+      "name": "Iron Causeway",
+      "recommended_power": 4789,
+      "enemy_ids": [
+        "e_beast_tank",
+        "e_beast_warrior",
+        "e_shade_assassin",
+        "e_shade_mage",
+        "e_bandit_healer"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 2736,
+        "spirit_dust": 835,
+        "relic_stone": 10
+      },
+      "repeat_rewards": {
+        "gold": 656,
+        "spirit_dust": 200
+      },
+      "difficulty_bias": 1
+    },
+    {
+      "stage_id": "march_17",
+      "index": 17,
+      "name": "Dusk Harbor",
+      "recommended_power": 5651,
+      "enemy_ids": [
+        "e_beast_tank",
+        "e_beast_warrior",
+        "e_shade_assassin",
+        "e_shade_mage",
+        "e_bandit_healer"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 3065,
+        "spirit_dust": 918
+      },
+      "repeat_rewards": {
+        "gold": 735,
+        "spirit_dust": 220
+      },
+      "difficulty_bias": 1
+    },
+    {
+      "stage_id": "march_18",
+      "index": 18,
+      "name": "Veil of Crows",
+      "recommended_power": 6668,
+      "enemy_ids": [
+        "e_beast_tank",
+        "e_beast_warrior",
+        "e_shade_assassin",
+        "e_shade_mage",
+        "e_bandit_healer"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 3433,
+        "spirit_dust": 1010,
+        "forge_stone": 9
+      },
+      "repeat_rewards": {
+        "gold": 823,
+        "spirit_dust": 242
+      },
+      "difficulty_bias": 1
+    },
+    {
+      "stage_id": "march_19",
+      "index": 19,
+      "name": "Aether Breach",
+      "recommended_power": 7869,
+      "enemy_ids": [
+        "e_beast_tank",
+        "e_beast_warrior",
+        "e_shade_assassin",
+        "e_shade_mage",
+        "e_bandit_healer"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 3844,
+        "spirit_dust": 1111
+      },
+      "repeat_rewards": {
+        "gold": 922,
+        "spirit_dust": 266
+      },
+      "difficulty_bias": 1
+    },
+    {
+      "stage_id": "march_20",
+      "index": 20,
+      "name": "The Last Warden",
+      "recommended_power": 9285,
+      "enemy_ids": [
+        "e_warden_boss",
+        "e_beast_warrior",
+        "e_shade_assassin",
+        "e_shade_mage",
+        "e_bandit_healer"
+      ],
+      "enemy_slots": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_clear_rewards": {
+        "gold": 4306,
+        "spirit_dust": 1223,
+        "summon_scroll": 2,
+        "gem": 80
+      },
+      "repeat_rewards": {
+        "gold": 1033,
+        "spirit_dust": 293,
+        "forge_stone": 1
+      },
+      "difficulty_bias": 1,
+      "artifact_reward": "art_void_lens"
+    }
+  ]
+}

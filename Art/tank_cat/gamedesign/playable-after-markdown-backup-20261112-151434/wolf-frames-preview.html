@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sói tím — animation từng frame</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0c1422;color:#f2edf8;font:16px system-ui,sans-serif}main{max-width:1200px;margin:24px auto;padding:24px}h1{font-size:28px;margin:0 0 10px}p{color:#b7c4d6;line-height:1.6}#stage{background:radial-gradient(ellipse at bottom,#2b3e59,#142136 80%);border:1px solid #48566c;border-radius:18px;overflow:hidden}#stage.light{background:#e3e6e9}canvas{display:block;width:100%;height:auto}.controls{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0;align-items:center}button{font:inherit;color:inherit;background:#213248;border:1px solid #52647d;border-radius:10px;padding:10px 16px;cursor:pointer}button[aria-pressed=true]{background:#dfc2ff;color:#201633;border-color:#dfc2ff}button:disabled{opacity:.4;cursor:default}label{display:flex;gap:8px;align-items:center}input[type=range]{width:120px;accent-color:#dfc2ff}a,summary{color:#dfc2ff}small{color:#acb9cc}#strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}#strip button{padding:0 0 6px;overflow:hidden;font-size:13px;background:#18283d}#strip button[aria-current=true]{border-color:#dfc2ff;box-shadow:0 0 0 1px #dfc2ff}#strip img{display:block;width:100%;height:auto}details img{display:block;width:100%;background:#52647d;margin-top:12px}summary{cursor:pointer}@media(max-width:640px){main{padding:14px;margin:10px auto}h1{font-size:23px}#strip{grid-template-columns:repeat(3,minmax(0,1fr))}.controls{gap:8px}button{padding:9px 12px}}
+</style>
+<main>
+<h1>Sói tím · vẽ từng frame</h1>
+<p>Ảnh gốc bên trái, animation bên phải. Mỗi động tác có 6 hình nguyên con; tất cả frame dùng cùng một tỉ lệ và gốc tọa độ.</p>
+<div id="stage"><canvas id="canvas" width="1120" height="460" aria-label="So sánh sói gốc và hoạt ảnh từng frame"></canvas></div>
+<div class="controls"><button data-state="idle" aria-pressed="false">Đứng thở</button><button data-state="run" aria-pressed="true">Chạy</button><button data-state="attack" aria-pressed="false">Tấn công</button><button data-state="hit" aria-pressed="false">Trúng đòn</button></div>
+<div class="controls"><button id="pause" aria-pressed="false">Tạm dừng</button><button id="previous">← Frame trước</button><button id="next">Frame sau →</button><label>Tốc độ <input id="speed" type="range" min="0.25" max="1.5" step="0.25" value="1"></label><label><input id="light" type="checkbox">Nền sáng</label><label><input id="guide" type="checkbox">Khung so tỉ lệ</label></div>
+<p id="status">Đang tải 24 frame…</p>
+<div id="strip"></div>
+<p><a href="/assets/wolf-frames/wolf-actions.gif" target="_blank">Mở GIF ghép 4 hành động</a> · <a href="/assets/wolf-frames/manifest.json">Thông tin frame</a></p>
+<details><summary>Xem sheet 24 hình đã vẽ</summary><img src="/assets/wolf-frames-v1.png" alt="24 frame sói tím: đứng thở, chạy, tấn công, trúng đòn."></details>
+<p><small>Ảnh sinh có thể còn dao động nhỏ về nét vẽ giữa frame. Đây là bản xem thử, chưa thay quái trong game.</small><br><a href="/monster-preview.html">Mẫu rig trước</a> · <a href="/">Mở game</a></p>
+</main>
+<script type="module" src="/src/wolf-frames-preview.js"></script>
+</html>

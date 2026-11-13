@@ -1,0 +1,192 @@
+{
+  "enemies": [
+    {
+      "enemy_id": "e_bandit_tank",
+      "name": "Gate Thug",
+      "faction": "DAWNKIN",
+      "role": "TANK",
+      "skill_profile": "tank",
+      "base_stats": {
+        "max_hp": 260,
+        "atk": 22,
+        "def": 16,
+        "speed": 80,
+        "crit_rate": 0.05,
+        "crit_damage": 1.5,
+        "energy_regen": 50
+      },
+      "placeholder_color": "#5A5A6A"
+    },
+    {
+      "enemy_id": "e_bandit_melee",
+      "name": "Road Blade",
+      "faction": "DAWNKIN",
+      "role": "WARRIOR",
+      "skill_profile": "warrior",
+      "base_stats": {
+        "max_hp": 200,
+        "atk": 28,
+        "def": 10,
+        "speed": 88,
+        "crit_rate": 0.05,
+        "crit_damage": 1.5,
+        "energy_regen": 50
+      },
+      "placeholder_color": "#6A5A4A"
+    },
+    {
+      "enemy_id": "e_bandit_ranged",
+      "name": "Sling Hand",
+      "faction": "DAWNKIN",
+      "role": "RANGER",
+      "skill_profile": "ranger",
+      "base_stats": {
+        "max_hp": 160,
+        "atk": 30,
+        "def": 8,
+        "speed": 96,
+        "crit_rate": 0.08,
+        "crit_damage": 1.5,
+        "energy_regen": 50
+      },
+      "placeholder_color": "#4A6A5A"
+    },
+    {
+      "enemy_id": "e_bandit_mage",
+      "name": "Field Hexer",
+      "faction": "UMBRAL",
+      "role": "MAGE",
+      "skill_profile": "mage",
+      "base_stats": {
+        "max_hp": 150,
+        "atk": 32,
+        "def": 7,
+        "speed": 94,
+        "crit_rate": 0.06,
+        "crit_damage": 1.5,
+        "energy_regen": 50
+      },
+      "placeholder_color": "#4A3A6A"
+    },
+    {
+      "enemy_id": "e_bandit_healer",
+      "name": "Camp Medic",
+      "faction": "SYLVAN",
+      "role": "HEALER",
+      "skill_profile": "healer",
+      "base_stats": {
+        "max_hp": 180,
+        "atk": 24,
+        "def": 9,
+        "speed": 90,
+        "crit_rate": 0.05,
+        "crit_damage": 1.5,
+        "energy_regen": 55
+      },
+      "placeholder_color": "#3A5A4A"
+    },
+    {
+      "enemy_id": "e_beast_tank",
+      "name": "Bristlehide",
+      "faction": "IRONFANG",
+      "role": "TANK",
+      "skill_profile": "tank",
+      "base_stats": {
+        "max_hp": 300,
+        "atk": 24,
+        "def": 18,
+        "speed": 78,
+        "crit_rate": 0.05,
+        "crit_damage": 1.5,
+        "energy_regen": 50
+      },
+      "placeholder_color": "#7A4A2A"
+    },
+    {
+      "enemy_id": "e_beast_warrior",
+      "name": "Pack Raider",
+      "faction": "IRONFANG",
+      "role": "WARRIOR",
+      "skill_profile": "warrior",
+      "base_stats": {
+        "max_hp": 220,
+        "atk": 32,
+        "def": 12,
+        "speed": 90,
+        "crit_rate": 0.07,
+        "crit_damage": 1.6,
+        "energy_regen": 50
+      },
+      "placeholder_color": "#8A3A1A"
+    },
+    {
+      "enemy_id": "e_beast_ranger",
+      "name": "Howl Archer",
+      "faction": "IRONFANG",
+      "role": "RANGER",
+      "skill_profile": "ranger",
+      "base_stats": {
+        "max_hp": 170,
+        "atk": 33,
+        "def": 9,
+        "speed": 100,
+        "crit_rate": 0.09,
+        "crit_damage": 1.6,
+        "energy_regen": 50
+      },
+      "placeholder_color": "#6A3A2A"
+    },
+    {
+      "enemy_id": "e_shade_mage",
+      "name": "Veil Scribe",
+      "faction": "UMBRAL",
+      "role": "MAGE",
+      "skill_profile": "mage",
+      "base_stats": {
+        "max_hp": 155,
+        "atk": 36,
+        "def": 7,
+        "speed": 97,
+        "crit_rate": 0.07,
+        "crit_damage": 1.65,
+        "energy_regen": 50
+      },
+      "placeholder_color": "#3A2A5A"
+    },
+    {
+      "enemy_id": "e_shade_assassin",
+      "name": "Quiet Fang",
+      "faction": "ABYSSAL",
+      "role": "ASSASSIN",
+      "skill_profile": "assassin",
+      "base_stats": {
+        "max_hp": 150,
+        "atk": 36,
+        "def": 8,
+        "speed": 108,
+        "crit_rate": 0.12,
+        "crit_damage": 1.7,
+        "energy_regen": 55
+      },
+      "placeholder_color": "#4A1020"
+    },
+    {
+      "enemy_id": "e_warden_boss",
+      "name": "Warden",
+      "faction": "ASTRAL",
+      "role": "TANK",
+      "skill_profile": "boss",
+      "base_stats": {
+        "max_hp": 400,
+        "atk": 34,
+        "def": 20,
+        "speed": 84,
+        "crit_rate": 0.08,
+        "crit_damage": 1.6,
+        "energy_regen": 60
+      },
+      "placeholder_color": "#C0A040",
+      "is_boss": true
+    }
+  ]
+}

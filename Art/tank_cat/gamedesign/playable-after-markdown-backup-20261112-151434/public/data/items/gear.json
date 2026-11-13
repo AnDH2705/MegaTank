@@ -1,0 +1,115 @@
+{
+  "gear": [
+    {
+      "gear_id": "iron_sword",
+      "name": "Iron Sword",
+      "slot": "weapon",
+      "faction": null,
+      "base_stats": {
+        "atk": 20
+      }
+    },
+    {
+      "gear_id": "dawn_blade",
+      "name": "Dawn Blade",
+      "slot": "weapon",
+      "faction": "DAWNKIN",
+      "base_stats": {
+        "atk": 20
+      }
+    },
+    {
+      "gear_id": "fang_axe",
+      "name": "Fang Axe",
+      "slot": "weapon",
+      "faction": "IRONFANG",
+      "base_stats": {
+        "atk": 20
+      }
+    },
+    {
+      "gear_id": "grove_bow",
+      "name": "Grove Bow",
+      "slot": "weapon",
+      "faction": "SYLVAN",
+      "base_stats": {
+        "atk": 20
+      }
+    },
+    {
+      "gear_id": "dusk_wand",
+      "name": "Dusk Wand",
+      "slot": "weapon",
+      "faction": "UMBRAL",
+      "base_stats": {
+        "atk": 20
+      }
+    },
+    {
+      "gear_id": "leather_helm",
+      "name": "Leather Helm",
+      "slot": "helm",
+      "faction": null,
+      "base_stats": {
+        "max_hp": 80
+      }
+    },
+    {
+      "gear_id": "dawn_helm",
+      "name": "Dawn Helm",
+      "slot": "helm",
+      "faction": "DAWNKIN",
+      "base_stats": {
+        "max_hp": 80,
+        "def": 2
+      }
+    },
+    {
+      "gear_id": "hide_chest",
+      "name": "Hide Chest",
+      "slot": "chest",
+      "faction": null,
+      "base_stats": {
+        "def": 12
+      }
+    },
+    {
+      "gear_id": "ironfang_mail",
+      "name": "Ironfang Mail",
+      "slot": "chest",
+      "faction": "IRONFANG",
+      "base_stats": {
+        "def": 12,
+        "max_hp": 20
+      }
+    },
+    {
+      "gear_id": "travel_boots",
+      "name": "Travel Boots",
+      "slot": "boots",
+      "faction": null,
+      "base_stats": {
+        "speed": 8
+      }
+    },
+    {
+      "gear_id": "sylvan_treads",
+      "name": "Sylvan Treads",
+      "slot": "boots",
+      "faction": "SYLVAN",
+      "base_stats": {
+        "speed": 8,
+        "atk": 3
+      }
+    },
+    {
+      "gear_id": "umbral_greaves",
+      "name": "Umbral Greaves",
+      "slot": "boots",
+      "faction": "UMBRAL",
+      "base_stats": {
+        "speed": 8
+      }
+    }
+  ]
+}

@@ -1,0 +1,321 @@
+{
+  "heroes": [
+    {
+      "hero_id": "kael",
+      "name": "Kael",
+      "faction": "DAWNKIN",
+      "role": "TANK",
+      "rarity": "ELITE",
+      "is_fodder_only": false,
+      "placeholder_color": "#4A6FA5",
+      "base_stats": {
+        "max_hp": 320,
+        "atk": 28,
+        "def": 22,
+        "speed": 85
+      },
+      "growth": {
+        "max_hp": 28,
+        "atk": 2,
+        "def": 1.6,
+        "speed": 0.4
+      },
+      "ratio_overrides": {
+        "crit_rate": 0.05,
+        "crit_damage": 1.5,
+        "energy_regen": 50
+      },
+      "skill_profile": "tank",
+      "blurb": "A Dawnkin vanguard who holds the front line."
+    },
+    {
+      "hero_id": "serin",
+      "name": "Serin",
+      "faction": "DAWNKIN",
+      "role": "MAGE",
+      "rarity": "RARE",
+      "is_fodder_only": false,
+      "placeholder_color": "#6EC1E4",
+      "base_stats": {
+        "max_hp": 200,
+        "atk": 42,
+        "def": 10,
+        "speed": 95
+      },
+      "growth": {
+        "max_hp": 16,
+        "atk": 3.2,
+        "def": 0.7,
+        "speed": 0.5
+      },
+      "ratio_overrides": {
+        "crit_rate": 0.06,
+        "crit_damage": 1.55,
+        "energy_regen": 50
+      },
+      "skill_profile": "mage",
+      "blurb": "A scholar of pale fire, striking entire rows."
+    },
+    {
+      "hero_id": "nila",
+      "name": "Nila",
+      "faction": "SYLVAN",
+      "role": "HEALER",
+      "rarity": "ELITE",
+      "is_fodder_only": false,
+      "placeholder_color": "#3CB371",
+      "base_stats": {
+        "max_hp": 230,
+        "atk": 30,
+        "def": 12,
+        "speed": 92
+      },
+      "growth": {
+        "max_hp": 20,
+        "atk": 2.2,
+        "def": 0.9,
+        "speed": 0.4
+      },
+      "ratio_overrides": {
+        "crit_rate": 0.05,
+        "crit_damage": 1.5,
+        "energy_regen": 55
+      },
+      "skill_profile": "healer",
+      "blurb": "A grove tender who knits wounds mid-battle."
+    },
+    {
+      "hero_id": "ruga",
+      "name": "Ruga",
+      "faction": "IRONFANG",
+      "role": "WARRIOR",
+      "rarity": "ELITE",
+      "is_fodder_only": false,
+      "placeholder_color": "#C45C26",
+      "base_stats": {
+        "max_hp": 280,
+        "atk": 38,
+        "def": 16,
+        "speed": 90
+      },
+      "growth": {
+        "max_hp": 22,
+        "atk": 3,
+        "def": 1.1,
+        "speed": 0.45
+      },
+      "ratio_overrides": {
+        "crit_rate": 0.08,
+        "crit_damage": 1.6,
+        "energy_regen": 50
+      },
+      "skill_profile": "warrior",
+      "blurb": "An Ironfang raider who lives for the clash."
+    },
+    {
+      "hero_id": "thorn",
+      "name": "Thorn",
+      "faction": "SYLVAN",
+      "role": "RANGER",
+      "rarity": "RARE",
+      "is_fodder_only": false,
+      "placeholder_color": "#7A9A3A",
+      "base_stats": {
+        "max_hp": 210,
+        "atk": 40,
+        "def": 11,
+        "speed": 100
+      },
+      "growth": {
+        "max_hp": 17,
+        "atk": 3.1,
+        "def": 0.7,
+        "speed": 0.55
+      },
+      "ratio_overrides": {
+        "crit_rate": 0.1,
+        "crit_damage": 1.6,
+        "energy_regen": 50
+      },
+      "skill_profile": "ranger",
+      "blurb": "A quiet bowhunter of the deep green."
+    },
+    {
+      "hero_id": "morwen",
+      "name": "Morwen",
+      "faction": "UMBRAL",
+      "role": "MAGE",
+      "rarity": "ELITE",
+      "is_fodder_only": false,
+      "placeholder_color": "#6B3FA0",
+      "base_stats": {
+        "max_hp": 195,
+        "atk": 44,
+        "def": 9,
+        "speed": 96
+      },
+      "growth": {
+        "max_hp": 15,
+        "atk": 3.4,
+        "def": 0.6,
+        "speed": 0.5
+      },
+      "ratio_overrides": {
+        "crit_rate": 0.07,
+        "crit_damage": 1.65,
+        "energy_regen": 50
+      },
+      "skill_profile": "mage",
+      "blurb": "She writes ruin in violet script."
+    },
+    {
+      "hero_id": "solenne",
+      "name": "Solenne",
+      "faction": "ASTRAL",
+      "role": "HEALER",
+      "rarity": "LEGENDARY",
+      "is_fodder_only": false,
+      "placeholder_color": "#F2D675",
+      "base_stats": {
+        "max_hp": 250,
+        "atk": 34,
+        "def": 13,
+        "speed": 94
+      },
+      "growth": {
+        "max_hp": 22,
+        "atk": 2.6,
+        "def": 1,
+        "speed": 0.45
+      },
+      "ratio_overrides": {
+        "crit_rate": 0.06,
+        "crit_damage": 1.5,
+        "energy_regen": 60
+      },
+      "skill_profile": "healer",
+      "blurb": "A starlit warden whose light mends the fallen."
+    },
+    {
+      "hero_id": "drax",
+      "name": "Drax",
+      "faction": "ABYSSAL",
+      "role": "ASSASSIN",
+      "rarity": "LEGENDARY",
+      "is_fodder_only": false,
+      "placeholder_color": "#8B1E3F",
+      "base_stats": {
+        "max_hp": 200,
+        "atk": 46,
+        "def": 10,
+        "speed": 110
+      },
+      "growth": {
+        "max_hp": 16,
+        "atk": 3.6,
+        "def": 0.6,
+        "speed": 0.6
+      },
+      "ratio_overrides": {
+        "crit_rate": 0.12,
+        "crit_damage": 1.8,
+        "energy_regen": 55,
+        "lifesteal": 0.05
+      },
+      "skill_profile": "assassin",
+      "blurb": "He finds the weakest pulse and ends it."
+    },
+    {
+      "hero_id": "squire",
+      "name": "Squire",
+      "faction": "DAWNKIN",
+      "role": "WARRIOR",
+      "rarity": "COMMON",
+      "is_fodder_only": true,
+      "placeholder_color": "#9AA0A6",
+      "base_stats": {
+        "max_hp": 160,
+        "atk": 22,
+        "def": 10,
+        "speed": 80
+      },
+      "growth": {
+        "max_hp": 12,
+        "atk": 1.5,
+        "def": 0.6,
+        "speed": 0.3
+      },
+      "skill_profile": "warrior",
+      "blurb": "A drill-yard recruit, often used as fodder."
+    },
+    {
+      "hero_id": "pup",
+      "name": "Pup",
+      "faction": "IRONFANG",
+      "role": "WARRIOR",
+      "rarity": "COMMON",
+      "is_fodder_only": true,
+      "placeholder_color": "#B08A6A",
+      "base_stats": {
+        "max_hp": 150,
+        "atk": 24,
+        "def": 8,
+        "speed": 82
+      },
+      "growth": {
+        "max_hp": 11,
+        "atk": 1.6,
+        "def": 0.5,
+        "speed": 0.3
+      },
+      "skill_profile": "warrior",
+      "blurb": "Young Ironfang, all bite and little discipline."
+    },
+    {
+      "hero_id": "sprout",
+      "name": "Sprout",
+      "faction": "SYLVAN",
+      "role": "RANGER",
+      "rarity": "COMMON",
+      "is_fodder_only": true,
+      "placeholder_color": "#8FBF6A",
+      "base_stats": {
+        "max_hp": 140,
+        "atk": 23,
+        "def": 7,
+        "speed": 88
+      },
+      "growth": {
+        "max_hp": 10,
+        "atk": 1.6,
+        "def": 0.4,
+        "speed": 0.35
+      },
+      "skill_profile": "ranger",
+      "blurb": "A sapling scout of the grove."
+    },
+    {
+      "hero_id": "wisp",
+      "name": "Wisp",
+      "faction": "UMBRAL",
+      "role": "MAGE",
+      "rarity": "COMMON",
+      "is_fodder_only": true,
+      "placeholder_color": "#7A6A8A",
+      "base_stats": {
+        "max_hp": 135,
+        "atk": 25,
+        "def": 6,
+        "speed": 86
+      },
+      "growth": {
+        "max_hp": 10,
+        "atk": 1.7,
+        "def": 0.4,
+        "speed": 0.3
+      },
+      "skill_profile": "mage",
+      "blurb": "A flicker of leftover dusk."
+    }
+  ]
+}
