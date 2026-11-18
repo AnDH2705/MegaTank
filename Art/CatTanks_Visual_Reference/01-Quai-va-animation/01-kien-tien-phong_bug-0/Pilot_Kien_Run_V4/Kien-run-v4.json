@@ -1,0 +1,24 @@
+{
+  "speciesId": "bug-0",
+  "cellSize": { "width": 320, "height": 320 },
+  "run": {
+    "sheet": "Kien-run_v4_6x1.png",
+    "columns": 6,
+    "rows": 1,
+    "frameDurationMs": 90,
+    "loop": true,
+    "generatedReplacement": { "index": 5, "file": "frames-moi/run-06.png", "candidate": "R1" }
+  },
+  "idleToRun": {
+    "previewSheet": "Kien-idle-sang-run_v4_4x1.png",
+    "previewColumns": 4,
+    "previewRows": 1,
+    "previewOrder": ["idle-01", "vao-chay-01", "vao-chay-02", "run-01"],
+    "loop": false,
+    "insertBeforeRunIndex": 0,
+    "frames": [
+      { "file": "frames-moi/vao-chay-01.png", "durationMs": 60, "candidate": "T5-1" },
+      { "file": "frames-moi/vao-chay-02.png", "durationMs": 60, "candidate": "T2-2-fit" }
+    ]
+  }
+}

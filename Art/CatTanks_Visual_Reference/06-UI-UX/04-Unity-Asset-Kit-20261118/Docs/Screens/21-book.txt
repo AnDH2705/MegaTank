@@ -1,0 +1,116 @@
+MÀN 21 — Bách khoa
+Key: book
+Loại: Popup trên nền march
+Prefab được sinh: Assets/CatTanksMockupKit/Generated/Prefabs/Mockup_book.prefab
+
+Popup gần full screen. Năm category tab và ScrollRect 4 cột. Trang đang vẽ là mèo, có hai hàng đầy và một hàng một phần. Những category khác cần bind catalog khi đưa vào game; PNG vũ khí/quái gốc đã nằm trong gói.
+
+CÁCH GHÉP
+1. Dùng Canvas 1600×900 và quy tắc anchor trong Docs/02_GHEP_21_MAN.txt.
+2. Thêm node theo đúng thứ tự bảng bên dưới; node sau vẽ trên node trước.
+3. parent trống = ArtKitStage; parent có giá trị = trong Content/group có tên đó.
+4. Khung/nút: Image Sliced, viền theo importer; icon/art: Image Simple + Preserve Aspect.
+5. Các node label dùng UI Text; button dùng Image + Button + child Text; bar dùng track + Image Filled.
+6. Action screen:* là navigation xem thử; game:* cần nối controller. Dữ liệu số trong file là ví dụ.
+
+THÀNH PHẦN (tọa độ trên trái, UI units)
+Order | Id | Kind | Sprite | Parent | x,y,w,h | Font | Action | Disabled
+0 | modal-book | image | panel_modal | ArtKitStage | 110,76,1380,760 | - | - | false
+1 | modal-title | label | - | ArtKitStage | 150,102,1300,62 | 36 | - | false
+2 | book-close | button | button_blue | ArtKitStage | 1300,108,150,54 | 20 | close | false
+3 | book-tab-0 | button | tab_blue | ArtKitStage | 150,194,248,52 | 19 | game:bookTab:0 | false
+4 | book-tab-1 | button | tab_blue | ArtKitStage | 410,194,248,52 | 19 | game:bookTab:1 | false
+5 | book-tab-2 | button | tab_blue | ArtKitStage | 670,194,248,52 | 19 | game:bookTab:2 | false
+6 | book-tab-3 | button | tab_blue | ArtKitStage | 930,194,248,52 | 19 | game:bookTab:3 | false
+7 | book-tab-4 | button | tab_selected | ArtKitStage | 1190,194,248,52 | 19 | game:bookTab:4 | false
+8 | book-scroll | viewport | panel_inset | ArtKitStage | 144,272,1308,532 | - | - | false
+9 | book-card-0 | image | panel_card | book-scroll | 0,0,308,238 | - | - | false
+10 | book-cat-0 | image | cat-0 | book-scroll | 70,6,160,132 | - | - | false
+11 | book-name-0 | label | - | book-scroll | 16,140,280,38 | 27 | - | false
+12 | book-role-0 | label | - | book-scroll | 16,180,280,28 | 19 | - | false
+13 | book-specialty-0 | label | - | book-scroll | 16,208,280,26 | 17 | - | false
+14 | book-card-1 | image | panel_card | book-scroll | 320,0,308,238 | - | - | false
+15 | book-cat-1 | image | cat-1 | book-scroll | 390,6,160,132 | - | - | false
+16 | book-name-1 | label | - | book-scroll | 336,140,280,38 | 27 | - | false
+17 | book-role-1 | label | - | book-scroll | 336,180,280,28 | 19 | - | false
+18 | book-specialty-1 | label | - | book-scroll | 336,208,280,26 | 17 | - | false
+19 | book-card-2 | image | panel_card | book-scroll | 640,0,308,238 | - | - | false
+20 | book-cat-2 | image | cat-2 | book-scroll | 710,6,160,132 | - | - | false
+21 | book-name-2 | label | - | book-scroll | 656,140,280,38 | 27 | - | false
+22 | book-role-2 | label | - | book-scroll | 656,180,280,28 | 19 | - | false
+23 | book-specialty-2 | label | - | book-scroll | 656,208,280,26 | 17 | - | false
+24 | book-card-3 | image | panel_card | book-scroll | 960,0,308,238 | - | - | false
+25 | book-cat-3 | image | cat-3 | book-scroll | 1030,6,160,132 | - | - | false
+26 | book-name-3 | label | - | book-scroll | 976,140,280,38 | 27 | - | false
+27 | book-role-3 | label | - | book-scroll | 976,180,280,28 | 19 | - | false
+28 | book-specialty-3 | label | - | book-scroll | 976,208,280,26 | 17 | - | false
+29 | book-card-4 | image | panel_card | book-scroll | 0,250,308,238 | - | - | false
+30 | book-cat-4 | image | cat-4 | book-scroll | 70,256,160,132 | - | - | false
+31 | book-name-4 | label | - | book-scroll | 16,390,280,38 | 27 | - | false
+32 | book-role-4 | label | - | book-scroll | 16,430,280,28 | 19 | - | false
+33 | book-specialty-4 | label | - | book-scroll | 16,458,280,26 | 17 | - | false
+34 | book-card-5 | image | panel_card | book-scroll | 320,250,308,238 | - | - | false
+35 | book-cat-5 | image | cat-5 | book-scroll | 390,256,160,132 | - | - | false
+36 | book-name-5 | label | - | book-scroll | 336,390,280,38 | 27 | - | false
+37 | book-role-5 | label | - | book-scroll | 336,430,280,28 | 19 | - | false
+38 | book-specialty-5 | label | - | book-scroll | 336,458,280,26 | 17 | - | false
+39 | book-card-6 | image | panel_card | book-scroll | 640,250,308,238 | - | - | false
+40 | book-cat-6 | image | cat-6 | book-scroll | 710,256,160,132 | - | - | false
+41 | book-name-6 | label | - | book-scroll | 656,390,280,38 | 27 | - | false
+42 | book-role-6 | label | - | book-scroll | 656,430,280,28 | 19 | - | false
+43 | book-specialty-6 | label | - | book-scroll | 656,458,280,26 | 17 | - | false
+44 | book-card-7 | image | panel_card | book-scroll | 960,250,308,238 | - | - | false
+45 | book-cat-7 | image | cat-7 | book-scroll | 1030,256,160,132 | - | - | false
+46 | book-name-7 | label | - | book-scroll | 976,390,280,38 | 27 | - | false
+47 | book-role-7 | label | - | book-scroll | 976,430,280,28 | 19 | - | false
+48 | book-specialty-7 | label | - | book-scroll | 976,458,280,26 | 17 | - | false
+49 | book-card-8 | image | panel_card | book-scroll | 0,500,308,238 | - | - | false
+50 | book-cat-8 | image | cat-8 | book-scroll | 70,506,160,132 | - | - | false
+51 | book-name-8 | label | - | book-scroll | 16,640,280,38 | 27 | - | false
+52 | book-role-8 | label | - | book-scroll | 16,680,280,28 | 19 | - | false
+53 | book-specialty-8 | label | - | book-scroll | 16,708,280,26 | 17 | - | false
+54 | book-card-9 | image | panel_card | book-scroll | 320,500,308,238 | - | - | false
+55 | book-cat-9 | image | cat-9 | book-scroll | 390,506,160,132 | - | - | false
+56 | book-name-9 | label | - | book-scroll | 336,640,280,38 | 27 | - | false
+57 | book-role-9 | label | - | book-scroll | 336,680,280,28 | 19 | - | false
+58 | book-specialty-9 | label | - | book-scroll | 336,708,280,26 | 17 | - | false
+
+NỘI DUNG TEXT/INPUT
+modal-title: Bách khoa trăng xanh
+book-close: Đóng [B]
+book-tab-0: THÁP PHÁO
+book-tab-1: VŨ KHÍ MÈO
+book-tab-2: MODULE
+book-tab-3: QUÁI VẬT
+book-tab-4: MÈO
+book-name-0: Mướp
+book-role-0: ELITE · TANK
+book-specialty-0: Chuyên vận hành pháo
+book-name-1: Khói
+book-role-1: RARE · MAGE
+book-specialty-1: Chuyên bộ binh
+book-name-2: Bông
+book-role-2: ELITE · HEALER
+book-specialty-2: Chuyên bộ binh
+book-name-3: Tam Thể
+book-role-3: RARE · WARRIOR
+book-specialty-3: Chuyên vận hành pháo
+book-name-4: Mun
+book-role-4: ELITE · ASSASSIN
+book-specialty-4: Chuyên bộ binh
+book-name-5: Xiêm
+book-role-5: RARE · RANGER
+book-specialty-5: Chuyên bộ binh
+book-name-6: Vằn
+book-role-6: COMMON · WARRIOR
+book-specialty-6: Chuyên vận hành pháo
+book-name-7: Tux
+book-role-7: COMMON · TANK
+book-specialty-7: Chuyên vận hành pháo
+book-name-8: Mochi
+book-role-8: ELITE · SUPPORT
+book-specialty-8: Chuyên bộ binh
+book-name-9: Mây
+book-role-9: RARE · HEALER
+book-specialty-9: Chuyên bộ binh
+

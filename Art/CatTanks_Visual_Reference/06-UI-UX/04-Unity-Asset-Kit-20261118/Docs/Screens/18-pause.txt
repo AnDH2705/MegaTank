@@ -1,0 +1,27 @@
+MÀN 18 — Tạm dừng
+Key: pause
+Loại: Popup trên nền battle
+Prefab được sinh: Assets/CatTanksMockupKit/Generated/Prefabs/Mockup_pause.prefab
+
+Popup nhỏ giữa battle. Scrim toàn màn phía sau. Tiếp tục đóng về battle; Rút lui chuyển March trong preview.
+
+CÁCH GHÉP
+1. Dùng Canvas 1600×900 và quy tắc anchor trong Docs/02_GHEP_21_MAN.txt.
+2. Thêm node theo đúng thứ tự bảng bên dưới; node sau vẽ trên node trước.
+3. parent trống = ArtKitStage; parent có giá trị = trong Content/group có tên đó.
+4. Khung/nút: Image Sliced, viền theo importer; icon/art: Image Simple + Preserve Aspect.
+5. Các node label dùng UI Text; button dùng Image + Button + child Text; bar dùng track + Image Filled.
+6. Action screen:* là navigation xem thử; game:* cần nối controller. Dữ liệu số trong file là ví dụ.
+
+THÀNH PHẦN (tọa độ trên trái, UI units)
+Order | Id | Kind | Sprite | Parent | x,y,w,h | Font | Action | Disabled
+0 | modal-pause | image | panel_modal | ArtKitStage | 490,270,620,330 | - | - | false
+1 | modal-title | label | - | ArtKitStage | 530,296,540,62 | 36 | - | false
+2 | resume | button | button_gold | ArtKitStage | 546,400,508,66 | 28 | close | false
+3 | retreat | button | button_blue | ArtKitStage | 546,492,508,66 | 25 | screen:march | false
+
+NỘI DUNG TEXT/INPUT
+modal-title: NGHỈ MỘT CHÚT NHÉ!
+resume: Tiếp tục
+retreat: Rút lui về doanh trại
+

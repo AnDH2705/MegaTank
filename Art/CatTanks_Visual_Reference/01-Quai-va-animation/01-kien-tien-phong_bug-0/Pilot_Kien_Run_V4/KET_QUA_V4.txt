@@ -1,0 +1,36 @@
+KIẾN TIÊN PHONG · PILOT V4
+
+Đã kiểm tra 2 lượt thăm dò và 10 lượt bổ sung bằng ImageGen. Có hai kết quả độc lập: thay Run-06 để nối vòng chạy mượt hơn, và thêm hai tư thế qua đoạn đứng chờ sang chạy.
+
+Xem So-sanh-vong-chay_V3-V4.gif để so cùng tốc độ 90 ms/khung. Xem So-sanh-vao-chay_V4.gif để so đoạn chuyển thẳng với đoạn có hai tư thế trung gian. Bảng So-sanh-12-luot-thu.png cho xem từng ứng viên trên cùng đường tham chiếu y=251. PROMPT_V4.txt lưu các prompt theo lượt.
+
+Chọn R1 cho Run-06. Khung này nâng rõ mũi chân trước khi chuyển sang bước chạm đất kế tiếp. Bề rộng gần V3 hơn so với R2–R4. Căn R1 bằng một phép dịch chuyển và tỉ lệ đồng đều. Run-01 đến Run-05 lấy nguyên từ V3.
+
+Chọn T5-1 cho tư thế vào chạy đầu tiên, và T2-2-fit cho tư thế thứ hai. T5-1 gần tư thế đứng chờ và bắt đầu đổi chân. T2-2-fit đưa chân trước về gần tư thế Run-01. Dùng cả hai để giảm bước nhảy dọc của đầu trong khoảng chuyển.
+
+
+Đo trên các ô 320×320
+
+Mối nối Run-06 → Run-01
+                        V3       V4
+Thay đổi ngang mắt      6,9 px   1,9 px
+Thay đổi dọc mắt        4,6 px   2,9 px
+Thay đổi đáy hình       3 px     2 px
+
+Đoạn vào chạy
+Khung                     Idle-01      T5-1        T2-2-fit    Run-01
+Tâm mắt x/y               199,8/165,0  199,9/162,8 203,5/158,7 204,2/157,6
+Đáy hình y               251          251         251         250
+Rộng hình                232          229         221         224
+
+Thay đổi dọc lớn nhất giữa hai tư thế liền nhau giảm từ 7,4 px khi chuyển thẳng xuống 4,1 px qua hai khung đệm. Thay đổi bề rộng lớn nhất là 8 px ở cả hai cách. Số đo dùng tâm nhóm điểm ảnh vàng lớn nhất làm dấu gần đúng của đầu, và biên alpha ≥96/255 cho đáy và bề rộng. Chưa đo trượt chân theo tọa độ thế giới. Một số chân xa vẫn bị che do góc nhìn, nên không suy ra đủ ba chân chống từ các phép đo này.
+
+
+File xuất
+
+• 01-kien-tien-phong_bug-0_sheet-idle-run-attack-hit_pilot-v4.png (1920×1280). Nạp vào Xem-sprite-sheet.html rồi chọn Di chuyển để xem vòng chạy. Hàng đứng chờ, tấn công và trúng đòn giữ nguyên.
+• Kien-run_v4_6x1.png. Dải Run riêng, đặt 6 cột × 1 hàng nếu mở trong tool.
+• Kien-idle-sang-run_v4_4x1.png. Dải xem chuyển động, đặt 4 cột × 1 hàng. Cột đầu và cuối là tư thế mốc có sẵn. Hai cột giữa là khung mới.
+• frames-moi. Ba PNG 320×320 dùng cho lần thử này. Kien-run-v4.json mô tả cách nối và thời lượng gợi ý. Hai khung đệm được thử ở 60 ms mỗi khung trước Run-01.
+
+V4 là bản thử trong thư mục Art. Để dùng hai khung đệm trong game, hệ thống animation cần phát chúng một lần khi chuyển từ Idle sang Run. Hai khung này nằm ngoài vòng Run sáu khung.

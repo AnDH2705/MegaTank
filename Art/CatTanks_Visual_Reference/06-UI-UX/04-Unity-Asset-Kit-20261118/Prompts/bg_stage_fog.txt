@@ -1,0 +1,5 @@
+Tool: built-in image_gen
+
+Use case: ui-mockup / reusable game raster assets for Unity 2022.3 uGUI. Match the supplied approved MEOW BASTION mockup style faithfully: cobalt-blue beveled steel, silver-blue rims/rivets, thick clean black outlines, warm golden orange accents, cyan highlights, cute cats, polished 2D cartoon rendering. The references are for VISUAL STYLE ONLY. This output is a production asset texture, NOT another finished UI mockup.
+Create ONE standalone wide 16:9 background illustration for layering in Unity. Opaque edge-to-edge full image. No UI, text, numbers, borders, labels or characters. Keep the requested empty areas usable for UI overlay.
+One full-bleed wide 16:9 TEXT-FREE atmospheric stage-detail illustration: misty winding trail, stone bridge, blue mountain silhouettes and pine forest, large cyan full moon, small warm hanging lantern left, mysterious abandoned watchtower. No characters, UI borders, swords emblems, numbers or lettering. Match the right-side misty stage artwork in approved reference.

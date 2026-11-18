@@ -1,0 +1,97 @@
+02 — QUY TẮC GHÉP VÀ THỨ TỰ LỚP
+
+TỌA ĐỘ
+Toàn bộ file dùng canvas 1600×900, x tăng sang phải, y tăng xuống dưới.
+Node có parent: tọa độ tính từ góc trên trái của parent đó.
+RectTransform của node thường:
+  anchorMin = anchorMax = pivot = (0,1)
+  anchoredPosition = (x,-y)
+  sizeDelta = (w,h)
+  localScale = (1,1,1).
+ArtKitStage ở giữa Canvas:
+  anchorMin = anchorMax = pivot = (0.5,0.5)
+  anchoredPosition = (0,0), sizeDelta = (1600,900).
+Canvas Screen Space Overlay. Canvas Scaler = Scale With Screen Size.
+Reference Resolution = 1600×900, Screen Match Mode = Expand.
+Expand giữ toàn bộ thiết kế tham chiếu nhìn thấy ở màn khác tỉ lệ; khoảng dư nằm ngoài ArtKitStage.
+Với project CatTanks cũ, root đã tự fit safe area bằng 1600×900 và Constant Pixel Size. Không thêm một Canvas Scaler thứ hai vào root cũ.
+Nếu đưa preview lên điện thoại có notch, cần fit ArtKitStage vào Screen.safeArea hoặc dùng bộ fit có sẵn của game; preview riêng chỉ fit tỉ lệ màn hình.
+
+CẤU TRÚC PHÂN LỚP
+Canvas
+  ArtKitStage
+    Background
+    Header: logo icon + UI Text title; 3 resource counter; Settings
+    Sidebar: commander portrait; 6 nút nav; power box
+    MainPanel
+    Tabs nếu là Town/Barracks
+    ScreenTitle + Subtitle
+    Content panels/cards/images
+    Labels + trạng thái
+    CTA
+    ModalScrim nếu mở popup
+    PopupPanel
+    Popup content
+    Popup buttons
+
+Trong screen-layouts.json, thứ tự node chính là sibling/draw order. Đừng sort node theo tên.
+Text/Icon cần tắt Raycast Target. Scrim phải bật Raycast Target để chặn nhấn nền phía sau.
+Popup nền là một màn đã ghép, phủ Image đen xanh alpha 0.72, rồi vẽ modal lên trên.
+Không làm tối từng texture PNG của popup, vì sẽ làm tối luôn chữ/nút.
+
+SHELL DÙNG CHUNG
+Sidebar: x12 y108 w236 h780.
+Main panel: x264 y108 w1324 h780.
+Header resource: x800/1000/1200, y16, w180 h68.
+Settings: x1400 y16 w184 h68.
+Nav: x24, y280 + index*76, w212 h66.
+Power: x24 y760 w212 h108.
+Tab doanh trại: x284 + index*160, y128, w150 h52.
+Tab thành mèo: x288 + index*424, y128, w410 h60.
+Các tọa độ nội dung và từng node có trong Data/screen-assembly.csv và Docs/Screens.
+
+CHỮ
+Sprite không chứa chữ, số level, số tiền, dấu khóa dạng label hoặc tên nhân vật.
+Dùng UI Text để tương thích uGUI đang có; importer không phụ thuộc TextMeshPro.
+Tiêu đề khoảng 30–40; nhãn 20–26; phụ đề 18–22 UI units.
+UI Text.fontStyle Bold, Outline màu xanh gần đen, effectDistance (1.5,-1.5).
+Màu title #FFC838, nhãn trắng, chữ primary gold có thể dùng #102340.
+Không bật Best Fit trên tất cả nhãn: dễ làm cùng một hàng có cỡ chữ khác nhau.
+Font mặc định của preview: Unity LegacyRuntime.ttf. Khi chốt sản phẩm, chọn font có đủ dấu Việt và kiểm tra bản build.
+Nếu chuyển TextMeshPro: import TMP Essentials, gán font asset của project; giữ nội dung/layout từ JSON.
+Kiểm tra ít nhất chuỗi: 'Chuyến phiêu lưu dưới trăng — Đường mòn sương — Mướp, Khói, Bông — Ắ Ằ Ẳ Ẵ Ặ Ế Ề Ể Ễ Ệ Ớ Ờ Ở Ỡ Ợ Ứ Ừ Ử Ữ Ự'.
+Với SDF tĩnh, cần cả Latin, Latin Extended, Vietnamese U+1E00–U+1EFF và combining marks U+0300–U+036F nếu dữ liệu có dấu tổ hợp.
+Không lấy ảnh chữ đã rasterize từ mockup để hiển thị tiền hay level.
+
+SCROLL
+Shop và Book dùng viewport + RectMask2D + ScrollRect, vertical=true, horizontal=false.
+Content pivot/anchor trên trái. Shop contentHeight=770; Book=800.
+Node có parent=shop-scroll hoặc book-scroll đặt bên trong Content, không đặt dưới viewport như một sibling.
+Không lồng Mask có vật liệu stencil nếu RectMask2D đã đủ.
+Đừng ghép thanh cuộn vẽ sẵn vào ảnh nền; bar/handle đã là sprite riêng và có thể nối Scrollbar của Unity.
+Preview cho phép kéo nội dung; thanh scrollbar trang trí chưa được thêm tự động.
+
+BAR
+Dùng bar_track riêng, bar fill là Image.Type Filled, Fill Method Horizontal, Origin Left.
+Giá trị fillAmount = current/max. Đừng sửa chiều rộng texture theo mỗi lần HP đổi.
+Ví dụ HP=12800/12800 => 1; energy=202/600 => 0.3366667.
+Bar frame ở sibling phía trên nếu muốn che phần fill tràn góc.
+Animation fill dùng giá trị gameplay; effect ánh sáng đừng ghi vào PNG.
+
+XE TRONG MÀN CHIẾN ĐẤU
+Tách chassis, 2 wheel instance, cabin, driver, antenna, turret.
+Wheel dùng cùng một sprite vehicle_wheel, scale đồng nhất; xếp sau chassis nếu muốn che một phần bánh.
+Turret gốc quay sang trái; node battle/weapon có flipX=true để nòng quay phải.
+Các icon turret trong kho giữ hướng gốc, không flip cả panel hoặc chữ.
+Bộ infantry là ảnh pose tĩnh phục vụ bố cục preview. Thay bằng Animator/Spine của game khi nối gameplay.
+Xe mới không được gộp vào bg_battle: có thể dịch chuyển độc lập.
+
+THỬ SAU KHI DỰNG
+- 1600×900, 1920×1080: tỷ lệ khung và chữ nhất quán.
+- 2560×1080: nội dung 16:9 vẫn thấy trọn, không kéo rộng nhân vật.
+- 1024×768: nội dung fit, không cắt CTA dưới.
+- Popup chặn click nền; Esc đóng popup; Pause đóng về battle.
+- Shop/Book cuộn xuống được.
+- Thử ít nhất một primary, disabled, selected.
+- Sửa số tiền bằng UI Text, hình nền không đổi.
+

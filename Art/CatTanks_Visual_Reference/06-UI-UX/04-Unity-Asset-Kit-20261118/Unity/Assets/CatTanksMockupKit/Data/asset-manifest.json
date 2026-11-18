@@ -1,0 +1,823 @@
+{
+  "referenceWidth": 1600,
+  "referenceHeight": 900,
+  "sheets": [
+    {
+      "id": "ui_panels",
+      "file": "Textures/Generated/ui_panels.png",
+      "columns": 3,
+      "rows": 3,
+      "alpha": true,
+      "border": 0.2,
+      "keys": [
+        "panel_main",
+        "panel_inset",
+        "panel_modal",
+        "panel_card",
+        "panel_header",
+        "panel_tip",
+        "panel_resource",
+        "panel_portrait",
+        "panel_scroll"
+      ]
+    },
+    {
+      "id": "ui_buttons",
+      "file": "Textures/Generated/ui_buttons.png",
+      "columns": 4,
+      "rows": 3,
+      "alpha": true,
+      "border": 0.24,
+      "keys": [
+        "button_blue",
+        "button_blue_pressed",
+        "button_cyan",
+        "button_cyan_pressed",
+        "button_gold",
+        "button_gold_pressed",
+        "button_disabled",
+        "button_danger",
+        "tab_blue",
+        "tab_selected",
+        "input_field",
+        "button_green"
+      ]
+    },
+    {
+      "id": "ui_controls",
+      "file": "Textures/Generated/ui_controls.png",
+      "columns": 4,
+      "rows": 4,
+      "alpha": true,
+      "border": 0,
+      "keys": [
+        "bar_track",
+        "bar_fill_green",
+        "bar_fill_gold",
+        "bar_fill_cyan",
+        "scroll_track",
+        "scroll_handle",
+        "stage_connector",
+        "hazard_strip",
+        "star_gold",
+        "star_empty",
+        "badge_selected",
+        "slot_empty",
+        "resonance_pad",
+        "resonance_link",
+        "wing_gold",
+        "badge_boss"
+      ]
+    },
+    {
+      "id": "icons_navigation",
+      "file": "Textures/Generated/icons_navigation.png",
+      "columns": 4,
+      "rows": 4,
+      "alpha": true,
+      "border": 0,
+      "keys": [
+        "icon_map",
+        "icon_battle",
+        "icon_town",
+        "icon_chest",
+        "icon_quests",
+        "icon_book",
+        "icon_settings",
+        "icon_crown",
+        "icon_pause",
+        "icon_play",
+        "icon_close",
+        "icon_arrow_right",
+        "icon_plus",
+        "icon_lock",
+        "icon_check",
+        "icon_skull"
+      ]
+    },
+    {
+      "id": "icons_resources",
+      "file": "Textures/Generated/icons_resources.png",
+      "columns": 4,
+      "rows": 4,
+      "alpha": true,
+      "border": 0,
+      "keys": [
+        "icon_coin",
+        "icon_gem",
+        "icon_ticket",
+        "icon_cat_xp",
+        "icon_dust",
+        "icon_commander_xp",
+        "icon_cage",
+        "icon_food",
+        "icon_moon_cage",
+        "icon_essence",
+        "icon_forge",
+        "icon_skill_core",
+        "icon_heart",
+        "icon_attack",
+        "icon_defense",
+        "icon_speed"
+      ]
+    },
+    {
+      "id": "icons_skills",
+      "file": "Textures/Generated/icons_skills.png",
+      "columns": 5,
+      "rows": 2,
+      "alpha": true,
+      "border": 0,
+      "keys": [
+        "skill_repair",
+        "skill_rockets",
+        "skill_shield",
+        "skill_reinforce",
+        "skill_ice",
+        "skill_drone",
+        "skill_airstrike",
+        "skill_decoy",
+        "skill_magnet",
+        "skill_bomb"
+      ]
+    },
+    {
+      "id": "mascots",
+      "file": "Textures/Generated/mascots.png",
+      "columns": 4,
+      "rows": 2,
+      "alpha": true,
+      "border": 0,
+      "keys": [
+        "mascot_commander",
+        "mascot_scout",
+        "mascot_ready",
+        "mascot_victory",
+        "mascot_mechanic",
+        "mascot_chest",
+        "mascot_rest",
+        "mascot_empty"
+      ]
+    },
+    {
+      "id": "arena_avatars",
+      "file": "Textures/Generated/arena_avatars.png",
+      "columns": 3,
+      "rows": 2,
+      "alpha": true,
+      "border": 0,
+      "keys": [
+        "avatar_banh_bao",
+        "avatar_milo",
+        "avatar_muc_ong",
+        "avatar_gau_beo",
+        "avatar_lua_mach",
+        "avatar_dau_den"
+      ]
+    },
+    {
+      "id": "world_props",
+      "file": "Textures/Generated/world_props.png",
+      "columns": 3,
+      "rows": 3,
+      "alpha": true,
+      "border": 0,
+      "keys": [
+        "prop_tower",
+        "prop_flag",
+        "prop_crate",
+        "prop_cage_empty",
+        "prop_anvil",
+        "prop_tools",
+        "prop_barricade",
+        "prop_lantern",
+        "prop_crystal"
+      ]
+    },
+    {
+      "id": "stage_vignettes",
+      "file": "Textures/Generated/stage_vignettes.png",
+      "columns": 3,
+      "rows": 2,
+      "alpha": true,
+      "border": 0,
+      "keys": [
+        "stage_forest",
+        "stage_fog",
+        "stage_boss",
+        "stage_snow",
+        "stage_desert",
+        "stage_factory"
+      ]
+    },
+    {
+      "id": "vehicle_parts",
+      "file": "Textures/Generated/vehicle_parts.png",
+      "columns": 3,
+      "rows": 3,
+      "alpha": true,
+      "border": 0,
+      "keys": [
+        "vehicle_chassis",
+        "vehicle_wheel",
+        "vehicle_cabin",
+        "vehicle_tier",
+        "vehicle_antenna",
+        "vehicle_flag",
+        "vehicle_armor",
+        "vehicle_exhaust",
+        "vehicle_bumper"
+      ]
+    },
+    {
+      "id": "infantry",
+      "file": "Textures/Generated/infantry.png",
+      "columns": 3,
+      "rows": 2,
+      "alpha": true,
+      "border": 0,
+      "keys": [
+        "infantry_heavy",
+        "infantry_rocket",
+        "infantry_rifle",
+        "infantry_healer",
+        "infantry_engineer",
+        "driver_cat"
+      ]
+    },
+    {
+      "id": "bg_hub",
+      "file": "Textures/Generated/bg_hub.png",
+      "columns": 1,
+      "rows": 1,
+      "alpha": false,
+      "border": 0,
+      "keys": [
+        "bg_hub"
+      ]
+    },
+    {
+      "id": "bg_battle",
+      "file": "Textures/Generated/bg_battle.png",
+      "columns": 1,
+      "rows": 1,
+      "alpha": false,
+      "border": 0,
+      "keys": [
+        "bg_battle"
+      ]
+    },
+    {
+      "id": "bg_workshop",
+      "file": "Textures/Generated/bg_workshop.png",
+      "columns": 1,
+      "rows": 1,
+      "alpha": false,
+      "border": 0,
+      "keys": [
+        "bg_workshop"
+      ]
+    },
+    {
+      "id": "bg_stage_fog",
+      "file": "Textures/Generated/bg_stage_fog.png",
+      "columns": 1,
+      "rows": 1,
+      "alpha": false,
+      "border": 0,
+      "keys": [
+        "bg_stage_fog"
+      ]
+    }
+  ],
+  "originals": [
+    {
+      "key": "ammo-0",
+      "file": "Textures/Original/ammo-0.png"
+    },
+    {
+      "key": "ammo-1",
+      "file": "Textures/Original/ammo-1.png"
+    },
+    {
+      "key": "ammo-2",
+      "file": "Textures/Original/ammo-2.png"
+    },
+    {
+      "key": "ammo-3",
+      "file": "Textures/Original/ammo-3.png"
+    },
+    {
+      "key": "ammo-4",
+      "file": "Textures/Original/ammo-4.png"
+    },
+    {
+      "key": "ammo-5",
+      "file": "Textures/Original/ammo-5.png"
+    },
+    {
+      "key": "ammo-6",
+      "file": "Textures/Original/ammo-6.png"
+    },
+    {
+      "key": "ammo-7",
+      "file": "Textures/Original/ammo-7.png"
+    },
+    {
+      "key": "ammo-8",
+      "file": "Textures/Original/ammo-8.png"
+    },
+    {
+      "key": "ammo-9",
+      "file": "Textures/Original/ammo-9.png"
+    },
+    {
+      "key": "armor-0",
+      "file": "Textures/Original/armor-0.png"
+    },
+    {
+      "key": "armor-1",
+      "file": "Textures/Original/armor-1.png"
+    },
+    {
+      "key": "armor-2",
+      "file": "Textures/Original/armor-2.png"
+    },
+    {
+      "key": "armor-3",
+      "file": "Textures/Original/armor-3.png"
+    },
+    {
+      "key": "armor-4",
+      "file": "Textures/Original/armor-4.png"
+    },
+    {
+      "key": "armor-5",
+      "file": "Textures/Original/armor-5.png"
+    },
+    {
+      "key": "armor-6",
+      "file": "Textures/Original/armor-6.png"
+    },
+    {
+      "key": "armor-7",
+      "file": "Textures/Original/armor-7.png"
+    },
+    {
+      "key": "armor-8",
+      "file": "Textures/Original/armor-8.png"
+    },
+    {
+      "key": "armor-9",
+      "file": "Textures/Original/armor-9.png"
+    },
+    {
+      "key": "beast-0",
+      "file": "Textures/Original/beast-0.png"
+    },
+    {
+      "key": "beast-1",
+      "file": "Textures/Original/beast-1.png"
+    },
+    {
+      "key": "beast-2",
+      "file": "Textures/Original/beast-2.png"
+    },
+    {
+      "key": "beast-3",
+      "file": "Textures/Original/beast-3.png"
+    },
+    {
+      "key": "beast-4",
+      "file": "Textures/Original/beast-4.png"
+    },
+    {
+      "key": "beast-5",
+      "file": "Textures/Original/beast-5.png"
+    },
+    {
+      "key": "beast-6",
+      "file": "Textures/Original/beast-6.png"
+    },
+    {
+      "key": "beast-7",
+      "file": "Textures/Original/beast-7.png"
+    },
+    {
+      "key": "beast-8",
+      "file": "Textures/Original/beast-8.png"
+    },
+    {
+      "key": "beast-9",
+      "file": "Textures/Original/beast-9.png"
+    },
+    {
+      "key": "bug-0",
+      "file": "Textures/Original/bug-0.png"
+    },
+    {
+      "key": "bug-1",
+      "file": "Textures/Original/bug-1.png"
+    },
+    {
+      "key": "bug-2",
+      "file": "Textures/Original/bug-2.png"
+    },
+    {
+      "key": "bug-3",
+      "file": "Textures/Original/bug-3.png"
+    },
+    {
+      "key": "bug-4",
+      "file": "Textures/Original/bug-4.png"
+    },
+    {
+      "key": "bug-5",
+      "file": "Textures/Original/bug-5.png"
+    },
+    {
+      "key": "bug-6",
+      "file": "Textures/Original/bug-6.png"
+    },
+    {
+      "key": "bug-7",
+      "file": "Textures/Original/bug-7.png"
+    },
+    {
+      "key": "bug-8",
+      "file": "Textures/Original/bug-8.png"
+    },
+    {
+      "key": "bug-9",
+      "file": "Textures/Original/bug-9.png"
+    },
+    {
+      "key": "cat-0",
+      "file": "Textures/Original/cat-0.png"
+    },
+    {
+      "key": "cat-1",
+      "file": "Textures/Original/cat-1.png"
+    },
+    {
+      "key": "cat-2",
+      "file": "Textures/Original/cat-2.png"
+    },
+    {
+      "key": "cat-3",
+      "file": "Textures/Original/cat-3.png"
+    },
+    {
+      "key": "cat-4",
+      "file": "Textures/Original/cat-4.png"
+    },
+    {
+      "key": "cat-5",
+      "file": "Textures/Original/cat-5.png"
+    },
+    {
+      "key": "cat-6",
+      "file": "Textures/Original/cat-6.png"
+    },
+    {
+      "key": "cat-7",
+      "file": "Textures/Original/cat-7.png"
+    },
+    {
+      "key": "cat-8",
+      "file": "Textures/Original/cat-8.png"
+    },
+    {
+      "key": "cat-9",
+      "file": "Textures/Original/cat-9.png"
+    },
+    {
+      "key": "gun-0",
+      "file": "Textures/Original/gun-0.png"
+    },
+    {
+      "key": "gun-1",
+      "file": "Textures/Original/gun-1.png"
+    },
+    {
+      "key": "gun-2",
+      "file": "Textures/Original/gun-2.png"
+    },
+    {
+      "key": "gun-3",
+      "file": "Textures/Original/gun-3.png"
+    },
+    {
+      "key": "gun-4",
+      "file": "Textures/Original/gun-4.png"
+    },
+    {
+      "key": "gun-5",
+      "file": "Textures/Original/gun-5.png"
+    },
+    {
+      "key": "gun-6",
+      "file": "Textures/Original/gun-6.png"
+    },
+    {
+      "key": "gun-7",
+      "file": "Textures/Original/gun-7.png"
+    },
+    {
+      "key": "gun-8",
+      "file": "Textures/Original/gun-8.png"
+    },
+    {
+      "key": "gun-9",
+      "file": "Textures/Original/gun-9.png"
+    },
+    {
+      "key": "hat-0",
+      "file": "Textures/Original/hat-0.png"
+    },
+    {
+      "key": "hat-1",
+      "file": "Textures/Original/hat-1.png"
+    },
+    {
+      "key": "hat-2",
+      "file": "Textures/Original/hat-2.png"
+    },
+    {
+      "key": "hat-3",
+      "file": "Textures/Original/hat-3.png"
+    },
+    {
+      "key": "hat-4",
+      "file": "Textures/Original/hat-4.png"
+    },
+    {
+      "key": "hat-5",
+      "file": "Textures/Original/hat-5.png"
+    },
+    {
+      "key": "hat-6",
+      "file": "Textures/Original/hat-6.png"
+    },
+    {
+      "key": "hat-7",
+      "file": "Textures/Original/hat-7.png"
+    },
+    {
+      "key": "hat-8",
+      "file": "Textures/Original/hat-8.png"
+    },
+    {
+      "key": "hat-9",
+      "file": "Textures/Original/hat-9.png"
+    },
+    {
+      "key": "pack-0",
+      "file": "Textures/Original/pack-0.png"
+    },
+    {
+      "key": "pack-1",
+      "file": "Textures/Original/pack-1.png"
+    },
+    {
+      "key": "pack-10",
+      "file": "Textures/Original/pack-10.png"
+    },
+    {
+      "key": "pack-11",
+      "file": "Textures/Original/pack-11.png"
+    },
+    {
+      "key": "pack-12",
+      "file": "Textures/Original/pack-12.png"
+    },
+    {
+      "key": "pack-13",
+      "file": "Textures/Original/pack-13.png"
+    },
+    {
+      "key": "pack-14",
+      "file": "Textures/Original/pack-14.png"
+    },
+    {
+      "key": "pack-15",
+      "file": "Textures/Original/pack-15.png"
+    },
+    {
+      "key": "pack-16",
+      "file": "Textures/Original/pack-16.png"
+    },
+    {
+      "key": "pack-17",
+      "file": "Textures/Original/pack-17.png"
+    },
+    {
+      "key": "pack-18",
+      "file": "Textures/Original/pack-18.png"
+    },
+    {
+      "key": "pack-19",
+      "file": "Textures/Original/pack-19.png"
+    },
+    {
+      "key": "pack-2",
+      "file": "Textures/Original/pack-2.png"
+    },
+    {
+      "key": "pack-3",
+      "file": "Textures/Original/pack-3.png"
+    },
+    {
+      "key": "pack-4",
+      "file": "Textures/Original/pack-4.png"
+    },
+    {
+      "key": "pack-5",
+      "file": "Textures/Original/pack-5.png"
+    },
+    {
+      "key": "pack-6",
+      "file": "Textures/Original/pack-6.png"
+    },
+    {
+      "key": "pack-7",
+      "file": "Textures/Original/pack-7.png"
+    },
+    {
+      "key": "pack-8",
+      "file": "Textures/Original/pack-8.png"
+    },
+    {
+      "key": "pack-9",
+      "file": "Textures/Original/pack-9.png"
+    },
+    {
+      "key": "turret_alt-0",
+      "file": "Textures/Original/turret_alt-0.png"
+    },
+    {
+      "key": "turret_alt-1",
+      "file": "Textures/Original/turret_alt-1.png"
+    },
+    {
+      "key": "turret_alt-2",
+      "file": "Textures/Original/turret_alt-2.png"
+    },
+    {
+      "key": "turret_alt-3",
+      "file": "Textures/Original/turret_alt-3.png"
+    },
+    {
+      "key": "turret_alt-4",
+      "file": "Textures/Original/turret_alt-4.png"
+    },
+    {
+      "key": "turret_alt-5",
+      "file": "Textures/Original/turret_alt-5.png"
+    },
+    {
+      "key": "turret_alt-6",
+      "file": "Textures/Original/turret_alt-6.png"
+    },
+    {
+      "key": "turret_alt-7",
+      "file": "Textures/Original/turret_alt-7.png"
+    },
+    {
+      "key": "turret_alt-8",
+      "file": "Textures/Original/turret_alt-8.png"
+    },
+    {
+      "key": "turret_alt-9",
+      "file": "Textures/Original/turret_alt-9.png"
+    },
+    {
+      "key": "turret-0",
+      "file": "Textures/Original/turret-0.png"
+    },
+    {
+      "key": "turret-1",
+      "file": "Textures/Original/turret-1.png"
+    },
+    {
+      "key": "turret-2",
+      "file": "Textures/Original/turret-2.png"
+    },
+    {
+      "key": "turret-3",
+      "file": "Textures/Original/turret-3.png"
+    },
+    {
+      "key": "turret-4",
+      "file": "Textures/Original/turret-4.png"
+    },
+    {
+      "key": "turret-5",
+      "file": "Textures/Original/turret-5.png"
+    },
+    {
+      "key": "turret-6",
+      "file": "Textures/Original/turret-6.png"
+    },
+    {
+      "key": "turret-7",
+      "file": "Textures/Original/turret-7.png"
+    },
+    {
+      "key": "turret-8",
+      "file": "Textures/Original/turret-8.png"
+    },
+    {
+      "key": "turret-9",
+      "file": "Textures/Original/turret-9.png"
+    },
+    {
+      "key": "uniform-0",
+      "file": "Textures/Original/uniform-0.png"
+    },
+    {
+      "key": "uniform-1",
+      "file": "Textures/Original/uniform-1.png"
+    },
+    {
+      "key": "uniform-2",
+      "file": "Textures/Original/uniform-2.png"
+    },
+    {
+      "key": "uniform-3",
+      "file": "Textures/Original/uniform-3.png"
+    },
+    {
+      "key": "uniform-4",
+      "file": "Textures/Original/uniform-4.png"
+    },
+    {
+      "key": "uniform-5",
+      "file": "Textures/Original/uniform-5.png"
+    },
+    {
+      "key": "uniform-6",
+      "file": "Textures/Original/uniform-6.png"
+    },
+    {
+      "key": "uniform-7",
+      "file": "Textures/Original/uniform-7.png"
+    },
+    {
+      "key": "uniform-8",
+      "file": "Textures/Original/uniform-8.png"
+    },
+    {
+      "key": "uniform-9",
+      "file": "Textures/Original/uniform-9.png"
+    },
+    {
+      "key": "vehicle-0",
+      "file": "Textures/Original/vehicle-0.png"
+    },
+    {
+      "key": "vehicle-1",
+      "file": "Textures/Original/vehicle-1.png"
+    },
+    {
+      "key": "vehicle-2",
+      "file": "Textures/Original/vehicle-2.png"
+    },
+    {
+      "key": "vehicle-3",
+      "file": "Textures/Original/vehicle-3.png"
+    },
+    {
+      "key": "vehicle-4",
+      "file": "Textures/Original/vehicle-4.png"
+    },
+    {
+      "key": "vehicle-5",
+      "file": "Textures/Original/vehicle-5.png"
+    },
+    {
+      "key": "vehicle-6",
+      "file": "Textures/Original/vehicle-6.png"
+    },
+    {
+      "key": "vehicle-7",
+      "file": "Textures/Original/vehicle-7.png"
+    },
+    {
+      "key": "vehicle-8",
+      "file": "Textures/Original/vehicle-8.png"
+    },
+    {
+      "key": "vehicle-9",
+      "file": "Textures/Original/vehicle-9.png"
+    },
+    {
+      "key": "wolf-frames-v1",
+      "file": "Textures/Original/wolf-frames-v1.png"
+    },
+    {
+      "key": "wolf-rig-atlas-v1",
+      "file": "Textures/Original/wolf-rig-atlas-v1.png"
+    }
+  ]
+}

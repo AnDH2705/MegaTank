@@ -1,0 +1,90 @@
+01 — IMPORT, CHIA SPRITE VÀ 9-SLICE
+
+A. CÀI THƯ MỤC
+Chép nguyên Unity/Assets/CatTanksMockupKit vào Assets/. Không chép thư mục Tools vào Assets.
+Giữ nguyên Data/, Runtime/, Editor/ và Textures/ để đường dẫn của importer không đổi.
+Gói không cần plugin trả phí hay thư viện JSON ngoài Unity JsonUtility.
+
+B. IMPORT TỰ ĐỘNG
+Menu CatTanks > Mockup Kit > 1 - Import and Slice Assets.
+Importer đọc Data/asset-manifest.json, không đoán tên sprite theo hình.
+Thứ tự sheet: trái sang phải, từ hàng trên xuống hàng dưới. Index = row * columns + column.
+Mỗi ô được quét alpha > 8/255, lấy bbox có nội dung rồi giữ thêm 2 px đệm.
+Alpha thấp hơn ngưỡng vẫn còn nguyên trong PNG; ngưỡng chỉ dùng để chọn rect.
+Các spriteID đã có được giữ theo tên khi chạy lại importer để tránh mất reference.
+Không bật resize về power-of-two: nhiều PNG có kích thước lẻ. Công cụ chia bằng tỉ lệ kích thước thật và làm tròn ở mỗi mép.
+Không tự dùng Grid By Cell Size = 256 cho tất cả sheet.
+
+THÔNG SỐ TEXTURE
+Texture Type: Sprite (2D and UI).
+Sprite Mode: Multiple cho sheet, Single cho nền và PNG gốc.
+Pixels Per Unit: 100.
+Mesh Type: Full Rect.
+Filter Mode: Bilinear.
+Wrap Mode: Clamp.
+Generate Mip Maps: Off.
+sRGB: On.
+Alpha Source: Input Texture Alpha.
+Alpha Is Transparency: On.
+Non Power of 2: None.
+Compression: Uncompressed trong bản kiểm tra chất lượng.
+Max Size: 8192 để không làm nhỏ ảnh gốc trong bước chia.
+Read/Write: Off trên texture import; tool đọc một bản CPU tạm để quét alpha.
+Nền cảnh: không có border. Icon, mèo, pháo và mascot: border 0.
+
+C. BORDER
+ui_panels: mỗi cạnh = floor(min(spriteWidth, spriteHeight) * 0.20).
+ui_buttons: mỗi cạnh = floor(min(spriteWidth, spriteHeight) * 0.24).
+bar_* và scroll_*: mỗi cạnh = floor(min(spriteWidth, spriteHeight) * 0.42).
+Các hình còn lại: 0.
+Thứ tự Vector4 border của Unity: Left, Bottom, Right, Top.
+Số chính xác sau trim nằm trong Generated/sprite-rects.csv, không phải kích thước của cả sheet.
+Hãy xem Sprite Editor nếu đổi họa tiết; border phải nằm phía trong các góc và đinh tán.
+Nếu cần tinh chỉnh bằng tay, chạy importer trước rồi sửa border; chạy importer lại sẽ áp lại công thức.
+
+D. DÙNG TRONG UGUI
+Khung và nút:
+  Image.Sprite = sprite tương ứng
+  Image.Type = Sliced
+  Image.Color = trắng (1,1,1,1)
+  Preserve Aspect = Off
+  Use Sprite Mesh = Off
+  Fill Center = On
+  localScale = (1,1,1)
+  Đổi kích thước bằng RectTransform.sizeDelta, không kéo Transform scale.
+
+Icon/mèo/pháo/mascot:
+  Image.Type = Simple, Preserve Aspect = On, Color = trắng.
+  Giữ khoảng trống riêng quanh icon và chữ.
+
+BORDER DÀY BAO NHIÊU TRÊN MÀN?
+Preview đặt pixelsPerUnitMultiplier = max(1, max(border)/18).
+Với PPU sprite = Reference PPU = 100, góc khoảng 18 đơn vị canvas.
+Ví dụ border thực 54 px: multiplier 3, viền hiển thị 18 UI units.
+Nếu Image hiện viền quá dày, tăng multiplier; nếu quá mỏng, giảm.
+Đừng hạ border về 0 để chữa khung méo: khi ấy Unity lại kéo toàn bộ bitmap.
+Nếu làm prefab riêng, giữ các Image khung khoảng 14–18 UI units viền; bar khoảng 5–8.
+
+E. TRẠNG THÁI NÚT
+Normal: button_blue; selected: button_cyan; primary: button_gold.
+Pressed có sprite riêng button_blue_pressed, button_cyan_pressed, button_gold_pressed.
+Có thể dùng Button Transition = Sprite Swap khi gán đủ các state.
+Preview dùng Color Tint và sprite selected riêng để giảm cấu hình; sprite pressed vẫn có trong library để dùng ở prefab sản phẩm.
+Disabled: button_disabled hoặc Button.interactable = false và tint xám.
+Ngừng raycast trên icon và Text con; Button chỉ cần raycast trên Image gốc.
+
+F. ATLAS
+Importer tạo Generated/MockupUI.spriteatlas chứa nhóm ui_* và icons_*.
+Allow Rotation = Off; Tight Packing = Off; Padding = 8; Mip Maps = Off.
+Không gom bốn nền cảnh lớn vào atlas UI. Mèo và nhân vật có thể tách atlas khác khi tối ưu.
+SpriteAtlas có thể sinh nhiều trang tùy nền tảng. Pack Preview để xem thực tế.
+Sau khi duyệt chất lượng, thử compression theo build target và so chữ/viền ở thiết bị thật; giữ file source PNG nguyên.
+
+G. NGUỒN KỸ THUẬT UNITY
+9-slicing Unity 2022.3:
+https://docs.unity3d.com/2022.3/Documentation/Manual/9SliceSprites.html
+Canvas nhiều độ phân giải:
+https://docs.unity3d.com/2022.3/Documentation/Manual/HOWTO-UIMultiResolution.html
+Sprite Editor Data Provider API:
+https://docs.unity3d.com/Packages/com.unity.2d.sprite@1.0/manual/DataProvider.html
+

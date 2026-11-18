@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xem sprite sheet · CatTanks</title>
+<style>
+  :root { color-scheme: dark; font-family: "Segoe UI", system-ui, sans-serif; background: #10131a; color: #eef1f7; --panel: #191e29; --border: #30394a; --muted: #a9b6ca; --accent: #90e7b4; }
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  main { max-width: 1536px; margin: auto; padding: 24px clamp(16px, 3.5vw, 54px) 48px; }
+  header { display: flex; justify-content: space-between; align-items: end; gap: 18px; flex-wrap: wrap; margin-bottom: 20px; }
+  h1 { margin: 0 0 5px; font-size: clamp(24px, 4vw, 36px); letter-spacing: -.035em; }
+  p { margin: 0; color: var(--muted); }
+  button, select, input { font: inherit; }
+  button, select, input[type="number"] { background: #232b3a; border: 1px solid var(--border); color: inherit; border-radius: 8px; min-height: 36px; padding: 6px 10px; }
+  button { cursor: pointer; }
+  button:hover { background: #334057; }
+  button:disabled { opacity: .48; cursor: default; }
+  button.primary { background: var(--accent); color: #112319; border-color: var(--accent); font-weight: 650; }
+  button.primary:hover { background: #b2f2cc; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  input[type="range"], input[type="checkbox"] { accent-color: var(--accent); }
+  input[type="number"] { width: 67px; }
+  .actions, .controls, .fields, .tabs, .transport, .scrub { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .upload { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; border: 1px dashed #485770; border-radius: 12px; background: #151a24; padding: 13px 16px; margin-bottom: 12px; }
+  .upload strong { display: block; margin-bottom: 4px; }
+  .upload p, .fields, .subtle { font-size: .84rem; }
+  .upload.drop { outline: 2px solid var(--accent); background: #20392e; }
+  .controls { padding: 12px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; gap: 10px 16px; }
+  .tabs { gap: 5px; }
+  .tabs button[aria-pressed="true"] { color: var(--accent); background: #25372f; border-color: #549574; }
+  .check { display: inline-flex; align-items: center; gap: 5px; }
+  .scrub { flex: 1 0 100%; }
+  .scrub input { min-width: 90px; flex: 1; }
+  .scrub output, .subtle { color: var(--muted); font-variant-numeric: tabular-nums; }
+  #status { font-size: .85rem; min-height: 20px; margin: 14px 0 7px; }
+  #grid:not(:empty) { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 215px),1fr)); gap: 12px; }
+  .card { min-width: 0; overflow: hidden; background: var(--panel); border: 1px solid var(--border); border-radius: 11px; }
+  .stage { aspect-ratio: 1.32; display: grid; place-items: center; }
+  .checker { background: repeating-conic-gradient(#373e4c 0 25%, #414a59 0 50%) 50% / 18px 18px; }
+  .dark { background: #141b26; }
+  .light { background: #edf1f5; }
+  canvas { display: block; width: 100%; height: auto; max-height: 100%; }
+  .card-text { padding: 9px 10px 10px; }
+  .card-title { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  h2 { font-size: .94rem; margin: 0; overflow-wrap: anywhere; }
+  .remove { font-size: 1.15rem; min-height: 29px; min-width: 30px; padding: 0 5px; }
+  .meta { min-height: 1em; margin-top: 2px; overflow-wrap: anywhere; }
+  .version { display: flex; align-items: center; gap: 6px; margin-top: 8px; }
+  .version select { min-height: 28px; padding: 2px 6px; }
+  details { margin-top: 7px; }
+  summary { cursor: pointer; color: var(--muted); font-size: .8rem; }
+  details .fields { margin-top: 8px; }
+  .empty { padding: 28px 12px; text-align: center; border: 1px solid var(--border); border-radius: 11px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>Xem sprite sheet</h1>
+      <p>Phát và so sánh nhiều bộ animation cùng lúc.</p>
+    </div>
+    <div class="actions">
+      <button id="catalog" class="primary" type="button">Nạp bản mới nhất (20 quái)</button>
+      <button id="clear" type="button">Bỏ hết sheet</button>
+    </div>
+  </header>
+
+  <section class="upload" id="dropzone" aria-label="Nạp sprite sheet">
+    <div>
+      <strong>Kéo thả ảnh vào đây</strong>
+      <p>Lưới mặc định 6 cột × 4 hàng. Có thể chỉnh riêng cho từng sheet.</p>
+    </div>
+    <div class="actions">
+      <button id="filesButton" type="button">Chọn nhiều ảnh</button>
+      <button id="folderButton" type="button">Chọn thư mục</button>
+      <label class="check subtle"><input id="latestInFolder" type="checkbox" checked> Bản mới nhất trong thư mục</label>
+      <input id="files" type="file" accept="image/*" multiple hidden>
+      <input id="folder" type="file" webkitdirectory multiple hidden>
+    </div>
+  </section>
+
+  <section class="controls" aria-label="Điều khiển phát">
+    <div class="tabs" role="group" aria-label="Trạng thái">
+      <button type="button" data-row="0" aria-pressed="true">Đứng chờ</button>
+      <button type="button" data-row="1" aria-pressed="false">Di chuyển</button>
+      <button type="button" data-row="-1" aria-pressed="false" hidden>Vào chạy / bay</button>
+      <button type="button" data-row="2" aria-pressed="false">Tấn công</button>
+      <button type="button" data-row="3" aria-pressed="false">Trúng đòn</button>
+    </div>
+    <div class="transport">
+      <button id="prev" type="button" aria-label="Khung trước" title="Khung trước">‹</button>
+      <button id="play" type="button">Tạm dừng</button>
+      <button id="next" type="button" aria-label="Khung tiếp theo" title="Khung tiếp theo">›</button>
+    </div>
+    <div class="fields">
+      <label>Hàng <select id="row" aria-label="Hàng sprite"></select></label>
+      <label>Tốc độ <select id="speed">
+        <option value=".25">0,25×</option><option value=".5">0,5×</option><option value=".75">0,75×</option>
+        <option value="1" selected>1×</option><option value="1.5">1,5×</option><option value="2">2×</option>
+      </select></label>
+      <label>Nền <select id="backdrop">
+        <option value="checker">Ô caro</option><option value="dark">Tối</option><option value="light">Sáng</option>
+      </select></label>
+      <label class="check"><input id="loop" type="checkbox" checked> Lặp</label>
+    </div>
+    <div class="scrub">
+      <label for="frame" class="subtle">Khung</label>
+      <input id="frame" type="range" min="1" max="6" value="1">
+      <output id="frameLabel" for="frame">1 / 6</output>
+    </div>
+  </section>
+
+  <p id="status" role="status"></p>
+  <p class="empty" id="empty">Nạp bộ CatTanks hoặc chọn sprite sheet từ máy để bắt đầu.</p>
+  <section id="grid" aria-label="Sprite sheet đang xem"></section>
+
+  <template id="card">
+    <article class="card">
+      <div class="stage checker"><canvas width="384" height="292" aria-label="Xem chuyển động"></canvas></div>
+      <div class="card-text">
+        <div class="card-title"><h2></h2><button class="remove" type="button" title="Bỏ sheet" aria-label="Bỏ sheet">×</button></div>
+        <p class="meta subtle"></p>
+        <label class="version subtle" hidden>Phiên bản <select></select></label>
+        <details>
+          <summary>Lưới và nhịp riêng</summary>
+          <div class="fields">
+            <label>Cột <input class="cols" type="number" min="1" max="64" value="6"></label>
+            <label>Hàng <input class="rows" type="number" min="1" max="64" value="4"></label>
+            <label>ms/khung <input class="duration" type="number" min="16" max="3000" placeholder="Tự động"></label>
+          </div>
+        </details>
+      </div>
+    </article>
+  </template>
+</main>
+<script>
+"use strict";
+const catalog = [
+  [
+    "Kiến tiên phong",
+    "01-kien-tien-phong_bug-0/01-kien-tien-phong_bug-0_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Sói bóng đêm",
+    "02-soi-bong-dem_beast-0/02-soi-bong-dem_beast-0_sheet-idle-run-attack-hit.png"
+  ],
+  [
+    "Ong sát thủ",
+    "03-ong-sat-thu_bug-4/03-ong-sat-thu_bug-4_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Bọ sừng đỏ",
+    "04-bo-sung-do_bug-1/04-bo-sung-do_bug-1_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Lợn rừng cuồng nộ",
+    "05-lon-rung-cuong-no_beast-1/05-lon-rung-cuong-no_beast-1_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Nhện giăng tơ",
+    "06-nhen-giang-to_bug-2/06-nhen-giang-to_bug-2_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Bọ ngựa đao",
+    "07-bo-ngua-dao_bug-3/07-bo-ngua-dao_bug-3_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Gấu cuồng chiến",
+    "08-gau-cuong-chien_beast-2/08-gau-cuong-chien_beast-2_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Ấu trùng đất",
+    "09-au-trung-dat_bug-5/09-au-trung-dat_bug-5_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Hổ kiếm",
+    "10-ho-kiem_beast-4/10-ho-kiem_beast-4_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Bọ cạp độc",
+    "11-bo-cap-doc_bug-6/11-bo-cap-doc_bug-6_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Khỉ băng",
+    "12-khi-bang_beast-3/12-khi-bang_beast-3_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Bướm thôi miên",
+    "13-buom-thoi-mien_bug-7/13-buom-thoi-mien_bug-7_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Rùa dung nham",
+    "14-rua-dung-nham_beast-5/14-rua-dung-nham_beast-5_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Tê giác bọc giáp",
+    "15-te-giac-boc-giap_beast-6/15-te-giac-boc-giap_beast-6_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Bọ tinh thạch",
+    "16-bo-tinh-thach_bug-8/16-bo-tinh-thach_bug-8_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Đại bàng sư tử",
+    "17-dai-bang-su-tu_beast-7/17-dai-bang-su-tu_beast-7_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Hươu cổ thụ",
+    "18-huou-co-thu_beast-9/18-huou-co-thu_beast-9_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Bọ chúa giáp gai",
+    "19-bo-chua-giap-gai_bug-9/19-bo-chua-giap-gai_bug-9_sheet-idle-run-attack-hit_v2.png"
+  ],
+  [
+    "Bạo long hắc nguyệt",
+    "20-bao-long-hac-nguyet_beast-8/20-bao-long-hac-nguyet_beast-8_sheet-idle-run-attack-hit_v2.png"
+  ]
+];
+// Các bản mới xếp trước bản gốc. Đường dẫn tương đối để chạy qua file://.
+const releases = {
+  "01-kien-tien-phong_bug-0": [{
+    label: "V4 · mới nhất",
+    src: "01-kien-tien-phong_bug-0/Pilot_Kien_Run_V4/01-kien-tien-phong_bug-0_sheet-idle-run-attack-hit_pilot-v4.png",
+    transition: "01-kien-tien-phong_bug-0/Pilot_Kien_Run_V4/Kien-idle-sang-run_v4_4x1.png"
+  }, {
+    label: "V3",
+    src: "01-kien-tien-phong_bug-0/Pilot_Kien_Run_V3/01-kien-tien-phong_bug-0_sheet-idle-run-attack-hit_pilot-v3.png"
+  }],
+  "02-soi-bong-dem_beast-0": [{
+    label: "V3 · mới nhất",
+    src: "02-soi-bong-dem_beast-0/Pilot_Soi_Run_V3/02-soi-bong-dem_beast-0_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "02-soi-bong-dem_beast-0/Pilot_Soi_Run_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "03-ong-sat-thu_bug-4": [{
+    label: "V3 · mới nhất",
+    src: "03-ong-sat-thu_bug-4/Pilot_Ong_Fly_V3/03-ong-sat-thu_bug-4_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "03-ong-sat-thu_bug-4/Pilot_Ong_Fly_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "04-bo-sung-do_bug-1": [{
+    label: "V3 · mới nhất",
+    src: "04-bo-sung-do_bug-1/Pilot_Bo_Sung_Do_Run_V3/04-bo-sung-do_bug-1_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "04-bo-sung-do_bug-1/Pilot_Bo_Sung_Do_Run_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "05-lon-rung-cuong-no_beast-1": [{
+    label: "V3 · mới nhất",
+    src: "05-lon-rung-cuong-no_beast-1/Pilot_Lon_Rung_Run_V3/05-lon-rung-cuong-no_beast-1_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "05-lon-rung-cuong-no_beast-1/Pilot_Lon_Rung_Run_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "06-nhen-giang-to_bug-2": [{
+    label: "V3 · mới nhất",
+    src: "06-nhen-giang-to_bug-2/Pilot_Nhen_Run_V3/06-nhen-giang-to_bug-2_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "06-nhen-giang-to_bug-2/Pilot_Nhen_Run_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "07-bo-ngua-dao_bug-3": [{
+    label: "V3 · mới nhất",
+    src: "07-bo-ngua-dao_bug-3/Pilot_Di_Chuyen_V3/07-bo-ngua-dao_bug-3_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "07-bo-ngua-dao_bug-3/Pilot_Di_Chuyen_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "08-gau-cuong-chien_beast-2": [{
+    label: "V3 · mới nhất",
+    src: "08-gau-cuong-chien_beast-2/Pilot_Di_Chuyen_V3/08-gau-cuong-chien_beast-2_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "08-gau-cuong-chien_beast-2/Pilot_Di_Chuyen_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "09-au-trung-dat_bug-5": [{
+    label: "V3 · mới nhất",
+    src: "09-au-trung-dat_bug-5/Pilot_Di_Chuyen_V3/09-au-trung-dat_bug-5_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "09-au-trung-dat_bug-5/Pilot_Di_Chuyen_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "10-ho-kiem_beast-4": [{
+    label: "V3 · mới nhất",
+    src: "10-ho-kiem_beast-4/Pilot_Di_Chuyen_V3/10-ho-kiem_beast-4_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "10-ho-kiem_beast-4/Pilot_Di_Chuyen_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "11-bo-cap-doc_bug-6": [{
+    label: "V3 · mới nhất",
+    src: "11-bo-cap-doc_bug-6/Pilot_Di_Chuyen_V3/11-bo-cap-doc_bug-6_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "11-bo-cap-doc_bug-6/Pilot_Di_Chuyen_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "12-khi-bang_beast-3": [{
+    label: "V3 · mới nhất",
+    src: "12-khi-bang_beast-3/Pilot_Di_Chuyen_V3/12-khi-bang_beast-3_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "12-khi-bang_beast-3/Pilot_Di_Chuyen_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "13-buom-thoi-mien_bug-7": [{
+    label: "V3 · mới nhất",
+    src: "13-buom-thoi-mien_bug-7/Pilot_Di_Chuyen_V3/13-buom-thoi-mien_bug-7_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "13-buom-thoi-mien_bug-7/Pilot_Di_Chuyen_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "14-rua-dung-nham_beast-5": [{
+    label: "V3 · mới nhất",
+    src: "14-rua-dung-nham_beast-5/Pilot_Di_Chuyen_V3/14-rua-dung-nham_beast-5_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "14-rua-dung-nham_beast-5/Pilot_Di_Chuyen_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "15-te-giac-boc-giap_beast-6": [{
+    label: "V3 · mới nhất",
+    src: "15-te-giac-boc-giap_beast-6/Pilot_Di_Chuyen_V3/15-te-giac-boc-giap_beast-6_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "15-te-giac-boc-giap_beast-6/Pilot_Di_Chuyen_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "16-bo-tinh-thach_bug-8": [{
+    label: "V3 · mới nhất",
+    src: "16-bo-tinh-thach_bug-8/Pilot_Di_Chuyen_V3/16-bo-tinh-thach_bug-8_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "16-bo-tinh-thach_bug-8/Pilot_Di_Chuyen_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "17-dai-bang-su-tu_beast-7": [{
+    label: "V3 · mới nhất",
+    src: "17-dai-bang-su-tu_beast-7/Pilot_Di_Chuyen_V3/17-dai-bang-su-tu_beast-7_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "17-dai-bang-su-tu_beast-7/Pilot_Di_Chuyen_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "18-huou-co-thu_beast-9": [{
+    label: "V3 · mới nhất",
+    src: "18-huou-co-thu_beast-9/Pilot_Di_Chuyen_V3/18-huou-co-thu_beast-9_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "18-huou-co-thu_beast-9/Pilot_Di_Chuyen_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "19-bo-chua-giap-gai_bug-9": [{
+    label: "V3 · mới nhất",
+    src: "19-bo-chua-giap-gai_bug-9/Pilot_Di_Chuyen_V3/19-bo-chua-giap-gai_bug-9_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "19-bo-chua-giap-gai_bug-9/Pilot_Di_Chuyen_V3/Vao-chuyen-dong_v3_4x1.png"
+  }],
+  "20-bao-long-hac-nguyet_beast-8": [{
+    label: "V3 · mới nhất",
+    src: "20-bao-long-hac-nguyet_beast-8/Pilot_Di_Chuyen_V3/20-bao-long-hac-nguyet_beast-8_sheet-idle-run-attack-hit_pilot-v3.png",
+    transition: "20-bao-long-hac-nguyet_beast-8/Pilot_Di_Chuyen_V3/Vao-chuyen-dong_v3_4x1.png"
+  }]
+};
+const get = (id) => document.getElementById(id);
+const presets = [180, 90, 120, 120];
+const entryDurations = [180, 60, 60, 90];
+const sheets = new Map();
+const tabs = [...document.querySelectorAll("[data-row]")];
+const state = { row: 0, phase: 0, previous: null, playing: true };
+let animationId = 0;
+let loadMessage = "";
+let loopBeforeEntry = true;
+
+function numberIn(value, min, max, fallback) {
+  const number = Number.parseInt(value, 10);
+  return Number.isFinite(number) ? Math.min(max, Math.max(min, number)) : fallback;
+}
+
+function available() {
+  return [...sheets.values()].filter((sheet) => state.row === -1
+    ? sheet.entry?.naturalWidth
+    : sheet.image.naturalWidth && state.row < sheet.rows);
+}
+
+function timeline() {
+  const ready = available();
+  const length = state.row === -1 ? entryDurations.length
+    : Math.max(1, ...ready.map((sheet) => sheet.cols * sheet.duration / defaultDuration()));
+  return { length, steps: Math.ceil(length) };
+}
+
+function defaultDuration() {
+  return presets[state.row] ?? 120;
+}
+
+function refreshLayout() {
+  const maxRows = Math.max(4, ...[...sheets.values()].map((sheet) => sheet.rows));
+  const picker = get("row");
+  const hasEntry = [...sheets.values()].some((sheet) => sheet.entry);
+  const entryTab = tabs.find((tab) => tab.dataset.row === "-1");
+  entryTab.hidden = !hasEntry;
+  if (!hasEntry && state.row === -1) jumpToRow(1);
+  if (state.row >= maxRows) jumpToRow(maxRows - 1);
+  if (picker.options.length !== maxRows + Number(hasEntry) || !!picker.querySelector('[value="-1"]') !== hasEntry) {
+    const options = Array.from({ length: maxRows }, (_, row) => new Option(String(row + 1), String(row)));
+    if (hasEntry) options.push(new Option("Vào chạy / bay", "-1"));
+    picker.replaceChildren(...options);
+  }
+  picker.value = String(state.row);
+  get("clear").disabled = sheets.size === 0;
+  get("empty").hidden = sheets.size !== 0;
+  const failures = [...sheets.values()].filter((sheet) => sheet.failed).length;
+  const reading = [...sheets.values()].filter((sheet) => !sheet.failed && !sheet.image.naturalWidth).length;
+  const parts = [sheets.size ? sheets.size + " sheet" : "", reading ? reading + " đang nạp" : "", failures ? failures + " lỗi" : "", loadMessage];
+  get("status").textContent = parts.filter(Boolean).join(" · ");
+  render();
+  schedule();
+}
+
+function jumpToRow(row) {
+  if (state.row === -1 && row !== -1) get("loop").checked = loopBeforeEntry;
+  if (state.row !== -1 && row === -1) {
+    loopBeforeEntry = get("loop").checked;
+    get("loop").checked = false;
+  }
+  state.row = row;
+  state.phase = 0;
+  state.previous = null;
+  for (const tab of tabs) tab.setAttribute("aria-pressed", String(Number(tab.dataset.row) === row));
+}
+
+function selectRow(row) {
+  jumpToRow(row);
+  refreshLayout();
+}
+
+function setPlaying(playing) {
+  state.playing = playing;
+  state.previous = null;
+  get("play").textContent = playing ? "Tạm dừng" : "Phát";
+  if (playing) schedule();
+}
+
+function togglePlayback() {
+  if (!state.playing && !get("loop").checked && state.phase >= timeline().length) state.phase = 0;
+  setPlaying(!state.playing);
+  render();
+}
+
+function step(delta) {
+  setPlaying(false);
+  const { steps } = timeline();
+  state.phase = Math.min(steps - 1, Math.max(0, Math.min(steps - 1, Math.floor(state.phase)) + delta));
+  render();
+}
+
+function scheduledFrame(now) {
+  animationId = 0;
+  if (!state.playing) return;
+  const { length } = timeline();
+  if (state.previous !== null) {
+    const elapsed = Math.min(now - state.previous, 100) * Number(get("speed").value);
+    if (state.row === -1) {
+      let remaining = elapsed;
+      while (remaining > 0 && state.phase < length) {
+        const index = Math.floor(state.phase);
+        const duration = entryDurations[index];
+        const toNext = (index + 1 - state.phase) * duration;
+        if (remaining < toNext) {
+          state.phase += remaining / duration;
+          break;
+        }
+        state.phase = index + 1;
+        remaining -= toNext;
+      }
+    } else state.phase += elapsed / defaultDuration();
+    if (state.phase >= length) {
+      if (get("loop").checked) state.phase %= length;
+      else {
+        state.phase = length;
+        setPlaying(false);
+      }
+    }
+  }
+  state.previous = now;
+  render();
+  schedule();
+}
+
+function schedule() {
+  if (!animationId && state.playing && available().length) animationId = requestAnimationFrame(scheduledFrame);
+}
+
+function render() {
+  const { length, steps } = timeline();
+  const position = Math.min(state.phase, length);
+  const stepNumber = Math.min(steps, Math.floor(position) + 1);
+  const slider = get("frame");
+  if (Number(slider.max) !== steps) slider.max = steps;
+  if (Number(slider.value) !== stepNumber) slider.value = stepNumber;
+  const frameText = stepNumber + " / " + steps;
+  if (get("frameLabel").textContent !== frameText) get("frameLabel").textContent = frameText;
+
+  for (const sheet of sheets.values()) {
+    const entryMode = state.row === -1;
+    const image = entryMode ? sheet.entry : sheet.image;
+    const cols = entryMode ? entryDurations.length : sheet.cols;
+    const rows = entryMode ? 1 : sheet.rows;
+    const row = entryMode ? 0 : state.row;
+    const layout = cols + "×" + rows;
+    const column = Math.min(cols - 1, Math.floor(entryMode ? position : position * defaultDuration() / sheet.duration));
+    const key = [state.row, column, layout, image?.naturalWidth].join("/");
+    if (sheet.lastDraw === key) continue;
+    sheet.lastDraw = key;
+    const { context, canvas } = sheet;
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    if (!image?.naturalWidth) {
+      sheet.meta.textContent = image
+        ? (entryMode ? sheet.entryFailed : sheet.failed) ? "Không đọc được ảnh." : "Đang nạp…"
+        : "Chưa có đoạn chuyển tiếp ở phiên bản này.";
+      continue;
+    }
+    if (row >= rows) {
+      sheet.meta.textContent = layout + " · Không có hàng " + (row + 1);
+      continue;
+    }
+    const cellWidth = image.naturalWidth / cols;
+    const cellHeight = image.naturalHeight / rows;
+    if (!Number.isInteger(cellWidth) || !Number.isInteger(cellHeight)) {
+      sheet.meta.textContent = image.naturalWidth + "×" + image.naturalHeight + " · Ảnh không chia đều cho lưới " + layout;
+      continue;
+    }
+    const scale = Math.min(canvas.width / cellWidth, canvas.height / cellHeight);
+    const width = cellWidth * scale;
+    const height = cellHeight * scale;
+    context.drawImage(image, column * cellWidth, row * cellHeight, cellWidth, cellHeight,
+      (canvas.width - width) / 2, (canvas.height - height) / 2, width, height);
+    sheet.meta.textContent = layout + " · " + cellWidth + "×" + cellHeight + " px · Khung " + (column + 1) + "/" + cols;
+  }
+}
+
+function loadVersion(sheet, version) {
+  for (const image of [sheet.image, sheet.entry]) {
+    if (image) image.onload = image.onerror = null;
+  }
+  sheet.lastDraw = "";
+  sheet.failed = sheet.entryFailed = false;
+  sheet.image = new Image();
+  sheet.entry = version.transition ? new Image() : null;
+  for (const [image, src, failure] of [[sheet.image, version.src, "failed"], [sheet.entry, version.transition, "entryFailed"]]) {
+    if (!image) continue;
+    image.onload = () => refreshLayout();
+    image.onerror = () => {
+      sheet[failure] = true;
+      sheet.lastDraw = "";
+      refreshLayout();
+    };
+    image.src = src;
+  }
+}
+
+function addSheet({ key, title, src, file, versions }) {
+  if (sheets.has(key)) return false;
+  const card = get("card").content.firstElementChild.cloneNode(true);
+  const canvas = card.querySelector("canvas");
+  const meta = card.querySelector(".meta");
+  const stage = card.querySelector(".stage");
+  const objectUrl = file ? URL.createObjectURL(file) : null;
+  const duration = card.querySelector(".duration");
+  const cols = card.querySelector(".cols");
+  const rows = card.querySelector(".rows");
+  const sheet = {
+    card, canvas, context: canvas.getContext("2d"), meta, stage, objectUrl, cols: 6, rows: 4,
+    get duration() { return numberIn(duration.value, 16, 3000, defaultDuration()); }
+  };
+  card.querySelector("h2").textContent = title;
+  card.querySelector(".remove").setAttribute("aria-label", "Bỏ " + title);
+  card.querySelector(".remove").onclick = () => removeSheet(key);
+  if (versions) {
+    const label = card.querySelector(".version");
+    const picker = label.querySelector("select");
+    label.hidden = false;
+    picker.replaceChildren(...versions.map((version, index) => new Option(version.label, String(index))));
+    picker.onchange = () => {
+      loadMessage = "";
+      loadVersion(sheet, versions[Number(picker.value)]);
+      refreshLayout();
+    };
+    sheet.selectLatest = () => {
+      if (picker.value !== "0") {
+        picker.value = "0";
+        loadVersion(sheet, versions[0]);
+      }
+    };
+  }
+  for (const field of [cols, rows, duration]) {
+    field.addEventListener("change", () => {
+      sheet.cols = numberIn(cols.value, 1, 64, 6);
+      sheet.rows = numberIn(rows.value, 1, 64, 4);
+      cols.value = sheet.cols;
+      rows.value = sheet.rows;
+      if (duration.value !== "") duration.value = sheet.duration;
+      sheet.lastDraw = "";
+      refreshLayout();
+    });
+  }
+  stage.className = "stage " + get("backdrop").value;
+  meta.textContent = "Đang nạp…";
+  sheets.set(key, sheet);
+  get("grid").append(card);
+  loadVersion(sheet, versions?.[0] ?? { src: objectUrl ?? src });
+  return true;
+}
+
+function removeSheet(key) {
+  const sheet = sheets.get(key);
+  if (!sheet) return;
+  sheet.image.onload = sheet.image.onerror = null;
+  if (sheet.entry) sheet.entry.onload = sheet.entry.onerror = null;
+  if (sheet.objectUrl) URL.revokeObjectURL(sheet.objectUrl);
+  sheet.card.remove();
+  sheets.delete(key);
+  if (!sheets.size) {
+    state.phase = 0;
+    state.previous = null;
+  }
+  loadMessage = "";
+  refreshLayout();
+}
+
+function newestFolderSheets(files) {
+  const bySheet = new Map();
+  for (const file of files) {
+    const stem = file.name.replace(/\.[^.]+$/, "").toLowerCase();
+    const version = stem.match(/_(?:pilot-)?v(\d+)$/);
+    const key = version ? stem.slice(0, version.index) : stem;
+    const rank = Number(version?.[1] ?? 0);
+    const current = bySheet.get(key);
+    if (!current || rank > current.rank) bySheet.set(key, { file, rank });
+  }
+  return [...bySheet.values()].map(({ file }) => file);
+}
+
+function importFiles(files, fromFolder) {
+  const images = [...files].filter((file) => file.type.startsWith("image/") || /\.(png|webp|jpe?g|gif|bmp|avif)$/i.test(file.name));
+  const likelySheets = images.filter((file) => /(?:^|[-_ ])sheet(?:[-_ .]|$)/i.test(file.name) && !/ban-nhap|draft/i.test(file.name));
+  const selected = fromFolder && likelySheets.length
+    ? get("latestInFolder").checked ? newestFolderSheets(likelySheets) : likelySheets
+    : images;
+  selected.sort((a, b) => (a.webkitRelativePath || a.name).localeCompare(b.webkitRelativePath || b.name, "vi", { numeric: true }));
+  let count = 0;
+  for (const file of selected) {
+    const path = file.webkitRelativePath || file.name;
+    const key = "local:" + [path, file.size, file.lastModified].join(":");
+    if (addSheet({ key, file, title: file.name.replace(/\.[^.]+$/, "") })) count++;
+  }
+  loadMessage = !selected.length ? "Không có file ảnh trong lựa chọn" : !count ? "Các sheet này đã được nạp" : "";
+  refreshLayout();
+}
+
+get("catalog").onclick = () => {
+  for (const [title, src] of catalog) {
+    const folder = src.split("/")[0];
+    const key = "catalog:" + folder;
+    const existing = sheets.get(key);
+    if (existing) existing.selectLatest();
+    else {
+      const updates = releases[folder] ?? [];
+      const baseline = src.endsWith("_v2.png") ? "V2" : "Bản gốc";
+      const label = updates.length ? baseline : baseline + " · mới nhất";
+      addSheet({ key, title, versions: [...updates, { label, src }] });
+    }
+  }
+  loadMessage = "Đang xem các phiên bản mới nhất";
+  refreshLayout();
+};
+get("clear").onclick = () => {
+  for (const key of [...sheets.keys()]) removeSheet(key);
+};
+for (const [button, input, fromFolder] of [["filesButton", "files", false], ["folderButton", "folder", true]]) {
+  get(button).onclick = () => get(input).click();
+  get(input).onchange = (event) => {
+    importFiles(event.target.files, fromFolder);
+    event.target.value = "";
+  };
+}
+function selectClip(row) {
+  selectRow(row);
+  if (row === -1) setPlaying(true);
+}
+for (const tab of tabs) tab.onclick = () => selectClip(Number(tab.dataset.row));
+get("row").onchange = (event) => selectClip(Number(event.target.value));
+get("play").onclick = togglePlayback;
+get("prev").onclick = () => step(-1);
+get("next").onclick = () => step(1);
+get("frame").oninput = (event) => {
+  setPlaying(false);
+  state.phase = Number(event.target.value) - 1;
+  render();
+};
+get("backdrop").onchange = (event) => {
+  for (const sheet of sheets.values()) sheet.stage.className = "stage " + event.target.value;
+};
+
+const dropzone = get("dropzone");
+dropzone.addEventListener("dragover", (event) => {
+  event.preventDefault();
+  dropzone.classList.add("drop");
+});
+dropzone.addEventListener("dragleave", (event) => {
+  if (!dropzone.contains(event.relatedTarget)) dropzone.classList.remove("drop");
+});
+dropzone.addEventListener("drop", (event) => {
+  event.preventDefault();
+  dropzone.classList.remove("drop");
+  importFiles(event.dataTransfer.files, false);
+});
+document.addEventListener("keydown", (event) => {
+  if (event.target.closest("button, input, select, summary")) return;
+  if (event.code === "Space") {
+    event.preventDefault();
+    togglePlayback();
+  } else if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+    event.preventDefault();
+    step(event.key === "ArrowLeft" ? -1 : 1);
+  }
+});
+refreshLayout();
+</script>
+</body>
+</html>

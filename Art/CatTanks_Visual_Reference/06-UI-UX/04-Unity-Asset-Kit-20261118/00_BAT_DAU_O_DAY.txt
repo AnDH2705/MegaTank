@@ -1,0 +1,47 @@
+CAT TANKS — BỘ ASSET GHÉP MOCKUP TRONG UNITY
+Ngày: 2026-11-18
+Đích đã kiểm tra trong source: Sources/CatTanks, Unity 2022.3.62f2, uGUI 1.0.0, 2D Sprite 1.0.0.
+Thiết kế tham chiếu: 1600 × 900, landscape 16:9.
+
+BỘ NÀY GỒM GÌ
+- 16 texture mới từ imagegen: 12 sprite sheet nền trong suốt và 4 nền cảnh.
+- 127 sprite mới có tên trong asset-manifest.json.
+- 132 PNG gốc của CatTanks, giữ nguyên dữ liệu ảnh; gồm mèo, tháp pháo, vũ khí, xe, trang bị và quái để dùng lại.
+- Tổng 259 sprite key. File ảnh sheet có nhiều sprite con; không phải 259 ảnh PNG mới.
+- Danh sách vị trí cho 21 màn/popup, 1.122 thành phần, kèm 21 hướng dẫn ghép riêng.
+- Editor tool chia sprite theo lưới + alpha, gán border 9-slice, tạo library, Sprite Atlas, 21 prefab xem thử và scene.
+- Prompt, nguồn ảnh và công cụ kiểm tra đi cùng gói.
+
+CÁCH DÙNG NHANH
+1. Mở đúng project Unity: F:/tank/MegaTank/Sources/CatTanks.
+2. Chép thư mục Unity/Assets/CatTanksMockupKit của gói vào Assets của project.
+   Hoặc chạy PowerShell từ thư mục gói:
+   powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Tools\Install-ToUnity.ps1 -ProjectPath 'F:\tank\MegaTank\Sources\CatTanks'
+   ExecutionPolicy ở đây chỉ áp dụng tiến trình lệnh đó, không đổi cấu hình hệ thống.
+3. Chờ Unity import và compile; project phải có com.unity.ugui và com.unity.2d.sprite.
+4. Chạy menu CatTanks > Mockup Kit > 1 - Import and Slice Assets.
+5. Chạy menu 4 - Validate Sprite and Layout Coverage. Cần thấy MOCKUP_KIT_VALIDATE_OK.
+6. Chạy menu 2 - Build All Preview Prefabs.
+7. Chạy menu 3 - Create Preview Scene. Mở scene mới một mình trước khi Play.
+8. Play: menu trái chuyển màn, Cài đặt/Bách khoa mở popup, Hành quân > Chuẩn bị > Xuất kích chuyển sang preview trận.
+9. Các prefab thật được sinh vào Assets/CatTanksMockupKit/Generated/Prefabs.
+10. Muốn tự ghép: đọc Docs/01_IMPORT_VA_9SLICE.txt, Docs/02_GHEP_21_MAN.txt và file Docs/Screens tương ứng.
+11. Muốn nối vào game thật: đọc Docs/03_NOI_VAO_GAME_CAT_TANKS.txt và Data/action-bindings.csv.
+12. Muốn đóng thành .unitypackage sau khi Unity đã import: menu 5 - Export Unitypackage.
+
+PHẠM VI BÀN GIAO
+Đây là bộ hình tĩnh + dữ liệu ghép + mã tạo preview. Chữ và số nằm trong UI Text, không nằm trong sprite.
+Navigation trong preview hoạt động; các action game:* là điểm nối được ghi log, chưa chạy kinh tế, chiến đấu hay lưu profile.
+Asset mới được vẽ lại theo phong cách mockup. Các màn đã chuẩn hóa về 1600×900, không phải bản tách layer giữ nguyên từng pixel của ảnh mockup phẳng.
+Animation/skeleton của game đang có vẫn dùng từ source; gói này không tạo thêm bộ animation chiến đấu.
+Xem asset-validation.json và Docs/07_KIEM_TRA.txt để biết kiểm tra nào đã thực sự chạy. Không coi kiểm tra cú pháp C# là kiểm thử Play Mode.
+
+FILE CẦN TRA
+- Unity/Assets/CatTanksMockupKit/Data/asset-manifest.json: tên sprite, texture, lưới, quy tắc border.
+- Data/sprite-catalog.csv: toàn bộ 259 key và nguồn.
+- Data/screen-assembly.csv: toàn bộ RectTransform và thứ tự lớp.
+- Data/sprite-usage.csv: sprite xuất hiện ở màn nào.
+- Data/action-bindings.csv: action của các nút.
+- Unity/.../Data/screen-layouts.json: dữ liệu máy đọc để dựng 21 màn.
+- Unity/.../Generated/sprite-rects.csv: Unity sinh sau bước 1, có rect và border thực tế.
+

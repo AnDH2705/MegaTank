@@ -1,0 +1,24 @@
+CATTANKS · DI CHUYỂN V3 · QUÁI 07–20
+
+Mở Xem-sprite-sheet.html và chọn Nạp bản mới nhất (20 quái). Tool mở Kiến phiên bản V4 và 19 loài khác ở V3. Chọn Di chuyển để xem sáu khung lặp, hoặc Vào chạy / bay để xem đoạn chuyển tiếp phát một lần. Menu Phiên bản bên dưới mỗi quái giữ bản cũ để đối chiếu.
+
+Mỗi loài trong đợt này có folder Pilot_Di_Chuyen_V3 với tám PNG trong suốt 320×320, một sheet 6×4, một dải di chuyển 6×1, và một dải chuyển tiếp 4×1. Sáu PNG di chuyển là vòng lặp. Hai khung đệm nối từ Idle-01 vào Run-01, mỗi khung giữ 60 ms trong tool. Dải 4×1 chứa cả hai tư thế mốc để tiện xem.
+
+07 Bọ ngựa đao — nhún, bật lên và hạ chân trong một cú nhảy ngắn.
+08 Gấu cuồng chiến — đặt chân trước, hạ vai, thu chân sau và bật thân nặng.
+09 Ấu trùng đất — chân bước thấp theo các đốt. Đã thử thêm một vòng nhấn vào độ cong của lưng và giữ bản có nhịp chân rõ hơn khi xem nhỏ.
+10 Hổ kiếm — đổi giữa dáng duỗi chân, thu dưới bụng và nhấc thân. Xem đường đuôi theo hông.
+11 Bọ cạp độc — đổi các chân dưới thân, giữ hai càng cân và đuôi cong phía trên.
+12 Khỉ băng — bước bằng khớp tay, đổi trọng lượng qua vai và tay đối bên.
+13 Bướm thôi miên — cánh xòe và khép đến góc nhìn nghiêng để nhịp vỗ dễ đọc.
+14 Rùa dung nham — bước chậm, chân chuyển bên dưới mai, phần đầu thay đổi nhẹ.
+15 Tê giác bọc giáp — bước ngắn có điểm chống rõ, hạ thân trước khi đổi chân.
+16 Bọ tinh thạch — nhấc và đặt chân luân phiên dưới mai, tinh thể đi theo cùng một khối.
+17 Đại bàng sư tử — cánh xòe rộng, đập xuống rồi hồi lên. Cả vòng dùng cùng tỉ lệ, thu khoảng 5% so với tỉ lệ căn theo ảnh đứng chờ để đủ lề đầu cánh.
+18 Hươu cổ thụ — chạy nhún, chân sau thu và vươn ở pha đẩy. Đã vẽ lại riêng hai khung vào chạy để hạ vai và giữ cổ, gạc gần dáng ban đầu hơn.
+19 Bọ chúa giáp gai — chân thay nhau đỡ khối mai nặng, càng giữ dáng đặc trưng.
+20 Bạo long hắc nguyệt — hai chân trụ đổi bên, gối nén và đuôi theo chuyển động của hông.
+
+Sprite được tạo với ImageGen từ ảnh gốc và sheet V2. PROMPT_14_QUAI_V3.txt ghi lại các prompt kể cả lượt thử thêm. Đã rà các tư thế theo thứ tự, kiểm tra vùng trong suốt ở biên, đối chiếu ảnh rời với sheet, và xác nhận các pixel của hàng đứng chờ, tấn công và trúng đòn khớp với bản trước. Đã kiểm tra nạp và phát 20 đoạn chuyển tiếp trên Chrome.
+
+Các hình này là bộ art để xem và duyệt. Quỹ đạo nhảy của Bọ ngựa, cao độ bay và độ trượt chân ở tốc độ game cần được kiểm tra khi tích hợp.

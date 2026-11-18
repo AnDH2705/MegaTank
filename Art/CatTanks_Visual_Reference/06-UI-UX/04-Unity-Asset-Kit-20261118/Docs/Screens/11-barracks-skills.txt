@@ -1,0 +1,179 @@
+MÀN 11 — Kỹ năng
+Key: barracks-skills
+Loại: Screen
+Prefab được sinh: Assets/CatTanksMockupKit/Generated/Prefabs/Mockup_barracks-skills.prefab
+
+Bốn ô kỹ năng đang trang bị trên cùng. Mười card kỹ năng bên dưới, 5×2; mỗi card có sprite skill riêng, level, unlock/cooldown và nút upgrade.
+
+CÁCH GHÉP
+1. Dùng Canvas 1600×900 và quy tắc anchor trong Docs/02_GHEP_21_MAN.txt.
+2. Thêm node theo đúng thứ tự bảng bên dưới; node sau vẽ trên node trước.
+3. parent trống = ArtKitStage; parent có giá trị = trong Content/group có tên đó.
+4. Khung/nút: Image Sliced, viền theo importer; icon/art: Image Simple + Preserve Aspect.
+5. Các node label dùng UI Text; button dùng Image + Button + child Text; bar dùng track + Image Filled.
+6. Action screen:* là navigation xem thử; game:* cần nối controller. Dữ liệu số trong file là ví dụ.
+
+THÀNH PHẦN (tọa độ trên trái, UI units)
+Order | Id | Kind | Sprite | Parent | x,y,w,h | Font | Action | Disabled
+0 | background | image | bg_hub | ArtKitStage | 0,0,1600,900 | - | - | false
+1 | brand | image | icon_crown | ArtKitStage | 20,14,66,66 | - | - | false
+2 | brand-title | label | - | ArtKitStage | 100,8,670,48 | 40 | - | false
+3 | brand-subtitle | label | - | ArtKitStage | 102,58,650,24 | 19 | - | false
+4 | currency-coin | image | panel_resource | ArtKitStage | 800,16,180,68 | - | - | false
+5 | currency-icon-coin | image | icon_coin | ArtKitStage | 812,28,44,44 | - | - | false
+6 | currency-value-coin | label | - | ArtKitStage | 862,26,100,44 | 28 | - | false
+7 | currency-gem | image | panel_resource | ArtKitStage | 1000,16,180,68 | - | - | false
+8 | currency-icon-gem | image | icon_gem | ArtKitStage | 1012,28,44,44 | - | - | false
+9 | currency-value-gem | label | - | ArtKitStage | 1062,26,100,44 | 28 | - | false
+10 | currency-ticket | image | panel_resource | ArtKitStage | 1200,16,180,68 | - | - | false
+11 | currency-icon-ticket | image | icon_ticket | ArtKitStage | 1212,28,44,44 | - | - | false
+12 | currency-value-ticket | label | - | ArtKitStage | 1262,26,100,44 | 28 | - | false
+13 | settings | button | button_gold | ArtKitStage | 1400,16,184,68 | 20 | screen:settings | false
+14 | sidebar | image | panel_main | ArtKitStage | 12,108,236,780 | - | - | false
+15 | commander-level | label | - | ArtKitStage | 32,128,200,30 | 18 | - | false
+16 | commander-portrait | image | mascot_commander | ArtKitStage | 28,164,92,92 | - | - | false
+17 | commander-name | label | - | ArtKitStage | 126,176,104,70 | 20 | - | false
+18 | nav-march | button | button_blue | ArtKitStage | 24,280,212,66 | 20 | screen:march | false
+19 | nav-icon-march | image | icon_map | ArtKitStage | 32,293,42,42 | - | - | false
+20 | nav-barracks-cats | button | button_cyan | ArtKitStage | 24,356,212,66 | 20 | screen:barracks-cats | false
+21 | nav-icon-barracks-cats | image | icon_battle | ArtKitStage | 32,369,42,42 | - | - | false
+22 | nav-town-summon | button | button_blue | ArtKitStage | 24,432,212,66 | 20 | screen:town-summon | false
+23 | nav-icon-town-summon | image | icon_town | ArtKitStage | 32,445,42,42 | - | - | false
+24 | nav-chest | button | button_blue | ArtKitStage | 24,508,212,66 | 20 | screen:chest | false
+25 | nav-icon-chest | image | icon_chest | ArtKitStage | 32,521,42,42 | - | - | false
+26 | nav-quests | button | button_blue | ArtKitStage | 24,584,212,66 | 20 | screen:quests | false
+27 | nav-icon-quests | image | icon_quests | ArtKitStage | 32,597,42,42 | - | - | false
+28 | nav-book | button | button_blue | ArtKitStage | 24,660,212,66 | 20 | screen:book | false
+29 | nav-icon-book | image | icon_book | ArtKitStage | 32,673,42,42 | - | - | false
+30 | power-panel | image | panel_resource | ArtKitStage | 24,760,212,108 | - | - | false
+31 | power-title | label | - | ArtKitStage | 40,775,180,26 | 20 | - | false
+32 | power-number | label | - | ArtKitStage | 48,812,170,42 | 36 | - | false
+33 | main | image | panel_main | ArtKitStage | 264,108,1324,780 | - | - | false
+34 | tab-cats | button | tab_blue | ArtKitStage | 284,128,150,52 | 18 | screen:barracks-cats | false
+35 | tab-fortress | button | tab_blue | ArtKitStage | 444,128,150,52 | 18 | screen:barracks-fortress | false
+36 | tab-squad | button | tab_blue | ArtKitStage | 604,128,150,52 | 18 | screen:barracks-squad | false
+37 | tab-skills | button | tab_selected | ArtKitStage | 764,128,150,52 | 18 | screen:barracks-skills | false
+38 | tab-monsters | button | tab_blue | ArtKitStage | 924,128,150,52 | 18 | screen:barracks-monsters | false
+39 | tab-gear | button | tab_blue | ArtKitStage | 1084,128,150,52 | 18 | screen:barracks-gear | false
+40 | tab-presets | button | tab_blue | ArtKitStage | 1244,128,150,52 | 18 | screen:barracks-presets | false
+41 | tab-nexus | button | tab_blue | ArtKitStage | 1404,128,150,52 | 18 | screen:barracks-nexus | false
+42 | screen-title | label | - | ArtKitStage | 298,202,1170,52 | 34 | - | false
+43 | skill-subtitle | label | - | ArtKitStage | 300,264,1210,38 | 21 | - | false
+44 | skill-slot-0 | button | button_blue | ArtKitStage | 300,326,302,62 | 20 | game:skillSlot:0 | false
+45 | skill-slot-1 | button | button_blue | ArtKitStage | 614,326,302,62 | 20 | game:skillSlot:1 | false
+46 | skill-slot-2 | button | button_blue | ArtKitStage | 928,326,302,62 | 20 | game:skillSlot:2 | false
+47 | skill-slot-3 | button | button_blue | ArtKitStage | 1242,326,302,62 | 20 | game:skillSlot:3 | false
+48 | skill-card-0 | image | panel_card | ArtKitStage | 300,414,242,208 | - | - | false
+49 | skill-title-0 | label | - | ArtKitStage | 312,422,220,40 | 21 | - | false
+50 | skill-art-0 | image | skill_repair | ArtKitStage | 314,472,76,76 | - | - | false
+51 | skill-desc-0 | label | - | ArtKitStage | 400,476,134,72 | 17 | - | false
+52 | skill-upgrade-0 | button | button_blue | ArtKitStage | 310,564,222,48 | 17 | game:upgradeSkill:repair | false
+53 | skill-card-1 | image | panel_card | ArtKitStage | 552,414,242,208 | - | - | false
+54 | skill-title-1 | label | - | ArtKitStage | 564,422,220,40 | 21 | - | false
+55 | skill-art-1 | image | skill_rockets | ArtKitStage | 566,472,76,76 | - | - | false
+56 | skill-desc-1 | label | - | ArtKitStage | 652,476,134,72 | 17 | - | false
+57 | skill-upgrade-1 | button | button_blue | ArtKitStage | 562,564,222,48 | 17 | game:upgradeSkill:rockets | false
+58 | skill-card-2 | image | panel_card | ArtKitStage | 804,414,242,208 | - | - | false
+59 | skill-title-2 | label | - | ArtKitStage | 816,422,220,40 | 21 | - | false
+60 | skill-art-2 | image | skill_shield | ArtKitStage | 818,472,76,76 | - | - | false
+61 | skill-desc-2 | label | - | ArtKitStage | 904,476,134,72 | 17 | - | false
+62 | skill-upgrade-2 | button | button_blue | ArtKitStage | 814,564,222,48 | 17 | game:upgradeSkill:shield | false
+63 | skill-card-3 | image | panel_card | ArtKitStage | 1056,414,242,208 | - | - | false
+64 | skill-title-3 | label | - | ArtKitStage | 1068,422,220,40 | 21 | - | false
+65 | skill-art-3 | image | skill_reinforce | ArtKitStage | 1070,472,76,76 | - | - | false
+66 | skill-desc-3 | label | - | ArtKitStage | 1156,476,134,72 | 17 | - | false
+67 | skill-upgrade-3 | button | button_blue | ArtKitStage | 1066,564,222,48 | 17 | game:upgradeSkill:reinforce | false
+68 | skill-card-4 | image | panel_card | ArtKitStage | 1308,414,242,208 | - | - | false
+69 | skill-title-4 | label | - | ArtKitStage | 1320,422,220,40 | 21 | - | false
+70 | skill-art-4 | image | skill_ice | ArtKitStage | 1322,472,76,76 | - | - | false
+71 | skill-desc-4 | label | - | ArtKitStage | 1408,476,134,72 | 17 | - | false
+72 | skill-upgrade-4 | button | button_blue | ArtKitStage | 1318,564,222,48 | 17 | game:upgradeSkill:ice | false
+73 | skill-card-5 | image | panel_card | ArtKitStage | 300,634,242,208 | - | - | false
+74 | skill-title-5 | label | - | ArtKitStage | 312,642,220,40 | 21 | - | false
+75 | skill-art-5 | image | skill_drone | ArtKitStage | 314,692,76,76 | - | - | false
+76 | skill-desc-5 | label | - | ArtKitStage | 400,696,134,72 | 17 | - | false
+77 | skill-upgrade-5 | button | button_blue | ArtKitStage | 310,784,222,48 | 17 | game:upgradeSkill:drone | false
+78 | skill-card-6 | image | panel_card | ArtKitStage | 552,634,242,208 | - | - | false
+79 | skill-title-6 | label | - | ArtKitStage | 564,642,220,40 | 21 | - | false
+80 | skill-art-6 | image | skill_airstrike | ArtKitStage | 566,692,76,76 | - | - | false
+81 | skill-desc-6 | label | - | ArtKitStage | 652,696,134,72 | 17 | - | false
+82 | skill-upgrade-6 | button | button_blue | ArtKitStage | 562,784,222,48 | 17 | game:upgradeSkill:airstrike | false
+83 | skill-card-7 | image | panel_card | ArtKitStage | 804,634,242,208 | - | - | false
+84 | skill-title-7 | label | - | ArtKitStage | 816,642,220,40 | 21 | - | false
+85 | skill-art-7 | image | skill_decoy | ArtKitStage | 818,692,76,76 | - | - | false
+86 | skill-desc-7 | label | - | ArtKitStage | 904,696,134,72 | 17 | - | false
+87 | skill-upgrade-7 | button | button_blue | ArtKitStage | 814,784,222,48 | 17 | game:upgradeSkill:decoy | false
+88 | skill-card-8 | image | panel_card | ArtKitStage | 1056,634,242,208 | - | - | false
+89 | skill-title-8 | label | - | ArtKitStage | 1068,642,220,40 | 21 | - | false
+90 | skill-art-8 | image | skill_magnet | ArtKitStage | 1070,692,76,76 | - | - | false
+91 | skill-desc-8 | label | - | ArtKitStage | 1156,696,134,72 | 17 | - | false
+92 | skill-upgrade-8 | button | button_blue | ArtKitStage | 1066,784,222,48 | 17 | game:upgradeSkill:magnet | false
+93 | skill-card-9 | image | panel_card | ArtKitStage | 1308,634,242,208 | - | - | false
+94 | skill-title-9 | label | - | ArtKitStage | 1320,642,220,40 | 21 | - | false
+95 | skill-art-9 | image | skill_bomb | ArtKitStage | 1322,692,76,76 | - | - | false
+96 | skill-desc-9 | label | - | ArtKitStage | 1408,696,134,72 | 17 | - | false
+97 | skill-upgrade-9 | button | button_blue | ArtKitStage | 1318,784,222,48 | 17 | game:upgradeSkill:bomb | false
+
+NỘI DUNG TEXT/INPUT
+brand-title: MEOW BASTION
+brand-subtitle: PHÁO ĐÀI TRĂNG XANH
+currency-value-coin: 2,843
+currency-value-gem: 300
+currency-value-ticket: 5
+settings: Cài đặt
+commander-level: CHỈ HUY / CẤP 5
+commander-name: Chỉ huy
+mèo
+nav-march:      Hành quân
+nav-barracks-cats:      Doanh trại
+nav-town-summon:      Thành mèo
+nav-chest:      Rương AFK
+nav-quests:      Nhiệm vụ
+nav-book:      Bách khoa
+power-title: LỰC CHIẾN
+power-number: 1,046
+tab-cats: MÈO
+tab-fortress: PHÁO
+tab-squad: ĐỘI
+tab-skills: KỸ
+tab-monsters: QUÁI
+tab-gear: TRANG
+tab-presets: ĐỘI LƯU
+tab-nexus: CỘNG
+screen-title: Kỹ năng chiến thuật
+skill-subtitle: Lõi kỹ năng nhận ở ải trùm. Chọn tối đa 4 kỹ năng; phím 1–4 kích hoạt trong trận.
+skill-slot-0: [1] Sửa chữa
+skill-slot-1: [2] Mưa tên lửa
+skill-slot-2: [3] Trống
+skill-slot-3: [4] Trống
+skill-title-0: Sửa chữa · Lv 1
+skill-desc-0: 80 NL · 8s hồi
+skill-upgrade-0: Nâng cấp · 1 lõi
+skill-title-1: Mưa tên lửa · Lv 1
+skill-desc-1: 140 NL · 10s hồi
+skill-upgrade-1: Nâng cấp · 1 lõi
+skill-title-2: Lá chắn · Lv 1
+skill-desc-2: Mở tại ải 2
+skill-upgrade-2: Nâng cấp · 1 lõi
+skill-title-3: Tiếp viện · Lv 1
+skill-desc-3: Mở tại ải 4
+skill-upgrade-3: Nâng cấp · 1 lõi
+skill-title-4: Bão băng · Lv 1
+skill-desc-4: Mở tại ải 5
+skill-upgrade-4: Nâng cấp · 1 lõi
+skill-title-5: Drone · Lv 1
+skill-desc-5: Mở tại ải 10
+skill-upgrade-5: Nâng cấp · 1 lõi
+skill-title-6: Không kích · Lv 1
+skill-desc-6: Mở tại ải 15
+skill-upgrade-6: Nâng cấp · 1 lõi
+skill-title-7: Mồi nhử · Lv 1
+skill-desc-7: Mở tại cấp 20
+skill-upgrade-7: Nâng cấp · 1 lõi
+skill-title-8: Nam châm · Lv 1
+skill-desc-8: Mở tại cấp 40
+skill-upgrade-8: Nâng cấp · 1 lõi
+skill-title-9: Mèo cảm tử · Lv 1
+skill-desc-9: Mở tại cấp 60
+skill-upgrade-9: Nâng cấp · 1 lõi
+

@@ -1,0 +1,178 @@
+MÀN 06 — Cửa hàng
+Key: town-shop
+Loại: Screen
+Prefab được sinh: Assets/CatTanksMockupKit/Generated/Prefabs/Mockup_town-shop.prefab
+
+Tạo ScrollRect và Content trước các item. Bốn cột × ba hàng, hàng ba bị viewport cắt một phần. Các node parent=shop-scroll thuộc Content. Nối stock và trạng thái khóa từ game.
+
+CÁCH GHÉP
+1. Dùng Canvas 1600×900 và quy tắc anchor trong Docs/02_GHEP_21_MAN.txt.
+2. Thêm node theo đúng thứ tự bảng bên dưới; node sau vẽ trên node trước.
+3. parent trống = ArtKitStage; parent có giá trị = trong Content/group có tên đó.
+4. Khung/nút: Image Sliced, viền theo importer; icon/art: Image Simple + Preserve Aspect.
+5. Các node label dùng UI Text; button dùng Image + Button + child Text; bar dùng track + Image Filled.
+6. Action screen:* là navigation xem thử; game:* cần nối controller. Dữ liệu số trong file là ví dụ.
+
+THÀNH PHẦN (tọa độ trên trái, UI units)
+Order | Id | Kind | Sprite | Parent | x,y,w,h | Font | Action | Disabled
+0 | background | image | bg_hub | ArtKitStage | 0,0,1600,900 | - | - | false
+1 | brand | image | icon_crown | ArtKitStage | 20,14,66,66 | - | - | false
+2 | brand-title | label | - | ArtKitStage | 100,8,670,48 | 40 | - | false
+3 | brand-subtitle | label | - | ArtKitStage | 102,58,650,24 | 19 | - | false
+4 | currency-coin | image | panel_resource | ArtKitStage | 800,16,180,68 | - | - | false
+5 | currency-icon-coin | image | icon_coin | ArtKitStage | 812,28,44,44 | - | - | false
+6 | currency-value-coin | label | - | ArtKitStage | 862,26,100,44 | 28 | - | false
+7 | currency-gem | image | panel_resource | ArtKitStage | 1000,16,180,68 | - | - | false
+8 | currency-icon-gem | image | icon_gem | ArtKitStage | 1012,28,44,44 | - | - | false
+9 | currency-value-gem | label | - | ArtKitStage | 1062,26,100,44 | 28 | - | false
+10 | currency-ticket | image | panel_resource | ArtKitStage | 1200,16,180,68 | - | - | false
+11 | currency-icon-ticket | image | icon_ticket | ArtKitStage | 1212,28,44,44 | - | - | false
+12 | currency-value-ticket | label | - | ArtKitStage | 1262,26,100,44 | 28 | - | false
+13 | settings | button | button_gold | ArtKitStage | 1400,16,184,68 | 20 | screen:settings | false
+14 | sidebar | image | panel_main | ArtKitStage | 12,108,236,780 | - | - | false
+15 | commander-level | label | - | ArtKitStage | 32,128,200,30 | 18 | - | false
+16 | commander-portrait | image | mascot_commander | ArtKitStage | 28,164,92,92 | - | - | false
+17 | commander-name | label | - | ArtKitStage | 126,176,104,70 | 20 | - | false
+18 | nav-march | button | button_blue | ArtKitStage | 24,280,212,66 | 20 | screen:march | false
+19 | nav-icon-march | image | icon_map | ArtKitStage | 32,293,42,42 | - | - | false
+20 | nav-barracks-cats | button | button_blue | ArtKitStage | 24,356,212,66 | 20 | screen:barracks-cats | false
+21 | nav-icon-barracks-cats | image | icon_battle | ArtKitStage | 32,369,42,42 | - | - | false
+22 | nav-town-summon | button | button_cyan | ArtKitStage | 24,432,212,66 | 20 | screen:town-summon | false
+23 | nav-icon-town-summon | image | icon_town | ArtKitStage | 32,445,42,42 | - | - | false
+24 | nav-chest | button | button_blue | ArtKitStage | 24,508,212,66 | 20 | screen:chest | false
+25 | nav-icon-chest | image | icon_chest | ArtKitStage | 32,521,42,42 | - | - | false
+26 | nav-quests | button | button_blue | ArtKitStage | 24,584,212,66 | 20 | screen:quests | false
+27 | nav-icon-quests | image | icon_quests | ArtKitStage | 32,597,42,42 | - | - | false
+28 | nav-book | button | button_blue | ArtKitStage | 24,660,212,66 | 20 | screen:book | false
+29 | nav-icon-book | image | icon_book | ArtKitStage | 32,673,42,42 | - | - | false
+30 | power-panel | image | panel_resource | ArtKitStage | 24,760,212,108 | - | - | false
+31 | power-title | label | - | ArtKitStage | 40,775,180,26 | 20 | - | false
+32 | power-number | label | - | ArtKitStage | 48,812,170,42 | 36 | - | false
+33 | main | image | panel_main | ArtKitStage | 264,108,1324,780 | - | - | false
+34 | tab-summon | button | tab_blue | ArtKitStage | 288,128,410,60 | 20 | screen:town-summon | false
+35 | tab-shop | button | tab_selected | ArtKitStage | 712,128,410,60 | 20 | screen:town-shop | false
+36 | tab-arena | button | tab_blue | ArtKitStage | 1136,128,410,60 | 20 | screen:town-arena | false
+37 | screen-title | label | - | ArtKitStage | 298,202,1170,52 | 34 | - | false
+38 | shop-meta | label | - | ArtKitStage | 300,266,1200,38 | 22 | - | false
+39 | shop-scroll | viewport | panel_inset | ArtKitStage | 294,328,1264,532 | - | - | false
+40 | shop-card-0 | image | panel_card | shop-scroll | 0,0,294,232 | - | - | false
+41 | shop-icon-0 | image | icon_cage | shop-scroll | 18,18,72,72 | - | - | false
+42 | shop-name-0 | label | - | shop-scroll | 102,20,180,62 | 23 | - | false
+43 | shop-stock-0 | label | - | shop-scroll | 24,108,250,38 | 21 | - | false
+44 | shop-buy-0 | button | button_gold | shop-scroll | 16,164,262,52 | 18 | game:buy:0 | true
+45 | shop-card-1 | image | panel_card | shop-scroll | 306,0,294,232 | - | - | false
+46 | shop-icon-1 | image | icon_cage | shop-scroll | 324,18,72,72 | - | - | false
+47 | shop-name-1 | label | - | shop-scroll | 408,20,180,62 | 23 | - | false
+48 | shop-stock-1 | label | - | shop-scroll | 330,108,250,38 | 21 | - | false
+49 | shop-buy-1 | button | button_gold | shop-scroll | 322,164,262,52 | 18 | game:buy:1 | true
+50 | shop-card-2 | image | panel_card | shop-scroll | 612,0,294,232 | - | - | false
+51 | shop-icon-2 | image | icon_moon_cage | shop-scroll | 630,18,72,72 | - | - | false
+52 | shop-name-2 | label | - | shop-scroll | 714,20,180,62 | 23 | - | false
+53 | shop-stock-2 | label | - | shop-scroll | 636,108,250,38 | 21 | - | false
+54 | shop-buy-2 | button | button_gold | shop-scroll | 628,164,262,52 | 18 | game:buy:2 | true
+55 | shop-card-3 | image | panel_card | shop-scroll | 918,0,294,232 | - | - | false
+56 | shop-icon-3 | image | icon_food | shop-scroll | 936,18,72,72 | - | - | false
+57 | shop-name-3 | label | - | shop-scroll | 1020,20,180,62 | 23 | - | false
+58 | shop-stock-3 | label | - | shop-scroll | 942,108,250,38 | 21 | - | false
+59 | shop-buy-3 | button | button_gold | shop-scroll | 934,164,262,52 | 18 | game:buy:3 | true
+60 | shop-card-4 | image | panel_card | shop-scroll | 0,246,294,232 | - | - | false
+61 | shop-icon-4 | image | icon_ticket | shop-scroll | 18,264,72,72 | - | - | false
+62 | shop-name-4 | label | - | shop-scroll | 102,266,180,62 | 23 | - | false
+63 | shop-stock-4 | label | - | shop-scroll | 24,354,250,38 | 21 | - | false
+64 | shop-buy-4 | button | button_gold | shop-scroll | 16,410,262,52 | 18 | game:buy:4 | true
+65 | shop-card-5 | image | panel_card | shop-scroll | 306,246,294,232 | - | - | false
+66 | shop-icon-5 | image | icon_dust | shop-scroll | 324,264,72,72 | - | - | false
+67 | shop-name-5 | label | - | shop-scroll | 408,266,180,62 | 23 | - | false
+68 | shop-stock-5 | label | - | shop-scroll | 330,354,250,38 | 21 | - | false
+69 | shop-buy-5 | button | button_gold | shop-scroll | 322,410,262,52 | 18 | game:buy:5 | true
+70 | shop-card-6 | image | panel_card | shop-scroll | 612,246,294,232 | - | - | false
+71 | shop-icon-6 | image | icon_dust | shop-scroll | 630,264,72,72 | - | - | false
+72 | shop-name-6 | label | - | shop-scroll | 714,266,180,62 | 23 | - | false
+73 | shop-stock-6 | label | - | shop-scroll | 636,354,250,38 | 21 | - | false
+74 | shop-buy-6 | button | button_gold | shop-scroll | 628,410,262,52 | 18 | game:buy:6 | true
+75 | shop-card-7 | image | panel_card | shop-scroll | 918,246,294,232 | - | - | false
+76 | shop-icon-7 | image | icon_essence | shop-scroll | 936,264,72,72 | - | - | false
+77 | shop-name-7 | label | - | shop-scroll | 1020,266,180,62 | 23 | - | false
+78 | shop-stock-7 | label | - | shop-scroll | 942,354,250,38 | 21 | - | false
+79 | shop-buy-7 | button | button_gold | shop-scroll | 934,410,262,52 | 18 | game:buy:7 | true
+80 | shop-card-8 | image | panel_card | shop-scroll | 0,492,294,232 | - | - | false
+81 | shop-icon-8 | image | icon_forge | shop-scroll | 18,510,72,72 | - | - | false
+82 | shop-name-8 | label | - | shop-scroll | 102,512,180,62 | 23 | - | false
+83 | shop-stock-8 | label | - | shop-scroll | 24,600,250,38 | 21 | - | false
+84 | shop-buy-8 | button | button_gold | shop-scroll | 16,656,262,52 | 18 | game:buy:8 | true
+85 | shop-card-9 | image | panel_card | shop-scroll | 306,492,294,232 | - | - | false
+86 | shop-icon-9 | image | icon_ticket | shop-scroll | 324,510,72,72 | - | - | false
+87 | shop-name-9 | label | - | shop-scroll | 408,512,180,62 | 23 | - | false
+88 | shop-stock-9 | label | - | shop-scroll | 330,600,250,38 | 21 | - | false
+89 | shop-buy-9 | button | button_gold | shop-scroll | 322,656,262,52 | 18 | game:buy:9 | true
+90 | shop-card-10 | image | panel_card | shop-scroll | 612,492,294,232 | - | - | false
+91 | shop-icon-10 | image | icon_food | shop-scroll | 630,510,72,72 | - | - | false
+92 | shop-name-10 | label | - | shop-scroll | 714,512,180,62 | 23 | - | false
+93 | shop-stock-10 | label | - | shop-scroll | 636,600,250,38 | 21 | - | false
+94 | shop-buy-10 | button | button_gold | shop-scroll | 628,656,262,52 | 18 | game:buy:10 | true
+95 | shop-card-11 | image | panel_card | shop-scroll | 918,492,294,232 | - | - | false
+96 | shop-icon-11 | image | icon_skill_core | shop-scroll | 936,510,72,72 | - | - | false
+97 | shop-name-11 | label | - | shop-scroll | 1020,512,180,62 | 23 | - | false
+98 | shop-stock-11 | label | - | shop-scroll | 942,600,250,38 | 21 | - | false
+99 | shop-buy-11 | button | button_gold | shop-scroll | 934,656,262,52 | 18 | game:buy:11 | true
+
+NỘI DUNG TEXT/INPUT
+brand-title: MEOW BASTION
+brand-subtitle: PHÁO ĐÀI TRĂNG XANH
+currency-value-coin: 2,843
+currency-value-gem: 300
+currency-value-ticket: 5
+settings: Cài đặt
+commander-level: CHỈ HUY / CẤP 5
+commander-name: Chỉ huy
+mèo
+nav-march:      Hành quân
+nav-barracks-cats:      Doanh trại
+nav-town-summon:      Thành mèo
+nav-chest:      Rương AFK
+nav-quests:      Nhiệm vụ
+nav-book:      Bách khoa
+power-title: LỰC CHIẾN
+power-number: 1,046
+tab-summon: GỌI ĐỒNG ĐỘI
+tab-shop: TIẾP TẾ
+tab-arena: ĐẤU TRƯỜNG
+screen-title: Trạm tiếp tế
+shop-meta: Vật phẩm làm mới mỗi ngày • 0 huy hiệu đấu trường • 1,078 bụi
+shop-name-0: Lồng thú
+shop-stock-0: Còn 5/5
+shop-buy-0: MỞ SAU ẢI 3
+shop-name-1: Lồng thú
+shop-stock-1: Còn 5/5
+shop-buy-1: MỞ SAU ẢI 3
+shop-name-2: Lồng trăng
+shop-stock-2: Còn 2/2
+shop-buy-2: MỞ SAU ẢI 3
+shop-name-3: 10 thức ăn
+shop-stock-3: Còn 5/5
+shop-buy-3: MỞ SAU ẢI 3
+shop-name-4: Vé triệu hồi
+shop-stock-4: Còn 10/10
+shop-buy-4: MỞ SAU ẢI 3
+shop-name-5: 100 bụi
+shop-stock-5: Còn 3/3
+shop-buy-5: MỞ SAU ẢI 3
+shop-name-6: 150 bụi
+shop-stock-6: Còn 5/5
+shop-buy-6: MỞ SAU ẢI 3
+shop-name-7: 20 tinh chất
+shop-stock-7: Còn 3/3
+shop-buy-7: MỞ SAU ẢI 3
+shop-name-8: 5 đá rèn
+shop-stock-8: Còn 3/3
+shop-buy-8: MỞ SAU ẢI 3
+shop-name-9: Vé triệu hồi
+shop-stock-9: Còn 10/10
+shop-buy-9: MỞ SAU ẢI 3
+shop-name-10: 15 thức ăn
+shop-stock-10: Còn 5/5
+shop-buy-10: MỞ SAU ẢI 3
+shop-name-11: Lõi kỹ năng
+shop-stock-11: Còn 3/3
+shop-buy-11: MỞ SAU ẢI 3
+

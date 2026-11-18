@@ -1,0 +1,13 @@
+Generator: built-in image_gen
+
+Use case: ui-mockup.
+Create one polished landscape 16:9 full-screen game UI demo for the CatTanks / MEOW BASTION project.
+Input image roles: image 1 (01-hanh-quan_march.png) is the STRUCTURE reference. Preserve its layout, information hierarchy, six left navigation entries, top resource counters, center campaign grid of exactly 20 stages arranged 4 rows x 5 columns, and right stage-detail panel. Image 2 (143a858b...) and image 3 (1cdc96a5...) are STYLE references only: copy their cohesive cartoon game art language, thick dark outlines, cobalt blue metallic beveled panels with steel rims and visible rivets, warm golden orange chunky buttons, playful bold readable typography, cyan lighting, yellow/black hazard stripes used sparingly, adorable cat mechanics. Do not copy the carousel layout or equipment layout from these style references.
+Asset: a single finished game screen, edge to edge, no device frame, no collage or presentation board.
+Screen title top left: "MEOW BASTION", smaller subtitle "PHÁO ĐÀI TRĂNG XANH"; top right counters coin 2,843, purple gem 300, golden cat summon ticket 5, and settings gear.
+Left sidebar: small cat commander portrait, "CHỈ HUY / CẤP 5", "Chỉ huy mèo". Six stacked illustrated icon buttons labeled "Hành quân" (selected bright cyan), "Doanh trại", "Thành mèo", "Rương AFK", "Nhiệm vụ", "Bách khoa". Bottom combat power "LỰC CHIẾN" "1,046".
+Main panel title "Chuyến phiêu lưu dưới trăng", subtitle "Chọn vùng đất. Sắp đội hình. Cùng mèo giữ vững pháo đài."
+Center panel caption "CHIẾN DỊCH / 20 VÙNG ĐẤT" and "1 / 20 ĐÃ QUA". Exactly twenty numbered rectangular stage tiles arranged 5 columns and 4 rows, left-to-right sequence 01 through 20. Stage 01 completed with check, stage 02 selected golden orange and labeled "SẴN SÀNG", stage 03 through 20 locked with small padlock symbols. Stages 05, 10, 15, 20 include a boss skull. Connecting paths remain subtle. Can include small moonlit forest artwork within tiles while keeping labels readable.
+Right panel heading "ẢI 02 / HÀNH QUÂN", title "Đường mòn sương"; vivid small illustration of misty moonlit mountain trail and crossed swords emblem; "LỰC CHIẾN ĐỀ NGHỊ" "560"; "Đội của bạn đã sẵn sàng"; first-clear reward icon row with +160 coins, +30 XP mèo, +46 bụi, +130 XP chỉ huy. Large golden CTA at bottom "CHUẨN BỊ XUẤT KÍCH".
+Below the center grid a compact chest tip banner "Mỗi 5 ải là một trận trùm".
+Background: restrained moonlit blue workshop, cats theme, low contrast scenery behind UI. Prioritize clear usable hierarchy and substantial readable controls; panel positions and relative sizes follow STRUCTURE reference. All text Vietnamese with correct accents where possible. No dogs, no watermark, no unrelated new systems.

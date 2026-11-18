@@ -1,0 +1,37 @@
+04 — QUY ƯỚC ART
+
+Phong cách: thép xanh cobalt, viền xanh bạc có đinh tán, outline xanh gần đen, primary vàng cam, selected cyan, mèo hoạt hình.
+Màu đã nằm trong texture; để Image.Color trắng trừ khi chủ động tạo trạng thái.
+Khung/nút được sinh thành bitmap mới, không cắt chữ hay vật thể dính nền từ mockup phẳng.
+Các mèo cat-0..9 và turret gốc giữ nguyên từ source để không thay đổi nhận diện nhân vật/vũ khí.
+
+NỀN VÀ ALPHA
+12 sheet có alpha thật. Bốn bg_* là ảnh cảnh kín khung.
+Màu nhìn thấy ở pixel alpha=0 không tham gia kết quả khi render bình thường.
+Không dùng JPG cho sprite có transparency.
+Không dùng xóa nền theo màu đen; outline cũng có màu đen.
+Glow/resonance có alpha mềm. Giữ shader UI/Default hoặc shader Sprite phù hợp, không thêm blend premultiplied nếu texture chưa dùng quy ước đó.
+Nguồn PNG được giữ nguyên. Chia sprite bằng metadata của Unity, không resample PNG.
+
+TÊN VÀ BIẾN THỂ
+Tên sprite key là ASCII snake_case, asset gốc giữ tên cat-0/turret-0 để khớp catalog.
+Các số tiền, tên nhân vật, mô tả, phần trăm, dấu trạng thái text thuộc data/UI.
+20 stage tile dùng lại ba lớp: nền card, label động, icon completed/locked/boss.
+Không cần 20 bitmap riêng cho 20 số ải.
+Cùng một wheel dùng nhiều instance. Cùng một panel/nút được co bằng 9-slice.
+Hàng selected dùng button_cyan/gold; unlocked/disabled là state, không phải màn riêng.
+
+HIỂU ĐÚNG 'TOÀN BỘ ASSET TRONG MOCKUP'
+Gói phủ các lớp hình tĩnh của 21 mockup: khung/nút/controls, icon, nhân vật, xe/lính, cảnh, minh họa và dữ liệu text/layout.
+Một số hình trang trí được chuẩn hóa thành sprite tái sử dụng. Chi tiết nét vẽ có thể khác từng pixel với ảnh concept.
+259 là số sprite key, không phải số prefab. Gói có 21 cấu hình màn; số trong manifest là nguồn chính xác.
+Không bao gồm bộ walk/fire/hit/death mới, skeleton hoặc VFX timeline mới vì mockup là ảnh tĩnh.
+Khi dùng trong gameplay, nối với Animator/Spine/VFX có sẵn hoặc làm gói animation riêng.
+Các PNG gốc giữ đúng nguồn trong file provenance, không được coi là ảnh mới do imagegen tạo.
+
+BỔ SUNG
+Sprite cảnh stage có 6 biến thể cho reuse; các stage khóa vẫn hiển thị đúng state.
+Hai XP icon không bake chữ XP: overlay UI Text nếu cần đúng nhãn.
+Nền battle là scenery phẳng để ghép preview; đạo cụ/xe là lớp rời. Chưa có bộ parallax nhiều lớp độc lập.
+Đổi size sprite không đổi PPU theo từng item để chữa lệch; chỉnh RectTransform/kích thước chung.
+

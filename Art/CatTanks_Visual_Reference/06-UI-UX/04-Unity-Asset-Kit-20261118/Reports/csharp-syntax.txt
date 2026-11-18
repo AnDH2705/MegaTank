@@ -1,0 +1,4 @@
+C# syntax files=5, errors=0.
+Command: dotnet run --project Tools/SyntaxCheck/SyntaxCheck.csproj -- Unity/Assets
+Parser: Roslyn, C# 9, .NET SDK 8.0.421.
+This checks C# syntax only. Unity assembly/API compilation and Play Mode rendering were not run.

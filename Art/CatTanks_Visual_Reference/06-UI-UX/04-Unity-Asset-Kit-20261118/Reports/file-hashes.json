@@ -1,0 +1,1072 @@
+﻿[
+    {
+        "file":  "00_BAT_DAU_O_DAY.txt",
+        "sha256":  "04B218A450F04CBE12BA44C0E428D6B54D5CEC37DDE7A3B40E1F54DB8C55A187",
+        "bytes":  3686
+    },
+    {
+        "file":  "asset-validation.json",
+        "sha256":  "8D8B3DDDB8FD96997EFA720369BAE16719247BFDEC58E491101A229C0D18D8A3",
+        "bytes":  69510
+    },
+    {
+        "file":  "generation-provenance.json",
+        "sha256":  "FBB3FE721EFDC712D700E37CEEAC55835BD10DFC6738528E052272479209FA6D",
+        "bytes":  50371
+    },
+    {
+        "file":  "production-plan.json",
+        "sha256":  "B123523F62C9A53B85FD21E75C3A74E36A1232481A0108C01F18FD2F9F1CED9C",
+        "bytes":  13787
+    },
+    {
+        "file":  "Data\\action-bindings.csv",
+        "sha256":  "18460CBEB436EB260A30078A42D21F5794FF99666A79561CA1DBD3F076897126",
+        "bytes":  30378
+    },
+    {
+        "file":  "Data\\generated-sprite-rects.csv",
+        "sha256":  "65E050673DE5552FEAA380DCCE29D5F93D59C0D4EA1764EB3BBC33DEB2F7A6CA",
+        "bytes":  15258
+    },
+    {
+        "file":  "Data\\screen-assembly.csv",
+        "sha256":  "EA7298E8280A72D8561CF79F4812BC97A149EF804A52DA524DDCA48C593DED9B",
+        "bytes":  143844
+    },
+    {
+        "file":  "Data\\screen-index.csv",
+        "sha256":  "793B378483E0F99A5CAF7C6D72E8EEFE665ADCD0CDE128CC3B25E2B7C621A6B7",
+        "bytes":  2868
+    },
+    {
+        "file":  "Data\\sprite-catalog.csv",
+        "sha256":  "9452495B944697CBF1E1202FF9032B2B884FA6E1EF5B9D0F59CB3E4176E5A88E",
+        "bytes":  39618
+    },
+    {
+        "file":  "Data\\sprite-usage.csv",
+        "sha256":  "5D065CA6113B0924E7C9BC142EFD18526109F417704875B51BF71F71C1DD6283",
+        "bytes":  18120
+    },
+    {
+        "file":  "Docs\\01_IMPORT_VA_9SLICE.txt",
+        "sha256":  "75F80D9B32421040E5DCBE6A2B065D37D2F9C833E2DAAD0803CF0793A7443CE3",
+        "bytes":  4880
+    },
+    {
+        "file":  "Docs\\02_GHEP_21_MAN.txt",
+        "sha256":  "BD95B35562BBA69FBCD7D20A54A8B5410AA6AB6D6C722157E32EF179532800B3",
+        "bytes":  5651
+    },
+    {
+        "file":  "Docs\\03_NOI_VAO_GAME_CAT_TANKS.txt",
+        "sha256":  "BB7AD3783BDF0014407207AC4298D85E649073A936D4CF44E1FCE72281742534",
+        "bytes":  6040
+    },
+    {
+        "file":  "Docs\\04_ART_SPEC_VA_GIOI_HAN.txt",
+        "sha256":  "E1E8DBD9321A485CE099C627380A34F85502D1C670387C5680D4B1993F8AE3BA",
+        "bytes":  2859
+    },
+    {
+        "file":  "Docs\\07_KIEM_TRA.txt",
+        "sha256":  "1C28AA534A08530A1DAB38AE4703C438122E764178F19DDD78182BC7314785A7",
+        "bytes":  2419
+    },
+    {
+        "file":  "Docs\\Screens\\01-march.txt",
+        "sha256":  "9FDCF830F56E9A774EC01B8EC2712F6D6F88610233C636D96E2A81E385BDDA05",
+        "bytes":  11093
+    },
+    {
+        "file":  "Docs\\Screens\\02-battle.txt",
+        "sha256":  "8385EEB0BF86804BD0EB97B2EDB38D28E1C02137B6B2F8CE1FD29E46CDEE6EC7",
+        "bytes":  4590
+    },
+    {
+        "file":  "Docs\\Screens\\03-chest.txt",
+        "sha256":  "CF59D06D86EE2102FE91097BB012DFA905E360E441DA8A160D48B108E684310E",
+        "bytes":  6280
+    },
+    {
+        "file":  "Docs\\Screens\\04-quests.txt",
+        "sha256":  "686C029952640D64CE783AE811209ADE7A2102164A40C4C7B1E579310297148B",
+        "bytes":  7809
+    },
+    {
+        "file":  "Docs\\Screens\\05-town-summon.txt",
+        "sha256":  "B6954FE89212A6FB614180F16A5CE1BA0A3A86716D858EB47ABB1AD028B383D4",
+        "bytes":  6573
+    },
+    {
+        "file":  "Docs\\Screens\\06-town-shop.txt",
+        "sha256":  "AEB6ABB9917EF6802E345368597D11997A72927A0CB3F73E46CA021A1D1B5B1C",
+        "bytes":  11281
+    },
+    {
+        "file":  "Docs\\Screens\\07-town-arena.txt",
+        "sha256":  "66FB51830D98123DDFBF2B2BFF8B992A87002D77857852C2B2452009A2C0B611",
+        "bytes":  6934
+    },
+    {
+        "file":  "Docs\\Screens\\08-barracks-cats.txt",
+        "sha256":  "B6692F23BD4E8F180774FD3F2C8D2903F80E582ED3B324022AE24468A9125A2C",
+        "bytes":  7992
+    },
+    {
+        "file":  "Docs\\Screens\\09-barracks-fortress.txt",
+        "sha256":  "BC67FF103AC3E459CB1AA525F236886D038745FE099C32431FF8786C57193E95",
+        "bytes":  10030
+    },
+    {
+        "file":  "Docs\\Screens\\10-barracks-squad.txt",
+        "sha256":  "8C36F3A0F6B038B33251F9E104C34E1E8B6F951D9D0E70924D024A016C231439",
+        "bytes":  8803
+    },
+    {
+        "file":  "Docs\\Screens\\11-barracks-skills.txt",
+        "sha256":  "A692A120465992CE925209694D0F454D7E38F8D9650176C993C6FA5CB7F19DE3",
+        "bytes":  11914
+    },
+    {
+        "file":  "Docs\\Screens\\12-barracks-monsters.txt",
+        "sha256":  "E1941EEF8E177A3CFCAECE97E97959780B5D2EB13418CC7F4F988D44C01C769F",
+        "bytes":  7239
+    },
+    {
+        "file":  "Docs\\Screens\\13-barracks-gear.txt",
+        "sha256":  "7C0BB79D9A9DBA88325FAF5440E9F8CE88540F8E0ACD13E62044C67EEB9479BA",
+        "bytes":  6419
+    },
+    {
+        "file":  "Docs\\Screens\\14-barracks-presets.txt",
+        "sha256":  "EE03421804CA74AF3F48E3FAF3603D4276BE15989D9BEAE2EFD056FC2B7FF1A5",
+        "bytes":  7303
+    },
+    {
+        "file":  "Docs\\Screens\\15-barracks-nexus.txt",
+        "sha256":  "DD536FD547C49737FC29A448F5C2731A674F4BD068306C2B27F3A7769C6E67C2",
+        "bytes":  8573
+    },
+    {
+        "file":  "Docs\\Screens\\16-prebattle.txt",
+        "sha256":  "7B884D848B32583A257EF9B94CA640B69B90EAE7DE89D641889325594263A088",
+        "bytes":  2480
+    },
+    {
+        "file":  "Docs\\Screens\\17-choice.txt",
+        "sha256":  "2FE9BC613D2D3D1A98C1C9205E6A656461C96A62E6B8641D221F3AC75747DD64",
+        "bytes":  3534
+    },
+    {
+        "file":  "Docs\\Screens\\18-pause.txt",
+        "sha256":  "64626653CCFA83B8BCB1D97E16581F283A2F80578D488A92761F68DC06139D32",
+        "bytes":  1462
+    },
+    {
+        "file":  "Docs\\Screens\\19-result.txt",
+        "sha256":  "EF4791F7E23FCE62BA99D8F67E3CE6E007C3284359153C76426B3DC191A54614",
+        "bytes":  3309
+    },
+    {
+        "file":  "Docs\\Screens\\20-settings.txt",
+        "sha256":  "BAF894507A9915FAAC56E9A278F27073008752B4647B57C08697602B03811C07",
+        "bytes":  2452
+    },
+    {
+        "file":  "Docs\\Screens\\21-book.txt",
+        "sha256":  "C9B459BA5A00BEFEE7824C9A8A5BA98B47C56E64F2611D7DE225062B903B66B5",
+        "bytes":  7003
+    },
+    {
+        "file":  "Prompts\\arena_avatars.txt",
+        "sha256":  "4E86B3F3B9E8B5C369793FE11EF07DE1572E29B566546B80DCF736892403D3B2",
+        "bytes":  1443
+    },
+    {
+        "file":  "Prompts\\bg_battle.txt",
+        "sha256":  "5C6BD0515571F26470823B9CE81A59DCA56E5F54F726BEA11759C6194BCCF73A",
+        "bytes":  1097
+    },
+    {
+        "file":  "Prompts\\bg_hub.txt",
+        "sha256":  "9DC3120CF76CF36D00D90F21DDF21B47A3E47E8A4ADE9187E337AA67E0469F71",
+        "bytes":  975
+    },
+    {
+        "file":  "Prompts\\bg_stage_fog.txt",
+        "sha256":  "EA55B7173C896B0DDFF917313AD6DAA0EED8EF0BCD408BDF3AD455A4AB88F590",
+        "bytes":  1037
+    },
+    {
+        "file":  "Prompts\\bg_workshop.txt",
+        "sha256":  "8A8DC955814847CE4FCF19F0252B6C8A290D99F26427DD0E81333E49A09E3F5D",
+        "bytes":  1003
+    },
+    {
+        "file":  "Prompts\\icons_navigation.txt",
+        "sha256":  "D24310248700318A8B6A1A78E433FB5BE45DCAD2D70108B31E88B17FA54DDAA2",
+        "bytes":  1498
+    },
+    {
+        "file":  "Prompts\\icons_resources.txt",
+        "sha256":  "0A5910046BC5247AE4428E7DE8C3C0356C3BA256B28238823E9543BE290CC1E1",
+        "bytes":  1528
+    },
+    {
+        "file":  "Prompts\\icons_skills.txt",
+        "sha256":  "8C0FC2326FEE7922CD7E3D2851F621AFDF3F03E9992AE39F19F46B1DC864E751",
+        "bytes":  1389
+    },
+    {
+        "file":  "Prompts\\infantry.txt",
+        "sha256":  "B1E272D23B979829CDA04DBB32E83BC9B8C7751CCBBB598545459D5665F6A588",
+        "bytes":  1522
+    },
+    {
+        "file":  "Prompts\\mascots.txt",
+        "sha256":  "EC27F31FB931DC3A0B77E3A9C5CB3818B86B6CB79B21AB62217BAADEB7B32239",
+        "bytes":  1527
+    },
+    {
+        "file":  "Prompts\\stage_vignettes.txt",
+        "sha256":  "D02448400FB431925A88EEFD829585547A5FF1D1A226D354C3D8DB9FB88A2373",
+        "bytes":  1405
+    },
+    {
+        "file":  "Prompts\\ui_buttons.txt",
+        "sha256":  "E64EB1994BAFA26D08F90273AEA7C003A60CFB3A728147B31F2C11489198F17C",
+        "bytes":  1526
+    },
+    {
+        "file":  "Prompts\\ui_controls.txt",
+        "sha256":  "9B447FC4D8D1354546D28CD7D73F3E340AC60485C04BFA8D65A288C9EB52A620",
+        "bytes":  1684
+    },
+    {
+        "file":  "Prompts\\ui_panels.txt",
+        "sha256":  "DB56C9F5BB05844FDB3BD1F93B62ADF4E0B11CCE50FB8B7E093E262570B29113",
+        "bytes":  1650
+    },
+    {
+        "file":  "Prompts\\vehicle_parts.txt",
+        "sha256":  "F984B1772AB25CAABD53641A314257897FF7817C25B7FED058503B1D2D295747",
+        "bytes":  1672
+    },
+    {
+        "file":  "Prompts\\world_props.txt",
+        "sha256":  "3F15ABB815ECDAB014B5246BF26B5606957F0AF9CBC83D2852EE83ED8E151737",
+        "bytes":  1447
+    },
+    {
+        "file":  "Reports\\csharp-syntax.txt",
+        "sha256":  "1037F5BE98E3DB571376343B054FE5D423BDA3A3E17EF2E947085B515E73DCE6",
+        "bytes":  249
+    },
+    {
+        "file":  "Reports\\kiem-tra-hoan-tat.txt",
+        "sha256":  "691763450BFF8CFA9F5E74E5F1A775A0620E7A0EFA271D8D7BEC42109F8138F5",
+        "bytes":  400
+    },
+    {
+        "file":  "Tools\\InspectPng.cs",
+        "sha256":  "A954B996730A35EFF99E3439627BCB3AB0E83346F125D52523A3A47F1BACD791",
+        "bytes":  2984
+    },
+    {
+        "file":  "Tools\\Install-ToUnity.ps1",
+        "sha256":  "63741FADD0B49CF4B3A73D61502AC71E6B97FEBD5EC97513272A3FE225860012",
+        "bytes":  973
+    },
+    {
+        "file":  "Tools\\Validate-Kit.ps1",
+        "sha256":  "B226D3BF4395E6BC5C9FC3210DCB945E4808ACBFF68C6D1801383F00CEF43FD1",
+        "bytes":  3769
+    },
+    {
+        "file":  "Tools\\SyntaxCheck\\Program.cs",
+        "sha256":  "59C2D2A19E7D74229517129C28CFAF1BC74ADDF90E5EF33D091CFBEE166DEF42",
+        "bytes":  791
+    },
+    {
+        "file":  "Tools\\SyntaxCheck\\SyntaxCheck.csproj",
+        "sha256":  "9D9BA923E0CFEAF81D90848D4EC66D42CE948E9FF2AC699C7B24CC03D655F6DF",
+        "bytes":  582
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Data\\asset-manifest.json",
+        "sha256":  "0C8F8A7EA346CF3C8B728099CF58150F4F5719BB99F6AA65FA033287EAE9E597",
+        "bytes":  17208
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Data\\screen-layouts.json",
+        "sha256":  "1B551A959BC77B15A74AAD744B900BEB89702A8E929E7A6128CC66745B7DB6D9",
+        "bytes":  292768
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Editor\\MockupKitImporter.cs",
+        "sha256":  "4F49604FDFD941A66FAFB52E243F2DFD2B1164BB9D9F32AEBDB0A2E3657C47F7",
+        "bytes":  15643
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Editor\\MockupKitThemeCandidate.cs",
+        "sha256":  "6B4FEB653BD029D05A526BB4BC6B514B3B15DF9E96EDE55DA5F36F275CAD2971",
+        "bytes":  3558
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Runtime\\MockupKitAction.cs",
+        "sha256":  "D9D91E2FD7A5E17243F9E00892B0E9DCFFFE7A796BCFAB3302933A03C9FE82F5",
+        "bytes":  471
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Runtime\\MockupKitLibrary.cs",
+        "sha256":  "FF7A3236117511BC4F8374C408487B0EBD67D03F43D40895DF21B55545F0CA3C",
+        "bytes":  548
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Runtime\\MockupKitPreview.cs",
+        "sha256":  "4B9CE8C7C46CA8E92D3091601FAEB9CB04FFE40CCBC0AEB745EC4FBBC3434632",
+        "bytes":  11671
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Generated\\arena_avatars.png",
+        "sha256":  "A41F07AFFE0E7FB433BB33E777CF0B9D92CFD168EA3D61C879A5CDF4C75F2C62",
+        "bytes":  1971596
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Generated\\bg_battle.png",
+        "sha256":  "65AB8B655C041CC6F4CC12D4623591AC3FB1ED0BD94722FBC6EF9FC2A54D779B",
+        "bytes":  1506221
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Generated\\bg_hub.png",
+        "sha256":  "7E9F3EB8C67F8BC74C76C4EB41A14C6E71306C5108F2F4D11BEB11A178F219CD",
+        "bytes":  1810556
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Generated\\bg_stage_fog.png",
+        "sha256":  "10570C2F1B4F8EDD1D1029C84A3AC53498D7A9A477D0DDA217B554674E768244",
+        "bytes":  1916126
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Generated\\bg_workshop.png",
+        "sha256":  "46A0BFE4FC810CAE974F955135A8647568645DB14BF83C8EB2EAE43EC3D3FB65",
+        "bytes":  1905970
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Generated\\icons_navigation.png",
+        "sha256":  "05A450A0E1BB2738D76B898955AEC2E73F534AAFEB58005ADE798D61FD8C1DF9",
+        "bytes":  1124981
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Generated\\icons_resources.png",
+        "sha256":  "1994EAADD7204C397B0D20C767C190F2AEADBA3D8BC85C54E989962FAAB13B19",
+        "bytes":  1213095
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Generated\\icons_skills.png",
+        "sha256":  "0CC6DDDC4D884AA7C11D74C0357A6B5D5644A68E5491EFBEE810FEFAC9CCC758",
+        "bytes":  1305661
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Generated\\infantry.png",
+        "sha256":  "8D75B5857BE6C49003D6ACAA47289B4BF60EA1AB3F23D58F70DD6C6B366BC782",
+        "bytes":  1801736
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Generated\\mascots.png",
+        "sha256":  "550161769705329FCA52F394F0DFC143A893746BABED45ACA0DC41A148C6A226",
+        "bytes":  1199831
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Generated\\stage_vignettes.png",
+        "sha256":  "BD44F3F37B9374537C8F6FABED3C8E0CB8D610CDDFDD1998007B332C703ED2BD",
+        "bytes":  1883629
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Generated\\ui_buttons.png",
+        "sha256":  "8F3F2BA258A3FB21636C5851CBA6F7FE6E4E8248328F5097F8854824743CA578",
+        "bytes":  859085
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Generated\\ui_controls.png",
+        "sha256":  "61526B073D00E922F0E7DA3E7E12FCE1B1D19EF6E8EEAF1C315DA3041D59B574",
+        "bytes":  935222
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Generated\\ui_panels.png",
+        "sha256":  "862DA75092762C8B54BD82F81A550251E13B2D9F5376666C29E14C7B058DC9F0",
+        "bytes":  1386926
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Generated\\vehicle_parts.png",
+        "sha256":  "AA033C9DCD357FB03F5FAAE45ADE30C9F953334EFFE2839CE82A069FBEC09CE6",
+        "bytes":  1633970
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Generated\\world_props.png",
+        "sha256":  "901AEA3F7D5F9A88869365EE085F1111F0298CBD2358C442AB22002A68E16941",
+        "bytes":  1182146
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\ammo-0.png",
+        "sha256":  "23645B4F4B9EBF141C0CBBDCAB63F44A0DB7555E506050D4F8005B81717E7109",
+        "bytes":  77614
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\ammo-1.png",
+        "sha256":  "84A97F54CD267A3C6C4F621A69CCDCD05D02CBE43C4E469D692CB1FCB786BDE8",
+        "bytes":  107287
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\ammo-2.png",
+        "sha256":  "EF5D53561375EE5E72B7183B6AC43A3B2DDBE42E31301897541998F25D7CF47C",
+        "bytes":  96693
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\ammo-3.png",
+        "sha256":  "2A43FAFAD6A1DF454B00A173D3BF6EC1A5776BD61E6028244C6FD5F0E8EFD9F0",
+        "bytes":  84146
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\ammo-4.png",
+        "sha256":  "165039F3A9EF09DCB6561998646FC0AD69930B8D901C2BF5CF1AB43F64A7CA57",
+        "bytes":  92776
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\ammo-5.png",
+        "sha256":  "D6D514C804C98D4B89B8054CA3EF1319C2BDA3E7BC570DA8543C90E446A99C42",
+        "bytes":  104102
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\ammo-6.png",
+        "sha256":  "87AC778FF823C11871CB18A96C62BFED3C1B373F554AC0D8DDD0AFCC3A74C2E3",
+        "bytes":  89212
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\ammo-7.png",
+        "sha256":  "6C4E4790CBB016C0CD173EA9ACD10BBBC34E0F43A7821512A0FCC9696785AC4C",
+        "bytes":  103857
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\ammo-8.png",
+        "sha256":  "813CB39A57FDE6ED84FE124F34C9CDD7EE3FA21D5AA670A7BF7B963324813C20",
+        "bytes":  85206
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\ammo-9.png",
+        "sha256":  "7FB497102E25FB7B7CD8842F86F0484FD76529EAC8EF25BC8E182883925E26C3",
+        "bytes":  79192
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\armor-0.png",
+        "sha256":  "B957F22923A621FA139C30798274CB7106C00EE863EAC557738DD422809F21C7",
+        "bytes":  113879
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\armor-1.png",
+        "sha256":  "26CCA8A87662D6C52428A0B25890553C64044CBCEACC1FD717BC4CA63E90C8E7",
+        "bytes":  119729
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\armor-2.png",
+        "sha256":  "3CFCE51E6A8D92246DF2BD711547051AFAEDC5A83EEB664BEE2A4A89BA32F6EA",
+        "bytes":  109927
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\armor-3.png",
+        "sha256":  "A8250B056B3FE81557E3BD66F043C2A90F0AA86117ECA61F08D9987D8B9B4DFF",
+        "bytes":  115877
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\armor-4.png",
+        "sha256":  "9F9E0C38505C00D2089720714BF9458DE8E7C0DBCA60AC679E910634ED562D2D",
+        "bytes":  123265
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\armor-5.png",
+        "sha256":  "B5D35D1922733EC47A5399DF177BAECC361DED71BD53872F0DFDC327536F1C63",
+        "bytes":  107972
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\armor-6.png",
+        "sha256":  "8E4014AFF755FDF991596A24BF66E57E769D3EF9886564C087D02E00FC4297DB",
+        "bytes":  119473
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\armor-7.png",
+        "sha256":  "CB9AB09DC9393913546F44A5AE411A8D2803E1FBCA7CDA8D02F0B5BA591F624A",
+        "bytes":  107308
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\armor-8.png",
+        "sha256":  "65C220EF2257777491CB9783ECB0D2B87B611C4DAE32684AAD418A782D5F84CE",
+        "bytes":  117600
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\armor-9.png",
+        "sha256":  "C6863A72E3A77692DCB81A8E4D93577B4FF2A875965ECC7643B467684E2439A4",
+        "bytes":  128850
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\beast-0.png",
+        "sha256":  "2EFCA1F200157808B72ACA5AE58086B1278BC158B5694F1F5742B9A03353E9CC",
+        "bytes":  142437
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\beast-1.png",
+        "sha256":  "DF669A2AB9A7DDE1CDD135B8699BBB16E417EA741931614C060C86E881FADEAA",
+        "bytes":  143651
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\beast-2.png",
+        "sha256":  "986BD3C8F0435C5C73283CD53A771C1EF5F0F07E2731D70818A5A21C2366F3EE",
+        "bytes":  154238
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\beast-3.png",
+        "sha256":  "A87A18CDAEA2D4BAB7D14A0270960AB0E95D38D50BEDCF943C3D01DC0E66EFC3",
+        "bytes":  166533
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\beast-4.png",
+        "sha256":  "E5676EAF8CF3B1FC92CB6C4DF0C602FF72F44CDF7F8CB9A3D312EB9589418A7B",
+        "bytes":  151058
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\beast-5.png",
+        "sha256":  "A0C6CB4ADBD8556D9DA2EDE507E885E39B4E29507E5DAE5A83C9532CACE93C76",
+        "bytes":  166454
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\beast-6.png",
+        "sha256":  "D87CE58BC62B80D98F6AF7E1B5C5C38AE1D66441B6551B307AB4C380F2D085D0",
+        "bytes":  153125
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\beast-7.png",
+        "sha256":  "54B343956C2C3BA7C221E3BE0B2B940C2CF498482E9563ED92C8B0117C364E9E",
+        "bytes":  175971
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\beast-8.png",
+        "sha256":  "A9BE41E291D292E09C28A54F1CEC37B4DBB8FAD5D02B035D92CD508979ABA641",
+        "bytes":  154834
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\beast-9.png",
+        "sha256":  "64BE80CEFD81CE9EDA65D58E5265905F12737DB430FBB69ED1D338D17C0D950E",
+        "bytes":  174540
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\bug-0.png",
+        "sha256":  "534B4F4D9A16257E2D57AFD58453536E9B5BB3261F5EC97E36AEF6546F60E296",
+        "bytes":  114904
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\bug-1.png",
+        "sha256":  "7F1EF6F28BE95D8BA94BE36E2915CF08329D2AB0183D5FB42C80A01C4897A4B3",
+        "bytes":  137573
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\bug-2.png",
+        "sha256":  "D4D7FCB88F141454499F3FC7F1AE1EAF2802A83F38BDB7FA08332A3CD0354CA0",
+        "bytes":  131995
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\bug-3.png",
+        "sha256":  "DE18D62BD37E0A236B61387F9099DEAD9B083E71592BBD4EAA883C86452C9A3E",
+        "bytes":  135509
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\bug-4.png",
+        "sha256":  "5EAD0E8DA2FEFD0136E0DECC3D8F90B44B4980FB5021329306EB689360721295",
+        "bytes":  132512
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\bug-5.png",
+        "sha256":  "573B81C2F2C6AF69A9032E23AB6EAEA99A694FE6E27B2BB99603F8FA056B1A7F",
+        "bytes":  111786
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\bug-6.png",
+        "sha256":  "0D588CC2166440B31C56C1F79F02D8A0CA531DB40C011CD787505D71FF7876E7",
+        "bytes":  152539
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\bug-7.png",
+        "sha256":  "2C72FAC789925FD4E963F7657B03A54AF899FC94243B0BA2DE42D37BB222AF1D",
+        "bytes":  143377
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\bug-8.png",
+        "sha256":  "86BD2DDF32E1D7B76BA41F90D63FCEB50CEC7437279C6318862621EF7D359EA4",
+        "bytes":  142270
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\bug-9.png",
+        "sha256":  "3AF62732338039940231B7FF241C85F132C0ADA13EE9C172AC89244098341989",
+        "bytes":  153004
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\cat-0.png",
+        "sha256":  "30CAF831B0F5D38D9D441DA5F56E5DBFCE7217A2981BC6139CF3E63DFBF7C4B6",
+        "bytes":  124258
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\cat-1.png",
+        "sha256":  "E5D6F425168F326AEEB2B32AC37B3ED618D851F6549B98967804122A8A60E798",
+        "bytes":  124978
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\cat-2.png",
+        "sha256":  "0C463E5A21A116D5A977D61FC09DAC57F3A9E9C26D85B8E11CBA8E136AEE596B",
+        "bytes":  133125
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\cat-3.png",
+        "sha256":  "E80932174BDE0066285FF2BFAB80B097807014C7339E30D46AB1006F30973D3F",
+        "bytes":  123856
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\cat-4.png",
+        "sha256":  "4BE805BC9FCD11BF690AEE4FC1005DEA6D3B58AD70AB4A135404F84E35542437",
+        "bytes":  106504
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\cat-5.png",
+        "sha256":  "1ADCBD2DBFB35DACCD684781A426CDFEB184F205BDACA387B416E5DB7EDD2CC7",
+        "bytes":  125514
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\cat-6.png",
+        "sha256":  "E19A64C58A8A271FCF6C1A9C909377B0EDD9AA52105E77BE2FBAE39BC7BDA918",
+        "bytes":  136383
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\cat-7.png",
+        "sha256":  "942A6463957981B52005C73162CA5C4B8C235F410D6B70BFA192B14B6208D1BA",
+        "bytes":  122804
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\cat-8.png",
+        "sha256":  "60300BE625F98ED4616EC609BC69C000D24969C8285D766E516F0B946543CD42",
+        "bytes":  129502
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\cat-9.png",
+        "sha256":  "EC367F799172A33F9694BA74CCB1B6D3141370F848B7519937B4E6C220490304",
+        "bytes":  137832
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\gun-0.png",
+        "sha256":  "B0414BB1B4AFB40B799B5F0BE3A6DBAA70092528A4C3D253D8F5BFE7252199D1",
+        "bytes":  98595
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\gun-1.png",
+        "sha256":  "7C4A6881955D04329CD5F27D1B34405E2C4185DC957CEA079690630F316748A3",
+        "bytes":  101902
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\gun-2.png",
+        "sha256":  "89EC2EE3F3A445922B9B6C4F4DB74E9B3B74E25F63DBFBB00DAA7A78FAC4DAB4",
+        "bytes":  87375
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\gun-3.png",
+        "sha256":  "AD8B5931E5C89F040FDC0108FCCDDB9E2EEA3C86C261D630E775A297D1DBF676",
+        "bytes":  94902
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\gun-4.png",
+        "sha256":  "BB740C3DBCCD78846D0A77B935782AF160C31B543139EA2A999BADB5F64F87B8",
+        "bytes":  78636
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\gun-5.png",
+        "sha256":  "98442A5135BF257921F4AC9D82F9C003D94AEE6CF947D6D7E74D478A43E9E4CD",
+        "bytes":  96721
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\gun-6.png",
+        "sha256":  "C3B4EC8BEAD336C25DDF05E0EB35A2D0293EE5B65A6592DEBF2CB5FA9B1C8CBF",
+        "bytes":  100451
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\gun-7.png",
+        "sha256":  "8861F33BB3FFE62513C94538767483F80BF73127DAC33D33481DCE00B7B81BEF",
+        "bytes":  98726
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\gun-8.png",
+        "sha256":  "0877B6FB97ADD8A2FA27E33C89E93C4F9F58F97AA893B453882B30FF26455974",
+        "bytes":  110574
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\gun-9.png",
+        "sha256":  "A2EEC609FFFC6697751A6B5AF54C72E1DB506BA42DB07866BD847B18B18D46AE",
+        "bytes":  98699
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\hat-0.png",
+        "sha256":  "BA2815C2B2B4B88E8C0B50ABDE06E9B02A3EEA92D3B84E78FCEF6F52BC008C3B",
+        "bytes":  121003
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\hat-1.png",
+        "sha256":  "EAF4B4C486F9DC552BAEF52FF94F40909ED8E9B6D0A7F8E817666BA6B0D78140",
+        "bytes":  120249
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\hat-2.png",
+        "sha256":  "34B0AEE0E5AFFCAE8E008385A0F35F467E89ADDFFA1896E50BE1AFB59000182C",
+        "bytes":  109272
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\hat-3.png",
+        "sha256":  "1B3C2B95E6C61E899CB062D42B864304BE33539C0C8C431C61EF293B428229AE",
+        "bytes":  105085
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\hat-4.png",
+        "sha256":  "50215727466B267FD3D430A529DEA217AC9BC1159589068CD3D6FB74821B37A8",
+        "bytes":  117156
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\hat-5.png",
+        "sha256":  "DED124A6B2661B9B2E999E3D4FF2189E428CFE86761541A5EEBBE47BE2DCF240",
+        "bytes":  113483
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\hat-6.png",
+        "sha256":  "9F32581079F8DD18CC414FE5A0C94447BF499EEA5297FFCC2C1246A89BF80730",
+        "bytes":  96525
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\hat-7.png",
+        "sha256":  "FDD80DD24B513C5573A0FB60F97648EA039CFAB948A4BA35DF1B8F3048DA9D8C",
+        "bytes":  116530
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\hat-8.png",
+        "sha256":  "A494928479214FD4604F7D0E7A169A15BE6C9889EA115743D49F78CE2B4E28B1",
+        "bytes":  119000
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\hat-9.png",
+        "sha256":  "21667C335AE77BE0DEE03C787B99B1D08FD538CB018A46A92300F3D8B325530E",
+        "bytes":  127150
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-0.png",
+        "sha256":  "EAB19F6E4A9C7CA1A525E1A0C72CFDF1E130D39F5F7C4822884D42328C9EC8B4",
+        "bytes":  101342
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-1.png",
+        "sha256":  "24EAAA0A75BB575AA2C242F7762A2CB307172BBE8DD4A3406C8958539E9D0D86",
+        "bytes":  93410
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-10.png",
+        "sha256":  "3309C7E657108374854346AF24C55D59BE0DCB5A3D8FCEE9E7E64C2A91B4E78A",
+        "bytes":  98256
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-11.png",
+        "sha256":  "9E42274DE57FA26A2B303A46E79B1EE93418D7062E2450C26099F199A55114A7",
+        "bytes":  102161
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-12.png",
+        "sha256":  "C263C57B2886D0D57D1AB3893939B910ACA882791FBA3810599EA813347963CF",
+        "bytes":  103313
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-13.png",
+        "sha256":  "E570200B5A8C31D86B8887CA9E8D324DD455C5BD373AFDD8F873F98E6D9336CB",
+        "bytes":  108895
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-14.png",
+        "sha256":  "EBE8C36ED1C71F0C6E07D2BF4E45D3CC7B7E3DFC3C6262E78C581F81D1BB40A6",
+        "bytes":  100221
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-15.png",
+        "sha256":  "26832444DFAD3DDC08197FFCDE3A7E92BD70B701967A60F3D7771D051FE850B3",
+        "bytes":  95158
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-16.png",
+        "sha256":  "02AB2E1CA8B7733E9CD19DF7E582C5C4C47BB1019B15CDFDD66537D096CEAFE4",
+        "bytes":  92573
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-17.png",
+        "sha256":  "CD18470741CDFE0715784775CAF560C999ABA7ED253FDB4E3CE02E8C02B7F1DD",
+        "bytes":  98074
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-18.png",
+        "sha256":  "5F4D0513B9D459C6D65A0D9949615340F95F4C00A2A815521E8AB4D22C73C211",
+        "bytes":  109383
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-19.png",
+        "sha256":  "6F30E4192254BA756B9D694124A1B8F33D01F59FEF2613DFCDCF6F3870005430",
+        "bytes":  94433
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-2.png",
+        "sha256":  "50F40484B884EF69C702E17D64F2BE11EC3605F636B2CC15E3BCB9A70F8116FC",
+        "bytes":  102254
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-3.png",
+        "sha256":  "487D401508B4A3CD7277C5324F0FFB484AA86833A70083E88A5AC383680B9489",
+        "bytes":  95409
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-4.png",
+        "sha256":  "C9FEDBF7A965E1A88400058FF53949DFF34BC2373885CEBF0DC6C72EEC394636",
+        "bytes":  102090
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-5.png",
+        "sha256":  "8F33B4B962D713A99EE37F5CC631742664EE71948059B7FA44DADB2E44882AB3",
+        "bytes":  107032
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-6.png",
+        "sha256":  "A141DEF2E2FA53B11C7200B38CB3EC141D8FE361A9CD8B23CE5459E3812AC91C",
+        "bytes":  96495
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-7.png",
+        "sha256":  "C4B344ABD49F219BE8F18EC969EAA47D602476B6385B7244C3C17B4648EC9B16",
+        "bytes":  98332
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-8.png",
+        "sha256":  "7239CACD27896868DD17722BC617A1DD178B5BAC7AAF400F1711878285BE2981",
+        "bytes":  93451
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\pack-9.png",
+        "sha256":  "6DCCFE5F250F3289CB3B174DD7D4248B2BA8A98118F91471AEFDCFFE8239926F",
+        "bytes":  100164
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret-0.png",
+        "sha256":  "BF1D981B3F79F3C99EE97F889716886480E00D8BC7877847B2632E01590487DE",
+        "bytes":  105609
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret-1.png",
+        "sha256":  "297AFB3C229D80B5D44BEEE7FB2035E83E24F4A48EFB7E4B567A9D9A2A48AD22",
+        "bytes":  116786
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret-2.png",
+        "sha256":  "F7EE1A8BD7F72A2C897F6FCB9DCB9D192351CADA1C0CC0C40E39D935A015B8B2",
+        "bytes":  147835
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret-3.png",
+        "sha256":  "D1175C0AD8480BB9F7FD8F5E4E59E21BF9A47671B7DC10011A17397F098297BF",
+        "bytes":  125729
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret-4.png",
+        "sha256":  "E41E6ACA2A30335218C7B2FCC28302CA673A981AFD5B4B9A0F2892D4E6CC6E0E",
+        "bytes":  118735
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret-5.png",
+        "sha256":  "C368A7ADD31E70E14A7CDF611DFCDA9FC264BAA835B272C367411FB2F07903B1",
+        "bytes":  124803
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret-6.png",
+        "sha256":  "75D6B3F10E427C016B933150D7D602FFC8F9F2E60873FE97F34A377E0082DE52",
+        "bytes":  120389
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret-7.png",
+        "sha256":  "5464F958F36A218DBB95A209BAE4E493317A44C638E7624DA90BFD9A84703688",
+        "bytes":  101811
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret-8.png",
+        "sha256":  "F28065860C78CD035F27E703F7BF32724A40AD57C3113EC70BE80F317E1C2B6F",
+        "bytes":  126317
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret-9.png",
+        "sha256":  "21EEC685D469B2E3A1523275B5D34D44B4B99C9A581550BF0E37BADC529FB2B2",
+        "bytes":  139091
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret_alt-0.png",
+        "sha256":  "1EB5A3BF2ABAE00CB1A6F6C246AF510380DDC530C12B814E33BF630597EAB67D",
+        "bytes":  93819
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret_alt-1.png",
+        "sha256":  "2CC5D124303854A45CAEC5E5182F6810F8ED3979EBD308867773DE100EF298E6",
+        "bytes":  107578
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret_alt-2.png",
+        "sha256":  "6231301097B5F753472EE9F24E59FD16C8702D4F8D2A21020CE3E15649B36D1E",
+        "bytes":  132171
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret_alt-3.png",
+        "sha256":  "AB6F29A261C33F6DA9A990AA125C6E643890FF50B801EA31D15660DFC08EB670",
+        "bytes":  110819
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret_alt-4.png",
+        "sha256":  "392CF24418CC4984CD2BBC4F25CCA91ABCB16FE18F6A77C33555749FFBCC7321",
+        "bytes":  103445
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret_alt-5.png",
+        "sha256":  "D6A94F23E4AD6BE94ADB320E12D77BAFE5EAC8967463DB079A4F9CEB674F08CA",
+        "bytes":  105483
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret_alt-6.png",
+        "sha256":  "485065ED202D246A4FF967BEBC8FCDAA4B057E768CFEF65385FECCB35DDFAEF1",
+        "bytes":  109176
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret_alt-7.png",
+        "sha256":  "9BC98D38D3DE473B5CBCDFFF3B8CFA13F45849B8DA0DF3B2BC34D3D1C730D085",
+        "bytes":  85223
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret_alt-8.png",
+        "sha256":  "B3F78F7A1FD97547ED99E37BA7078574C42D330B499393355037543316AA1D71",
+        "bytes":  115118
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\turret_alt-9.png",
+        "sha256":  "CEE13F22E67C11E3C2D89974EB97EBFA52F7A3C8044779A5B55CC620D1143B50",
+        "bytes":  129794
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\uniform-0.png",
+        "sha256":  "89DE3EEFFD1021840BB08151F66F869C32AB331A137054B0DA9B8FBD2BBAE1BC",
+        "bytes":  106638
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\uniform-1.png",
+        "sha256":  "1E736D9D15EE5C50E692BDB72A6C2F9D1B4324699530D13FFF1191348CE81D98",
+        "bytes":  110292
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\uniform-2.png",
+        "sha256":  "66C84B2F041791CFC8BF127A162A24D6FE05F34371492F936F2BCD24813A1A8B",
+        "bytes":  106650
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\uniform-3.png",
+        "sha256":  "284B35B00D47FE0D248009EE0FDAC9BF1BBE8F29E1F4ABE58E2FF9AF3BA24597",
+        "bytes":  112150
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\uniform-4.png",
+        "sha256":  "A704698F8AA3F3F07EA4036CF94283A4CE2F2C3B3D1F216CE45E4099BEE6BE8E",
+        "bytes":  109937
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\uniform-5.png",
+        "sha256":  "7F2D8C80042EC83DE00A6EEB717EA1FA98497B0D294D9FC3064E6C80D8F8762F",
+        "bytes":  110299
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\uniform-6.png",
+        "sha256":  "980275B82F2BE6DEF6F8B98F2A89F7AD2C4E195E5DEED579697EE3967F47E806",
+        "bytes":  117233
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\uniform-7.png",
+        "sha256":  "3A4E7CA54338B9531975A666522865619BA7A361293CC3FCD066227109C955FC",
+        "bytes":  112815
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\uniform-8.png",
+        "sha256":  "F28EE752BED14A8A85BEFC3A65B712BB3584EE9FDA662F98B2DF45B10FC16A3E",
+        "bytes":  121436
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\uniform-9.png",
+        "sha256":  "C90D95F4FB06386F653A5600CFAD910C5CA72BF104D32324813C4D3B500C5CF5",
+        "bytes":  123139
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\vehicle-0.png",
+        "sha256":  "FE160B9A4A14945AA7F23F844E8D3149092F87C42299F18118E277D5501EFB96",
+        "bytes":  113712
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\vehicle-1.png",
+        "sha256":  "F80C9DA15FDCC1A8F7D4B906F21A27927A6656E43B77585FFD3B98561DF8472D",
+        "bytes":  130131
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\vehicle-2.png",
+        "sha256":  "1AC6DCC184E1961142705C6B49A2A5FABF9FADCDBC5581E6D698CC19007D283D",
+        "bytes":  152918
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\vehicle-3.png",
+        "sha256":  "7673945E1FEEF7DB88FD5B304E5C655DE38E5629E7F49241F403DC2F45E556FD",
+        "bytes":  129907
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\vehicle-4.png",
+        "sha256":  "5D840538334AEB9709613E9C508D21766FAD199810A77546904EBD51B666C65F",
+        "bytes":  109791
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\vehicle-5.png",
+        "sha256":  "58438D057837DEEC295B007FB8B1AC9DE2488550CDC285A9DD741FF752CC2609",
+        "bytes":  150590
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\vehicle-6.png",
+        "sha256":  "56E5091D68F0309CD500D06AC2D701FD5B1F4E4F9994BA0DF585A3486E4E6578",
+        "bytes":  116602
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\vehicle-7.png",
+        "sha256":  "47ADC52C332896A068ACC5065D664EC54F2C9A977FB93D9ED69C593FCE8546FE",
+        "bytes":  138080
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\vehicle-8.png",
+        "sha256":  "C111F035F6957118D4C85F0B9CF7E757530BD123976F9F70C734F8632B657C3D",
+        "bytes":  128207
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\vehicle-9.png",
+        "sha256":  "65C2709FBB717850619BEAEFDD3851AC3E57CDB88B5F1C8E870AD0CC3430B310",
+        "bytes":  121432
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\wolf-frames-v1.png",
+        "sha256":  "A0CA1A5F7A73D2594FB6CDFA871C5BEE0B33168A1BFB8B3D294B7363188E47DD",
+        "bytes":  2363698
+    },
+    {
+        "file":  "Unity\\Assets\\CatTanksMockupKit\\Textures\\Original\\wolf-rig-atlas-v1.png",
+        "sha256":  "0587FBFA967A6E2406A9376A0D73D94B3092C0E364494C2F5C8F57B0BF45383A",
+        "bytes":  1622694
+    }
+]

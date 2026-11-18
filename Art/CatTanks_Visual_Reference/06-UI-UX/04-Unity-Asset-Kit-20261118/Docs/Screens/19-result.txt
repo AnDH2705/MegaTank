@@ -1,0 +1,59 @@
+MÀN 19 — Kết quả
+Key: result
+Loại: Popup trên nền battle
+Prefab được sinh: Assets/CatTanksMockupKit/Generated/Prefabs/Mockup_result.prefab
+
+Popup rộng trên battle. Sáu reward tile và hai CTA. Số quái/thời gian/reward phải bind từ trận thực tế, không dùng số demo làm giá trị thưởng.
+
+CÁCH GHÉP
+1. Dùng Canvas 1600×900 và quy tắc anchor trong Docs/02_GHEP_21_MAN.txt.
+2. Thêm node theo đúng thứ tự bảng bên dưới; node sau vẽ trên node trước.
+3. parent trống = ArtKitStage; parent có giá trị = trong Content/group có tên đó.
+4. Khung/nút: Image Sliced, viền theo importer; icon/art: Image Simple + Preserve Aspect.
+5. Các node label dùng UI Text; button dùng Image + Button + child Text; bar dùng track + Image Filled.
+6. Action screen:* là navigation xem thử; game:* cần nối controller. Dữ liệu số trong file là ví dụ.
+
+THÀNH PHẦN (tọa độ trên trái, UI units)
+Order | Id | Kind | Sprite | Parent | x,y,w,h | Font | Action | Disabled
+0 | modal-result | image | panel_modal | ArtKitStage | 310,182,980,510 | - | - | false
+1 | modal-title | label | - | ArtKitStage | 350,208,900,62 | 36 | - | false
+2 | result-stats | label | - | ArtKitStage | 350,278,900,50 | 26 | - | false
+3 | loot-0 | image | panel_card | ArtKitStage | 350,358,140,166 | - | - | false
+4 | loot-icon-0 | image | icon_coin | ArtKitStage | 382,370,74,74 | - | - | false
+5 | loot-value-0 | label | - | ArtKitStage | 366,450,120,66 | 23 | - | false
+6 | loot-1 | image | panel_card | ArtKitStage | 500,358,140,166 | - | - | false
+7 | loot-icon-1 | image | icon_cat_xp | ArtKitStage | 532,370,74,74 | - | - | false
+8 | loot-value-1 | label | - | ArtKitStage | 516,450,120,66 | 23 | - | false
+9 | loot-2 | image | panel_card | ArtKitStage | 650,358,140,166 | - | - | false
+10 | loot-icon-2 | image | icon_dust | ArtKitStage | 682,370,74,74 | - | - | false
+11 | loot-value-2 | label | - | ArtKitStage | 666,450,120,66 | 23 | - | false
+12 | loot-3 | image | panel_card | ArtKitStage | 800,358,140,166 | - | - | false
+13 | loot-icon-3 | image | icon_commander_xp | ArtKitStage | 832,370,74,74 | - | - | false
+14 | loot-value-3 | label | - | ArtKitStage | 816,450,120,66 | 23 | - | false
+15 | loot-4 | image | panel_card | ArtKitStage | 950,358,140,166 | - | - | false
+16 | loot-icon-4 | image | icon_cage | ArtKitStage | 982,370,74,74 | - | - | false
+17 | loot-value-4 | label | - | ArtKitStage | 966,450,120,66 | 23 | - | false
+18 | loot-5 | image | panel_card | ArtKitStage | 1100,358,140,166 | - | - | false
+19 | loot-icon-5 | image | icon_food | ArtKitStage | 1132,370,74,74 | - | - | false
+20 | loot-value-5 | label | - | ArtKitStage | 1116,450,120,66 | 23 | - | false
+21 | result-home | button | button_blue | ArtKitStage | 350,588,416,66 | 20 | screen:march | false
+22 | result-next | button | button_gold | ArtKitStage | 810,588,436,66 | 20 | screen:prebattle | false
+
+NỘI DUNG TEXT/INPUT
+modal-title: CHIẾN THẮNG DƯỚI TRĂNG!
+result-stats: 0 quái bị hạ · 0 giây · 0 quái bắt được
+loot-value-0: +160
+xu
+loot-value-1: +30
+XP mèo
+loot-value-2: +46
+bụi
+loot-value-3: +130
+XP chỉ huy
+loot-value-4: +2
+lồng thú
+loot-value-5: +8
+thức ăn
+result-home: VỀ DOANH TRẠI
+result-next: ẢI TIẾP THEO
+
