@@ -115,7 +115,7 @@ namespace MegaTankVFX.Editor
                 sheet.numTilesX = columns; sheet.numTilesY = rows;
                 sheet.animation = ParticleSystemAnimationType.WholeSheet;
                 sheet.timeMode = ParticleSystemAnimationTimeMode.Lifetime;
-                sheet.frameOverTime = AnimationCurve.Linear(0f, 0f, 1f, 1f);
+                sheet.frameOverTime = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Linear(0f, 0f, 1f, 1f));
                 sheet.cycleCount = 1;
             }
             var renderer = ps.GetComponent<ParticleSystemRenderer>();
@@ -158,6 +158,7 @@ namespace MegaTankVFX.Editor
             var velocity = ps.velocityOverLifetime; velocity.enabled = true; velocity.space = ParticleSystemSimulationSpace.World;
             velocity.x = new ParticleSystem.MinMaxCurve(-speed, speed);
             velocity.y = new ParticleSystem.MinMaxCurve(-speed * 0.7f, speed);
+            velocity.z = new ParticleSystem.MinMaxCurve(0f, 0f);
             var force = ps.forceOverLifetime; force.enabled = true; force.space = ParticleSystemSimulationSpace.World; force.y = -3f;
             Fade(ps, 1f, 0.25f); Grow(ps, 1f, 0.2f);
         }
@@ -197,7 +198,7 @@ namespace MegaTankVFX.Editor
             main.startSize = new ParticleSystem.MinMaxCurve(0.08f, 0.2f);
             emission = sparks.emission; emission.rateOverDistance = 4f;
             velocity = sparks.velocityOverLifetime; velocity.enabled = true; velocity.space = ParticleSystemSimulationSpace.Local;
-            velocity.x = new ParticleSystem.MinMaxCurve(-2f, -0.5f); velocity.y = new ParticleSystem.MinMaxCurve(-1f, 1f);
+            velocity.x = new ParticleSystem.MinMaxCurve(-2f, -0.5f); velocity.y = new ParticleSystem.MinMaxCurve(-1f, 1f); velocity.z = new ParticleSystem.MinMaxCurve(0f, 0f);
             Fade(sparks, 1f, 0.1f);
             var trail = root.AddComponent<TrailRenderer>();
             trail.sharedMaterial = MaterialFor("BeamTrail", true);
@@ -209,8 +210,6 @@ namespace MegaTankVFX.Editor
             var gradient = new Gradient();
             gradient.SetKeys(new[] { new GradientColorKey(Color.white, 0f), new GradientColorKey(new Color(1f, 0.45f, 0.1f), 1f) }, new[] { new GradientAlphaKey(1f, 0f), new GradientAlphaKey(0f, 1f) });
             trail.colorGradient = gradient;
-            var motion = root.AddComponent<FireBoltDemoMotion>();
-            motion.ImpactPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(Root + "/Generated/Prefabs/ExplosionSmall.prefab");
         }
 
         [MenuItem("MegaTank VFX/2. Open demo scene")]

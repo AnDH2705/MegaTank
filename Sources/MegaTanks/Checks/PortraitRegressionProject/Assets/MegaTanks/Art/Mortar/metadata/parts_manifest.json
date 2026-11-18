@@ -1,0 +1,370 @@
+{
+  "version": 4,
+  "canvas_px": [
+    1351,
+    1277
+  ],
+  "layers": [
+    {
+      "name": "01_track_chassis",
+      "file": "parts/01_track_chassis.png",
+      "position_px": [
+        252,
+        1047
+      ],
+      "size_px": [
+        795,
+        211
+      ],
+      "pivot_canvas_px": [
+        652,
+        1156
+      ],
+      "pivot_local_px": [
+        400,
+        109
+      ],
+      "role": "Track belt and undercarriage backing combined",
+      "parent": "root",
+      "source_parts": [
+        "01_track_backplate",
+        "02_track_belt"
+      ],
+      "z_order": 0
+    },
+    {
+      "name": "02_wheel_01",
+      "file": "parts/02_wheel_01.png",
+      "position_px": [
+        343,
+        1092
+      ],
+      "size_px": [
+        137,
+        134
+      ],
+      "pivot_canvas_px": [
+        410.5,
+        1159
+      ],
+      "pivot_local_px": [
+        67.5,
+        67
+      ],
+      "role": "Independent road wheel",
+      "parent": "root",
+      "source_parts": [
+        "03_wheel_01"
+      ],
+      "z_order": 1
+    },
+    {
+      "name": "03_wheel_02",
+      "file": "parts/03_wheel_02.png",
+      "position_px": [
+        468,
+        1092
+      ],
+      "size_px": [
+        139,
+        133
+      ],
+      "pivot_canvas_px": [
+        537,
+        1158.5
+      ],
+      "pivot_local_px": [
+        69,
+        66.5
+      ],
+      "role": "Independent road wheel",
+      "parent": "root",
+      "source_parts": [
+        "03_wheel_02"
+      ],
+      "z_order": 2
+    },
+    {
+      "name": "04_wheel_03",
+      "file": "parts/04_wheel_03.png",
+      "position_px": [
+        688,
+        1091
+      ],
+      "size_px": [
+        138,
+        134
+      ],
+      "pivot_canvas_px": [
+        757,
+        1158
+      ],
+      "pivot_local_px": [
+        69,
+        67
+      ],
+      "role": "Independent road wheel",
+      "parent": "root",
+      "source_parts": [
+        "03_wheel_03"
+      ],
+      "z_order": 3
+    },
+    {
+      "name": "05_wheel_04",
+      "file": "parts/05_wheel_04.png",
+      "position_px": [
+        819,
+        1092
+      ],
+      "size_px": [
+        143,
+        133
+      ],
+      "pivot_canvas_px": [
+        890,
+        1158.5
+      ],
+      "pivot_local_px": [
+        71,
+        66.5
+      ],
+      "role": "Independent road wheel",
+      "parent": "root",
+      "source_parts": [
+        "03_wheel_04"
+      ],
+      "z_order": 4
+    },
+    {
+      "name": "06_main_cannon_barrel",
+      "file": "parts/06_main_cannon_barrel.png",
+      "position_px": [
+        1114,
+        417
+      ],
+      "size_px": [
+        222,
+        164
+      ],
+      "pivot_canvas_px": [
+        1125,
+        496
+      ],
+      "pivot_local_px": [
+        11,
+        79
+      ],
+      "role": "Main barrel, independent recoil",
+      "parent": "body",
+      "source_parts": [
+        "08_main_gun_barrel"
+      ],
+      "z_order": 5
+    },
+    {
+      "name": "07_body_static",
+      "file": "parts/07_body_static.png",
+      "position_px": [
+        205,
+        79
+      ],
+      "size_px": [
+        933,
+        954
+      ],
+      "pivot_canvas_px": [
+        645,
+        1040
+      ],
+      "pivot_local_px": [
+        440,
+        961
+      ],
+      "role": "Static interior and body backing combined; outer rim/floor beam supplied as separate foreground frame",
+      "parent": "root",
+      "source_parts": [
+        "37_mortar_rear_mount",
+        "04_room_lower_backwall",
+        "05_room_upper_backwall",
+        "06_exhaust_pipe",
+        "07_main_gun_mantlet",
+        "09_ammo_rack",
+        "10_ammo_shell_upper",
+        "11_ammo_shell_lower",
+        "12_warning_placard",
+        "13_upper_access_duct",
+        "14_access_ladder",
+        "15_targeting_monitor",
+        "16_cannon_control_panel",
+        "17_cannon_wall_lever",
+        "18_cannon_operator_seat",
+        "19_cannon_footrest",
+        "20_driver_pipes",
+        "21_driver_gauge",
+        "22_driver_vent",
+        "23_utility_fan_box",
+        "24_utility_linkage",
+        "25_driver_seat",
+        "26_driver_lever_back",
+        "27_driver_lever_front",
+        "28_driver_pedal",
+        "29_driver_console",
+        "30_driver_floor_platform"
+      ],
+      "z_order": 6
+    },
+    {
+      "name": "11_front_hull_frame",
+      "file": "parts/11_front_hull_frame.png",
+      "position_px": [
+        194,
+        159
+      ],
+      "size_px": [
+        895,
+        904
+      ],
+      "pivot_canvas_px": [
+        645,
+        1040
+      ],
+      "pivot_local_px": [
+        451,
+        881
+      ],
+      "role": "Outer cutaway armor rim, floor separator and fixed roof mounts; both room apertures transparent; exhaust source contributes only its fixed base",
+      "parent": "body",
+      "source_parts": [
+        "06_exhaust_pipe",
+        "31_structural_floor_beam",
+        "32_front_hull_frame",
+        "33_roof_gun_mount"
+      ],
+      "z_order": 7
+    },
+    {
+      "name": "08_roof_machine_gun",
+      "file": "parts/08_roof_machine_gun.png",
+      "position_px": [
+        726,
+        84
+      ],
+      "size_px": [
+        425,
+        156
+      ],
+      "pivot_canvas_px": [
+        910,
+        231
+      ],
+      "pivot_local_px": [
+        184,
+        147
+      ],
+      "role": "Roof gun body, grips and barrel combined; fixed feet now belong to the foreground frame",
+      "parent": "body",
+      "source_parts": [
+        "34_roof_gun_grips",
+        "36_roof_gun_barrel",
+        "35_roof_gun_receiver"
+      ],
+      "z_order": 8
+    },
+    {
+      "name": "09_mortar_barrel",
+      "file": "parts/09_mortar_barrel.png",
+      "position_px": [
+        105,
+        247
+      ],
+      "size_px": [
+        121,
+        336
+      ],
+      "pivot_canvas_px": [
+        213.14,
+        561.9
+      ],
+      "pivot_local_px": [
+        108.14,
+        314.9
+      ],
+      "role": "Complete mortar barrel; moved 64 px toward rear wall",
+      "parent": "body",
+      "source_parts": [
+        "38_mortar_barrel"
+      ],
+      "z_order": 9
+    },
+    {
+      "name": "10_mortar_front_support",
+      "file": "parts/10_mortar_front_support.png",
+      "position_px": [
+        108,
+        364
+      ],
+      "size_px": [
+        132,
+        233
+      ],
+      "pivot_canvas_px": [
+        213.14,
+        561.9
+      ],
+      "pivot_local_px": [
+        105.14,
+        197.9
+      ],
+      "role": "Both fixed collars and base cradle combined; foreground occluder for sliding barrel",
+      "parent": "body",
+      "source_parts": [
+        "39_mortar_clamp_upper",
+        "40_mortar_clamp_lower",
+        "41_mortar_base_cradle"
+      ],
+      "z_order": 10
+    }
+  ],
+  "coordinates": "Top-left origin, +x right, +y down; native pixels.",
+  "mortar_change_px": [
+    64,
+    0
+  ],
+  "original_tank_offset_px": [
+    120,
+    0
+  ],
+  "static_interior_baked": true,
+  "part_count": 11,
+  "mortar_socket": {
+    "name": "mortar_muzzle",
+    "position_canvas_px": [
+      166.76999999999998,
+      270.14
+    ],
+    "direction": [
+      0,
+      -1
+    ],
+    "parent": "09_mortar_barrel"
+  },
+  "pending_changes": [
+    "Interior ammunition hatch and firing button have not been added; the image-generation tool blocked that requested accessory generation."
+  ],
+  "note": "Static interiors remain baked into 07_body_static. The outer rim, floor separator, fixed gun feet and exhaust base belong to one foreground frame, without duplicate frame artwork. Disconnected roof extraction scraps are omitted.",
+  "front_frame": {
+    "aligned_png": "Tank_Front_Frame.png",
+    "canvas_px": [
+      1351,
+      1277
+    ],
+    "aligned_position_px": [
+      0,
+      0
+    ],
+    "cropped_png": "parts/11_front_hull_frame.png",
+    "room_apertures_transparent": true,
+    "includes_floor_separator": true
+  }
+}

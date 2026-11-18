@@ -89,13 +89,13 @@ namespace MegaTanks.Editor
                 switch(step)
                 {
                     case 0:
-                        Require(!game.Deployed&&!game.Running,"Home must not start a battle.");Require(game.Frontend.inventory.All(i=>i.Type!=EquipmentType.Accessory&&i.Type!=EquipmentType.Armor),"No invented accessory/armor items.");
+                        Require(!game.Deployed&&!game.Running,"Home must not start a battle.");Require(game.Frontend.inventory.All(i=>i.Type!=EquipmentType.Accessory),"No accessory items until configured.");
                         Require(game.Artwork.transform.position==game.TankSpawnPosition&&Vector3.Distance(game.TankSpawnPosition,new Vector3(-7.3f,-4.483333f,0))<.001f&&game.Artwork.transform.localScale==Vector3.one*.75f,"Home must preserve the approved lower spawn and 0.75 tank scale.");
                         Require(ui.GetComponent<Canvas>()!=null&&ui.GetComponent<GraphicRaycaster>()!=null,"Use Canvas and uGUI raycasts.");
-                        Require(ui.Skin!=null&&Find("Play").transform.Find("Label").GetComponent<Text>().text=="PLAY"&&Find("Play").image.sprite==ui.Skin.homeYellowPanel,"Home must use the supplied yellow Play artwork.");
+                        Require(ui.Skin!=null&&Find("Play").transform.Find("Label").GetComponent<Text>().text=="START BATTLE"&&Find("Play").image.sprite==ui.Skin.homeYellowPanel,"Home must label Start Battle and use the supplied yellow artwork.");
                         Require(Find("Avatar Menu").image.sprite==ui.Skin.homeMenu&&Find("Equipment").image.sprite==ui.Skin.homeButtonBase,"Home menu and icon buttons must use the supplied artwork.");
                         Require(Find("Equipment").transform.Find("Home Icon").GetComponent<Image>().sprite==ui.Skin.homeGarage&&Find("Crew").transform.Find("Home Icon").GetComponent<Image>().sprite==ui.Skin.homeCrew&&Find("Tech").transform.Find("Home Icon").GetComponent<Image>().sprite==ui.Skin.homeTech,"Garage, Crew and Tech icons must match the reference.");
-                        Require(ui.transform.Find("Safe Area/Frontend Screens/Home/Stage Swipe Area").GetComponent<Image>().sprite==ui.Skin.homeStageSelector,"The stage selector must use the supplied combined arrow panel.");
+                        Require(ui.transform.Find("Safe Area/Frontend Screens/Home/Stage Swipe Area").GetComponent<Image>().sprite==((game.Frontend.stages?.Length??1)>1?ui.Skin.homeStageSelector:ui.Skin.homeButtonBase),"Stage artwork must hide decorative arrows when only one stage exists.");
                         Require(ui.transform.Find("Safe Area/Frontend Screens/Home/Background")==null,"Home must show the live battlefield.");
                         Require(Find("Equipment").GetComponent<RectTransform>().anchoredPosition.x>1500&&Find("Play").GetComponent<RectTransform>().anchoredPosition.y< -750,"Garage and Start must occupy the right column.");
                         Require(ui.Skin.buttonBlue.border!=Vector4.zero&&ui.Skin.panel.border!=Vector4.zero,"Scalable source borders must be preserved.");Shot("Home");Next();break;
@@ -138,7 +138,7 @@ namespace MegaTanks.Editor
                         Click("Item "+game.Equipment.Mortar.name);Shot("MortarEquipment");Next();break;
                     case 7:Click("Equip Item");Next();break;
                     case 8:Click("Slot Armor");Next();break;
-                    case 9:Require(ui.Filter==EquipmentType.Armor&&ui.InventoryVisibleCount==0,"Empty armor filter.");Click("Inventory Filter");Next();break;
+                    case 9:Require(ui.Filter==EquipmentType.Armor&&ui.InventoryVisibleCount==game.Frontend.inventory.Count(i=>i is ArmorDefinition),"Armor filter lists available armor.");Click("Inventory Filter");Next();break;
                     case 10:Click("Filter Accessory");Next();break;
                     case 11:Require(ui.Filter==EquipmentType.Accessory&&ui.InventoryVisibleCount==0,"Empty accessory filter.");Click("Slot MG");Next();break;
                     case 12:Click("Item GatlingGun");Next();break;
@@ -186,7 +186,7 @@ namespace MegaTanks.Editor
                             Require(ui.Popup==""&&game.Stage.Mode==StageMode.Map&&game.Stage.Current.id==current,"Cancel must retain the route and current node.");
                             routeBackStep=2;since=EditorApplication.timeSinceStartup;break;
                         }
-                        int id=game.Stage.Current.next[0];Click("Node "+id);Next();break;
+                        int id=game.Stage.Current.next[0];Click("Node "+id);Require(game.Stage.Mode==StageMode.Map,"Inspecting a node must keep the map open.");Click("Enter Route Node");Next();break;
                     case 22:
                         game.ReturnHome();Next();break;
                     case 23:
@@ -198,7 +198,7 @@ namespace MegaTanks.Editor
                         Require(game.Artwork.MachineGun.name=="roof_gun"&&game.MachineGun.Artwork==game.Artwork.MachineGun,"Re-equipping the original MG must restore its artwork and turret binding.");
                         game.StartBattle();
                         Require(game.Artwork.transform.position==game.TankSpawnPosition&&game.Artwork.transform.localScale==Vector3.one*.75f,"Restart must restore the approved tank pose.");
-                        Require(!errors,"No runtime errors permitted.");Debug.Log("MEGATANKS_CANVAS_OK: real uGUI raycasts, Home/settings/equipment/filter/equip/Play, pause/resume, combat/reward/map/node, Home, persisted settings, no armor/accessory instances.");Finish(0);break;
+                        Require(!errors,"No runtime errors permitted.");Debug.Log("MEGATANKS_CANVAS_OK: real uGUI raycasts, Home/settings/equipment/filter/equip/Play, pause/resume, combat/reward/map/node, Home, persisted settings, armor inventory and no accessory instances.");Finish(0);break;
                 }
             }
             catch(Exception e){Debug.LogException(e);Finish(1);}

@@ -13,7 +13,10 @@ namespace MegaTanks
         [SerializeField] TankDefinition tankDefinition;
         [SerializeField] WeaponLoadout startingLoadout;
         public TankDefinition TankProfile => tankDefinition;
+        public const string SelectedTankSaveKey="MegaTanks.SelectedTank";
         public WeaponLoadout StartingLoadout => startingLoadout;
+        public BossEncounterSettings BossSettings => (Stage != null ? Stage.Definition : stageDefinition)?.boss;
+        public BossTankProfile BossProfile => BossSettings?.template;
         TankStats tankStats = new TankStats();
         public TankStats BaseTankStats => tankStats;
         [Header("Cards and shop")]
@@ -24,9 +27,15 @@ namespace MegaTanks
         public StageProgression Stage { get; private set; }
         [Header("Battle backgrounds")]
         [SerializeField] BattleBackgroundCatalog backgroundCatalog;
+        [Header("Battle effects")]
+        [SerializeField] BattleVfxCatalog battleVfxCatalog;
+        public BattleVfx Vfx { get; private set; }
         public BattleBackgroundController Backgrounds { get; private set; }
         public MortarWeapon Mortar { get; private set; }
         public float TankAdvanceSpeed => tankStats.advanceSpeed;
+        public float ReloadSpeedBonus=>Equipment!=null?Equipment.ReloadSpeedBonus(Progression):0;
+        public float AccuracyBonus=>Equipment!=null?Equipment.AccessoryBonus(AccessoryBonusType.Accuracy,Progression):0;
+        public float EvasionBonus=>Equipment!=null?Equipment.AccessoryBonus(AccessoryBonusType.Evasion,Progression):0;
         public TankStance Stance { get; private set; } = TankStance.Aggressive;
         Vector2 tankVelocity;
         Vector3 tankStartPosition;
@@ -83,14 +92,22 @@ namespace MegaTanks
         public bool Running => deployed && !paused && Hull > 0 && (Rewards == null || !Rewards.IsOpen)
             && (Stage == null || Stage.Mode == StageMode.Combat);
         float BaseHull => tankStats.maxHull;
+        public float StartingMaxHull => BaseHull;
         public float Hull { get; private set; } = 100;
         public float MaxHull { get; private set; } = 100;
         public int Score { get; private set; }
+        public int EnemiesDefeated { get; private set; }
+        public int RunId { get; private set; }
         public int Wave { get; private set; }
         public int EnemyCount => enemies.Count;
         public bool Paused => paused;
         public bool Deployed => deployed;
         public PlayerEquipment Equipment { get; private set; }
+        public PlayerCrew Crew { get; private set; }
+        public CommandoUnit Commando { get; private set; }
+        public PlayerWallet Wallet { get; private set; }
+        public PlayerProgression Progression { get; private set; }
+        public StageCompletionRewards StageRewards { get; private set; }
         public CanvasGameUI UI { get; private set; }
         [SerializeField] FrontendCatalog frontendCatalog;
         public FrontendCatalog Frontend => frontendCatalog;
@@ -111,14 +128,51 @@ namespace MegaTanks
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
             best = PlayerPrefs.GetInt("MegaTanks.Best2D", 0);
             Physics2D.queriesHitTriggers = true;
+            string savedTank=PlayerPrefs.GetString(SelectedTankSaveKey,"");
+            if(frontendCatalog!=null&&frontendCatalog.tanks!=null)
+                foreach(var tank in frontendCatalog.tanks)
+                    if(tank!=null&&tank.id==savedTank){tankDefinition=tank;break;}
             BuildScene();
             Equipment = new PlayerEquipment(startingLoadout, frontendCatalog);
+            Equipment.ConfigureTank(tankDefinition);
+            Crew = new PlayerCrew(frontendCatalog!=null?frontendCatalog.crew:null);
             RefreshEquipmentArtwork();
+            Wallet = new PlayerWallet();
+            Progression = new PlayerProgression(frontendCatalog, Wallet);
+            PlaytestResources.ApplyOnce(frontendCatalog, Wallet, Progression);
+            Crew.Changed+=RefreshTankLoadoutStats;
+            Commando=new GameObject("Crew Commando").AddComponent<CommandoUnit>();
+            Commando.transform.SetParent(transform,false);Commando.Configure(this);
+            RefreshTankLoadoutStats();
+            StageRewards = new StageCompletionRewards(Wallet);
             UI = CanvasGameUI.Create(this);
         }
 
+        public TankStats CalculateTankStats(ArmorDefinition armor,ArmorDefinition secondArmor=null)
+        {
+            var result = tankDefinition.stats.Copy();
+            if (armor != null) armor.ApplyTo(result, Progression != null ? Progression.ArmorHP(armor) : armor.hp);
+            if(secondArmor!=null&&tankDefinition.ArmorSlots>1&&secondArmor!=armor)
+                secondArmor.ApplyTo(result,Progression!=null?Progression.ArmorHP(secondArmor):secondArmor.hp);
+            var driver=Crew?.Get(CrewRole.Driver);
+            if(driver!=null)driver.ApplyHull(result,Progression!=null?Progression.Get(driver).Level:1,Progression!=null?Progression.Get(driver).Stars:0);
+            return result;
+        }
+        TankStats EquippedTankStats()
+        {
+            var result=CalculateTankStats(Equipment?.Armor,Equipment!=null&&Equipment.ArmorSlotCount>1?Equipment.SecondArmor:null);
+            result.evasion+=EvasionBonus;return result;
+        }
+        public void RefreshTankLoadoutStats()
+        {
+            if (deployed) return;
+            tankStats = EquippedTankStats();
+            Hull = MaxHull = BaseHull;
+            if(Equipment!=null&&MachineGun!=null&&MainGun!=null&&Mortar!=null)ConfigurePlayerWeapons();
+        }
         public void RefreshEquipmentArtwork()
         {
+            RefreshTankLoadoutStats();
             Artwork.EquipMachineGunVisual(Equipment.MachineGun);
             MachineGun.BindArtwork(Artwork.MachineGun);
         }
@@ -127,7 +181,7 @@ namespace MegaTanks
         {
             if (tankDefinition == null || startingLoadout == null) throw new System.InvalidOperationException("Player profiles are missing. Run MegaTanks > Migrate Player Stats To Profiles.");
             startingLoadout.Validate();
-            tankStats = tankDefinition.stats.Copy();
+            tankStats = EquippedTankStats();
             Hull = MaxHull = BaseHull;
             battleCamera = new GameObject("2D Battle Camera").AddComponent<Camera>();
             battleCamera.tag = "MainCamera";
@@ -135,17 +189,36 @@ namespace MegaTanks
             battleCamera.transform.position = new Vector3(0, 0, -10);
             battleCamera.clearFlags = CameraClearFlags.SolidColor;
             battleCamera.backgroundColor = navy;
+            Vfx=new GameObject("Battle VFX").AddComponent<BattleVfx>();
+            Vfx.transform.SetParent(transform,false);
+            Vfx.Configure(this,battleVfxCatalog!=null?battleVfxCatalog:Resources.Load<BattleVfxCatalog>("BattleVfx"));
             scenery = new GameObject("2D Tank and Battlefield").transform;
-            if (tankArtworkPrefab == null) throw new System.InvalidOperationException("Tank artwork is missing. Run MegaTanks > Import Tank Artwork.");
-            Artwork = Instantiate(tankArtworkPrefab, scenery);
-            Artwork.transform.localScale = Vector3.one * tankScale;
-            Artwork.transform.localPosition = tankSpawnPosition;
-            tankStartPosition = Artwork.transform.position;
+            BuildPlayerTank();
             CameraPan=battleCamera.gameObject.AddComponent<BattleCameraPan>();
             CameraPan.Configure(this,tankStartPosition.x,tankStartPosition.x+EnemySpawnDirection*enemySpawnDistance);
+            Rewards = gameObject.AddComponent<CardRewardSystem>();
+            Rewards.Configure(cardCatalog);
+            if (stageDefinition == null) throw new System.InvalidOperationException("Stage definition is missing.");
+            Stage = gameObject.AddComponent<StageProgression>();
+            Stage.Configure(this, stageDefinition, cardCatalog);
+            FitCamera();
+            Backgrounds = gameObject.AddComponent<BattleBackgroundController>();
+            Backgrounds.Configure(backgroundCatalog, battleCamera);
+            Backgrounds.SelectRandom();
+        }
+
+        void BuildPlayerTank()
+        {
+            var prefab=tankDefinition.artworkPrefab!=null?tankDefinition.artworkPrefab:tankArtworkPrefab;
+            if(prefab==null)throw new System.InvalidOperationException("Selected tank artwork is missing.");
+            Artwork=Instantiate(prefab,scenery);
+            Artwork.transform.localScale=Vector3.one*tankScale;
+            Artwork.transform.localPosition=tankSpawnPosition;
+            tankStartPosition=Artwork.transform.position;
+            HullHitbox=null;
             foreach (var renderer in Artwork.GetComponentsInChildren<SpriteRenderer>())
             {
-                if (renderer.name != "32_front_hull_frame") continue;
+                if (!renderer.name.EndsWith("_front_hull_frame")) continue;
                 var hull = new GameObject("Tank Hull Hitbox");
                 hull.transform.SetParent(renderer.transform.parent, false);
                 hull.transform.position = renderer.bounds.center;
@@ -159,16 +232,20 @@ namespace MegaTanks
             MainGun = CreateTurret(startingLoadout.cannon, Artwork.MainGun);
             if (Artwork.Mortar == null) throw new System.InvalidOperationException("Mortar artwork is missing. Run MegaTanks > Import Mortar Artwork.");
             Mortar = Artwork.Mortar.gameObject.AddComponent<MortarWeapon>();
-            Mortar.Configure(Artwork.Mortar, Equipment != null ? Equipment.Mortar : startingLoadout.mortar);
-            Rewards = gameObject.AddComponent<CardRewardSystem>();
-            Rewards.Configure(cardCatalog);
-            if (stageDefinition == null) throw new System.InvalidOperationException("Stage definition is missing.");
-            Stage = gameObject.AddComponent<StageProgression>();
-            Stage.Configure(this, stageDefinition, cardCatalog);
-            FitCamera();
-            Backgrounds = gameObject.AddComponent<BattleBackgroundController>();
-            Backgrounds.Configure(backgroundCatalog, battleCamera);
-            Backgrounds.SelectRandom();
+            Mortar.Configure(Artwork.Mortar, Equipment != null ? Equipment.Mortar : startingLoadout.mortar, Progression, crewMember:Crew?.Get(CrewRole.WeaponSpecialist));
+        }
+
+        public bool SelectTank(TankDefinition tank)
+        {
+            if(deployed||tank==null||frontendCatalog?.tanks==null||System.Array.IndexOf(frontendCatalog.tanks,tank)<0)return false;
+            if(tank==tankDefinition)return true;
+            Vfx.Clear();
+            Artwork.gameObject.SetActive(false);Destroy(Artwork.gameObject);
+            tankDefinition=tank;Equipment.ConfigureTank(tank);RefreshTankLoadoutStats();
+            BuildPlayerTank();RefreshEquipmentArtwork();
+            tankVelocity=Vector2.zero;
+            CameraPan.ResetToSpawn(tankStartPosition.x,tankStartPosition.x+EnemySpawnDirection*enemySpawnDistance);FitCamera();
+            PlayerPrefs.SetString(SelectedTankSaveKey,tank.id);PlayerPrefs.Save();return true;
         }
 
         AutoTurret CreateTurret(GunDefinition definition, GunArtwork visual)
@@ -177,6 +254,20 @@ namespace MegaTanks
             turret.Configure(definition);
             turret.BindArtwork(visual);
             return turret;
+        }
+        public CrewDefinition WeaponCrew(EquipmentType type)=>Crew?.Get(type==EquipmentType.Cannon?CrewRole.Gunner:type==EquipmentType.MachineGun?CrewRole.SubGunner:CrewRole.WeaponSpecialist);
+        public WeaponCombatStats PreviewWeaponStats(WeaponDefinition weapon)
+        {
+            WeaponCombatStats result=weapon is GunDefinition gun?gun.stats.Copy():(WeaponCombatStats)((MortarDefinition)weapon).stats.Copy();
+            var member=WeaponCrew(weapon.Type);if(member!=null)member.ApplyWeapon(result,Progression.Get(member).Level,Progression.Get(member).Stars);
+            return result;
+        }
+        void ConfigurePlayerWeapons()
+        {
+
+            MachineGun.Configure(Equipment!=null?Equipment.MachineGun:startingLoadout.machineGun,Progression,0,ReloadSpeedBonus,AccuracyBonus,Crew?.Get(CrewRole.SubGunner));
+            MainGun.Configure(Equipment!=null?Equipment.Cannon:startingLoadout.cannon,Progression,0,ReloadSpeedBonus,AccuracyBonus,Crew?.Get(CrewRole.Gunner));
+            Mortar.Configure(Artwork.Mortar,Equipment!=null?Equipment.Mortar:startingLoadout.mortar,Progression,0,ReloadSpeedBonus,AccuracyBonus,Crew?.Get(CrewRole.WeaponSpecialist));
         }
 
         void FitCamera()
@@ -193,6 +284,9 @@ namespace MegaTanks
 
         public void StartBattle()
         {
+            Vfx.Clear();
+            RunId++;
+            Commando?.ResetForRun();
             keepHomeBackdrop = !deployed;
             Time.timeScale = 1;
             foreach (EnemyEntity enemy in enemies) if (enemy != null) Destroy(enemy.gameObject);
@@ -202,13 +296,11 @@ namespace MegaTanks
             effects.Clear();
             damageNumbers.Clear();
             startingLoadout.Validate();
-            tankStats = tankDefinition.stats.Copy();
+            tankStats = EquippedTankStats();
             Artwork.transform.localScale = Vector3.one * tankScale;
             tankStartPosition = tankSpawnPosition;
             RefreshEquipmentArtwork();
-            MachineGun.Configure(Equipment != null ? Equipment.MachineGun : startingLoadout.machineGun);
-            MainGun.Configure(Equipment != null ? Equipment.Cannon : startingLoadout.cannon);
-            Mortar.Configure(Artwork.Mortar, Equipment != null ? Equipment.Mortar : startingLoadout.mortar);
+            ConfigurePlayerWeapons();
             Artwork.ResetVisual();
             Artwork.transform.position = tankStartPosition;
             Stance = TankStance.Aggressive;
@@ -219,6 +311,7 @@ namespace MegaTanks
             Hull = MaxHull;
             Rewards.ResetRun();
             Score = Wave = 0;
+            EnemiesDefeated = 0;
             paused = false;
             deployed = true;
             Stage.BeginRun();
@@ -239,9 +332,27 @@ namespace MegaTanks
             return entity;
         }
 
+        public EnemyEntity SpawnBossCommando(BossTank owner,EnemyDefinition definition,Vector2 position)
+        {
+            var entity=new GameObject(definition.id).AddComponent<EnemyEntity>();entity.CommandoOwner=owner;
+            entity.transform.position=position;entity.Initialize(definition,Wave);
+            if(entity.Alive)enemies.Add(entity);else Destroy(entity.gameObject);
+            return entity;
+        }
+        public void SetBossCommandoDeployed(EnemyEntity entity,bool active)
+        {
+            if(entity==null)return;
+            if(active){if(entity.Alive&&!enemies.Contains(entity))enemies.Add(entity);entity.gameObject.SetActive(true);}
+            else {RemoveEnemy(entity,false);entity.gameObject.SetActive(false);}
+        }
         void SpawnWave()
         {
             Wave++;
+            if (Stage.Current != null && Stage.Current.type == StageNodeType.Boss)
+            {
+                SpawnBoss();
+                return;
+            }
             int ground = Mathf.Min(3 + Wave, 12);
             int flyers = Mathf.Min(1 + Wave, 8);
             float spawnX = Artwork.transform.position.x + EnemySpawnDirection*enemySpawnDistance;
@@ -255,6 +366,26 @@ namespace MegaTanks
             if(enemies.Count==0)Stage.OnWaveCleared();
         }
 
+        public EnemyEntity SpawnBoss()
+        {
+            // Only the authored Boss map node can own this encounter, including direct API calls.
+            if (!Running || Stage == null || Stage.Mode != StageMode.Combat || Stage.Current == null
+                || Stage.Current.type != StageNodeType.Boss || !Stage.Current.entered || Stage.Current.completed) return null;
+            foreach (var enemy in enemies)
+                if (enemy != null && enemy.Alive && enemy.Boss != null) return enemy;
+            var settings = BossSettings?.Copy();
+            if (settings == null) throw new System.InvalidOperationException("Configure the boss on the Stage Definition.");
+            settings.Validate();
+            float spawnX = Artwork.transform.position.x + enemySpawnDistance;
+            CameraPan.SetEnemySpawn(spawnX);
+            var entity = new GameObject(settings.template.id).AddComponent<EnemyEntity>();
+            entity.transform.position = new Vector3(spawnX, GroundHeight, 0);
+            entity.gameObject.AddComponent<BossTank>().Configure(settings);
+            entity.Initialize(settings.CreateEnemy(), Wave);
+            enemies.Add(entity);
+            return entity;
+        }
+
         public void ContinueAfterRewards()
         {
             if (Hull <= 0 || enemies.Count > 0) return;
@@ -263,6 +394,7 @@ namespace MegaTanks
 
         public void ClearEncounterTransient()
         {
+            Vfx.Clear();
             foreach (var shot in FindObjectsOfType<Projectile2D>()) { shot.gameObject.SetActive(false); Destroy(shot.gameObject); }
             foreach (var effect in effects) if (effect != null) Destroy(effect.gameObject);
             effects.Clear();
@@ -272,6 +404,7 @@ namespace MegaTanks
         public void ReturnHome()
         {
             deployed = false; paused = false; Time.timeScale = 1;
+            Commando?.ResetForRun();
             ClearEncounterTransient(); Rewards.ResetRun(); Stage.EndRun();
             foreach(var enemy in enemies) if(enemy!=null) Destroy(enemy.gameObject);
             enemies.Clear();
@@ -334,6 +467,7 @@ namespace MegaTanks
             if (!enemies.Remove(enemy)) return;
             if (killed)
             {
+                EnemiesDefeated++;
                 Score += enemy.Data.score;
                 Rewards.AddScraps(enemy.ScrapsReward);
             }
@@ -383,14 +517,18 @@ namespace MegaTanks
                 float multiplier = MortarDamageAtDistance(Vector2.Distance(position, enemy.transform.position), 1, fullRadius, halfRadius);
                 if (multiplier > 0) enemy.ReceiveAttack(attack,multiplier);
             }
-            Flash(position, new Color(1, .55f, .15f, .12f), Mathf.Max(fullRadius, halfRadius) * 2);
-            Flash(position, new Color(1, .8f, .25f, .35f), fullRadius * 2);
+            if(Vfx.Catalog!=null)Vfx.Blast(position,true,position.y<=GroundHeight+.3f);
+            else
+            {
+                Flash(position, new Color(1, .55f, .15f, .12f), Mathf.Max(fullRadius, halfRadius) * 2);
+                Flash(position, new Color(1, .8f, .25f, .35f), fullRadius * 2);
+            }
         }
 
-        public DamageResult ReceiveAttack(DamageAttack attack)
+        public DamageResult ReceiveAttack(DamageAttack attack, float areaMultiplier = 1)
         {
             if(!Running)return new DamageResult(false,false,0,attack.DamageType);
-            var result=CombatDamage.Resolve(attack,tankStats);DamageHull(result.Damage);return result;
+            var result=CombatDamage.Resolve(attack,tankStats,areaMultiplier);DamageHull(result.Damage);return result;
         }
 
         // Direct HP loss remains available for scripted effects and debug helpers.
@@ -402,6 +540,7 @@ namespace MegaTanks
             if(Application.platform==RuntimePlatform.Android && GameAudioSettings.Vibration && Time.unscaledTime-lastVibration>.25f)
             { Handheld.Vibrate();lastVibration=Time.unscaledTime; }
             if (Hull > 0) return;
+            Vfx.Blast(new Vector2(Artwork.transform.position.x,GroundHeight),false,true,1.5f);
             best = Mathf.Max(best, Score);
             PlayerPrefs.SetInt("MegaTanks.Best2D", best);
             PlayerPrefs.Save();
@@ -447,6 +586,7 @@ namespace MegaTanks
             if (float.IsInfinity(distance) || Time.deltaTime <= 0) return;
             float step = Mathf.Min(distance, Mathf.Max(0, TankAdvanceSpeed) * Time.deltaTime);
             Artwork.transform.position += Vector3.right * (EnemySpawnDirection*step);
+            CameraPan.FollowTank(EnemySpawnDirection*step);
             tankVelocity = Vector2.right * (EnemySpawnDirection*step / Time.deltaTime);
         }
 
@@ -479,7 +619,7 @@ namespace MegaTanks
         }
 
         void OnApplicationPause(bool value) { if (value && Running) SetPaused(true); }
-        void OnDestroy() { Time.timeScale = 1; if (Instance == this) Instance = null; ShapeFactory.Release(); }
+        void OnDestroy() { StageRewards?.Dispose(); Time.timeScale = 1; if (Instance == this) Instance = null; ShapeFactory.Release(); }
 
     }
 

@@ -1,0 +1,57 @@
+{
+  "reference_resolution": [
+    1920,
+    1080
+  ],
+  "coordinate_origin": "top-left",
+  "outer_background": "#0b141d",
+  "scene_background_sprite": "Background/scene_background_1920x1080.png",
+  "radar_overlay_sprite": "Background/radar_in_route_frame_1920x1080.png",
+  "raw_radar_texture": "Background/radar_coordinate_bg_1920x1080.png",
+  "header": {
+    "sprite": "Sprites/Frames/header_full_width_gray.png",
+    "rect_xywh": [
+      0,
+      0,
+      1920,
+      114
+    ]
+  },
+  "header_stage": {
+    "sprite": "Sprites/Frames/header_stage_plate.png",
+    "rect_xywh": [
+      124,
+      0,
+      346,
+      114
+    ]
+  },
+  "header_back": {
+    "sprite": "Sprites/Frames/header_back_plate.png",
+    "rect_xywh": [
+      0,
+      0,
+      140,
+      114
+    ]
+  },
+  "route_frame_rect_xywh": [
+    44,
+    168,
+    1832,
+    744
+  ],
+  "radar_clip_rect_xywh": [
+    46,
+    170,
+    1828,
+    740
+  ],
+  "radar_clip_corner_radius": 10,
+  "legend_rect_xywh": [
+    60,
+    951,
+    1800,
+    98
+  ]
+}

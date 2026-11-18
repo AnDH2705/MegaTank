@@ -15,6 +15,8 @@ namespace CatTanks
         Transform tank, shield, decoyView, targetRing;
         Sprite square, disk, ring;
         Material lineMaterial;
+        Mesh skyMesh;
+        Material skyMaterial;
         int shownFloors = -1;
         public CombatVfxPlayer combatVfx;
         public BattleView(Camera cam)
@@ -84,22 +86,47 @@ namespace CatTanks
             var go = new GameObject(name, typeof(MeshFilter), typeof(MeshRenderer)); go.transform.SetParent(root.transform, false); go.GetComponent<MeshFilter>().sharedMesh = mesh;
             var renderer = go.GetComponent<MeshRenderer>(); renderer.sharedMaterial = new Material(Shader.Find("Sprites/Default")) {color = Catalog.Color(color)}; renderer.sortingOrder = order;
         }
+        void Sky(System.Random rng)
+        {
+            var vertices = new List<Vector3>();
+            var colors = new List<Color>();
+            var uvs = new List<Vector2>();
+            var indices = new List<int>();
+            // Opaque sky samples the white centre of the existing circle texture.
+            // Circle quads follow in the original back-to-front drawing order.
+            void Quad(Vector2 pos, Vector2 size, Color bottom, Color top, bool circle)
+            {
+                int start = vertices.Count;
+                Vector2 min = pos - size * .5f, max = pos + size * .5f;
+                vertices.Add(new Vector3(min.x, min.y)); vertices.Add(new Vector3(min.x, max.y));
+                vertices.Add(new Vector3(max.x, max.y)); vertices.Add(new Vector3(max.x, min.y));
+                colors.Add(bottom); colors.Add(top); colors.Add(top); colors.Add(bottom);
+                uvs.Add(circle ? Vector2.zero : Vector2.one * .5f);
+                uvs.Add(circle ? Vector2.up : Vector2.one * .5f);
+                uvs.Add(circle ? Vector2.one : Vector2.one * .5f);
+                uvs.Add(circle ? Vector2.right : Vector2.one * .5f);
+                indices.AddRange(new[] {start, start + 1, start + 2, start, start + 2, start + 3});
+            }
+            void Circle(Vector2 pos, Vector2 size, Color color) => Quad(pos, size, color, color, true);
+            Color horizon = Catalog.Color("#062b48"), middle = Catalog.Color("#079cc5"), zenith = Catalog.Color("#0872b1");
+            Quad(new Vector2(800, 170), new Vector2(2400, 840), horizon, middle, false);
+            Quad(new Vector2(800, 870), new Vector2(2400, 560), middle, zenith, false);
+            Circle(new Vector2(790, 580), new Vector2(460, 460), new Color(.2f, 1, .9f, .08f));
+            Circle(new Vector2(790, 580), new Vector2(354, 354), Catalog.Color("#57e9df"));
+            for (int i = 0; i < 18; i++) Circle(new Vector2(790 + (float)(rng.NextDouble() - .5) * 240, 580 + (float)(rng.NextDouble() - .5) * 240), new Vector2(28 + i % 4 * 12, 20 + i % 3 * 9), new Color(.2f, .7f, .75f, .13f));
+            for (int i = 0; i < 90; i++) Circle(new Vector2((float)rng.NextDouble() * 2000 - 200, 400 + (float)rng.NextDouble() * 500), Vector2.one * (1 + i % 3), new Color(1, .95f, .7f, .3f + i % 4 * .15f));
+            skyMesh = new Mesh {name = "Combined Moon Sky"};
+            skyMesh.SetVertices(vertices); skyMesh.SetColors(colors); skyMesh.SetUVs(0, uvs); skyMesh.SetTriangles(indices, 0); skyMesh.RecalculateBounds();
+            skyMesh.UploadMeshData(true);
+            skyMaterial = new Material(Shader.Find("Sprites/Default")) {name = "Combined Moon Sky", mainTexture = disk.texture};
+            var go = new GameObject("Blue Moon Sky", typeof(MeshFilter), typeof(MeshRenderer));
+            go.transform.SetParent(root.transform, false); go.GetComponent<MeshFilter>().sharedMesh = skyMesh;
+            var renderer = go.GetComponent<MeshRenderer>(); renderer.sharedMaterial = skyMaterial; renderer.sortingOrder = -110;
+        }
         void Landscape()
         {
-            var texture = new Texture2D(2, 256); var pixels = new Color[512];
-            for (int y = 0; y < 256; y++) for (int x = 0; x < 2; x++)
-            {
-                float t = y / 255f;
-                pixels[y * 2 + x] = t < .6f ? Color.Lerp(Catalog.Color("#062b48"), Catalog.Color("#079cc5"), t / .6f) : Color.Lerp(Catalog.Color("#079cc5"), Catalog.Color("#0872b1"), (t - .6f) / .4f);
-            }
-            texture.SetPixels(pixels); texture.Apply();
-            var bg = UnityEngine.Sprite.Create(texture, new Rect(0, 0, 2, 256), Vector2.one * .5f, 2);
-            Sprite("Blue Moon Sky", bg, new Vector2(800, 450), new Vector2(2400, 1400), Color.white, -110);
-            Sprite("Moon Halo", disk, new Vector2(790, 580), new Vector2(460, 460), new Color(.2f, 1, .9f, .08f), -108);
-            Sprite("Moon", disk, new Vector2(790, 580), new Vector2(354, 354), Catalog.Color("#57e9df"), -107);
             var rng = new System.Random(19);
-            for (int i = 0; i < 18; i++) Sprite("Moon Crater", disk, new Vector2(790 + (float)(rng.NextDouble() - .5) * 240, 580 + (float)(rng.NextDouble() - .5) * 240), new Vector2(28 + i % 4 * 12, 20 + i % 3 * 9), new Color(.2f, .7f, .75f, .13f), -106);
-            for (int i = 0; i < 90; i++) Sprite("Star", disk, new Vector2((float)rng.NextDouble() * 2000 - 200, 400 + (float)rng.NextDouble() * 500), Vector2.one * (1 + i % 3), new Color(1, .95f, .7f, .3f + i % 4 * .15f), -105);
+            Sky(rng);
             for (int layer = 0; layer < 3; layer++)
             {
                 var points = new List<Vector2>();
@@ -281,6 +308,7 @@ namespace CatTanks
         }
         public void Dispose()
         {
+            Object.Destroy(skyMesh); Object.Destroy(skyMaterial);
             Object.Destroy(root); foreach (var sprite in sprites.Values) Object.Destroy(sprite);
             Object.Destroy(disk.texture); Object.Destroy(ring.texture); Object.Destroy(disk); Object.Destroy(ring); Object.Destroy(square); Object.Destroy(lineMaterial);
         }

@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: MAIN GUN
   icon: {fileID: 21300000, guid: 4059b7b1207686b4088d5baba48d6923, type: 3}
+  id: 5bba7f54361a4b7b945d80b71a62ef8e
   stats:
+    reloadSpeed: 100
     damageBonus: 0
     accuracy: 100
     armorPenetration: 0
@@ -23,7 +25,7 @@ MonoBehaviour:
     damageType: 0
     preferredTarget: 0
     damage: 45
-    range: 12.5
+    range: 10
     salvoSize: 1
     shotDelay: 0.1
     reloadTime: 4

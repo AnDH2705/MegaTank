@@ -33,6 +33,7 @@ namespace MegaTanks
         void Counter(string key,int amount,int capacity)
         {
             var v=View(UIScreen.BattleHUD);Text(v,key+" Value",amount+" / "+capacity);v.Get<Image>(key+" Bar").fillAmount=capacity>0?Mathf.Clamp01((float)amount/capacity):0;
+            UpdateAmmoWarning(v,key,amount,capacity);
         }
         Vector2 ScreenPoint(Vector3 p){RectTransformUtility.ScreenPointToLocalPointInRectangle(root,p,null,out var local);return new Vector2(local.x+960,540-local.y);}
         void LateUpdate()
@@ -45,10 +46,10 @@ namespace MegaTanks
         {
             View(UIScreen.Home).gameObject.SetActive(!game.Deployed);View(UIScreen.BattleHUD).gameObject.SetActive(game.Deployed);
             layout.damageLayer.gameObject.SetActive(game.Deployed&&game.Stage.Mode==StageMode.Combat&&!game.Rewards.IsOpen);
-            string key=game.Deployed?game.Stage.Mode+"/"+game.Paused+"/"+(game.Hull<=0)+"/"+game.Rewards.Mode+"/"+game.Rewards.Scraps+"/"+game.Stage.Current?.id+"/"+game.Stage.FreeClaimed+"/"+game.Stage.PaidPurchased+"/"+string.Join(",",game.Rewards.Offers.Select(o=>o.purchased.ToString())):"Home";
+            string key=game.Deployed?game.Stage.Mode+"/"+game.StageRewards.LastReceipt?.paid+"/"+game.Paused+"/"+(game.Hull<=0)+"/"+game.Rewards.Mode+"/"+game.Rewards.Scraps+"/"+game.Stage.Current?.id+"/"+game.Stage.FreeClaimed+"/"+game.Stage.PaidPurchased+"/"+string.Join(",",game.Rewards.Offers.Select(o=>o.purchased.ToString())):"Home";
             if(key==screenKey)return;screenKey=key;foreach(var s in encounterScreens)View(s).gameObject.SetActive(false);if(!game.Deployed)return;
             if(game.Rewards.IsOpen){DrawRewards();return;}
-            if(game.Hull<=0){Result(UIScreen.Defeat,"Regroup and prepare another run.");return;}
+            if(game.Hull<=0){Result(UIScreen.Defeat,DefeatSummary());return;}
             if(game.Paused)
             {
                 var v=Show(UIScreen.Pause);Click(v,"Resume",()=>game.SetPaused(false));Click(v,"Battle Settings",()=>OpenPopup("Settings"));Click(v,"Return Home",ConfirmHome);return;
@@ -66,6 +67,8 @@ namespace MegaTanks
         void Result(UIScreen screen,string detail)
         {
             var v=Show(screen);Text(v,"Result Detail",detail);Click(v,"Play Again",()=>game.StartBattle());Click(v,"Result Home",()=>game.ReturnHome());
+            if(screen==UIScreen.Victory)DrawStageCompletionRewards();
+            if(screen==UIScreen.Defeat)Click(v,"Result Garage",()=>{game.ReturnHome();screenKey="";Refresh();OpenEquipment();});
         }
         void DrawRewards()
         {
@@ -82,7 +85,7 @@ namespace MegaTanks
         {
             v.Get<Image>(key).color=CardRewardSystem.RarityColor(card.rarity);
             var image=v.Get<Image>(key+"/Artwork");image.sprite=card.art;image.gameObject.SetActive(card.art!=null);
-            Text(v,key+"/Title",card.title);Text(v,key+"/Effect",card.EffectText);Text(v,key+"/Action/Label",action);
+            Text(v,key+"/Title",card.title);Text(v,key+"/Effect",action=="PURCHASED"||action=="CLAIMED"?card.EffectText+"\nAPPLIED":CardPreview(card));Text(v,key+"/Action/Label",action);
             Click(v,key+"/Action",click);v.Get<Button>(key+"/Action").interactable=enabled;
         }
         void DrawService()

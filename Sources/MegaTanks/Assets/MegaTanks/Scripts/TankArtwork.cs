@@ -19,6 +19,7 @@ namespace MegaTanks
         float smokeTimer;
         int nextPuff;
         public GunArtwork MachineGun => replacementMachineGun != null ? replacementMachineGun : machineGun;
+        public EnemyEntity EnemyOwner { get; set; }
         public GunArtwork MainGun => mainGun;
         public MortarArtwork Mortar => mortar;
         public void BindMortar(MortarArtwork visual) { mortar = visual; }
@@ -60,7 +61,7 @@ namespace MegaTanks
             if (!initialized)
             {
                 bodyRest = body.localPosition;
-                wheels = System.Array.FindAll(GetComponentsInChildren<SpriteRenderer>(), renderer => renderer.name.StartsWith("03_wheel_"));
+                wheels = System.Array.FindAll(GetComponentsInChildren<SpriteRenderer>(), renderer => renderer.name.Contains("_wheel_"));
                 wheelRest = new Quaternion[wheels.Length];
                 for (int i = 0; i < wheels.Length; i++) wheelRest[i] = wheels[i].transform.localRotation;
                 initialized = true;
@@ -84,7 +85,8 @@ namespace MegaTanks
             foreach (var wheel in wheels)
             {
                 float radius = wheel.sprite.bounds.size.y * Mathf.Abs(wheel.transform.lossyScale.y) * .5f;
-                wheel.transform.Rotate(0, 0, -BattleGame.Instance.TankVelocity.x / Mathf.Max(.01f, radius) * Mathf.Rad2Deg * Time.deltaTime);
+                float speed = EnemyOwner != null ? -EnemyOwner.Velocity.x : BattleGame.Instance.TankVelocity.x;
+                wheel.transform.Rotate(0, 0, -speed / Mathf.Max(.01f, radius) * Mathf.Rad2Deg * Time.deltaTime);
             }
             smokeTimer -= Time.deltaTime;
             if (smokeTimer <= 0 && exhaustPuffs.Length > 0)

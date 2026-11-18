@@ -1,0 +1,174 @@
+{
+  "style": "Redrawn from both user GIF references: brilliant white/golden explosive core, orange shock rings, warm painted smoke and spear-shaped fire projectile",
+  "frame_size": 256,
+  "groups": [
+    {
+      "name": "Explosion",
+      "sheet": "explosion",
+      "cells": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cols": 4,
+      "fps": 25,
+      "blend": "Alpha",
+      "count": 12,
+      "rows": 3,
+      "atlas": "Art/Atlases/Explosion.png",
+      "common_uniform_scale": 0.7073170731707317
+    },
+    {
+      "name": "Smoke",
+      "sheet": "support",
+      "cells": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "cols": 4,
+      "fps": 12,
+      "blend": "Alpha",
+      "count": 8,
+      "rows": 2,
+      "atlas": "Art/Atlases/Smoke.png",
+      "common_uniform_scale": 0.7972508591065293
+    },
+    {
+      "name": "Hit",
+      "sheet": "support",
+      "cells": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "cols": 4,
+      "fps": 30,
+      "blend": "Additive",
+      "count": 4,
+      "rows": 1,
+      "atlas": "Art/Atlases/Hit.png",
+      "common_uniform_scale": 0.9789029535864979
+    },
+    {
+      "name": "Muzzle",
+      "sheet": "support",
+      "cells": [
+        12,
+        13
+      ],
+      "cols": 2,
+      "fps": 30,
+      "blend": "Additive",
+      "count": 2,
+      "rows": 1,
+      "atlas": "Art/Atlases/Muzzle.png",
+      "common_uniform_scale": 0.8754716981132076
+    },
+    {
+      "name": "Spark",
+      "sheet": "support",
+      "cells": [
+        14
+      ],
+      "cols": 1,
+      "fps": 1,
+      "blend": "Additive",
+      "count": 1,
+      "rows": 1,
+      "atlas": "Art/Atlases/Spark.png",
+      "common_uniform_scale": 0.9547325102880658
+    },
+    {
+      "name": "Glow",
+      "sheet": "support",
+      "cells": [
+        15
+      ],
+      "cols": 1,
+      "fps": 1,
+      "blend": "Additive",
+      "soft": true,
+      "count": 1,
+      "rows": 1,
+      "atlas": "Art/Atlases/Glow.png",
+      "common_uniform_scale": 0.8027681660899654
+    },
+    {
+      "name": "Shockwave",
+      "sheet": "elements",
+      "cells": [
+        0,
+        1,
+        2
+      ],
+      "cols": 3,
+      "fps": 12,
+      "blend": "Additive",
+      "count": 3,
+      "rows": 1,
+      "atlas": "Art/Atlases/Shockwave.png",
+      "common_uniform_scale": 0.5686274509803921
+    },
+    {
+      "name": "Beam",
+      "sheet": "elements",
+      "cells": [
+        3
+      ],
+      "cols": 1,
+      "fps": 1,
+      "blend": "Additive",
+      "count": 1,
+      "rows": 1,
+      "atlas": "Art/Atlases/Beam.png",
+      "common_uniform_scale": 0.5497630331753555
+    },
+    {
+      "name": "FireBoltHead",
+      "sheet": "elements",
+      "cells": [
+        4,
+        5,
+        6
+      ],
+      "cols": 3,
+      "fps": 30,
+      "blend": "Additive",
+      "count": 3,
+      "rows": 1,
+      "atlas": "Art/Atlases/FireBoltHead.png",
+      "common_uniform_scale": 0.6253369272237197
+    },
+    {
+      "name": "Dust",
+      "sheet": "elements",
+      "cells": [
+        7
+      ],
+      "cols": 1,
+      "fps": 1,
+      "blend": "Alpha",
+      "count": 1,
+      "rows": 1,
+      "atlas": "Art/Atlases/Dust.png",
+      "common_uniform_scale": 0.8689138576779026
+    }
+  ],
+  "trail_texture": "Art/Atlases/BeamTrail.png"
+}

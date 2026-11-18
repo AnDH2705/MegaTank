@@ -9,6 +9,7 @@ namespace MegaTanks.Editor
 {
     public static class StageProgressionAudit
     {
+        static StageRewardSaveScope rewardSaves;
         static int stage;
         static double since;
         static bool errors;
@@ -17,6 +18,7 @@ namespace MegaTanks.Editor
         static void Next() { stage++; since = EditorApplication.timeSinceStartup; }
         public static void Run()
         {
+            rewardSaves = new StageRewardSaveScope();
             EditorSceneManager.OpenScene(MegaTanksSetup.ScenePath);
             EditorSettings.enterPlayModeOptionsEnabled = true;
             EditorSettings.enterPlayModeOptions = EnterPlayModeOptions.DisableDomainReload;
@@ -86,8 +88,18 @@ namespace MegaTanks.Editor
                 if (stage == 0)
                 {
                     CheckMaps(progress.Definition);
+                    var lengthCheck=UnityEngine.Object.Instantiate(progress.Definition);
+                    try
+                    {
+                        foreach(int count in new[]{2,5,7,10,15})
+                        {
+                            lengthCheck.rounds=count;CheckMaps(lengthCheck);
+                        }
+                        Require(progress.Definition.rounds==5,"Stage 1 must be configured for five rounds.");
+                    }
+                    finally {UnityEngine.Object.DestroyImmediate(lengthCheck);}
                     game.StartBattle(); DisableWeapons(game);
-                    Require(progress.Route.rounds.Count == 10 && progress.Current.round == 0 && game.Wave == 1 && progress.Mode == StageMode.Combat, "Round one must begin with a battle.");
+                    Require(progress.Route.rounds.Count == progress.Definition.rounds && progress.Current.round == 0 && game.Wave == 1 && progress.Mode == StageMode.Combat, "Round one must begin with a battle.");
                     Require(!progress.SelectNode(progress.Route.rounds.Last()[0].id), "The player cannot skip directly to the boss.");
                     game.DamageHull(40); ClearWave(game);
                     Require(progress.Mode == StageMode.Reward && game.Rewards.Offers.Length == 3 && !game.Running, "Battle victory must pause for three reward choices.");
@@ -154,13 +166,13 @@ namespace MegaTanks.Editor
                     Require(progress.Current.round == 0 && progress.Mode == StageMode.Combat && game.Wave == 1 && game.Rewards.Scraps == 0
                         && game.Hull == game.MaxHull && game.MachineGun.Ammo == game.MachineGun.ReserveCapacity, "Restart must reset the route and run resources.");
                     Require(!errors, "Runtime errors occurred.");
-                    Debug.Log("MEGATANKS_STAGE_OK: 1000 connected noncrossing maps, nearest links/reachability, 10 rounds, unique battle rewards, supply/repair pricing and one-time claims, hidden reveal, three-wave hard battle, boss victory and restart.");
+                    Debug.Log("MEGATANKS_STAGE_OK: 1000 connected noncrossing maps, nearest links/reachability, configured stage length, unique battle rewards, supply/repair pricing and one-time claims, hidden reveal, three-wave hard battle, boss victory and restart.");
                     Finish(0);
                 }
                 if (elapsed > 30) throw new Exception("Stage progression audit timed out.");
             }
             catch (Exception exception) { Debug.LogException(exception); Finish(1); }
         }
-        static void Finish(int code) { EditorApplication.update -= Check; EditorSettings.enterPlayModeOptionsEnabled = false; EditorApplication.Exit(code); }
+        static void Finish(int code) { rewardSaves?.Dispose(); EditorApplication.update -= Check; EditorSettings.enterPlayModeOptionsEnabled = false; EditorApplication.Exit(code); }
     }
 }

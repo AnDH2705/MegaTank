@@ -12,9 +12,10 @@ namespace MegaTanks
         Vector3 restPosition;
         bool initialized;
         float recoil;
+        BattleVfxEffect activeMuzzle;
         public Transform Muzzle => muzzle;
-        public Vector2 FireDirection => Quaternion.Euler(0, 0, artworkAngle) * transform.right;
-        public bool EffectPlaying => muzzleEffect != null && muzzleEffect.Playing;
+        public Vector2 FireDirection => transform.TransformVector(Quaternion.Euler(0, 0, artworkAngle) * Vector3.right).normalized;
+        public bool EffectPlaying => (activeMuzzle!=null&&activeMuzzle.gameObject.activeInHierarchy)||(muzzleEffect != null && muzzleEffect.Playing);
 
         public void Configure(Transform barrel, Transform socket, SpriteClipPlayer effect, float angle, float distance)
         {
@@ -34,14 +35,18 @@ namespace MegaTanks
 
         public void Aim(Vector2 direction)
         {
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - artworkAngle);
+            Vector3 local = transform.parent != null ? transform.parent.InverseTransformVector(direction) : (Vector3)direction;
+            transform.localRotation = Quaternion.Euler(0, 0, Mathf.Atan2(local.y, local.x) * Mathf.Rad2Deg - artworkAngle);
         }
 
-        public void Fire()
+        public void Fire(bool heavy=false)
         {
             Initialize();
             recoil = recoilDistance;
-            muzzleEffect.Play();
+            StopMuzzle();
+            muzzleEffect.Stop();
+            activeMuzzle=BattleGame.Instance?.Vfx?.Muzzle(muzzle,FireDirection,heavy);
+            if(activeMuzzle==null)muzzleEffect.Play();
         }
 
         public void ResetVisual()
@@ -51,6 +56,13 @@ namespace MegaTanks
             recoilPart.localPosition = restPosition;
             transform.localRotation = Quaternion.identity;
             muzzleEffect.Stop();
+            StopMuzzle();
+        }
+
+        void StopMuzzle()
+        {
+            if(activeMuzzle==null)return;
+            activeMuzzle.gameObject.SetActive(false);Destroy(activeMuzzle.gameObject);activeMuzzle=null;
         }
 
         void LateUpdate()

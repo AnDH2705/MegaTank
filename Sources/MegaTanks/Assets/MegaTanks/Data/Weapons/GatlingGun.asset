@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Gatling Gun
   icon: {fileID: 21300000, guid: ac92cde0a608d2d42b92d4ec924b4b65, type: 3}
+  id: 1cbbff209dc84fe5a1281d72f4c39026
   stats:
+    reloadSpeed: 100
     damageBonus: 0
     accuracy: 100
     armorPenetration: 0
@@ -23,7 +25,7 @@ MonoBehaviour:
     damageType: 0
     preferredTarget: 1
     damage: 6
-    range: 35
+    range: 7
     salvoSize: 3
     shotDelay: 0.1
     reloadTime: 1.25

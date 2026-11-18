@@ -11,14 +11,16 @@ namespace MegaTanks.Editor
     {
         static int step,frameAtStep;
         static double since;
-        static bool capture,errors;
+        static bool capture,errors,followOnly;
         static float held,initialMax,tankX;
+        static Vector3 tankViewportBeforeAdvance;
         static Vector3 cameraRest;
         static PointerEventData pointer;
         static BattlefieldPanInput input;
         static void Require(bool value,string message){if(!value)throw new Exception(message);}
-        public static void Run(){Begin(false);}
-        public static void Capture(){Begin(true);}
+        public static void Run(){followOnly=false;Begin(false);}
+        public static void Capture(){followOnly=false;Begin(true);}
+        public static void FollowRun(){followOnly=true;Begin(false);}
         static void Begin(bool screenshots)
         {
             capture=screenshots;EditorSceneManager.OpenScene(MegaTanksSetup.ScenePath);
@@ -50,6 +52,7 @@ namespace MegaTanks.Editor
             try
             {
                 var game=BattleGame.Instance;var pan=game.CameraPan;
+                if(followOnly){CheckFollow(game,pan);return;}
                 switch(step)
                 {
                     case 0:
@@ -103,10 +106,16 @@ namespace MegaTanks.Editor
                         game.UI.OpenPopup("Settings");Drag(-300);Require(pan.X==held,"Popup must block panning.");game.UI.ClosePopup();
                         game.SetPaused(true);Drag(-300);Require(pan.X==held,"Pause must block panning.");Next();break;
                     case 5:
+                        tankViewportBeforeAdvance=game.TankCamera.WorldToViewportPoint(game.Artwork.transform.position);
+                        tankX=game.Artwork.transform.position.x;held=pan.X;initialMax=pan.MaxX;
                         game.SetPaused(false);game.SetStance(TankStance.Aggressive);Next();break;
                     case 6:
-                        Require(game.Artwork.transform.position.x>tankX&&pan.X==held,"Tank motion and enemy approach must not override manual camera position.");
-                        Require(pan.MaxX==initialMax&&pan.MinX==tankX,"Bounds remain tied to spawn points while the wave advances.");
+                        float advanced=game.Artwork.transform.position.x-tankX;
+                        Require(advanced>0&&Mathf.Abs(pan.X-held-advanced)<.001f,"Camera must move exactly with the advancing tank, preserving the manual pan offset.");
+                        Require(Vector3.Distance(game.TankCamera.WorldToViewportPoint(game.Artwork.transform.position),tankViewportBeforeAdvance)<.001f,"Advancing must keep the tank at the same viewport position.");
+                        Require(game.TankCamera.transform.position.y==cameraRest.y&&game.TankCamera.transform.position.z==cameraRest.z,"Following must preserve camera height and depth.");
+                        Require(Mathf.Abs(pan.MaxX-initialMax-advanced)<.001f&&Mathf.Abs(pan.MinX-game.Artwork.transform.position.x)<.001f,"Drag limits must follow tank movement.");
+                        held=pan.X;tankX=game.Artwork.transform.position.x;
                         game.SetStance(TankStance.Defensive);StageProgressionAudit.ClearWave(game);Drag(-500);Require(pan.X==held,"Reward screen must block panning.");
                         game.Rewards.ChooseReward(0);StageProgressionAudit.EnterType(game,StageNodeType.Battle);Next();break;
                     case 7:
@@ -116,10 +125,45 @@ namespace MegaTanks.Editor
                         Require(pan.X==pan.StartX&&pan.MaxX==initialMax,"Restart restores left-edge tank framing and spawn bounds.");
                         game.ReturnHome();held=pan.X;pan.PanByPixels(-100);Require(pan.X==held,"Home must block panning.");
                         Require(!errors,"Camera audit must have no runtime errors.");
-                        Debug.Log("MEGATANKS_CAMERA_PAN_OK: single full-width camera, mouse/touch drag, spawn clamps, fixed horizon, HUD/popup/pause/reward blocking, no auto tracking, wave bounds, restart and Home.");Finish(0);break;
+                        Debug.Log("MEGATANKS_CAMERA_PAN_OK: single full-width camera, mouse/touch drag, spawn clamps, fixed horizon, HUD/popup/pause/reward blocking, tank follow with stable viewport and manual offset, wave bounds, restart and Home.");Finish(0);break;
                 }
             }
             catch(Exception e){Debug.LogException(e);Finish(1);}
+        }
+        static void CheckFollow(BattleGame game,BattleCameraPan pan)
+        {
+            switch(step)
+            {
+                case 0:
+                    game.UI.Play();StageProgressionAudit.DisableWeapons(game);
+                    tankX=game.Artwork.transform.position.x;held=pan.X;
+                    tankViewportBeforeAdvance=game.TankCamera.WorldToViewportPoint(game.Artwork.transform.position);
+                    cameraRest=game.TankCamera.transform.position;Next();break;
+                case 1:
+                case 2:
+                    float advanced=game.Artwork.transform.position.x-tankX;
+                    Require(advanced>0&&Mathf.Abs(pan.X-held-advanced)<.001f,"Camera must follow tank advance exactly.");
+                    Require(Vector3.Distance(game.TankCamera.WorldToViewportPoint(game.Artwork.transform.position),tankViewportBeforeAdvance)<.001f,"Tank screen position must remain stable with default framing and after dragging.");
+                    Require(game.TankCamera.transform.position.y==cameraRest.y&&game.TankCamera.transform.position.z==cameraRest.z,"Follow must keep camera height and depth fixed.");
+                    if(step==1)
+                    {
+                        pan.PanByPixels(-100);
+                        tankX=game.Artwork.transform.position.x;held=pan.X;
+                        tankViewportBeforeAdvance=game.TankCamera.WorldToViewportPoint(game.Artwork.transform.position);
+                    }
+                    else {game.SetPaused(true);held=pan.X;tankX=game.Artwork.transform.position.x;}
+                    Next();break;
+                case 3:
+                    Require(pan.X==held&&game.Artwork.transform.position.x==tankX,"Pause must stop tank and camera movement.");
+                    game.SetPaused(false);game.SetStance(TankStance.Defensive);Next();break;
+                case 4:
+                    Require(pan.X==held&&game.Artwork.transform.position.x==tankX,"Defensive stance must stop tank and camera movement.");
+                    game.StartBattle();StageProgressionAudit.DisableWeapons(game);game.SetStance(TankStance.Defensive);
+                    Require(pan.X==pan.StartX&&Mathf.Abs(game.TankCamera.WorldToViewportPoint(game.Artwork.transform.position).x-game.TankStartViewportX)<.001f,"Restart must restore initial tank framing.");
+                    game.ReturnHome();Require(pan.X==pan.StartX,"Home must reset camera framing.");
+                    Require(!errors,"Follow audit must have no runtime errors.");
+                    Debug.Log("MEGATANKS_CAMERA_FOLLOW_OK: stable screen position before and after manual pan, fixed height/depth, pause, defensive stance, restart and Home.");Finish(0);break;
+            }
         }
         static void Finish(int code){EditorApplication.update-=Check;Application.logMessageReceived-=Log;EditorApplication.playModeStateChanged-=Entered;EditorSettings.enterPlayModeOptionsEnabled=false;EditorApplication.Exit(code);}
     }

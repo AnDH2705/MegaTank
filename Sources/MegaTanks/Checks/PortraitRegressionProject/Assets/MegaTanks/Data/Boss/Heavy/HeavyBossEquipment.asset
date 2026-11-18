@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd939a9be1946647a7e3721ee16f6c7, type: 3}
+  m_Name: HeavyBossEquipment
+  m_EditorClassIdentifier: 
+  machineGun: {fileID: 11400000, guid: 17b0416fb20b9314fb297633bc43aeb1, type: 2}
+  cannon: {fileID: 11400000, guid: 76cda9844141433498fea5e5453d2a1c, type: 2}
+  mortar: {fileID: 11400000, guid: 06df6459a1f068440851ad0cd140b032, type: 2}

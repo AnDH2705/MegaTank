@@ -330,8 +330,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1406f05b03f8be4498a38350b23de60f, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   muzzle: {fileID: 8945744995209267449}
   wheels:
   - {fileID: 5004657006906426227}
@@ -349,8 +349,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da7759c48cdc2f2409b57e41ac27d080, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   stats:
     armor: 0
     evasion: 0
@@ -359,14 +359,14 @@ MonoBehaviour:
     id: GroundEnemy1
     kind: 0
     baseHealth: 70
-    baseHealthGrow: 0
+    baseHealthGrow: 3.5
     armorGrow: 0
-    evasionGrow: 0
+    evasionGrow: 1
     criticalChanceReductionGrow: 0
     criticalDamageReductionGrow: 0
-    baseSpeed: 0.6
+    baseSpeed: 0.7
     baseSpeedGrow: 0
-    advanceInsideRange: {x: 1, y: 5}
+    advanceInsideRange: {x: 0.5, y: 2.5}
     advanceInsideRangeGrow: {x: 0, y: 0}
     score: 100
     scoreGrow: 0
@@ -377,18 +377,19 @@ MonoBehaviour:
     artworkWidth: 2.2
     scale: 1
     weapon:
+      reloadSpeed: 100
       damageBonus: 0
-      accuracy: 100
-      armorPenetration: 0
+      accuracy: 75
+      armorPenetration: 15
       criticalChance: 0
       criticalDamage: 0
       damageType: 0
       type: 1
       damage: 8
-      damageGrow: 0
+      damageGrow: 0.4
       damageBonusGrow: 0
-      accuracyGrow: 0
-      armorPenetrationGrow: 0
+      accuracyGrow: 1
+      armorPenetrationGrow: 0.5
       criticalChanceGrow: 0
       criticalDamageGrow: 0
       reserveCapacity: 10
@@ -401,6 +402,7 @@ MonoBehaviour:
       shotDelayGrow: 0
       reloadTime: 4
       reloadTimeGrow: 0
+      reloadSpeedGrow: 0
       projectileSpeed: 18
       projectileSpeedGrow: 0
       gravity: 3

@@ -44,7 +44,7 @@ namespace MegaTanks
             var ui=FindObjectOfType<CanvasGameUI>();
             if(ui==null)throw new InvalidOperationException("The scene needs the MegaTanksCanvas UI prefab.");
             ui.game=battle;ui.layout=ui.GetComponent<UICanvasLayout>();ui.root=ui.layout.safeArea;
-            ui.layout.HideScreens();ui.MakePortrait();ui.BindHome();ui.BindHud();ui.BindSettings();
+            ui.layout.HideScreens();ui.MakePortrait();ui.BindHome();ui.BindHud();ui.BindSettings();ui.BindCurrencies();ui.BindProgression();
             ui.FitSafeArea();ui.RefreshStage();ui.Refresh();return ui;
         }
         void BindHome()
@@ -61,6 +61,15 @@ namespace MegaTanks
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect,safe.min,null,out var min);
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect,safe.max,null,out var max);
             root.anchoredPosition=(min+max)*.5f;root.localScale=Vector3.one*Mathf.Min((max.x-min.x)/1920,(max.y-min.y)/1080);
+            // Controls retain their safe-area layout; the route background covers the
+            // entire canvas, including the margins on wide/tall displays and cutouts.
+            var background=View(UIScreen.Route).Get<RectTransform>("Radar Route Background");
+            var parent=(RectTransform)background.parent;
+            var canvasMin=(Vector2)parent.InverseTransformPoint(canvasRect.TransformPoint(canvasRect.rect.min));
+            var canvasMax=(Vector2)parent.InverseTransformPoint(canvasRect.TransformPoint(canvasRect.rect.max));
+            background.anchorMin=background.anchorMax=background.pivot=Vector2.one*.5f;
+            background.anchoredPosition=(canvasMin+canvasMax)*.5f-parent.rect.center;
+            background.sizeDelta=canvasMax-canvasMin;
             lastSafe=safe;lastSize=new Vector2(Screen.width,Screen.height);
         }
         public void ChangeStage(int delta){int count=game.Frontend?.stages?.Length??1;stageIndex=Mathf.Clamp(stageIndex+delta,0,Mathf.Max(0,count-1));RefreshStage();}
@@ -68,8 +77,10 @@ namespace MegaTanks
         {
             var v=View(UIScreen.Home);var stages=game.Frontend?.stages;
             string title=stages!=null&&stages.Length>0?stages[stageIndex].stageName:"Stage 1";
-            Text(v,"Stage Name Plate/Selected Stage",title);Text(v,"Stage Swipe Area/Stage Count","ROUND 1 / "+(stages!=null&&stages.Length>0?stages[stageIndex].rounds:10));Text(v,"Stage Swipe Area/Route Name",title);
+            Text(v,"Stage Name Plate/Selected Stage",title);Text(v,"Stage Swipe Area/Stage Count","ROUND 1 / "+(stages!=null&&stages.Length>0?stages[stageIndex].rounds:game.Stage.Definition.rounds));Text(v,"Stage Swipe Area/Route Name",title);
             v.Get<Button>("Previous Stage").interactable=stageIndex>0;v.Get<Button>("Next Stage").interactable=stageIndex<(stages?.Length??1)-1;
+            Active(v,"Previous Stage",(stages?.Length??1)>1);Active(v,"Next Stage",(stages?.Length??1)>1);
+            v.Get<Image>("Stage Swipe Area").sprite=(stages?.Length??1)>1?skin.homeStageSelector:skin.homeButtonBase;
         }
         public void Play(){ClosePopup();if(game.Frontend?.stages?.Length>0)game.SelectStage(game.Frontend.stages[stageIndex]);game.StartBattle();screenKey="";Refresh();UpdateHud();}
         public void OpenEquipment(){activeSlot=null;filter=null;selected=null;OpenPopup("Equipment");}
@@ -80,6 +91,7 @@ namespace MegaTanks
             var v=View(screen);v.gameObject.SetActive(true);
             Click(v,"Close Popup",ClosePopup);
             if(value=="Equipment")DrawEquipment();
+            else if(value=="Crew"){crewStation=0;crewSelected=null;crewFilter=0;DrawCrew();}
             else { Click(v,"Dismiss Backdrop",ClosePopup);if(value=="Settings")SyncSettings(); }
         }
         public void ClosePopup()
@@ -120,13 +132,20 @@ namespace MegaTanks
         {
             if(SystemInfo.graphicsDeviceType==UnityEngine.Rendering.GraphicsDeviceType.Null)return;
             portrait=new RenderTexture(512,640,16,RenderTextureFormat.ARGB32);portrait.name="Tank UI Portrait";portrait.Create();
-            portraitTank=Instantiate(game.Artwork.gameObject);portraitTank.name="UI Tank Portrait";portraitTank.transform.position=new Vector3(0,1000,0);portraitTank.transform.localScale=Vector3.one;
-            portraitTank.GetComponent<TankArtwork>().ResetVisual();foreach(var b in portraitTank.GetComponentsInChildren<MonoBehaviour>())b.enabled=false;
-            foreach(var t in portraitTank.GetComponentsInChildren<Transform>())t.gameObject.layer=30;
             game.TankCamera.cullingMask&=~(1<<30);
             portraitCamera=new GameObject("Tank Portrait Camera").AddComponent<Camera>();portraitCamera.orthographic=true;portraitCamera.cullingMask=1<<30;
             portraitCamera.clearFlags=CameraClearFlags.SolidColor;portraitCamera.backgroundColor=Color.clear;portraitCamera.targetTexture=portrait;portraitCamera.orthographicSize=5.8f;
-            FramePortrait();portraitCamera.Render();portraitCamera.enabled=false;
+            RebuildPortrait();portraitCamera.enabled=false;
+        }
+        void RebuildPortrait()
+        {
+            if(portrait==null||portraitCamera==null)return;
+            if(portraitTank!=null){portraitTank.SetActive(false);Destroy(portraitTank);}
+            portraitTank=Instantiate(game.Artwork.gameObject);portraitTank.name="UI Tank Portrait";portraitTank.transform.position=new Vector3(0,1000,0);portraitTank.transform.localScale=Vector3.one;
+            portraitTank.GetComponent<TankArtwork>().ResetVisual();foreach(var b in portraitTank.GetComponentsInChildren<MonoBehaviour>(true))b.enabled=false;
+            // Prepare hidden weapon parts too, so swapping equipment preserves portrait visibility.
+            foreach(var t in portraitTank.GetComponentsInChildren<Transform>(true))t.gameObject.layer=30;
+            FramePortrait();portraitCamera.Render();
         }
         void FramePortrait()
         {
@@ -144,6 +163,6 @@ namespace MegaTanks
             foreach(var behaviour in portraitTank.GetComponentsInChildren<MonoBehaviour>(true))behaviour.enabled=false;
             FramePortrait();portraitCamera.Render();
         }
-        void OnDestroy(){if(portraitTank!=null)Destroy(portraitTank);if(portraitCamera!=null)Destroy(portraitCamera.gameObject);if(portrait!=null){portrait.Release();Destroy(portrait);}}
+        void OnDestroy(){if(game!=null&&game.Progression!=null){game.Progression.Changed-=RefreshProgressionViews;game.Wallet.Changed-=RefreshUpgradeControls;}if(game!=null&&game.Wallet!=null)game.Wallet.Changed-=RefreshCurrencies;if(portraitTank!=null)Destroy(portraitTank);if(portraitCamera!=null)Destroy(portraitCamera.gameObject);if(portrait!=null){portrait.Release();Destroy(portrait);}}
     }
 }

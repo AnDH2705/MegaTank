@@ -43,7 +43,7 @@ GẮN VÀO GAME
 Sau khi tạo prefab, kéo prefab vào field GameObject của script gọi effect:
   MegaTankVFX.VfxAutoRelease.Spawn(explosionPrefab, hitPosition, Quaternion.identity);
 Muzzle: truyền Quaternion.Euler(0,0,gocNongSung).
-FireBoltDemoMotion chỉ dùng để bay thử và nổ sau 0.32s. Khi gắn vào projectile
+FireBoltDemoMotion chỉ được gallery demo thêm lúc chạy để bay thử và nổ sau 0.32s. Prefab FireBolt không chứa demo motion. Khi gắn vào projectile
 thật, bỏ component demo motion, cho VFX bám projectile đang có; hit/damage do
 game xử lý. Dùng StopEmission() lúc trúng đích, rồi effect tự thu hồi.
 Khi dùng Spine: gọi hit VFX ở event melee_hit, muzzle ở event fire, không gọi
@@ -62,3 +62,21 @@ Tài liệu Unity về flipbook, emission và World space:
 https://docs.unity3d.com/2022.3/Documentation/Manual/PartSysTexSheetAnimModule.html
 https://docs.unity3d.com/2022.3/Documentation/Manual/PartSysEmissionModule.html
 https://docs.unity3d.com/2022.3/Documentation/ScriptReference/ParticleSystemSimulationSpace.World.html
+
+
+TÍCH HỢP BATTLE — 2026-11-18
+- MegaTanks > Use Arcade VFX gọi đúng menu MegaTank VFX > 1. Build prefabs,
+  rồi gắn MuzzleFlash, HitSpark, ExplosionSmall/Big và FireBolt vào catalog
+  Assets/MegaTanks/Data/Resources/BattleVfx.asset. Catalog đã được gắn sẵn.
+- GunArtwork.Fire / MortarArtwork.Fire / EnemyWeapon gọi muzzle một lần mỗi
+  phát bắn. Va chạm Projectile2D gọi hit hoặc explosion; damage vẫn do game xử lý.
+- FireBolt bám vị trí/hướng của shell thật qua BattleVfxEffect. Không tự bay,
+  không tự gây damage. Lifetime khi bám theo đạn không bị cắt ở mốc 1 giây.
+- Projectile2D.Release tách liên kết và StopEmission trước khi huỷ đạn; world-space
+  smoke và TrailRenderer tiếp tục tắt tự nhiên rồi mới trả effect về pool.
+  OnDisable là đường dự phòng cho đạn bị huỷ từ bên ngoài.
+- Đạn hết tầm hoặc quá 30 giây hoạt động được thu hồi; pause dừng thời gian.
+  ClearEncounterTransient / ReturnHome xoá hiệu ứng khi rời trận.
+- Playtest tự động: MegaTanks.Editor.ArcadeVfxAudit.Run. Kiểm tra súng thật,
+  va chạm hai phe, khói sau huỷ đạn, pooling, pause, range/lifetime và cleanup.
+  CombatFormulaAudit.Run kiểm tra bổ sung công thức damage và AoE của cối.

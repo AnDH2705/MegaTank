@@ -11,7 +11,8 @@ namespace MegaTanks
         [Min(1)] public float range = 35;
         [Min(1)] public int salvoSize = 3;
         [Min(.01f)] public float shotDelay = .1f;
-        [Min(.02f), Tooltip("Reload starts after the final salvo shot.")] public float reloadTime = 1.25f;
+        [Min(.02f),InspectorName("Base Reload Time"),Tooltip("Base duration before Reload Speed is applied. Reload starts after the final salvo shot.")] public float reloadTime = 1.25f;
+        public float EffectiveReloadTime=>CalculateReloadTime(reloadTime,reloadSpeed);
         [Min(1)] public float projectileSpeed = 18;
         [Min(0)] public float gravity = .35f;
         [Min(0), InspectorName("Max Ammo")] public int reserveCapacity = 150;

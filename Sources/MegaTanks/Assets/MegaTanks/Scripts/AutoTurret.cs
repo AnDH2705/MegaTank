@@ -10,7 +10,7 @@ namespace MegaTanks
         public GunDefinition Definition { get; private set; }
         public GunStats Stats => stats;
         EnemyKind preferredTarget => stats.preferredTarget;
-        float reloadTime => stats.reloadTime;
+        float reloadTime => stats.EffectiveReloadTime;
         int salvoSize => stats.salvoSize;
         float shotDelay => stats.shotDelay;
         float range => stats.range;
@@ -23,6 +23,8 @@ namespace MegaTanks
         public string DisplayName => displayName;
         public float DamagePerShot => new DamageAttack(stats.damage,stats).WeaponDamage;
         public float ReloadTime => reloadTime;
+        public float BaseReloadTime=>stats.reloadTime;
+        public float ReloadSpeed=>stats.reloadSpeed;
         public int SalvoSize => salvoSize;
         public float ShotDelay => shotDelay;
         public int ShotsFired { get; private set; }
@@ -37,11 +39,15 @@ namespace MegaTanks
 
         public void BindArtwork(GunArtwork visual) { artwork = visual; artwork.ResetVisual(); }
 
-        public void Configure(GunDefinition definition)
+        public void Configure(GunDefinition definition, PlayerProgression progression = null, float crewDamage = 0,float reloadSpeedBonus=0,float accuracyBonus=0,CrewDefinition crewMember=null)
         {
             Definition = definition;
             displayName = definition.displayName;
             stats = definition.stats.Copy();
+            stats.reloadSpeed+=Mathf.Max(0,reloadSpeedBonus);
+            stats.accuracy+=Mathf.Max(0,accuracyBonus);
+            if (progression != null) stats.damage = progression.Damage(definition);
+            if(crewMember!=null)crewMember.ApplyWeapon(stats,progression!=null?progression.Get(crewMember).Level:1,progression!=null?progression.Get(crewMember).Stars:0);
             initialDamageBonus = stats.damageBonus;
             ReserveCapacity = Mathf.Max(0, stats.reserveCapacity);
             shotColor = stats.heavyProjectile ? new Color(1, .72f, .28f) : new Color(.34f, .91f, 1);
@@ -81,10 +87,14 @@ namespace MegaTanks
         void Update()
         {
             BattleGame game = BattleGame.Instance;
-            if (!game.Running) return;
-            cooldown = Mathf.Max(0, cooldown - Time.deltaTime);
+            if (game.Running) cooldown = Mathf.Max(0, cooldown - Time.deltaTime);
             Target = game.FindTarget(transform.position, preferredTarget, range);
-            if (Target == null) return;
+            if (Target == null)
+            {
+                artwork.ResetVisual();
+                return;
+            }
+            if (!game.Running) return;
             // Compensate for gravity and enemy movement from the rotating artwork's actual muzzle.
             for (int i = 0; i < 5; i++)
             {
@@ -104,7 +114,7 @@ namespace MegaTanks
             var shell = new GameObject(displayName + " shell").AddComponent<Projectile2D>();
             shell.Initialize(origin, direction, projectileSpeed, stats.damage, shotColor, stats.heavyProjectile, range, projectileGravity,
                 ProjectileTeam.Player, stats.projectileSprite, stats.projectileWidth, false, stats);
-            artwork.Fire();
+            artwork.Fire(stats.heavyProjectile);
             ShotFired?.Invoke(Time.time);
         }
     }

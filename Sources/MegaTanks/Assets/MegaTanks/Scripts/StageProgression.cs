@@ -31,9 +31,10 @@ namespace MegaTanks
             game = battle; definition = data; catalog = cards;
 
         }
-        public void EndRun() { Mode = StageMode.Inactive; Current = null; }
+        public void EndRun() { game.StageRewards?.EndRun(); Mode = StageMode.Inactive; Current = null; }
         public void BeginRun()
         {
+            game.StageRewards.BeginRun(definition);
             int seed = definition.randomizeSeed ? UnityEngine.Random.Range(0, int.MaxValue) : definition.seed;
             Route = StageRoute.Generate(definition, seed);
             Current = null; FreeServiceCard = PaidServiceCard = null;
@@ -98,7 +99,7 @@ namespace MegaTanks
         }
         public void OnWaveCleared()
         {
-            if (Mode != StageMode.Combat) return;
+            if (Mode != StageMode.Combat || Current == null || !game.Deployed || game.Hull <= 0 || game.EnemyCount > 0) return;
             game.ClearEncounterTransient();
             if (EncounterWave < EncounterWaves)
             {
@@ -107,6 +108,7 @@ namespace MegaTanks
             else if (Current.EncounterType == StageNodeType.Boss)
             {
                 Current.completed = true; Mode = StageMode.Victory;
+                game.StageRewards.CompleteRun();
             }
             else
             {

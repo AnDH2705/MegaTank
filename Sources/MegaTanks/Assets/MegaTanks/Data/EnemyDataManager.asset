@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9caf9d2d6c16de44a8c78f96403f9885, type: 3}
   m_Name: EnemyDataManager
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   healthBarPrefab: {fileID: 81858777786787906, guid: c9e4c1dfaac7b4a4b846a5196aab70ae, type: 3}
   enemyPrefabs:
   - {fileID: 1739948587163343259, guid: bcd6c8d21d2f1bb4b8f954ae00edf34a, type: 3}
@@ -42,6 +42,7 @@ MonoBehaviour:
     artworkWidth: 2.4
     scale: 1
     weapon:
+      reloadSpeed: 100
       damageBonus: 0
       accuracy: 100
       armorPenetration: 0
@@ -66,6 +67,7 @@ MonoBehaviour:
       shotDelayGrow: 0
       reloadTime: 1.8
       reloadTimeGrow: 0
+      reloadSpeedGrow: 0
       projectileSpeed: 22
       projectileSpeedGrow: 0
       gravity: 0.35
@@ -95,6 +97,7 @@ MonoBehaviour:
     artworkWidth: 2.2
     scale: 1
     weapon:
+      reloadSpeed: 100
       damageBonus: 0
       accuracy: 100
       armorPenetration: 0
@@ -119,6 +122,7 @@ MonoBehaviour:
       shotDelayGrow: 0
       reloadTime: 4
       reloadTimeGrow: 0
+      reloadSpeedGrow: 0
       projectileSpeed: 18
       projectileSpeedGrow: 0
       gravity: 3

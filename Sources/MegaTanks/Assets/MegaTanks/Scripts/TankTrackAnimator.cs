@@ -9,6 +9,7 @@ namespace MegaTanks
         [SerializeField] SkeletonAnimation animation;
         float distance;
         public TrackAnimationData Data => data;
+        public EnemyEntity EnemyOwner { get; set; }
         public SkeletonAnimation Animation => animation;
         public float TravelledDistance => distance;
         public int LinkCount => animation.Skeleton.PathConstraints.Items[0].Bones.Count;
@@ -28,8 +29,9 @@ namespace MegaTanks
         void Update()
         {
             var game = BattleGame.Instance;
-            if (animation == null || data == null || game == null || !game.Running || Mathf.Abs(game.TankVelocity.x) < .00001f) return;
-            float travel = game.TankVelocity.x * Time.deltaTime / Mathf.Max(.001f, Mathf.Abs(transform.lossyScale.x));
+            float speed = EnemyOwner != null ? -EnemyOwner.Velocity.x : game != null ? game.TankVelocity.x : 0;
+            if (animation == null || data == null || game == null || !game.Running || Mathf.Abs(speed) < .00001f) return;
+            float travel = speed * Time.deltaTime / Mathf.Max(.001f, Mathf.Abs(transform.lossyScale.x));
             distance = Mathf.Repeat(distance + travel, data.Length);
             // Spine owns the path constraint, bone poses, animation state and mesh generation.
             // Drive its original running loop by terrain travel rather than wall-clock time.

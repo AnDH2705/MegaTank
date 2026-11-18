@@ -1,0 +1,9 @@
+Armor icon generation
+Mode: built-in image generation. Transparent PNG output copied unchanged into the project.
+Date: 2026-11-17
+
+BasicArmor.png prompt:
+Use case: stylized-concept. Asset type: transparent game inventory icon for MegaTanks, a cartoon 2D tank game with bold outlined painted metal equipment. Primary request: one BASIC ARMOR equipment icon, a single thick sturdy olive-drab tank armor plate, slightly curved rectangular shield panel with chamfered corners, reinforced rim and four large rivets. Only the detached plate, no tank or humanoid armor. Hand-painted game sprite style, clean dark contour, chunky readable forms, warm highlights on worn olive steel, light scratches, three-quarter view with subtle thickness. Centered square composition, entire object visible and filling about 80 percent, generous transparent padding. True transparent background. No text, numbers, stars, badge, UI frame, ground, or cast shadow outside object. Must read clearly at 100 pixels.
+
+LightArmor.png prompt:
+Use case: stylized-concept. Asset type: transparent game inventory icon for MegaTanks, cartoon 2D tank game with bold outlined painted metal equipment. Primary request: one LIGHT ARMOR equipment icon, a single slim lightweight tank armor plate: a sleek tapered steel panel with clipped corners, a small reinforced raised central rib, two broad shallow diagonal grooves and small edge bolts. Only the detached plate, not a tank or humanoid armor. Hand-painted game sprite style, clean dark contour, chunky readable forms and warm highlights, muted blue-gray steel with pale worn metal edges, light scratches, three-quarter view with subtle thin thickness. Centered square composition, entire object visible and filling about 80 percent, generous transparent padding. True transparent background. No text, numbers, stars, badge, UI frame, ground, or cast shadow outside object. Must read clearly at 100 pixels.

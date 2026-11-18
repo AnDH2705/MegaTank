@@ -6,7 +6,8 @@ namespace MegaTanks
     public sealed class MortarStats : WeaponCombatStats
     {
         [Min(1), InspectorName("Base Damage")] public float damage = 60;
-        [Min(.1f)] public float reloadTime = 6;
+        [Min(.1f),InspectorName("Base Reload Time")] public float reloadTime = 6;
+        public float EffectiveReloadTime=>CalculateReloadTime(reloadTime,reloadSpeed);
         [Min(1)] public float range = 80;
         [Range(46, 85)] public float launchAngle = 70;
         [Min(.1f)] public float gravity = 12;
@@ -31,8 +32,8 @@ namespace MegaTanks
         public Vector2 LastIntendedTarget { get; private set; }
         public Vector2 LastAimPoint { get; private set; }
         public Vector2 LastLaunchVelocity { get; private set; }
-        public void Configure(MortarArtwork visual, MortarDefinition definition)
-        { artwork = visual; Definition = definition; stats = definition.stats.Copy(); projectileSprite = definition.projectileSprite; ResetWeapon(); }
+        public void Configure(MortarArtwork visual, MortarDefinition definition, PlayerProgression progression = null, float crewDamage = 0,float reloadSpeedBonus=0,float accuracyBonus=0,CrewDefinition crewMember=null)
+        { artwork = visual; Definition = definition; stats = definition.stats.Copy(); stats.reloadSpeed+=Mathf.Max(0,reloadSpeedBonus); stats.accuracy+=Mathf.Max(0,accuracyBonus); if (progression != null) stats.damage = progression.Damage(definition); if(crewMember!=null)crewMember.ApplyWeapon(stats,progression!=null?progression.Get(crewMember).Level:1,progression!=null?progression.Get(crewMember).Stars:0); projectileSprite = definition.projectileSprite; ResetWeapon(); }
         public void ResetWeapon() { Ammo = Mathf.Max(0, stats.reserveCapacity); ShotsFired = 0; cooldown = 0; artwork.ResetVisual(); }
         public void Resupply(float fraction) { Ammo = Mathf.Min(stats.reserveCapacity, Ammo + Mathf.CeilToInt(stats.reserveCapacity * Mathf.Max(0, fraction))); }
 
@@ -85,11 +86,11 @@ namespace MegaTanks
             aim.x += SampleDeviation(stats.deviation);
             if (!TryHighArc(origin, aim, angle, gravity, out Vector2 launch, out _)) return;
             LastAimPoint = aim; LastLaunchVelocity = launch;
-            Ammo--; ShotsFired++; cooldown = Mathf.Max(.1f, stats.reloadTime);
+            Ammo--; ShotsFired++; cooldown = stats.EffectiveReloadTime;
             var shell = new GameObject("Mortar shell").AddComponent<Projectile2D>();
             shell.InitializeMortar(origin, launch, stats.damage, gravity, stats.fullDamageRadius, stats.halfDamageRadius, stats.shellWidth, projectileSprite, stats);
             artwork.Fire();
-            game.Flash(origin, new Color(1, .8f, .3f), .35f);
+            if(game.Vfx.Catalog==null)game.Flash(origin, new Color(1, .8f, .3f), .35f);
         }
     }
 }

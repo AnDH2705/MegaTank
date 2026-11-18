@@ -25,6 +25,13 @@ namespace MegaTanks
         }
         public void SetEnemySpawn(float enemySpawn)
         { enemySpawnX=enemySpawn;MinX=Mathf.Min(playerSpawnX,enemySpawnX,StartX);MaxX=Mathf.Max(playerSpawnX,enemySpawnX,StartX);SetX(X); }
+        public void FollowTank(float horizontalDelta)
+        {
+            // Keep the camera and its drag limits at the same offset from the advancing tank.
+            playerSpawnX+=horizontalDelta;enemySpawnX+=horizontalDelta;
+            StartX+=horizontalDelta;MinX+=horizontalDelta;MaxX+=horizontalDelta;
+            SetX(X+horizontalDelta);
+        }
         public void PanByPixels(float horizontalDelta)
         {
             if(!CanPan || view.pixelWidth<=0)return;

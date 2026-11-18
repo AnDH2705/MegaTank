@@ -8,6 +8,10 @@ namespace MegaTanks
     [Serializable]
     public class WeaponCombatStats
     {
+        [Min(0),Tooltip("Reload speed percentage. Battle reload time = Base Reload Time / (1 + Reload Speed / 100).")]
+        public float reloadSpeed = 100;
+        public static float CalculateReloadTime(float baseReloadTime,float reloadSpeed)
+            =>baseReloadTime/(1+Mathf.Max(0,reloadSpeed)*.01f);
         [Min(0), Tooltip("Percentage bonus to base damage: (1 + bonus / 100) * base damage.")]
         public float damageBonus = 0;
         [Min(0), Tooltip("Uncapped hit percentage before target evasion: accuracy - evasion. Only the final roll chance is clamped.")]

@@ -9,10 +9,12 @@ namespace MegaTanks.Editor
     // Explicit internal visual QA for the map, node services, reveal, and victory screens.
     public static class StageScreensAudit
     {
+        static StageRewardSaveScope rewardSaves;
         static int stage;
         static double since;
         public static void Run()
         {
+            rewardSaves = new StageRewardSaveScope();
             EditorSceneManager.OpenScene(MegaTanksSetup.ScenePath);
             EditorSettings.enterPlayModeOptionsEnabled = true;
             EditorSettings.enterPlayModeOptions = EnterPlayModeOptions.DisableDomainReload;
@@ -70,6 +72,6 @@ namespace MegaTanks.Editor
             }
             catch (Exception exception) { Debug.LogException(exception); Finish(1); }
         }
-        static void Finish(int code) { EditorApplication.update -= Check; EditorSettings.enterPlayModeOptionsEnabled = false; EditorApplication.Exit(code); }
+        static void Finish(int code) { rewardSaves?.Dispose(); EditorApplication.update -= Check; EditorSettings.enterPlayModeOptionsEnabled = false; EditorApplication.Exit(code); }
     }
 }

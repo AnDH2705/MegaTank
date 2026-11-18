@@ -1,0 +1,8 @@
+AutoLoader.png
+Generated with the built-in image generation tool, transparent PNG copied unchanged into the project.
+Compact olive-drab mechanical ammunition feeder, brass cartridges, copper piston and steel gears; bold dark outlines and painted-metal highlights matching MegaTanks equipment. No UI frame or text.
+Generated source: C:/Users/seagu/.codex/generated_images/01a1ec68-eb7b-7973-84d4-fff379a8b993/exec-1048a17f-af3d-4d7f-a334-6a01d2b2ec7e.png
+
+TargetingComputer.png: generated transparent inventory icon. Rugged olive targeting module, cyan crosshair radar screen, brass knobs and copper vents. Source exec-4f2fe1ad-6c3b-432a-b888-40efed04d07d.png.
+CamoPaint.png: generated transparent inventory icon. Woodland camouflage paint can with partially open lid, brush and olive/khaki/brown paint. Source exec-2f7227cb-84b7-47fc-8cdd-2cf3639fd3ea.png.
+Both generated with the built-in image tool in the same bold outlined painted-metal style as Auto Loader; original PNGs copied unchanged.

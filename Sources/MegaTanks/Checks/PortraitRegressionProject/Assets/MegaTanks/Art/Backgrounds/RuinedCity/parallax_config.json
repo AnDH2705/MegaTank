@@ -1,0 +1,89 @@
+{
+  "canvas": {
+    "width": 1920,
+    "height": 1080
+  },
+  "anchor": "top-left",
+  "draw_order": "array order, back to front",
+  "position_formula": "x = -cameraX * factor",
+  "demo_repeat": "alternating mirrored tiles",
+  "layers": [
+    {
+      "file": "layers/00_sky_static.png",
+      "name": "Bầu trời + mặt trời",
+      "z_index": 0,
+      "parallax_factor": 0,
+      "repeat_x": "none",
+      "offset": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "file": "layers/01_far_city.png",
+      "name": "Thành phố xa",
+      "z_index": 1,
+      "parallax_factor": 0.15,
+      "repeat_x": "mirror",
+      "offset": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "file": "layers/02_viaduct.png",
+      "name": "Cầu cạn",
+      "z_index": 2,
+      "parallax_factor": 0.35,
+      "repeat_x": "mirror",
+      "offset": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "file": "layers/03_road.png",
+      "name": "Mặt đường",
+      "z_index": 3,
+      "parallax_factor": 1,
+      "repeat_x": "mirror",
+      "offset": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "file": "layers/04_street_buildings.png",
+      "name": "Dãy nhà + vỉa hè",
+      "z_index": 4,
+      "parallax_factor": 0.7,
+      "repeat_x": "mirror",
+      "offset": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "file": "layers/05_foreground_debris.png",
+      "name": "Phế liệu sát camera",
+      "z_index": 5,
+      "parallax_factor": 1.25,
+      "repeat_x": "mirror",
+      "offset": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "file": "layers/06_overhead_cables.png",
+      "name": "Dây cáp phía trên",
+      "z_index": 6,
+      "parallax_factor": 1.15,
+      "repeat_x": "mirror",
+      "offset": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  ]
+}

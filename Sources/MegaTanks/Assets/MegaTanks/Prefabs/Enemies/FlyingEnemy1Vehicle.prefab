@@ -247,8 +247,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1406f05b03f8be4498a38350b23de60f, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   muzzle: {fileID: 8245908762752803206}
   wheels:
   - {fileID: 6777392623249598444}
@@ -278,34 +278,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da7759c48cdc2f2409b57e41ac27d080, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   stats:
     armor: 0
-    evasion: 0
+    evasion: 20
     criticalChanceReduction: 0
     criticalDamageReduction: 0
     id: FlyingEnemy1
     kind: 1
     baseHealth: 26
-    baseHealthGrow: 0
+    baseHealthGrow: 1.3
     armorGrow: 0
-    evasionGrow: 0
+    evasionGrow: 1
     criticalChanceReductionGrow: 0
     criticalDamageReductionGrow: 0
-    baseSpeed: 0.75
+    baseSpeed: 0.8
     baseSpeedGrow: 0
-    advanceInsideRange: {x: 1, y: 5}
+    advanceInsideRange: {x: 0.5, y: 2.5}
     advanceInsideRangeGrow: {x: 0, y: 0}
     score: 75
     scoreGrow: 0
     baseScraps: 20
-    baseScrapsGrow: 0
+    baseScrapsGrow: 1
     color: {r: 1, g: 0.63, b: 0.25, a: 1}
     artworkPrefab: {fileID: 8160580182256755550}
     artworkWidth: 2.4
     scale: 1
     weapon:
+      reloadSpeed: 100
       damageBonus: 0
       accuracy: 100
       armorPenetration: 0
@@ -314,10 +315,10 @@ MonoBehaviour:
       damageType: 0
       type: 0
       damage: 2
-      damageGrow: 0
+      damageGrow: 0.1
       damageBonusGrow: 0
-      accuracyGrow: 0
-      armorPenetrationGrow: 0
+      accuracyGrow: 1
+      armorPenetrationGrow: 0.25
       criticalChanceGrow: 0
       criticalDamageGrow: 0
       reserveCapacity: 30
@@ -330,6 +331,7 @@ MonoBehaviour:
       shotDelayGrow: 0
       reloadTime: 1.8
       reloadTimeGrow: 0
+      reloadSpeedGrow: 0
       projectileSpeed: 22
       projectileSpeedGrow: 0
       gravity: 0.35

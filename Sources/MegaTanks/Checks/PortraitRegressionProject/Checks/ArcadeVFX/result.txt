@@ -1,0 +1,1 @@
+ARCADE_VFX_PLAYTEST_OK: eight menu-built prefabs; real MG/cannon/mortar muzzle events; projectile attachment >1s; pause; detached smoke drains and pools; player/enemy damage 26/27 exactly once; mortar ground explosion; range and safety expiry; transition cleanup; percentage formulas; zero-accuracy/full/half/outside/evasion AoE; immutable source profiles.

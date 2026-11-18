@@ -12,7 +12,11 @@ namespace MegaTanks
         public void Configure(Transform tube, Transform socket) { barrel = tube; muzzle = socket; }
         void Initialize() { if (initialized) return; rest = barrel.localPosition; initialized = true; }
         public void ResetVisual() { Initialize(); recoil = 0; barrel.localPosition = rest; }
-        public void Fire() { Initialize(); recoil = .08f; }
+        public void Fire()
+        {
+            Initialize(); recoil = .08f;
+            BattleGame.Instance?.Vfx?.Muzzle(muzzle,Vector2.up,false,true);
+        }
         void LateUpdate()
         {
             if (BattleGame.Instance == null || !BattleGame.Instance.Running) return;

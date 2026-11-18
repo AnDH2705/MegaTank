@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae295254d3a27de44bac9bcf4150d98f, type: 3}
+  m_Name: EquipmentSkin
+  m_EditorClassIdentifier:
+  background: {fileID: 21300000, guid: b59430c1091e2a8429e702615040d3db, type: 3}
+  button: {fileID: 21300000, guid: 6ead2d7223d3b8646b5322495f59311b, type: 3}
+  back: {fileID: 21300000, guid: c65996d5b93d1764bb5686f4c529e0be, type: 3}
+  title: {fileID: 21300000, guid: 9fe833fe5a6fc814dbe6c72784bea515, type: 3}
+  panel: {fileID: 21300000, guid: 519166ae9b75508479c815dfa07ceea7, type: 3}
+  plus: {fileID: 21300000, guid: 128600eea3307d942bb47431707cca35, type: 3}
+  equippedBadge: {fileID: 21300000, guid: a6966dfa72b027543989666601619866, type: 3}
+  equippedText: {fileID: 21300000, guid: e7251aa30654bbd4295c721ed3c43fa5, type: 3}
+  itemCard: {fileID: 21300000, guid: ce0688a087c5bdd47805c8a62747fe24, type: 3}
+  slot: {fileID: 21300000, guid: ca3b755b19baae348a0faaacb6808bd5, type: 3}
+  slotSelected: {fileID: 21300000, guid: 0de69014d37310c44befccde13d4e62f, type: 3}
+  dropdownArrow: {fileID: 21300000, guid: 896c0b4e7a40f0342b33067c68894c72, type: 3}
+  dropdownField: {fileID: 21300000, guid: b74a8aad54e39174cb10238f14fce581, type: 3}

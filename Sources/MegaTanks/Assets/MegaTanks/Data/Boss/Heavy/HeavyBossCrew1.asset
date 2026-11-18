@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fb7123e62a298044b48e644c5b79c86, type: 3}
+  m_Name: HeavyBossCrew1
+  m_EditorClassIdentifier: 
+  id: boss.heavy.crew.1
+  baseDamage: 0
+  displayName: Heavy Boss Pip
+  role: 1
+  specialty: Driver
+  description: Pip loves an open road and knows every sound the engine makes.
+  portrait: {fileID: 21300000, guid: 3798d72f34922d04bbcce8e363dd22b8, type: 3}
+  stats:
+    accuracy:
+      value: 0
+      gain: 0
+    damageBonus:
+      value: 0
+      gain: 0
+    reloadSpeed:
+      value: 0
+      gain: 0
+    criticalChance:
+      value: 0
+      gain: 0
+    criticalDamage:
+      value: 0
+      gain: 0
+    hp:
+      value: 0
+      gain: 0
+    evasion:
+      value: 0
+      gain: 0
+    speed:
+      value: 0
+      gain: 0
+    damage:
+      value: 0
+      gain: 0
+    armor:
+      value: 0
+      gain: 0
+    armorPenetration:
+      value: 0
+      gain: 0
+    criticalChanceReduction:
+      value: 0
+      gain: 0
+    criticalDamageReduction:
+      value: 0
+      gain: 0
+    weaponRange:
+      value: 0
+      gain: 0
+    baseReloadTime:
+      value: 0
+      gain: 0
+    projectileSpeed:
+      value: 0
+      gain: 0
+    activationRange:
+      value: 0
+      gain: 0

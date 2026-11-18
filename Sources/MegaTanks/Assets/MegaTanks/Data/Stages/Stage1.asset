@@ -11,11 +11,45 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 659a8319414b40d1be05f2f1070e1c5f, type: 3}
   m_Name: Stage1
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   stageName: Stage 1
   stageNumber: 1
   stageDifficulty: 0
-  rounds: 10
+  boss:
+    template: {fileID: 11400000, guid: 880d4f0610d20bb43954666ff0a4c977, type: 2}
+    machineGun:
+      level: 1
+      stars: 0
+    cannon:
+      level: 1
+      stars: 0
+    mortar:
+      level: 1
+      stars: 0
+    armor:
+      level: 1
+      stars: 0
+    crew:
+    - level: 1
+      stars: 0
+      station: Gunner
+    - level: 1
+      stars: 0
+      station: Driver
+    - level: 1
+      stars: 0
+      station: Sub gunner
+    - level: 1
+      stars: 0
+      station: Weapon specialist
+    - level: 1
+      stars: 0
+      station: Commando
+  firstClearGems: 100
+  firstClearPartsBase: 500
+  firstClearPetFoodBase: 500
+  firstClearResourcesPerStage: 50
+  rounds: 5
   battleWeight: 45
   hardBattleWeight: 20
   supplyWeight: 12

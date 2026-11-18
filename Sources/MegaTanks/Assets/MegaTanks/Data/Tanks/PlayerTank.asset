@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3360945e29d77124681beea8b27d8483, type: 3}
   m_Name: PlayerTank
   m_EditorClassIdentifier:
+  id: tank.medium
+  displayName: Medium Tank
+  artworkPrefab: {fileID: 83713285497036217, guid: 722be6232e4b1244598ce47959408a8d, type: 3}
+  armorSlots: 1
   stats:
     armor: 0
     evasion: 0

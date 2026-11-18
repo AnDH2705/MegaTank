@@ -246,15 +246,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c98c0041a33d5e4bbc82ec2992f09ae, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   tankDefinition: {fileID: 11400000, guid: 0488649f9cad33646b4cf7cefbe8a6f5, type: 2}
   startingLoadout: {fileID: 11400000, guid: 62ac654c717b5c8409b215f5ec053af4, type: 2}
   cardCatalog: {fileID: 11400000, guid: 1d47a64e8950c7b45ae4eb80a82c7290, type: 2}
   stageDefinition: {fileID: 11400000, guid: d494555c928f4b4199e4bf6ec8f403ca, type: 2}
   backgroundCatalog: {fileID: 11400000, guid: 565bd4ac334a1e546b086bf3780c0382, type: 2}
+  battleVfxCatalog: {fileID: 0}
   enemyDataManager: {fileID: 11400000, guid: 7d7a1e6c7cfca1240b3ce28c5b3f647f, type: 2}
-  enemySpawnDistance: 10
+  enemySpawnDistance: 20
   flyingEnemyHeight: 2.1
   flyingEnemyLaneSpacing: 0.45
   tankStartViewportX: 0.18

@@ -24,7 +24,13 @@ namespace MegaTankVFX
             bool fireBolt = index == 7;
             var position = fireBolt ? new Vector3(-3.5f, -1.6f, 0f) : Vector3.zero;
             var rotation = fireBolt ? Quaternion.Euler(0f, 0f, 30f) : Quaternion.identity;
-            VfxAutoRelease.Spawn(Effects[index], position, rotation);
+            var fx = VfxAutoRelease.Spawn(Effects[index], position, rotation);
+            if(fireBolt && fx)
+            {
+                var motion=fx.GetComponent<FireBoltDemoMotion>();
+                if(!motion)motion=fx.AddComponent<FireBoltDemoMotion>();
+                motion.ImpactPrefab=Effects[0];
+            }
         }
         private void OnGUI()
         {

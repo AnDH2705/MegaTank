@@ -1,0 +1,993 @@
+{
+  "asset": "Tank Cutaway — empty two-room vehicle",
+  "version": 1,
+  "canvas_px": [
+    1231,
+    1277
+  ],
+  "coordinates": "Top-left origin; +x right, +y down. All positions and pivots are native-resolution pixels.",
+  "render_order": "Layers listed from back to front. Cropped PNGs retain alpha; position_px restores their source canvas coordinates.",
+  "orientation": "Right-facing flat side elevation",
+  "crew_removed": 3,
+  "artwork": "Character removal and hidden-wall restoration were generated from the approved design. Components are extracted at native resolution from the empty reference.",
+  "groups": {
+    "root": {
+      "pivot_px": [
+        532,
+        1156
+      ],
+      "parent": null
+    },
+    "body": {
+      "pivot_px": [
+        525,
+        1040
+      ],
+      "parent": "root"
+    },
+    "cannon": {
+      "pivot_px": [
+        921,
+        486
+      ],
+      "parent": "body"
+    },
+    "roof_gun": {
+      "pivot_px": [
+        790,
+        231
+      ],
+      "parent": "body"
+    },
+    "driver_controls": {
+      "pivot_px": [
+        424,
+        977
+      ],
+      "parent": "body"
+    }
+  },
+  "layers": [
+    {
+      "name": "01_track_backplate",
+      "file": "parts/01_track_backplate.png",
+      "position_px": [
+        155,
+        1076
+      ],
+      "size_px": [
+        756,
+        156
+      ],
+      "pivot_canvas_px": [
+        532,
+        1156
+      ],
+      "pivot_local_px": [
+        377,
+        80
+      ],
+      "parent": "root",
+      "role": "Opaque backing behind road wheels",
+      "note": "",
+      "z_order": 0
+    },
+    {
+      "name": "02_track_belt",
+      "file": "parts/02_track_belt.png",
+      "position_px": [
+        132,
+        1047
+      ],
+      "size_px": [
+        795,
+        211
+      ],
+      "pivot_canvas_px": [
+        532,
+        1156
+      ],
+      "pivot_local_px": [
+        400,
+        109
+      ],
+      "parent": "root",
+      "role": "Near-side tread loop and perimeter metal rim",
+      "note": "Separate belt loop; road wheels are independent sprites.",
+      "z_order": 1
+    },
+    {
+      "name": "03_wheel_01",
+      "file": "parts/03_wheel_01.png",
+      "position_px": [
+        223,
+        1092
+      ],
+      "size_px": [
+        137,
+        134
+      ],
+      "pivot_canvas_px": [
+        290.5,
+        1159
+      ],
+      "pivot_local_px": [
+        67.5,
+        67
+      ],
+      "parent": "root",
+      "role": "Independent road wheel",
+      "note": "Rotate at the supplied wheel center. Keep the original slight ellipse aspect.",
+      "z_order": 2
+    },
+    {
+      "name": "03_wheel_02",
+      "file": "parts/03_wheel_02.png",
+      "position_px": [
+        348,
+        1092
+      ],
+      "size_px": [
+        139,
+        133
+      ],
+      "pivot_canvas_px": [
+        417,
+        1158.5
+      ],
+      "pivot_local_px": [
+        69,
+        66.5
+      ],
+      "parent": "root",
+      "role": "Independent road wheel",
+      "note": "Rotate at the supplied wheel center. Keep the original slight ellipse aspect.",
+      "z_order": 3
+    },
+    {
+      "name": "03_wheel_03",
+      "file": "parts/03_wheel_03.png",
+      "position_px": [
+        568,
+        1091
+      ],
+      "size_px": [
+        138,
+        134
+      ],
+      "pivot_canvas_px": [
+        637,
+        1158
+      ],
+      "pivot_local_px": [
+        69,
+        67
+      ],
+      "parent": "root",
+      "role": "Independent road wheel",
+      "note": "Rotate at the supplied wheel center. Keep the original slight ellipse aspect.",
+      "z_order": 4
+    },
+    {
+      "name": "03_wheel_04",
+      "file": "parts/03_wheel_04.png",
+      "position_px": [
+        699,
+        1092
+      ],
+      "size_px": [
+        143,
+        133
+      ],
+      "pivot_canvas_px": [
+        770,
+        1158.5
+      ],
+      "pivot_local_px": [
+        71,
+        66.5
+      ],
+      "parent": "root",
+      "role": "Independent road wheel",
+      "note": "Rotate at the supplied wheel center. Keep the original slight ellipse aspect.",
+      "z_order": 5
+    },
+    {
+      "name": "04_room_lower_backwall",
+      "file": "parts/04_room_lower_backwall.png",
+      "position_px": [
+        170,
+        686
+      ],
+      "size_px": [
+        716,
+        345
+      ],
+      "pivot_canvas_px": [
+        530,
+        853
+      ],
+      "pivot_local_px": [
+        360,
+        167
+      ],
+      "parent": "body",
+      "role": "Restored opaque lower cabin back wall",
+      "note": "",
+      "z_order": 6
+    },
+    {
+      "name": "05_room_upper_backwall",
+      "file": "parts/05_room_upper_backwall.png",
+      "position_px": [
+        169,
+        272
+      ],
+      "size_px": [
+        716,
+        392
+      ],
+      "pivot_canvas_px": [
+        526,
+        469
+      ],
+      "pivot_local_px": [
+        357,
+        197
+      ],
+      "parent": "body",
+      "role": "Restored opaque upper cabin back wall",
+      "note": "",
+      "z_order": 7
+    },
+    {
+      "name": "06_exhaust_pipe",
+      "file": "parts/06_exhaust_pipe.png",
+      "position_px": [
+        88,
+        79
+      ],
+      "size_px": [
+        174,
+        174
+      ],
+      "pivot_canvas_px": [
+        211,
+        240
+      ],
+      "pivot_local_px": [
+        123,
+        161
+      ],
+      "parent": "body",
+      "role": "Rear bent exhaust",
+      "note": "",
+      "z_order": 8
+    },
+    {
+      "name": "08_main_gun_barrel",
+      "file": "parts/08_main_gun_barrel.png",
+      "position_px": [
+        994,
+        417
+      ],
+      "size_px": [
+        222,
+        164
+      ],
+      "pivot_canvas_px": [
+        1005,
+        496
+      ],
+      "pivot_local_px": [
+        11,
+        79
+      ],
+      "parent": "cannon",
+      "role": "Main cannon barrel; independent recoil",
+      "note": "Recoil toward left along barrel axis; test amplitude 12 px.",
+      "z_order": 9
+    },
+    {
+      "name": "07_main_gun_mantlet",
+      "file": "parts/07_main_gun_mantlet.png",
+      "position_px": [
+        913,
+        313
+      ],
+      "size_px": [
+        105,
+        347
+      ],
+      "pivot_canvas_px": [
+        921,
+        486
+      ],
+      "pivot_local_px": [
+        8,
+        173
+      ],
+      "parent": "cannon",
+      "role": "Main cannon round armored mounting",
+      "note": "",
+      "z_order": 10
+    },
+    {
+      "name": "09_ammo_rack",
+      "file": "parts/09_ammo_rack.png",
+      "position_px": [
+        169,
+        616
+      ],
+      "size_px": [
+        270,
+        50
+      ],
+      "pivot_canvas_px": [
+        302,
+        654
+      ],
+      "pivot_local_px": [
+        133,
+        38
+      ],
+      "parent": "body",
+      "role": "Upper-room shell storage rack",
+      "note": "",
+      "z_order": 11
+    },
+    {
+      "name": "10_ammo_shell_upper",
+      "file": "parts/10_ammo_shell_upper.png",
+      "position_px": [
+        177,
+        476
+      ],
+      "size_px": [
+        267,
+        92
+      ],
+      "pivot_canvas_px": [
+        307,
+        522
+      ],
+      "pivot_local_px": [
+        130,
+        46
+      ],
+      "parent": "body",
+      "role": "Upper stored artillery shell",
+      "note": "",
+      "z_order": 12
+    },
+    {
+      "name": "11_ammo_shell_lower",
+      "file": "parts/11_ammo_shell_lower.png",
+      "position_px": [
+        176,
+        554
+      ],
+      "size_px": [
+        268,
+        77
+      ],
+      "pivot_canvas_px": [
+        307,
+        595
+      ],
+      "pivot_local_px": [
+        131,
+        41
+      ],
+      "parent": "body",
+      "role": "Lower stored artillery shell",
+      "note": "",
+      "z_order": 13
+    },
+    {
+      "name": "12_warning_placard",
+      "file": "parts/12_warning_placard.png",
+      "position_px": [
+        221,
+        354
+      ],
+      "size_px": [
+        139,
+        115
+      ],
+      "pivot_canvas_px": [
+        290,
+        410
+      ],
+      "pivot_local_px": [
+        69,
+        56
+      ],
+      "parent": "body",
+      "role": "Upper-room warning sign",
+      "note": "",
+      "z_order": 14
+    },
+    {
+      "name": "13_upper_access_duct",
+      "file": "parts/13_upper_access_duct.png",
+      "position_px": [
+        348,
+        269
+      ],
+      "size_px": [
+        190,
+        115
+      ],
+      "pivot_canvas_px": [
+        405,
+        280
+      ],
+      "pivot_local_px": [
+        57,
+        11
+      ],
+      "parent": "body",
+      "role": "Bent roof access pipe / duct",
+      "note": "",
+      "z_order": 15
+    },
+    {
+      "name": "14_access_ladder",
+      "file": "parts/14_access_ladder.png",
+      "position_px": [
+        425,
+        369
+      ],
+      "size_px": [
+        118,
+        103
+      ],
+      "pivot_canvas_px": [
+        486,
+        417
+      ],
+      "pivot_local_px": [
+        61,
+        48
+      ],
+      "parent": "body",
+      "role": "Two ladder rungs and their rail",
+      "note": "",
+      "z_order": 16
+    },
+    {
+      "name": "15_targeting_monitor",
+      "file": "parts/15_targeting_monitor.png",
+      "position_px": [
+        611,
+        272
+      ],
+      "size_px": [
+        177,
+        236
+      ],
+      "pivot_canvas_px": [
+        709,
+        395
+      ],
+      "pivot_local_px": [
+        98,
+        123
+      ],
+      "parent": "body",
+      "role": "Target display with mounting rail",
+      "note": "",
+      "z_order": 17
+    },
+    {
+      "name": "16_cannon_control_panel",
+      "file": "parts/16_cannon_control_panel.png",
+      "position_px": [
+        687,
+        473
+      ],
+      "size_px": [
+        106,
+        75
+      ],
+      "pivot_canvas_px": [
+        740,
+        511
+      ],
+      "pivot_local_px": [
+        53,
+        38
+      ],
+      "parent": "body",
+      "role": "Cannon aiming control console",
+      "note": "",
+      "z_order": 18
+    },
+    {
+      "name": "17_cannon_wall_lever",
+      "file": "parts/17_cannon_wall_lever.png",
+      "position_px": [
+        773,
+        333
+      ],
+      "size_px": [
+        123,
+        256
+      ],
+      "pivot_canvas_px": [
+        848,
+        455
+      ],
+      "pivot_local_px": [
+        75,
+        122
+      ],
+      "parent": "body",
+      "role": "Cannon control wall lever and mount",
+      "note": "",
+      "z_order": 19
+    },
+    {
+      "name": "18_cannon_operator_seat",
+      "file": "parts/18_cannon_operator_seat.png",
+      "position_px": [
+        520,
+        480
+      ],
+      "size_px": [
+        197,
+        186
+      ],
+      "pivot_canvas_px": [
+        625,
+        650
+      ],
+      "pivot_local_px": [
+        105,
+        170
+      ],
+      "parent": "body",
+      "role": "Restored empty upper swivel chair",
+      "note": "",
+      "z_order": 20
+    },
+    {
+      "name": "19_cannon_footrest",
+      "file": "parts/19_cannon_footrest.png",
+      "position_px": [
+        711,
+        560
+      ],
+      "size_px": [
+        83,
+        80
+      ],
+      "pivot_canvas_px": [
+        727,
+        626
+      ],
+      "pivot_local_px": [
+        16,
+        66
+      ],
+      "parent": "body",
+      "role": "Upper-room operator footrest",
+      "note": "",
+      "z_order": 21
+    },
+    {
+      "name": "20_driver_pipes",
+      "file": "parts/20_driver_pipes.png",
+      "position_px": [
+        181,
+        683
+      ],
+      "size_px": [
+        129,
+        100
+      ],
+      "pivot_canvas_px": [
+        255,
+        694
+      ],
+      "pivot_local_px": [
+        74,
+        11
+      ],
+      "parent": "body",
+      "role": "Lower-room exposed pipe cluster",
+      "note": "",
+      "z_order": 22
+    },
+    {
+      "name": "21_driver_gauge",
+      "file": "parts/21_driver_gauge.png",
+      "position_px": [
+        341,
+        690
+      ],
+      "size_px": [
+        105,
+        101
+      ],
+      "pivot_canvas_px": [
+        393,
+        741
+      ],
+      "pivot_local_px": [
+        52,
+        51
+      ],
+      "parent": "body",
+      "role": "Lower-room circular instrument",
+      "note": "",
+      "z_order": 23
+    },
+    {
+      "name": "22_driver_vent",
+      "file": "parts/22_driver_vent.png",
+      "position_px": [
+        426,
+        683
+      ],
+      "size_px": [
+        167,
+        151
+      ],
+      "pivot_canvas_px": [
+        521,
+        783
+      ],
+      "pivot_local_px": [
+        95,
+        100
+      ],
+      "parent": "body",
+      "role": "Lower-room vent and connection pipe",
+      "note": "",
+      "z_order": 24
+    },
+    {
+      "name": "23_utility_fan_box",
+      "file": "parts/23_utility_fan_box.png",
+      "position_px": [
+        642,
+        684
+      ],
+      "size_px": [
+        154,
+        216
+      ],
+      "pivot_canvas_px": [
+        719,
+        803
+      ],
+      "pivot_local_px": [
+        77,
+        119
+      ],
+      "parent": "body",
+      "role": "Lower-room square utility box and supports",
+      "note": "",
+      "z_order": 25
+    },
+    {
+      "name": "24_utility_linkage",
+      "file": "parts/24_utility_linkage.png",
+      "position_px": [
+        590,
+        854
+      ],
+      "size_px": [
+        267,
+        95
+      ],
+      "pivot_canvas_px": [
+        719,
+        903
+      ],
+      "pivot_local_px": [
+        129,
+        49
+      ],
+      "parent": "body",
+      "role": "Lower-room horizontal mechanical linkage",
+      "note": "",
+      "z_order": 26
+    },
+    {
+      "name": "25_driver_seat",
+      "file": "parts/25_driver_seat.png",
+      "position_px": [
+        242,
+        842
+      ],
+      "size_px": [
+        184,
+        168
+      ],
+      "pivot_canvas_px": [
+        313,
+        996
+      ],
+      "pivot_local_px": [
+        71,
+        154
+      ],
+      "parent": "body",
+      "role": "Restored empty lower driver chair",
+      "note": "",
+      "z_order": 27
+    },
+    {
+      "name": "26_driver_lever_back",
+      "file": "parts/26_driver_lever_back.png",
+      "position_px": [
+        494,
+        831
+      ],
+      "size_px": [
+        45,
+        59
+      ],
+      "pivot_canvas_px": [
+        510,
+        880
+      ],
+      "pivot_local_px": [
+        16,
+        49
+      ],
+      "parent": "driver_controls",
+      "role": "Rear driving lever visible handle",
+      "note": "",
+      "z_order": 28
+    },
+    {
+      "name": "27_driver_lever_front",
+      "file": "parts/27_driver_lever_front.png",
+      "position_px": [
+        402,
+        843
+      ],
+      "size_px": [
+        69,
+        154
+      ],
+      "pivot_canvas_px": [
+        424,
+        977
+      ],
+      "pivot_local_px": [
+        22,
+        134
+      ],
+      "parent": "driver_controls",
+      "role": "Front driving lever",
+      "note": "",
+      "z_order": 29
+    },
+    {
+      "name": "28_driver_pedal",
+      "file": "parts/28_driver_pedal.png",
+      "position_px": [
+        422,
+        929
+      ],
+      "size_px": [
+        64,
+        81
+      ],
+      "pivot_canvas_px": [
+        443,
+        998
+      ],
+      "pivot_local_px": [
+        21,
+        69
+      ],
+      "parent": "driver_controls",
+      "role": "Driver foot pedal",
+      "note": "",
+      "z_order": 30
+    },
+    {
+      "name": "29_driver_console",
+      "file": "parts/29_driver_console.png",
+      "position_px": [
+        460,
+        866
+      ],
+      "size_px": [
+        117,
+        145
+      ],
+      "pivot_canvas_px": [
+        523,
+        1001
+      ],
+      "pivot_local_px": [
+        63,
+        135
+      ],
+      "parent": "body",
+      "role": "Fixed driver control pedestal",
+      "note": "",
+      "z_order": 31
+    },
+    {
+      "name": "30_driver_floor_platform",
+      "file": "parts/30_driver_floor_platform.png",
+      "position_px": [
+        241,
+        997
+      ],
+      "size_px": [
+        348,
+        36
+      ],
+      "pivot_canvas_px": [
+        414,
+        1016
+      ],
+      "pivot_local_px": [
+        173,
+        19
+      ],
+      "parent": "body",
+      "role": "Lower driver seat floor platform",
+      "note": "",
+      "z_order": 32
+    },
+    {
+      "name": "31_structural_floor_beam",
+      "file": "parts/31_structural_floor_beam.png",
+      "position_px": [
+        167,
+        652
+      ],
+      "size_px": [
+        723,
+        45
+      ],
+      "pivot_canvas_px": [
+        529,
+        675
+      ],
+      "pivot_local_px": [
+        362,
+        23
+      ],
+      "parent": "body",
+      "role": "Floor separator between two interior rooms",
+      "note": "",
+      "z_order": 33
+    },
+    {
+      "name": "32_front_hull_frame",
+      "file": "parts/32_front_hull_frame.png",
+      "position_px": [
+        74,
+        159
+      ],
+      "size_px": [
+        895,
+        905
+      ],
+      "pivot_canvas_px": [
+        525,
+        1040
+      ],
+      "pivot_local_px": [
+        451,
+        881
+      ],
+      "parent": "body",
+      "role": "Foreground cutaway armor shell; room apertures transparent",
+      "note": "",
+      "z_order": 34
+    },
+    {
+      "name": "33_roof_gun_mount",
+      "file": "parts/33_roof_gun_mount.png",
+      "position_px": [
+        642,
+        209
+      ],
+      "size_px": [
+        168,
+        48
+      ],
+      "pivot_canvas_px": [
+        669,
+        233
+      ],
+      "pivot_local_px": [
+        27,
+        24
+      ],
+      "parent": "roof_gun",
+      "role": "Roof machine-gun supporting feet",
+      "note": "",
+      "z_order": 35
+    },
+    {
+      "name": "34_roof_gun_grips",
+      "file": "parts/34_roof_gun_grips.png",
+      "position_px": [
+        606,
+        142
+      ],
+      "size_px": [
+        86,
+        82
+      ],
+      "pivot_canvas_px": [
+        674,
+        205
+      ],
+      "pivot_local_px": [
+        68,
+        63
+      ],
+      "parent": "roof_gun",
+      "role": "Roof machine-gun rear grips",
+      "note": "",
+      "z_order": 36
+    },
+    {
+      "name": "36_roof_gun_barrel",
+      "file": "parts/36_roof_gun_barrel.png",
+      "position_px": [
+        833,
+        142
+      ],
+      "size_px": [
+        198,
+        96
+      ],
+      "pivot_canvas_px": [
+        844,
+        180
+      ],
+      "pivot_local_px": [
+        11,
+        38
+      ],
+      "parent": "roof_gun",
+      "role": "Roof machine-gun barrel and perforated shroud",
+      "note": "Separate barrel for small recoil.",
+      "z_order": 37
+    },
+    {
+      "name": "35_roof_gun_receiver",
+      "file": "parts/35_roof_gun_receiver.png",
+      "position_px": [
+        672,
+        84
+      ],
+      "size_px": [
+        177,
+        156
+      ],
+      "pivot_canvas_px": [
+        790,
+        231
+      ],
+      "pivot_local_px": [
+        118,
+        147
+      ],
+      "parent": "roof_gun",
+      "role": "Roof machine-gun receiver",
+      "note": "",
+      "z_order": 38
+    }
+  ],
+  "limits": [
+    "Restored hidden walls are supplied. Components partly occluded by armor are front-visible cutouts, not complete 360-degree mechanical drawings.",
+    "This package supplies artwork and pivots, not a bound Spine/Unity project.",
+    "Tread belt is one loop sprite; tread conveyor motion requires UV scrolling, mesh deformation, or an additional link cycle."
+  ]
+}

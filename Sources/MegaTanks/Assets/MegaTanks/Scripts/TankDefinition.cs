@@ -14,6 +14,12 @@ namespace MegaTanks
     [CreateAssetMenu(menuName = "MegaTanks/Tanks/Tank Definition")]
     public sealed class TankDefinition : ScriptableObject
     {
+        public string id;
+        public string displayName = "Medium Tank";
+        public TankArtwork artworkPrefab;
+        [Range(1,2)] public int armorSlots = 1;
+        public int ArmorSlots => Mathf.Clamp(armorSlots,1,2);
+        public int AccessorySlots => 3-ArmorSlots;
         public TankStats stats = new TankStats();
     }
 }

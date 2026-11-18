@@ -1,0 +1,31 @@
+GUI Pro-SuperCasual / Layer Lab
+Source: https://drive.google.com/file/d/1dj89xXo3nJAiK5Ygg3X5FyMNytJU0Zta/view
+Selected original sprites from ResourcesData/Sprites/Components:
+Button/Button01_l_Blue.png
+Button/Button01_l_DarkGray.png
+Button/Button01_l_Gray.png
+Button/Button01_l_Mint.png
+Button/Button01_l_Red.png
+Button/Button01_l_Sky.png
+Button/Button01_l_Yellow.png
+Frame/BasicFrame_Round17.png
+Frame/ItemFrame03_Single_Navy.png
+Popup/Popup02~09_Topber_White_Bg.png
+Popup/Popup02~09_Topber_White_BgTop.png
+Slider/Slider_Handle_Bg.png
+Slider/Slider_Handle_Fill_White1.png
+Slider/Slider_Handle_Handle.png
+Slider/Slider_Play01_Bg.png
+Slider/Slider_Play01_Fill.png
+UI_Etc/Switch_White_Bg.png
+UI_Etc/Switch_White_Fill1.png
+UI_Etc/Switch_White_Handle.png
+IconMisc/Icon_Check01.png
+IconMisc/Icon_Close01.png
+IconMisc/Icon_Menu_Hamburger.png
+IconMisc/Icon_Pause.png
+IconMisc/Icon_Arrow_Prev1.png
+IconMisc/Icon_Arrow_Next1.png
+IconMisc/Icon_Music.png
+IconMisc/Icon_Setting.png
+Icon_PictoIcons/128/PictoIcon_Sound.Png

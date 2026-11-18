@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24e9d8fdda9b0904e831e59818e7f6d1, type: 3}
+  m_Name: HeavyBossSecondArmor
+  m_EditorClassIdentifier: 
+  displayName: Heavy Boss Second Armor
+  icon: {fileID: 21300000, guid: b17eb7eaec4a2bd48a509ff6473dcb45, type: 3}
+  id: boss.heavy.second-armor
+  hp: 100
+  armor: 10
+  speed: 0
+  evasion: 0
+  hpPerLevel: 10

@@ -8,12 +8,14 @@ namespace MegaTanks.Editor
 {
     public static class BattleBackgroundAudit
     {
+        static StageRewardSaveScope rewardSaves;
         static int stage, selections, retained;
         static double since;
         static bool capture, errors;
         public static void Capture() { capture = true; Run(); }
         public static void Run()
         {
+            rewardSaves = new StageRewardSaveScope();
             EditorSceneManager.OpenScene(MegaTanksSetup.ScenePath);
             EditorSettings.enterPlayModeOptionsEnabled = true;
             EditorSettings.enterPlayModeOptions = EnterPlayModeOptions.DisableDomainReload;
@@ -155,7 +157,7 @@ namespace MegaTanks.Editor
             }
             catch (Exception exception) { Debug.LogException(exception); Finish(1); }
         }
-        static void Finish(int code) { EditorApplication.update -= Check; EditorSettings.enterPlayModeOptionsEnabled = false; EditorApplication.Exit(code); }
+        static void Finish(int code) { rewardSaves?.Dispose(); EditorApplication.update -= Check; EditorSettings.enterPlayModeOptionsEnabled = false; EditorApplication.Exit(code); }
     }
 }
 

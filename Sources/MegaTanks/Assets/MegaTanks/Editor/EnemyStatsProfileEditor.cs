@@ -14,7 +14,7 @@ namespace MegaTanks.Editor
             foreach(string key in new[]{"baseHealth","armor","evasion","baseSpeed","criticalChanceReduction","criticalDamageReduction","advanceInsideRange","score","baseScraps"})Pair(stats,key);
             var weapon=stats.FindPropertyRelative("weapon");EditorGUILayout.Space();EditorGUILayout.LabelField("Weapon stats",EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(weapon.FindPropertyRelative("type"));EditorGUILayout.PropertyField(weapon.FindPropertyRelative("damageType"));Header();
-            foreach(string key in new[]{"damage","damageBonus","accuracy","armorPenetration","criticalChance","criticalDamage","reserveCapacity","range","salvoSize","shotDelay","reloadTime","projectileSpeed","gravity"})Pair(weapon,key);
+            foreach(string key in new[]{"damage","damageBonus","accuracy","armorPenetration","criticalChance","criticalDamage","reserveCapacity","range","salvoSize","shotDelay","reloadTime","reloadSpeed","projectileSpeed","gravity"})Pair(weapon,key);
             EditorGUILayout.Space();EditorGUILayout.LabelField("Artwork (does not grow)",EditorStyles.boldLabel);
             foreach(string key in new[]{"color","artworkPrefab","artworkWidth","scale"})EditorGUILayout.PropertyField(stats.FindPropertyRelative(key));
             serializedObject.ApplyModifiedProperties();

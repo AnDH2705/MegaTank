@@ -1,0 +1,1 @@
+PASS: saved Gatling startup, MG and Gatling switching in both directions, repeat switching, reopening Garage, portrait pixel visibility, slot icons and starting a run.

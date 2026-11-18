@@ -13,6 +13,7 @@ namespace MegaTankVFX
         private int sourceId;
         private float age;
         private float trailTail;
+        private float stoppedAt;
         private bool stopping;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -43,6 +44,8 @@ namespace MegaTankVFX
                 if (!fx) fx = created.AddComponent<VfxAutoRelease>();
             }
             fx.sourceId = id;
+            var defaults=prefab.GetComponent<VfxAutoRelease>();
+            fx.Lifetime=defaults?defaults.Lifetime:1.4f;
             fx.transform.SetParent(null, false);
             fx.transform.SetPositionAndRotation(position, rotation);
             fx.transform.localScale = Vector3.one * scale;
@@ -56,6 +59,8 @@ namespace MegaTankVFX
 
         public void StopEmission()
         {
+            if(stopping)return;
+            stoppedAt=Time.time;
             if (particles == null) Cache();
             foreach (var ps in particles) ps.Stop(false, ParticleSystemStopBehavior.StopEmitting);
             foreach (var trail in trails) trail.emitting = false;
@@ -65,14 +70,18 @@ namespace MegaTankVFX
         private void Update()
         {
             age += Time.deltaTime;
-            if (age < Lifetime) return;
-            if (!stopping) StopEmission();
+            if (!stopping)
+            {
+                if(age<Lifetime)return;
+                StopEmission();
+            }
             bool alive = false;
             foreach (var ps in particles) alive |= ps.IsAlive(false);
-            if ((alive || age < Lifetime + trailTail) && age < Lifetime + 3f) return;
+            if (alive || Time.time-stoppedAt < trailTail) return;
             if (sourceId == 0) { Destroy(gameObject); return; }
             Stack<VfxAutoRelease> pool;
             if (!Pools.TryGetValue(sourceId, out pool)) { pool = new Stack<VfxAutoRelease>(); Pools[sourceId] = pool; }
+            transform.SetParent(null,true);
             gameObject.SetActive(false);
             if (pool.Count < 32) pool.Push(this); else Destroy(gameObject);
         }

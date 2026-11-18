@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b471c17ac79e3184395f50c350c2b9c7, type: 3}
+  m_Name: Frontend
+  m_EditorClassIdentifier: 
+  stages:
+  - {fileID: 11400000, guid: d494555c928f4b4199e4bf6ec8f403ca, type: 2}
+  tanks:
+  - {fileID: 11400000, guid: 0488649f9cad33646b4cf7cefbe8a6f5, type: 2}
+  - {fileID: 11400000, guid: b25137e5557e4e841bbe412840aa44d1, type: 2}
+  inventory:
+  - {fileID: 11400000, guid: 04dd40d1d9121a448be946904a021c8b, type: 2}
+  - {fileID: 11400000, guid: e0b6f0ae42462a9489a9c5391903a5ed, type: 2}
+  - {fileID: 11400000, guid: 2edf608ec9b350441a30b24ce7011d34, type: 2}
+  - {fileID: 11400000, guid: 6d52416a8721f2c4084f85140139f2b0, type: 2}
+  - {fileID: 11400000, guid: 426f3f0cc579b9446a6aa8fee1975868, type: 2}
+  - {fileID: 11400000, guid: 514385c7cf6657140b41f91656691dbe, type: 2}
+  - {fileID: 11400000, guid: 64191e86cfd30ff4f81e430c58bdc8fd, type: 2}
+  - {fileID: 11400000, guid: dacb876fa3f9277449c4429e77611d12, type: 2}
+  - {fileID: 11400000, guid: 3486bb19235f9654bbedc402d60ee6c6, type: 2}
+  crew: {fileID: 11400000, guid: 0dd248fcd5c56d642806a4c03d069bb6, type: 2}

@@ -1,0 +1,1 @@
+PASS: Home navigation; comparison tradeoffs; ammo ceil/caps; repair caps; no-benefit states; low/empty alerts; reward text fit; route inspection/commit; defeat report; Garage and restart.

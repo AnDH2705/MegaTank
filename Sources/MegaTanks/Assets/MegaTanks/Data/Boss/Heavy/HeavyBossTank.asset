@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b935b95a4c0162b49ac7ee72a32c170f, type: 3}
+  m_Name: HeavyBossTank
+  m_EditorClassIdentifier: 
+  id: HeavyBossTank
+  tank: {fileID: 11400000, guid: 36a83eac1df97e5469f3368e738a231c, type: 2}
+  artworkPrefab: {fileID: 5669496337232274860, guid: 899865886f9c61e4fad1444be6996cb2, type: 3}
+  equipment: {fileID: 11400000, guid: b45189d51614e334a851ee0a1a1c324b, type: 2}
+  armor: {fileID: 11400000, guid: 5a9366a3e5e85d749bc1520107556ad1, type: 2}
+  secondArmor: {fileID: 11400000, guid: 0be73fbf48e357149b8c6113d6fff618, type: 2}
+  crew:
+  - station: Gunner
+    member: {fileID: 11400000, guid: edd291112103f3147bcce15edc479929, type: 2}
+  - station: Driver
+    member: {fileID: 11400000, guid: def13f1286b68f849a54b20f29eb1928, type: 2}
+  - station: Sub gunner
+    member: {fileID: 11400000, guid: f61ffa42ac7a1dd43ad271ca6ceecae6, type: 2}
+  - station: Weapon specialist
+    member: {fileID: 11400000, guid: 0d83e4027cf6d5d4e812fb75a62545c9, type: 2}
+  - station: Commando
+    member: {fileID: 11400000, guid: 84e1a1df2130d8e4691dd7623976666c, type: 2}
+  score: 1000
+  scraps: 150
+  healthBarColor: {r: 0.85, g: 0.2, b: 0.2, a: 1}

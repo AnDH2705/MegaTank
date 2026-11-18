@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd939a9be1946647a7e3721ee16f6c7, type: 3}
+  m_Name: StartingLoadout
+  m_EditorClassIdentifier:
+  machineGun: {fileID: 11400000, guid: e0b6f0ae42462a9489a9c5391903a5ed, type: 2}
+  cannon: {fileID: 11400000, guid: 04dd40d1d9121a448be946904a021c8b, type: 2}
+  mortar: {fileID: 11400000, guid: 2edf608ec9b350441a30b24ce7011d34, type: 2}

@@ -21,8 +21,10 @@ namespace MegaTanks
         public float salvoSizeGrow;
         [Min(.01f)] public float shotDelay = .1f;
         public float shotDelayGrow;
-        [Min(.02f)] public float reloadTime = 1.8f;
-        public float reloadTimeGrow;
+        [Min(.02f),InspectorName("Base Reload Time")] public float reloadTime = 1.8f;
+        [InspectorName("Base Reload Time Grow")] public float reloadTimeGrow;
+        public float reloadSpeedGrow;
+        public float EffectiveReloadTime=>CalculateReloadTime(reloadTime,reloadSpeed);
         [Min(1)] public float projectileSpeed = 22;
         public float projectileSpeedGrow;
         [Min(0)] public float gravity = .35f;
@@ -42,6 +44,7 @@ namespace MegaTanks
             result.salvoSize=EnemyDefinition.Grow(salvoSize,salvoSizeGrow,difficulty);
             result.shotDelay=EnemyDefinition.Grow(shotDelay,shotDelayGrow,difficulty);
             result.reloadTime=EnemyDefinition.Grow(reloadTime,reloadTimeGrow,difficulty);
+            result.reloadSpeed=EnemyDefinition.Grow(reloadSpeed,reloadSpeedGrow,difficulty);
             result.projectileSpeed=EnemyDefinition.Grow(projectileSpeed,projectileSpeedGrow,difficulty);
             result.gravity=EnemyDefinition.Grow(gravity,gravityGrow,difficulty);
             return result;
@@ -65,6 +68,7 @@ namespace MegaTanks
         [InspectorName("Scraps Grow")] public float baseScrapsGrow;
         public Color color = new Color(1,.63f,.25f);
         public EnemyVehicleArtwork artworkPrefab;
+        public CommandoArtwork commandoPrefab;
         [Min(.1f)] public float artworkWidth = 2.2f;
         [Min(.1f)] public float scale = 1.25f;
         public float ScaledArtworkWidth => artworkWidth*Mathf.Max(.1f,scale);

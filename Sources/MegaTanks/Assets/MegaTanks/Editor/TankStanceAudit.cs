@@ -125,7 +125,7 @@ namespace MegaTanks.Editor
                     Require(game.AllWeaponsInRange && game.TankVelocity == Vector2.zero, "Aggressive must stop at the mortar's range when it is limiting.");
                     game.Mortar.Stats.range = mortarRange;
                     var gun = game.MainGun;
-                    gun.Configure(gun.DisplayName, EnemyKind.Ground, gun.ReloadTime, gun.DamagePerShot, gun.SalvoSize, gun.ShotDelay, 8, gun.ProjectileGravity);
+                    gun.Configure(gun.DisplayName, EnemyKind.Ground, gun.BaseReloadTime, gun.DamagePerShot, gun.SalvoSize, gun.ShotDelay, 8, gun.ProjectileGravity);
                     PlaceJustOutside(gun.transform.position, 8);
                     Require(!game.AllWeaponsInRange, "The cannon's range must also gate movement."); Next();
                 }

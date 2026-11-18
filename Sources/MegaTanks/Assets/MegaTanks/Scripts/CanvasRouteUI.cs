@@ -8,6 +8,7 @@ namespace MegaTanks
         void DrawMap()
         {
             var v=Show(UIScreen.Route);var stage=game.Stage;Text(v,"Route Stage",stage.Definition.stageName.ToUpperInvariant());Click(v,"Route Back",ConfirmHome);
+            inspectedNode=-1;DrawRouteInspection();
             var scroll=v.Get<ScrollRect>("Route Scroll");var content=scroll.content;
             foreach(Transform child in content){child.gameObject.SetActive(false);Destroy(child.gameObject);}
             float viewportWidth=scroll.viewport.rect.width,height=scroll.viewport.rect.height;
@@ -24,7 +25,7 @@ namespace MegaTanks
             {
                 var p=point(node);bool current=node==stage.Current,available=stage.CanSelect(node.id);var type=node.type==StageNodeType.Random&&!node.entered?StageNodeType.Random:node.EncounterType;
                 var item=Instantiate(layout.routeNode,content,false);item.name="Node "+node.id;var r=item.Get<RectTransform>("$root");r.anchoredPosition=new Vector2(p.x+r.rect.width*(r.pivot.x-.5f),-p.y+r.rect.height*(r.pivot.y-.5f));
-                int id=node.id;Click(item,"$root",()=>stage.SelectNode(id));item.Get<Button>("$root").interactable=available;
+                int id=node.id;Click(item,"$root",()=>{inspectedNode=id;DrawRouteInspection();});item.Get<Button>("$root").interactable=available;
                 item.Get<Image>("$root").sprite=current?routeSkin.nodeCurrent:available?routeSkin.nodeAvailable:node.completed?routeSkin.nodeNormal:routeSkin.nodeLocked;
                 item.Get<Image>("Route Node Icon").sprite=routeSkin.IconFor(type);item.Get<Image>("Route Node Icon").color=new Color(1,1,1,current||available?1:node.completed?.85f:.65f);
                 Text(item,"Node Name",StageNodeIcons.Name(type));

@@ -1,0 +1,6 @@
+{
+  "name": "MegaTankVFX.Runtime",
+  "rootNamespace": "MegaTankVFX",
+  "references": [],
+  "autoReferenced": true
+}

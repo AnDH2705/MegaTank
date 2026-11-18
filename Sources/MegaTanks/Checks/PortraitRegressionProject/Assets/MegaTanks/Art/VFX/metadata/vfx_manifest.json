@@ -1,0 +1,681 @@
+{
+  "version": 1,
+  "type": "2D cartoon tank VFX add-on",
+  "frame_canvas_px": [
+    512,
+    512
+  ],
+  "sheet_grid": [
+    4,
+    2
+  ],
+  "sheet_px": [
+    2048,
+    1024
+  ],
+  "coordinates": "Top-left origin; +x right, +y down. Socket positions refer to the original 1231 x 1277 tank canvas. All frames retain an identical pivot within each clip.",
+  "orientation": "Gun/cannon fire right. Exhaust initially goes left, then drifts up-left.",
+  "tank_canvas_px": [
+    1231,
+    1277
+  ],
+  "clips": [
+    {
+      "name": "machine_gun_muzzle",
+      "pivot": [
+        64,
+        256
+      ],
+      "duration_ms": 40,
+      "socket": [
+        1015,
+        191
+      ],
+      "preview_scale": 0.44,
+      "rotation_cw_deg": 0,
+      "frame_count": 8,
+      "sheet": "sheets/machine_gun_muzzle_4x2.png",
+      "frames": [
+        {
+          "file": "frames/machine_gun_muzzle/machine_gun_muzzle_01.png",
+          "index": 0,
+          "duration_ms": 40,
+          "sheet_rect_px": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "pivot_px": [
+            64,
+            256
+          ],
+          "source_cell_px": [
+            0,
+            0,
+            444,
+            444
+          ],
+          "source_emitter_px": [
+            93.0,
+            260.0
+          ]
+        },
+        {
+          "file": "frames/machine_gun_muzzle/machine_gun_muzzle_02.png",
+          "index": 1,
+          "duration_ms": 40,
+          "sheet_rect_px": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "pivot_px": [
+            64,
+            256
+          ],
+          "source_cell_px": [
+            444,
+            0,
+            887,
+            444
+          ],
+          "source_emitter_px": [
+            34.0,
+            259.5
+          ]
+        },
+        {
+          "file": "frames/machine_gun_muzzle/machine_gun_muzzle_03.png",
+          "index": 2,
+          "duration_ms": 40,
+          "sheet_rect_px": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "pivot_px": [
+            64,
+            256
+          ],
+          "source_cell_px": [
+            887,
+            0,
+            1330,
+            444
+          ],
+          "source_emitter_px": [
+            53.0,
+            259.0
+          ]
+        },
+        {
+          "file": "frames/machine_gun_muzzle/machine_gun_muzzle_04.png",
+          "index": 3,
+          "duration_ms": 40,
+          "sheet_rect_px": [
+            1536,
+            0,
+            512,
+            512
+          ],
+          "pivot_px": [
+            64,
+            256
+          ],
+          "source_cell_px": [
+            1330,
+            0,
+            1774,
+            444
+          ],
+          "source_emitter_px": [
+            85.0,
+            259.5
+          ]
+        },
+        {
+          "file": "frames/machine_gun_muzzle/machine_gun_muzzle_05.png",
+          "index": 4,
+          "duration_ms": 40,
+          "sheet_rect_px": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "pivot_px": [
+            64,
+            256
+          ],
+          "source_cell_px": [
+            0,
+            444,
+            444,
+            887
+          ],
+          "source_emitter_px": [
+            93.0,
+            226.5
+          ]
+        },
+        {
+          "file": "frames/machine_gun_muzzle/machine_gun_muzzle_06.png",
+          "index": 5,
+          "duration_ms": 40,
+          "sheet_rect_px": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "pivot_px": [
+            64,
+            256
+          ],
+          "source_cell_px": [
+            444,
+            444,
+            887,
+            887
+          ],
+          "source_emitter_px": [
+            89.0,
+            226.5
+          ]
+        },
+        {
+          "file": "frames/machine_gun_muzzle/machine_gun_muzzle_07.png",
+          "index": 6,
+          "duration_ms": 40,
+          "sheet_rect_px": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "pivot_px": [
+            64,
+            256
+          ],
+          "source_cell_px": [
+            887,
+            444,
+            1330,
+            887
+          ],
+          "source_emitter_px": [
+            85.0,
+            228.0
+          ]
+        },
+        {
+          "file": "frames/machine_gun_muzzle/machine_gun_muzzle_08.png",
+          "index": 7,
+          "duration_ms": 40,
+          "sheet_rect_px": [
+            1536,
+            512,
+            512,
+            512
+          ],
+          "pivot_px": [
+            64,
+            256
+          ],
+          "source_cell_px": [
+            1330,
+            444,
+            1774,
+            887
+          ],
+          "source_emitter_px": [
+            85.0,
+            228.0
+          ]
+        }
+      ],
+      "loop": "one-shot; retrigger for gun bursts or stagger particles for exhaust"
+    },
+    {
+      "name": "cannon_muzzle",
+      "pivot": [
+        48,
+        256
+      ],
+      "duration_ms": 75,
+      "socket": [
+        1206,
+        512
+      ],
+      "preview_scale": 0.78,
+      "rotation_cw_deg": 7,
+      "frame_count": 8,
+      "sheet": "sheets/cannon_muzzle_4x2.png",
+      "frames": [
+        {
+          "file": "frames/cannon_muzzle/cannon_muzzle_01.png",
+          "index": 0,
+          "duration_ms": 75,
+          "sheet_rect_px": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "pivot_px": [
+            48,
+            256
+          ],
+          "source_cell_px": [
+            0,
+            0,
+            444,
+            444
+          ],
+          "source_emitter_px": [
+            27.0,
+            243.0
+          ]
+        },
+        {
+          "file": "frames/cannon_muzzle/cannon_muzzle_02.png",
+          "index": 1,
+          "duration_ms": 75,
+          "sheet_rect_px": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "pivot_px": [
+            48,
+            256
+          ],
+          "source_cell_px": [
+            444,
+            0,
+            887,
+            444
+          ],
+          "source_emitter_px": [
+            18.0,
+            243.0
+          ]
+        },
+        {
+          "file": "frames/cannon_muzzle/cannon_muzzle_03.png",
+          "index": 2,
+          "duration_ms": 75,
+          "sheet_rect_px": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "pivot_px": [
+            48,
+            256
+          ],
+          "source_cell_px": [
+            887,
+            0,
+            1330,
+            444
+          ],
+          "source_emitter_px": [
+            9.0,
+            243.0
+          ]
+        },
+        {
+          "file": "frames/cannon_muzzle/cannon_muzzle_04.png",
+          "index": 3,
+          "duration_ms": 75,
+          "sheet_rect_px": [
+            1536,
+            0,
+            512,
+            512
+          ],
+          "pivot_px": [
+            48,
+            256
+          ],
+          "source_cell_px": [
+            1330,
+            0,
+            1774,
+            444
+          ],
+          "source_emitter_px": [
+            15.0,
+            243.0
+          ]
+        },
+        {
+          "file": "frames/cannon_muzzle/cannon_muzzle_05.png",
+          "index": 4,
+          "duration_ms": 75,
+          "sheet_rect_px": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "pivot_px": [
+            48,
+            256
+          ],
+          "source_cell_px": [
+            0,
+            444,
+            444,
+            887
+          ],
+          "source_emitter_px": [
+            15.0,
+            240.0
+          ]
+        },
+        {
+          "file": "frames/cannon_muzzle/cannon_muzzle_06.png",
+          "index": 5,
+          "duration_ms": 75,
+          "sheet_rect_px": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "pivot_px": [
+            48,
+            256
+          ],
+          "source_cell_px": [
+            444,
+            444,
+            887,
+            887
+          ],
+          "source_emitter_px": [
+            17.0,
+            240.0
+          ]
+        },
+        {
+          "file": "frames/cannon_muzzle/cannon_muzzle_07.png",
+          "index": 6,
+          "duration_ms": 75,
+          "sheet_rect_px": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "pivot_px": [
+            48,
+            256
+          ],
+          "source_cell_px": [
+            887,
+            444,
+            1330,
+            887
+          ],
+          "source_emitter_px": [
+            14.0,
+            245.0
+          ]
+        },
+        {
+          "file": "frames/cannon_muzzle/cannon_muzzle_08.png",
+          "index": 7,
+          "duration_ms": 75,
+          "sheet_rect_px": [
+            1536,
+            512,
+            512,
+            512
+          ],
+          "pivot_px": [
+            48,
+            256
+          ],
+          "source_cell_px": [
+            1330,
+            444,
+            1774,
+            887
+          ],
+          "source_emitter_px": [
+            14.0,
+            245.0
+          ]
+        }
+      ],
+      "loop": "one-shot; retrigger for gun bursts or stagger particles for exhaust"
+    },
+    {
+      "name": "exhaust_smoke",
+      "pivot": [
+        412,
+        420
+      ],
+      "duration_ms": 110,
+      "socket": [
+        94,
+        124
+      ],
+      "preview_scale": 0.72,
+      "rotation_cw_deg": 0,
+      "frame_count": 8,
+      "sheet": "sheets/exhaust_smoke_4x2.png",
+      "frames": [
+        {
+          "file": "frames/exhaust_smoke/exhaust_smoke_01.png",
+          "index": 0,
+          "duration_ms": 110,
+          "sheet_rect_px": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "pivot_px": [
+            412,
+            420
+          ],
+          "source_cell_px": [
+            0,
+            0,
+            444,
+            444
+          ],
+          "source_emitter_px": [
+            399.0,
+            392.0
+          ]
+        },
+        {
+          "file": "frames/exhaust_smoke/exhaust_smoke_02.png",
+          "index": 1,
+          "duration_ms": 110,
+          "sheet_rect_px": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "pivot_px": [
+            412,
+            420
+          ],
+          "source_cell_px": [
+            444,
+            0,
+            887,
+            444
+          ],
+          "source_emitter_px": [
+            397.0,
+            392.0
+          ]
+        },
+        {
+          "file": "frames/exhaust_smoke/exhaust_smoke_03.png",
+          "index": 2,
+          "duration_ms": 110,
+          "sheet_rect_px": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "pivot_px": [
+            412,
+            420
+          ],
+          "source_cell_px": [
+            887,
+            0,
+            1330,
+            444
+          ],
+          "source_emitter_px": [
+            393.0,
+            392.0
+          ]
+        },
+        {
+          "file": "frames/exhaust_smoke/exhaust_smoke_04.png",
+          "index": 3,
+          "duration_ms": 110,
+          "sheet_rect_px": [
+            1536,
+            0,
+            512,
+            512
+          ],
+          "pivot_px": [
+            412,
+            420
+          ],
+          "source_cell_px": [
+            1330,
+            0,
+            1774,
+            444
+          ],
+          "source_emitter_px": [
+            392.0,
+            392.0
+          ]
+        },
+        {
+          "file": "frames/exhaust_smoke/exhaust_smoke_05.png",
+          "index": 4,
+          "duration_ms": 110,
+          "sheet_rect_px": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "pivot_px": [
+            412,
+            420
+          ],
+          "source_cell_px": [
+            0,
+            444,
+            444,
+            887
+          ],
+          "source_emitter_px": [
+            408.0,
+            350.0
+          ]
+        },
+        {
+          "file": "frames/exhaust_smoke/exhaust_smoke_06.png",
+          "index": 5,
+          "duration_ms": 110,
+          "sheet_rect_px": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "pivot_px": [
+            412,
+            420
+          ],
+          "source_cell_px": [
+            444,
+            444,
+            887,
+            887
+          ],
+          "source_emitter_px": [
+            397.0,
+            350.0
+          ]
+        },
+        {
+          "file": "frames/exhaust_smoke/exhaust_smoke_07.png",
+          "index": 6,
+          "duration_ms": 110,
+          "sheet_rect_px": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "pivot_px": [
+            412,
+            420
+          ],
+          "source_cell_px": [
+            887,
+            444,
+            1330,
+            887
+          ],
+          "source_emitter_px": [
+            400.0,
+            350.0
+          ]
+        },
+        {
+          "file": "frames/exhaust_smoke/exhaust_smoke_08.png",
+          "index": 7,
+          "duration_ms": 110,
+          "sheet_rect_px": [
+            1536,
+            512,
+            512,
+            512
+          ],
+          "pivot_px": [
+            412,
+            420
+          ],
+          "source_cell_px": [
+            1330,
+            444,
+            1774,
+            887
+          ],
+          "source_emitter_px": [
+            392.0,
+            350.0
+          ]
+        }
+      ],
+      "loop": "one-shot; retrigger for gun bursts or stagger particles for exhaust"
+    }
+  ]
+}

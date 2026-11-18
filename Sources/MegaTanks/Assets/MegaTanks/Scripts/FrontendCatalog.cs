@@ -5,6 +5,8 @@ namespace MegaTanks
     public sealed class FrontendCatalog : ScriptableObject
     {
         public StageDefinition[] stages;
+        public TankDefinition[] tanks;
         public EquipmentDefinition[] inventory;
+        public CrewCatalog crew;
     }
 }
