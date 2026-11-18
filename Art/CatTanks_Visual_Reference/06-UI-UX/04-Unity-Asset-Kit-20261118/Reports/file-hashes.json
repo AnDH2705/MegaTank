@@ -6,7 +6,7 @@
     },
     {
         "file":  "asset-validation.json",
-        "sha256":  "8D8B3DDDB8FD96997EFA720369BAE16719247BFDEC58E491101A229C0D18D8A3",
+        "sha256":  "BACD601D18402492E744761DF29D1F1E28A52169EF8B07C2999C9330CC6957B9",
         "bytes":  69510
     },
     {
@@ -276,13 +276,13 @@
     },
     {
         "file":  "Tools\\Install-ToUnity.ps1",
-        "sha256":  "63741FADD0B49CF4B3A73D61502AC71E6B97FEBD5EC97513272A3FE225860012",
-        "bytes":  973
+        "sha256":  "467569DC2C5FFE8E0ECA4EC5A75BDF40F7C6E59E2A1251D76D05B8DC323FFAD3",
+        "bytes":  1069
     },
     {
         "file":  "Tools\\Validate-Kit.ps1",
-        "sha256":  "B226D3BF4395E6BC5C9FC3210DCB945E4808ACBFF68C6D1801383F00CEF43FD1",
-        "bytes":  3769
+        "sha256":  "4C220F2B70B0D7193D53950DB7810375E107FE91948B670D3AE75D403D77A5A6",
+        "bytes":  3890
     },
     {
         "file":  "Tools\\SyntaxCheck\\Program.cs",

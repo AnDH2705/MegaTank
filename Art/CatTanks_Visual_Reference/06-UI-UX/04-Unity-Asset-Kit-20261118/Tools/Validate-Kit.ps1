@@ -1,7 +1,9 @@
-param([string]$KitRoot = (Split-Path -Parent $PSScriptRoot))
+param([string]$KitRoot = '')
 $ErrorActionPreference = 'Stop'
+$kitToolRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
+if ([string]::IsNullOrWhiteSpace($KitRoot)) { $KitRoot = Split-Path -Parent $kitToolRoot }
 Add-Type -AssemblyName System.Drawing
-if (-not ('KitPngInspector' -as [type])) { Add-Type -Path (Join-Path $PSScriptRoot 'InspectPng.cs') -ReferencedAssemblies System.Drawing }
+if (-not ('KitPngInspector' -as [type])) { Add-Type -Path (Join-Path $kitToolRoot 'InspectPng.cs') -ReferencedAssemblies System.Drawing }
 $assetRoot = Join-Path $KitRoot 'Unity\Assets\CatTanksMockupKit'
 $manifest = Get-Content -LiteralPath (Join-Path $assetRoot 'Data\asset-manifest.json') -Raw -Encoding UTF8 | ConvertFrom-Json
 $layouts = Get-Content -LiteralPath (Join-Path $assetRoot 'Data\screen-layouts.json') -Raw -Encoding UTF8 | ConvertFrom-Json

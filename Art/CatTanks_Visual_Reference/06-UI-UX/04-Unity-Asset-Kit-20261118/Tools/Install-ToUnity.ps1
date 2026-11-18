@@ -1,9 +1,10 @@
 [CmdletBinding(SupportsShouldProcess=$true)]
 param(
     [Parameter(Mandatory=$true)][string]$ProjectPath,
-    [string]$KitRoot = (Split-Path -Parent $PSScriptRoot)
+    [string]$KitRoot = ''
 )
 $ErrorActionPreference = 'Stop'
+if ([string]::IsNullOrWhiteSpace($KitRoot)) { $KitRoot = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path) }
 $project = [IO.Path]::GetFullPath($ProjectPath)
 if (-not (Test-Path -LiteralPath (Join-Path $project 'ProjectSettings\ProjectVersion.txt'))) { throw 'ProjectPath is not a Unity project root.' }
 $source = Join-Path $KitRoot 'Unity\Assets\CatTanksMockupKit'
