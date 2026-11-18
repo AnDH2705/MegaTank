@@ -1,0 +1,57 @@
+MÀN 17 — Chọn mèo
+Key: choice
+Loại: Popup trên nền barracks-squad
+Prefab được sinh: Assets/CatTanksMockupKit/Generated/Prefabs/Mockup_choice.prefab
+
+Popup gồm hai cột × năm nút chọn, Mướp selected. Mỗi option có portrait nhỏ; Bỏ trống dùng silhouette. Khi nối game, handler pickCat cập nhật squad rồi đóng popup.
+
+CÁCH GHÉP
+1. Dùng Canvas 1600×900 và quy tắc anchor trong Docs/02_GHEP_21_MAN.txt.
+2. Thêm node theo đúng thứ tự bảng bên dưới; node sau vẽ trên node trước.
+3. parent trống = ArtKitStage; parent có giá trị = trong Content/group có tên đó.
+4. Khung/nút: Image Sliced, viền theo importer; icon/art: Image Simple + Preserve Aspect.
+5. Các node label dùng UI Text; button dùng Image + Button + child Text; bar dùng track + Image Filled.
+6. Action screen:* là navigation xem thử; game:* cần nối controller. Dữ liệu số trong file là ví dụ.
+
+THÀNH PHẦN (tọa độ trên trái, UI units)
+Order | Id | Kind | Sprite | Parent | x,y,w,h | Font | Action | Disabled
+0 | modal-choice | image | panel_modal | ArtKitStage | 330,120,940,650 | - | - | false
+1 | modal-title | label | - | ArtKitStage | 370,146,860,62 | 36 | - | false
+2 | choice-close | button | button_gold | ArtKitStage | 1100,154,130,56 | 20 | close | false
+3 | choice-help | label | - | ArtKitStage | 372,220,790,40 | 22 | - | false
+4 | choice-0 | button | button_blue | ArtKitStage | 370,280,398,74 | 25 | game:pickCat:empty | false
+5 | choice-cat-0 | image | slot_empty | ArtKitStage | 384,288,62,58 | - | - | false
+6 | choice-1 | button | button_cyan | ArtKitStage | 788,280,398,74 | 25 | game:pickCat:cat-0 | false
+7 | choice-cat-1 | image | cat-0 | ArtKitStage | 802,288,62,58 | - | - | false
+8 | choice-2 | button | button_blue | ArtKitStage | 370,368,398,74 | 25 | game:pickCat:cat-1 | false
+9 | choice-cat-2 | image | cat-1 | ArtKitStage | 384,376,62,58 | - | - | false
+10 | choice-3 | button | button_blue | ArtKitStage | 788,368,398,74 | 25 | game:pickCat:cat-2 | false
+11 | choice-cat-3 | image | cat-2 | ArtKitStage | 802,376,62,58 | - | - | false
+12 | choice-4 | button | button_blue | ArtKitStage | 370,456,398,74 | 25 | game:pickCat:cat-3 | false
+13 | choice-cat-4 | image | cat-3 | ArtKitStage | 384,464,62,58 | - | - | false
+14 | choice-5 | button | button_blue | ArtKitStage | 788,456,398,74 | 25 | game:pickCat:cat-4 | false
+15 | choice-cat-5 | image | cat-4 | ArtKitStage | 802,464,62,58 | - | - | false
+16 | choice-6 | button | button_blue | ArtKitStage | 370,544,398,74 | 25 | game:pickCat:cat-5 | false
+17 | choice-cat-6 | image | cat-5 | ArtKitStage | 384,552,62,58 | - | - | false
+18 | choice-7 | button | button_blue | ArtKitStage | 788,544,398,74 | 25 | game:pickCat:cat-6 | false
+19 | choice-cat-7 | image | cat-6 | ArtKitStage | 802,552,62,58 | - | - | false
+20 | choice-8 | button | button_blue | ArtKitStage | 370,632,398,74 | 25 | game:pickCat:cat-7 | false
+21 | choice-cat-8 | image | cat-7 | ArtKitStage | 384,640,62,58 | - | - | false
+22 | choice-9 | button | button_blue | ArtKitStage | 788,632,398,74 | 25 | game:pickCat:cat-8 | false
+23 | choice-cat-9 | image | cat-8 | ArtKitStage | 802,640,62,58 | - | - | false
+
+NỘI DUNG TEXT/INPUT
+modal-title: Chọn mèo bộ binh
+choice-close: Đóng
+choice-help: Chọn một mục. Esc để quay lại.
+choice-0: Bỏ trống
+choice-1: Mướp
+choice-2: Khói
+choice-3: Bông
+choice-4: Tam Thể
+choice-5: Mun
+choice-6: Xiêm
+choice-7: Vằn
+choice-8: Tux
+choice-9: Mochi
+

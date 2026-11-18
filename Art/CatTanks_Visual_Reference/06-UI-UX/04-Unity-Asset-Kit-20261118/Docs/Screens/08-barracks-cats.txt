@@ -1,0 +1,126 @@
+MÀN 08 — Doanh trại mèo
+Key: barracks-cats
+Loại: Screen
+Prefab được sinh: Assets/CatTanksMockupKit/Generated/Prefabs/Mockup_barracks-cats.prefab
+
+Ba mèo đã sở hữu ở trái, chi tiết Mướp ở phải. Roster không tự xuất hiện thêm mèo dù thư viện có đủ 10. Các nút nâng cấp/rank/recycle/artifact cần nối game.
+
+CÁCH GHÉP
+1. Dùng Canvas 1600×900 và quy tắc anchor trong Docs/02_GHEP_21_MAN.txt.
+2. Thêm node theo đúng thứ tự bảng bên dưới; node sau vẽ trên node trước.
+3. parent trống = ArtKitStage; parent có giá trị = trong Content/group có tên đó.
+4. Khung/nút: Image Sliced, viền theo importer; icon/art: Image Simple + Preserve Aspect.
+5. Các node label dùng UI Text; button dùng Image + Button + child Text; bar dùng track + Image Filled.
+6. Action screen:* là navigation xem thử; game:* cần nối controller. Dữ liệu số trong file là ví dụ.
+
+THÀNH PHẦN (tọa độ trên trái, UI units)
+Order | Id | Kind | Sprite | Parent | x,y,w,h | Font | Action | Disabled
+0 | background | image | bg_hub | ArtKitStage | 0,0,1600,900 | - | - | false
+1 | brand | image | icon_crown | ArtKitStage | 20,14,66,66 | - | - | false
+2 | brand-title | label | - | ArtKitStage | 100,8,670,48 | 40 | - | false
+3 | brand-subtitle | label | - | ArtKitStage | 102,58,650,24 | 19 | - | false
+4 | currency-coin | image | panel_resource | ArtKitStage | 800,16,180,68 | - | - | false
+5 | currency-icon-coin | image | icon_coin | ArtKitStage | 812,28,44,44 | - | - | false
+6 | currency-value-coin | label | - | ArtKitStage | 862,26,100,44 | 28 | - | false
+7 | currency-gem | image | panel_resource | ArtKitStage | 1000,16,180,68 | - | - | false
+8 | currency-icon-gem | image | icon_gem | ArtKitStage | 1012,28,44,44 | - | - | false
+9 | currency-value-gem | label | - | ArtKitStage | 1062,26,100,44 | 28 | - | false
+10 | currency-ticket | image | panel_resource | ArtKitStage | 1200,16,180,68 | - | - | false
+11 | currency-icon-ticket | image | icon_ticket | ArtKitStage | 1212,28,44,44 | - | - | false
+12 | currency-value-ticket | label | - | ArtKitStage | 1262,26,100,44 | 28 | - | false
+13 | settings | button | button_gold | ArtKitStage | 1400,16,184,68 | 20 | screen:settings | false
+14 | sidebar | image | panel_main | ArtKitStage | 12,108,236,780 | - | - | false
+15 | commander-level | label | - | ArtKitStage | 32,128,200,30 | 18 | - | false
+16 | commander-portrait | image | mascot_commander | ArtKitStage | 28,164,92,92 | - | - | false
+17 | commander-name | label | - | ArtKitStage | 126,176,104,70 | 20 | - | false
+18 | nav-march | button | button_blue | ArtKitStage | 24,280,212,66 | 20 | screen:march | false
+19 | nav-icon-march | image | icon_map | ArtKitStage | 32,293,42,42 | - | - | false
+20 | nav-barracks-cats | button | button_cyan | ArtKitStage | 24,356,212,66 | 20 | screen:barracks-cats | false
+21 | nav-icon-barracks-cats | image | icon_battle | ArtKitStage | 32,369,42,42 | - | - | false
+22 | nav-town-summon | button | button_blue | ArtKitStage | 24,432,212,66 | 20 | screen:town-summon | false
+23 | nav-icon-town-summon | image | icon_town | ArtKitStage | 32,445,42,42 | - | - | false
+24 | nav-chest | button | button_blue | ArtKitStage | 24,508,212,66 | 20 | screen:chest | false
+25 | nav-icon-chest | image | icon_chest | ArtKitStage | 32,521,42,42 | - | - | false
+26 | nav-quests | button | button_blue | ArtKitStage | 24,584,212,66 | 20 | screen:quests | false
+27 | nav-icon-quests | image | icon_quests | ArtKitStage | 32,597,42,42 | - | - | false
+28 | nav-book | button | button_blue | ArtKitStage | 24,660,212,66 | 20 | screen:book | false
+29 | nav-icon-book | image | icon_book | ArtKitStage | 32,673,42,42 | - | - | false
+30 | power-panel | image | panel_resource | ArtKitStage | 24,760,212,108 | - | - | false
+31 | power-title | label | - | ArtKitStage | 40,775,180,26 | 20 | - | false
+32 | power-number | label | - | ArtKitStage | 48,812,170,42 | 36 | - | false
+33 | main | image | panel_main | ArtKitStage | 264,108,1324,780 | - | - | false
+34 | tab-cats | button | tab_selected | ArtKitStage | 284,128,150,52 | 18 | screen:barracks-cats | false
+35 | tab-fortress | button | tab_blue | ArtKitStage | 444,128,150,52 | 18 | screen:barracks-fortress | false
+36 | tab-squad | button | tab_blue | ArtKitStage | 604,128,150,52 | 18 | screen:barracks-squad | false
+37 | tab-skills | button | tab_blue | ArtKitStage | 764,128,150,52 | 18 | screen:barracks-skills | false
+38 | tab-monsters | button | tab_blue | ArtKitStage | 924,128,150,52 | 18 | screen:barracks-monsters | false
+39 | tab-gear | button | tab_blue | ArtKitStage | 1084,128,150,52 | 18 | screen:barracks-gear | false
+40 | tab-presets | button | tab_blue | ArtKitStage | 1244,128,150,52 | 18 | screen:barracks-presets | false
+41 | tab-nexus | button | tab_blue | ArtKitStage | 1404,128,150,52 | 18 | screen:barracks-nexus | false
+42 | screen-title | label | - | ArtKitStage | 298,202,1170,52 | 34 | - | false
+43 | cat-count | label | - | ArtKitStage | 300,264,1100,38 | 22 | - | false
+44 | cat-card-0 | image | panel_portrait | ArtKitStage | 310,340,178,238 | - | - | false
+45 | cat-art-0 | image | cat-0 | ArtKitStage | 324,352,150,150 | - | - | false
+46 | cat-select-0 | button | button_gold | ArtKitStage | 318,506,162,62 | 20 | game:cat:cat-0 | false
+47 | cat-card-1 | image | panel_portrait | ArtKitStage | 500,340,178,238 | - | - | false
+48 | cat-art-1 | image | cat-1 | ArtKitStage | 514,352,150,150 | - | - | false
+49 | cat-select-1 | button | button_blue | ArtKitStage | 508,506,162,62 | 20 | game:cat:cat-1 | false
+50 | cat-card-2 | image | panel_portrait | ArtKitStage | 690,340,178,238 | - | - | false
+51 | cat-art-2 | image | cat-2 | ArtKitStage | 704,352,150,150 | - | - | false
+52 | cat-select-2 | button | button_blue | ArtKitStage | 698,506,162,62 | 20 | game:cat:cat-2 | false
+53 | cat-details | image | panel_inset | ArtKitStage | 1080,326,472,520 | - | - | false
+54 | cat-name | label | - | ArtKitStage | 1100,344,420,56 | 38 | - | false
+55 | cat-detail-portrait | image | cat-0 | ArtKitStage | 1360,404,150,160 | - | - | false
+56 | cat-stats | label | - | ArtKitStage | 1100,412,280,190 | 22 | - | false
+57 | cat-upgrade | button | button_gold | ArtKitStage | 1100,628,430,64 | 20 | game:upgradeCat:cat-0 | false
+58 | cat-rank | button | button_blue | ArtKitStage | 1100,706,430,54 | 18 | game:rankCat:cat-0 | false
+59 | cat-recycle | button | button_blue | ArtKitStage | 1100,774,206,54 | 17 | game:recycleCat:cat-0 | false
+60 | cat-artifact | button | button_blue | ArtKitStage | 1320,774,210,54 | 18 | game:artifact:cat-0 | false
+61 | cat-tip | label | - | ArtKitStage | 310,776,730,66 | 19 | - | false
+
+NỘI DUNG TEXT/INPUT
+brand-title: MEOW BASTION
+brand-subtitle: PHÁO ĐÀI TRĂNG XANH
+currency-value-coin: 2,843
+currency-value-gem: 300
+currency-value-ticket: 5
+settings: Cài đặt
+commander-level: CHỈ HUY / CẤP 5
+commander-name: Chỉ huy
+mèo
+nav-march:      Hành quân
+nav-barracks-cats:      Doanh trại
+nav-town-summon:      Thành mèo
+nav-chest:      Rương AFK
+nav-quests:      Nhiệm vụ
+nav-book:      Bách khoa
+power-title: LỰC CHIẾN
+power-number: 1,046
+tab-cats: MÈO
+tab-fortress: PHÁO
+tab-squad: ĐỘI
+tab-skills: KỸ
+tab-monsters: QUÁI
+tab-gear: TRANG
+tab-presets: ĐỘI LƯU
+tab-nexus: CỘNG
+screen-title: Những người giữ pháo đài
+cat-count: 3/10 mèo • 699 XP mèo • 0 tinh chất
+cat-select-0: Mướp
+Cấp 1
+cat-select-1: Khói
+Cấp 1
+cat-select-2: Bông
+Cấp 1
+cat-name: Mướp
+cat-stats: ELITE · TANK / VETERAN
+Cấp thực 1 · Cấp cộng hưởng 1
+HP 462    ATK 39
+DEF 33    SPD 92
+Bản sao: 0 · Di vật: 0
+cat-upgrade: Nâng cấp · 80 xu · 25 XP mèo
+cat-rank: Thăng bậc · 0 bản sao / 25 tinh chất
+cat-recycle: Tái chế 1 bản sao
+cat-artifact: Di vật · 10 đá
+cat-tip: Cộng hưởng: xếp mèo vào ô Cộng hưởng để nhận cấp của mèo thấp nhất trong nhóm 5 mèo neo.
+

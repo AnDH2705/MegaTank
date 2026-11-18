@@ -1,0 +1,189 @@
+MÀN 01 — Hành quân
+Key: march
+Loại: Screen
+Prefab được sinh: Assets/CatTanksMockupKit/Generated/Prefabs/Mockup_march.prefab
+
+Lưới 20 ải: 5 cột × 4 hàng. Ô 02 vàng, ô 01 đã qua, các ô khác khóa. Bảng stage-detail bên phải có cảnh rời, icon kiếm, chỉ số, reward và CTA. Chữ/số stage nằm trên nút, không nằm trong texture.
+
+CÁCH GHÉP
+1. Dùng Canvas 1600×900 và quy tắc anchor trong Docs/02_GHEP_21_MAN.txt.
+2. Thêm node theo đúng thứ tự bảng bên dưới; node sau vẽ trên node trước.
+3. parent trống = ArtKitStage; parent có giá trị = trong Content/group có tên đó.
+4. Khung/nút: Image Sliced, viền theo importer; icon/art: Image Simple + Preserve Aspect.
+5. Các node label dùng UI Text; button dùng Image + Button + child Text; bar dùng track + Image Filled.
+6. Action screen:* là navigation xem thử; game:* cần nối controller. Dữ liệu số trong file là ví dụ.
+
+THÀNH PHẦN (tọa độ trên trái, UI units)
+Order | Id | Kind | Sprite | Parent | x,y,w,h | Font | Action | Disabled
+0 | background | image | bg_hub | ArtKitStage | 0,0,1600,900 | - | - | false
+1 | brand | image | icon_crown | ArtKitStage | 20,14,66,66 | - | - | false
+2 | brand-title | label | - | ArtKitStage | 100,8,670,48 | 40 | - | false
+3 | brand-subtitle | label | - | ArtKitStage | 102,58,650,24 | 19 | - | false
+4 | currency-coin | image | panel_resource | ArtKitStage | 800,16,180,68 | - | - | false
+5 | currency-icon-coin | image | icon_coin | ArtKitStage | 812,28,44,44 | - | - | false
+6 | currency-value-coin | label | - | ArtKitStage | 862,26,100,44 | 28 | - | false
+7 | currency-gem | image | panel_resource | ArtKitStage | 1000,16,180,68 | - | - | false
+8 | currency-icon-gem | image | icon_gem | ArtKitStage | 1012,28,44,44 | - | - | false
+9 | currency-value-gem | label | - | ArtKitStage | 1062,26,100,44 | 28 | - | false
+10 | currency-ticket | image | panel_resource | ArtKitStage | 1200,16,180,68 | - | - | false
+11 | currency-icon-ticket | image | icon_ticket | ArtKitStage | 1212,28,44,44 | - | - | false
+12 | currency-value-ticket | label | - | ArtKitStage | 1262,26,100,44 | 28 | - | false
+13 | settings | button | button_gold | ArtKitStage | 1400,16,184,68 | 20 | screen:settings | false
+14 | sidebar | image | panel_main | ArtKitStage | 12,108,236,780 | - | - | false
+15 | commander-level | label | - | ArtKitStage | 32,128,200,30 | 18 | - | false
+16 | commander-portrait | image | mascot_commander | ArtKitStage | 28,164,92,92 | - | - | false
+17 | commander-name | label | - | ArtKitStage | 126,176,104,70 | 20 | - | false
+18 | nav-march | button | button_cyan | ArtKitStage | 24,280,212,66 | 20 | screen:march | false
+19 | nav-icon-march | image | icon_map | ArtKitStage | 32,293,42,42 | - | - | false
+20 | nav-barracks-cats | button | button_blue | ArtKitStage | 24,356,212,66 | 20 | screen:barracks-cats | false
+21 | nav-icon-barracks-cats | image | icon_battle | ArtKitStage | 32,369,42,42 | - | - | false
+22 | nav-town-summon | button | button_blue | ArtKitStage | 24,432,212,66 | 20 | screen:town-summon | false
+23 | nav-icon-town-summon | image | icon_town | ArtKitStage | 32,445,42,42 | - | - | false
+24 | nav-chest | button | button_blue | ArtKitStage | 24,508,212,66 | 20 | screen:chest | false
+25 | nav-icon-chest | image | icon_chest | ArtKitStage | 32,521,42,42 | - | - | false
+26 | nav-quests | button | button_blue | ArtKitStage | 24,584,212,66 | 20 | screen:quests | false
+27 | nav-icon-quests | image | icon_quests | ArtKitStage | 32,597,42,42 | - | - | false
+28 | nav-book | button | button_blue | ArtKitStage | 24,660,212,66 | 20 | screen:book | false
+29 | nav-icon-book | image | icon_book | ArtKitStage | 32,673,42,42 | - | - | false
+30 | power-panel | image | panel_resource | ArtKitStage | 24,760,212,108 | - | - | false
+31 | power-title | label | - | ArtKitStage | 40,775,180,26 | 20 | - | false
+32 | power-number | label | - | ArtKitStage | 48,812,170,42 | 36 | - | false
+33 | main | image | panel_main | ArtKitStage | 264,108,1324,780 | - | - | false
+34 | screen-title | label | - | ArtKitStage | 298,128,1170,52 | 34 | - | false
+35 | intro | label | - | ArtKitStage | 300,188,880,38 | 22 | - | false
+36 | campaign-caption | label | - | ArtKitStage | 300,260,600,32 | 22 | - | false
+37 | campaign-progress | label | - | ArtKitStage | 950,260,230,32 | 20 | - | false
+38 | stage-1 | button | button_blue | ArtKitStage | 300,312,164,98 | 19 | game:stage:1 | false
+39 | stage-state-0 | image | icon_check | ArtKitStage | 426,315,30,30 | - | - | false
+40 | stage-2 | button | button_gold | ArtKitStage | 476,312,164,98 | 19 | screen:prebattle | false
+41 | stage-state-1 | image | badge_selected | ArtKitStage | 602,315,30,30 | - | - | false
+42 | stage-3 | button | button_blue | ArtKitStage | 652,312,164,98 | 19 | game:stage:3 | true
+43 | stage-state-2 | image | icon_lock | ArtKitStage | 778,315,30,30 | - | - | false
+44 | stage-4 | button | button_blue | ArtKitStage | 828,312,164,98 | 19 | game:stage:4 | true
+45 | stage-state-3 | image | icon_lock | ArtKitStage | 954,315,30,30 | - | - | false
+46 | stage-5 | button | button_blue | ArtKitStage | 1004,312,164,98 | 19 | game:stage:5 | true
+47 | stage-state-4 | image | badge_boss | ArtKitStage | 1130,315,30,30 | - | - | false
+48 | stage-6 | button | button_blue | ArtKitStage | 300,422,164,98 | 19 | game:stage:6 | true
+49 | stage-state-5 | image | icon_lock | ArtKitStage | 426,425,30,30 | - | - | false
+50 | stage-7 | button | button_blue | ArtKitStage | 476,422,164,98 | 19 | game:stage:7 | true
+51 | stage-state-6 | image | icon_lock | ArtKitStage | 602,425,30,30 | - | - | false
+52 | stage-8 | button | button_blue | ArtKitStage | 652,422,164,98 | 19 | game:stage:8 | true
+53 | stage-state-7 | image | icon_lock | ArtKitStage | 778,425,30,30 | - | - | false
+54 | stage-9 | button | button_blue | ArtKitStage | 828,422,164,98 | 19 | game:stage:9 | true
+55 | stage-state-8 | image | icon_lock | ArtKitStage | 954,425,30,30 | - | - | false
+56 | stage-10 | button | button_blue | ArtKitStage | 1004,422,164,98 | 19 | game:stage:10 | true
+57 | stage-state-9 | image | badge_boss | ArtKitStage | 1130,425,30,30 | - | - | false
+58 | stage-11 | button | button_blue | ArtKitStage | 300,532,164,98 | 19 | game:stage:11 | true
+59 | stage-state-10 | image | icon_lock | ArtKitStage | 426,535,30,30 | - | - | false
+60 | stage-12 | button | button_blue | ArtKitStage | 476,532,164,98 | 19 | game:stage:12 | true
+61 | stage-state-11 | image | icon_lock | ArtKitStage | 602,535,30,30 | - | - | false
+62 | stage-13 | button | button_blue | ArtKitStage | 652,532,164,98 | 19 | game:stage:13 | true
+63 | stage-state-12 | image | icon_lock | ArtKitStage | 778,535,30,30 | - | - | false
+64 | stage-14 | button | button_blue | ArtKitStage | 828,532,164,98 | 19 | game:stage:14 | true
+65 | stage-state-13 | image | icon_lock | ArtKitStage | 954,535,30,30 | - | - | false
+66 | stage-15 | button | button_blue | ArtKitStage | 1004,532,164,98 | 19 | game:stage:15 | true
+67 | stage-state-14 | image | badge_boss | ArtKitStage | 1130,535,30,30 | - | - | false
+68 | stage-16 | button | button_blue | ArtKitStage | 300,642,164,98 | 19 | game:stage:16 | true
+69 | stage-state-15 | image | icon_lock | ArtKitStage | 426,645,30,30 | - | - | false
+70 | stage-17 | button | button_blue | ArtKitStage | 476,642,164,98 | 19 | game:stage:17 | true
+71 | stage-state-16 | image | icon_lock | ArtKitStage | 602,645,30,30 | - | - | false
+72 | stage-18 | button | button_blue | ArtKitStage | 652,642,164,98 | 19 | game:stage:18 | true
+73 | stage-state-17 | image | icon_lock | ArtKitStage | 778,645,30,30 | - | - | false
+74 | stage-19 | button | button_blue | ArtKitStage | 828,642,164,98 | 19 | game:stage:19 | true
+75 | stage-state-18 | image | icon_lock | ArtKitStage | 954,645,30,30 | - | - | false
+76 | stage-20 | button | button_blue | ArtKitStage | 1004,642,164,98 | 19 | game:stage:20 | true
+77 | stage-state-19 | image | badge_boss | ArtKitStage | 1130,645,30,30 | - | - | false
+78 | stage-detail | image | panel_inset | ArtKitStage | 1192,182,368,678 | - | - | false
+79 | stage-caption | label | - | ArtKitStage | 1212,200,330,36 | 20 | - | false
+80 | stage-title | label | - | ArtKitStage | 1212,246,330,48 | 30 | - | false
+81 | stage-art | image | bg_stage_fog | ArtKitStage | 1212,310,330,180 | - | - | false
+82 | stage-emblem | image | icon_battle | ArtKitStage | 1316,362,120,120 | - | - | false
+83 | recommended | label | - | ArtKitStage | 1212,506,330,84 | 28 | - | false
+84 | ready | label | - | ArtKitStage | 1212,596,330,52 | 20 | - | false
+85 | reward-icon-0 | image | icon_coin | ArtKitStage | 1210,666,56,56 | - | - | false
+86 | reward-value-0 | label | - | ArtKitStage | 1208,724,82,30 | 15 | - | false
+87 | reward-icon-1 | image | icon_cat_xp | ArtKitStage | 1294,666,56,56 | - | - | false
+88 | reward-value-1 | label | - | ArtKitStage | 1292,724,82,30 | 15 | - | false
+89 | reward-icon-2 | image | icon_dust | ArtKitStage | 1378,666,56,56 | - | - | false
+90 | reward-value-2 | label | - | ArtKitStage | 1376,724,82,30 | 15 | - | false
+91 | reward-icon-3 | image | icon_commander_xp | ArtKitStage | 1462,666,56,56 | - | - | false
+92 | reward-value-3 | label | - | ArtKitStage | 1460,724,82,30 | 15 | - | false
+93 | prepare | button | button_gold | ArtKitStage | 1210,784,332,58 | 19 | screen:prebattle | false
+94 | boss-tip | image | panel_tip | ArtKitStage | 300,772,868,88 | - | - | false
+95 | tip-chest | image | icon_chest | ArtKitStage | 320,788,60,60 | - | - | false
+96 | boss-tip-text | label | - | ArtKitStage | 400,790,740,50 | 27 | - | false
+
+NỘI DUNG TEXT/INPUT
+brand-title: MEOW BASTION
+brand-subtitle: PHÁO ĐÀI TRĂNG XANH
+currency-value-coin: 2,843
+currency-value-gem: 300
+currency-value-ticket: 5
+settings: Cài đặt
+commander-level: CHỈ HUY / CẤP 5
+commander-name: Chỉ huy
+mèo
+nav-march:      Hành quân
+nav-barracks-cats:      Doanh trại
+nav-town-summon:      Thành mèo
+nav-chest:      Rương AFK
+nav-quests:      Nhiệm vụ
+nav-book:      Bách khoa
+power-title: LỰC CHIẾN
+power-number: 1,046
+screen-title: Chuyến phiêu lưu dưới trăng
+intro: Chọn vùng đất. Sắp đội hình. Cùng mèo giữ vững pháo đài.
+campaign-caption: CHIẾN DỊCH / 20 VÙNG ĐẤT
+campaign-progress: 1 / 20 ĐÃ QUA
+stage-1: 01
+ĐÃ QUA
+stage-2: 02
+SẴN SÀNG
+stage-3: 03
+KHÓA
+stage-4: 04
+KHÓA
+stage-5: 05 • TRÙM
+KHÓA
+stage-6: 06
+KHÓA
+stage-7: 07
+KHÓA
+stage-8: 08
+KHÓA
+stage-9: 09
+KHÓA
+stage-10: 10 • TRÙM
+KHÓA
+stage-11: 11
+KHÓA
+stage-12: 12
+KHÓA
+stage-13: 13
+KHÓA
+stage-14: 14
+KHÓA
+stage-15: 15 • TRÙM
+KHÓA
+stage-16: 16
+KHÓA
+stage-17: 17
+KHÓA
+stage-18: 18
+KHÓA
+stage-19: 19
+KHÓA
+stage-20: 20 • TRÙM
+KHÓA
+stage-caption: ẢI 02 / HÀNH QUÂN
+stage-title: Đường mòn sương
+recommended: LỰC CHIẾN ĐỀ NGHỊ
+560
+ready: Đội của bạn đã sẵn sàng
+reward-value-0: +160 xu
+reward-value-1: +30 XP
+reward-value-2: +46 bụi
+reward-value-3: +130 XP
+prepare: CHUẨN BỊ XUẤT KÍCH
+boss-tip-text: Mỗi 5 ải là một trận trùm
+

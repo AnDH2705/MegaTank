@@ -1,0 +1,22 @@
+CATTANKS · DI CHUYỂN V3 · QUÁI 02–06
+
+Mở Xem-sprite-sheet.html và bấm Nạp bản mới nhất (20 quái). Năm loài trong đợt này dùng V3. Kiến tiên phong dùng V4. Chọn Di chuyển để xem vòng sáu khung, hoặc Vào chạy / bay để xem đoạn chuyển tiếp có bốn ô. Danh sách Phiên bản dưới quái cho phép xem lại bản gốc hoặc V2.
+
+02 Sói bóng đêm — Pilot_Soi_Run_V3
+   Chân trước tiếp đất, vai hạ, hai chân sau thu vào rồi đẩy. Pha thu có khoảng hở dưới chân. Đoạn vào chạy dùng hai tư thế hạ trọng tâm và đưa chân trước lên.
+
+03 Ong sát thủ — Pilot_Ong_Fly_V3
+   Các tư thế cho thấy cánh mở, nghiêng, đập xuống rồi hồi lên. Căn theo vùng màu của thân và đầu để giữ thân quanh cùng độ cao. Vào bay nối từ lơ lửng sang chu kỳ cánh.
+
+04 Bọ sừng đỏ — Pilot_Bo_Sung_Do_Run_V3
+   Bước ngắn với bàn chân và khớp thay đổi dưới mai. Cặp tư thế chuyển tiếp giảm độ cao thân nhẹ trước khi nhấc chân. Giữ hình sừng và các mảng của mai theo art hiện có.
+
+05 Lợn rừng cuồng nộ — Pilot_Lon_Rung_Run_V3
+   Cú chạy thấp có pha chống chân trước, thu thân trên không và vươn khi đẩy. Hai khung vào chạy diễn tả dồn trọng lượng rồi vươn chân. Đoạn này chuẩn bị vào nhịp di chuyển thường.
+
+06 Nhện giăng tơ — Pilot_Nhen_Run_V3
+   Chuyển động nằm chủ yếu ở chân và khớp, thân thấp. Hai tư thế đệm bắt đầu chuyển trọng lượng và đưa chân về vị trí tiếp đất của chu kỳ.
+
+Mỗi thư mục có một sheet 6×4, một dải Di-chuyen_v3_6x1.png, một dải Vao-chuyen-dong_v3_4x1.png và tám PNG rời trong frames-moi. Dải chuyển tiếp theo thứ tự Idle-01 → hai khung mới → Run-01. Hai khung mới dùng 60 ms mỗi khung trong tool. Các hàng đứng chờ, tấn công và trúng đòn có pixel giống bản trước.
+
+Ảnh chuyển động và tư thế đệm dùng ImageGen với sprite gốc và các mốc pose làm tham chiếu. Prompt từng loài nằm trong PROMPT_5_QUAI_V3.txt. Đã rà dáng theo từng ô, kiểm tra alpha ở viền và đối chiếu PNG rời với sheet. Chân xa có lúc bị che. Chuyển động trong Unity và độ trượt chân theo tốc độ quái vẫn cần kiểm chứng khi tích hợp.

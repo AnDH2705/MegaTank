@@ -1,0 +1,93 @@
+03 — NỐI VÀO SOURCE CAT TANKS ĐANG CÓ
+
+SOURCE ĐÃ ĐỌC
+Assets/CatTanks/Scripts/StudioCanvas.cs
+Assets/CatTanks/Scripts/StudioUITheme.cs
+Assets/CatTanks/Scripts/StudioNineSlice.cs
+Assets/CatTanks/Editor/StudioUIAssets.cs
+Assets/CatTanks/Editor/StudioUIPrefabBuilder.cs
+Nguồn này hiện dùng Resources.Load<StudioUITheme>("StudioUITheme"), uGUI Text và hệ prefab StudioUIView/StudioWidgetBinding.
+Vì vậy không kéo prefab demo đè lên Canvas game rồi mong có đủ hành vi gameplay.
+
+CÁCH A — THAY SKIN CHO UI GAME ĐANG CHẠY
+1. Import/slice bộ asset.
+2. Chạy menu 6 - Create Existing Game Theme Candidate.
+3. Tool tạo một bản sao theme tại CatTanksMockupKit/Generated/MockupKitTheme.asset, không đổi theme game hiện tại.
+4. Trong Unity, chép candidate sang Assets/CatTanks/Resources/MockupKitTheme.asset.
+5. Trong StudioCanvas.EnsureCanvas, chỗ tải theme, đổi thành:
+   theme = Resources.Load<StudioUITheme>("MockupKitTheme");
+   if (!theme) theme = Resources.Load<StudioUITheme>("StudioUITheme");
+   Styles();
+6. StudioCanvas.Surface hiện nhân màu nền tối vào texture. Asset mới đã có màu sẵn.
+   Nếu giữ phép nhân này, khung sẽ tối hơn nhiều so với mockup.
+   Đổi helper Surface để giữ alpha nhưng đưa RGB về trắng:
+   void Surface(float x,float y,float w,float h,Color color)
+       => SpriteBox(x,y,w,h,"panel",new Color(1,1,1,color.a));
+7. NameInput đang set tint #d9e9ff lên một input đã có màu xanh nhạt; đổi item.image.color=Color.white cho bộ mới.
+8. Button/SetButtonSprite/StudioNineSlice đã hỗ trợ sprite border. Giữ cách set sizeDelta và pixelsPerUnitMultiplier.
+9. Bar cũ nhân color vào một fill texture. Muốn giữ chính xác màu đã vẽ, chọn fill riêng (green/gold/cyan) và để tint trắng; hoặc chấp nhận tint của game như một biến thể.
+10. Chạy game, duyệt đủ 21 view. Thay skin không tự thêm các minh họa header, mascot hay cảnh mới vào bố cục cũ.
+11. Để thêm chúng, dùng Art/Image theo sprite key tương ứng và tọa độ trong Data/screen-assembly.csv; thêm vào hàm màn tương ứng của StudioScreens/StudioEconomyScreens.
+12. Chỉ sau khi đã duyệt, mới dùng workflow dựng prefab hiện có của project để lưu lại Canvas.
+Lưu ý: menu Rebuild LayerLab Theme vẫn tạo theme LayerLab cũ. Không dùng menu đó để cập nhật MockupKitTheme.
+
+KEY MAP CHÍNH
+panel -> panel_main
+card -> panel_card
+button -> button_blue
+primary -> button_gold
+selected -> button_cyan
+input -> input_field
+bar -> bar_track
+fill -> bar_fill_cyan
+Map/Battle/Bag_Brown/Chest_Gold/Calendar_Check/Book_1_Purple -> icon_map/icon_battle/icon_town/icon_chest/icon_quests/icon_book
+Money_Coin/Gem_Diamond_Purple/Ticket_Gold -> icon_coin/icon_gem/icon_ticket
+Các key khác được lưu trong mã MockupKitThemeCandidate.cs.
+
+CÁCH B — GHÉP LẠI BẰNG PREFAB MỚI
+1. Chạy Build All Preview Prefabs để có một bản hierarchy xem được.
+2. Duplicate prefab cần dùng ra folder sản phẩm riêng.
+3. Gỡ MockupKitPreview và MockupKitAction ở bản sản phẩm khi bắt đầu nối controller thật.
+4. Giữ các Image/Text/RectTransform/ScrollRect. Đặt component view riêng có serialized references.
+5. Gắn onClick vào controller hiện có, bind text/HP/trạng thái khóa từ Profile/Catalog/Battle.
+6. Đừng giữ cả Studio Canvas cũ và preview Canvas cùng nhận input. Chỉ bật một UI root trong scene game.
+7. Màn quản lý không nên dựng lại 1.122 node mỗi frame. Dữ liệu JSON và Build là công cụ ghép/demo; sản phẩm nên tái dùng prefab và cập nhật giá trị.
+8. Scroll list nhiều item nên pool cell khi số lượng tăng.
+
+ACTION TRONG PREVIEW
+screen:<key> = chuyển màn/popup trong bộ preview.
+close = đóng popup về màn trước.
+game:<...> = điểm nối, chỉ phát onGameAction hoặc ghi log. Không đổi profile.
+Danh sách chính xác: Data/action-bindings.csv.
+
+VÍ DỤ ĐĂNG KÝ HANDLER TẠM CHO PREVIEW
+Trong một MonoBehaviour adapter có reference MockupKitPreview preview:
+  void OnEnable()  { preview.onGameAction += Handle; }
+  void OnDisable() { preview.onGameAction -= Handle; }
+  void Handle(string action) {
+      if (action == "game:claimAfk") {
+          // Gọi luồng nhận AFK hiện có của game, kiểm tra điều kiện rồi cập nhật view.
+      }
+  }
+Đoạn ví dụ không thay thế hàm kinh tế của game và không đặt tên hàm chưa có như một API sẵn dùng.
+
+NHỮNG GIÁ TRỊ PHẢI BIND TỪ GAME
+Header: coins, gems, summon tickets; commander name/level; combat power.
+March: highestCleared, selectedStage, requiredPower, rewards, unlocked/boss.
+Chest: elapsed AFK time, cap, pending rewards, claim availability.
+Quests: từng progress/target/claimed; daily chest count.
+Cats: roster, selected cat, level, rarity, stats, copies, XP và giá nâng cấp.
+Fortress: selected weapon, HP, tier unlock, module slots, upgrade costs.
+Squad: operator/infantry trên từng tầng, khóa theo accountLevel.
+Skills: equipped slots, energy cost, cooldown, unlocked state, core count.
+Monsters/Gear: owned collection; giữ empty state nếu chưa có.
+Presets/Nexus: saved squads, anchors, resonance slots/levels.
+Battle: HP, energy, wave count, kill count, cooldown, capture inventory.
+Result: số liệu trận và phần thưởng thực tế; bỏ các số demo 0.
+Settings: dữ liệu InputField; audio/fullscreen/reduced motion/export profile.
+Book: category và catalog; preview chỉ dựng trang mèo trong mockup. Các thư viện vũ khí/quái gốc đã có trong 132 PNG đi kèm.
+
+ĐỪNG LẤY DỮ LIỆU DEMO LÀM QUY TẮC GAME
+Các số 2,843, 300, 5, 1,046 và 560 là dữ liệu mô phỏng theo mockup.
+Giá nâng cấp, mốc mở khóa và reward của bản sản phẩm phải đọc Catalog/Profile của project.
+

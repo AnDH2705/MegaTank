@@ -1,0 +1,99 @@
+MÀN 13 — Trang bị
+Key: barracks-gear
+Loại: Screen
+Prefab được sinh: Assets/CatTanksMockupKit/Generated/Prefabs/Mockup_barracks-gear.prefab
+
+Hai selector Mướp/Cổ vật trống, thông báo chưa có trang bị. Nền workshop là ảnh riêng; mascot mechanic rời. Giữ inventory trống theo mockup.
+
+CÁCH GHÉP
+1. Dùng Canvas 1600×900 và quy tắc anchor trong Docs/02_GHEP_21_MAN.txt.
+2. Thêm node theo đúng thứ tự bảng bên dưới; node sau vẽ trên node trước.
+3. parent trống = ArtKitStage; parent có giá trị = trong Content/group có tên đó.
+4. Khung/nút: Image Sliced, viền theo importer; icon/art: Image Simple + Preserve Aspect.
+5. Các node label dùng UI Text; button dùng Image + Button + child Text; bar dùng track + Image Filled.
+6. Action screen:* là navigation xem thử; game:* cần nối controller. Dữ liệu số trong file là ví dụ.
+
+THÀNH PHẦN (tọa độ trên trái, UI units)
+Order | Id | Kind | Sprite | Parent | x,y,w,h | Font | Action | Disabled
+0 | background | image | bg_hub | ArtKitStage | 0,0,1600,900 | - | - | false
+1 | brand | image | icon_crown | ArtKitStage | 20,14,66,66 | - | - | false
+2 | brand-title | label | - | ArtKitStage | 100,8,670,48 | 40 | - | false
+3 | brand-subtitle | label | - | ArtKitStage | 102,58,650,24 | 19 | - | false
+4 | currency-coin | image | panel_resource | ArtKitStage | 800,16,180,68 | - | - | false
+5 | currency-icon-coin | image | icon_coin | ArtKitStage | 812,28,44,44 | - | - | false
+6 | currency-value-coin | label | - | ArtKitStage | 862,26,100,44 | 28 | - | false
+7 | currency-gem | image | panel_resource | ArtKitStage | 1000,16,180,68 | - | - | false
+8 | currency-icon-gem | image | icon_gem | ArtKitStage | 1012,28,44,44 | - | - | false
+9 | currency-value-gem | label | - | ArtKitStage | 1062,26,100,44 | 28 | - | false
+10 | currency-ticket | image | panel_resource | ArtKitStage | 1200,16,180,68 | - | - | false
+11 | currency-icon-ticket | image | icon_ticket | ArtKitStage | 1212,28,44,44 | - | - | false
+12 | currency-value-ticket | label | - | ArtKitStage | 1262,26,100,44 | 28 | - | false
+13 | settings | button | button_gold | ArtKitStage | 1400,16,184,68 | 20 | screen:settings | false
+14 | sidebar | image | panel_main | ArtKitStage | 12,108,236,780 | - | - | false
+15 | commander-level | label | - | ArtKitStage | 32,128,200,30 | 18 | - | false
+16 | commander-portrait | image | mascot_commander | ArtKitStage | 28,164,92,92 | - | - | false
+17 | commander-name | label | - | ArtKitStage | 126,176,104,70 | 20 | - | false
+18 | nav-march | button | button_blue | ArtKitStage | 24,280,212,66 | 20 | screen:march | false
+19 | nav-icon-march | image | icon_map | ArtKitStage | 32,293,42,42 | - | - | false
+20 | nav-barracks-cats | button | button_cyan | ArtKitStage | 24,356,212,66 | 20 | screen:barracks-cats | false
+21 | nav-icon-barracks-cats | image | icon_battle | ArtKitStage | 32,369,42,42 | - | - | false
+22 | nav-town-summon | button | button_blue | ArtKitStage | 24,432,212,66 | 20 | screen:town-summon | false
+23 | nav-icon-town-summon | image | icon_town | ArtKitStage | 32,445,42,42 | - | - | false
+24 | nav-chest | button | button_blue | ArtKitStage | 24,508,212,66 | 20 | screen:chest | false
+25 | nav-icon-chest | image | icon_chest | ArtKitStage | 32,521,42,42 | - | - | false
+26 | nav-quests | button | button_blue | ArtKitStage | 24,584,212,66 | 20 | screen:quests | false
+27 | nav-icon-quests | image | icon_quests | ArtKitStage | 32,597,42,42 | - | - | false
+28 | nav-book | button | button_blue | ArtKitStage | 24,660,212,66 | 20 | screen:book | false
+29 | nav-icon-book | image | icon_book | ArtKitStage | 32,673,42,42 | - | - | false
+30 | power-panel | image | panel_resource | ArtKitStage | 24,760,212,108 | - | - | false
+31 | power-title | label | - | ArtKitStage | 40,775,180,26 | 20 | - | false
+32 | power-number | label | - | ArtKitStage | 48,812,170,42 | 36 | - | false
+33 | main | image | panel_main | ArtKitStage | 264,108,1324,780 | - | - | false
+34 | tab-cats | button | tab_blue | ArtKitStage | 284,128,150,52 | 18 | screen:barracks-cats | false
+35 | tab-fortress | button | tab_blue | ArtKitStage | 444,128,150,52 | 18 | screen:barracks-fortress | false
+36 | tab-squad | button | tab_blue | ArtKitStage | 604,128,150,52 | 18 | screen:barracks-squad | false
+37 | tab-skills | button | tab_blue | ArtKitStage | 764,128,150,52 | 18 | screen:barracks-skills | false
+38 | tab-monsters | button | tab_blue | ArtKitStage | 924,128,150,52 | 18 | screen:barracks-monsters | false
+39 | tab-gear | button | tab_selected | ArtKitStage | 1084,128,150,52 | 18 | screen:barracks-gear | false
+40 | tab-presets | button | tab_blue | ArtKitStage | 1244,128,150,52 | 18 | screen:barracks-presets | false
+41 | tab-nexus | button | tab_blue | ArtKitStage | 1404,128,150,52 | 18 | screen:barracks-nexus | false
+42 | screen-title | label | - | ArtKitStage | 298,202,1170,52 | 34 | - | false
+43 | gear-meta | label | - | ArtKitStage | 300,264,1200,38 | 22 | - | false
+44 | gear-cat | button | button_blue | ArtKitStage | 300,332,554,66 | 20 | screen:choice | false
+45 | artifact | button | button_blue | ArtKitStage | 884,332,660,66 | 20 | game:artifact | false
+46 | gear-empty | label | - | ArtKitStage | 300,432,1210,62 | 24 | - | false
+47 | workshop | image | bg_workshop | ArtKitStage | 320,530,1190,300 | - | - | false
+48 | gear-mascot | image | mascot_mechanic | ArtKitStage | 760,620,240,210 | - | - | false
+
+NỘI DUNG TEXT/INPUT
+brand-title: MEOW BASTION
+brand-subtitle: PHÁO ĐÀI TRĂNG XANH
+currency-value-coin: 2,843
+currency-value-gem: 300
+currency-value-ticket: 5
+settings: Cài đặt
+commander-level: CHỈ HUY / CẤP 5
+commander-name: Chỉ huy
+mèo
+nav-march:      Hành quân
+nav-barracks-cats:      Doanh trại
+nav-town-summon:      Thành mèo
+nav-chest:      Rương AFK
+nav-quests:      Nhiệm vụ
+nav-book:      Bách khoa
+power-title: LỰC CHIẾN
+power-number: 1,046
+tab-cats: MÈO
+tab-fortress: PHÁO
+tab-squad: ĐỘI
+tab-skills: KỸ
+tab-monsters: QUÁI
+tab-gear: TRANG
+tab-presets: ĐỘI LƯU
+tab-nexus: CỘNG
+screen-title: Kho trang bị & xưởng rèn
+gear-meta: Trang bị nhận từ chiến dịch. Mỗi món chỉ gắn cho một mèo.
+gear-cat: Mèo đang chọn: Mướp ›
+artifact: Cổ vật: Trống ›
+gear-empty: Chưa có trang bị. Vượt ải 2–4 và 6–7 để nhận những món đầu tiên.
+

@@ -1,0 +1,41 @@
+MÀN 20 — Cài đặt
+Key: settings
+Loại: Popup trên nền quests
+Prefab được sinh: Assets/CatTanksMockupKit/Generated/Prefabs/Mockup_settings.prefab
+
+InputField tên chỉ huy; hai hàng control hai cột; reduced-motion full width; Save & Close. Preview không lưu settings vào Profile.
+
+CÁCH GHÉP
+1. Dùng Canvas 1600×900 và quy tắc anchor trong Docs/02_GHEP_21_MAN.txt.
+2. Thêm node theo đúng thứ tự bảng bên dưới; node sau vẽ trên node trước.
+3. parent trống = ArtKitStage; parent có giá trị = trong Content/group có tên đó.
+4. Khung/nút: Image Sliced, viền theo importer; icon/art: Image Simple + Preserve Aspect.
+5. Các node label dùng UI Text; button dùng Image + Button + child Text; bar dùng track + Image Filled.
+6. Action screen:* là navigation xem thử; game:* cần nối controller. Dữ liệu số trong file là ví dụ.
+
+THÀNH PHẦN (tọa độ trên trái, UI units)
+Order | Id | Kind | Sprite | Parent | x,y,w,h | Font | Action | Disabled
+0 | modal-settings | image | panel_modal | ArtKitStage | 350,168,900,580 | - | - | false
+1 | modal-title | label | - | ArtKitStage | 390,194,820,62 | 36 | - | false
+2 | name-caption | label | - | ArtKitStage | 390,280,200,52 | 24 | - | false
+3 | commander-input | input | input_field | ArtKitStage | 600,280,610,52 | 24 | - | false
+4 | sound | button | button_blue | ArtKitStage | 390,364,390,58 | 20 | game:audio | false
+5 | fullscreen | button | button_blue | ArtKitStage | 812,364,398,58 | 20 | game:fullscreen | false
+6 | export-profile | button | button_blue | ArtKitStage | 390,448,390,58 | 20 | game:exportProfile | false
+7 | challenge | button | button_blue | ArtKitStage | 812,448,398,58 | 20 | game:challenge | false
+8 | reduced-motion | button | button_blue | ArtKitStage | 390,532,820,56 | 20 | game:reducedMotion | false
+9 | settings-help | label | - | ArtKitStage | 390,598,820,38 | 19 | - | false
+10 | save-close | button | button_gold | ArtKitStage | 390,666,820,58 | 27 | close | false
+
+NỘI DUNG TEXT/INPUT
+modal-title: Cài đặt chỉ huy
+name-caption: Tên chỉ huy
+commander-input: Chỉ huy mèo
+sound: Tắt âm thanh
+fullscreen: Toàn màn hình
+export-profile: Xuất hồ sơ JSON
+challenge: Thử thách trăng · 6 đợt
+reduced-motion: Giảm chuyển động: TẮT
+settings-help: Tiến trình lưu trên máy • Esc để đóng • Tab / Enter để điều hướng
+save-close: LƯU & ĐÓNG
+

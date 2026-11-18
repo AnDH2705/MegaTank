@@ -1,0 +1,50 @@
+KIẾN TIÊN PHONG · PILOT V3 · DI CHUYỂN
+
+Kết quả thử nghiệm
+
+Bản C được chọn cho lần xem thử này. Mở So-sanh-run_V2-va-pilot.gif để xem V2 bên trái và C bên phải ở cùng nhịp. So-sanh-khung_V2-A-B-C-D.png cho xem từng tư thế trên cùng đường mặt đất.
+
+Để so với các quái khác, mở ../../Xem-sprite-sheet.html bằng trình duyệt, bấm Chọn nhiều ảnh và nạp 01-kien-tien-phong_bug-0_sheet-idle-run-attack-hit_pilot-v3.png. Chọn Di chuyển. File này thay riêng hàng Di chuyển, giữ nguyên ba hàng khác của V2. Các file Kien-run_*_6x1.png có số hàng là 1 và dùng chế độ tùy chỉnh lưới. Sáu PNG rời của C nằm trong frames-run-v3.
+
+
+Dữ liệu đã dùng
+
+• Sprite gốc của Kiến tiên phong cung cấp hình dáng, màu, viền, khớp và góc nhìn. V2 cung cấp ảnh để đối chiếu với kết quả.
+• Video của Wöhrl, Reinhardt và Blickhan và video V2 trong bộ dữ liệu của Pfeffer và cộng sự cung cấp mẫu bước kiến thật. Mỗi nửa vòng có ba chân chống và ba chân chuyển. Một nhóm gồm chân trước và sau bên gần cùng chân giữa bên xa. Nhóm kia đổi phía.
+  https://commons.wikimedia.org/wiki/File:Alternating_Tripod_Gait.webm
+  https://datadryad.org/dataset/doi:10.5061/dryad.7k82t
+• So-do-6-tu-the-run.png là sơ đồ vẽ riêng từ nguyên tắc đó. Hàng trên diễn tả nhóm A chạm, chống và đẩy. Hàng dưới diễn tả nhóm B. Dấu xanh là chân chống và dấu đỏ là chân chuyển. Cả sơ đồ lẫn sprite gốc được đưa vào ImageGen để tạo hoặc chỉnh các bản thử. PROMPT_PILOT.txt ghi lại các prompt thật.
+
+
+Các lần thử và lý do chọn
+
+V2  Mốc ban đầu. Điểm chân cao thấp lệch rõ, nhất là khung 03, và mắt chớp giữa chu kỳ chạy.
+A   Dùng sơ đồ sáu tư thế với mô tả rõ chân nào chống. Độ cao đáy hình ổn hơn. Chân dài và đầu chân bẹt, khác sprite gốc.
+B   Thử nhịp bước ngắn hơn. Đọc được nhịp chân, nhưng đầu chân vẫn bẹt và toàn thân cao trên chân.
+C   Chỉnh A để lấy lại chân nhọn, ngắn và dày, giữ các khớp khác nhau giữa các tư thế. Dáng gần sprite gốc hơn và mắt ít thay đổi độ cao hơn.
+D   Chỉnh C để làm rõ chân đổi pha ở nửa sau. Khung 04 khác rõ hơn, đồng thời vị trí mắt ngang dao động lớn hơn. Giữ C cho pilot vì cân bằng tốt hơn giữa độ ổn định của thân, hình dáng gốc và dáng chân.
+
+Đo sau khi đóng gói 6 ô 320×320
+
+                         V2          A           B           C           D
+Khoảng y đáy hình        249–260     250–253     249–255     250–253     250–252
+Độ dao động y đáy hình     11 px        3 px        6 px        3 px        2 px
+Dao động y mắt gần       ≈25,3 px    ≈14,6 px    ≈12,4 px    ≈6,7 px     ≈5,7 px
+Dao động x mắt gần        ≈9,7 px    ≈11,4 px     ≈6,0 px   ≈10,0 px    ≈17,7 px
+
+Mốc y đáy hình của hàng đứng chờ V2 là 251 px theo trung vị. Các số đo đáy dùng biên alpha ≥96/255. Số đo mắt dùng tâm vùng vàng liên thông lớn nhất. Khung 03 của V2 có mắt nhắm nên loại khỏi số đo mắt. Với mỗi bản thử, áp dụng cùng tỉ lệ và dịch chuyển cho cả sáu khung để giữ chuyển động đã vẽ giữa các tư thế. Các số đo dựa trên hình ảnh tĩnh, dùng để phát hiện độ nhảy hoặc thay đổi điểm neo. Mắt và đáy hình là dấu hiệu gần đúng cho thân và chân, chưa đo được độ trượt trong thế giới game.
+
+Chỗ chưa đạt chuẩn
+
+• Ở C, hai khung tiếp đất 01 và 04 còn khá giống nhau. Chân xa có lúc bị che, nên chưa xác nhận được cả ba điểm tựa trong mỗi pha. File JSON mô tả mục tiêu vẽ, chưa phải nhãn chân đã xác nhận trên ảnh.
+• Nối 06 → 01 còn thấy đầu tiến nhẹ. Tâm mắt thay đổi ngang khoảng 7 px, dọc khoảng 5 px. Mục tiêu vòng tiếp theo là vẽ rõ chân xa và giảm nhảy ở mối nối mà vẫn giữ hình dáng gốc.
+• Khi đổi từ Idle V2 sang Run C, đáy hình đã gần cùng cao độ. Trung vị tâm mắt của Run C vẫn cao hơn Idle V2 khoảng 12 px, bỏ qua khung Idle nhắm mắt. Cần chỉnh lại tỷ lệ đầu–thân hoặc thêm dáng vào chạy để giảm cảm giác giật ở đoạn chuyển trạng thái.
+• Kien-run-nhip-va-tu-the.json kèm nhịp thử 105/95/70 ms lặp hai lần, tổng 540 ms. GIF dùng cùng nhịp cho hai bản và làm tròn tới 10 ms. Tool hiện tại phát mặc định 90 ms/khung khi chọn Di chuyển.
+
+
+Áp dụng vòng lặp cho loài khác
+
+1. Lấy một nguồn chuyển động thật hoặc ví dụ sát dáng quái, rồi dựng sơ đồ điểm neo và tư thế theo thứ tự.
+2. Tạo một vài bản với cùng sprite gốc, cùng số khung, hướng nhìn và góc máy. Duyệt hình nhân vật trước, rồi duyệt nhịp và điểm chống.
+3. Cố định bản tốt nhất làm mốc. Mỗi lượt sau sửa một nhóm lỗi và so lại ở cùng tốc độ, cùng cỡ. Ghi rõ vì sao đổi bản hoặc giữ bản hiện tại.
+4. Giữ dữ liệu tham chiếu và nhãn clip kèm ảnh đã duyệt. Pilot này dùng ảnh tham chiếu để tạo và chỉnh sprite bằng ImageGen. Trọng số model chưa được cập nhật.

@@ -1,0 +1,107 @@
+CAT TANKS — BỘ ẢNH THAM CHIẾU VÀ HƯỚNG DẪN VẼ LẠI
+
+Đọc Danh-muc-anh.csv để tìm tên tiếng Việt, ID, đường dẫn và nguồn ảnh. Dùng tên file và ID khi xuất bản vẽ mới để có thể đối chiếu với catalog CatTanks. Tạo file mới có hậu tố _v2 và giữ lại ảnh tham chiếu để so sánh.
+
+Khi gửi cho ChatGPT, đính kèm ảnh đúng với mục cần vẽ và đoạn hướng dẫn tương ứng dưới đây. Giữ cách đọc hình của CatTanks: tạo hình chibi, viền đậm, mảng màu dễ nhận từ xa và góc nhìn 2D nhất quán. Tách sprite, icon, chữ và hiệu ứng ra các lớp phù hợp để tiện ghép sau.
+
+
+01 — QUÁI VÀ ANIMATION
+
+Mở `01-Quai-va-animation/Xem-sprite-sheet.html` bằng trình duyệt để xem nhiều sheet cùng lúc. Bấm Nạp bản mới nhất (20 quái) để mở bản hiện hành của từng loài. Danh sách Phiên bản dưới mỗi quái cho phép quay về V2, V3 hoặc bản gốc tùy loài. Tab Vào chạy / bay phát đoạn chuyển tiếp của các bản có clip này. Có thể chọn nhiều ảnh, chọn thư mục hoặc kéo thả vào tool. Nếu một sheet có lưới khác, mở Lưới và nhịp riêng dưới ảnh.
+
+Đọc thêm `01-Quai-va-animation/NGHIEN_CUU_HOAT_ANH_CATTANKS.txt` khi cần sửa animation. File có ví dụ chuyển động theo từng khung, số đo căn khung của V2 và chỉ dẫn riêng cho 20 loài.
+
+Mỗi thư mục có ảnh nhân vật gốc. Với 19 loài được vẽ lại bằng ImageGen, dùng sheet `*_v2.png` hoặc các PNG rời trong `frames-v2`, đánh số 01–06 theo từng trạng thái. Danh mục đánh dấu bản vẽ lại bằng `imagegen-redrawn-frame-by-frame`. File `*_ban-nhap-bien-dang.png` là bản thử cũ, giữ để đối chiếu. Prompt theo từng loài nằm trong `01-Quai-va-animation/PROMPT_VE_LAI_V2.txt`.
+
+Sheet nền trong suốt 1920×1280 có 6 cột × 4 hàng, mỗi ô 320×320. Đọc khung từ trái sang phải. Quái nhìn sang phải. Điểm gốc trong mỗi ô là x=160, y=255, tính từ mép trái và mép trên. Các tư thế có thể lên xuống quanh điểm gốc đó.
+
+Hàng 1  IDLE    Đứng chờ   6 khung × 180 ms. Lặp. Thở, chớp mắt, cựa đầu hoặc cánh.
+Hàng 2  RUN     Di chuyển  6 khung × 90 ms. Lặp. Tách chân, vuốt, cánh hoặc thân thành các dáng rõ.
+Hàng 3  ATTACK  Tấn công   6 khung × 120 ms. Chạy một lần. Chuẩn bị, tung đòn, theo đà, thu về.
+Hàng 4  HIT     Trúng đòn  6 khung × 120 ms. Chạy một lần. Giật lùi, co người, lấy lại thăng bằng.
+
+Sói bóng đêm là mẫu gốc. Sheet của Sói dàn 24 hình gốc vào ô chuẩn. Thư mục `frames-goc` giữ các file PNG 272×256 của Sói. Khi chỉnh tiếp, vẽ chân, đầu, miệng, cánh và khớp theo từng tư thế. Giữ đặc điểm nhận diện và bảng màu của từng loài. Để bóng đất, đường đạn, số sát thương và hiệu ứng nguyên tố riêng.
+
+01 bug-0    Kiến tiên phong       Bước chân xen kẽ, rung râu, hàm kẹp khi đánh.
+02 beast-0  Sói bóng đêm          Lấy sheet gốc làm mẫu nhịp, dáng chạy, cú cắn và trúng đòn.
+03 bug-4    Ong sát thủ           Vỗ cánh khi lơ lửng, hạ mình lao chích.
+04 bug-1    Bọ sừng đỏ           Mai nặng, chân ngắn, hạ sừng khi húc.
+05 beast-1  Lợn rừng cuồng nộ    Cào móng, hạ đầu, bật tới với nanh đi trước.
+06 bug-2    Nhện giăng tơ         Chân bước lệch pha, nâng thân lúc phóng tơ.
+07 bug-3    Bọ ngựa đao           Khuỵu chân, bật người, chém bằng hai càng.
+08 beast-2  Gấu cuồng chiến      Dồn trọng lượng vào vai, vung chân trước hoặc gầm.
+09 bug-5    Ấu trùng đất         Thân co giãn từng đốt, chúi đầu khi chui xuống đất.
+10 beast-4  Hổ kiếm              Bước thấp, cuộn đuôi, vồ bằng chân trước và nanh.
+11 bug-6    Bọ cạp độc           Di chuyển bằng chân thấp, kéo đuôi lên rồi bổ kim.
+12 beast-3  Khỉ băng             Tì tay xuống đất, lấy đà, đấm hoặc ném băng.
+13 bug-7    Bướm thôi miên       Khép mở cánh rõ biên độ, giữ mắt cánh cân đối.
+14 beast-5  Rùa dung nham        Bước nặng, thò đầu khỏi mai, bật cổ khi đánh.
+15 beast-6  Tê giác bọc giáp     Bước nặng, hạ sừng trước khi xông.
+16 bug-8    Bọ tinh thạch        Chân bước dưới mai, cụm tinh thể nảy nhẹ theo thân.
+17 beast-7  Đại bàng sư tử       Dang cánh, thu cánh khi lao xuống, vuốt đưa trước.
+18 beast-9  Hươu cổ thụ          Chạy nhún, hất gạc hoặc ngẩng đầu khi hồi máu.
+19 bug-9    Bọ chúa giáp gai     Càng mở rộng, tiền thân hạ thấp, đập càng khi đánh.
+20 beast-8  Bạo long hắc nguyệt  Đuôi giữ thăng bằng, dồn trọng lượng, gầm hoặc há hàm.
+
+
+02 — XE VÀ TRANG BỊ
+
+Ảnh concept gồm pháo đài nhìn ngang với 5 tầng, mỗi tầng có 1 tháp pháo và 2 ổ module. Khi vẽ lại, xuất riêng gầm và bánh, tầng lặp, buồng chỉ huy, tháp pháo, ổ module rỗng và viền trạng thái được chọn. Giữ các tầng thẳng hàng để ráp được từ 1 đến 5 tầng. Dùng barracks-fortress_anh-game.png để kiểm tra tên và vị trí hai ô module.
+
+Bốn ô trang bị mèo là vũ khí, mũ giáp, áo giáp và giày hành quân. Dùng ảnh trong Sprite-game để tham khảo hình hiện tại. Icon ô giày trong game đang lấy uniform-0. File giay-hanh-quan_concept.png cho thấy một phương án vẽ đôi giày riêng. Giữ kích thước biểu tượng và độ dày viền đồng nhất giữa các ô. Dùng nhóm 05 cho danh mục vũ khí và module.
+
+
+03 — VẬT PHẨM VÀ TÀI NGUYÊN
+
+Dùng 14 file đánh số cho lồng thú, lồng trăng, di vật, rương AFK, vé triệu hồi, vàng, ngọc, đá rèn, kinh nghiệm mèo, bụi linh hồn, tinh chất linh hồn, lõi kỹ năng, đá di vật và huy chương đấu trường. Bộ icon LayerLab đi kèm là ảnh tham khảo thêm cho rương, xu, ngọc và vé.
+
+Khi vẽ lại, xuất từng icon PNG trong suốt 256×256, chiếm khoảng 75–85% ô. Lồng thú dùng bộ khung gỗ, lồng trăng có dấu trăng lưỡi liềm. Di vật là món đồ có hình khắc, đá di vật dùng dạng tinh thể. Rương AFK có biểu tượng thời gian. Giữ màu và silhouette khác nhau ở cỡ HUD. Số lượng và bậc hiếm đặt ở lớp UI riêng.
+
+
+04 — KỸ NĂNG
+
+10 file được đặt theo tên và ID catalog. Sáu kỹ năng dùng trong chế độ cổ điển là Tiếp viện, Sửa chữa, Bão băng, Drone, Mưa tên lửa và Lá chắn. Dùng cùng icon nhận diện trong hai chế độ.
+
+Khi vẽ lại, tách icon biểu thị kỹ năng khỏi hiệu ứng trong trận. Giữ dấu hiệu nhận diện chính: cờ lê cho Sửa chữa, cụm tên lửa cho Mưa tên lửa, hình khiên cho Lá chắn, đội mèo cho Tiếp viện, bông tuyết cho Bão băng, drone trinh sát, máy bay cho Không kích, bia mèo cho Mồi nhử, nam châm đỏ và mèo lao mang bom.
+
+
+05 — VŨ KHÍ
+
+40 sprite PNG gốc gồm 10 tháp pháo turret-*, 10 vũ khí cá nhân gun-* và 20 vũ khí phụ/module pack-*. Dùng nguyên mã ID khi xuất bản vẽ mới. Giữ góc nhìn ngang và chiều nòng của ảnh tham chiếu. Dùng nền trong suốt. Khi giao file để ráp, ghi điểm neo đế tháp, tâm tay cầm hoặc gá module và đầu nòng nếu có. Tách chớp nòng, luồng điện, lửa và đạn ra khỏi hình thân.
+
+
+06 — UI/UX
+
+Có 15 màn hình và 6 popup. 20 ảnh là ảnh chụp có sẵn trong project. Popup Chọn mục là mockup theo bố cục StudioPicker vì thư mục capture thiếu ảnh này. Dùng ảnh tổng quan để xem thứ tự, dùng file riêng để kiểm tra bố cục và nội dung.
+
+Khi vẽ lại, giữ phân cấp tiêu đề, nút quay lại/đóng, menu chính, 8 tab doanh trại, vùng cuộn, trạng thái chọn và thao tác xác nhận. Bố cục ngang 16:9, ưu tiên vùng an toàn và chữ dễ đọc. Xuất lớp panel, nút, icon, viền chọn và trạng thái khóa riêng. Ảnh toàn màn hình nên có text mẫu đúng tiếng Việt để đối chiếu. Chữ giao diện thật nằm trên lớp text của game.
+
+
+07 — BỐI CẢNH VÀ VFX
+
+01-Boi-canh-20-ai gồm 20 concept theo thứ tự catalog. Ải 05, 10, 15 và 20 có hậu tố _boss. Các concept là gợi ý vẽ lại theo tên ải. Bản Unity đang dựng phong cảnh trăng xanh chung bằng code.
+
+Khi vẽ lại, xuất từng ảnh ngang 1920×1080. Tách bầu trời, hậu cảnh xa, trung cảnh và mặt đất thành các lớp để cuộn parallax. Giữ một dải chiến đấu ngang ở khoảng một phần ba phía dưới. Hạn chế chi tiết chói ở vùng HUD và đường di chuyển của quái.
+
+02-VFX-12-loai gồm ảnh tổng quan trong project, một ảnh hiệu ứng trong trận và 12 ảnh cắt theo thứ tự CombatVfxLibrary. Ảnh cắt ghi lại một thời điểm của particle, dùng để tham khảo màu và dáng. Để vẽ lại thành flipbook, xuất các ô có cùng điểm gốc và nền trong suốt. Ưu tiên pha xuất hiện, đỉnh và tắt dần. Giữ số khung/tốc độ trong manifest đi kèm sprite cuối nếu đổi nhịp.
+
+01 muzzle    Chớp nòng      0,10 s    Cạnh sáng hướng theo nòng.
+02 impact    Va chạm        0,55 s    Tia nhỏ văng ra từ tâm va chạm.
+03 blast     Nổ             0,80 s    Lõi nóng, đám khói vỡ ra hai bên.
+04 death     Chết           0,75 s    Vòng bụi và tàn khói.
+05 fire      Lửa            0,65 s    Cam vàng, quầng cháy rõ.
+06 ice       Băng           0,85 s    Trắng xanh, hạt và mảnh lạnh.
+07 poison    Độc            0,80 s    Hạt xanh lục nổi và phân tán.
+08 electric  Điện           0,50 s    Tia phân nhánh với lõi sáng.
+09 heal      Hồi máu        1,20 s    Dấu cộng xanh đi lên nhẹ.
+10 shield    Lá chắn        0,90 s    Hào quang xanh và biểu tượng khiên.
+11 buff      Tăng sức mạnh  0,90 s    Tia vàng bật lên quanh mục tiêu.
+12 capture   Bắt quái       0,80 s    Hạt màu hội tụ và lóe sáng.
+
+
+08 VÀ 09 — NHÂN VẬT MÈO VÀ BỘ ẢNH GỐC
+
+08 có 10 sprite mèo đặt tên theo catalog. Khi vẽ lại, giữ màu lông, họa tiết, mặt và tỷ lệ từng nhân vật. 09 có đủ 156 PNG gốc, giữ nguyên tên và cây thư mục, gồm cả wolf-frames. Đây là bộ art nguồn để đối chiếu thiết kế và tra sprite bổ sung.
+
+Nguồn ảnh game: CatTanks Resources/Art, catalog.json, Captures/StudioUI và Captures/CombatVFX.
+Nguồn ảnh concept: công cụ ImageGen tích hợp. Phiên bản prompt lưu trong PROMPT_IMAGEGEN.txt.

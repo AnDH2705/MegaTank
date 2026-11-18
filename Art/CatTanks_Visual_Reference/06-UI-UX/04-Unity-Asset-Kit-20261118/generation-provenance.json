@@ -1,0 +1,749 @@
+{
+  "generator": "built-in image_gen",
+  "created": "2026-11-18",
+  "styleMaster": "F:/tank/MegaTank/Art/CatTanks_Visual_Reference/06-UI-UX/demo-hanh-quan-style-ref-20261118.png",
+  "generated": [
+    {
+      "id": "ui_panels",
+      "source": "C:\\Users\\trieu\\.codex-company\\generated_images\\01a1ecf0-a316-7ad2-8de6-7b344cfd8765\\exec-c9caafa3-2bd5-457d-9fb3-4e7ccf7653e4.png",
+      "prompt": "Use case: ui-mockup / reusable game raster assets for Unity 2022.3 uGUI. Match the supplied approved MEOW BASTION mockup style faithfully: cobalt-blue beveled steel, silver-blue rims/rivets, thick clean black outlines, warm golden orange accents, cyan highlights, cute cats, polished 2D cartoon rendering. The references are for VISUAL STYLE ONLY. This output is a production asset texture, NOT another finished UI mockup.\nCreate exactly 9 separate components arranged in a strict 3-column x 3-row REGULAR GRID on an actual transparent RGBA background. Each cell is equal size. Every component centered within its own cell with at least 14% transparent empty padding on every cell side. NOTHING crosses cell boundaries. No grid lines, cell labels, text, numbers, watermark, checkerboard, decorative connecting elements, global background, or ground shadows. The transparent padding and cell count are mandatory because Unity will slice a regular grid. High resolution, crisp edges, flat front view.\nNine EMPTY blue metal UI panels, strictly ONE panel per cell, shown straight front view, no perspective. Rows: main outer frame with silver steel rim, deep blue inset frame, broad modal frame; card frame, wide header plaque, compact info banner; resource counter rounded panel, portrait square frame, scroll container frame. Each panel fully OPAQUE dark blue center, 4 rivets confined to corners, uninterrupted flat blue central area for 9-slice stretching, clean straight edges between rounded corners. No artwork, letters, icons or hazards across stretchable central edges. Different silhouettes but same design language."
+    },
+    {
+      "id": "ui_buttons",
+      "source": "C:\\Users\\trieu\\.codex-company\\generated_images\\01a1ecf0-a316-7ad2-8de6-7b344cfd8765\\exec-4b63cd4e-e32a-4cdc-a169-795efd4868a8.png",
+      "prompt": "Use case: ui-mockup / reusable game raster assets for Unity 2022.3 uGUI. Match the supplied approved MEOW BASTION mockup style faithfully: cobalt-blue beveled steel, silver-blue rims/rivets, thick clean black outlines, warm golden orange accents, cyan highlights, cute cats, polished 2D cartoon rendering. The references are for VISUAL STYLE ONLY. This output is a production asset texture, NOT another finished UI mockup.\nCreate exactly 12 separate components arranged in a strict 4-column x 3-row REGULAR GRID on an actual transparent RGBA background. Each cell is equal size. Every component centered within its own cell with at least 14% transparent empty padding on every cell side. NOTHING crosses cell boundaries. No grid lines, cell labels, text, numbers, watermark, checkerboard, decorative connecting elements, global background, or ground shadows. The transparent padding and cell count are mandatory because Unity will slice a regular grid. High resolution, crisp edges, flat front view.\nTwelve EMPTY wide rectangular UI buttons, one per equal cell, identical footprint and corner geometry for state swaps. Row1 dark blue normal, dark blue pushed down, cyan selected, cyan pushed down; row2 golden orange primary, golden orange pushed down, desaturated disabled slate, red danger; row3 blue tab, cyan tab, pale blue input field with dark rim, green plus-button BACKPLATE but no plus mark. All straight-on empty centers, corner rivets only, safe to 9-slice. No text/icons/hazard stripes."
+    },
+    {
+      "id": "ui_controls",
+      "source": "C:\\Users\\trieu\\.codex-company\\generated_images\\01a1ecf0-a316-7ad2-8de6-7b344cfd8765\\exec-60e4e145-59be-4695-9cbf-c265c84c1f7b.png",
+      "prompt": "Use case: ui-mockup / reusable game raster assets for Unity 2022.3 uGUI. Match the supplied approved MEOW BASTION mockup style faithfully: cobalt-blue beveled steel, silver-blue rims/rivets, thick clean black outlines, warm golden orange accents, cyan highlights, cute cats, polished 2D cartoon rendering. The references are for VISUAL STYLE ONLY. This output is a production asset texture, NOT another finished UI mockup.\nCreate exactly 16 separate components arranged in a strict 4-column x 4-row REGULAR GRID on an actual transparent RGBA background. Each cell is equal size. Every component centered within its own cell with at least 14% transparent empty padding on every cell side. NOTHING crosses cell boundaries. No grid lines, cell labels, text, numbers, watermark, checkerboard, decorative connecting elements, global background, or ground shadows. The transparent padding and cell count are mandatory because Unity will slice a regular grid. High resolution, crisp edges, flat front view.\nSixteen standalone UI primitives in a strict grid. Row1 horizontal rounded dark bar track, solid bright green bar fill, solid gold bar fill, solid cyan bar fill; row2 short vertical scroll track, blue scrollbar handle, simple horizontal blue stage connector, horizontal yellow-black hazard tape; row3 gold star, dark empty star outline, cyan glowing rounded-rectangle selection outline with transparent interior, dashed empty cat-silhouette outline; row4 blue glowing resonance podium viewed straight front, curved blue energy arc link on transparent background, single gold decorative wing, red skull boss badge. No text, numbers or panels behind symbols."
+    },
+    {
+      "id": "icons_navigation",
+      "source": "C:\\Users\\trieu\\.codex-company\\generated_images\\01a1ecf0-a316-7ad2-8de6-7b344cfd8765\\exec-b6f1c550-59ab-4a1c-a50f-d9e014f691aa.png",
+      "prompt": "Use case: ui-mockup / reusable game raster assets for Unity 2022.3 uGUI. Match the supplied approved MEOW BASTION mockup style faithfully: cobalt-blue beveled steel, silver-blue rims/rivets, thick clean black outlines, warm golden orange accents, cyan highlights, cute cats, polished 2D cartoon rendering. The references are for VISUAL STYLE ONLY. This output is a production asset texture, NOT another finished UI mockup.\nCreate exactly 16 separate components arranged in a strict 4-column x 4-row REGULAR GRID on an actual transparent RGBA background. Each cell is equal size. Every component centered within its own cell with at least 14% transparent empty padding on every cell side. NOTHING crosses cell boundaries. No grid lines, cell labels, text, numbers, watermark, checkerboard, decorative connecting elements, global background, or ground shadows. The transparent padding and cell count are mandatory because Unity will slice a regular grid. High resolution, crisp edges, flat front view.\nSixteen isolated colorful cartoon game icons, no backplates, strict equal 4x4 grid. Row1 folded map, crossed swords, cat-paw castle, gold-orange loot chest; row2 checklist calendar, purple encyclopedia book, steel gear with orange center, purple shield with gold crown; row3 white pause symbol, white play triangle, white X close, white right arrow; row4 white plus, yellow padlock, green check badge, red-white boss skull. Bold dark outlines, generous clear separation."
+    },
+    {
+      "id": "icons_resources",
+      "source": "C:\\Users\\trieu\\.codex-company\\generated_images\\01a1ecf0-a316-7ad2-8de6-7b344cfd8765\\exec-3db78fd0-1746-4ea7-9532-f8b7a544c7b5.png",
+      "prompt": "Use case: ui-mockup / reusable game raster assets for Unity 2022.3 uGUI. Match the supplied approved MEOW BASTION mockup style faithfully: cobalt-blue beveled steel, silver-blue rims/rivets, thick clean black outlines, warm golden orange accents, cyan highlights, cute cats, polished 2D cartoon rendering. The references are for VISUAL STYLE ONLY. This output is a production asset texture, NOT another finished UI mockup.\nCreate exactly 16 separate components arranged in a strict 4-column x 4-row REGULAR GRID on an actual transparent RGBA background. Each cell is equal size. Every component centered within its own cell with at least 14% transparent empty padding on every cell side. NOTHING crosses cell boundaries. No grid lines, cell labels, text, numbers, watermark, checkerboard, decorative connecting elements, global background, or ground shadows. Transparent padding and cell count mandatory for Unity slicing. High resolution crisp edges.\nSixteen isolated resource/stat icons, strict equal 4x4 grid. Row1 gold paw coin, purple faceted gem, gold paw summon ticket, purple cat-head XP badge (NO lettering); row2 purple sparkle dust pile, golden winged shield XP badge (NO lettering), empty small iron capture cage with gold paw latch, red cat-food bowl full of kibble; row3 cyan moon cage crystal star, purple essence crystal, silver forging stone/gear, cyan skill core gem; row4 red heart, orange sword, blue steel shield, white winged boot. No text, no numeric amounts, no UI backplates."
+    },
+    {
+      "id": "icons_skills",
+      "source": "C:\\Users\\trieu\\.codex-company\\generated_images\\01a1ecf0-a316-7ad2-8de6-7b344cfd8765\\exec-6fe22940-1fd2-4d40-aa67-8ed7fe5bdad9.png",
+      "prompt": "Use case: ui-mockup / reusable game raster assets for Unity 2022.3 uGUI. Match the supplied approved MEOW BASTION mockup style faithfully: cobalt-blue beveled steel, silver-blue rims/rivets, thick clean black outlines, warm golden orange accents, cyan highlights, cute cats, polished 2D cartoon rendering. The references are for VISUAL STYLE ONLY. This output is a production asset texture, NOT another finished UI mockup.\nCreate exactly 10 separate components arranged in a strict 5-column x 2-row REGULAR GRID on an actual transparent RGBA background. Each cell is equal size. Every component centered within its own cell with at least 14% transparent empty padding on every cell side. NOTHING crosses cell boundaries. No grid lines, cell labels, text, numbers, watermark, checkerboard, decorative connecting elements, global background, or ground shadows. Transparent padding and cell count mandatory for Unity slicing. High resolution crisp edges.\nTen isolated tactical skill icons in strict equal 5 columns x 2 rows. Row1 crossed wrench and screwdriver, twin red-white rockets, cyan paw shield, supply crate under parachute, blue ice crystal and snowflakes. Row2 cute blue-orange drone, small blue plane dropping bombs, cardboard smiling cat decoy, red-blue horseshoe magnet with sparks, round black paw-marked bomb and orange burst. No text or backplates."
+    },
+    {
+      "id": "mascots",
+      "source": "C:\\Users\\trieu\\.codex-company\\generated_images\\01a1ecf0-a316-7ad2-8de6-7b344cfd8765\\exec-310ed114-bdb6-4a66-9497-b5065ff9336e.png",
+      "prompt": "Use case: ui-mockup / reusable game raster assets for Unity 2022.3 uGUI. Match the supplied approved MEOW BASTION mockup style faithfully: cobalt-blue beveled steel, silver-blue rims/rivets, thick clean black outlines, warm golden orange accents, cyan highlights, cute cats, polished 2D cartoon rendering. The references are for VISUAL STYLE ONLY. This output is a production asset texture, NOT another finished UI mockup.\nCreate exactly 8 separate components arranged in a strict 4-column x 2-row REGULAR GRID on an actual transparent RGBA background. Each cell is equal size. Every component centered within its own cell with at least 14% transparent empty padding on every cell side. NOTHING crosses cell boundaries. No grid lines, cell labels, text, numbers, watermark, checkerboard, decorative connecting elements, global background, or ground shadows. Transparent padding and cell count mandatory for Unity slicing. High resolution crisp edges.\nEight separate isolated orange tabby cat mascots, same recurring adorable cat mechanic from reference, blue-lens brass goggles and red scarf. Strict 4 columns x 2 rows, one pose per cell, full silhouette. Row1 neutral smiling commander portrait bust, scouting with binoculars behind compact sandbags and red paw flag, thumbs-up ready pose, celebratory raised paw with small victory rays; row2 mechanic leaning on anvil holding hammer, hugging golden chest, sleepy sitting cat for pause, cat shrugging with empty hands. No scene backgrounds or text."
+    },
+    {
+      "id": "arena_avatars",
+      "source": "C:\\Users\\trieu\\.codex-company\\generated_images\\01a1ecf0-a316-7ad2-8de6-7b344cfd8765\\exec-b1a6e5bb-1ab9-47ac-8349-766674ad5914.png",
+      "prompt": "Use case: ui-mockup / reusable game raster assets for Unity 2022.3 uGUI. Match the supplied approved MEOW BASTION mockup style faithfully: cobalt-blue beveled steel, silver-blue rims/rivets, thick clean black outlines, warm golden orange accents, cyan highlights, cute cats, polished 2D cartoon rendering. The references are for VISUAL STYLE ONLY. This output is a production asset texture, NOT another finished UI mockup.\nCreate exactly 6 separate components arranged in a strict 3-column x 2-row REGULAR GRID on an actual transparent RGBA background. Each cell is equal size. Every component centered within its own cell with at least 14% transparent empty padding on every cell side. NOTHING crosses cell boundaries. No grid lines, cell labels, text, numbers, watermark, checkerboard, decorative connecting elements, global background, or ground shadows. Transparent padding and cell count mandatory for Unity slicing. High resolution crisp edges.\nSix distinct cat opponent portrait busts in strict 3 columns x 2 rows, each isolated with no frame. Row1 round cream-orange cat wearing goggles/red scarf; gray cat wearing green army helmet; cream cat wearing purple wizard hood. Row2 cream cat wearing brown bear hood; orange cat wearing straw rice-field conical hat; black-white cat wearing dark ninja hood with silver paw forehead plate. Keep all characters clearly cats, never dogs or bears themselves. No text."
+    },
+    {
+      "id": "stage_vignettes",
+      "source": "C:\\Users\\trieu\\.codex-company\\generated_images\\01a1ecf0-a316-7ad2-8de6-7b344cfd8765\\exec-656b3f3e-5eae-42fa-ba76-4d8647df0f45.png",
+      "prompt": "Use case: ui-mockup / reusable game raster assets for Unity 2022.3 uGUI. Match the supplied approved MEOW BASTION mockup style faithfully: cobalt-blue beveled steel, silver-blue rims/rivets, thick clean black outlines, warm golden orange accents, cyan highlights, cute cats, polished 2D cartoon rendering. The references are for VISUAL STYLE ONLY. This output is a production asset texture, NOT another finished UI mockup.\nCreate exactly 6 separate components arranged in a strict 3-column x 2-row REGULAR GRID on an actual transparent RGBA background. Each cell equal size. Component centered within its own cell with at least 14% transparent empty padding on every cell side. NOTHING crosses cell boundaries. No grid lines, labels, letters, numbers, watermark, checkerboard, global background, or ground shadows. Transparent padding and correct count mandatory for Unity slicing. High resolution crisp edges.\nSix independent small rectangular game stage illustrations, strict 3 columns x 2 rows. Each image contained in its own equal cell as an opaque clean-edged 16:9 rectangle with TRANSPARENT GUTTERS. Row1 moonlit pine forest and watchtower, misty trail with stone bridge, ominous boss fortress under red moon. Row2 snowy outpost, warm desert ruins with cat sphinx, blue industrial factory. No UI frames, stage numbers, text or icons. Keep tiny scenic thumbnails legible."
+    },
+    {
+      "id": "world_props",
+      "source": "C:\\Users\\trieu\\.codex-company\\generated_images\\01a1ecf0-a316-7ad2-8de6-7b344cfd8765\\exec-f9d1bb3f-6e7e-45c5-9649-e03b82b821a7.png",
+      "prompt": "Use case: ui-mockup / reusable game raster assets for Unity 2022.3 uGUI. Match the supplied approved MEOW BASTION mockup style faithfully: cobalt-blue beveled steel, silver-blue rims/rivets, thick clean black outlines, warm golden orange accents, cyan highlights, cute cats, polished 2D cartoon rendering. The references are for VISUAL STYLE ONLY. This output is a production asset texture, NOT another finished UI mockup.\nCreate exactly 9 separate components arranged in a strict 3-column x 3-row REGULAR GRID on an actual transparent RGBA background. Each cell equal size. Component centered within its own cell with at least 14% transparent empty padding on every cell side. NOTHING crosses cell boundaries. No grid lines, labels, letters, numbers, watermark, checkerboard, global background, or ground shadows. Transparent padding and correct count mandatory for Unity slicing. High resolution crisp edges.\nNine separate isolated reusable blue-night environment props in strict 3 columns x 3 rows. Row1 wooden watchtower with amber window light, red cat-paw flag on pole, stacked wooden crates with paw marks; row2 empty iron capture cage (no creature or question mark), blacksmith anvil and hammer, wall rack of wrenches; row3 low rounded sandbag barricade, hanging amber lantern on wooden post, cyan ice-rock crystal cluster. Full silhouettes, straight-on game illustration, no groundplane joining cells, no text."
+    },
+    {
+      "id": "vehicle_parts",
+      "source": "C:\\Users\\trieu\\.codex-company\\generated_images\\01a1ecf0-a316-7ad2-8de6-7b344cfd8765\\exec-a201d9c6-ffa9-41aa-8efd-156fe411a6eb.png",
+      "prompt": "Use case: ui-mockup / reusable game raster assets for Unity 2022.3 uGUI. Match the supplied approved MEOW BASTION mockup style faithfully: cobalt-blue beveled steel, silver-blue rims/rivets, thick clean black outlines, warm golden orange accents, cyan highlights, cute cats, polished 2D cartoon rendering. The references are for VISUAL STYLE ONLY. This output is a production asset texture, NOT another finished UI mockup.\nCreate exactly 9 separate components arranged in a strict 3-column x 3-row REGULAR GRID on an actual transparent RGBA background. Each cell equal size. Component centered within its own cell with at least 14% transparent empty padding on every cell side. NOTHING crosses cell boundaries. No grid lines, labels, letters, numbers, watermark, checkerboard, global background, or ground shadows. Transparent padding and correct count mandatory for Unity slicing. High resolution crisp edges.\nNine separate isolated modular parts for the golden-orange cat fortress vehicle in battle. Strict 3 columns x 3 rows, one component each cell. Row1 long wheeled CHASSIS BODY only without wheels/cabin/weapons, one circular blue-black rubber wheel with orange steel hub straight side view, orange open driver CABIN only without driver. Row2 one stackable orange battle-deck tier frame without weapon or cat, thin antenna with cyan glowing tip, small red paw flag and pole. Row3 blue bolted steel armor plate with gold paw, compact gray exhaust pipe, front orange bumper/cowcatcher. Common side-view orthographic camera, strong black outlines, no shadows or ground outside component. These parts must remain separate; no assembled tank."
+    },
+    {
+      "id": "infantry",
+      "source": "C:\\Users\\trieu\\.codex-company\\generated_images\\01a1ecf0-a316-7ad2-8de6-7b344cfd8765\\exec-3425057b-b5cf-403c-8a02-ef2e53201094.png",
+      "prompt": "Use case: ui-mockup / reusable game raster assets for Unity 2022.3 uGUI. Match the supplied approved MEOW BASTION mockup style faithfully: cobalt-blue beveled steel, silver-blue rims/rivets, thick clean black outlines, warm golden orange accents, cyan highlights, cute cats, polished 2D cartoon rendering. The references are for VISUAL STYLE ONLY. This output is a production asset texture, NOT another finished UI mockup.\nCreate exactly 6 separate components arranged in a strict 3-column x 2-row REGULAR GRID on an actual transparent RGBA background. Each cell equal size. Component centered within its own cell with at least 14% transparent empty padding on every cell side. NOTHING crosses cell boundaries. No grid lines, labels, letters, numbers, watermark, checkerboard, global background, or ground shadows. Transparent padding and correct count mandatory for Unity slicing. High resolution crisp edges.\nSix isolated small battle characters strict 3 columns x 2 rows, facing RIGHT, common side-on game sprite scale, full body, feet on matching cell baseline. Row1 gray cat in olive helmet carrying blue rotary gun, white cat in gray goggles carrying rocket launcher, orange cat in yellow hard hat carrying rifle. Row2 cream cat in white-red medic helmet carrying healing gun, gray cat in engineer goggles carrying compact orange gun, orange tabby driver seated torso with goggles and red scarf no vehicle. No background, UI or name labels. No animation frames; six unique static sprites."
+    },
+    {
+      "id": "bg_hub",
+      "source": "C:\\Users\\trieu\\.codex-company\\generated_images\\01a1ecf0-a316-7ad2-8de6-7b344cfd8765\\exec-fc0e2c43-5a62-4a82-ab4b-ebb51734add1.png",
+      "prompt": "Use case: ui-mockup / reusable game raster assets for Unity 2022.3 uGUI. Match the supplied approved MEOW BASTION mockup style faithfully: cobalt-blue beveled steel, silver-blue rims/rivets, thick clean black outlines, warm golden orange accents, cyan highlights, cute cats, polished 2D cartoon rendering. The references are for VISUAL STYLE ONLY. This output is a production asset texture, NOT another finished UI mockup.\nCreate ONE standalone wide 16:9 background illustration for layering in Unity. Opaque edge-to-edge full image. No UI, text, numbers, borders, labels or characters. Keep the requested empty areas usable for UI overlay.\nOne full-bleed wide 16:9 TEXT-FREE blue-night home hub scenic background: cobalt sky, cyan full moon, pine forest, cat fortress silhouette, watchtower amber windows, workshop corners at screen edges. Quiet low contrast middle so UI remains legible. No panels, UI, characters, logos, icons, words or border."
+    },
+    {
+      "id": "bg_battle",
+      "source": "C:\\Users\\trieu\\.codex-company\\generated_images\\01a1ecf0-a316-7ad2-8de6-7b344cfd8765\\exec-809a70c8-82ca-49bf-9a9d-8266a8b5c41f.png",
+      "prompt": "Use case: ui-mockup / reusable game raster assets for Unity 2022.3 uGUI. Match the supplied approved MEOW BASTION mockup style faithfully: cobalt-blue beveled steel, silver-blue rims/rivets, thick clean black outlines, warm golden orange accents, cyan highlights, cute cats, polished 2D cartoon rendering. The references are for VISUAL STYLE ONLY. This output is a production asset texture, NOT another finished UI mockup.\nCreate ONE standalone wide 16:9 background illustration for layering in Unity. Opaque edge-to-edge full image. No UI, text, numbers, borders, labels or characters. Keep the requested empty areas usable for UI overlay.\nOne full-bleed wide 16:9 TEXT-FREE side-scrolling battle background: large cyan full moon high center, deep cobalt night sky, layered angular blue mountain and pine silhouettes, distant watchtower only, flat horizontal ground line at 85% from top. NO vehicles, cats, enemies, HUD, panels, icons or text. Clear open battlefield, match approved battle screen. This is static sky/scenery background, movable props will be separate."
+    },
+    {
+      "id": "bg_workshop",
+      "source": "C:\\Users\\trieu\\.codex-company\\generated_images\\01a1ecf0-a316-7ad2-8de6-7b344cfd8765\\exec-7d9e217e-70db-4337-84fa-bb684a119ba4.png",
+      "prompt": "Use case: ui-mockup / reusable game raster assets for Unity 2022.3 uGUI. Match the supplied approved MEOW BASTION mockup style faithfully: cobalt-blue beveled steel, silver-blue rims/rivets, thick clean black outlines, warm golden orange accents, cyan highlights, cute cats, polished 2D cartoon rendering. The references are for VISUAL STYLE ONLY. This output is a production asset texture, NOT another finished UI mockup.\nCreate ONE standalone wide 16:9 background illustration for layering in Unity. Opaque edge-to-edge full image. No UI, text, numbers, borders, labels or characters. Keep the requested empty areas usable for UI overlay.\nOne full-bleed wide 16:9 TEXT-FREE blue-night empty equipment workshop illustration: stone walls, dark blue tool rack left, anvil at lower center, crates at edges, moonlit arched doorway with distant watchtower right, amber lantern accents. No cat characters, no UI, letters or watermarks. Quiet upper half and center for UI overlays."
+    },
+    {
+      "id": "bg_stage_fog",
+      "source": "C:\\Users\\trieu\\.codex-company\\generated_images\\01a1ecf0-a316-7ad2-8de6-7b344cfd8765\\exec-71a0c504-d037-431b-8395-b42617eb043b.png",
+      "prompt": "Use case: ui-mockup / reusable game raster assets for Unity 2022.3 uGUI. Match the supplied approved MEOW BASTION mockup style faithfully: cobalt-blue beveled steel, silver-blue rims/rivets, thick clean black outlines, warm golden orange accents, cyan highlights, cute cats, polished 2D cartoon rendering. The references are for VISUAL STYLE ONLY. This output is a production asset texture, NOT another finished UI mockup.\nCreate ONE standalone wide 16:9 background illustration for layering in Unity. Opaque edge-to-edge full image. No UI, text, numbers, borders, labels or characters. Keep the requested empty areas usable for UI overlay.\nOne full-bleed wide 16:9 TEXT-FREE atmospheric stage-detail illustration: misty winding trail, stone bridge, blue mountain silhouettes and pine forest, large cyan full moon, small warm hanging lantern left, mysterious abandoned watchtower. No characters, UI borders, swords emblems, numbers or lettering. Match the right-side misty stage artwork in approved reference."
+    }
+  ],
+  "originals": [
+    {
+      "key": "ammo-0",
+      "file": "Textures/Original/ammo-0.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\ammo-0.png"
+    },
+    {
+      "key": "ammo-1",
+      "file": "Textures/Original/ammo-1.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\ammo-1.png"
+    },
+    {
+      "key": "ammo-2",
+      "file": "Textures/Original/ammo-2.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\ammo-2.png"
+    },
+    {
+      "key": "ammo-3",
+      "file": "Textures/Original/ammo-3.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\ammo-3.png"
+    },
+    {
+      "key": "ammo-4",
+      "file": "Textures/Original/ammo-4.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\ammo-4.png"
+    },
+    {
+      "key": "ammo-5",
+      "file": "Textures/Original/ammo-5.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\ammo-5.png"
+    },
+    {
+      "key": "ammo-6",
+      "file": "Textures/Original/ammo-6.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\ammo-6.png"
+    },
+    {
+      "key": "ammo-7",
+      "file": "Textures/Original/ammo-7.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\ammo-7.png"
+    },
+    {
+      "key": "ammo-8",
+      "file": "Textures/Original/ammo-8.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\ammo-8.png"
+    },
+    {
+      "key": "ammo-9",
+      "file": "Textures/Original/ammo-9.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\ammo-9.png"
+    },
+    {
+      "key": "armor-0",
+      "file": "Textures/Original/armor-0.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\armor-0.png"
+    },
+    {
+      "key": "armor-1",
+      "file": "Textures/Original/armor-1.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\armor-1.png"
+    },
+    {
+      "key": "armor-2",
+      "file": "Textures/Original/armor-2.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\armor-2.png"
+    },
+    {
+      "key": "armor-3",
+      "file": "Textures/Original/armor-3.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\armor-3.png"
+    },
+    {
+      "key": "armor-4",
+      "file": "Textures/Original/armor-4.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\armor-4.png"
+    },
+    {
+      "key": "armor-5",
+      "file": "Textures/Original/armor-5.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\armor-5.png"
+    },
+    {
+      "key": "armor-6",
+      "file": "Textures/Original/armor-6.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\armor-6.png"
+    },
+    {
+      "key": "armor-7",
+      "file": "Textures/Original/armor-7.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\armor-7.png"
+    },
+    {
+      "key": "armor-8",
+      "file": "Textures/Original/armor-8.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\armor-8.png"
+    },
+    {
+      "key": "armor-9",
+      "file": "Textures/Original/armor-9.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\armor-9.png"
+    },
+    {
+      "key": "beast-0",
+      "file": "Textures/Original/beast-0.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\beast-0.png"
+    },
+    {
+      "key": "beast-1",
+      "file": "Textures/Original/beast-1.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\beast-1.png"
+    },
+    {
+      "key": "beast-2",
+      "file": "Textures/Original/beast-2.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\beast-2.png"
+    },
+    {
+      "key": "beast-3",
+      "file": "Textures/Original/beast-3.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\beast-3.png"
+    },
+    {
+      "key": "beast-4",
+      "file": "Textures/Original/beast-4.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\beast-4.png"
+    },
+    {
+      "key": "beast-5",
+      "file": "Textures/Original/beast-5.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\beast-5.png"
+    },
+    {
+      "key": "beast-6",
+      "file": "Textures/Original/beast-6.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\beast-6.png"
+    },
+    {
+      "key": "beast-7",
+      "file": "Textures/Original/beast-7.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\beast-7.png"
+    },
+    {
+      "key": "beast-8",
+      "file": "Textures/Original/beast-8.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\beast-8.png"
+    },
+    {
+      "key": "beast-9",
+      "file": "Textures/Original/beast-9.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\beast-9.png"
+    },
+    {
+      "key": "bug-0",
+      "file": "Textures/Original/bug-0.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\bug-0.png"
+    },
+    {
+      "key": "bug-1",
+      "file": "Textures/Original/bug-1.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\bug-1.png"
+    },
+    {
+      "key": "bug-2",
+      "file": "Textures/Original/bug-2.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\bug-2.png"
+    },
+    {
+      "key": "bug-3",
+      "file": "Textures/Original/bug-3.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\bug-3.png"
+    },
+    {
+      "key": "bug-4",
+      "file": "Textures/Original/bug-4.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\bug-4.png"
+    },
+    {
+      "key": "bug-5",
+      "file": "Textures/Original/bug-5.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\bug-5.png"
+    },
+    {
+      "key": "bug-6",
+      "file": "Textures/Original/bug-6.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\bug-6.png"
+    },
+    {
+      "key": "bug-7",
+      "file": "Textures/Original/bug-7.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\bug-7.png"
+    },
+    {
+      "key": "bug-8",
+      "file": "Textures/Original/bug-8.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\bug-8.png"
+    },
+    {
+      "key": "bug-9",
+      "file": "Textures/Original/bug-9.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\bug-9.png"
+    },
+    {
+      "key": "cat-0",
+      "file": "Textures/Original/cat-0.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\cat-0.png"
+    },
+    {
+      "key": "cat-1",
+      "file": "Textures/Original/cat-1.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\cat-1.png"
+    },
+    {
+      "key": "cat-2",
+      "file": "Textures/Original/cat-2.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\cat-2.png"
+    },
+    {
+      "key": "cat-3",
+      "file": "Textures/Original/cat-3.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\cat-3.png"
+    },
+    {
+      "key": "cat-4",
+      "file": "Textures/Original/cat-4.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\cat-4.png"
+    },
+    {
+      "key": "cat-5",
+      "file": "Textures/Original/cat-5.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\cat-5.png"
+    },
+    {
+      "key": "cat-6",
+      "file": "Textures/Original/cat-6.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\cat-6.png"
+    },
+    {
+      "key": "cat-7",
+      "file": "Textures/Original/cat-7.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\cat-7.png"
+    },
+    {
+      "key": "cat-8",
+      "file": "Textures/Original/cat-8.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\cat-8.png"
+    },
+    {
+      "key": "cat-9",
+      "file": "Textures/Original/cat-9.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\cat-9.png"
+    },
+    {
+      "key": "gun-0",
+      "file": "Textures/Original/gun-0.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\gun-0.png"
+    },
+    {
+      "key": "gun-1",
+      "file": "Textures/Original/gun-1.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\gun-1.png"
+    },
+    {
+      "key": "gun-2",
+      "file": "Textures/Original/gun-2.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\gun-2.png"
+    },
+    {
+      "key": "gun-3",
+      "file": "Textures/Original/gun-3.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\gun-3.png"
+    },
+    {
+      "key": "gun-4",
+      "file": "Textures/Original/gun-4.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\gun-4.png"
+    },
+    {
+      "key": "gun-5",
+      "file": "Textures/Original/gun-5.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\gun-5.png"
+    },
+    {
+      "key": "gun-6",
+      "file": "Textures/Original/gun-6.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\gun-6.png"
+    },
+    {
+      "key": "gun-7",
+      "file": "Textures/Original/gun-7.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\gun-7.png"
+    },
+    {
+      "key": "gun-8",
+      "file": "Textures/Original/gun-8.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\gun-8.png"
+    },
+    {
+      "key": "gun-9",
+      "file": "Textures/Original/gun-9.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\gun-9.png"
+    },
+    {
+      "key": "hat-0",
+      "file": "Textures/Original/hat-0.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\hat-0.png"
+    },
+    {
+      "key": "hat-1",
+      "file": "Textures/Original/hat-1.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\hat-1.png"
+    },
+    {
+      "key": "hat-2",
+      "file": "Textures/Original/hat-2.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\hat-2.png"
+    },
+    {
+      "key": "hat-3",
+      "file": "Textures/Original/hat-3.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\hat-3.png"
+    },
+    {
+      "key": "hat-4",
+      "file": "Textures/Original/hat-4.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\hat-4.png"
+    },
+    {
+      "key": "hat-5",
+      "file": "Textures/Original/hat-5.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\hat-5.png"
+    },
+    {
+      "key": "hat-6",
+      "file": "Textures/Original/hat-6.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\hat-6.png"
+    },
+    {
+      "key": "hat-7",
+      "file": "Textures/Original/hat-7.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\hat-7.png"
+    },
+    {
+      "key": "hat-8",
+      "file": "Textures/Original/hat-8.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\hat-8.png"
+    },
+    {
+      "key": "hat-9",
+      "file": "Textures/Original/hat-9.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\hat-9.png"
+    },
+    {
+      "key": "pack-0",
+      "file": "Textures/Original/pack-0.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-0.png"
+    },
+    {
+      "key": "pack-1",
+      "file": "Textures/Original/pack-1.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-1.png"
+    },
+    {
+      "key": "pack-10",
+      "file": "Textures/Original/pack-10.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-10.png"
+    },
+    {
+      "key": "pack-11",
+      "file": "Textures/Original/pack-11.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-11.png"
+    },
+    {
+      "key": "pack-12",
+      "file": "Textures/Original/pack-12.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-12.png"
+    },
+    {
+      "key": "pack-13",
+      "file": "Textures/Original/pack-13.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-13.png"
+    },
+    {
+      "key": "pack-14",
+      "file": "Textures/Original/pack-14.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-14.png"
+    },
+    {
+      "key": "pack-15",
+      "file": "Textures/Original/pack-15.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-15.png"
+    },
+    {
+      "key": "pack-16",
+      "file": "Textures/Original/pack-16.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-16.png"
+    },
+    {
+      "key": "pack-17",
+      "file": "Textures/Original/pack-17.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-17.png"
+    },
+    {
+      "key": "pack-18",
+      "file": "Textures/Original/pack-18.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-18.png"
+    },
+    {
+      "key": "pack-19",
+      "file": "Textures/Original/pack-19.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-19.png"
+    },
+    {
+      "key": "pack-2",
+      "file": "Textures/Original/pack-2.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-2.png"
+    },
+    {
+      "key": "pack-3",
+      "file": "Textures/Original/pack-3.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-3.png"
+    },
+    {
+      "key": "pack-4",
+      "file": "Textures/Original/pack-4.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-4.png"
+    },
+    {
+      "key": "pack-5",
+      "file": "Textures/Original/pack-5.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-5.png"
+    },
+    {
+      "key": "pack-6",
+      "file": "Textures/Original/pack-6.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-6.png"
+    },
+    {
+      "key": "pack-7",
+      "file": "Textures/Original/pack-7.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-7.png"
+    },
+    {
+      "key": "pack-8",
+      "file": "Textures/Original/pack-8.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-8.png"
+    },
+    {
+      "key": "pack-9",
+      "file": "Textures/Original/pack-9.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\pack-9.png"
+    },
+    {
+      "key": "turret_alt-0",
+      "file": "Textures/Original/turret_alt-0.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret_alt-0.png"
+    },
+    {
+      "key": "turret_alt-1",
+      "file": "Textures/Original/turret_alt-1.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret_alt-1.png"
+    },
+    {
+      "key": "turret_alt-2",
+      "file": "Textures/Original/turret_alt-2.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret_alt-2.png"
+    },
+    {
+      "key": "turret_alt-3",
+      "file": "Textures/Original/turret_alt-3.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret_alt-3.png"
+    },
+    {
+      "key": "turret_alt-4",
+      "file": "Textures/Original/turret_alt-4.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret_alt-4.png"
+    },
+    {
+      "key": "turret_alt-5",
+      "file": "Textures/Original/turret_alt-5.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret_alt-5.png"
+    },
+    {
+      "key": "turret_alt-6",
+      "file": "Textures/Original/turret_alt-6.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret_alt-6.png"
+    },
+    {
+      "key": "turret_alt-7",
+      "file": "Textures/Original/turret_alt-7.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret_alt-7.png"
+    },
+    {
+      "key": "turret_alt-8",
+      "file": "Textures/Original/turret_alt-8.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret_alt-8.png"
+    },
+    {
+      "key": "turret_alt-9",
+      "file": "Textures/Original/turret_alt-9.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret_alt-9.png"
+    },
+    {
+      "key": "turret-0",
+      "file": "Textures/Original/turret-0.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret-0.png"
+    },
+    {
+      "key": "turret-1",
+      "file": "Textures/Original/turret-1.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret-1.png"
+    },
+    {
+      "key": "turret-2",
+      "file": "Textures/Original/turret-2.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret-2.png"
+    },
+    {
+      "key": "turret-3",
+      "file": "Textures/Original/turret-3.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret-3.png"
+    },
+    {
+      "key": "turret-4",
+      "file": "Textures/Original/turret-4.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret-4.png"
+    },
+    {
+      "key": "turret-5",
+      "file": "Textures/Original/turret-5.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret-5.png"
+    },
+    {
+      "key": "turret-6",
+      "file": "Textures/Original/turret-6.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret-6.png"
+    },
+    {
+      "key": "turret-7",
+      "file": "Textures/Original/turret-7.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret-7.png"
+    },
+    {
+      "key": "turret-8",
+      "file": "Textures/Original/turret-8.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret-8.png"
+    },
+    {
+      "key": "turret-9",
+      "file": "Textures/Original/turret-9.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\turret-9.png"
+    },
+    {
+      "key": "uniform-0",
+      "file": "Textures/Original/uniform-0.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\uniform-0.png"
+    },
+    {
+      "key": "uniform-1",
+      "file": "Textures/Original/uniform-1.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\uniform-1.png"
+    },
+    {
+      "key": "uniform-2",
+      "file": "Textures/Original/uniform-2.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\uniform-2.png"
+    },
+    {
+      "key": "uniform-3",
+      "file": "Textures/Original/uniform-3.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\uniform-3.png"
+    },
+    {
+      "key": "uniform-4",
+      "file": "Textures/Original/uniform-4.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\uniform-4.png"
+    },
+    {
+      "key": "uniform-5",
+      "file": "Textures/Original/uniform-5.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\uniform-5.png"
+    },
+    {
+      "key": "uniform-6",
+      "file": "Textures/Original/uniform-6.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\uniform-6.png"
+    },
+    {
+      "key": "uniform-7",
+      "file": "Textures/Original/uniform-7.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\uniform-7.png"
+    },
+    {
+      "key": "uniform-8",
+      "file": "Textures/Original/uniform-8.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\uniform-8.png"
+    },
+    {
+      "key": "uniform-9",
+      "file": "Textures/Original/uniform-9.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\uniform-9.png"
+    },
+    {
+      "key": "vehicle-0",
+      "file": "Textures/Original/vehicle-0.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\vehicle-0.png"
+    },
+    {
+      "key": "vehicle-1",
+      "file": "Textures/Original/vehicle-1.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\vehicle-1.png"
+    },
+    {
+      "key": "vehicle-2",
+      "file": "Textures/Original/vehicle-2.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\vehicle-2.png"
+    },
+    {
+      "key": "vehicle-3",
+      "file": "Textures/Original/vehicle-3.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\vehicle-3.png"
+    },
+    {
+      "key": "vehicle-4",
+      "file": "Textures/Original/vehicle-4.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\vehicle-4.png"
+    },
+    {
+      "key": "vehicle-5",
+      "file": "Textures/Original/vehicle-5.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\vehicle-5.png"
+    },
+    {
+      "key": "vehicle-6",
+      "file": "Textures/Original/vehicle-6.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\vehicle-6.png"
+    },
+    {
+      "key": "vehicle-7",
+      "file": "Textures/Original/vehicle-7.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\vehicle-7.png"
+    },
+    {
+      "key": "vehicle-8",
+      "file": "Textures/Original/vehicle-8.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\vehicle-8.png"
+    },
+    {
+      "key": "vehicle-9",
+      "file": "Textures/Original/vehicle-9.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\vehicle-9.png"
+    },
+    {
+      "key": "wolf-frames-v1",
+      "file": "Textures/Original/wolf-frames-v1.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\wolf-frames-v1.png"
+    },
+    {
+      "key": "wolf-rig-atlas-v1",
+      "file": "Textures/Original/wolf-rig-atlas-v1.png",
+      "source": "F:\\tank\\MegaTank\\Sources\\CatTanks\\Assets\\CatTanks\\Resources\\Art\\wolf-rig-atlas-v1.png"
+    }
+  ]
+}

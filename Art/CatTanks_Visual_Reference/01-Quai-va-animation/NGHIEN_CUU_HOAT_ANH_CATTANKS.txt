@@ -1,0 +1,130 @@
+CAT TANKS | NGHIÊN CỨU ANIMATION QUÁI
+18-11-2026
+
+Mục đích là chuyển các nghiên cứu chuyển động, ví dụ sprite game và tài liệu sản xuất thành chỉ dẫn vẽ cho 20 loài CatTanks. Các chuỗi ảnh và video bên ngoài dùng để quan sát nhịp, điểm tựa, dáng chính và phản lực. Thiết kế hình ảnh lấy từ sprite gốc của CatTanks.
+
+
+1. BA ĐIỂM CẦN SỬA TRƯỚC
+
+A. Giữ điểm neo giải phẫu giữa các khung và các trạng thái.
+
+Bộ V2 có lưới đồng nhất nhưng mép hình chịu ảnh hưởng của cách cắt và căn. Khi đo 480 PNG rời bằng ngưỡng alpha 96/255, trung vị đáy hình của hàng di chuyển nằm thấp hơn hàng đứng chờ 7–9 px ở 17 trong 19 loài V2. Hai ngoại lệ là Lợn rừng +5 px và Hổ kiếm −1 px. Ở cả 19 loài V2, trung điểm ngang của hộp bao thường ở x=158–161, kể cả khi quái đang vươn người. Đây là số đo biên ảnh, chưa phải tọa độ chân hay trọng tâm. Nó chỉ ra nơi cần kiểm tra độ nhảy khi ghép Idle → Run và khả năng mất dịch chuyển chủ ý.
+
+Theo thứ tự khung 01–06, ba chuỗi ví dụ trong ô 320×320:
+  Kiến, đáy Idle      251 251 251 252 251 251
+  Kiến, đáy Run       260 260 249 259 260 260
+  Hổ, đáy Run         253 246 231 256 251 251
+  Gấu, đáy Run        259 259 232 259 260 260
+  Sói gốc, đáy Idle   216 216 216 216 216 216
+  Sói gốc, đáy Run    213 212 207 210 213 213
+Các số của Sói đo trên ảnh 272×256. So sánh biến thiên theo thời gian trong mỗi chuỗi.
+
+Ghim mặt đất cùng một cao độ cho các dáng tiếp đất. Vẽ thêm dấu ở hông, ngực hoặc gốc cánh để thấy thân đang đi theo cung nào. Chân chống đất, pha trên không và thân bị giật lùi có vị trí khác nhau theo chủ ý. Đối với quái bay, dùng ngực hoặc gốc cánh làm điểm neo, để đầu cánh và chân thay đổi quanh đó. Giữ khung xuất đồng nhất theo sheet. Hướng dẫn Krita minh họa cách dùng đường mặt đất và bật onion skin để so tư thế trước/sau. [Krita — Animation with Krita](https://docs.krita.org/en/user_manual/animation.html)
+
+B. Dùng các tư thế chính theo đúng hành vi của từng loài.
+
+CatTanks hiện có nhánh cận chiến, nhánh bắn đạn, nhánh theo chu kỳ và kỹ năng phụ. Khi vẽ động tác bắn, đánh dấu khung và vị trí phát đạn. Với cận chiến, đánh dấu khung bộ phận tấn công vươn đến điểm chạm. Đọc riêng mô tả catalog và logic UpdateEnemy. Chẳng hạn mô tả Ong nói chích, nhưng nhánh game hiện tại dùng đạn với quái bay. Hoạt ảnh có thể giữ dáng chúi người như một dấu hiệu trước khi bắn. Hươu vừa bắn tầm xa vừa có hồi máu theo chu kỳ. Bọ chúa, Bạo long cũng có triệu hồi tách khỏi đòn bắn thường. [Battle.cs, hàm UpdateEnemy](../../../Sources/CatTanks/Assets/CatTanks/Scripts/Battle.cs) · [Catalog CatTanks](../../../Sources/CatTanks/Assets/CatTanks/Resources/Data/catalog.json)
+
+C. Tách số hình vẽ khỏi thời gian giữ từng hình.
+
+Tool đang dùng 180/90/120/120 ms mỗi khung theo bốn hàng và hỗ trợ ghi đè một giá trị đều cho từng sheet. V2 có sáu khung mỗi hàng. Bản sửa có thể dùng cùng sáu ô để đối chiếu, rồi giữ dài hơn ở tư thế lấy đà hoặc hồi và giữ ngắn ở tư thế chuyển động nhanh. Có thể xem trước ở 0,25× để rà điểm đặt chân, sau đó 1× để duyệt nhịp. Trong Aseprite có thể gán thời lượng cho từng frame. Thời lượng và khung phát đạn nên được ghi riêng để dùng khi tích hợp. [Tool CatTanks](Xem-sprite-sheet.html) · [Aseprite — Frame Duration](https://aseprite.org/docs/frame-duration/)
+
+Ví dụ thử nghiệm cho một đòn nặng có sáu hình. 01 tư thế sẵn sàng 70 ms, 02 lấy đà 170 ms, 03 chuyển trọng lượng 70 ms, 04 ra đòn 55 ms, 05 thu lực 115 ms, 06 hồi 240 ms. Tổng 720 ms, bằng tốc độ mặc định của hàng Attack. Đây là một nhịp để so sánh trong preview. Thời điểm gameplay hiện hành đọc từ Battle.cs.
+
+
+2. VÍ DỤ CÓ THỂ XEM THEO TỪNG KHUNG
+
+THÚ BỐN CHÂN VÀ QUÁI NẶNG
+
+• Mèo phi nước đại, Muybridge, tấm 720. Quan sát khi hai chân trước vươn, lúc chân sau thu dưới bụng và pha có cả thân trên không. Làm hai dáng co–duỗi của Hổ trước, rồi đặt các điểm chạm giữa chúng. [National Gallery of Art — Cat; galloping](https://www.nga.gov/artworks/220472-plate-number-720-cat-galloping)
+• Chó đua Maggie phi nước đại, tấm 710. Dò chuyển động ở vai, hông và đường lưng song song khi nghiên cứu Sói và các cú vọt của Lợn. [National Gallery of Art — Dog; galloping](https://www.nga.gov/artworks/220618-plate-number-710-dog-galloping-white-racing-hound-maggie)
+• Voi đi, tấm 733. Xem từng bước khi thân di chuyển qua chân đang chống. Dùng để tham khảo cảm giác nặng của Rùa và Tê giác ở tốc độ thường. [National Gallery of Art — Elephant walking](https://www.nga.gov/artworks/167110-plate-number-733-elephant-walking)
+• Muybridge in Motion có chuỗi ảnh đã phát được từng loạt, với bộ lọc theo loài và hành động. Dùng để đối chiếu cùng một con vật ở tốc độ đi, chạy hoặc nhảy. [Northwestern University Libraries — Muybridge in Motion](https://nulib-ds.github.io/muybridge/index.html)
+• Wandering Wolf của Scrabling liệt kê 4 hình Idle, 8 hình Run, 15 hình Bite và 2 hình Hit. Đây là một ví dụ sprite thực tế để cân nhắc số hình theo động tác. Sói trong CatTanks vẫn là mẫu trực tiếp cho góc nhìn và thiết kế. [Scrabling — Wandering Wolf](https://itch.io/devlog/563416/wandering-wolf-added.amp)
+• Nghiên cứu dáng chạy hai chân của thằn lằn agamid đối chiếu phần hông, đuôi và vị trí trọng tâm trong lúc tăng tốc. Dùng làm tham chiếu cấu trúc cho Bạo long cách điệu. [Clemente và cộng sự — Why go bipedal?](https://journals.biologists.com/jeb/article-pdf/211/13/2058/1399090/2058.pdf)
+
+CÔN TRÙNG, NHỆN VÀ QUÁI THÂN MỀM
+
+• Video kiến Cataglyphis đánh dấu chân theo từng pha. Khi vẽ Kiến tiên phong, thử hai nhóm chân luân phiên: chân trước và sau một bên kết hợp với chân giữa bên đối diện. Vẽ nhóm gần và xa khác sắc độ để dễ đọc khi xem nhỏ. [Wöhrl, Reinhardt và Blickhan — Alternating Tripod Gait](https://commons.wikimedia.org/wiki/File:Alternating_Tripod_Gait.webm)
+• Video V2 trong bộ dữ liệu Pfeffer cho thấy bước tiến có nhóm ba chân. Video đi lùi cho thấy chân điều chỉnh khác nhau. Dùng để tách nhịp chạy tới và chỉnh bước khi lùi hoặc mất thăng bằng. [Pfeffer, Wahl và Wittlinger — dữ liệu và các video V1–V4](https://datadryad.org/dataset/doi:10.5061/dryad.7k82t)
+• Video bổ sung số 2 của nghiên cứu nhện nhảy có điểm chạm mặt đất và sơ đồ khớp. Dùng như ví dụ về nén chân, bật người và tiếp đất. Với Nhện giăng tơ CatTanks, dùng các pha chống chân để hỗ trợ đòn phun tơ tầm xa. [Journal of Experimental Biology — Supplementary movie 2](https://movie.biologists.com/video/10.1242/jeb.166512/video-2)
+• Hình 8–10 trong nghiên cứu sâu Manduca cho thấy các đốt thay đổi với độ trễ khác nhau. Cho Ấu trùng một sóng co đốt từ sau ra trước, giữ ít nhất một vùng đang tì khi đoạn khác nhấc. [Digumarti và cộng sự — Quantifying Dynamic Shapes in Soft Morphologies](https://research-information.bris.ac.uk/files/204204590/Full_text_PDF_final_published_version_.pdf)
+• Nghiên cứu ong mật ghi nhận nhịp vỗ nhanh và biên độ tương đối ngắn khi treo tại chỗ. Dùng để phân biệt Ong với Bướm bằng nhịp và dáng cánh. Nhịp trong game chọn theo khả năng đọc hình ở kích thước thực. [Altshuler và cộng sự — Honeybee flight](https://pubmed.ncbi.nlm.nih.gov/16330767/)
+• Nghiên cứu bướm cất cánh cho thấy cánh có thể khép thành dạng cong gần cuối nhịp hất lên. Với Bướm thôi miên, vẽ ba nét ngoài dễ nhận ra gồm cánh mở rộng, cánh mỏng khi nghiêng và cánh khép. [Johansson và Henningsson — Butterfly wing clap](https://pubmed.ncbi.nlm.nih.gov/33468023/)
+• Wasp của carysaurus có các chuỗi bay, đứng, đánh, trúng đòn và chết. Bugs Duo của Tayziulei cho thêm ví dụ hai kiểu quái bay có chuỗi đòn riêng. Xem các bản minh họa công khai để so cách tổ chức chuỗi ngắn. [carysaurus — Wasp Sprites](https://carysaurus.itch.io/wasp-sprites) · [Tayziulei — Bugs Duo](https://tayziulei.itch.io/bugs-duo-pixel-pack)
+
+QUÁI CÓ CÁNH LÔNG
+
+• Chuỗi Cockatoo in flight cho xem dáng đầu, thân và cánh ở các điểm khác nhau trong đường bay. Tham chiếu hình học cho Đại bàng sư tử. [Library of Congress — Cockatoo in flight](https://www.loc.gov/pictures/item/2003653799/)
+• Nghiên cứu bồ câu cất và hạ cánh theo dõi cánh, góc thân và đuôi cùng lúc. Dùng để vẽ đổi tư thế chủ ý giữa bay bình thường, lao tới và ghìm lại ở Đại bàng. [Berg và Biewener — Wing and body kinematics](https://pubmed.ncbi.nlm.nih.gov/20435815/)
+
+ĐÒN ĐÁNH, PHẢN LỰC VÀ QUY TRÌNH VẼ
+
+• GDC Animation Summit lấy Treachery in Beatdown City làm ví dụ về cách giữ đòn đánh dễ đọc khi dùng ít hình vẽ. Thử xem riêng ba tư thế lấy đà, ra đòn, thu về ở kích thước game trước khi thêm hình chuyển tiếp. [GDC Vault — Animating a Complex 2D Fighting Game 3 Frames at a Time](https://gdcvault.com/play/1027466/Animation-Summit-Animating-a-Complex)
+• Michael Lyndon minh họa anticipation, timing, cung chuyển động và follow-through rồi phân tích các pha của hiệu ứng. Ứng dụng cho CatTanks bằng cách duyệt dáng tấn công khi tắt VFX, sau đó đặt hiệu ứng vào mốc ra đòn. [GDC — Zip, Thwack, Ping](https://media.gdcvault.com/gdc2018/presentations/Lyndon_Michael_ZipThwackPing.pdf)
+• Bài của Studio MDHR cho thấy pipeline animation vẽ và đi nét từng khung của Cuphead. Dùng làm ví dụ về việc duyệt dáng và nhất quán nét qua cả chuỗi. [Chad Moldenhauer, Studio MDHR — Cuphead on PlayStation.Blog](https://blog.playstation.com/2020/07/28/a-great-slam-and-then-some-cuphead-is-out-today-on-ps4/)
+• Tài liệu Krita minh họa dựng khung cực trị và chèn khung giữa. Aseprite mô tả cách xem chồng hình trước/sau và cách đặt nhịp từng khung. [Krita — Animation workflow](https://docs.krita.org/en/user_manual/animation.html) · [Aseprite — Onion Skinning](https://aseprite.org/docs/onion-skinning/) · [Aseprite — Frame Duration](https://aseprite.org/docs/frame-duration/)
+
+
+3. CHỈ DẪN RIÊNG CHO 20 LOÀI
+
+Tên và vai trò đọc từ catalog và code. Các dáng dưới đây là phương án áp dụng tham chiếu cho CatTanks.
+
+Bug-0 Kiến tiên phong
+  Chạy thấp, hai nhóm chân luân phiên, bụng theo sau ngực. Cho hàm mở một nhịp trước khi kẹp. Trong hit, ưu tiên rút chân và rung râu.
+Beast-0 Sói bóng đêm
+  Dùng 24 khung gốc làm mẫu kiểm tra. Dò khung duỗi, co, trên không và khi mõm vươn. Nếu thiết kế nhịp bầy đàn sau này, thử tăng tốc phát so với mẫu gốc.
+Bug-4 Ong sát thủ
+  Ghim gốc cánh, đổi hình đầu cánh nhanh và cho bụng dẫn khi chúi. Chốt điểm phóng phù hợp với cách quái bay tấn công trong bản Unity.
+Bug-1 Bọ sừng đỏ
+  Mai cứng đi theo khối, chân bước ngắn, hạ sừng để lấy đà. Khi bị trúng, lùi cả khối mai và dùng chân chống lại.
+Beast-1 Lợn rừng cuồng nộ
+  Làm tư thế cào móng, hạ nanh cho pha báo hiệu, rồi duỗi thân ở pha lao. Khi kết thúc đòn giữ một chân trước làm điểm hãm.
+Bug-2 Nhện giăng tơ
+  Phân rõ chân gần/xa. Ghìm các chân giữa khi lấy đà, nâng ngực rồi chỉ đầu và điểm phóng tơ theo trục đạn.
+Bug-3 Bọ ngựa đao
+  Tách pha khuỵu, bật và tiếp đất. Vẽ bản lề càng rõ qua cú chém. Đọc tương quan với quỹ đạo nhảy có sẵn trước khi tích hợp.
+Beast-2 Gấu cuồng chiến
+  Chuyển khối lượng qua vai, vung một chân trước. Cho bộ ngực theo sau cú vung, sau đó chống đất. Có thể thử cùng pose ở nhịp nhanh hơn khi ít máu.
+Bug-5 Ấu trùng đất
+  Vẽ từng đốt theo sóng co; đầu đến sau khi các đốt phía sau đã dồn. Chui đất có đầu đi trước và các đốt theo sau. Dùng hiệu ứng bụi riêng.
+Beast-4 Hổ kiếm
+  Chốt hai dáng cuộn và kéo dài. Dò dây chân trước–sau và thứ tự đặt chân sau pha vồ. Làm đuôi theo cung của hông.
+Bug-6 Bọ cạp độc
+  Ghim điểm tựa chân, để đuôi nhấc theo từng khớp. Tách tích nọc, chĩa ngòi và khung phóng. Thu đuôi sau đòn theo cung ngược.
+Beast-3 Khỉ băng
+  Di chuyển tì khớp tay và chân đối bên. Dựng tay lấy đà, vung ném, mở bàn tay ở khung phát băng, rồi thu về. Vẽ băng riêng.
+Bug-7 Bướm thôi miên
+  Xem được dáng cánh mở và khép khi thu nhỏ. Giữ thân ổn định lúc lơ lửng, đổi góc chuẩn bị khi rải ba luồng độc.
+Beast-5 Rùa dung nham
+  Bước nặng, chân giữ lâu, đầu đi theo cung riêng và mai giữ thể tích. Dáng phồng hoặc thụt đầu có thể báo hiệu xung lửa gần.
+Beast-6 Tê giác bọc giáp
+  Tích lực bằng hạ đầu, dồn chân sau, duỗi người khi húc, ghìm trước khi dừng. Giữ sừng và các mảng giáp đồng nhất.
+Bug-8 Bọ tinh thạch
+  Mảng tinh thể đi cùng mai, chân bước bên dưới. Chốt hướng phóng mảnh tinh thể và khung phát đạn trong động tác nghiêng mai.
+Beast-7 Đại bàng sư tử
+  Cho cánh thu gần thân qua nhịp hất lên và xòe trong nhịp đập xuống. Tư thế tấn công cần lộ hướng bắn lông vũ. Vuốt thuận theo tư thế bay.
+Beast-9 Hươu cổ thụ
+  Đặt chân theo nhịp bốn chân, gạc theo cung đầu. Đòn thường cần một khung phát đạn. Dáng ngẩng gạc và giữ thân có thể dùng cho hành động hồi máu riêng.
+Bug-9 Bọ chúa giáp gai
+  Càng và chân đi theo khối nặng. Phân biệt tích nọc trước khi bắn với dáng dựng thân để triệu hồi kiến. Mai và gai có cùng cấu trúc qua các góc.
+Beast-8 Bạo long hắc nguyệt
+  Ghim hông trên chân trụ, đuôi giữ cân bằng. Đòn thường gồm nạp ở họng, há miệng phun và thu cổ. Kêu gọi quái dùng một dáng đầu/ngực riêng. Có thể tăng nhịp và độ dồn trọng lượng ở trạng thái cuồng nộ.
+
+
+4. QUY TRÌNH DUYỆT CHO LẦN VẼ KẾ TIẾP
+
+1. Chọn một chuỗi đại diện cho mỗi nhóm. Kiến chạy, Hổ chạy, Ong bay, Tê giác tích lực/húc và Khỉ ném băng bao phủ nhiều lỗi khác nhau.
+2. Vẽ các tư thế chính bằng nét đơn hoặc silhouette. Đánh số khung, kẻ đường đất, đánh dấu gốc thân, chân chống, bộ phận đi đầu và khung chạm hoặc khung phát đạn.
+3. Xem tuần tự từng hình, sau đó chồng ảnh trước/sau. Theo dõi hướng các khớp. Kiểm tra điểm cuối của chuyển động gối lên điểm đầu nếu clip lặp. Kiểm tra Idle → Run, Run → Attack và Hit → Idle.
+4. Điều chỉnh thời lượng giữ tư thế. Duyệt tấn công và hit một lần. Duyệt đứng chờ và di chuyển theo vòng. Xem ở cỡ quái thực tế, bên cạnh Sói và phiên bản V2.
+5. Thêm hình chuyển tiếp ở chỗ cung chuyển động bị gãy. Sau khi nhịp ổn, hoàn thiện nét, màu, tỷ lệ và chi tiết. Chạy lại alpha và crop sau khi xuất.
+6. Xuất bộ V3 cạnh V2, kèm PNG rời, tên trạng thái, điểm neo, thời lượng mỗi khung và chỉ số khung ra đòn nếu có. Giữ dạng 320×320 mỗi ô cho lần so sánh đầu và ghi rõ lưới khi đổi số khung.
+
+Điểm duyệt cho mỗi chuỗi
+  Đứng chờ: có chuyển động nhỏ, toàn thân giữ được khối lượng và chi tiết nhận diện.
+  Di chuyển đất: thấy chân chống, chân nhấc và đường đi của hông. Pha trên không rõ ràng nếu có.
+  Di chuyển bay: thấy nhịp lên/xuống, gốc cánh liên tục và mode bay phân biệt được khi thu nhỏ.
+  Tấn công: thấy tín hiệu lấy đà trước khung chạm hoặc khung phát đạn. Sau đòn có quán tính rồi ổn định.
+  Trúng đòn: giật nhanh đúng hướng, có dáng mất thăng bằng và quay về dáng sẵn sàng.
+  Kỹ thuật: nền trong suốt, đủ khung, giữ hướng, giữ điểm neo, có lề cho đầu/cánh/đuôi và nhận diện hình ổn định.

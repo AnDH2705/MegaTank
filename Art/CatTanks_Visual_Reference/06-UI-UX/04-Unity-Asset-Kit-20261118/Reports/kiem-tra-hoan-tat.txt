@@ -1,0 +1,10 @@
+Generated textures: 16
+Named sprites: 259 (127 generated + 132 original PNGs)
+Screens/popups: 21
+Layout nodes: 1122
+Sprite/grid/alpha/layout/navigation issues: 0
+Original PNG copies verified by SHA256: 132
+C# files checked by Roslyn syntax parser: 5
+C# syntax errors: 0
+Unity Editor import / API compilation / render / Play Mode: NOT EXECUTED
+Run the supplied Unity menu steps before production use.

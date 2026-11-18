@@ -1,0 +1,1267 @@
+﻿{
+    "checkedAt":  "2026-11-18T08:14:54.2728172Z",
+    "generatedTextures":  16,
+    "spriteCount":  259,
+    "screens":  21,
+    "issues":  [
+
+               ],
+    "images":  [
+                   {
+                       "id":  "ui_panels",
+                       "width":  1536,
+                       "height":  1024,
+                       "cells":  [
+                                     {
+                                         "index":  0,
+                                         "x":  70,
+                                         "y":  35,
+                                         "width":  374,
+                                         "height":  282,
+                                         "transparentFraction":  0.41379902859237538,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  1,
+                                         "x":  575,
+                                         "y":  50,
+                                         "width":  386,
+                                         "height":  259,
+                                         "transparentFraction":  0.437316715542522,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  2,
+                                         "x":  1050,
+                                         "y":  51,
+                                         "width":  460,
+                                         "height":  259,
+                                         "transparentFraction":  0.3325524651759531,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  3,
+                                         "x":  133,
+                                         "y":  373,
+                                         "width":  245,
+                                         "height":  279,
+                                         "transparentFraction":  0.62160923753665687,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  4,
+                                         "x":  541,
+                                         "y":  439,
+                                         "width":  454,
+                                         "height":  147,
+                                         "transparentFraction":  0.62943319281524923,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  5,
+                                         "x":  1072,
+                                         "y":  443,
+                                         "width":  417,
+                                         "height":  138,
+                                         "transparentFraction":  0.67788329362170086,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  6,
+                                         "x":  79,
+                                         "y":  774,
+                                         "width":  355,
+                                         "height":  154,
+                                         "transparentFraction":  0.69799090826023391,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  7,
+                                         "x":  637,
+                                         "y":  719,
+                                         "width":  262,
+                                         "height":  262,
+                                         "transparentFraction":  0.61838678728070173,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  8,
+                                         "x":  1047,
+                                         "y":  721,
+                                         "width":  466,
+                                         "height":  256,
+                                         "transparentFraction":  0.3296498081140351,
+                                         "touchesCellBoundary":  false
+                                     }
+                                 ]
+                   },
+                   {
+                       "id":  "ui_buttons",
+                       "width":  1448,
+                       "height":  1086,
+                       "cells":  [
+                                     {
+                                         "index":  0,
+                                         "x":  28,
+                                         "y":  146,
+                                         "width":  323,
+                                         "height":  161,
+                                         "transparentFraction":  0.611893715088062,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  1,
+                                         "x":  386,
+                                         "y":  146,
+                                         "width":  322,
+                                         "height":  161,
+                                         "transparentFraction":  0.6124736729648057,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  2,
+                                         "x":  741,
+                                         "y":  146,
+                                         "width":  321,
+                                         "height":  161,
+                                         "transparentFraction":  0.61350386129849521,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  3,
+                                         "x":  1100,
+                                         "y":  146,
+                                         "width":  321,
+                                         "height":  161,
+                                         "transparentFraction":  0.61267207960684966,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  4,
+                                         "x":  26,
+                                         "y":  468,
+                                         "width":  326,
+                                         "height":  163,
+                                         "transparentFraction":  0.60591099172796925,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  5,
+                                         "x":  386,
+                                         "y":  469,
+                                         "width":  322,
+                                         "height":  162,
+                                         "transparentFraction":  0.61049723756906082,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  6,
+                                         "x":  741,
+                                         "y":  469,
+                                         "width":  321,
+                                         "height":  162,
+                                         "transparentFraction":  0.61100851622355845,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  7,
+                                         "x":  1099,
+                                         "y":  469,
+                                         "width":  323,
+                                         "height":  162,
+                                         "transparentFraction":  0.60880315008699371,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  8,
+                                         "x":  29,
+                                         "y":  795,
+                                         "width":  322,
+                                         "height":  145,
+                                         "transparentFraction":  0.65533713867098076,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  9,
+                                         "x":  386,
+                                         "y":  795,
+                                         "width":  321,
+                                         "height":  144,
+                                         "transparentFraction":  0.65909160282042678,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  10,
+                                         "x":  741,
+                                         "y":  795,
+                                         "width":  322,
+                                         "height":  145,
+                                         "transparentFraction":  0.65123927841030493,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  11,
+                                         "x":  1099,
+                                         "y":  795,
+                                         "width":  325,
+                                         "height":  145,
+                                         "transparentFraction":  0.65028540032355542,
+                                         "touchesCellBoundary":  false
+                                     }
+                                 ]
+                   },
+                   {
+                       "id":  "ui_controls",
+                       "width":  1448,
+                       "height":  1086,
+                       "cells":  [
+                                     {
+                                         "index":  0,
+                                         "x":  32,
+                                         "y":  103,
+                                         "width":  299,
+                                         "height":  114,
+                                         "transparentFraction":  0.67293225418442026,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  1,
+                                         "x":  389,
+                                         "y":  112,
+                                         "width":  308,
+                                         "height":  96,
+                                         "transparentFraction":  0.71304356689975734,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  2,
+                                         "x":  749,
+                                         "y":  112,
+                                         "width":  311,
+                                         "height":  96,
+                                         "transparentFraction":  0.71321685592546535,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  3,
+                                         "x":  1111,
+                                         "y":  112,
+                                         "width":  310,
+                                         "height":  96,
+                                         "transparentFraction":  0.71320666245336484,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  4,
+                                         "x":  143,
+                                         "y":  295,
+                                         "width":  76,
+                                         "height":  237,
+                                         "transparentFraction":  0.83032377315567107,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  5,
+                                         "x":  499,
+                                         "y":  325,
+                                         "width":  88,
+                                         "height":  184,
+                                         "transparentFraction":  0.85096075723106923,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  6,
+                                         "x":  751,
+                                         "y":  377,
+                                         "width":  309,
+                                         "height":  90,
+                                         "transparentFraction":  0.80227291192720185,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  7,
+                                         "x":  1111,
+                                         "y":  380,
+                                         "width":  310,
+                                         "height":  78,
+                                         "transparentFraction":  0.76384262268443293,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  8,
+                                         "x":  76,
+                                         "y":  589,
+                                         "width":  210,
+                                         "height":  199,
+                                         "transparentFraction":  0.73053556502415851,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  9,
+                                         "x":  438,
+                                         "y":  589,
+                                         "width":  210,
+                                         "height":  200,
+                                         "transparentFraction":  0.72926138101160021,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  10,
+                                         "x":  741,
+                                         "y":  577,
+                                         "width":  330,
+                                         "height":  217,
+                                         "transparentFraction":  0.60132311267864058,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  11,
+                                         "x":  1129,
+                                         "y":  591,
+                                         "width":  275,
+                                         "height":  194,
+                                         "transparentFraction":  0.86848382295977655,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  12,
+                                         "x":  41,
+                                         "y":  844,
+                                         "width":  280,
+                                         "height":  201,
+                                         "transparentFraction":  0.53550536236594082,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  13,
+                                         "x":  389,
+                                         "y":  903,
+                                         "width":  307,
+                                         "height":  96,
+                                         "transparentFraction":  0.83051673708157292,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  14,
+                                         "x":  790,
+                                         "y":  891,
+                                         "width":  231,
+                                         "height":  143,
+                                         "transparentFraction":  0.74601884952876174,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  15,
+                                         "x":  1161,
+                                         "y":  854,
+                                         "width":  212,
+                                         "height":  206,
+                                         "transparentFraction":  0.63304354891127723,
+                                         "touchesCellBoundary":  false
+                                     }
+                                 ]
+                   },
+                   {
+                       "id":  "icons_navigation",
+                       "width":  1263,
+                       "height":  1246,
+                       "cells":  [
+                                     {
+                                         "index":  0,
+                                         "x":  44,
+                                         "y":  81,
+                                         "width":  252,
+                                         "height":  200,
+                                         "transparentFraction":  0.59516153728372378,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  1,
+                                         "x":  354,
+                                         "y":  75,
+                                         "width":  243,
+                                         "height":  216,
+                                         "transparentFraction":  0.6100370385445073,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  2,
+                                         "x":  654,
+                                         "y":  38,
+                                         "width":  261,
+                                         "height":  255,
+                                         "transparentFraction":  0.53060767634010342,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  3,
+                                         "x":  974,
+                                         "y":  84,
+                                         "width":  249,
+                                         "height":  188,
+                                         "transparentFraction":  0.57797427652733124,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  4,
+                                         "x":  49,
+                                         "y":  359,
+                                         "width":  230,
+                                         "height":  240,
+                                         "transparentFraction":  0.53141025641025641,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  5,
+                                         "x":  345,
+                                         "y":  364,
+                                         "width":  253,
+                                         "height":  242,
+                                         "transparentFraction":  0.51292194092827,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  6,
+                                         "x":  659,
+                                         "y":  360,
+                                         "width":  250,
+                                         "height":  246,
+                                         "transparentFraction":  0.55252961700746506,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  7,
+                                         "x":  982,
+                                         "y":  353,
+                                         "width":  234,
+                                         "height":  259,
+                                         "transparentFraction":  0.50482797792924372,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  8,
+                                         "x":  81,
+                                         "y":  683,
+                                         "width":  180,
+                                         "height":  187,
+                                         "transparentFraction":  0.69793293523197064,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  9,
+                                         "x":  398,
+                                         "y":  675,
+                                         "width":  162,
+                                         "height":  200,
+                                         "transparentFraction":  0.77496031584517078,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  10,
+                                         "x":  681,
+                                         "y":  680,
+                                         "width":  199,
+                                         "height":  197,
+                                         "transparentFraction":  0.69340428995889125,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  11,
+                                         "x":  988,
+                                         "y":  678,
+                                         "width":  220,
+                                         "height":  195,
+                                         "transparentFraction":  0.73418739061418858,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  12,
+                                         "x":  60,
+                                         "y":  961,
+                                         "width":  219,
+                                         "height":  218,
+                                         "transparentFraction":  0.70339845339845342,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  13,
+                                         "x":  367,
+                                         "y":  943,
+                                         "width":  212,
+                                         "height":  245,
+                                         "transparentFraction":  0.57678107757221686,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  14,
+                                         "x":  664,
+                                         "y":  952,
+                                         "width":  233,
+                                         "height":  237,
+                                         "transparentFraction":  0.561698717948718,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  15,
+                                         "x":  967,
+                                         "y":  954,
+                                         "width":  261,
+                                         "height":  240,
+                                         "transparentFraction":  0.47279698149951316,
+                                         "touchesCellBoundary":  false
+                                     }
+                                 ]
+                   },
+                   {
+                       "id":  "icons_resources",
+                       "width":  1261,
+                       "height":  1247,
+                       "cells":  [
+                                     {
+                                         "index":  0,
+                                         "x":  60,
+                                         "y":  61,
+                                         "width":  224,
+                                         "height":  228,
+                                         "transparentFraction":  0.59178277956413006,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  1,
+                                         "x":  355,
+                                         "y":  71,
+                                         "width":  238,
+                                         "height":  211,
+                                         "transparentFraction":  0.65368243760526723,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  2,
+                                         "x":  658,
+                                         "y":  77,
+                                         "width":  239,
+                                         "height":  191,
+                                         "transparentFraction":  0.616822334507222,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  3,
+                                         "x":  974,
+                                         "y":  66,
+                                         "width":  236,
+                                         "height":  215,
+                                         "transparentFraction":  0.58474093369693514,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  4,
+                                         "x":  55,
+                                         "y":  376,
+                                         "width":  230,
+                                         "height":  207,
+                                         "transparentFraction":  0.7483312983312983,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  5,
+                                         "x":  340,
+                                         "y":  383,
+                                         "width":  266,
+                                         "height":  198,
+                                         "transparentFraction":  0.64376271876271873,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  6,
+                                         "x":  668,
+                                         "y":  352,
+                                         "width":  230,
+                                         "height":  236,
+                                         "transparentFraction":  0.58963166463166461,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  7,
+                                         "x":  966,
+                                         "y":  396,
+                                         "width":  250,
+                                         "height":  175,
+                                         "transparentFraction":  0.66353253813696855,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  8,
+                                         "x":  53,
+                                         "y":  654,
+                                         "width":  235,
+                                         "height":  237,
+                                         "transparentFraction":  0.59787342287342282,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  9,
+                                         "x":  373,
+                                         "y":  654,
+                                         "width":  200,
+                                         "height":  245,
+                                         "transparentFraction":  0.68672161172161172,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  10,
+                                         "x":  654,
+                                         "y":  671,
+                                         "width":  238,
+                                         "height":  219,
+                                         "transparentFraction":  0.59481074481074481,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  11,
+                                         "x":  977,
+                                         "y":  659,
+                                         "width":  227,
+                                         "height":  235,
+                                         "transparentFraction":  0.59379057124310286,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  12,
+                                         "x":  49,
+                                         "y":  988,
+                                         "width":  241,
+                                         "height":  207,
+                                         "transparentFraction":  0.62828652828652831,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  13,
+                                         "x":  352,
+                                         "y":  965,
+                                         "width":  232,
+                                         "height":  236,
+                                         "transparentFraction":  0.71822344322344323,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  14,
+                                         "x":  664,
+                                         "y":  962,
+                                         "width":  228,
+                                         "height":  242,
+                                         "transparentFraction":  0.58037240537240542,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  15,
+                                         "x":  966,
+                                         "y":  969,
+                                         "width":  246,
+                                         "height":  223,
+                                         "transparentFraction":  0.65250730282375857,
+                                         "touchesCellBoundary":  false
+                                     }
+                                 ]
+                   },
+                   {
+                       "id":  "icons_skills",
+                       "width":  1983,
+                       "height":  793,
+                       "cells":  [
+                                     {
+                                         "index":  0,
+                                         "x":  70,
+                                         "y":  67,
+                                         "width":  293,
+                                         "height":  281,
+                                         "transparentFraction":  0.669708448117539,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  1,
+                                         "x":  439,
+                                         "y":  62,
+                                         "width":  331,
+                                         "height":  284,
+                                         "transparentFraction":  0.65713813194921511,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  2,
+                                         "x":  846,
+                                         "y":  56,
+                                         "width":  290,
+                                         "height":  305,
+                                         "transparentFraction":  0.568545301499847,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  3,
+                                         "x":  1235,
+                                         "y":  33,
+                                         "width":  282,
+                                         "height":  336,
+                                         "transparentFraction":  0.582366486018879,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  4,
+                                         "x":  1629,
+                                         "y":  58,
+                                         "width":  302,
+                                         "height":  292,
+                                         "transparentFraction":  0.63264890720810119,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  5,
+                                         "x":  36,
+                                         "y":  453,
+                                         "width":  345,
+                                         "height":  271,
+                                         "transparentFraction":  0.63015545887082414,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  6,
+                                         "x":  443,
+                                         "y":  445,
+                                         "width":  328,
+                                         "height":  302,
+                                         "transparentFraction":  0.64512813354567311,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  7,
+                                         "x":  834,
+                                         "y":  418,
+                                         "width":  312,
+                                         "height":  350,
+                                         "transparentFraction":  0.599127293081953,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  8,
+                                         "x":  1234,
+                                         "y":  425,
+                                         "width":  271,
+                                         "height":  336,
+                                         "transparentFraction":  0.64078827985711473,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  9,
+                                         "x":  1627,
+                                         "y":  425,
+                                         "width":  300,
+                                         "height":  327,
+                                         "transparentFraction":  0.68002461788349655,
+                                         "touchesCellBoundary":  false
+                                     }
+                                 ]
+                   },
+                   {
+                       "id":  "mascots",
+                       "width":  1774,
+                       "height":  887,
+                       "cells":  [
+                                     {
+                                         "index":  0,
+                                         "x":  93,
+                                         "y":  94,
+                                         "width":  270,
+                                         "height":  287,
+                                         "transparentFraction":  0.68731560415594473,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  1,
+                                         "x":  488,
+                                         "y":  115,
+                                         "width":  374,
+                                         "height":  252,
+                                         "transparentFraction":  0.64766741911211434,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  2,
+                                         "x":  938,
+                                         "y":  96,
+                                         "width":  336,
+                                         "height":  273,
+                                         "transparentFraction":  0.67750154140912822,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  3,
+                                         "x":  1390,
+                                         "y":  82,
+                                         "width":  323,
+                                         "height":  291,
+                                         "transparentFraction":  0.67622984157972876,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  4,
+                                         "x":  72,
+                                         "y":  504,
+                                         "width":  319,
+                                         "height":  326,
+                                         "transparentFraction":  0.6138124580562504,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  5,
+                                         "x":  505,
+                                         "y":  519,
+                                         "width":  322,
+                                         "height":  317,
+                                         "transparentFraction":  0.63004727700673646,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  6,
+                                         "x":  942,
+                                         "y":  515,
+                                         "width":  324,
+                                         "height":  313,
+                                         "transparentFraction":  0.651770280438452,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  7,
+                                         "x":  1375,
+                                         "y":  512,
+                                         "width":  344,
+                                         "height":  310,
+                                         "transparentFraction":  0.64702033114195279,
+                                         "touchesCellBoundary":  false
+                                     }
+                                 ]
+                   },
+                   {
+                       "id":  "arena_avatars",
+                       "width":  1536,
+                       "height":  1024,
+                       "cells":  [
+                                     {
+                                         "index":  0,
+                                         "x":  58,
+                                         "y":  71,
+                                         "width":  412,
+                                         "height":  392,
+                                         "transparentFraction":  0.54301071166992188,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  1,
+                                         "x":  560,
+                                         "y":  75,
+                                         "width":  395,
+                                         "height":  387,
+                                         "transparentFraction":  0.53679656982421875,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  2,
+                                         "x":  1043,
+                                         "y":  73,
+                                         "width":  445,
+                                         "height":  388,
+                                         "transparentFraction":  0.51041412353515625,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  3,
+                                         "x":  68,
+                                         "y":  568,
+                                         "width":  412,
+                                         "height":  404,
+                                         "transparentFraction":  0.47749710083007813,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  4,
+                                         "x":  520,
+                                         "y":  577,
+                                         "width":  486,
+                                         "height":  396,
+                                         "transparentFraction":  0.4819488525390625,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  5,
+                                         "x":  1052,
+                                         "y":  576,
+                                         "width":  412,
+                                         "height":  395,
+                                         "transparentFraction":  0.5188140869140625,
+                                         "touchesCellBoundary":  false
+                                     }
+                                 ]
+                   },
+                   {
+                       "id":  "world_props",
+                       "width":  1247,
+                       "height":  1261,
+                       "cells":  [
+                                     {
+                                         "index":  0,
+                                         "x":  67,
+                                         "y":  32,
+                                         "width":  295,
+                                         "height":  358,
+                                         "transparentFraction":  0.58968445209409059,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  1,
+                                         "x":  487,
+                                         "y":  46,
+                                         "width":  286,
+                                         "height":  345,
+                                         "transparentFraction":  0.697985347985348,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  2,
+                                         "x":  866,
+                                         "y":  77,
+                                         "width":  328,
+                                         "height":  304,
+                                         "transparentFraction":  0.55299908424908428,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  3,
+                                         "x":  59,
+                                         "y":  444,
+                                         "width":  308,
+                                         "height":  358,
+                                         "transparentFraction":  0.5842398164084911,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  4,
+                                         "x":  453,
+                                         "y":  472,
+                                         "width":  328,
+                                         "height":  326,
+                                         "transparentFraction":  0.61647206959706957,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  5,
+                                         "x":  852,
+                                         "y":  500,
+                                         "width":  356,
+                                         "height":  277,
+                                         "transparentFraction":  0.53136446886446886,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  6,
+                                         "x":  24,
+                                         "y":  984,
+                                         "width":  373,
+                                         "height":  175,
+                                         "transparentFraction":  0.6894141888217955,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  7,
+                                         "x":  478,
+                                         "y":  872,
+                                         "width":  260,
+                                         "height":  341,
+                                         "transparentFraction":  0.68065960168097939,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  8,
+                                         "x":  857,
+                                         "y":  892,
+                                         "width":  351,
+                                         "height":  285,
+                                         "transparentFraction":  0.64194112004385162,
+                                         "touchesCellBoundary":  false
+                                     }
+                                 ]
+                   },
+                   {
+                       "id":  "stage_vignettes",
+                       "width":  1536,
+                       "height":  1024,
+                       "cells":  [
+                                     {
+                                         "index":  0,
+                                         "x":  47,
+                                         "y":  191,
+                                         "width":  448,
+                                         "height":  259,
+                                         "transparentFraction":  0.5592803955078125,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  1,
+                                         "x":  543,
+                                         "y":  191,
+                                         "width":  449,
+                                         "height":  259,
+                                         "transparentFraction":  0.55826568603515625,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  2,
+                                         "x":  1041,
+                                         "y":  191,
+                                         "width":  449,
+                                         "height":  258,
+                                         "transparentFraction":  0.55832290649414063,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  3,
+                                         "x":  46,
+                                         "y":  575,
+                                         "width":  449,
+                                         "height":  259,
+                                         "transparentFraction":  0.5592041015625,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  4,
+                                         "x":  543,
+                                         "y":  575,
+                                         "width":  449,
+                                         "height":  258,
+                                         "transparentFraction":  0.55829620361328125,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  5,
+                                         "x":  1041,
+                                         "y":  575,
+                                         "width":  449,
+                                         "height":  259,
+                                         "transparentFraction":  0.55830001831054688,
+                                         "touchesCellBoundary":  false
+                                     }
+                                 ]
+                   },
+                   {
+                       "id":  "vehicle_parts",
+                       "width":  1536,
+                       "height":  1024,
+                       "cells":  [
+                                     {
+                                         "index":  0,
+                                         "x":  53,
+                                         "y":  147,
+                                         "width":  426,
+                                         "height":  125,
+                                         "transparentFraction":  0.75136890579178883,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  1,
+                                         "x":  628,
+                                         "y":  49,
+                                         "width":  281,
+                                         "height":  276,
+                                         "transparentFraction":  0.65519038673020524,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  2,
+                                         "x":  1096,
+                                         "y":  41,
+                                         "width":  356,
+                                         "height":  287,
+                                         "transparentFraction":  0.61042315799120239,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  3,
+                                         "x":  50,
+                                         "y":  419,
+                                         "width":  436,
+                                         "height":  218,
+                                         "transparentFraction":  0.61680374816715544,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  4,
+                                         "x":  725,
+                                         "y":  393,
+                                         "width":  86,
+                                         "height":  258,
+                                         "transparentFraction":  0.92692105021994131,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  5,
+                                         "x":  1164,
+                                         "y":  393,
+                                         "width":  250,
+                                         "height":  252,
+                                         "transparentFraction":  0.78224088159824046,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  6,
+                                         "x":  88,
+                                         "y":  742,
+                                         "width":  355,
+                                         "height":  220,
+                                         "transparentFraction":  0.57976973684210531,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  7,
+                                         "x":  602,
+                                         "y":  736,
+                                         "width":  328,
+                                         "height":  235,
+                                         "transparentFraction":  0.74067982456140347,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  8,
+                                         "x":  1061,
+                                         "y":  767,
+                                         "width":  417,
+                                         "height":  191,
+                                         "transparentFraction":  0.61091694078947367,
+                                         "touchesCellBoundary":  false
+                                     }
+                                 ]
+                   },
+                   {
+                       "id":  "infantry",
+                       "width":  1536,
+                       "height":  1024,
+                       "cells":  [
+                                     {
+                                         "index":  0,
+                                         "x":  89,
+                                         "y":  90,
+                                         "width":  380,
+                                         "height":  372,
+                                         "transparentFraction":  0.646148681640625,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  1,
+                                         "x":  568,
+                                         "y":  86,
+                                         "width":  403,
+                                         "height":  376,
+                                         "transparentFraction":  0.63770675659179688,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  2,
+                                         "x":  1093,
+                                         "y":  81,
+                                         "width":  378,
+                                         "height":  382,
+                                         "transparentFraction":  0.65008163452148438,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  3,
+                                         "x":  71,
+                                         "y":  579,
+                                         "width":  383,
+                                         "height":  392,
+                                         "transparentFraction":  0.61931610107421875,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  4,
+                                         "x":  585,
+                                         "y":  585,
+                                         "width":  358,
+                                         "height":  387,
+                                         "transparentFraction":  0.63692855834960938,
+                                         "touchesCellBoundary":  false
+                                     },
+                                     {
+                                         "index":  5,
+                                         "x":  1068,
+                                         "y":  627,
+                                         "width":  399,
+                                         "height":  315,
+                                         "transparentFraction":  0.66184616088867188,
+                                         "touchesCellBoundary":  false
+                                     }
+                                 ]
+                   },
+                   {
+                       "id":  "bg_hub",
+                       "width":  1672,
+                       "height":  941,
+                       "cells":  [
+                                     {
+                                         "index":  0,
+                                         "x":  0,
+                                         "y":  0,
+                                         "width":  1672,
+                                         "height":  941,
+                                         "transparentFraction":  0,
+                                         "touchesCellBoundary":  true
+                                     }
+                                 ]
+                   },
+                   {
+                       "id":  "bg_battle",
+                       "width":  1672,
+                       "height":  941,
+                       "cells":  [
+                                     {
+                                         "index":  0,
+                                         "x":  0,
+                                         "y":  0,
+                                         "width":  1672,
+                                         "height":  941,
+                                         "transparentFraction":  0,
+                                         "touchesCellBoundary":  true
+                                     }
+                                 ]
+                   },
+                   {
+                       "id":  "bg_workshop",
+                       "width":  1672,
+                       "height":  941,
+                       "cells":  [
+                                     {
+                                         "index":  0,
+                                         "x":  0,
+                                         "y":  0,
+                                         "width":  1672,
+                                         "height":  941,
+                                         "transparentFraction":  0,
+                                         "touchesCellBoundary":  true
+                                     }
+                                 ]
+                   },
+                   {
+                       "id":  "bg_stage_fog",
+                       "width":  1672,
+                       "height":  941,
+                       "cells":  [
+                                     {
+                                         "index":  0,
+                                         "x":  0,
+                                         "y":  0,
+                                         "width":  1672,
+                                         "height":  941,
+                                         "transparentFraction":  0,
+                                         "touchesCellBoundary":  true
+                                     }
+                                 ]
+                   }
+               ],
+    "unityEditorExecuted":  false
+}

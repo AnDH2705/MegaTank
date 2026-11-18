@@ -1,0 +1,26 @@
+{
+  "speciesId": "bug-0",
+  "clipId": "run",
+  "facing": "right",
+  "loop": true,
+  "layout": { "columns": 6, "rows": 1, "cellWidth": 320, "cellHeight": 320 },
+  "guideGroundY": 251,
+  "timing": {
+    "viewerDefaultMsPerFrame": 90,
+    "trialTotalMs": 540,
+    "note": "Thời lượng thử bên dưới dùng khi phát với nhịp riêng từng khung. Tool HTML hiện tại dùng thời lượng đều."
+  },
+  "legGroups": {
+    "A": ["near-front", "far-middle", "near-rear"],
+    "B": ["far-front", "near-middle", "far-rear"]
+  },
+  "note": "Các nhóm chân là mục tiêu trong sơ đồ vẽ. Hình xuất thử cần được duyệt bằng mắt trước khi dùng làm dữ liệu chuẩn.",
+  "frames": [
+    { "file": "run-01.png", "phase": "contact", "support": "A", "swing": "B", "trialDurationMs": 105 },
+    { "file": "run-02.png", "phase": "mid-stance", "support": "A", "swing": "B", "trialDurationMs": 95 },
+    { "file": "run-03.png", "phase": "push-off", "support": "A", "swing": "B", "trialDurationMs": 70 },
+    { "file": "run-04.png", "phase": "contact", "support": "B", "swing": "A", "trialDurationMs": 105 },
+    { "file": "run-05.png", "phase": "mid-stance", "support": "B", "swing": "A", "trialDurationMs": 95 },
+    { "file": "run-06.png", "phase": "push-off", "support": "B", "swing": "A", "trialDurationMs": 70 }
+  ]
+}

@@ -1,0 +1,109 @@
+MÀN 07 — Đấu trường
+Key: town-arena
+Loại: Screen
+Prefab được sinh: Assets/CatTanksMockupKit/Generated/Prefabs/Mockup_town-arena.prefab
+
+Sáu thẻ đối thủ theo 3 cột × 2 hàng, avatar là sprite riêng. Khóa nút đấu đến khi đủ mốc mở. Rating/card không phải hình raster.
+
+CÁCH GHÉP
+1. Dùng Canvas 1600×900 và quy tắc anchor trong Docs/02_GHEP_21_MAN.txt.
+2. Thêm node theo đúng thứ tự bảng bên dưới; node sau vẽ trên node trước.
+3. parent trống = ArtKitStage; parent có giá trị = trong Content/group có tên đó.
+4. Khung/nút: Image Sliced, viền theo importer; icon/art: Image Simple + Preserve Aspect.
+5. Các node label dùng UI Text; button dùng Image + Button + child Text; bar dùng track + Image Filled.
+6. Action screen:* là navigation xem thử; game:* cần nối controller. Dữ liệu số trong file là ví dụ.
+
+THÀNH PHẦN (tọa độ trên trái, UI units)
+Order | Id | Kind | Sprite | Parent | x,y,w,h | Font | Action | Disabled
+0 | background | image | bg_hub | ArtKitStage | 0,0,1600,900 | - | - | false
+1 | brand | image | icon_crown | ArtKitStage | 20,14,66,66 | - | - | false
+2 | brand-title | label | - | ArtKitStage | 100,8,670,48 | 40 | - | false
+3 | brand-subtitle | label | - | ArtKitStage | 102,58,650,24 | 19 | - | false
+4 | currency-coin | image | panel_resource | ArtKitStage | 800,16,180,68 | - | - | false
+5 | currency-icon-coin | image | icon_coin | ArtKitStage | 812,28,44,44 | - | - | false
+6 | currency-value-coin | label | - | ArtKitStage | 862,26,100,44 | 28 | - | false
+7 | currency-gem | image | panel_resource | ArtKitStage | 1000,16,180,68 | - | - | false
+8 | currency-icon-gem | image | icon_gem | ArtKitStage | 1012,28,44,44 | - | - | false
+9 | currency-value-gem | label | - | ArtKitStage | 1062,26,100,44 | 28 | - | false
+10 | currency-ticket | image | panel_resource | ArtKitStage | 1200,16,180,68 | - | - | false
+11 | currency-icon-ticket | image | icon_ticket | ArtKitStage | 1212,28,44,44 | - | - | false
+12 | currency-value-ticket | label | - | ArtKitStage | 1262,26,100,44 | 28 | - | false
+13 | settings | button | button_gold | ArtKitStage | 1400,16,184,68 | 20 | screen:settings | false
+14 | sidebar | image | panel_main | ArtKitStage | 12,108,236,780 | - | - | false
+15 | commander-level | label | - | ArtKitStage | 32,128,200,30 | 18 | - | false
+16 | commander-portrait | image | mascot_commander | ArtKitStage | 28,164,92,92 | - | - | false
+17 | commander-name | label | - | ArtKitStage | 126,176,104,70 | 20 | - | false
+18 | nav-march | button | button_blue | ArtKitStage | 24,280,212,66 | 20 | screen:march | false
+19 | nav-icon-march | image | icon_map | ArtKitStage | 32,293,42,42 | - | - | false
+20 | nav-barracks-cats | button | button_blue | ArtKitStage | 24,356,212,66 | 20 | screen:barracks-cats | false
+21 | nav-icon-barracks-cats | image | icon_battle | ArtKitStage | 32,369,42,42 | - | - | false
+22 | nav-town-summon | button | button_cyan | ArtKitStage | 24,432,212,66 | 20 | screen:town-summon | false
+23 | nav-icon-town-summon | image | icon_town | ArtKitStage | 32,445,42,42 | - | - | false
+24 | nav-chest | button | button_blue | ArtKitStage | 24,508,212,66 | 20 | screen:chest | false
+25 | nav-icon-chest | image | icon_chest | ArtKitStage | 32,521,42,42 | - | - | false
+26 | nav-quests | button | button_blue | ArtKitStage | 24,584,212,66 | 20 | screen:quests | false
+27 | nav-icon-quests | image | icon_quests | ArtKitStage | 32,597,42,42 | - | - | false
+28 | nav-book | button | button_blue | ArtKitStage | 24,660,212,66 | 20 | screen:book | false
+29 | nav-icon-book | image | icon_book | ArtKitStage | 32,673,42,42 | - | - | false
+30 | power-panel | image | panel_resource | ArtKitStage | 24,760,212,108 | - | - | false
+31 | power-title | label | - | ArtKitStage | 40,775,180,26 | 20 | - | false
+32 | power-number | label | - | ArtKitStage | 48,812,170,42 | 36 | - | false
+33 | main | image | panel_main | ArtKitStage | 264,108,1324,780 | - | - | false
+34 | tab-summon | button | tab_blue | ArtKitStage | 288,128,410,60 | 20 | screen:town-summon | false
+35 | tab-shop | button | tab_blue | ArtKitStage | 712,128,410,60 | 20 | screen:town-shop | false
+36 | tab-arena | button | tab_selected | ArtKitStage | 1136,128,410,60 | 20 | screen:town-arena | false
+37 | screen-title | label | - | ArtKitStage | 298,202,1170,52 | 34 | - | false
+38 | arena-subtitle | label | - | ArtKitStage | 300,266,1210,38 | 22 | - | false
+39 | opponent-0 | button | button_gold | ArtKitStage | 300,362,402,150 | 23 | game:opponent:0 | false
+40 | avatar-0 | image | avatar_banh_bao | ArtKitStage | 312,390,92,92 | - | - | false
+41 | opponent-1 | button | button_blue | ArtKitStage | 718,362,402,150 | 23 | game:opponent:1 | false
+42 | avatar-1 | image | avatar_milo | ArtKitStage | 730,390,92,92 | - | - | false
+43 | opponent-2 | button | button_blue | ArtKitStage | 1136,362,402,150 | 23 | game:opponent:2 | false
+44 | avatar-2 | image | avatar_muc_ong | ArtKitStage | 1148,390,92,92 | - | - | false
+45 | opponent-3 | button | button_blue | ArtKitStage | 300,532,402,150 | 23 | game:opponent:3 | false
+46 | avatar-3 | image | avatar_gau_beo | ArtKitStage | 312,560,92,92 | - | - | false
+47 | opponent-4 | button | button_blue | ArtKitStage | 718,532,402,150 | 23 | game:opponent:4 | false
+48 | avatar-4 | image | avatar_lua_mach | ArtKitStage | 730,560,92,92 | - | - | false
+49 | opponent-5 | button | button_blue | ArtKitStage | 1136,532,402,150 | 23 | game:opponent:5 | false
+50 | avatar-5 | image | avatar_dau_den | ArtKitStage | 1148,560,92,92 | - | - | false
+51 | arena-rating | label | - | ArtKitStage | 310,728,1210,50 | 24 | - | false
+52 | arena-start | button | button_gold | ArtKitStage | 570,800,700,62 | 20 | game:arena | true
+
+NỘI DUNG TEXT/INPUT
+brand-title: MEOW BASTION
+brand-subtitle: PHÁO ĐÀI TRĂNG XANH
+currency-value-coin: 2,843
+currency-value-gem: 300
+currency-value-ticket: 5
+settings: Cài đặt
+commander-level: CHỈ HUY / CẤP 5
+commander-name: Chỉ huy
+mèo
+nav-march:      Hành quân
+nav-barracks-cats:      Doanh trại
+nav-town-summon:      Thành mèo
+nav-chest:      Rương AFK
+nav-quests:      Nhiệm vụ
+nav-book:      Bách khoa
+power-title: LỰC CHIẾN
+power-number: 1,046
+tab-summon: GỌI ĐỒNG ĐỘI
+tab-shop: TIẾP TẾ
+tab-arena: ĐẤU TRƯỜNG
+screen-title: Đấu trường trăng · mô phỏng local
+arena-subtitle: Đối thủ mô phỏng dùng đội quái theo tiến độ, có AI kỹ năng.
+opponent-0: Bánh Bao · Cấp 4
+950 điểm
+opponent-1: Milo · Cấp 7
+1000 điểm
+opponent-2: Mực Ống · Cấp 12
+1060 điểm
+opponent-3: Gấu Béo · Cấp 18
+1120 điểm
+opponent-4: Lúa Mạch · Cấp 25
+1190 điểm
+opponent-5: Đậu Đen · Cấp 40
+1280 điểm
+arena-rating: Bạn: 1000 điểm • Thắng +14 / Thua -18 • 0 huy hiệu • Tối đa 40/ngày
+arena-start: VƯỢT ẢI 5 ĐỂ MỞ KHÓA
+

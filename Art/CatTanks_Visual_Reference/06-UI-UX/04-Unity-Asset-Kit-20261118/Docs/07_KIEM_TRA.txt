@@ -1,0 +1,38 @@
+07 — CÁCH KIỂM TRA VÀ ĐỌC KẾT QUẢ
+
+KIỂM TRA NGOÀI UNITY
+Tools/Validate-Kit.ps1:
+Chạy từ thư mục gói bằng: powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Tools\Validate-Kit.ps1
+- Đọc từng PNG mới, xác minh kích thước, số ô và alpha.
+- Phát hiện ô rỗng, không có gutter trong suốt và nội dung chạm ranh giới lưới.
+- Kiểm tra 259 key không trùng, mọi file ảnh gốc có mặt.
+- Kiểm tra mọi sprite và bar fill trong 21 layout tồn tại.
+- Kiểm tra parent khai báo trước child, ID trong màn không trùng.
+- Kiểm tra kích thước dương, node root nằm trong 1600×900.
+- Kiểm tra action screen:* trỏ tới màn có thật.
+- Ghi asset-validation.json. IssueCount phải bằng 0.
+
+Tools/SyntaxCheck:
+Dùng Roslyn trong .NET SDK để parse C# theo C# 9. Không tải thư viện qua NuGet.
+Lệnh:
+dotnet run --project Tools/SyntaxCheck/SyntaxCheck.csproj -- Unity/Assets
+Kết quả này chỉ phát hiện lỗi cú pháp. Không xác nhận API/assembly Unity hay chạy Play Mode.
+
+KIỂM TRA TRONG UNITY, NGƯỜI IMPORT CẦN CHẠY
+1. Console không có lỗi compile.
+2. Menu 1 thành công, có MOCKUP_KIT_IMPORT_OK: 259 named sprites.
+3. Menu 4 thành công, có MOCKUP_KIT_VALIDATE_OK: 259 sprites / 21 screens.
+4. Menu 2 tạo đủ 21 prefab.
+5. Menu 3 tạo scene riêng. Mở scene đó một mình và Play.
+6. Duyệt mọi màn, kiểm tra chữ Việt không ô vuông, popup chặn click nền, navigation không mất raycast.
+7. Kiểm tra shop/book cuộn và không vẽ tràn viewport.
+8. Kiểm tra 9-slice của panel ở các kích thước, nhất là nút thấp và thẻ rộng.
+9. So với mockup ở 1600×900 rồi thử các tỉ lệ khác trong Docs/02.
+10. Build thử target thật; kiểm tra alpha/atlas/compression và font trên thiết bị.
+
+TRẠNG THÁI THỰC TẾ CỦA PHIÊN TẠO GÓI
+Xem asset-validation.json và Reports/csharp-syntax.txt để biết các kiểm tra ngoài Unity đã chạy.
+Không có Unity Editor khả dụng trong phiên tạo gói để import/compile/render.
+Vì vậy prefab/scene là kết quả được tool dựng khi chạy trong Unity của bạn, chưa phải prefab/scene đã render kiểm thử sẵn.
+Mọi lỗi Unity cần xử lý trước khi thay UI sản phẩm; giữ bản preview trong scene riêng để duyệt.
+

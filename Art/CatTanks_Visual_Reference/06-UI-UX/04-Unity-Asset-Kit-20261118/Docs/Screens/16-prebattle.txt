@@ -1,0 +1,39 @@
+MÀN 16 — Chuẩn bị xuất kích
+Key: prebattle
+Loại: Popup trên nền march
+Prefab được sinh: Assets/CatTanksMockupKit/Generated/Prefabs/Mockup_prebattle.prefab
+
+Popup rộng trên nền hub; title, stat row, thông tin wave, turret tầng 1, capture inventory và ba nút dưới. Nút Xuất kích trong preview chỉ chuyển sang ảnh trận.
+
+CÁCH GHÉP
+1. Dùng Canvas 1600×900 và quy tắc anchor trong Docs/02_GHEP_21_MAN.txt.
+2. Thêm node theo đúng thứ tự bảng bên dưới; node sau vẽ trên node trước.
+3. parent trống = ArtKitStage; parent có giá trị = trong Content/group có tên đó.
+4. Khung/nút: Image Sliced, viền theo importer; icon/art: Image Simple + Preserve Aspect.
+5. Các node label dùng UI Text; button dùng Image + Button + child Text; bar dùng track + Image Filled.
+6. Action screen:* là navigation xem thử; game:* cần nối controller. Dữ liệu số trong file là ví dụ.
+
+THÀNH PHẦN (tọa độ trên trái, UI units)
+Order | Id | Kind | Sprite | Parent | x,y,w,h | Font | Action | Disabled
+0 | modal-prebattle | image | panel_modal | ArtKitStage | 220,140,1160,620 | - | - | false
+1 | modal-title | label | - | ArtKitStage | 260,166,1080,62 | 36 | - | false
+2 | prebattle-stats | label | - | ArtKitStage | 260,242,1080,46 | 26 | - | false
+3 | prebattle-info | label | - | ArtKitStage | 260,312,1080,100 | 23 | - | false
+4 | tier-preview | image | turret-0 | ArtKitStage | 270,430,140,120 | - | - | false
+5 | tier-caption | label | - | ArtKitStage | 296,556,130,34 | 23 | - | false
+6 | capture-info | label | - | ArtKitStage | 260,610,1080,46 | 22 | - | false
+7 | back | button | button_blue | ArtKitStage | 260,684,230,56 | 20 | close | false
+8 | edit-squad | button | button_blue | ArtKitStage | 520,684,480,56 | 20 | screen:barracks-squad | false
+9 | deploy | button | button_gold | ArtKitStage | 1050,684,280,56 | 20 | screen:battle | false
+
+NỘI DUNG TEXT/INPUT
+modal-title: Ải 2 · Đường mòn sương
+prebattle-stats: Đề nghị 560 lực chiến · Pháo đài 12,800 HP · 1 tầng
+prebattle-info: Đội hình dùng trang bị hiện tại trong Doanh trại. Pháo và bộ binh tự động tấn công.
+3 đợt tiếp viện xuất hiện tại giây 0 / 25 / 55.
+tier-caption: Tầng 1
+capture-info: Mang 5 lồng thú · 0 lồng trăng (tối đa 5). Quái dưới 25% HP mới bắt được.
+back: Trở về
+edit-squad: Chỉnh đội hình
+deploy: XUẤT KÍCH
+

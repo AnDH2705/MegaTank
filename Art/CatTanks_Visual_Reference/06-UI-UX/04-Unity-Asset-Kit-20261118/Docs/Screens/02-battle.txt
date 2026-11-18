@@ -1,0 +1,77 @@
+MÀN 02 — Chiến đấu
+Key: battle
+Loại: Screen
+Prefab được sinh: Assets/CatTanksMockupKit/Generated/Prefabs/Mockup_battle.prefab
+
+Bắt đầu từ bg_battle, thêm chassis/wheels/cabin/driver/antenna/turret và 5 lính. Turret trong trận có flipX. Hai HUD góc trên và bảng kỹ năng dưới là uGUI riêng. Các pose lính trong gói là hình tĩnh; dùng animation gốc khi làm gameplay.
+
+CÁCH GHÉP
+1. Dùng Canvas 1600×900 và quy tắc anchor trong Docs/02_GHEP_21_MAN.txt.
+2. Thêm node theo đúng thứ tự bảng bên dưới; node sau vẽ trên node trước.
+3. parent trống = ArtKitStage; parent có giá trị = trong Content/group có tên đó.
+4. Khung/nút: Image Sliced, viền theo importer; icon/art: Image Simple + Preserve Aspect.
+5. Các node label dùng UI Text; button dùng Image + Button + child Text; bar dùng track + Image Filled.
+6. Action screen:* là navigation xem thử; game:* cần nối controller. Dữ liệu số trong file là ví dụ.
+
+THÀNH PHẦN (tọa độ trên trái, UI units)
+Order | Id | Kind | Sprite | Parent | x,y,w,h | Font | Action | Disabled
+0 | battle-bg | image | bg_battle | ArtKitStage | 0,0,1600,900 | - | - | false
+1 | money-panel | image | panel_header | ArtKitStage | 16,18,450,86 | - | - | false
+2 | pause | button | button_blue | ArtKitStage | 30,28,64,64 | 20 | screen:pause | false
+3 | coin | image | icon_coin | ArtKitStage | 112,32,54,54 | - | - | false
+4 | money | label | - | ArtKitStage | 182,28,270,64 | 23 | - | false
+5 | stage-panel | image | panel_header | ArtKitStage | 570,18,500,86 | - | - | false
+6 | stage | label | - | ArtKitStage | 590,28,460,64 | 24 | - | false
+7 | book | button | button_blue | ArtKitStage | 1110,24,200,66 | 20 | screen:book | false
+8 | audio | button | button_blue | ArtKitStage | 1320,24,126,66 | 20 | game:audio | false
+9 | exit | button | button_blue | ArtKitStage | 1458,24,126,66 | 20 | screen:march | false
+10 | hp-panel | image | panel_inset | ArtKitStage | 20,122,520,82 | - | - | false
+11 | hp-label | label | - | ArtKitStage | 40,128,480,32 | 20 | - | false
+12 | hp-bar | bar | bar_track | ArtKitStage | 40,164,480,24 | - | - | false
+13 | wave-panel | image | panel_inset | ArtKitStage | 1080,122,500,82 | - | - | false
+14 | wave-label | label | - | ArtKitStage | 1100,128,460,32 | 20 | - | false
+15 | wave-bar | bar | bar_track | ArtKitStage | 1100,164,460,24 | - | - | false
+16 | vehicle-chassis | image | vehicle_chassis | ArtKitStage | 76,644,350,106 | - | - | false
+17 | vehicle-cabin | image | vehicle_cabin | ArtKitStage | 166,548,165,128 | - | - | false
+18 | wheel-rear | image | vehicle_wheel | ArtKitStage | 92,686,70,70 | - | - | false
+19 | wheel-front | image | vehicle_wheel | ArtKitStage | 342,686,70,70 | - | - | false
+20 | vehicle-antenna | image | vehicle_antenna | ArtKitStage | 150,502,24,92 | - | - | false
+21 | driver | image | driver_cat | ArtKitStage | 220,564,62,76 | - | - | false
+22 | weapon | image | turret-0 | ArtKitStage | 250,618,140,100 | - | - | false
+23 | infantry-heavy | image | infantry_heavy | ArtKitStage | 60,668,66,90 | - | - | false
+24 | infantry-rocket | image | infantry_rocket | ArtKitStage | 112,668,66,90 | - | - | false
+25 | infantry-rifle | image | infantry_rifle | ArtKitStage | 164,668,66,90 | - | - | false
+26 | infantry-healer | image | infantry_healer | ArtKitStage | 216,668,66,90 | - | - | false
+27 | infantry-engineer | image | infantry_engineer | ArtKitStage | 268,668,66,90 | - | - | false
+28 | bottom-hud | image | panel_main | ArtKitStage | 8,756,1584,136 | - | - | false
+29 | energy | label | - | ArtKitStage | 30,770,270,64 | 24 | - | false
+30 | energy-bar | bar | bar_track | ArtKitStage | 32,850,260,24 | - | - | false
+31 | repair | button | button_cyan | ArtKitStage | 330,770,150,108 | 20 | game:skill:heal | false
+32 | rocket | button | button_cyan | ArtKitStage | 492,770,170,108 | 20 | game:skill:barrage | false
+33 | capture | button | button_gold | ArtKitStage | 1224,770,174,108 | 20 | game:capture | false
+34 | capture-moon | button | button_disabled | ArtKitStage | 1410,770,160,108 | 20 | game:captureMoon | true
+
+NỘI DUNG TEXT/INPUT
+pause: Ⅱ
+money: 0 xu
+0 mục tiêu bị hạ
+stage: ẢI 2 • Đường mòn sương
+00:00 • 0/24 đã xuất hiện
+book: BÁCH KHOA
+audio: Âm: Bật
+exit: Thoát
+hp-label: PHÁO ĐÀI   12,800 / 12,800 HP
+wave-label: 0 QUÁI ĐANG TIẾN ĐẾN
+energy: NĂNG LƯỢNG
+202 / 600
+repair: 1
+Sửa chữa
+80 NL
+rocket: 2
+Mưa tên lửa
+140 NL
+capture: [C] BẮT QUÁI
+5 lồng thú
+capture-moon: [Shift+C]
+0 lồng trăng
+
