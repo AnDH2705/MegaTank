@@ -1,0 +1,161 @@
+{
+  "passed": true,
+  "style": "Cheerful arcade military appeal inspired by Metal Slug, rendered as non-pixel 2D comic",
+  "changed_pngs": 16,
+  "unchanged_pngs": [
+    "head_happy",
+    "head_recoil",
+    "tail",
+    "head_attack",
+    "shovel"
+  ],
+  "cutout_alpha_and_pivots_unchanged": true,
+  "rig_and_timelines_unchanged": true,
+  "material_registration": "Generated outfit RGB registered to each original painted bounding box; original alpha retained exactly to preserve cuts/overlaps.",
+  "parts": [
+    {
+      "name": "torso",
+      "file": "images/03_torso.png",
+      "alpha_unchanged": true,
+      "size": [
+        280,
+        205
+      ]
+    },
+    {
+      "name": "pelvis",
+      "file": "images/04_pelvis.png",
+      "alpha_unchanged": true,
+      "size": [
+        287,
+        175
+      ]
+    },
+    {
+      "name": "upperarm_near",
+      "file": "images/06_upperarm_near.png",
+      "alpha_unchanged": true,
+      "size": [
+        212,
+        258
+      ]
+    },
+    {
+      "name": "forearm_near",
+      "file": "images/07_forearm_near.png",
+      "alpha_unchanged": true,
+      "size": [
+        164,
+        234
+      ]
+    },
+    {
+      "name": "hand_near_relaxed",
+      "file": "images/08_hand_near_relaxed.png",
+      "alpha_unchanged": true,
+      "size": [
+        231,
+        193
+      ]
+    },
+    {
+      "name": "hand_near_grip",
+      "file": "images/12_hand_near_grip.png",
+      "alpha_unchanged": true,
+      "size": [
+        211,
+        218
+      ]
+    },
+    {
+      "name": "upperarm_far",
+      "file": "images/09_upperarm_far.png",
+      "alpha_unchanged": true,
+      "size": [
+        213,
+        252
+      ]
+    },
+    {
+      "name": "forearm_far",
+      "file": "images/10_forearm_far.png",
+      "alpha_unchanged": true,
+      "size": [
+        166,
+        233
+      ]
+    },
+    {
+      "name": "hand_far_relaxed",
+      "file": "images/11_hand_far_relaxed.png",
+      "alpha_unchanged": true,
+      "size": [
+        230,
+        193
+      ]
+    },
+    {
+      "name": "hand_far_grip",
+      "file": "images/16_hand_far_grip.png",
+      "alpha_unchanged": true,
+      "size": [
+        203,
+        216
+      ]
+    },
+    {
+      "name": "thigh_near",
+      "file": "images/13_thigh_near.png",
+      "alpha_unchanged": true,
+      "size": [
+        224,
+        238
+      ]
+    },
+    {
+      "name": "thigh_far",
+      "file": "images/17_thigh_far.png",
+      "alpha_unchanged": true,
+      "size": [
+        226,
+        242
+      ]
+    },
+    {
+      "name": "shin_near",
+      "file": "images/14_shin_near.png",
+      "alpha_unchanged": true,
+      "size": [
+        179,
+        230
+      ]
+    },
+    {
+      "name": "shin_far",
+      "file": "images/18_shin_far.png",
+      "alpha_unchanged": true,
+      "size": [
+        178,
+        237
+      ]
+    },
+    {
+      "name": "boot_near",
+      "file": "images/15_boot_near.png",
+      "alpha_unchanged": true,
+      "size": [
+        243,
+        182
+      ]
+    },
+    {
+      "name": "boot_far",
+      "file": "images/19_boot_far.png",
+      "alpha_unchanged": true,
+      "size": [
+        241,
+        182
+      ]
+    }
+  ]
+}

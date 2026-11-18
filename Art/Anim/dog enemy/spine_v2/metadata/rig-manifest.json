@@ -1,0 +1,857 @@
+{
+  "character": "dog enemy villain",
+  "version": 2,
+  "method": "Fixed local joint positions. Only pelvis translates; torso/head/shoulders/elbows/wrists inherit full parent transform. Baton and grenade are children of near hand.",
+  "parts": [
+    {
+      "name": "head_happy",
+      "file": "images/01_head_happy.png",
+      "size_px": [
+        512,
+        446
+      ],
+      "padding": 8,
+      "source_crop": [
+        11,
+        37,
+        242,
+        216
+      ],
+      "bone": "head",
+      "pivot_local_px": [
+        240.64,
+        401.40000000000003
+      ],
+      "display_scale": 0.5859375,
+      "intrinsic_axis": 0,
+      "attachment_name": "01_head_happy",
+      "attachment": {
+        "x": 9,
+        "y": 104.5313,
+        "rotation": 0,
+        "width": 512,
+        "height": 446,
+        "scaleX": 0.5859,
+        "scaleY": 0.5859
+      }
+    },
+    {
+      "name": "head_recoil",
+      "file": "images/02_head_recoil.png",
+      "size_px": [
+        512,
+        446
+      ],
+      "padding": 8,
+      "source_crop": [
+        267,
+        37,
+        242,
+        216
+      ],
+      "bone": "head",
+      "pivot_local_px": [
+        240.64,
+        401.40000000000003
+      ],
+      "display_scale": 0.5859375,
+      "intrinsic_axis": 0,
+      "attachment_name": "02_head_recoil",
+      "attachment": {
+        "x": 9,
+        "y": 104.5313,
+        "rotation": 0,
+        "width": 512,
+        "height": 446,
+        "scaleX": 0.5859,
+        "scaleY": 0.5859
+      }
+    },
+    {
+      "name": "torso",
+      "file": "images/03_torso.png",
+      "size_px": [
+        231,
+        176
+      ],
+      "padding": 8,
+      "source_crop": [
+        541,
+        45,
+        215,
+        160
+      ],
+      "bone": "torso",
+      "pivot_local_px": [
+        115.5,
+        160.16
+      ],
+      "display_scale": 0.8874458874458875,
+      "intrinsic_axis": 0,
+      "attachment_name": "03_torso",
+      "attachment": {
+        "x": 0,
+        "y": 64.0381,
+        "rotation": 0,
+        "width": 231,
+        "height": 176,
+        "scaleX": 0.8874,
+        "scaleY": 0.8874
+      }
+    },
+    {
+      "name": "pelvis",
+      "file": "images/04_pelvis.png",
+      "size_px": [
+        249,
+        183
+      ],
+      "padding": 8,
+      "source_crop": [
+        780,
+        77,
+        233,
+        167
+      ],
+      "bone": "pelvis",
+      "pivot_local_px": [
+        124.5,
+        73.2
+      ],
+      "display_scale": 0.6626506024096386,
+      "intrinsic_axis": 0,
+      "attachment_name": "04_pelvis",
+      "attachment": {
+        "x": 0,
+        "y": -12.1265,
+        "rotation": 0,
+        "width": 249,
+        "height": 183,
+        "scaleX": 0.6627,
+        "scaleY": 0.6627
+      }
+    },
+    {
+      "name": "tail",
+      "file": "images/05_tail.png",
+      "size_px": [
+        218,
+        200
+      ],
+      "padding": 8,
+      "source_crop": [
+        23,
+        307,
+        202,
+        184
+      ],
+      "bone": "tail",
+      "pivot_local_px": [
+        191.84,
+        140
+      ],
+      "display_scale": 0.7110091743119266,
+      "intrinsic_axis": 0,
+      "attachment_name": "05_tail",
+      "attachment": {
+        "x": -58.9,
+        "y": 28.4404,
+        "rotation": 0,
+        "width": 218,
+        "height": 200,
+        "scaleX": 0.711,
+        "scaleY": 0.711
+      }
+    },
+    {
+      "name": "scarf_front",
+      "file": "images/06_scarf_front.png",
+      "size_px": [
+        241,
+        193
+      ],
+      "padding": 8,
+      "source_crop": [
+        267,
+        316,
+        225,
+        177
+      ],
+      "bone": "scarf_front",
+      "pivot_local_px": [
+        120.5,
+        28.95
+      ],
+      "display_scale": 0.6016597510373444,
+      "intrinsic_axis": 0,
+      "attachment_name": "06_scarf_front",
+      "attachment": {
+        "x": 0,
+        "y": -40.6421,
+        "rotation": 0,
+        "width": 241,
+        "height": 193,
+        "scaleX": 0.6017,
+        "scaleY": 0.6017
+      }
+    },
+    {
+      "name": "scarf_tails",
+      "file": "images/07_scarf_tails.png",
+      "size_px": [
+        253,
+        183
+      ],
+      "padding": 8,
+      "source_crop": [
+        522,
+        314,
+        237,
+        167
+      ],
+      "bone": "scarf_tails",
+      "pivot_local_px": [
+        222.64000000000001,
+        91.5
+      ],
+      "display_scale": 0.5928853754940712,
+      "intrinsic_axis": 0,
+      "attachment_name": "07_scarf_tails",
+      "attachment": {
+        "x": -57,
+        "y": 0,
+        "rotation": 0,
+        "width": 253,
+        "height": 183,
+        "scaleX": 0.5929,
+        "scaleY": 0.5929
+      }
+    },
+    {
+      "name": "grenade",
+      "file": "images/08_grenade.png",
+      "size_px": [
+        203,
+        218
+      ],
+      "padding": 8,
+      "source_crop": [
+        802,
+        299,
+        187,
+        202
+      ],
+      "bone": "grenade",
+      "pivot_local_px": [
+        101.5,
+        119.9
+      ],
+      "display_scale": 0.23645320197044334,
+      "intrinsic_axis": 0,
+      "attachment_name": "08_grenade",
+      "attachment": {
+        "x": 0,
+        "y": 2.5773,
+        "rotation": 0,
+        "width": 203,
+        "height": 218,
+        "scaleX": 0.2365,
+        "scaleY": 0.2365
+      }
+    },
+    {
+      "name": "upperarm_near",
+      "file": "images/09_upperarm_near.png",
+      "size_px": [
+        187,
+        244
+      ],
+      "padding": 8,
+      "source_crop": [
+        34,
+        529,
+        171,
+        228
+      ],
+      "bone": "upperarm_near",
+      "pivot_local_px": [
+        93.5,
+        53.68
+      ],
+      "display_scale": 0.42305658381808575,
+      "intrinsic_axis": -90,
+      "attachment_name": "09_upperarm_near",
+      "attachment": {
+        "x": 28.9032,
+        "y": 0,
+        "rotation": 90,
+        "width": 187,
+        "height": 244,
+        "scaleX": 0.4231,
+        "scaleY": 0.4231
+      }
+    },
+    {
+      "name": "forearm_near",
+      "file": "images/10_forearm_near.png",
+      "size_px": [
+        162,
+        244
+      ],
+      "padding": 8,
+      "source_crop": [
+        300,
+        529,
+        146,
+        228
+      ],
+      "bone": "forearm_near",
+      "pivot_local_px": [
+        81,
+        41.480000000000004
+      ],
+      "display_scale": 0.3207412687099073,
+      "intrinsic_axis": -90,
+      "attachment_name": "10_forearm_near",
+      "attachment": {
+        "x": 25.8261,
+        "y": 0,
+        "rotation": 90,
+        "width": 162,
+        "height": 244,
+        "scaleX": 0.3207,
+        "scaleY": 0.3207
+      }
+    },
+    {
+      "name": "hand_near_relaxed",
+      "file": "images/11_hand_near_relaxed.png",
+      "size_px": [
+        236,
+        201
+      ],
+      "padding": 8,
+      "source_crop": [
+        526,
+        557,
+        220,
+        185
+      ],
+      "bone": "hand_near",
+      "pivot_local_px": [
+        51.92,
+        56.28000000000001
+      ],
+      "display_scale": 0.2457627118644068,
+      "intrinsic_axis": -35,
+      "attachment_name": "11_hand_near_relaxed",
+      "attachment": {
+        "x": 19.5364,
+        "y": 0.4126,
+        "rotation": 35,
+        "width": 236,
+        "height": 201,
+        "scaleX": 0.2458,
+        "scaleY": 0.2458
+      }
+    },
+    {
+      "name": "hand_near_grip",
+      "file": "images/12_hand_near_grip.png",
+      "size_px": [
+        208,
+        190
+      ],
+      "padding": 8,
+      "source_crop": [
+        796,
+        556,
+        192,
+        174
+      ],
+      "bone": "hand_near",
+      "pivot_local_px": [
+        37.44,
+        98.8
+      ],
+      "display_scale": 0.27884615384615385,
+      "intrinsic_axis": 0,
+      "attachment_name": "12_hand_near_grip",
+      "attachment": {
+        "x": 18.56,
+        "y": 1.0596,
+        "rotation": 0,
+        "width": 208,
+        "height": 190,
+        "scaleX": 0.2788,
+        "scaleY": 0.2788
+      }
+    },
+    {
+      "name": "upperarm_far",
+      "file": "images/13_upperarm_far.png",
+      "size_px": [
+        195,
+        246
+      ],
+      "padding": 8,
+      "source_crop": [
+        38,
+        783,
+        179,
+        230
+      ],
+      "bone": "upperarm_far",
+      "pivot_local_px": [
+        97.5,
+        54.12
+      ],
+      "display_scale": 0.4196170993968005,
+      "intrinsic_axis": -90,
+      "attachment_name": "13_upperarm_far",
+      "attachment": {
+        "x": 28.9032,
+        "y": 0,
+        "rotation": 90,
+        "width": 195,
+        "height": 246,
+        "scaleX": 0.4196,
+        "scaleY": 0.4196
+      }
+    },
+    {
+      "name": "forearm_far",
+      "file": "images/14_forearm_far.png",
+      "size_px": [
+        154,
+        242
+      ],
+      "padding": 8,
+      "source_crop": [
+        311,
+        783,
+        138,
+        226
+      ],
+      "bone": "forearm_far",
+      "pivot_local_px": [
+        77,
+        41.14
+      ],
+      "display_scale": 0.32339202299676606,
+      "intrinsic_axis": -90,
+      "attachment_name": "14_forearm_far",
+      "attachment": {
+        "x": 25.8261,
+        "y": 0,
+        "rotation": 90,
+        "width": 154,
+        "height": 242,
+        "scaleX": 0.3234,
+        "scaleY": 0.3234
+      }
+    },
+    {
+      "name": "hand_far_relaxed",
+      "file": "images/15_hand_far_relaxed.png",
+      "size_px": [
+        233,
+        197
+      ],
+      "padding": 8,
+      "source_crop": [
+        525,
+        817,
+        217,
+        181
+      ],
+      "bone": "hand_far",
+      "pivot_local_px": [
+        51.26,
+        55.160000000000004
+      ],
+      "display_scale": 0.24892703862660945,
+      "intrinsic_axis": -35,
+      "attachment_name": "15_hand_far_relaxed",
+      "attachment": {
+        "x": 19.4911,
+        "y": 0.4775,
+        "rotation": 35,
+        "width": 233,
+        "height": 197,
+        "scaleX": 0.2489,
+        "scaleY": 0.2489
+      }
+    },
+    {
+      "name": "hand_far_grip",
+      "file": "images/16_hand_far_grip.png",
+      "size_px": [
+        217,
+        183
+      ],
+      "padding": 8,
+      "source_crop": [
+        791,
+        818,
+        201,
+        167
+      ],
+      "bone": "hand_far",
+      "pivot_local_px": [
+        39.059999999999995,
+        95.16
+      ],
+      "display_scale": 0.2672811059907834,
+      "intrinsic_axis": 0,
+      "attachment_name": "16_hand_far_grip",
+      "attachment": {
+        "x": 18.56,
+        "y": 0.9782,
+        "rotation": 0,
+        "width": 217,
+        "height": 183,
+        "scaleX": 0.2673,
+        "scaleY": 0.2673
+      }
+    },
+    {
+      "name": "thigh_near",
+      "file": "images/17_thigh_near.png",
+      "size_px": [
+        205,
+        240
+      ],
+      "padding": 8,
+      "source_crop": [
+        26,
+        1041,
+        189,
+        224
+      ],
+      "bone": "thigh_near",
+      "pivot_local_px": [
+        102.5,
+        38.4
+      ],
+      "display_scale": 0.46568627450980393,
+      "intrinsic_axis": -90,
+      "attachment_name": "17_thigh_near",
+      "attachment": {
+        "x": 38,
+        "y": 0,
+        "rotation": 90,
+        "width": 205,
+        "height": 240,
+        "scaleX": 0.4657,
+        "scaleY": 0.4657
+      }
+    },
+    {
+      "name": "shin_near",
+      "file": "images/18_shin_near.png",
+      "size_px": [
+        157,
+        238
+      ],
+      "padding": 8,
+      "source_crop": [
+        306,
+        1040,
+        141,
+        222
+      ],
+      "bone": "shin_near",
+      "pivot_local_px": [
+        78.5,
+        33.32
+      ],
+      "display_scale": 0.38466090661616764,
+      "intrinsic_axis": -90,
+      "attachment_name": "18_shin_near",
+      "attachment": {
+        "x": 32.9577,
+        "y": 0,
+        "rotation": 90,
+        "width": 157,
+        "height": 238,
+        "scaleX": 0.3847,
+        "scaleY": 0.3847
+      }
+    },
+    {
+      "name": "boot_near",
+      "file": "images/19_boot_near.png",
+      "size_px": [
+        251,
+        191
+      ],
+      "padding": 8,
+      "source_crop": [
+        520,
+        1077,
+        235,
+        175
+      ],
+      "bone": "boot_near",
+      "pivot_local_px": [
+        87.85,
+        43.93
+      ],
+      "display_scale": 0.398406374501992,
+      "intrinsic_axis": 0,
+      "attachment_name": "19_boot_near",
+      "attachment": {
+        "x": 15,
+        "y": -20.5458,
+        "rotation": 0,
+        "width": 251,
+        "height": 191,
+        "scaleX": 0.3984,
+        "scaleY": 0.3984
+      }
+    },
+    {
+      "name": "hand_far_throw",
+      "file": "images/20_hand_far_throw.png",
+      "size_px": [
+        243,
+        211
+      ],
+      "padding": 8,
+      "source_crop": [
+        775,
+        1054,
+        227,
+        195
+      ],
+      "bone": "hand_far",
+      "pivot_local_px": [
+        36.449999999999996,
+        116.05000000000001
+      ],
+      "display_scale": 0.2839506172839506,
+      "intrinsic_axis": 0,
+      "attachment_name": "20_hand_far_throw",
+      "attachment": {
+        "x": 24.15,
+        "y": 2.9957,
+        "rotation": 0,
+        "width": 243,
+        "height": 211,
+        "scaleX": 0.284,
+        "scaleY": 0.284
+      }
+    },
+    {
+      "name": "thigh_far",
+      "file": "images/21_thigh_far.png",
+      "size_px": [
+        210,
+        243
+      ],
+      "padding": 8,
+      "source_crop": [
+        32,
+        1294,
+        194,
+        227
+      ],
+      "bone": "thigh_far",
+      "pivot_local_px": [
+        105,
+        38.88
+      ],
+      "display_scale": 0.45993706124425077,
+      "intrinsic_axis": -90,
+      "attachment_name": "21_thigh_far",
+      "attachment": {
+        "x": 38,
+        "y": 0,
+        "rotation": 90,
+        "width": 210,
+        "height": 243,
+        "scaleX": 0.4599,
+        "scaleY": 0.4599
+      }
+    },
+    {
+      "name": "shin_far",
+      "file": "images/22_shin_far.png",
+      "size_px": [
+        154,
+        239
+      ],
+      "padding": 8,
+      "source_crop": [
+        310,
+        1296,
+        138,
+        223
+      ],
+      "bone": "shin_far",
+      "pivot_local_px": [
+        77,
+        33.46
+      ],
+      "display_scale": 0.3830514467558489,
+      "intrinsic_axis": -90,
+      "attachment_name": "22_shin_far",
+      "attachment": {
+        "x": 32.9577,
+        "y": 0,
+        "rotation": 90,
+        "width": 154,
+        "height": 239,
+        "scaleX": 0.3831,
+        "scaleY": 0.3831
+      }
+    },
+    {
+      "name": "boot_far",
+      "file": "images/23_boot_far.png",
+      "size_px": [
+        252,
+        190
+      ],
+      "padding": 8,
+      "source_crop": [
+        520,
+        1334,
+        236,
+        174
+      ],
+      "bone": "boot_far",
+      "pivot_local_px": [
+        88.19999999999999,
+        43.7
+      ],
+      "display_scale": 0.3968253968253968,
+      "intrinsic_axis": 0,
+      "attachment_name": "23_boot_far",
+      "attachment": {
+        "x": 15,
+        "y": -20.3571,
+        "rotation": 0,
+        "width": 252,
+        "height": 190,
+        "scaleX": 0.3968,
+        "scaleY": 0.3968
+      }
+    },
+    {
+      "name": "baton",
+      "file": "images/24_baton.png",
+      "size_px": [
+        101,
+        250
+      ],
+      "padding": 8,
+      "source_crop": [
+        854,
+        1288,
+        85,
+        234
+      ],
+      "bone": "baton",
+      "pivot_local_px": [
+        50.5,
+        215
+      ],
+      "display_scale": 0.8450704225352113,
+      "intrinsic_axis": 90,
+      "attachment_name": "24_baton",
+      "attachment": {
+        "x": 76.0563,
+        "y": 0,
+        "rotation": -90,
+        "width": 101,
+        "height": 250,
+        "scaleX": 0.8451,
+        "scaleY": 0.8451
+      }
+    }
+  ],
+  "draw_order": [
+    "tail",
+    "scarf_tails",
+    "upperarm_far",
+    "forearm_far",
+    "hand_far",
+    "thigh_far",
+    "shin_far",
+    "boot_far",
+    "thigh_near",
+    "shin_near",
+    "boot_near",
+    "pelvis",
+    "torso",
+    "scarf_front",
+    "head",
+    "upperarm_near",
+    "forearm_near",
+    "baton",
+    "grenade",
+    "hand_near"
+  ],
+  "clips": [
+    {
+      "name": "idle",
+      "duration": 1.4,
+      "loop": true
+    },
+    {
+      "name": "walk",
+      "duration": 1.1,
+      "loop": true
+    },
+    {
+      "name": "melee_attack",
+      "duration": 0.95,
+      "loop": false
+    },
+    {
+      "name": "throw_grenade",
+      "duration": 1.15,
+      "loop": false
+    },
+    {
+      "name": "hurt",
+      "duration": 0.44,
+      "loop": false
+    },
+    {
+      "name": "death",
+      "duration": 1.3,
+      "loop": false
+    }
+  ],
+  "joint_anchors": {
+    "head_neck": [
+      10,
+      126
+    ],
+    "shoulder_near": [
+      -62,
+      80
+    ],
+    "shoulder_far": [
+      61,
+      87
+    ],
+    "elbows": [
+      64,
+      0
+    ],
+    "wrists": [
+      54,
+      0
+    ]
+  },
+  "events": {
+    "melee_hit": 0.47,
+    "grenade_release": 0.5,
+    "hurt": 0,
+    "death": 0.75
+  }
+}

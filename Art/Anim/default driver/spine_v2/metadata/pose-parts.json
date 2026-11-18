@@ -1,0 +1,5373 @@
+{
+  "method": "Visible artwork cut directly from original demo cells; concealed surfaces filled from existing ImageGen v1 parts only where later opaque source layers cover them. Weighted arm/leg meshes and pose attachment swaps. Fine detached outlines stored in ink_details; no whole-character attachment.",
+  "source": "cat-animation-sheet-v1.png",
+  "frames": [
+    {
+      "index": 0,
+      "source": "source/frames/00.png",
+      "size": [
+        314,
+        314
+      ],
+      "joints": {
+        "p": {
+          "root": [
+            157,
+            300
+          ],
+          "torso": [
+            162,
+            177
+          ],
+          "pelvis": [
+            162,
+            216
+          ],
+          "head": [
+            185,
+            133
+          ],
+          "scarf_front": [
+            151,
+            134
+          ],
+          "scarf_back": [
+            128,
+            131
+          ],
+          "tail": [
+            126,
+            214
+          ],
+          "upperarm_near": [
+            139,
+            146
+          ],
+          "forearm_near": [
+            113,
+            172
+          ],
+          "hand_near": [
+            101,
+            190
+          ],
+          "thigh_near": [
+            161,
+            223
+          ],
+          "shin_near": [
+            200,
+            250
+          ],
+          "boot_near": [
+            211,
+            263
+          ],
+          "upperarm_far": [
+            207,
+            167
+          ],
+          "forearm_far": [
+            220,
+            178
+          ],
+          "hand_far": [
+            235,
+            164
+          ],
+          "thigh_far": [
+            141,
+            227
+          ],
+          "shin_far": [
+            118,
+            246
+          ],
+          "boot_far": [
+            94,
+            248
+          ]
+        },
+        "a": {
+          "root": 0,
+          "torso": 0,
+          "pelvis": 0,
+          "head": 0,
+          "scarf_front": 0,
+          "scarf_back": 0,
+          "tail": 0,
+          "upperarm_near": -135,
+          "forearm_near": -123.6900675259798,
+          "hand_near": -73.30075576600638,
+          "thigh_near": -34.69515353123397,
+          "shin_near": -49.763641690726175,
+          "boot_near": -39.40066066347943,
+          "upperarm_far": -40.23635830927382,
+          "forearm_far": 43.025065989118026,
+          "hand_far": 45,
+          "thigh_far": -140.4403320310055,
+          "shin_far": -175.2363583092738,
+          "boot_far": -109.79887635452494
+        }
+      },
+      "parts": [
+        {
+          "slot": "tail",
+          "attachment": "p00_tail",
+          "file": "images/p00_tail.png",
+          "crop_px": [
+            31,
+            176,
+            95,
+            51
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            98,
+            41
+          ],
+          "world_joint_px": [
+            126,
+            214
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "scarf_back",
+          "attachment": "p00_scarf_back",
+          "file": "images/p00_scarf_back.png",
+          "crop_px": [
+            55,
+            113,
+            80,
+            53
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            76,
+            21
+          ],
+          "world_joint_px": [
+            128,
+            131
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_far",
+          "attachment": "p00_arm_far",
+          "file": "images/p00_arm_far.png",
+          "crop_px": [
+            204,
+            135,
+            63,
+            56
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            6,
+            35
+          ],
+          "world_joint_px": [
+            207,
+            167
+          ],
+          "world_rotation": -40.23635830927382,
+          "mesh": true
+        },
+        {
+          "slot": "leg_far",
+          "attachment": "p00_leg_far",
+          "file": "images/p00_leg_far.png",
+          "crop_px": [
+            71,
+            218,
+            84,
+            68
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            73,
+            12
+          ],
+          "world_joint_px": [
+            141,
+            227
+          ],
+          "world_rotation": -140.4403320310055,
+          "mesh": true
+        },
+        {
+          "slot": "leg_near",
+          "attachment": "p00_leg_near",
+          "file": "images/p00_leg_near.png",
+          "crop_px": [
+            150,
+            205,
+            109,
+            99
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            14,
+            21
+          ],
+          "world_joint_px": [
+            161,
+            223
+          ],
+          "world_rotation": -34.69515353123397,
+          "mesh": true
+        },
+        {
+          "slot": "torso",
+          "attachment": "p00_torso",
+          "file": "images/p00_torso.png",
+          "crop_px": [
+            111,
+            129,
+            98,
+            90
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            54,
+            51
+          ],
+          "world_joint_px": [
+            162,
+            177
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_near",
+          "attachment": "p00_arm_near",
+          "file": "images/p00_arm_near.png",
+          "crop_px": [
+            84,
+            133,
+            76,
+            87
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            58,
+            16
+          ],
+          "world_joint_px": [
+            139,
+            146
+          ],
+          "world_rotation": -135,
+          "mesh": true
+        },
+        {
+          "slot": "scarf_front",
+          "attachment": "p00_scarf_front",
+          "file": "images/p00_scarf_front.png",
+          "crop_px": [
+            132,
+            121,
+            89,
+            52
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            22,
+            16
+          ],
+          "world_joint_px": [
+            151,
+            134
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "head",
+          "attachment": "p00_head",
+          "file": "images/p00_head.png",
+          "crop_px": [
+            99,
+            6,
+            160,
+            131
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            89,
+            130
+          ],
+          "world_joint_px": [
+            185,
+            133
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "ink_details",
+          "attachment": "p00_ink_details",
+          "file": "images/p00_ink_details.png",
+          "crop_px": [
+            94,
+            113,
+            132,
+            155
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            66,
+            190
+          ],
+          "world_joint_px": [
+            157,
+            300
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "source": "source/frames/01.png",
+      "size": [
+        313,
+        314
+      ],
+      "joints": {
+        "p": {
+          "root": [
+            157,
+            300
+          ],
+          "torso": [
+            164,
+            182
+          ],
+          "pelvis": [
+            164,
+            224
+          ],
+          "head": [
+            188,
+            137
+          ],
+          "scarf_front": [
+            153,
+            139
+          ],
+          "scarf_back": [
+            130,
+            136
+          ],
+          "tail": [
+            126,
+            213
+          ],
+          "upperarm_near": [
+            145,
+            153
+          ],
+          "forearm_near": [
+            124,
+            174
+          ],
+          "hand_near": [
+            117,
+            194
+          ],
+          "thigh_near": [
+            160,
+            226
+          ],
+          "shin_near": [
+            182,
+            253
+          ],
+          "boot_near": [
+            166,
+            273
+          ],
+          "upperarm_far": [
+            209,
+            176
+          ],
+          "forearm_far": [
+            221,
+            186
+          ],
+          "hand_far": [
+            235,
+            178
+          ],
+          "thigh_far": [
+            145,
+            234
+          ],
+          "shin_far": [
+            130,
+            253
+          ],
+          "boot_far": [
+            119,
+            254
+          ]
+        },
+        "a": {
+          "root": 0,
+          "torso": 0,
+          "pelvis": 0,
+          "head": 0,
+          "scarf_front": 0,
+          "scarf_back": 0,
+          "tail": 0,
+          "upperarm_near": -135,
+          "forearm_near": -109.29004621918874,
+          "hand_near": -65.22485943116808,
+          "thigh_near": -50.826342029555775,
+          "shin_near": -128.6598082540901,
+          "boot_near": -38.659808254090095,
+          "upperarm_far": -39.8055710922652,
+          "forearm_far": 29.74488129694222,
+          "hand_far": 42.27368900609374,
+          "thigh_far": -128.29016319224309,
+          "shin_far": -174.8055710922652,
+          "boot_far": -83.29016319224307
+        }
+      },
+      "parts": [
+        {
+          "slot": "tail",
+          "attachment": "p01_tail",
+          "file": "images/p01_tail.png",
+          "crop_px": [
+            32,
+            172,
+            94,
+            54
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            97,
+            44
+          ],
+          "world_joint_px": [
+            126,
+            213
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "scarf_back",
+          "attachment": "p01_scarf_back",
+          "file": "images/p01_scarf_back.png",
+          "crop_px": [
+            56,
+            109,
+            81,
+            59
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            77,
+            30
+          ],
+          "world_joint_px": [
+            130,
+            136
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_far",
+          "attachment": "p01_arm_far",
+          "file": "images/p01_arm_far.png",
+          "crop_px": [
+            201,
+            152,
+            61,
+            46
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            11,
+            27
+          ],
+          "world_joint_px": [
+            209,
+            176
+          ],
+          "world_rotation": -39.8055710922652,
+          "mesh": true
+        },
+        {
+          "slot": "leg_far",
+          "attachment": "p01_leg_far",
+          "file": "images/p01_leg_far.png",
+          "crop_px": [
+            101,
+            226,
+            56,
+            75
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            47,
+            11
+          ],
+          "world_joint_px": [
+            145,
+            234
+          ],
+          "world_rotation": -128.29016319224309,
+          "mesh": true
+        },
+        {
+          "slot": "leg_near",
+          "attachment": "p01_leg_near",
+          "file": "images/p01_leg_near.png",
+          "crop_px": [
+            145,
+            215,
+            69,
+            88
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            18,
+            14
+          ],
+          "world_joint_px": [
+            160,
+            226
+          ],
+          "world_rotation": -50.826342029555775,
+          "mesh": true
+        },
+        {
+          "slot": "torso",
+          "attachment": "p01_torso",
+          "file": "images/p01_torso.png",
+          "crop_px": [
+            113,
+            134,
+            98,
+            93
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            54,
+            51
+          ],
+          "world_joint_px": [
+            164,
+            182
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_near",
+          "attachment": "p01_arm_near",
+          "file": "images/p01_arm_near.png",
+          "crop_px": [
+            100,
+            142,
+            57,
+            85
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            48,
+            14
+          ],
+          "world_joint_px": [
+            145,
+            153
+          ],
+          "world_rotation": -135,
+          "mesh": true
+        },
+        {
+          "slot": "scarf_front",
+          "attachment": "p01_scarf_front",
+          "file": "images/p01_scarf_front.png",
+          "crop_px": [
+            134,
+            126,
+            82,
+            52
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            22,
+            16
+          ],
+          "world_joint_px": [
+            153,
+            139
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "head",
+          "attachment": "p01_head",
+          "file": "images/p01_head.png",
+          "crop_px": [
+            101,
+            12,
+            161,
+            132
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            90,
+            128
+          ],
+          "world_joint_px": [
+            188,
+            137
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "ink_details",
+          "attachment": "p01_ink_details",
+          "file": "images/p01_ink_details.png",
+          "crop_px": [
+            79,
+            131,
+            135,
+            172
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            81,
+            172
+          ],
+          "world_joint_px": [
+            157,
+            300
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "source": "source/frames/02.png",
+      "size": [
+        314,
+        314
+      ],
+      "joints": {
+        "p": {
+          "root": [
+            157,
+            300
+          ],
+          "torso": [
+            162,
+            181
+          ],
+          "pelvis": [
+            162,
+            222
+          ],
+          "head": [
+            187,
+            137
+          ],
+          "scarf_front": [
+            153,
+            139
+          ],
+          "scarf_back": [
+            130,
+            136
+          ],
+          "tail": [
+            122,
+            208
+          ],
+          "upperarm_near": [
+            148,
+            153
+          ],
+          "forearm_near": [
+            151,
+            180
+          ],
+          "hand_near": [
+            173,
+            195
+          ],
+          "thigh_near": [
+            150,
+            231
+          ],
+          "shin_near": [
+            151,
+            260
+          ],
+          "boot_near": [
+            139,
+            273
+          ],
+          "upperarm_far": [
+            206,
+            174
+          ],
+          "forearm_far": [
+            212,
+            187
+          ],
+          "hand_far": [
+            221,
+            189
+          ],
+          "thigh_far": [
+            168,
+            229
+          ],
+          "shin_far": [
+            142,
+            232
+          ],
+          "boot_far": [
+            119,
+            232
+          ]
+        },
+        "a": {
+          "root": 0,
+          "torso": 0,
+          "pelvis": 0,
+          "head": 0,
+          "scarf_front": 0,
+          "scarf_back": 0,
+          "tail": 0,
+          "upperarm_near": -83.6598082540901,
+          "forearm_near": -34.28687697720896,
+          "hand_near": -37.8749836510982,
+          "thigh_near": -88.02506598911802,
+          "shin_near": -132.70938995736148,
+          "boot_near": -48.81407483429035,
+          "upperarm_far": -65.22485943116808,
+          "forearm_far": -12.52880770915151,
+          "hand_far": 55.30484646876604,
+          "thigh_far": -173.418055344822,
+          "shin_far": -180,
+          "boot_far": -116.56505117707799
+        }
+      },
+      "parts": [
+        {
+          "slot": "tail",
+          "attachment": "p02_tail",
+          "file": "images/p02_tail.png",
+          "crop_px": [
+            42,
+            169,
+            80,
+            51
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            83,
+            42
+          ],
+          "world_joint_px": [
+            122,
+            208
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "scarf_back",
+          "attachment": "p02_scarf_back",
+          "file": "images/p02_scarf_back.png",
+          "crop_px": [
+            61,
+            109,
+            76,
+            57
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            72,
+            30
+          ],
+          "world_joint_px": [
+            130,
+            136
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_far",
+          "attachment": "p02_arm_far",
+          "file": "images/p02_arm_far.png",
+          "crop_px": [
+            199,
+            160,
+            49,
+            41
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            10,
+            17
+          ],
+          "world_joint_px": [
+            206,
+            174
+          ],
+          "world_rotation": -65.22485943116808,
+          "mesh": true
+        },
+        {
+          "slot": "leg_far",
+          "attachment": "p02_leg_far",
+          "file": "images/p02_leg_far.png",
+          "crop_px": [
+            90,
+            216,
+            112,
+            57
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            81,
+            16
+          ],
+          "world_joint_px": [
+            168,
+            229
+          ],
+          "world_rotation": -173.418055344822,
+          "mesh": true
+        },
+        {
+          "slot": "leg_near",
+          "attachment": "p02_leg_near",
+          "file": "images/p02_leg_near.png",
+          "crop_px": [
+            111,
+            225,
+            74,
+            77
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            42,
+            9
+          ],
+          "world_joint_px": [
+            150,
+            231
+          ],
+          "world_rotation": -88.02506598911802,
+          "mesh": true
+        },
+        {
+          "slot": "torso",
+          "attachment": "p02_torso",
+          "file": "images/p02_torso.png",
+          "crop_px": [
+            104,
+            134,
+            104,
+            91
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            61,
+            50
+          ],
+          "world_joint_px": [
+            162,
+            181
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_near",
+          "attachment": "p02_arm_near",
+          "file": "images/p02_arm_near.png",
+          "crop_px": [
+            127,
+            141,
+            76,
+            81
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            24,
+            15
+          ],
+          "world_joint_px": [
+            148,
+            153
+          ],
+          "world_rotation": -83.6598082540901,
+          "mesh": true
+        },
+        {
+          "slot": "scarf_front",
+          "attachment": "p02_scarf_front",
+          "file": "images/p02_scarf_front.png",
+          "crop_px": [
+            134,
+            126,
+            81,
+            52
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            22,
+            16
+          ],
+          "world_joint_px": [
+            153,
+            139
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "head",
+          "attachment": "p02_head",
+          "file": "images/p02_head.png",
+          "crop_px": [
+            100,
+            12,
+            161,
+            131
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            90,
+            128
+          ],
+          "world_joint_px": [
+            187,
+            137
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "ink_details",
+          "attachment": "p02_ink_details",
+          "file": "images/p02_ink_details.png",
+          "crop_px": [
+            103,
+            96,
+            151,
+            207
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            57,
+            207
+          ],
+          "world_joint_px": [
+            157,
+            300
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "source": "source/frames/03.png",
+      "size": [
+        313,
+        314
+      ],
+      "joints": {
+        "p": {
+          "root": [
+            157,
+            300
+          ],
+          "torso": [
+            161,
+            168
+          ],
+          "pelvis": [
+            161,
+            204
+          ],
+          "head": [
+            185,
+            128
+          ],
+          "scarf_front": [
+            151,
+            130
+          ],
+          "scarf_back": [
+            128,
+            127
+          ],
+          "tail": [
+            124,
+            206
+          ],
+          "upperarm_near": [
+            141,
+            139
+          ],
+          "forearm_near": [
+            116,
+            159
+          ],
+          "hand_near": [
+            101,
+            173
+          ],
+          "thigh_near": [
+            173,
+            205
+          ],
+          "shin_near": [
+            192,
+            220
+          ],
+          "boot_near": [
+            204,
+            218
+          ],
+          "upperarm_far": [
+            207,
+            149
+          ],
+          "forearm_far": [
+            222,
+            164
+          ],
+          "hand_far": [
+            236,
+            147
+          ],
+          "thigh_far": [
+            144,
+            219
+          ],
+          "shin_far": [
+            136,
+            236
+          ],
+          "boot_far": [
+            113,
+            235
+          ]
+        },
+        "a": {
+          "root": 0,
+          "torso": 0,
+          "pelvis": 0,
+          "head": 0,
+          "scarf_front": 0,
+          "scarf_back": 0,
+          "tail": 0,
+          "upperarm_near": -141.34019174590992,
+          "forearm_near": -136.97493401088198,
+          "hand_near": -69.44395478041653,
+          "thigh_near": -38.290163192243064,
+          "shin_near": 9.462322208025617,
+          "boot_near": -36.02737338510361,
+          "upperarm_far": -45,
+          "forearm_far": 50.527540151656176,
+          "hand_far": 39.28940686250036,
+          "thigh_far": -115.20112364547509,
+          "shin_far": 177.51044707800085,
+          "boot_far": -118.81079374297309
+        }
+      },
+      "parts": [
+        {
+          "slot": "tail",
+          "attachment": "p03_tail",
+          "file": "images/p03_tail.png",
+          "crop_px": [
+            41,
+            175,
+            83,
+            49
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            86,
+            34
+          ],
+          "world_joint_px": [
+            124,
+            206
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "scarf_back",
+          "attachment": "p03_scarf_back",
+          "file": "images/p03_scarf_back.png",
+          "crop_px": [
+            60,
+            102,
+            75,
+            47
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            71,
+            28
+          ],
+          "world_joint_px": [
+            128,
+            127
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_far",
+          "attachment": "p03_arm_far",
+          "file": "images/p03_arm_far.png",
+          "crop_px": [
+            203,
+            122,
+            64,
+            56
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            7,
+            30
+          ],
+          "world_joint_px": [
+            207,
+            149
+          ],
+          "world_rotation": -45,
+          "mesh": true
+        },
+        {
+          "slot": "leg_far",
+          "attachment": "p03_leg_far",
+          "file": "images/p03_leg_far.png",
+          "crop_px": [
+            86,
+            207,
+            80,
+            61
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            61,
+            15
+          ],
+          "world_joint_px": [
+            144,
+            219
+          ],
+          "world_rotation": -115.20112364547509,
+          "mesh": true
+        },
+        {
+          "slot": "leg_near",
+          "attachment": "p03_leg_near",
+          "file": "images/p03_leg_near.png",
+          "crop_px": [
+            157,
+            196,
+            98,
+            59
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            19,
+            12
+          ],
+          "world_joint_px": [
+            173,
+            205
+          ],
+          "world_rotation": -38.290163192243064,
+          "mesh": true
+        },
+        {
+          "slot": "torso",
+          "attachment": "p03_torso",
+          "file": "images/p03_torso.png",
+          "crop_px": [
+            110,
+            125,
+            151,
+            82
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            54,
+            46
+          ],
+          "world_joint_px": [
+            161,
+            168
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_near",
+          "attachment": "p03_arm_near",
+          "file": "images/p03_arm_near.png",
+          "crop_px": [
+            83,
+            116,
+            78,
+            85
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            61,
+            26
+          ],
+          "world_joint_px": [
+            141,
+            139
+          ],
+          "world_rotation": -141.34019174590992,
+          "mesh": true
+        },
+        {
+          "slot": "scarf_front",
+          "attachment": "p03_scarf_front",
+          "file": "images/p03_scarf_front.png",
+          "crop_px": [
+            134,
+            118,
+            80,
+            50
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            20,
+            15
+          ],
+          "world_joint_px": [
+            151,
+            130
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "head",
+          "attachment": "p03_head",
+          "file": "images/p03_head.png",
+          "crop_px": [
+            100,
+            5,
+            161,
+            126
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            88,
+            126
+          ],
+          "world_joint_px": [
+            185,
+            128
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "ink_details",
+          "attachment": "p03_ink_details",
+          "file": "images/p03_ink_details.png",
+          "crop_px": [
+            103,
+            103,
+            114,
+            114
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            57,
+            200
+          ],
+          "world_joint_px": [
+            157,
+            300
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "source": "source/frames/04.png",
+      "size": [
+        314,
+        313
+      ],
+      "joints": {
+        "p": {
+          "root": [
+            157,
+            300
+          ],
+          "torso": [
+            162,
+            179
+          ],
+          "pelvis": [
+            162,
+            216
+          ],
+          "head": [
+            185,
+            131
+          ],
+          "scarf_front": [
+            152,
+            133
+          ],
+          "scarf_back": [
+            129,
+            130
+          ],
+          "tail": [
+            123,
+            214
+          ],
+          "upperarm_near": [
+            157,
+            150
+          ],
+          "forearm_near": [
+            174,
+            176
+          ],
+          "hand_near": [
+            212,
+            165
+          ],
+          "thigh_near": [
+            179,
+            222
+          ],
+          "shin_near": [
+            205,
+            249
+          ],
+          "boot_near": [
+            212,
+            263
+          ],
+          "upperarm_far": [
+            128,
+            154
+          ],
+          "forearm_far": [
+            114,
+            170
+          ],
+          "hand_far": [
+            107,
+            179
+          ],
+          "thigh_far": [
+            145,
+            226
+          ],
+          "shin_far": [
+            126,
+            245
+          ],
+          "boot_far": [
+            97,
+            250
+          ]
+        },
+        "a": {
+          "root": 0,
+          "torso": 0,
+          "pelvis": 0,
+          "head": 0,
+          "scarf_front": 0,
+          "scarf_back": 0,
+          "tail": 0,
+          "upperarm_near": -56.82148834060725,
+          "forearm_near": 16.144338780283483,
+          "hand_near": 22.83365417791754,
+          "thigh_near": -46.08092418666069,
+          "shin_near": -63.434948822922,
+          "boot_near": -40.23635830927382,
+          "upperarm_far": -131.18592516570965,
+          "forearm_far": -127.8749836510982,
+          "hand_far": -83.6598082540901,
+          "thigh_far": -135,
+          "shin_far": -170.21759296819272,
+          "boot_far": -117.64597536373869
+        }
+      },
+      "parts": [
+        {
+          "slot": "tail",
+          "attachment": "p04_tail",
+          "file": "images/p04_tail.png",
+          "crop_px": [
+            29,
+            172,
+            94,
+            61
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            97,
+            45
+          ],
+          "world_joint_px": [
+            123,
+            214
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "scarf_back",
+          "attachment": "p04_scarf_back",
+          "file": "images/p04_scarf_back.png",
+          "crop_px": [
+            59,
+            112,
+            77,
+            54
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            73,
+            21
+          ],
+          "world_joint_px": [
+            129,
+            130
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_far",
+          "attachment": "p04_arm_far",
+          "file": "images/p04_arm_far.png",
+          "crop_px": [
+            89,
+            144,
+            47,
+            64
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            42,
+            13
+          ],
+          "world_joint_px": [
+            128,
+            154
+          ],
+          "world_rotation": -131.18592516570965,
+          "mesh": true
+        },
+        {
+          "slot": "leg_far",
+          "attachment": "p04_leg_far",
+          "file": "images/p04_leg_far.png",
+          "crop_px": [
+            67,
+            218,
+            97,
+            65
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            81,
+            11
+          ],
+          "world_joint_px": [
+            145,
+            226
+          ],
+          "world_rotation": -135,
+          "mesh": true
+        },
+        {
+          "slot": "leg_near",
+          "attachment": "p04_leg_near",
+          "file": "images/p04_leg_near.png",
+          "crop_px": [
+            162,
+            210,
+            99,
+            89
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            20,
+            15
+          ],
+          "world_joint_px": [
+            179,
+            222
+          ],
+          "world_rotation": -46.08092418666069,
+          "mesh": true
+        },
+        {
+          "slot": "torso",
+          "attachment": "p04_torso",
+          "file": "images/p04_torso.png",
+          "crop_px": [
+            113,
+            128,
+            141,
+            91
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            52,
+            54
+          ],
+          "world_joint_px": [
+            162,
+            179
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_near",
+          "attachment": "p04_arm_near",
+          "file": "images/p04_arm_near.png",
+          "crop_px": [
+            136,
+            138,
+            115,
+            57
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            24,
+            15
+          ],
+          "world_joint_px": [
+            157,
+            150
+          ],
+          "world_rotation": -56.82148834060725,
+          "mesh": true
+        },
+        {
+          "slot": "scarf_front",
+          "attachment": "p04_scarf_front",
+          "file": "images/p04_scarf_front.png",
+          "crop_px": [
+            133,
+            120,
+            82,
+            46
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            22,
+            16
+          ],
+          "world_joint_px": [
+            152,
+            133
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "head",
+          "attachment": "p04_head",
+          "file": "images/p04_head.png",
+          "crop_px": [
+            98,
+            8,
+            162,
+            127
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            90,
+            126
+          ],
+          "world_joint_px": [
+            185,
+            131
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "ink_details",
+          "attachment": "p04_ink_details",
+          "file": "images/p04_ink_details.png",
+          "crop_px": [
+            99,
+            85,
+            150,
+            141
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            61,
+            218
+          ],
+          "world_joint_px": [
+            157,
+            300
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "source": "source/frames/05.png",
+      "size": [
+        313,
+        313
+      ],
+      "joints": {
+        "p": {
+          "root": [
+            157,
+            300
+          ],
+          "torso": [
+            164,
+            184
+          ],
+          "pelvis": [
+            164,
+            222
+          ],
+          "head": [
+            187,
+            140
+          ],
+          "scarf_front": [
+            153,
+            141
+          ],
+          "scarf_back": [
+            130,
+            138
+          ],
+          "tail": [
+            121,
+            213
+          ],
+          "upperarm_near": [
+            149,
+            157
+          ],
+          "forearm_near": [
+            160,
+            182
+          ],
+          "hand_near": [
+            195,
+            191
+          ],
+          "thigh_near": [
+            166,
+            229
+          ],
+          "shin_near": [
+            183,
+            254
+          ],
+          "boot_near": [
+            169,
+            272
+          ],
+          "upperarm_far": [
+            210,
+            178
+          ],
+          "forearm_far": [
+            218,
+            183
+          ],
+          "hand_far": [
+            225,
+            182
+          ],
+          "thigh_far": [
+            143,
+            232
+          ],
+          "shin_far": [
+            128,
+            251
+          ],
+          "boot_far": [
+            113,
+            253
+          ]
+        },
+        "a": {
+          "root": 0,
+          "torso": 0,
+          "pelvis": 0,
+          "head": 0,
+          "scarf_front": 0,
+          "scarf_back": 0,
+          "tail": 0,
+          "upperarm_near": -66.25050550713324,
+          "forearm_near": -14.420773127510984,
+          "hand_near": 4.398705354995532,
+          "thigh_near": -55.7842978675626,
+          "shin_near": -127.8749836510982,
+          "boot_near": -38.99099404250548,
+          "upperarm_far": -32.005383208083494,
+          "forearm_far": 8.130102354155978,
+          "hand_far": 16.69924423399362,
+          "thigh_far": -128.29016319224309,
+          "shin_far": -172.40535663140858,
+          "boot_far": -75.96375653207353
+        }
+      },
+      "parts": [
+        {
+          "slot": "tail",
+          "attachment": "p05_tail",
+          "file": "images/p05_tail.png",
+          "crop_px": [
+            32,
+            168,
+            89,
+            56
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            92,
+            48
+          ],
+          "world_joint_px": [
+            121,
+            213
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "scarf_back",
+          "attachment": "p05_scarf_back",
+          "file": "images/p05_scarf_back.png",
+          "crop_px": [
+            58,
+            111,
+            79,
+            68
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            75,
+            30
+          ],
+          "world_joint_px": [
+            130,
+            138
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_far",
+          "attachment": "p05_arm_far",
+          "file": "images/p05_arm_far.png",
+          "crop_px": [
+            208,
+            158,
+            43,
+            43
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            5,
+            23
+          ],
+          "world_joint_px": [
+            210,
+            178
+          ],
+          "world_rotation": -32.005383208083494,
+          "mesh": true
+        },
+        {
+          "slot": "leg_far",
+          "attachment": "p05_leg_far",
+          "file": "images/p05_leg_far.png",
+          "crop_px": [
+            85,
+            225,
+            71,
+            58
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            61,
+            10
+          ],
+          "world_joint_px": [
+            143,
+            232
+          ],
+          "world_rotation": -128.29016319224309,
+          "mesh": true
+        },
+        {
+          "slot": "leg_near",
+          "attachment": "p05_leg_near",
+          "file": "images/p05_leg_near.png",
+          "crop_px": [
+            141,
+            220,
+            77,
+            80
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            28,
+            12
+          ],
+          "world_joint_px": [
+            166,
+            229
+          ],
+          "world_rotation": -55.7842978675626,
+          "mesh": true
+        },
+        {
+          "slot": "torso",
+          "attachment": "p05_torso",
+          "file": "images/p05_torso.png",
+          "crop_px": [
+            109,
+            136,
+            106,
+            89
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            58,
+            51
+          ],
+          "world_joint_px": [
+            164,
+            184
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_near",
+          "attachment": "p05_arm_near",
+          "file": "images/p05_arm_near.png",
+          "crop_px": [
+            131,
+            145,
+            97,
+            65
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            21,
+            15
+          ],
+          "world_joint_px": [
+            149,
+            157
+          ],
+          "world_rotation": -66.25050550713324,
+          "mesh": true
+        },
+        {
+          "slot": "scarf_front",
+          "attachment": "p05_scarf_front",
+          "file": "images/p05_scarf_front.png",
+          "crop_px": [
+            134,
+            130,
+            80,
+            49
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            22,
+            14
+          ],
+          "world_joint_px": [
+            153,
+            141
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "head",
+          "attachment": "p05_head",
+          "file": "images/p05_head.png",
+          "crop_px": [
+            102,
+            14,
+            160,
+            132
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            88,
+            129
+          ],
+          "world_joint_px": [
+            187,
+            140
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "ink_details",
+          "attachment": "p05_ink_details",
+          "file": "images/p05_ink_details.png",
+          "crop_px": [
+            109,
+            124,
+            45,
+            104
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            51,
+            179
+          ],
+          "world_joint_px": [
+            157,
+            300
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "source": "source/frames/06.png",
+      "size": [
+        314,
+        313
+      ],
+      "joints": {
+        "p": {
+          "root": [
+            157,
+            300
+          ],
+          "torso": [
+            162,
+            183
+          ],
+          "pelvis": [
+            162,
+            220
+          ],
+          "head": [
+            184,
+            139
+          ],
+          "scarf_front": [
+            151,
+            142
+          ],
+          "scarf_back": [
+            128,
+            139
+          ],
+          "tail": [
+            121,
+            208
+          ],
+          "upperarm_near": [
+            152,
+            157
+          ],
+          "forearm_near": [
+            159,
+            184
+          ],
+          "hand_near": [
+            185,
+            190
+          ],
+          "thigh_near": [
+            146,
+            229
+          ],
+          "shin_near": [
+            136,
+            254
+          ],
+          "boot_near": [
+            118,
+            269
+          ],
+          "upperarm_far": [
+            209,
+            174
+          ],
+          "forearm_far": [
+            211,
+            188
+          ],
+          "hand_far": [
+            216,
+            183
+          ],
+          "thigh_far": [
+            173,
+            228
+          ],
+          "shin_far": [
+            186,
+            246
+          ],
+          "boot_far": [
+            167,
+            249
+          ]
+        },
+        "a": {
+          "root": 0,
+          "torso": 0,
+          "pelvis": 0,
+          "head": 0,
+          "scarf_front": 0,
+          "scarf_back": 0,
+          "tail": 0,
+          "upperarm_near": -75.46554491945989,
+          "forearm_near": -12.994616791916506,
+          "hand_near": -7.594643368591445,
+          "thigh_near": -111.80140948635183,
+          "shin_near": -140.19442890773482,
+          "boot_near": -57.094757077012105,
+          "upperarm_far": -81.86989764584402,
+          "forearm_far": 45,
+          "hand_far": 45,
+          "thigh_far": -54.16234704572171,
+          "shin_far": -171.0273733851036,
+          "boot_far": -68.74949449286676
+        }
+      },
+      "parts": [
+        {
+          "slot": "tail",
+          "attachment": "p06_tail",
+          "file": "images/p06_tail.png",
+          "crop_px": [
+            39,
+            170,
+            82,
+            48
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            85,
+            41
+          ],
+          "world_joint_px": [
+            121,
+            208
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "scarf_back",
+          "attachment": "p06_scarf_back",
+          "file": "images/p06_scarf_back.png",
+          "crop_px": [
+            61,
+            112,
+            74,
+            54
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            70,
+            30
+          ],
+          "world_joint_px": [
+            128,
+            139
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_far",
+          "attachment": "p06_arm_far",
+          "file": "images/p06_arm_far.png",
+          "crop_px": [
+            202,
+            157,
+            40,
+            40
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            10,
+            20
+          ],
+          "world_joint_px": [
+            209,
+            174
+          ],
+          "world_rotation": -81.86989764584402,
+          "mesh": true
+        },
+        {
+          "slot": "leg_far",
+          "attachment": "p06_leg_far",
+          "file": "images/p06_leg_far.png",
+          "crop_px": [
+            153,
+            221,
+            67,
+            64
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            23,
+            10
+          ],
+          "world_joint_px": [
+            173,
+            228
+          ],
+          "world_rotation": -54.16234704572171,
+          "mesh": true
+        },
+        {
+          "slot": "leg_near",
+          "attachment": "p06_leg_near",
+          "file": "images/p06_leg_near.png",
+          "crop_px": [
+            80,
+            222,
+            80,
+            78
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            69,
+            10
+          ],
+          "world_joint_px": [
+            146,
+            229
+          ],
+          "world_rotation": -111.80140948635183,
+          "mesh": true
+        },
+        {
+          "slot": "torso",
+          "attachment": "p06_torso",
+          "file": "images/p06_torso.png",
+          "crop_px": [
+            108,
+            137,
+            110,
+            86
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            57,
+            49
+          ],
+          "world_joint_px": [
+            162,
+            183
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_near",
+          "attachment": "p06_arm_near",
+          "file": "images/p06_arm_near.png",
+          "crop_px": [
+            131,
+            141,
+            89,
+            71
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            24,
+            19
+          ],
+          "world_joint_px": [
+            152,
+            157
+          ],
+          "world_rotation": -75.46554491945989,
+          "mesh": true
+        },
+        {
+          "slot": "scarf_front",
+          "attachment": "p06_scarf_front",
+          "file": "images/p06_scarf_front.png",
+          "crop_px": [
+            132,
+            129,
+            80,
+            47
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            22,
+            16
+          ],
+          "world_joint_px": [
+            151,
+            142
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "head",
+          "attachment": "p06_head",
+          "file": "images/p06_head.png",
+          "crop_px": [
+            99,
+            12,
+            162,
+            131
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            88,
+            130
+          ],
+          "world_joint_px": [
+            184,
+            139
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "ink_details",
+          "attachment": "p06_ink_details",
+          "file": "images/p06_ink_details.png",
+          "crop_px": [
+            99,
+            74,
+            140,
+            195
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            61,
+            229
+          ],
+          "world_joint_px": [
+            157,
+            300
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "source": "source/frames/07.png",
+      "size": [
+        313,
+        313
+      ],
+      "joints": {
+        "p": {
+          "root": [
+            157,
+            300
+          ],
+          "torso": [
+            163,
+            168
+          ],
+          "pelvis": [
+            163,
+            201
+          ],
+          "head": [
+            185,
+            127
+          ],
+          "scarf_front": [
+            150,
+            128
+          ],
+          "scarf_back": [
+            127,
+            125
+          ],
+          "tail": [
+            126,
+            203
+          ],
+          "upperarm_near": [
+            141,
+            135
+          ],
+          "forearm_near": [
+            114,
+            154
+          ],
+          "hand_near": [
+            105,
+            164
+          ],
+          "thigh_near": [
+            174,
+            203
+          ],
+          "shin_near": [
+            195,
+            223
+          ],
+          "boot_near": [
+            208,
+            219
+          ],
+          "upperarm_far": [
+            208,
+            146
+          ],
+          "forearm_far": [
+            223,
+            159
+          ],
+          "hand_far": [
+            235,
+            145
+          ],
+          "thigh_far": [
+            144,
+            215
+          ],
+          "shin_far": [
+            130,
+            231
+          ],
+          "boot_far": [
+            112,
+            231
+          ]
+        },
+        "a": {
+          "root": 0,
+          "torso": 0,
+          "pelvis": 0,
+          "head": 0,
+          "scarf_front": 0,
+          "scarf_back": 0,
+          "tail": 0,
+          "upperarm_near": -144.86580694308435,
+          "forearm_near": -131.98721249581666,
+          "hand_near": -66.80140948635182,
+          "thigh_near": -43.602818972703616,
+          "shin_near": 17.10272896905237,
+          "boot_near": -41.42366562500265,
+          "upperarm_far": -40.91438322002512,
+          "forearm_far": 49.398705354995535,
+          "hand_far": 33.690067525979785,
+          "thigh_far": -131.18592516570965,
+          "shin_far": -180,
+          "boot_far": -124.5085229876684
+        }
+      },
+      "parts": [
+        {
+          "slot": "tail",
+          "attachment": "p07_tail",
+          "file": "images/p07_tail.png",
+          "crop_px": [
+            41,
+            177,
+            85,
+            41
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            88,
+            29
+          ],
+          "world_joint_px": [
+            126,
+            203
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "scarf_back",
+          "attachment": "p07_scarf_back",
+          "file": "images/p07_scarf_back.png",
+          "crop_px": [
+            62,
+            98,
+            72,
+            55
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            68,
+            30
+          ],
+          "world_joint_px": [
+            127,
+            125
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_far",
+          "attachment": "p07_arm_far",
+          "file": "images/p07_arm_far.png",
+          "crop_px": [
+            203,
+            126,
+            62,
+            47
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            8,
+            23
+          ],
+          "world_joint_px": [
+            208,
+            146
+          ],
+          "world_rotation": -40.91438322002512,
+          "mesh": true
+        },
+        {
+          "slot": "leg_far",
+          "attachment": "p07_leg_far",
+          "file": "images/p07_leg_far.png",
+          "crop_px": [
+            85,
+            204,
+            82,
+            57
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            62,
+            14
+          ],
+          "world_joint_px": [
+            144,
+            215
+          ],
+          "world_rotation": -131.18592516570965,
+          "mesh": true
+        },
+        {
+          "slot": "leg_near",
+          "attachment": "p07_leg_near",
+          "file": "images/p07_leg_near.png",
+          "crop_px": [
+            157,
+            193,
+            97,
+            66
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            20,
+            13
+          ],
+          "world_joint_px": [
+            174,
+            203
+          ],
+          "world_rotation": -43.602818972703616,
+          "mesh": true
+        },
+        {
+          "slot": "torso",
+          "attachment": "p07_torso",
+          "file": "images/p07_torso.png",
+          "crop_px": [
+            112,
+            123,
+            153,
+            81
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            54,
+            48
+          ],
+          "world_joint_px": [
+            163,
+            168
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_near",
+          "attachment": "p07_arm_near",
+          "file": "images/p07_arm_near.png",
+          "crop_px": [
+            87,
+            113,
+            75,
+            73
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            57,
+            25
+          ],
+          "world_joint_px": [
+            141,
+            135
+          ],
+          "world_rotation": -144.86580694308435,
+          "mesh": true
+        },
+        {
+          "slot": "scarf_front",
+          "attachment": "p07_scarf_front",
+          "file": "images/p07_scarf_front.png",
+          "crop_px": [
+            141,
+            117,
+            74,
+            49
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            12,
+            14
+          ],
+          "world_joint_px": [
+            150,
+            128
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "head",
+          "attachment": "p07_head",
+          "file": "images/p07_head.png",
+          "crop_px": [
+            102,
+            5,
+            160,
+            127
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            86,
+            125
+          ],
+          "world_joint_px": [
+            185,
+            127
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "ink_details",
+          "attachment": "p07_ink_details",
+          "file": "images/p07_ink_details.png",
+          "crop_px": [
+            45,
+            135,
+            206,
+            90
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            115,
+            168
+          ],
+          "world_joint_px": [
+            157,
+            300
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "source": "source/frames/08.png",
+      "size": [
+        314,
+        314
+      ],
+      "joints": {
+        "p": {
+          "root": [
+            157,
+            300
+          ],
+          "torso": [
+            155,
+            187
+          ],
+          "pelvis": [
+            155,
+            222
+          ],
+          "head": [
+            173,
+            135
+          ],
+          "scarf_front": [
+            140,
+            144
+          ],
+          "scarf_back": [
+            117,
+            141
+          ],
+          "tail": [
+            122,
+            231
+          ],
+          "upperarm_near": [
+            139,
+            159
+          ],
+          "forearm_near": [
+            147,
+            181
+          ],
+          "hand_near": [
+            181,
+            184
+          ],
+          "thigh_near": [
+            145,
+            233
+          ],
+          "shin_near": [
+            161,
+            245
+          ],
+          "boot_near": [
+            161,
+            257
+          ],
+          "upperarm_far": [
+            199,
+            166
+          ],
+          "forearm_far": [
+            215,
+            178
+          ],
+          "hand_far": [
+            229,
+            180
+          ],
+          "thigh_far": [
+            187,
+            229
+          ],
+          "shin_far": [
+            210,
+            244
+          ],
+          "boot_far": [
+            213,
+            254
+          ]
+        },
+        "a": {
+          "root": 0,
+          "torso": 0,
+          "pelvis": 0,
+          "head": 0,
+          "scarf_front": 0,
+          "scarf_back": 0,
+          "tail": 0,
+          "upperarm_near": -70.01689347810003,
+          "forearm_near": -5.042451069170913,
+          "hand_near": 0,
+          "thigh_near": -36.86989764584402,
+          "shin_near": -90,
+          "boot_near": -59.42077312751099,
+          "upperarm_far": -36.86989764584402,
+          "forearm_far": -8.130102354155978,
+          "hand_far": 17.10272896905237,
+          "thigh_far": -33.11134196037203,
+          "shin_far": -73.30075576600638,
+          "boot_far": -61.38954033403479
+        }
+      },
+      "parts": [
+        {
+          "slot": "tail",
+          "attachment": "p08_tail",
+          "file": "images/p08_tail.png",
+          "crop_px": [
+            38,
+            172,
+            84,
+            68
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            87,
+            62
+          ],
+          "world_joint_px": [
+            122,
+            231
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "scarf_back",
+          "attachment": "p08_scarf_back",
+          "file": "images/p08_scarf_back.png",
+          "crop_px": [
+            55,
+            114,
+            69,
+            54
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            65,
+            30
+          ],
+          "world_joint_px": [
+            117,
+            141
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_far",
+          "attachment": "p08_arm_far",
+          "file": "images/p08_arm_far.png",
+          "crop_px": [
+            194,
+            154,
+            67,
+            39
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            8,
+            15
+          ],
+          "world_joint_px": [
+            199,
+            166
+          ],
+          "world_rotation": -36.86989764584402,
+          "mesh": true
+        },
+        {
+          "slot": "leg_far",
+          "attachment": "p08_leg_far",
+          "file": "images/p08_leg_far.png",
+          "crop_px": [
+            167,
+            218,
+            86,
+            74
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            23,
+            14
+          ],
+          "world_joint_px": [
+            187,
+            229
+          ],
+          "world_rotation": -33.11134196037203,
+          "mesh": true
+        },
+        {
+          "slot": "leg_near",
+          "attachment": "p08_leg_near",
+          "file": "images/p08_leg_near.png",
+          "crop_px": [
+            105,
+            225,
+            96,
+            73
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            43,
+            11
+          ],
+          "world_joint_px": [
+            145,
+            233
+          ],
+          "world_rotation": -36.86989764584402,
+          "mesh": true
+        },
+        {
+          "slot": "torso",
+          "attachment": "p08_torso",
+          "file": "images/p08_torso.png",
+          "crop_px": [
+            103,
+            139,
+            127,
+            86
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            55,
+            51
+          ],
+          "world_joint_px": [
+            155,
+            187
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_near",
+          "attachment": "p08_arm_near",
+          "file": "images/p08_arm_near.png",
+          "crop_px": [
+            120,
+            142,
+            96,
+            62
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            22,
+            20
+          ],
+          "world_joint_px": [
+            139,
+            159
+          ],
+          "world_rotation": -70.01689347810003,
+          "mesh": true
+        },
+        {
+          "slot": "scarf_front",
+          "attachment": "p08_scarf_front",
+          "file": "images/p08_scarf_front.png",
+          "crop_px": [
+            121,
+            131,
+            78,
+            40
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            22,
+            16
+          ],
+          "world_joint_px": [
+            140,
+            144
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "head",
+          "attachment": "p08_head",
+          "file": "images/p08_head.png",
+          "crop_px": [
+            87,
+            19,
+            154,
+            120
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            89,
+            119
+          ],
+          "world_joint_px": [
+            173,
+            135
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "ink_details",
+          "attachment": "p08_ink_details",
+          "file": "images/p08_ink_details.png",
+          "crop_px": [
+            70,
+            91,
+            165,
+            170
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            90,
+            212
+          ],
+          "world_joint_px": [
+            157,
+            300
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "source": "source/frames/09.png",
+      "size": [
+        313,
+        314
+      ],
+      "joints": {
+        "p": {
+          "root": [
+            157,
+            300
+          ],
+          "torso": [
+            155,
+            197
+          ],
+          "pelvis": [
+            155,
+            230
+          ],
+          "head": [
+            173,
+            145
+          ],
+          "scarf_front": [
+            142,
+            155
+          ],
+          "scarf_back": [
+            119,
+            152
+          ],
+          "tail": [
+            122,
+            237
+          ],
+          "upperarm_near": [
+            140,
+            170
+          ],
+          "forearm_near": [
+            149,
+            193
+          ],
+          "hand_near": [
+            183,
+            199
+          ],
+          "thigh_near": [
+            146,
+            239
+          ],
+          "shin_near": [
+            160,
+            249
+          ],
+          "boot_near": [
+            161,
+            259
+          ],
+          "upperarm_far": [
+            201,
+            177
+          ],
+          "forearm_far": [
+            216,
+            187
+          ],
+          "hand_far": [
+            232,
+            190
+          ],
+          "thigh_far": [
+            190,
+            237
+          ],
+          "shin_far": [
+            211,
+            249
+          ],
+          "boot_far": [
+            213,
+            259
+          ]
+        },
+        "a": {
+          "root": 0,
+          "torso": 0,
+          "pelvis": 0,
+          "head": 0,
+          "scarf_front": 0,
+          "scarf_back": 0,
+          "tail": 0,
+          "upperarm_near": -68.62937773065681,
+          "forearm_near": -10.007979801441339,
+          "hand_near": 6.709836807756933,
+          "thigh_near": -35.53767779197438,
+          "shin_near": -84.28940686250037,
+          "boot_near": -58.240519915187214,
+          "upperarm_far": -33.690067525979785,
+          "forearm_far": -10.619655276155134,
+          "hand_far": 12.094757077012101,
+          "thigh_far": -29.74488129694222,
+          "shin_far": -78.69006752597979,
+          "boot_far": -59.03624346792648
+        }
+      },
+      "parts": [
+        {
+          "slot": "tail",
+          "attachment": "p09_tail",
+          "file": "images/p09_tail.png",
+          "crop_px": [
+            41,
+            183,
+            81,
+            65
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            84,
+            57
+          ],
+          "world_joint_px": [
+            122,
+            237
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "scarf_back",
+          "attachment": "p09_scarf_back",
+          "file": "images/p09_scarf_back.png",
+          "crop_px": [
+            55,
+            125,
+            73,
+            57
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            67,
+            30
+          ],
+          "world_joint_px": [
+            119,
+            152
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_far",
+          "attachment": "p09_arm_far",
+          "file": "images/p09_arm_far.png",
+          "crop_px": [
+            198,
+            161,
+            65,
+            47
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            6,
+            19
+          ],
+          "world_joint_px": [
+            201,
+            177
+          ],
+          "world_rotation": -33.690067525979785,
+          "mesh": true
+        },
+        {
+          "slot": "leg_far",
+          "attachment": "p09_leg_far",
+          "file": "images/p09_leg_far.png",
+          "crop_px": [
+            170,
+            227,
+            83,
+            66
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            23,
+            13
+          ],
+          "world_joint_px": [
+            190,
+            237
+          ],
+          "world_rotation": -29.74488129694222,
+          "mesh": true
+        },
+        {
+          "slot": "leg_near",
+          "attachment": "p09_leg_near",
+          "file": "images/p09_leg_near.png",
+          "crop_px": [
+            109,
+            232,
+            91,
+            64
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            40,
+            10
+          ],
+          "world_joint_px": [
+            146,
+            239
+          ],
+          "world_rotation": -35.53767779197438,
+          "mesh": true
+        },
+        {
+          "slot": "torso",
+          "attachment": "p09_torso",
+          "file": "images/p09_torso.png",
+          "crop_px": [
+            102,
+            150,
+            134,
+            83
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            56,
+            50
+          ],
+          "world_joint_px": [
+            155,
+            197
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_near",
+          "attachment": "p09_arm_near",
+          "file": "images/p09_arm_near.png",
+          "crop_px": [
+            123,
+            153,
+            97,
+            64
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            20,
+            20
+          ],
+          "world_joint_px": [
+            140,
+            170
+          ],
+          "world_rotation": -68.62937773065681,
+          "mesh": true
+        },
+        {
+          "slot": "scarf_front",
+          "attachment": "p09_scarf_front",
+          "file": "images/p09_scarf_front.png",
+          "crop_px": [
+            122,
+            142,
+            87,
+            45
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            23,
+            16
+          ],
+          "world_joint_px": [
+            142,
+            155
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "head",
+          "attachment": "p09_head",
+          "file": "images/p09_head.png",
+          "crop_px": [
+            90,
+            27,
+            153,
+            123
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            86,
+            121
+          ],
+          "world_joint_px": [
+            173,
+            145
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "ink_details",
+          "attachment": "p09_ink_details",
+          "file": "images/p09_ink_details.png",
+          "crop_px": [
+            101,
+            87,
+            131,
+            121
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            59,
+            216
+          ],
+          "world_joint_px": [
+            157,
+            300
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "source": "source/frames/10.png",
+      "size": [
+        314,
+        314
+      ],
+      "joints": {
+        "p": {
+          "root": [
+            157,
+            300
+          ],
+          "torso": [
+            155,
+            189
+          ],
+          "pelvis": [
+            155,
+            224
+          ],
+          "head": [
+            174,
+            137
+          ],
+          "scarf_front": [
+            141,
+            146
+          ],
+          "scarf_back": [
+            118,
+            143
+          ],
+          "tail": [
+            122,
+            233
+          ],
+          "upperarm_near": [
+            140,
+            162
+          ],
+          "forearm_near": [
+            148,
+            185
+          ],
+          "hand_near": [
+            181,
+            186
+          ],
+          "thigh_near": [
+            147,
+            233
+          ],
+          "shin_near": [
+            161,
+            245
+          ],
+          "boot_near": [
+            161,
+            256
+          ],
+          "upperarm_far": [
+            200,
+            170
+          ],
+          "forearm_far": [
+            215,
+            178
+          ],
+          "hand_far": [
+            230,
+            179
+          ],
+          "thigh_far": [
+            189,
+            231
+          ],
+          "shin_far": [
+            210,
+            245
+          ],
+          "boot_far": [
+            213,
+            255
+          ]
+        },
+        "a": {
+          "root": 0,
+          "torso": 0,
+          "pelvis": 0,
+          "head": 0,
+          "scarf_front": 0,
+          "scarf_back": 0,
+          "tail": 0,
+          "upperarm_near": -70.82099197418928,
+          "forearm_near": -1.7357045889283889,
+          "hand_near": 8.130102354155978,
+          "thigh_near": -40.601294645004465,
+          "shin_near": -90,
+          "boot_near": -60.52411099675425,
+          "upperarm_far": -28.072486935852957,
+          "forearm_far": -3.8140748342903543,
+          "hand_far": 17.10272896905237,
+          "thigh_far": -33.690067525979785,
+          "shin_far": -73.30075576600638,
+          "boot_far": -61.38954033403479
+        }
+      },
+      "parts": [
+        {
+          "slot": "tail",
+          "attachment": "p10_tail",
+          "file": "images/p10_tail.png",
+          "crop_px": [
+            42,
+            172,
+            80,
+            67
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            83,
+            64
+          ],
+          "world_joint_px": [
+            122,
+            233
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "scarf_back",
+          "attachment": "p10_scarf_back",
+          "file": "images/p10_scarf_back.png",
+          "crop_px": [
+            56,
+            114,
+            69,
+            53
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            65,
+            32
+          ],
+          "world_joint_px": [
+            118,
+            143
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_far",
+          "attachment": "p10_arm_far",
+          "file": "images/p10_arm_far.png",
+          "crop_px": [
+            189,
+            156,
+            72,
+            34
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            14,
+            17
+          ],
+          "world_joint_px": [
+            200,
+            170
+          ],
+          "world_rotation": -28.072486935852957,
+          "mesh": true
+        },
+        {
+          "slot": "leg_far",
+          "attachment": "p10_leg_far",
+          "file": "images/p10_leg_far.png",
+          "crop_px": [
+            169,
+            221,
+            84,
+            71
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            23,
+            13
+          ],
+          "world_joint_px": [
+            189,
+            231
+          ],
+          "world_rotation": -33.690067525979785,
+          "mesh": true
+        },
+        {
+          "slot": "leg_near",
+          "attachment": "p10_leg_near",
+          "file": "images/p10_leg_near.png",
+          "crop_px": [
+            109,
+            226,
+            92,
+            70
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            41,
+            10
+          ],
+          "world_joint_px": [
+            147,
+            233
+          ],
+          "world_rotation": -40.601294645004465,
+          "mesh": true
+        },
+        {
+          "slot": "torso",
+          "attachment": "p10_torso",
+          "file": "images/p10_torso.png",
+          "crop_px": [
+            110,
+            131,
+            147,
+            96
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            48,
+            61
+          ],
+          "world_joint_px": [
+            155,
+            189
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_near",
+          "attachment": "p10_arm_near",
+          "file": "images/p10_arm_near.png",
+          "crop_px": [
+            123,
+            140,
+            92,
+            64
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            20,
+            25
+          ],
+          "world_joint_px": [
+            140,
+            162
+          ],
+          "world_rotation": -70.82099197418928,
+          "mesh": true
+        },
+        {
+          "slot": "scarf_front",
+          "attachment": "p10_scarf_front",
+          "file": "images/p10_scarf_front.png",
+          "crop_px": [
+            144,
+            135,
+            58,
+            32
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            0,
+            14
+          ],
+          "world_joint_px": [
+            141,
+            146
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "head",
+          "attachment": "p10_head",
+          "file": "images/p10_head.png",
+          "crop_px": [
+            88,
+            19,
+            154,
+            118
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            89,
+            121
+          ],
+          "world_joint_px": [
+            174,
+            137
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "ink_details",
+          "attachment": "p10_ink_details",
+          "file": "images/p10_ink_details.png",
+          "crop_px": [
+            115,
+            89,
+            110,
+            175
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            45,
+            214
+          ],
+          "world_joint_px": [
+            157,
+            300
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "source": "source/frames/11.png",
+      "size": [
+        313,
+        314
+      ],
+      "joints": {
+        "p": {
+          "root": [
+            157,
+            300
+          ],
+          "torso": [
+            155,
+            176
+          ],
+          "pelvis": [
+            155,
+            214
+          ],
+          "head": [
+            174,
+            127
+          ],
+          "scarf_front": [
+            141,
+            137
+          ],
+          "scarf_back": [
+            118,
+            134
+          ],
+          "tail": [
+            124,
+            226
+          ],
+          "upperarm_near": [
+            140,
+            148
+          ],
+          "forearm_near": [
+            151,
+            159
+          ],
+          "hand_near": [
+            184,
+            157
+          ],
+          "thigh_near": [
+            148,
+            230
+          ],
+          "shin_near": [
+            161,
+            246
+          ],
+          "boot_near": [
+            161,
+            257
+          ],
+          "upperarm_far": [
+            198,
+            147
+          ],
+          "forearm_far": [
+            215,
+            164
+          ],
+          "hand_far": [
+            231,
+            163
+          ],
+          "thigh_far": [
+            190,
+            228
+          ],
+          "shin_far": [
+            210,
+            244
+          ],
+          "boot_far": [
+            212,
+            256
+          ]
+        },
+        "a": {
+          "root": 0,
+          "torso": 0,
+          "pelvis": 0,
+          "head": 0,
+          "scarf_front": 0,
+          "scarf_back": 0,
+          "tail": 0,
+          "upperarm_near": -45,
+          "forearm_near": 3.4682292589171477,
+          "hand_near": 7.125016348901798,
+          "thigh_near": -50.9061411137705,
+          "shin_near": -90,
+          "boot_near": -62.447188423282206,
+          "upperarm_far": -45,
+          "forearm_far": 3.576334374997351,
+          "hand_far": 15.945395900922854,
+          "thigh_far": -38.659808254090095,
+          "shin_far": -80.53767779197439,
+          "boot_far": -58.240519915187214
+        }
+      },
+      "parts": [
+        {
+          "slot": "tail",
+          "attachment": "p11_tail",
+          "file": "images/p11_tail.png",
+          "crop_px": [
+            45,
+            160,
+            79,
+            74
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            82,
+            69
+          ],
+          "world_joint_px": [
+            124,
+            226
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "scarf_back",
+          "attachment": "p11_scarf_back",
+          "file": "images/p11_scarf_back.png",
+          "crop_px": [
+            56,
+            107,
+            72,
+            54
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            65,
+            30
+          ],
+          "world_joint_px": [
+            118,
+            134
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_far",
+          "attachment": "p11_arm_far",
+          "file": "images/p11_arm_far.png",
+          "crop_px": [
+            193,
+            138,
+            69,
+            38
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            8,
+            12
+          ],
+          "world_joint_px": [
+            198,
+            147
+          ],
+          "world_rotation": -45,
+          "mesh": true
+        },
+        {
+          "slot": "leg_far",
+          "attachment": "p11_leg_far",
+          "file": "images/p11_leg_far.png",
+          "crop_px": [
+            169,
+            217,
+            85,
+            75
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            24,
+            14
+          ],
+          "world_joint_px": [
+            190,
+            228
+          ],
+          "world_rotation": -38.659808254090095,
+          "mesh": true
+        },
+        {
+          "slot": "leg_near",
+          "attachment": "p11_leg_near",
+          "file": "images/p11_leg_near.png",
+          "crop_px": [
+            103,
+            217,
+            97,
+            79
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            48,
+            16
+          ],
+          "world_joint_px": [
+            148,
+            230
+          ],
+          "world_rotation": -50.9061411137705,
+          "mesh": true
+        },
+        {
+          "slot": "torso",
+          "attachment": "p11_torso",
+          "file": "images/p11_torso.png",
+          "crop_px": [
+            114,
+            132,
+            117,
+            85
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            44,
+            47
+          ],
+          "world_joint_px": [
+            155,
+            176
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_near",
+          "attachment": "p11_arm_near",
+          "file": "images/p11_arm_near.png",
+          "crop_px": [
+            122,
+            125,
+            98,
+            52
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            21,
+            26
+          ],
+          "world_joint_px": [
+            140,
+            148
+          ],
+          "world_rotation": -45,
+          "mesh": true
+        },
+        {
+          "slot": "scarf_front",
+          "attachment": "p11_scarf_front",
+          "file": "images/p11_scarf_front.png",
+          "crop_px": [
+            143,
+            126,
+            60,
+            21
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            1,
+            14
+          ],
+          "world_joint_px": [
+            141,
+            137
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "head",
+          "attachment": "p11_head",
+          "file": "images/p11_head.png",
+          "crop_px": [
+            88,
+            10,
+            155,
+            122
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            89,
+            120
+          ],
+          "world_joint_px": [
+            174,
+            127
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "ink_details",
+          "attachment": "p11_ink_details",
+          "file": "images/p11_ink_details.png",
+          "crop_px": [
+            92,
+            92,
+            140,
+            17
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            68,
+            211
+          ],
+          "world_joint_px": [
+            157,
+            300
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "source": "source/frames/12.png",
+      "size": [
+        314,
+        313
+      ],
+      "joints": {
+        "p": {
+          "root": [
+            157,
+            300
+          ],
+          "torso": [
+            155,
+            190
+          ],
+          "pelvis": [
+            155,
+            226
+          ],
+          "head": [
+            175,
+            144
+          ],
+          "scarf_front": [
+            142,
+            154
+          ],
+          "scarf_back": [
+            119,
+            151
+          ],
+          "tail": [
+            122,
+            236
+          ],
+          "upperarm_near": [
+            140,
+            164
+          ],
+          "forearm_near": [
+            151,
+            183
+          ],
+          "hand_near": [
+            183,
+            177
+          ],
+          "thigh_near": [
+            147,
+            238
+          ],
+          "shin_near": [
+            161,
+            247
+          ],
+          "boot_near": [
+            161,
+            259
+          ],
+          "upperarm_far": [
+            198,
+            166
+          ],
+          "forearm_far": [
+            213,
+            177
+          ],
+          "hand_far": [
+            229,
+            178
+          ],
+          "thigh_far": [
+            189,
+            235
+          ],
+          "shin_far": [
+            210,
+            247
+          ],
+          "boot_far": [
+            213,
+            258
+          ]
+        },
+        "a": {
+          "root": 0,
+          "torso": 0,
+          "pelvis": 0,
+          "head": 0,
+          "scarf_front": 0,
+          "scarf_back": 0,
+          "tail": 0,
+          "upperarm_near": -59.93141717813755,
+          "forearm_near": 10.619655276155134,
+          "hand_near": 14.93141717813755,
+          "thigh_near": -32.7352262721076,
+          "shin_near": -90,
+          "boot_near": -60.25511870305778,
+          "upperarm_far": -36.25383773744479,
+          "forearm_far": -3.576334374997351,
+          "hand_far": 19.98310652189998,
+          "thigh_far": -29.74488129694222,
+          "shin_far": -74.74488129694222,
+          "boot_far": -56.97613244420336
+        }
+      },
+      "parts": [
+        {
+          "slot": "tail",
+          "attachment": "p12_tail",
+          "file": "images/p12_tail.png",
+          "crop_px": [
+            36,
+            173,
+            86,
+            71
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            89,
+            66
+          ],
+          "world_joint_px": [
+            122,
+            236
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "scarf_back",
+          "attachment": "p12_scarf_back",
+          "file": "images/p12_scarf_back.png",
+          "crop_px": [
+            49,
+            120,
+            77,
+            54
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            73,
+            34
+          ],
+          "world_joint_px": [
+            119,
+            151
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_far",
+          "attachment": "p12_arm_far",
+          "file": "images/p12_arm_far.png",
+          "crop_px": [
+            194,
+            155,
+            65,
+            39
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            7,
+            14
+          ],
+          "world_joint_px": [
+            198,
+            166
+          ],
+          "world_rotation": -36.25383773744479,
+          "mesh": true
+        },
+        {
+          "slot": "leg_far",
+          "attachment": "p12_leg_far",
+          "file": "images/p12_leg_far.png",
+          "crop_px": [
+            169,
+            225,
+            84,
+            69
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            23,
+            13
+          ],
+          "world_joint_px": [
+            189,
+            235
+          ],
+          "world_rotation": -29.74488129694222,
+          "mesh": true
+        },
+        {
+          "slot": "leg_near",
+          "attachment": "p12_leg_near",
+          "file": "images/p12_leg_near.png",
+          "crop_px": [
+            112,
+            229,
+            89,
+            67
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            38,
+            12
+          ],
+          "world_joint_px": [
+            147,
+            238
+          ],
+          "world_rotation": -32.7352262721076,
+          "mesh": true
+        },
+        {
+          "slot": "torso",
+          "attachment": "p12_torso",
+          "file": "images/p12_torso.png",
+          "crop_px": [
+            104,
+            149,
+            130,
+            80
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            54,
+            44
+          ],
+          "world_joint_px": [
+            155,
+            190
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_near",
+          "attachment": "p12_arm_near",
+          "file": "images/p12_arm_near.png",
+          "crop_px": [
+            121,
+            149,
+            97,
+            53
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            22,
+            18
+          ],
+          "world_joint_px": [
+            140,
+            164
+          ],
+          "world_rotation": -59.93141717813755,
+          "mesh": true
+        },
+        {
+          "slot": "scarf_front",
+          "attachment": "p12_scarf_front",
+          "file": "images/p12_scarf_front.png",
+          "crop_px": [
+            123,
+            141,
+            78,
+            29
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            22,
+            16
+          ],
+          "world_joint_px": [
+            142,
+            154
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "head",
+          "attachment": "p12_head",
+          "file": "images/p12_head.png",
+          "crop_px": [
+            87,
+            22,
+            161,
+            128
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            91,
+            125
+          ],
+          "world_joint_px": [
+            175,
+            144
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "ink_details",
+          "attachment": "p12_ink_details",
+          "file": "images/p12_ink_details.png",
+          "crop_px": [
+            86,
+            89,
+            167,
+            174
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            74,
+            214
+          ],
+          "world_joint_px": [
+            157,
+            300
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "source": "source/frames/13.png",
+      "size": [
+        313,
+        313
+      ],
+      "joints": {
+        "p": {
+          "root": [
+            157,
+            300
+          ],
+          "torso": [
+            151,
+            185
+          ],
+          "pelvis": [
+            151,
+            223
+          ],
+          "head": [
+            155,
+            125
+          ],
+          "scarf_front": [
+            124,
+            141
+          ],
+          "scarf_back": [
+            101,
+            138
+          ],
+          "tail": [
+            123,
+            235
+          ],
+          "upperarm_near": [
+            133,
+            157
+          ],
+          "forearm_near": [
+            145,
+            172
+          ],
+          "hand_near": [
+            176,
+            153
+          ],
+          "thigh_near": [
+            146,
+            234
+          ],
+          "shin_near": [
+            162,
+            246
+          ],
+          "boot_near": [
+            162,
+            258
+          ],
+          "upperarm_far": [
+            194,
+            157
+          ],
+          "forearm_far": [
+            211,
+            173
+          ],
+          "hand_far": [
+            222,
+            159
+          ],
+          "thigh_far": [
+            191,
+            233
+          ],
+          "shin_far": [
+            211,
+            247
+          ],
+          "boot_far": [
+            213,
+            258
+          ]
+        },
+        "a": {
+          "root": 0,
+          "torso": 0,
+          "pelvis": 0,
+          "head": 0,
+          "scarf_front": 0,
+          "scarf_back": 0,
+          "tail": 0,
+          "upperarm_near": -51.340191745909905,
+          "forearm_near": 31.50426671920419,
+          "hand_near": 25.016893478100023,
+          "thigh_near": -36.86989764584402,
+          "shin_near": -90,
+          "boot_near": -62.447188423282206,
+          "upperarm_far": -43.264295411071615,
+          "forearm_far": 51.84277341263095,
+          "hand_far": 29.74488129694222,
+          "thigh_far": -34.99202019855866,
+          "shin_far": -79.69515353123397,
+          "boot_far": -59.42077312751099
+        }
+      },
+      "parts": [
+        {
+          "slot": "tail",
+          "attachment": "p13_tail",
+          "file": "images/p13_tail.png",
+          "crop_px": [
+            47,
+            170,
+            76,
+            73
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            79,
+            68
+          ],
+          "world_joint_px": [
+            123,
+            235
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "scarf_back",
+          "attachment": "p13_scarf_back",
+          "file": "images/p13_scarf_back.png",
+          "crop_px": [
+            31,
+            111,
+            77,
+            68
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            73,
+            30
+          ],
+          "world_joint_px": [
+            101,
+            138
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_far",
+          "attachment": "p13_arm_far",
+          "file": "images/p13_arm_far.png",
+          "crop_px": [
+            188,
+            132,
+            63,
+            50
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            9,
+            28
+          ],
+          "world_joint_px": [
+            194,
+            157
+          ],
+          "world_rotation": -43.264295411071615,
+          "mesh": true
+        },
+        {
+          "slot": "leg_far",
+          "attachment": "p13_leg_far",
+          "file": "images/p13_leg_far.png",
+          "crop_px": [
+            170,
+            223,
+            84,
+            71
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            24,
+            13
+          ],
+          "world_joint_px": [
+            191,
+            233
+          ],
+          "world_rotation": -34.99202019855866,
+          "mesh": true
+        },
+        {
+          "slot": "leg_near",
+          "attachment": "p13_leg_near",
+          "file": "images/p13_leg_near.png",
+          "crop_px": [
+            113,
+            226,
+            88,
+            70
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            36,
+            11
+          ],
+          "world_joint_px": [
+            146,
+            234
+          ],
+          "world_rotation": -36.86989764584402,
+          "mesh": true
+        },
+        {
+          "slot": "torso",
+          "attachment": "p13_torso",
+          "file": "images/p13_torso.png",
+          "crop_px": [
+            104,
+            136,
+            130,
+            90
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            50,
+            52
+          ],
+          "world_joint_px": [
+            151,
+            185
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_near",
+          "attachment": "p13_arm_near",
+          "file": "images/p13_arm_near.png",
+          "crop_px": [
+            115,
+            126,
+            96,
+            61
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            21,
+            34
+          ],
+          "world_joint_px": [
+            133,
+            157
+          ],
+          "world_rotation": -51.340191745909905,
+          "mesh": true
+        },
+        {
+          "slot": "scarf_front",
+          "attachment": "p13_scarf_front",
+          "file": "images/p13_scarf_front.png",
+          "crop_px": [
+            105,
+            130,
+            84,
+            22
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            22,
+            14
+          ],
+          "world_joint_px": [
+            124,
+            141
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "head",
+          "attachment": "p13_head",
+          "file": "images/p13_head.png",
+          "crop_px": [
+            54,
+            8,
+            173,
+            121
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            104,
+            120
+          ],
+          "world_joint_px": [
+            155,
+            125
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "ink_details",
+          "attachment": "p13_ink_details",
+          "file": "images/p13_ink_details.png",
+          "crop_px": [
+            69,
+            85,
+            176,
+            119
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            91,
+            218
+          ],
+          "world_joint_px": [
+            157,
+            300
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "source": "source/frames/14.png",
+      "size": [
+        314,
+        313
+      ],
+      "joints": {
+        "p": {
+          "root": [
+            157,
+            300
+          ],
+          "torso": [
+            154,
+            190
+          ],
+          "pelvis": [
+            154,
+            225
+          ],
+          "head": [
+            167,
+            137
+          ],
+          "scarf_front": [
+            134,
+            147
+          ],
+          "scarf_back": [
+            111,
+            144
+          ],
+          "tail": [
+            122,
+            235
+          ],
+          "upperarm_near": [
+            139,
+            163
+          ],
+          "forearm_near": [
+            150,
+            178
+          ],
+          "hand_near": [
+            180,
+            165
+          ],
+          "thigh_near": [
+            147,
+            237
+          ],
+          "shin_near": [
+            161,
+            246
+          ],
+          "boot_near": [
+            161,
+            258
+          ],
+          "upperarm_far": [
+            197,
+            168
+          ],
+          "forearm_far": [
+            212,
+            176
+          ],
+          "hand_far": [
+            229,
+            168
+          ],
+          "thigh_far": [
+            189,
+            234
+          ],
+          "shin_far": [
+            211,
+            247
+          ],
+          "boot_far": [
+            213,
+            257
+          ]
+        },
+        "a": {
+          "root": 0,
+          "torso": 0,
+          "pelvis": 0,
+          "head": 0,
+          "scarf_front": 0,
+          "scarf_back": 0,
+          "tail": 0,
+          "upperarm_near": -53.74616226255521,
+          "forearm_near": 23.428692808745403,
+          "hand_near": 13.240519915187205,
+          "thigh_near": -32.7352262721076,
+          "shin_near": -90,
+          "boot_near": -59.42077312751099,
+          "upperarm_far": -28.072486935852957,
+          "forearm_far": 25.20112364547507,
+          "hand_far": 18.43494882292201,
+          "thigh_far": -30.579226872489013,
+          "shin_far": -78.69006752597979,
+          "boot_far": -59.42077312751099
+        }
+      },
+      "parts": [
+        {
+          "slot": "tail",
+          "attachment": "p14_tail",
+          "file": "images/p14_tail.png",
+          "crop_px": [
+            37,
+            175,
+            85,
+            67
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            88,
+            63
+          ],
+          "world_joint_px": [
+            122,
+            235
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "scarf_back",
+          "attachment": "p14_scarf_back",
+          "file": "images/p14_scarf_back.png",
+          "crop_px": [
+            45,
+            123,
+            73,
+            50
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            69,
+            24
+          ],
+          "world_joint_px": [
+            111,
+            144
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_far",
+          "attachment": "p14_arm_far",
+          "file": "images/p14_arm_far.png",
+          "crop_px": [
+            194,
+            145,
+            64,
+            45
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            6,
+            26
+          ],
+          "world_joint_px": [
+            197,
+            168
+          ],
+          "world_rotation": -28.072486935852957,
+          "mesh": true
+        },
+        {
+          "slot": "leg_far",
+          "attachment": "p14_leg_far",
+          "file": "images/p14_leg_far.png",
+          "crop_px": [
+            169,
+            223,
+            84,
+            71
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            23,
+            14
+          ],
+          "world_joint_px": [
+            189,
+            234
+          ],
+          "world_rotation": -30.579226872489013,
+          "mesh": true
+        },
+        {
+          "slot": "leg_near",
+          "attachment": "p14_leg_near",
+          "file": "images/p14_leg_near.png",
+          "crop_px": [
+            110,
+            228,
+            91,
+            68
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            40,
+            12
+          ],
+          "world_joint_px": [
+            147,
+            237
+          ],
+          "world_rotation": -32.7352262721076,
+          "mesh": true
+        },
+        {
+          "slot": "torso",
+          "attachment": "p14_torso",
+          "file": "images/p14_torso.png",
+          "crop_px": [
+            107,
+            142,
+            129,
+            86
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            50,
+            51
+          ],
+          "world_joint_px": [
+            154,
+            190
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_near",
+          "attachment": "p14_arm_near",
+          "file": "images/p14_arm_near.png",
+          "crop_px": [
+            121,
+            140,
+            96,
+            57
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            21,
+            26
+          ],
+          "world_joint_px": [
+            139,
+            163
+          ],
+          "world_rotation": -53.74616226255521,
+          "mesh": true
+        },
+        {
+          "slot": "scarf_front",
+          "attachment": "p14_scarf_front",
+          "file": "images/p14_scarf_front.png",
+          "crop_px": [
+            115,
+            134,
+            83,
+            31
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            22,
+            16
+          ],
+          "world_joint_px": [
+            134,
+            147
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "head",
+          "attachment": "p14_head",
+          "file": "images/p14_head.png",
+          "crop_px": [
+            75,
+            21,
+            163,
+            120
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            95,
+            119
+          ],
+          "world_joint_px": [
+            167,
+            137
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "ink_details",
+          "attachment": "p14_ink_details",
+          "file": "images/p14_ink_details.png",
+          "crop_px": [
+            87,
+            122,
+            166,
+            104
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            73,
+            181
+          ],
+          "world_joint_px": [
+            157,
+            300
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "source": "source/frames/15.png",
+      "size": [
+        313,
+        313
+      ],
+      "joints": {
+        "p": {
+          "root": [
+            157,
+            300
+          ],
+          "torso": [
+            154,
+            189
+          ],
+          "pelvis": [
+            154,
+            225
+          ],
+          "head": [
+            175,
+            142
+          ],
+          "scarf_front": [
+            141,
+            153
+          ],
+          "scarf_back": [
+            118,
+            150
+          ],
+          "tail": [
+            122,
+            235
+          ],
+          "upperarm_near": [
+            140,
+            163
+          ],
+          "forearm_near": [
+            150,
+            182
+          ],
+          "hand_near": [
+            183,
+            178
+          ],
+          "thigh_near": [
+            146,
+            237
+          ],
+          "shin_near": [
+            161,
+            246
+          ],
+          "boot_near": [
+            161,
+            258
+          ],
+          "upperarm_far": [
+            197,
+            169
+          ],
+          "forearm_far": [
+            213,
+            179
+          ],
+          "hand_far": [
+            229,
+            180
+          ],
+          "thigh_far": [
+            189,
+            234
+          ],
+          "shin_far": [
+            210,
+            247
+          ],
+          "boot_far": [
+            213,
+            257
+          ]
+        },
+        "a": {
+          "root": 0,
+          "torso": 0,
+          "pelvis": 0,
+          "head": 0,
+          "scarf_front": 0,
+          "scarf_back": 0,
+          "tail": 0,
+          "upperarm_near": -62.24145939893997,
+          "forearm_near": 6.911227119024681,
+          "hand_near": 7.594643368591445,
+          "thigh_near": -30.96375653207352,
+          "shin_near": -90,
+          "boot_near": -61.38954033403479,
+          "upperarm_far": -32.005383208083494,
+          "forearm_far": -3.576334374997351,
+          "hand_far": 18.43494882292201,
+          "thigh_far": -31.7594800848128,
+          "shin_far": -73.30075576600638,
+          "boot_far": -59.42077312751099
+        }
+      },
+      "parts": [
+        {
+          "slot": "tail",
+          "attachment": "p15_tail",
+          "file": "images/p15_tail.png",
+          "crop_px": [
+            38,
+            173,
+            84,
+            71
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            87,
+            65
+          ],
+          "world_joint_px": [
+            122,
+            235
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "scarf_back",
+          "attachment": "p15_scarf_back",
+          "file": "images/p15_scarf_back.png",
+          "crop_px": [
+            51,
+            122,
+            74,
+            56
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            70,
+            31
+          ],
+          "world_joint_px": [
+            118,
+            150
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_far",
+          "attachment": "p15_arm_far",
+          "file": "images/p15_arm_far.png",
+          "crop_px": [
+            193,
+            157,
+            69,
+            41
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            7,
+            15
+          ],
+          "world_joint_px": [
+            197,
+            169
+          ],
+          "world_rotation": -32.005383208083494,
+          "mesh": true
+        },
+        {
+          "slot": "leg_far",
+          "attachment": "p15_leg_far",
+          "file": "images/p15_leg_far.png",
+          "crop_px": [
+            169,
+            224,
+            85,
+            70
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            23,
+            13
+          ],
+          "world_joint_px": [
+            189,
+            234
+          ],
+          "world_rotation": -31.7594800848128,
+          "mesh": true
+        },
+        {
+          "slot": "leg_near",
+          "attachment": "p15_leg_near",
+          "file": "images/p15_leg_near.png",
+          "crop_px": [
+            112,
+            228,
+            88,
+            68
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            37,
+            12
+          ],
+          "world_joint_px": [
+            146,
+            237
+          ],
+          "world_rotation": -30.96375653207352,
+          "mesh": true
+        },
+        {
+          "slot": "torso",
+          "attachment": "p15_torso",
+          "file": "images/p15_torso.png",
+          "crop_px": [
+            103,
+            148,
+            129,
+            80
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            54,
+            44
+          ],
+          "world_joint_px": [
+            154,
+            189
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "arm_near",
+          "attachment": "p15_arm_near",
+          "file": "images/p15_arm_near.png",
+          "crop_px": [
+            121,
+            149,
+            97,
+            52
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            22,
+            17
+          ],
+          "world_joint_px": [
+            140,
+            163
+          ],
+          "world_rotation": -62.24145939893997,
+          "mesh": true
+        },
+        {
+          "slot": "scarf_front",
+          "attachment": "p15_scarf_front",
+          "file": "images/p15_scarf_front.png",
+          "crop_px": [
+            122,
+            140,
+            78,
+            30
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            22,
+            16
+          ],
+          "world_joint_px": [
+            141,
+            153
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "head",
+          "attachment": "p15_head",
+          "file": "images/p15_head.png",
+          "crop_px": [
+            87,
+            22,
+            159,
+            124
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            91,
+            123
+          ],
+          "world_joint_px": [
+            175,
+            142
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        },
+        {
+          "slot": "ink_details",
+          "attachment": "p15_ink_details",
+          "file": "images/p15_ink_details.png",
+          "crop_px": [
+            101,
+            145,
+            161,
+            119
+          ],
+          "padding_px": 3,
+          "pivot_in_image_px": [
+            59,
+            158
+          ],
+          "world_joint_px": [
+            157,
+            300
+          ],
+          "world_rotation": 0,
+          "mesh": false
+        }
+      ]
+    }
+  ],
+  "clips": {
+    "run": {
+      "duration": 0.8,
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "sit_drive": {
+      "duration": 0.8,
+      "frames": [
+        8,
+        8,
+        9,
+        9,
+        10,
+        10,
+        11,
+        11
+      ]
+    },
+    "sit_fire": {
+      "duration": 1.6,
+      "frames": [
+        15,
+        13,
+        14,
+        15,
+        15,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12
+      ]
+    },
+    "idle": {
+      "duration": 1.6,
+      "frames": [
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12
+      ]
+    }
+  },
+  "alpha_cleanup": "Alpha <8 removed; alpha >=248 normalized to 255. Original visible RGB retained."
+}

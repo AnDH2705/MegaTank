@@ -1,0 +1,242 @@
+[
+  {
+    "cell": 0,
+    "name": "torso",
+    "file": "images/03_torso.png",
+    "size_px": [
+      280,
+      205
+    ],
+    "placement": [
+      16,
+      46,
+      224,
+      164
+    ]
+  },
+  {
+    "cell": 1,
+    "name": "pelvis",
+    "file": "images/04_pelvis.png",
+    "size_px": [
+      287,
+      175
+    ],
+    "placement": [
+      272,
+      60,
+      224,
+      137
+    ]
+  },
+  {
+    "cell": 2,
+    "name": "upperarm_near",
+    "file": "images/06_upperarm_near.png",
+    "size_px": [
+      212,
+      258
+    ],
+    "placement": [
+      548,
+      16,
+      184,
+      224
+    ]
+  },
+  {
+    "cell": 3,
+    "name": "forearm_near",
+    "file": "images/07_forearm_near.png",
+    "size_px": [
+      164,
+      234
+    ],
+    "placement": [
+      818,
+      16,
+      157,
+      224
+    ]
+  },
+  {
+    "cell": 4,
+    "name": "hand_near_relaxed",
+    "file": "images/08_hand_near_relaxed.png",
+    "size_px": [
+      231,
+      193
+    ],
+    "placement": [
+      16,
+      291,
+      224,
+      187
+    ]
+  },
+  {
+    "cell": 5,
+    "name": "hand_near_grip",
+    "file": "images/12_hand_near_grip.png",
+    "size_px": [
+      211,
+      218
+    ],
+    "placement": [
+      276,
+      272,
+      217,
+      224
+    ]
+  },
+  {
+    "cell": 6,
+    "name": "upperarm_far",
+    "file": "images/09_upperarm_far.png",
+    "size_px": [
+      213,
+      252
+    ],
+    "placement": [
+      546,
+      272,
+      189,
+      224
+    ]
+  },
+  {
+    "cell": 7,
+    "name": "forearm_far",
+    "file": "images/10_forearm_far.png",
+    "size_px": [
+      166,
+      233
+    ],
+    "placement": [
+      816,
+      272,
+      160,
+      224
+    ]
+  },
+  {
+    "cell": 8,
+    "name": "hand_far_relaxed",
+    "file": "images/11_hand_far_relaxed.png",
+    "size_px": [
+      230,
+      193
+    ],
+    "placement": [
+      16,
+      546,
+      224,
+      188
+    ]
+  },
+  {
+    "cell": 9,
+    "name": "hand_far_grip",
+    "file": "images/16_hand_far_grip.png",
+    "size_px": [
+      203,
+      216
+    ],
+    "placement": [
+      279,
+      528,
+      211,
+      224
+    ]
+  },
+  {
+    "cell": 10,
+    "name": "thigh_near",
+    "file": "images/13_thigh_near.png",
+    "size_px": [
+      224,
+      238
+    ],
+    "placement": [
+      535,
+      528,
+      211,
+      224
+    ]
+  },
+  {
+    "cell": 11,
+    "name": "thigh_far",
+    "file": "images/17_thigh_far.png",
+    "size_px": [
+      226,
+      242
+    ],
+    "placement": [
+      792,
+      528,
+      209,
+      224
+    ]
+  },
+  {
+    "cell": 12,
+    "name": "shin_near",
+    "file": "images/14_shin_near.png",
+    "size_px": [
+      179,
+      230
+    ],
+    "placement": [
+      41,
+      784,
+      174,
+      224
+    ]
+  },
+  {
+    "cell": 13,
+    "name": "shin_far",
+    "file": "images/18_shin_far.png",
+    "size_px": [
+      178,
+      237
+    ],
+    "placement": [
+      300,
+      784,
+      168,
+      224
+    ]
+  },
+  {
+    "cell": 14,
+    "name": "boot_near",
+    "file": "images/15_boot_near.png",
+    "size_px": [
+      243,
+      182
+    ],
+    "placement": [
+      528,
+      812,
+      224,
+      168
+    ]
+  },
+  {
+    "cell": 15,
+    "name": "boot_far",
+    "file": "images/19_boot_far.png",
+    "size_px": [
+      241,
+      182
+    ],
+    "placement": [
+      784,
+      812,
+      224,
+      169
+    ]
+  }
+]

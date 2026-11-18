@@ -1,0 +1,10 @@
+{
+  "rule": "far thigh < rounded pelvis with central groin < front thigh. Front thigh overlap cap is unoutlined.",
+  "indices": {
+    "far": 6,
+    "pelvis": 10,
+    "front": 11
+  },
+  "source": "user-pelvis-layer-guide.png",
+  "body_attachment_swaps": false
+}

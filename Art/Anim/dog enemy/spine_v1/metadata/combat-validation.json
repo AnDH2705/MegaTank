@@ -1,0 +1,285 @@
+{
+  "passed": true,
+  "engine": "Installed Spine 4.2.43 Professional: native import, .spine save, runtime JSON/atlas export and native PNG render",
+  "original_v1_art_and_clips_unchanged": null,
+  "bones": 24,
+  "slots": 20,
+  "images": 24,
+  "body_attachment_swaps": 0,
+  "max_limb_length_error": 1.1368683772161603e-13,
+  "clips": [
+    {
+      "name": "idle",
+      "duration": 1.4,
+      "native_frames": 43,
+      "size": [
+        537,
+        516
+      ],
+      "origin": [
+        188.5533596837945,
+        505.6220930232558
+      ]
+    },
+    {
+      "name": "walk",
+      "duration": 1.1,
+      "native_frames": 34,
+      "size": [
+        537,
+        516
+      ],
+      "origin": [
+        188.5533596837945,
+        505.8720930232558
+      ]
+    },
+    {
+      "name": "melee_attack",
+      "duration": 0.9,
+      "native_frames": 28,
+      "size": [
+        537,
+        516
+      ],
+      "origin": [
+        188.5533596837945,
+        505.6220930232558
+      ]
+    },
+    {
+      "name": "throw_grenade",
+      "duration": 1.15,
+      "native_frames": 36,
+      "size": [
+        537,
+        516
+      ],
+      "origin": [
+        188.5533596837945,
+        505.6220930232558
+      ]
+    },
+    {
+      "name": "hurt",
+      "duration": 0.44,
+      "native_frames": 15,
+      "size": [
+        537,
+        516
+      ],
+      "origin": [
+        188.5533596837945,
+        506.6049549236735
+      ]
+    },
+    {
+      "name": "death",
+      "duration": 1.3,
+      "native_frames": 40,
+      "size": [
+        537,
+        516
+      ],
+      "origin": [
+        188.8949102643115,
+        506.2381730810873
+      ]
+    }
+  ],
+  "source_images": [
+    {
+      "name": "head_happy",
+      "sha256": "133feff20d9604bccb09d7eab8382af092d840279db5c8af65f1c39932255853",
+      "size": [
+        258,
+        232
+      ]
+    },
+    {
+      "name": "head_recoil",
+      "sha256": "1a5f804a833f9aa211b6b48688a2a42ab9ed85096990c9f163df38b69416fad6",
+      "size": [
+        258,
+        232
+      ]
+    },
+    {
+      "name": "torso",
+      "sha256": "a0526c553211427d7864519254554fbb8008f92b0c74a1fda798b1098fd532c0",
+      "size": [
+        231,
+        176
+      ]
+    },
+    {
+      "name": "pelvis",
+      "sha256": "8e542dc2d5270bb12df2e0333a6de76852af027ccdae47de1153dd5f8dcb11c9",
+      "size": [
+        249,
+        183
+      ]
+    },
+    {
+      "name": "tail",
+      "sha256": "48e544fc17eddb8a8c50735c990a8f980bd9b9e3773c4adbb0037ca0d5900853",
+      "size": [
+        218,
+        200
+      ]
+    },
+    {
+      "name": "scarf_front",
+      "sha256": "4c810f79924105b7dcbd47ad92a16f6661ff8486389a6021d90312d0cc27829b",
+      "size": [
+        241,
+        193
+      ]
+    },
+    {
+      "name": "scarf_tails",
+      "sha256": "ebcd4fcc5132af5388b6d4f3ca38fa2321fc6cb714343d307898addf54bb9999",
+      "size": [
+        253,
+        183
+      ]
+    },
+    {
+      "name": "grenade",
+      "sha256": "a824dc5301e3185f6f8ee1348ce30bf19324c46344a7a2215c06a6223067f438",
+      "size": [
+        203,
+        218
+      ]
+    },
+    {
+      "name": "upperarm_near",
+      "sha256": "6b4eb938f2de53d9aa9c0f27564a968827bd3027ef2c23e376baadd631c65c5b",
+      "size": [
+        187,
+        244
+      ]
+    },
+    {
+      "name": "forearm_near",
+      "sha256": "6d2edbe33eebf7e29045ea966f748203d9e530f9e3c4e531eb774a227036a3ed",
+      "size": [
+        162,
+        244
+      ]
+    },
+    {
+      "name": "hand_near_relaxed",
+      "sha256": "9d9b24c9db3980cd8c4ada89d8f5d5afc0cc7395f4a60898d56f3b0324b1ebc8",
+      "size": [
+        236,
+        201
+      ]
+    },
+    {
+      "name": "hand_near_grip",
+      "sha256": "16aea081c1024ef05592767c1e8b7e8976b47c2cca3d984d12b1855c777a86c9",
+      "size": [
+        208,
+        190
+      ]
+    },
+    {
+      "name": "upperarm_far",
+      "sha256": "5a02446cef2bb380b5c74c79dba67350c419d042abace774e6a8357975fadbb8",
+      "size": [
+        195,
+        246
+      ]
+    },
+    {
+      "name": "forearm_far",
+      "sha256": "687f62f793f329266baacbebb96a9472dd9ac456fcf6163d98518667b9892a6c",
+      "size": [
+        154,
+        242
+      ]
+    },
+    {
+      "name": "hand_far_relaxed",
+      "sha256": "1c82d5a2e0f2d72bef40928e7fbf3ae7c1b423eff3c8b5c88778672bb2a4589c",
+      "size": [
+        233,
+        197
+      ]
+    },
+    {
+      "name": "hand_far_grip",
+      "sha256": "309e562ba9d500c71f041523849a866f35f9cc92093ea3ee229da60290414172",
+      "size": [
+        217,
+        183
+      ]
+    },
+    {
+      "name": "thigh_near",
+      "sha256": "a169c738aa16d67b8aa0912e292017301eb1271712131d505cdd3b0283e2ecbb",
+      "size": [
+        205,
+        240
+      ]
+    },
+    {
+      "name": "shin_near",
+      "sha256": "9bae671f3bec92ed77f996a3775a64f028a45a8b6d36c52f0c539555f17cc791",
+      "size": [
+        157,
+        238
+      ]
+    },
+    {
+      "name": "boot_near",
+      "sha256": "eff0e18ce9c64f7b8adc20324f1d1861ec3150fd6955fe60be9fec36547c8a01",
+      "size": [
+        251,
+        191
+      ]
+    },
+    {
+      "name": "hand_far_throw",
+      "sha256": "4128fcc3dd8f3486332cf71b16c0372aed5c22d4c52c453f1dd657c4612015d0",
+      "size": [
+        243,
+        211
+      ]
+    },
+    {
+      "name": "thigh_far",
+      "sha256": "8a93e9b7bc06e5edad2e028849a16ad19989a964dc78b2307250aa3237e32e87",
+      "size": [
+        210,
+        243
+      ]
+    },
+    {
+      "name": "shin_far",
+      "sha256": "641cffcb91ae874cc24666589abe76352feb02d8c1c4ab2a1af0bbd4865d7ea0",
+      "size": [
+        154,
+        239
+      ]
+    },
+    {
+      "name": "boot_far",
+      "sha256": "96fd5cc29ac73252dffdc6a6f1129e46bd96f162fe4363ead67298f2703eaccb",
+      "size": [
+        252,
+        190
+      ]
+    },
+    {
+      "name": "baton",
+      "sha256": "5df4eaad100991b4965b7b117323aee3b6caaaeb0023bfbc8446813813d40737",
+      "size": [
+        101,
+        250
+      ]
+    }
+  ],
+  "errors": []
+}

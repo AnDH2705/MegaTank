@@ -1,0 +1,103 @@
+{
+  "passed": true,
+  "engine": "Spine 4.2.43 Professional native .spine import, JSON/atlas export and PNG render",
+  "clips": [
+    {
+      "name": "idle",
+      "duration": 1.6,
+      "frames": 49
+    },
+    {
+      "name": "walk",
+      "duration": 1.25,
+      "frames": 39
+    },
+    {
+      "name": "shovel_attack",
+      "duration": 1.25,
+      "frames": 39
+    },
+    {
+      "name": "hurt",
+      "duration": 0.48,
+      "frames": 16
+    },
+    {
+      "name": "death",
+      "duration": 1.4,
+      "frames": 43
+    }
+  ],
+  "part_count": 21,
+  "bone_count": 22,
+  "body_swap_timelines": 0,
+  "joints": {
+    "neck": {
+      "min_overlap_samples": 20,
+      "samples": 364
+    },
+    "waist": {
+      "min_overlap_samples": 25,
+      "samples": 364
+    },
+    "shoulder_near": {
+      "min_overlap_samples": 25,
+      "samples": 364
+    },
+    "elbow_near": {
+      "min_overlap_samples": 25,
+      "samples": 364
+    },
+    "wrist_near": {
+      "min_overlap_samples": 21,
+      "samples": 364
+    },
+    "hip_near": {
+      "min_overlap_samples": 25,
+      "samples": 364
+    },
+    "knee_near": {
+      "min_overlap_samples": 24,
+      "samples": 364
+    },
+    "ankle_near": {
+      "min_overlap_samples": 24,
+      "samples": 364
+    },
+    "shoulder_far": {
+      "min_overlap_samples": 15,
+      "samples": 364
+    },
+    "elbow_far": {
+      "min_overlap_samples": 25,
+      "samples": 364
+    },
+    "wrist_far": {
+      "min_overlap_samples": 21,
+      "samples": 364
+    },
+    "hip_far": {
+      "min_overlap_samples": 25,
+      "samples": 364
+    },
+    "knee_far": {
+      "min_overlap_samples": 24,
+      "samples": 364
+    },
+    "ankle_far": {
+      "min_overlap_samples": 25,
+      "samples": 364
+    }
+  },
+  "max_bone_length_error": 3.552713678800501e-14,
+  "max_wrist_target_error": 6.521915363565902e-14,
+  "max_palm_shaft_error": 1.1368683772161603e-13,
+  "proportions": {
+    "head_width": 300,
+    "torso_width": 280,
+    "torso_height": 205,
+    "boot_width": 105,
+    "comparison": "same world-unit scale as default driver v1 and dog enemy v2"
+  },
+  "errors": []
+}

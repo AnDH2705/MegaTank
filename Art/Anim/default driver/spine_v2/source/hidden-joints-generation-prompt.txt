@@ -1,0 +1,41 @@
+Mode: built-in ImageGen.
+Input reference: ../default driver/cat-mechanic-comic-v1.png
+Purpose: restore hidden surfaces and split cutout anatomy for Spine; original concept retained separately.
+
++Use case: identity-preserve production game-art disassembly. Input image is the approved DEFAULT DRIVER gray tabby mechanic. Create a clean exploded CUTOUT PARTS SHEET for Spine 2D skeletal animation, NOT a sprite pose sheet. Maintain the exact cute smooth hand-inked 2D comic identity, fur colors, thick smooth outlines, cel shading, olive vest/helmet/goggles/headset, orange scarf, tan cargo shorts, dark boots. TRUE TRANSPARENT ALPHA BACKGROUND.
+
+LAYOUT is critical: portrait canvas, EXACTLY FOUR equal columns and SIX equal rows, 24 equal square cells, one and only one isolated component centered in each cell, each completely contained with at least 12% empty gutters. NO grid lines, labels, numbering or text. Components are separate anatomical pieces, never tiny whole characters. Scale each item up within its own cell for detail; we will rescale and assemble later. All face/boot directions point SCREEN RIGHT. Draw every hidden surface and closed rounded overlap cap so joints can rotate without holes. Smooth vector-like comic ink, no pixels or grit.
+
+The EXACT 24 cells, read left to right and top to bottom:
+ROW 1:
+1 complete happy HEAD with both ears, olive helmet, goggles and headset all combined; sever neatly at neck, no scarf or torso, matching reference;
+2 SAME complete HEAD, identical perspective/scale/helmet but eyes joyfully squeezed closed and mouth braced for gun recoil, no torso;
+3 TORSO only: cream tee and open olive vest with two pockets, neck stump and rounded shoulder stumps, no arms, no head, no scarf, no belt, bottom closed to tuck into hips;
+4 PELVIS/HIPS only: brown belt with buckle over tan waistband and short rounded hip section, no legs attached, no tool pouch, closed round outer hip contours.
+ROW 2:
+5 complete curved STRIPED TAIL only, thick gray tabby curved toward left, round closed root at lower right, all tail visible;
+6 orange front SCARF/BANDANA only: neck wrap and short triangular bib, no fabric tails;
+7 two orange trailing SCARF TAILS with knot at right, flowing left, isolated;
+8 leather tool POUCH with small silver wrench tucked inside, no belt or body.
+ROW 3, FAR ARM:
+9 far UPPER ARM only, short cream rolled sleeve with gray fur below, vertically downward, circular filled shoulder cap at top and round elbow cap below;
+10 far FOREARM only, gray striped short forearm with brown fingerless glove cuff at wrist, vertically downward, round filled elbow cap top and rounded wrist bottom, NO hand;
+11 far relaxed gloved PAW only, wrist root at top, loose soft curled fingers toward lower right, no arm;
+12 far GRIPPING gloved PAW only, closed grip suitable for holding a driving lever, wrist at top, side view to right, no object, no arm.
+ROW 4, NEAR ARM:
+13 near UPPER ARM, cream rolled sleeve and gray fur, top shoulder cap and bottom elbow cap fully rounded, vertically downward;
+14 near FOREARM, gray stripes and brown wrist cuff, elbow at top, wrist bottom, no hand;
+15 near relaxed gloved PAW, wrist top, soft loosely curled fingers, no arm;
+16 near GRIPPING gloved PAW, wrist top, closed gripping fingers pointing right, no object, no arm.
+ROW 5, FAR LEG:
+17 far THIGH only, tan cargo shorts leg with pocket, vertically downward, round filled hip cap at top and rounded knee contour at bottom, no shin or boot;
+18 far SHIN only, gray tabby furry lower leg, vertical, round full knee cap top and ankle bottom, no trousers or boot;
+19 far BOOT only, chunky dark rounded laced boot with tan laces, ankle opening covered with fur overlap stub, heel left, toe screen-right, flat sole;
+20 far TRIGGER GRIP gloved paw only, wrist top, index finger curled forward around an invisible trigger, no weapon, no forearm.
+ROW 6, NEAR LEG:
+21 near THIGH only, tan cargo shorts with pocket, filled ROUND convex hip cap top and round knee cap bottom, vertically downward;
+22 near SHIN only, gray tabby fur, full round knee cap top and ankle bottom, vertical, no boot;
+23 near BOOT only, chunky rounded dark boot and tan laces, complete ankle overlap stub, heel left and toe screen-right, flat sole;
+24 near TRIGGER GRIP gloved paw only, wrist root at top, index finger curling forward, no weapon or forearm.
+
+No assembled figures except the TWO HEADS. No duplicate torsos, extra limbs, guns, controls, background shadows, checkerboard, white background or decorative elements. Strict 4 columns x 6 rows. Preserve distinct matching near/far limb pairs, closed fully painted convex rounded joints. This is a practical artist-quality animation cutout kit.

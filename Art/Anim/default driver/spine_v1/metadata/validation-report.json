@@ -1,0 +1,250 @@
+{
+  "passed": true,
+  "spine_version": "4.2.43",
+  "checked_with": "Installed Spine 4.2.43 Professional: JSON import, native .spine save, native JSON and atlas export; attribute roundtrip and PNG alpha validation.",
+  "part_count": 24,
+  "bones": 24,
+  "slots": 19,
+  "attachments": 24,
+  "clips": [
+    {
+      "name": "idle",
+      "frames": 32,
+      "duration_ms": 1600
+    },
+    {
+      "name": "run",
+      "frames": 16,
+      "duration_ms": 800
+    },
+    {
+      "name": "sit_drive",
+      "frames": 20,
+      "duration_ms": 1000
+    },
+    {
+      "name": "sit_fire",
+      "frames": 13,
+      "duration_ms": 700
+    }
+  ],
+  "parts": [
+    {
+      "name": "01_head_happy",
+      "dimensions": [
+        260,
+        241
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "c0c9efbc8aa7e39d65253753c429a8cbcba0e0e651ec2810dd516b73484c3d1d"
+    },
+    {
+      "name": "02_head_recoil",
+      "dimensions": [
+        260,
+        241
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "6014647fbc93c97a2748e168b7e653ab440757b9ecf1b24a9b79a086e6e97a13"
+    },
+    {
+      "name": "03_torso",
+      "dimensions": [
+        254,
+        220
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "7d80caecff958c9dc32fa5087ccf15b0030e2a9ccf554554eac5cfac0edd43ae"
+    },
+    {
+      "name": "04_pelvis",
+      "dimensions": [
+        253,
+        169
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "c0240878b6779570d073db57f4afc0793ceb2e42e6a40b83d965007cc556555b"
+    },
+    {
+      "name": "05_tail",
+      "dimensions": [
+        233,
+        236
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "0e4ad898ce9436526507d4a55ac74ab20b591b0d4c3d6fddf1f350bf5418dec5"
+    },
+    {
+      "name": "06_scarf_front",
+      "dimensions": [
+        240,
+        176
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "d0c611c487564723f530d4541a0f102a935f0f6ac664b2a0dc6d97f71de7542c"
+    },
+    {
+      "name": "07_scarf_tails",
+      "dimensions": [
+        247,
+        178
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "e9d3dd5f2d8bcf8e9f6e6f15d2a4f0931d25652ff1758062a6b9fd296a2adb34"
+    },
+    {
+      "name": "08_tool_pouch",
+      "dimensions": [
+        196,
+        233
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "41746570886db14c80821e08e6cd33abc7c5eebff5c1d86837e921814f980472"
+    },
+    {
+      "name": "09_upperarm_far",
+      "dimensions": [
+        171,
+        253
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "c90efb6ab1354c28767c6efbf8ce2b182e5aabde9019dd9fe6d19cba4ab84312"
+    },
+    {
+      "name": "10_forearm_far",
+      "dimensions": [
+        151,
+        251
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "e67231c8162d2f1c958f328123c91334349325e2bb07f3f029dffba143a2f519"
+    },
+    {
+      "name": "11_hand_far_relaxed",
+      "dimensions": [
+        219,
+        190
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "fe45ead9cb9ce16cd6d45412a2b31c69bd8b1d08ba43a248a583d404406d5774"
+    },
+    {
+      "name": "12_hand_far_grip",
+      "dimensions": [
+        195,
+        182
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "ab8ff82ebc3e525f8e0d4d13c2acb9f9633805ae46f4bc5573db0659084e3e74"
+    },
+    {
+      "name": "13_upperarm_near",
+      "dimensions": [
+        176,
+        252
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "b8deb23ade506d16e154af70ad43531eb2a477cb346b3482f25906ae70b5ef67"
+    },
+    {
+      "name": "14_forearm_near",
+      "dimensions": [
+        144,
+        256
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "7391e972f55e14bf6356205fe4196df7ae9fe82e368381f6f90fa06000630145"
+    },
+    {
+      "name": "15_hand_near_relaxed",
+      "dimensions": [
+        221,
+        188
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "c41b5de2c9f6d96541d0ecd5651cec2a2d73424a062cef8503439ab8ffc52e59"
+    },
+    {
+      "name": "16_hand_near_grip",
+      "dimensions": [
+        204,
+        183
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "ed1fd741298a949492faf14b7f513f3cbab62443f1d9490ec91ea7f9630097b4"
+    },
+    {
+      "name": "17_thigh_far",
+      "dimensions": [
+        200,
+        244
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "7534f21cb80694469cae724db5fa4f056ba539215c4b17416ecf04f8323dc8c2"
+    },
+    {
+      "name": "18_shin_far",
+      "dimensions": [
+        148,
+        235
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "cbe4895a38ae17d9dbc5d45045dc91f0f46f6719fd42d443a3ac7387bdc0058e"
+    },
+    {
+      "name": "19_boot_far",
+      "dimensions": [
+        250,
+        189
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "5cc3196fd523ef24cfd47a23adfe5881f37da5a10d8d266a7bd81332b6223320"
+    },
+    {
+      "name": "20_hand_far_trigger",
+      "dimensions": [
+        221,
+        178
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "dfe0d76a2e8a8026e1da612b42e370c59ca0917c0b14917c3ee48eb5d6d7472f"
+    },
+    {
+      "name": "21_thigh_near",
+      "dimensions": [
+        222,
+        248
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "00a1588c256579f59b6f22bd7c6396a8b15d3be0ec7c3f3330aad3e7c749a962"
+    },
+    {
+      "name": "22_shin_near",
+      "dimensions": [
+        152,
+        238
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "7d52be361371406486340f7ac60e67fe778b683e95554ed054b66bc951c59001"
+    },
+    {
+      "name": "23_boot_near",
+      "dimensions": [
+        254,
+        190
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "af2298a32a8dc3806ddfcef3862db95876522612d7445026ea708950950b3a74"
+    },
+    {
+      "name": "24_hand_near_trigger",
+      "dimensions": [
+        225,
+        182
+      ],
+      "transparent_padding_px": 8,
+      "sha256": "b12d8459732e3e487c85c1493fab428085ecbeb15713d8952a36ff4f59d28ebf"
+    }
+  ],
+  "errors": []
+}

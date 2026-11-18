@@ -1,0 +1,30 @@
+{
+  "gif": "spine-v2-in-tank.gif",
+  "width": 720,
+  "height": 448,
+  "frames": 76,
+  "loop": 0,
+  "durationMs": 9600,
+  "bytes": 4422567,
+  "source": "Actual PNG frames exported by Spine 4.2.43 from default-driver-v2.spine",
+  "scenes": [
+    "Run on map",
+    "Drive tank",
+    "Fire cannon"
+  ],
+  "previewFrames": [
+    "scene-1-frame-00.png",
+    "scene-1-frame-01.png",
+    "scene-1-frame-04.png",
+    "scene-1-frame-12.png",
+    "scene-2-frame-00.png",
+    "scene-2-frame-01.png",
+    "scene-2-frame-04.png",
+    "scene-2-frame-12.png",
+    "scene-3-frame-00.png",
+    "scene-3-frame-01.png",
+    "scene-3-frame-04.png",
+    "scene-3-frame-12.png"
+  ],
+  "note": "Character frames are independent native Spine exports, composited with the existing tank/background/VFX assets."
+}

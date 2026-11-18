@@ -1,0 +1,118 @@
+{
+  "passed": true,
+  "engine": "Spine 4.2.43 Professional native .spine import, JSON/atlas export and PNG render",
+  "clips": [
+    {
+      "name": "idle",
+      "duration": 1.6,
+      "frames": 49
+    },
+    {
+      "name": "run",
+      "duration": 0.8,
+      "frames": 25
+    },
+    {
+      "name": "sit_drive",
+      "duration": 1,
+      "frames": 31
+    },
+    {
+      "name": "sit_fire",
+      "duration": 0.7,
+      "frames": 22
+    },
+    {
+      "name": "shovel_idle",
+      "duration": 1.2,
+      "frames": 37
+    },
+    {
+      "name": "shovel_attack",
+      "duration": 1.05,
+      "frames": 33
+    },
+    {
+      "name": "hurt",
+      "duration": 0.44,
+      "frames": 15
+    },
+    {
+      "name": "death",
+      "duration": 1.3,
+      "frames": 40
+    }
+  ],
+  "part_count": 25,
+  "bone_count": 26,
+  "body_swap_timelines": 0,
+  "joints": {
+    "neck": {
+      "min_overlap_samples": 25,
+      "samples": 494
+    },
+    "waist": {
+      "min_overlap_samples": 20,
+      "samples": 494
+    },
+    "shoulder_near": {
+      "min_overlap_samples": 25,
+      "samples": 494
+    },
+    "elbow_near": {
+      "min_overlap_samples": 23,
+      "samples": 494
+    },
+    "wrist_near": {
+      "min_overlap_samples": 19,
+      "samples": 494
+    },
+    "hip_near": {
+      "min_overlap_samples": 25,
+      "samples": 494
+    },
+    "knee_near": {
+      "min_overlap_samples": 25,
+      "samples": 494
+    },
+    "ankle_near": {
+      "min_overlap_samples": 22,
+      "samples": 494
+    },
+    "shoulder_far": {
+      "min_overlap_samples": 25,
+      "samples": 494
+    },
+    "elbow_far": {
+      "min_overlap_samples": 22,
+      "samples": 494
+    },
+    "wrist_far": {
+      "min_overlap_samples": 20,
+      "samples": 494
+    },
+    "hip_far": {
+      "min_overlap_samples": 25,
+      "samples": 494
+    },
+    "knee_far": {
+      "min_overlap_samples": 25,
+      "samples": 494
+    },
+    "ankle_far": {
+      "min_overlap_samples": 22,
+      "samples": 494
+    }
+  },
+  "max_bone_length_error": 4.263256414560601e-14,
+  "max_wrist_target_error": 5.859285502108464e-14,
+  "max_palm_shaft_error": 5.955433342649105e-14,
+  "proportions": {
+    "head_width": 300,
+    "torso_width": 205,
+    "torso_height": 180,
+    "boot_width": 100,
+    "comparison": "same world-unit scale as default driver v1 and dog enemy v2"
+  },
+  "errors": []
+}

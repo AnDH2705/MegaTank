@@ -1,0 +1,610 @@
+{
+  "passed": true,
+  "method": "Independent PNGs exported by installed Spine 4.2.43 Professional, aligned by integer translation and compared to the original demo cells. Reference alpha below 8 removed and alpha >=248 normalized opaque; original RGB preserved. This is a visual-fidelity check, not a claim of identical raw PNG bytes.",
+  "clips": [
+    {
+      "clip": "run",
+      "frames": [
+        {
+          "frame": 0,
+          "source_pose": 0,
+          "silhouette_iou": 0.9999,
+          "premultiplied_rgb_rmse": 1.454,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-run_0.png",
+          "aligned": "run-00.png"
+        },
+        {
+          "frame": 1,
+          "source_pose": 1,
+          "silhouette_iou": 0.99989,
+          "premultiplied_rgb_rmse": 1.41,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-run_1.png",
+          "aligned": "run-01.png"
+        },
+        {
+          "frame": 2,
+          "source_pose": 2,
+          "silhouette_iou": 0.99982,
+          "premultiplied_rgb_rmse": 2.473,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-run_2.png",
+          "aligned": "run-02.png"
+        },
+        {
+          "frame": 3,
+          "source_pose": 3,
+          "silhouette_iou": 0.99994,
+          "premultiplied_rgb_rmse": 1.64,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-run_3.png",
+          "aligned": "run-03.png"
+        },
+        {
+          "frame": 4,
+          "source_pose": 4,
+          "silhouette_iou": 0.99963,
+          "premultiplied_rgb_rmse": 1.759,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-run_4.png",
+          "aligned": "run-04.png"
+        },
+        {
+          "frame": 5,
+          "source_pose": 5,
+          "silhouette_iou": 0.99986,
+          "premultiplied_rgb_rmse": 1.088,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-run_5.png",
+          "aligned": "run-05.png"
+        },
+        {
+          "frame": 6,
+          "source_pose": 6,
+          "silhouette_iou": 1,
+          "premultiplied_rgb_rmse": 1.333,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-run_6.png",
+          "aligned": "run-06.png"
+        },
+        {
+          "frame": 7,
+          "source_pose": 7,
+          "silhouette_iou": 0.9998,
+          "premultiplied_rgb_rmse": 1.32,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-run_7.png",
+          "aligned": "run-07.png"
+        }
+      ],
+      "min_iou": 0.99963,
+      "max_rmse": 2.473
+    },
+    {
+      "clip": "sit_drive",
+      "frames": [
+        {
+          "frame": 0,
+          "source_pose": 8,
+          "silhouette_iou": 0.99977,
+          "premultiplied_rgb_rmse": 1.121,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_drive_0.png",
+          "aligned": "sit_drive-00.png"
+        },
+        {
+          "frame": 1,
+          "source_pose": 8,
+          "silhouette_iou": 0.99977,
+          "premultiplied_rgb_rmse": 1.121,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_drive_1.png",
+          "aligned": "sit_drive-01.png"
+        },
+        {
+          "frame": 2,
+          "source_pose": 9,
+          "silhouette_iou": 0.99997,
+          "premultiplied_rgb_rmse": 1.613,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_drive_2.png",
+          "aligned": "sit_drive-02.png"
+        },
+        {
+          "frame": 3,
+          "source_pose": 9,
+          "silhouette_iou": 0.99997,
+          "premultiplied_rgb_rmse": 1.613,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_drive_3.png",
+          "aligned": "sit_drive-03.png"
+        },
+        {
+          "frame": 4,
+          "source_pose": 10,
+          "silhouette_iou": 0.99997,
+          "premultiplied_rgb_rmse": 0.885,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_drive_4.png",
+          "aligned": "sit_drive-04.png"
+        },
+        {
+          "frame": 5,
+          "source_pose": 10,
+          "silhouette_iou": 0.99997,
+          "premultiplied_rgb_rmse": 0.885,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_drive_5.png",
+          "aligned": "sit_drive-05.png"
+        },
+        {
+          "frame": 6,
+          "source_pose": 11,
+          "silhouette_iou": 0.99997,
+          "premultiplied_rgb_rmse": 1.798,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_drive_6.png",
+          "aligned": "sit_drive-06.png"
+        },
+        {
+          "frame": 7,
+          "source_pose": 11,
+          "silhouette_iou": 0.99997,
+          "premultiplied_rgb_rmse": 1.798,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_drive_7.png",
+          "aligned": "sit_drive-07.png"
+        }
+      ],
+      "min_iou": 0.99977,
+      "max_rmse": 1.798
+    },
+    {
+      "clip": "sit_fire",
+      "frames": [
+        {
+          "frame": 0,
+          "source_pose": 15,
+          "silhouette_iou": 0.99997,
+          "premultiplied_rgb_rmse": 1.582,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_fire_00.png",
+          "aligned": "sit_fire-00.png"
+        },
+        {
+          "frame": 1,
+          "source_pose": 13,
+          "silhouette_iou": 0.99997,
+          "premultiplied_rgb_rmse": 1.32,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_fire_01.png",
+          "aligned": "sit_fire-01.png"
+        },
+        {
+          "frame": 2,
+          "source_pose": 14,
+          "silhouette_iou": 1,
+          "premultiplied_rgb_rmse": 0.775,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_fire_02.png",
+          "aligned": "sit_fire-02.png"
+        },
+        {
+          "frame": 3,
+          "source_pose": 15,
+          "silhouette_iou": 0.99997,
+          "premultiplied_rgb_rmse": 1.582,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_fire_03.png",
+          "aligned": "sit_fire-03.png"
+        },
+        {
+          "frame": 4,
+          "source_pose": 15,
+          "silhouette_iou": 0.99997,
+          "premultiplied_rgb_rmse": 1.582,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_fire_04.png",
+          "aligned": "sit_fire-04.png"
+        },
+        {
+          "frame": 5,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_fire_05.png",
+          "aligned": "sit_fire-05.png"
+        },
+        {
+          "frame": 6,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_fire_06.png",
+          "aligned": "sit_fire-06.png"
+        },
+        {
+          "frame": 7,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_fire_07.png",
+          "aligned": "sit_fire-07.png"
+        },
+        {
+          "frame": 8,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_fire_08.png",
+          "aligned": "sit_fire-08.png"
+        },
+        {
+          "frame": 9,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_fire_09.png",
+          "aligned": "sit_fire-09.png"
+        },
+        {
+          "frame": 10,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_fire_10.png",
+          "aligned": "sit_fire-10.png"
+        },
+        {
+          "frame": 11,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_fire_11.png",
+          "aligned": "sit_fire-11.png"
+        },
+        {
+          "frame": 12,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_fire_12.png",
+          "aligned": "sit_fire-12.png"
+        },
+        {
+          "frame": 13,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_fire_13.png",
+          "aligned": "sit_fire-13.png"
+        },
+        {
+          "frame": 14,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_fire_14.png",
+          "aligned": "sit_fire-14.png"
+        },
+        {
+          "frame": 15,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-sit_fire_15.png",
+          "aligned": "sit_fire-15.png"
+        }
+      ],
+      "min_iou": 0.99966,
+      "max_rmse": 2.056
+    },
+    {
+      "clip": "idle",
+      "frames": [
+        {
+          "frame": 0,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-idle_00.png",
+          "aligned": "idle-00.png"
+        },
+        {
+          "frame": 1,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-idle_01.png",
+          "aligned": "idle-01.png"
+        },
+        {
+          "frame": 2,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-idle_02.png",
+          "aligned": "idle-02.png"
+        },
+        {
+          "frame": 3,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-idle_03.png",
+          "aligned": "idle-03.png"
+        },
+        {
+          "frame": 4,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-idle_04.png",
+          "aligned": "idle-04.png"
+        },
+        {
+          "frame": 5,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-idle_05.png",
+          "aligned": "idle-05.png"
+        },
+        {
+          "frame": 6,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-idle_06.png",
+          "aligned": "idle-06.png"
+        },
+        {
+          "frame": 7,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-idle_07.png",
+          "aligned": "idle-07.png"
+        },
+        {
+          "frame": 8,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-idle_08.png",
+          "aligned": "idle-08.png"
+        },
+        {
+          "frame": 9,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-idle_09.png",
+          "aligned": "idle-09.png"
+        },
+        {
+          "frame": 10,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-idle_10.png",
+          "aligned": "idle-10.png"
+        },
+        {
+          "frame": 11,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-idle_11.png",
+          "aligned": "idle-11.png"
+        },
+        {
+          "frame": 12,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-idle_12.png",
+          "aligned": "idle-12.png"
+        },
+        {
+          "frame": 13,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-idle_13.png",
+          "aligned": "idle-13.png"
+        },
+        {
+          "frame": 14,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-idle_14.png",
+          "aligned": "idle-14.png"
+        },
+        {
+          "frame": 15,
+          "source_pose": 12,
+          "silhouette_iou": 0.99966,
+          "premultiplied_rgb_rmse": 2.056,
+          "alignment": [
+            26,
+            3
+          ],
+          "native": "default-driver-v2-idle_15.png",
+          "aligned": "idle-15.png"
+        }
+      ],
+      "min_iou": 0.99966,
+      "max_rmse": 2.056
+    }
+  ]
+}

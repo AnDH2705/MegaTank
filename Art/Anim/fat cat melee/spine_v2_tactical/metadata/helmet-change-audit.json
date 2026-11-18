@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "head_pngs_changed": 3,
+  "body_pngs_unchanged": 18,
+  "rig_and_animation_timelines_unchanged": true,
+  "registration": {
+    "source": "tactical-heads-generated.png",
+    "muzzle_registration": {
+      "old": {
+        "l": 183,
+        "t": 252,
+        "r": 464,
+        "b": 415,
+        "count": 33487
+      },
+      "new": {
+        "l": 270,
+        "t": 399,
+        "r": 656,
+        "b": 624,
+        "count": 66722
+      },
+      "scale": 0.727979274611399,
+      "dx": -13.55440414507774,
+      "dy": -39.25906735751295
+    },
+    "canvas_padding": [
+      4,
+      2,
+      5,
+      25
+    ],
+    "unchanged_body_pngs": 18,
+    "unchanged_rig_and_clips": true
+  }
+}

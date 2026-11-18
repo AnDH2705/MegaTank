@@ -1,0 +1,23 @@
+{
+  "class": "export-png",
+  "exportType": "animation",
+  "skeletonType": "all",
+  "animationType": "all",
+  "skinType": "current",
+  "maxBounds": true,
+  "renderImages": true,
+  "renderBones": false,
+  "renderOthers": false,
+  "scale": 85,
+  "fps": 30,
+  "lastFrame": true,
+  "background": {
+    "r": 0,
+    "g": 0,
+    "b": 0,
+    "a": 0
+  },
+  "rangeStart": -1,
+  "rangeEnd": -1,
+  "open": false
+}

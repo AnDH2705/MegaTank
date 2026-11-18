@@ -1,0 +1,86 @@
+{
+  "passed": true,
+  "frames": [
+    {
+      "pose": 0,
+      "source_channel_mismatches": 0,
+      "parts": 10
+    },
+    {
+      "pose": 1,
+      "source_channel_mismatches": 0,
+      "parts": 10
+    },
+    {
+      "pose": 2,
+      "source_channel_mismatches": 0,
+      "parts": 10
+    },
+    {
+      "pose": 3,
+      "source_channel_mismatches": 0,
+      "parts": 10
+    },
+    {
+      "pose": 4,
+      "source_channel_mismatches": 0,
+      "parts": 10
+    },
+    {
+      "pose": 5,
+      "source_channel_mismatches": 0,
+      "parts": 10
+    },
+    {
+      "pose": 6,
+      "source_channel_mismatches": 0,
+      "parts": 10
+    },
+    {
+      "pose": 7,
+      "source_channel_mismatches": 0,
+      "parts": 10
+    },
+    {
+      "pose": 8,
+      "source_channel_mismatches": 0,
+      "parts": 10
+    },
+    {
+      "pose": 9,
+      "source_channel_mismatches": 0,
+      "parts": 10
+    },
+    {
+      "pose": 10,
+      "source_channel_mismatches": 0,
+      "parts": 10
+    },
+    {
+      "pose": 11,
+      "source_channel_mismatches": 0,
+      "parts": 10
+    },
+    {
+      "pose": 12,
+      "source_channel_mismatches": 0,
+      "parts": 10
+    },
+    {
+      "pose": 13,
+      "source_channel_mismatches": 0,
+      "parts": 10
+    },
+    {
+      "pose": 14,
+      "source_channel_mismatches": 0,
+      "parts": 10
+    },
+    {
+      "pose": 15,
+      "source_channel_mismatches": 0,
+      "parts": 10
+    }
+  ],
+  "reference": "Original demo cells after documented alpha cleanup; this is not a raw-byte identity claim against the source PNG."
+}

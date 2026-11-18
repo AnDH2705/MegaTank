@@ -1,0 +1,536 @@
+{
+  "character": "default driver",
+  "version": 1,
+  "source": "source/parts-sheet-generated.png",
+  "method": "ImageGen restored hidden anatomy; deterministic cell extraction and alpha-island cleanup.",
+  "parts": [
+    {
+      "id": 1,
+      "name": "head_happy",
+      "file": "images/01_head_happy.png",
+      "size_px": [
+        260,
+        241
+      ],
+      "source_cell": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        12,
+        31,
+        244,
+        225
+      ],
+      "padding": 8
+    },
+    {
+      "id": 2,
+      "name": "head_recoil",
+      "file": "images/02_head_recoil.png",
+      "size_px": [
+        260,
+        241
+      ],
+      "source_cell": [
+        256,
+        0,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        12,
+        31,
+        244,
+        225
+      ],
+      "padding": 8
+    },
+    {
+      "id": 3,
+      "name": "torso",
+      "file": "images/03_torso.png",
+      "size_px": [
+        254,
+        220
+      ],
+      "source_cell": [
+        512,
+        0,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        12,
+        52,
+        238,
+        204
+      ],
+      "padding": 8
+    },
+    {
+      "id": 4,
+      "name": "pelvis",
+      "file": "images/04_pelvis.png",
+      "size_px": [
+        253,
+        169
+      ],
+      "source_cell": [
+        768,
+        0,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        6,
+        90,
+        237,
+        153
+      ],
+      "padding": 8
+    },
+    {
+      "id": 5,
+      "name": "tail",
+      "file": "images/05_tail.png",
+      "size_px": [
+        233,
+        236
+      ],
+      "source_cell": [
+        0,
+        256,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        20,
+        36,
+        217,
+        220
+      ],
+      "padding": 8
+    },
+    {
+      "id": 6,
+      "name": "scarf_front",
+      "file": "images/06_scarf_front.png",
+      "size_px": [
+        240,
+        176
+      ],
+      "source_cell": [
+        256,
+        256,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        14,
+        75,
+        224,
+        160
+      ],
+      "padding": 8
+    },
+    {
+      "id": 7,
+      "name": "scarf_tails",
+      "file": "images/07_scarf_tails.png",
+      "size_px": [
+        247,
+        178
+      ],
+      "source_cell": [
+        512,
+        256,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        14,
+        60,
+        231,
+        162
+      ],
+      "padding": 8
+    },
+    {
+      "id": 8,
+      "name": "tool_pouch",
+      "file": "images/08_tool_pouch.png",
+      "size_px": [
+        196,
+        233
+      ],
+      "source_cell": [
+        768,
+        256,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        28,
+        34,
+        180,
+        217
+      ],
+      "padding": 8
+    },
+    {
+      "id": 9,
+      "name": "upperarm_far",
+      "file": "images/09_upperarm_far.png",
+      "size_px": [
+        171,
+        253
+      ],
+      "source_cell": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        50,
+        16,
+        155,
+        237
+      ],
+      "padding": 8
+    },
+    {
+      "id": 10,
+      "name": "forearm_far",
+      "file": "images/10_forearm_far.png",
+      "size_px": [
+        151,
+        251
+      ],
+      "source_cell": [
+        256,
+        512,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        53,
+        19,
+        135,
+        235
+      ],
+      "padding": 8
+    },
+    {
+      "id": 11,
+      "name": "hand_far_relaxed",
+      "file": "images/11_hand_far_relaxed.png",
+      "size_px": [
+        219,
+        190
+      ],
+      "source_cell": [
+        512,
+        512,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        24,
+        51,
+        203,
+        174
+      ],
+      "padding": 8
+    },
+    {
+      "id": 12,
+      "name": "hand_far_grip",
+      "file": "images/12_hand_far_grip.png",
+      "size_px": [
+        195,
+        182
+      ],
+      "source_cell": [
+        768,
+        512,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        33,
+        47,
+        179,
+        166
+      ],
+      "padding": 8
+    },
+    {
+      "id": 13,
+      "name": "upperarm_near",
+      "file": "images/13_upperarm_near.png",
+      "size_px": [
+        176,
+        252
+      ],
+      "source_cell": [
+        0,
+        768,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        44,
+        15,
+        160,
+        236
+      ],
+      "padding": 8
+    },
+    {
+      "id": 14,
+      "name": "forearm_near",
+      "file": "images/14_forearm_near.png",
+      "size_px": [
+        144,
+        256
+      ],
+      "source_cell": [
+        256,
+        768,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        65,
+        14,
+        128,
+        240
+      ],
+      "padding": 8
+    },
+    {
+      "id": 15,
+      "name": "hand_near_relaxed",
+      "file": "images/15_hand_near_relaxed.png",
+      "size_px": [
+        221,
+        188
+      ],
+      "source_cell": [
+        512,
+        768,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        25,
+        52,
+        205,
+        172
+      ],
+      "padding": 8
+    },
+    {
+      "id": 16,
+      "name": "hand_near_grip",
+      "file": "images/16_hand_near_grip.png",
+      "size_px": [
+        204,
+        183
+      ],
+      "source_cell": [
+        768,
+        768,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        27,
+        45,
+        188,
+        167
+      ],
+      "padding": 8
+    },
+    {
+      "id": 17,
+      "name": "thigh_far",
+      "file": "images/17_thigh_far.png",
+      "size_px": [
+        200,
+        244
+      ],
+      "source_cell": [
+        0,
+        1024,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        34,
+        13,
+        184,
+        228
+      ],
+      "padding": 8
+    },
+    {
+      "id": 18,
+      "name": "shin_far",
+      "file": "images/18_shin_far.png",
+      "size_px": [
+        148,
+        235
+      ],
+      "source_cell": [
+        256,
+        1024,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        56,
+        19,
+        132,
+        219
+      ],
+      "padding": 8
+    },
+    {
+      "id": 19,
+      "name": "boot_far",
+      "file": "images/19_boot_far.png",
+      "size_px": [
+        250,
+        189
+      ],
+      "source_cell": [
+        512,
+        1024,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        11,
+        52,
+        234,
+        173
+      ],
+      "padding": 8
+    },
+    {
+      "id": 20,
+      "name": "hand_far_trigger",
+      "file": "images/20_hand_far_trigger.png",
+      "size_px": [
+        221,
+        178
+      ],
+      "source_cell": [
+        768,
+        1024,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        23,
+        40,
+        205,
+        162
+      ],
+      "padding": 8
+    },
+    {
+      "id": 21,
+      "name": "thigh_near",
+      "file": "images/21_thigh_near.png",
+      "size_px": [
+        222,
+        248
+      ],
+      "source_cell": [
+        0,
+        1280,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        29,
+        10,
+        206,
+        232
+      ],
+      "padding": 8
+    },
+    {
+      "id": 22,
+      "name": "shin_near",
+      "file": "images/22_shin_near.png",
+      "size_px": [
+        152,
+        238
+      ],
+      "source_cell": [
+        256,
+        1280,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        53,
+        15,
+        136,
+        222
+      ],
+      "padding": 8
+    },
+    {
+      "id": 23,
+      "name": "boot_near",
+      "file": "images/23_boot_near.png",
+      "size_px": [
+        254,
+        190
+      ],
+      "source_cell": [
+        512,
+        1280,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        9,
+        53,
+        238,
+        174
+      ],
+      "padding": 8
+    },
+    {
+      "id": 24,
+      "name": "hand_near_trigger",
+      "file": "images/24_hand_near_trigger.png",
+      "size_px": [
+        225,
+        182
+      ],
+      "source_cell": [
+        768,
+        1280,
+        256,
+        256
+      ],
+      "crop_in_cell": [
+        17,
+        41,
+        209,
+        166
+      ],
+      "padding": 8
+    }
+  ]
+}

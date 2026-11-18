@@ -1,0 +1,124 @@
+{
+  "passed": true,
+  "engine": "Spine 4.2.43 Professional native .spine import, runtime JSON/atlas export and PNG animation render",
+  "changes": [
+    "Villain and hurt faces, common crop registration",
+    "Head-neck anchor matched to torso neckline",
+    "Shoulders moved to shirt underlap centers",
+    "Fixed child local translations for head, torso, shoulders, elbows and wrists",
+    "Baton and grenade parented directly to near hand",
+    "Weighted torso mesh: lower hem pinned to pelvis to close waist gaps while leaning"
+  ],
+  "body_images_unchanged": 19,
+  "fixed_joint_alpha_coverage": {
+    "neck": {
+      "min_parent_alpha": 255,
+      "min_child_alpha": 255,
+      "samples": 387
+    },
+    "waist": {
+      "min_parent_alpha": 255,
+      "min_child_alpha": 255,
+      "samples": 387
+    },
+    "shoulder_near": {
+      "min_parent_alpha": 255,
+      "min_child_alpha": 255,
+      "samples": 387
+    },
+    "elbow_near": {
+      "min_parent_alpha": 255,
+      "min_child_alpha": 255,
+      "samples": 387
+    },
+    "wrist_near": {
+      "min_parent_alpha": 255,
+      "min_child_alpha": 255,
+      "samples": 387
+    },
+    "hip_near": {
+      "min_parent_alpha": 255,
+      "min_child_alpha": 255,
+      "samples": 387
+    },
+    "knee_near": {
+      "min_parent_alpha": 255,
+      "min_child_alpha": 255,
+      "samples": 387
+    },
+    "ankle_near": {
+      "min_parent_alpha": 255,
+      "min_child_alpha": 255,
+      "samples": 387
+    },
+    "shoulder_far": {
+      "min_parent_alpha": 255,
+      "min_child_alpha": 255,
+      "samples": 387
+    },
+    "elbow_far": {
+      "min_parent_alpha": 255,
+      "min_child_alpha": 255,
+      "samples": 387
+    },
+    "wrist_far": {
+      "min_parent_alpha": 255,
+      "min_child_alpha": 255,
+      "samples": 387
+    },
+    "hip_far": {
+      "min_parent_alpha": 255,
+      "min_child_alpha": 255,
+      "samples": 387
+    },
+    "knee_far": {
+      "min_parent_alpha": 255,
+      "min_child_alpha": 255,
+      "samples": 387
+    },
+    "ankle_far": {
+      "min_parent_alpha": 255,
+      "min_child_alpha": 255,
+      "samples": 387
+    }
+  },
+  "max_bone_length_error": 4.263256414560601e-14,
+  "child_translate_timelines": 0,
+  "torso_mesh": {
+    "max_lower_hem_drift": 0,
+    "max_weight_sum_error": 0
+  },
+  "clips": [
+    {
+      "name": "idle",
+      "duration": 1.4,
+      "native_frames": 43
+    },
+    {
+      "name": "walk",
+      "duration": 1.1,
+      "native_frames": 34
+    },
+    {
+      "name": "melee_attack",
+      "duration": 0.95,
+      "native_frames": 30
+    },
+    {
+      "name": "throw_grenade",
+      "duration": 1.15,
+      "native_frames": 36
+    },
+    {
+      "name": "hurt",
+      "duration": 0.44,
+      "native_frames": 15
+    },
+    {
+      "name": "death",
+      "duration": 1.3,
+      "native_frames": 40
+    }
+  ],
+  "errors": []
+}
