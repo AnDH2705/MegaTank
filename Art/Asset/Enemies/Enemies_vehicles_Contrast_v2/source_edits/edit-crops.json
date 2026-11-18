@@ -1,0 +1,16 @@
+{
+  "car": {
+    "left": 310,
+    "top": 0,
+    "width": 550,
+    "height": 550,
+    "body": "01_body_static.png"
+  },
+  "plane": {
+    "left": 440,
+    "top": 0,
+    "width": 530,
+    "height": 530,
+    "body": "04_body_static.png"
+  }
+}

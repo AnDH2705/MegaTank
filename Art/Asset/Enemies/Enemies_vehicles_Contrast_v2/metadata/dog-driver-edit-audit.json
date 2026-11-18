@@ -1,0 +1,179 @@
+{
+  "passed": true,
+  "tool": "built-in image_gen",
+  "source": "D:/Project/Tnak/MegaTank/Art/Asset/Enemies/Enemies_vehicles_Contrast_v2",
+  "edits": {
+    "car": {
+      "changed_pixels": 187734,
+      "changed_pixels_outside_cockpit": 0,
+      "body_dimensions_unchanged": true,
+      "edit_crop": {
+        "left": 310,
+        "top": 0,
+        "width": 550,
+        "height": 550
+      },
+      "mask_polygon": [
+        [
+          185,
+          0
+        ],
+        [
+          550,
+          0
+        ],
+        [
+          550,
+          455
+        ],
+        [
+          510,
+          520
+        ],
+        [
+          150,
+          520
+        ],
+        [
+          75,
+          473
+        ],
+        [
+          45,
+          416
+        ],
+        [
+          42,
+          348
+        ],
+        [
+          68,
+          305
+        ],
+        [
+          70,
+          240
+        ],
+        [
+          80,
+          175
+        ],
+        [
+          100,
+          140
+        ],
+        [
+          130,
+          105
+        ],
+        [
+          145,
+          70
+        ]
+      ],
+      "outfit": "Olive steel helmet, mustard khaki field jacket, dark olive harness, teal scarf, brown driving gloves",
+      "psd_layers": 3,
+      "psd_body_channels_match_png": true,
+      "ora_body_matches_png": true,
+      "layer_bounds_preserved": true
+    },
+    "plane": {
+      "changed_pixels": 143384,
+      "changed_pixels_outside_cockpit": 0,
+      "body_dimensions_unchanged": true,
+      "edit_crop": {
+        "left": 440,
+        "top": 0,
+        "width": 530,
+        "height": 530
+      },
+      "mask_polygon": [
+        [
+          50,
+          0
+        ],
+        [
+          475,
+          0
+        ],
+        [
+          475,
+          415
+        ],
+        [
+          467,
+          458
+        ],
+        [
+          452,
+          488
+        ],
+        [
+          430,
+          499
+        ],
+        [
+          138,
+          499
+        ],
+        [
+          135,
+          465
+        ],
+        [
+          130,
+          410
+        ],
+        [
+          128,
+          373
+        ],
+        [
+          120,
+          360
+        ],
+        [
+          80,
+          340
+        ],
+        [
+          65,
+          300
+        ],
+        [
+          50,
+          245
+        ]
+      ],
+      "outfit": "Burgundy leather flight cap and blue goggles, slate-blue jacket, cream shearling collar, yellow scarf, tan harness, brown gloves",
+      "psd_layers": 4,
+      "psd_body_channels_match_png": true,
+      "ora_body_matches_png": true,
+      "layer_bounds_preserved": true
+    }
+  },
+  "unchanged_moving_assets": [
+    "car/parts/02_wheel_rear.png",
+    "car/parts/03_wheel_front.png",
+    "plane/parts/01_propeller_blades.png",
+    "plane/parts/02_wheel_rear.png",
+    "plane/parts/03_wheel_main.png",
+    "plane/propeller_frames/propeller_01.png",
+    "plane/propeller_frames/propeller_02.png",
+    "plane/propeller_frames/propeller_03.png",
+    "plane/propeller_frames/propeller_04.png",
+    "plane/propeller_frames/propeller_05.png",
+    "plane/propeller_frames/propeller_06.png",
+    "plane/propeller_frames/propeller_07.png",
+    "plane/propeller_frames/propeller_08.png",
+    "plane/propeller_frames/propeller_09.png",
+    "plane/propeller_frames/propeller_10.png",
+    "plane/propeller_frames/propeller_11.png",
+    "plane/propeller_frames/propeller_12.png"
+  ],
+  "canvas_px": [
+    1536,
+    1024
+  ],
+  "pivots_and_parts_positions_unchanged": true
+}

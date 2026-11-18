@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "art": {
+    "passed": true,
+    "groups": 10,
+    "frames": 36,
+    "transparent_padding": 12,
+    "common_scale_within_each_flipbook": true,
+    "source": "built-in image_gen, redrawn from user references; no gameplay/UI extraction"
+  },
+  "preview": {
+    "frames": 104,
+    "duration_ms": 5000,
+    "renderer": "Standalone artwork/particle recipe composition, not Unity Engine capture"
+  },
+  "unity": {
+    "target": "2022.3.62f3 Built-in Render Pipeline",
+    "native_editor_compile_and_playtest": false,
+    "prefab_factory_effects": 8,
+    "pooled": true,
+    "atlas_frames": 36,
+    "new_assets_only": true
+  },
+  "json_and_asmdef_files_parsed": 4
+}

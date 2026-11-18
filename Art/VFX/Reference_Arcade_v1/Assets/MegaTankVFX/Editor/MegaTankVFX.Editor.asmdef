@@ -1,0 +1,7 @@
+{
+  "name": "MegaTankVFX.Editor",
+  "rootNamespace": "MegaTankVFX.Editor",
+  "references": ["MegaTankVFX.Runtime"],
+  "includePlatforms": ["Editor"],
+  "autoReferenced": true
+}

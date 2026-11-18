@@ -124,5 +124,12 @@
         24
       ]
     }
-  ]
+  ],
+  "driver_revision": {
+    "species": "dog",
+    "style_reference": "dog enemy/spine_v3",
+    "outfit": "Olive steel helmet, mustard khaki field jacket, dark olive harness, teal scarf, brown driving gloves",
+    "method": "Character/cockpit-only ImageGen edit; vehicle pixels outside edit mask preserved",
+    "date": "2026-11-18"
+  }
 }

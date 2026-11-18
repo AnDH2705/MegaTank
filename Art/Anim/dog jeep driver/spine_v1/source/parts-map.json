@@ -1,0 +1,122 @@
+[
+  {
+    "cell": 0,
+    "name": "head_happy",
+    "file": "images/01_head_happy.png"
+  },
+  {
+    "cell": 1,
+    "name": "head_recoil",
+    "file": "images/02_head_recoil.png"
+  },
+  {
+    "cell": 2,
+    "name": "torso",
+    "file": "images/03_torso.png"
+  },
+  {
+    "cell": 3,
+    "name": "pelvis",
+    "file": "images/04_pelvis.png"
+  },
+  {
+    "cell": 4,
+    "name": "tail",
+    "file": "images/05_tail.png"
+  },
+  {
+    "cell": 5,
+    "name": "scarf_front",
+    "file": "images/06_scarf_front.png"
+  },
+  {
+    "cell": 6,
+    "name": "scarf_tails",
+    "file": "images/07_scarf_tails.png"
+  },
+  {
+    "cell": 7,
+    "name": "tool_pouch",
+    "file": "images/08_tool_pouch.png"
+  },
+  {
+    "cell": 8,
+    "name": "upperarm_near",
+    "file": "images/09_upperarm_near.png"
+  },
+  {
+    "cell": 9,
+    "name": "forearm_near",
+    "file": "images/10_forearm_near.png"
+  },
+  {
+    "cell": 10,
+    "name": "hand_near_relaxed",
+    "file": "images/11_hand_near_relaxed.png"
+  },
+  {
+    "cell": 11,
+    "name": "hand_near_grip",
+    "file": "images/12_hand_near_grip.png"
+  },
+  {
+    "cell": 12,
+    "name": "upperarm_far",
+    "file": "images/13_upperarm_far.png"
+  },
+  {
+    "cell": 13,
+    "name": "forearm_far",
+    "file": "images/14_forearm_far.png"
+  },
+  {
+    "cell": 14,
+    "name": "hand_far_relaxed",
+    "file": "images/15_hand_far_relaxed.png"
+  },
+  {
+    "cell": 15,
+    "name": "hand_far_grip",
+    "file": "images/16_hand_far_grip.png"
+  },
+  {
+    "cell": 16,
+    "name": "thigh_near",
+    "file": "images/17_thigh_near.png"
+  },
+  {
+    "cell": 17,
+    "name": "shin_near",
+    "file": "images/18_shin_near.png"
+  },
+  {
+    "cell": 18,
+    "name": "boot_near",
+    "file": "images/19_boot_near.png"
+  },
+  {
+    "cell": 19,
+    "name": "hand_near_trigger",
+    "file": "images/20_hand_near_trigger.png"
+  },
+  {
+    "cell": 20,
+    "name": "thigh_far",
+    "file": "images/21_thigh_far.png"
+  },
+  {
+    "cell": 21,
+    "name": "shin_far",
+    "file": "images/22_shin_far.png"
+  },
+  {
+    "cell": 22,
+    "name": "boot_far",
+    "file": "images/23_boot_far.png"
+  },
+  {
+    "cell": 23,
+    "name": "hand_far_trigger",
+    "file": "images/24_hand_far_trigger.png"
+  }
+]

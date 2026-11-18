@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "groups": 10,
+  "frames": 36,
+  "transparent_padding": 12,
+  "common_scale_within_each_flipbook": true,
+  "source": "built-in image_gen, redrawn from user references; no gameplay/UI extraction"
+}

@@ -1,0 +1,746 @@
+{
+  "character": "DOG JEEP DRIVER",
+  "art": "Scruffy golden terrier, copper side-swept fur forelock, cream pointed muzzle, amber eyes, cocky grin, olive steel helmet, khaki field jacket, teal scarf, olive harness, long khaki cargo trousers, brown gloves and boots; approved smooth 2D comic style, registered to the reviewed cat-driver proportions and cutting guide.",
+  "parts": [
+    {
+      "name": "head_happy",
+      "file": "images/01_head_happy.png",
+      "size_px": [
+        512,
+        477
+      ],
+      "padding": 8,
+      "bone": "head",
+      "pivot_local_px": [
+        240.64,
+        429.3
+      ],
+      "display_scale": 0.5859375,
+      "intrinsic_axis": 0,
+      "attachment_name": "01_head_happy",
+      "attachment": {
+        "x": 9,
+        "y": 111.7969,
+        "rotation": 0,
+        "width": 512,
+        "height": 477,
+        "scaleX": 0.5859,
+        "scaleY": 0.5859
+      }
+    },
+    {
+      "name": "head_recoil",
+      "file": "images/02_head_recoil.png",
+      "size_px": [
+        512,
+        477
+      ],
+      "padding": 8,
+      "bone": "head",
+      "pivot_local_px": [
+        240.64,
+        429.3
+      ],
+      "display_scale": 0.5859375,
+      "intrinsic_axis": 0,
+      "attachment_name": "02_head_recoil",
+      "attachment": {
+        "x": 9,
+        "y": 111.7969,
+        "rotation": 0,
+        "width": 512,
+        "height": 477,
+        "scaleX": 0.5859,
+        "scaleY": 0.5859
+      }
+    },
+    {
+      "name": "torso",
+      "file": "images/03_torso.png",
+      "size_px": [
+        205,
+        180
+      ],
+      "padding": 8,
+      "bone": "torso",
+      "pivot_local_px": [
+        102.5,
+        163.8
+      ],
+      "display_scale": 1,
+      "intrinsic_axis": 0,
+      "attachment_name": "03_torso",
+      "attachment": {
+        "x": 0,
+        "y": 73.8,
+        "rotation": 0,
+        "width": 205,
+        "height": 180,
+        "scaleX": 1,
+        "scaleY": 1
+      }
+    },
+    {
+      "name": "pelvis",
+      "file": "images/04_pelvis.png",
+      "size_px": [
+        241,
+        169
+      ],
+      "padding": 8,
+      "bone": "pelvis",
+      "pivot_local_px": [
+        120.5,
+        87.44705882352942
+      ],
+      "display_scale": 0.7053941908713693,
+      "intrinsic_axis": 0,
+      "attachment_name": "04_pelvis",
+      "attachment": {
+        "x": 0,
+        "y": 2.0787999999999993,
+        "rotation": 0,
+        "width": 241,
+        "height": 169,
+        "scaleX": 0.7054,
+        "scaleY": 0.7054
+      }
+    },
+    {
+      "name": "tail",
+      "file": "images/05_tail.png",
+      "size_px": [
+        242,
+        234
+      ],
+      "padding": 8,
+      "bone": "tail",
+      "pivot_local_px": [
+        212.96,
+        187.20000000000002
+      ],
+      "display_scale": 0.743801652892562,
+      "intrinsic_axis": 0,
+      "attachment_name": "05_tail",
+      "attachment": {
+        "x": -68.4,
+        "y": 52.2149,
+        "rotation": 0,
+        "width": 242,
+        "height": 234,
+        "scaleX": 0.7438,
+        "scaleY": 0.7438
+      }
+    },
+    {
+      "name": "scarf_front",
+      "file": "images/06_scarf_front.png",
+      "size_px": [
+        232,
+        182
+      ],
+      "padding": 8,
+      "bone": "scarf_front",
+      "pivot_local_px": [
+        116,
+        27.3
+      ],
+      "display_scale": 0.625,
+      "intrinsic_axis": 0,
+      "attachment_name": "06_scarf_front",
+      "attachment": {
+        "x": 0,
+        "y": -39.8125,
+        "rotation": 0,
+        "width": 232,
+        "height": 182,
+        "scaleX": 0.625,
+        "scaleY": 0.625
+      }
+    },
+    {
+      "name": "scarf_tails",
+      "file": "images/07_scarf_tails.png",
+      "size_px": [
+        238,
+        178
+      ],
+      "padding": 8,
+      "bone": "scarf_tails",
+      "pivot_local_px": [
+        209.44,
+        89
+      ],
+      "display_scale": 0.6302521008403361,
+      "intrinsic_axis": 0,
+      "attachment_name": "07_scarf_tails",
+      "attachment": {
+        "x": -57,
+        "y": 0,
+        "rotation": 0,
+        "width": 238,
+        "height": 178,
+        "scaleX": 0.6303,
+        "scaleY": 0.6303
+      }
+    },
+    {
+      "name": "tool_pouch",
+      "file": "images/08_tool_pouch.png",
+      "size_px": [
+        182,
+        229
+      ],
+      "padding": 8,
+      "bone": "tool_pouch",
+      "pivot_local_px": [
+        91,
+        36.64
+      ],
+      "display_scale": 0.24725274725274726,
+      "intrinsic_axis": 0,
+      "attachment_name": "08_tool_pouch",
+      "attachment": {
+        "x": 0,
+        "y": -19.2511,
+        "rotation": 0,
+        "width": 182,
+        "height": 229,
+        "scaleX": 0.2473,
+        "scaleY": 0.2473
+      }
+    },
+    {
+      "name": "upperarm_near",
+      "file": "images/09_upperarm_near.png",
+      "size_px": [
+        178,
+        234
+      ],
+      "padding": 8,
+      "bone": "upperarm_near",
+      "pivot_local_px": [
+        89,
+        51.48
+      ],
+      "display_scale": 0.4411359250068927,
+      "intrinsic_axis": -90,
+      "attachment_name": "09_upperarm_near",
+      "attachment": {
+        "x": 28.9032,
+        "y": 0,
+        "rotation": 90,
+        "width": 178,
+        "height": 234,
+        "scaleX": 0.4411,
+        "scaleY": 0.4411
+      }
+    },
+    {
+      "name": "forearm_near",
+      "file": "images/10_forearm_near.png",
+      "size_px": [
+        152,
+        204
+      ],
+      "padding": 8,
+      "bone": "forearm_near",
+      "pivot_local_px": [
+        76,
+        32.64
+      ],
+      "display_scale": 0.37485582468281436,
+      "intrinsic_axis": -90,
+      "attachment_name": "10_forearm_near",
+      "attachment": {
+        "x": 26,
+        "y": 0,
+        "rotation": 90,
+        "width": 152,
+        "height": 204,
+        "scaleX": 0.3749,
+        "scaleY": 0.3749
+      }
+    },
+    {
+      "name": "hand_near_relaxed",
+      "file": "images/11_hand_near_relaxed.png",
+      "size_px": [
+        204,
+        181
+      ],
+      "padding": 8,
+      "bone": "hand_near",
+      "pivot_local_px": [
+        40.800000000000004,
+        63.349999999999994
+      ],
+      "display_scale": 0.2647058823529412,
+      "intrinsic_axis": -25,
+      "attachment_name": "11_hand_near_relaxed",
+      "attachment": {
+        "x": 17.7194,
+        "y": 0.333,
+        "rotation": 25,
+        "width": 204,
+        "height": 181,
+        "scaleX": 0.2647,
+        "scaleY": 0.2647
+      }
+    },
+    {
+      "name": "hand_near_grip",
+      "file": "images/12_hand_near_grip.png",
+      "size_px": [
+        197,
+        181
+      ],
+      "padding": 8,
+      "bone": "hand_near",
+      "pivot_local_px": [
+        35.46,
+        94.12
+      ],
+      "display_scale": 0.27411167512690354,
+      "intrinsic_axis": 0,
+      "attachment_name": "12_hand_near_grip",
+      "attachment": {
+        "x": 17.28,
+        "y": 0.9923,
+        "rotation": 0,
+        "width": 197,
+        "height": 181,
+        "scaleX": 0.2741,
+        "scaleY": 0.2741
+      }
+    },
+    {
+      "name": "upperarm_far",
+      "file": "images/13_upperarm_far.png",
+      "size_px": [
+        180,
+        231
+      ],
+      "padding": 8,
+      "bone": "upperarm_far",
+      "pivot_local_px": [
+        90,
+        50.82
+      ],
+      "display_scale": 0.44686496299399525,
+      "intrinsic_axis": -90,
+      "attachment_name": "13_upperarm_far",
+      "attachment": {
+        "x": 28.9032,
+        "y": 0,
+        "rotation": 90,
+        "width": 180,
+        "height": 231,
+        "scaleX": 0.4469,
+        "scaleY": 0.4469
+      }
+    },
+    {
+      "name": "forearm_far",
+      "file": "images/14_forearm_far.png",
+      "size_px": [
+        156,
+        204
+      ],
+      "padding": 8,
+      "bone": "forearm_far",
+      "pivot_local_px": [
+        78,
+        32.64
+      ],
+      "display_scale": 0.37485582468281436,
+      "intrinsic_axis": -90,
+      "attachment_name": "14_forearm_far",
+      "attachment": {
+        "x": 26,
+        "y": 0,
+        "rotation": 90,
+        "width": 156,
+        "height": 204,
+        "scaleX": 0.3749,
+        "scaleY": 0.3749
+      }
+    },
+    {
+      "name": "hand_far_relaxed",
+      "file": "images/15_hand_far_relaxed.png",
+      "size_px": [
+        198,
+        179
+      ],
+      "padding": 8,
+      "bone": "hand_far",
+      "pivot_local_px": [
+        39.6,
+        62.65
+      ],
+      "display_scale": 0.2727272727272727,
+      "intrinsic_axis": -25,
+      "attachment_name": "15_hand_far_relaxed",
+      "attachment": {
+        "x": 17.7769,
+        "y": 0.2098,
+        "rotation": 25,
+        "width": 198,
+        "height": 179,
+        "scaleX": 0.2727,
+        "scaleY": 0.2727
+      }
+    },
+    {
+      "name": "hand_far_grip",
+      "file": "images/16_hand_far_grip.png",
+      "size_px": [
+        195,
+        183
+      ],
+      "padding": 8,
+      "bone": "hand_far",
+      "pivot_local_px": [
+        35.1,
+        95.16
+      ],
+      "display_scale": 0.27692307692307694,
+      "intrinsic_axis": 0,
+      "attachment_name": "16_hand_far_grip",
+      "attachment": {
+        "x": 17.28,
+        "y": 1.0135,
+        "rotation": 0,
+        "width": 195,
+        "height": 183,
+        "scaleX": 0.2769,
+        "scaleY": 0.2769
+      }
+    },
+    {
+      "name": "thigh_near",
+      "file": "images/17_thigh_near.png",
+      "size_px": [
+        196,
+        256
+      ],
+      "padding": 8,
+      "bone": "thigh_near",
+      "pivot_local_px": [
+        98,
+        35.84
+      ],
+      "display_scale": 0.41429924242424243,
+      "intrinsic_axis": -90,
+      "attachment_name": "17_thigh_near",
+      "attachment": {
+        "x": 38.1818,
+        "y": 0,
+        "rotation": 90,
+        "width": 196,
+        "height": 256,
+        "scaleX": 0.4143,
+        "scaleY": 0.4143
+      }
+    },
+    {
+      "name": "shin_near",
+      "file": "images/18_shin_near.png",
+      "size_px": [
+        169,
+        247
+      ],
+      "padding": 8,
+      "bone": "shin_near",
+      "pivot_local_px": [
+        84.5,
+        56.81
+      ],
+      "display_scale": 0.3363438181251946,
+      "intrinsic_axis": -90,
+      "attachment_name": "18_shin_near",
+      "attachment": {
+        "x": 22.4308,
+        "y": 0,
+        "rotation": 90,
+        "width": 169,
+        "height": 247,
+        "scaleX": 0.3363,
+        "scaleY": 0.3363
+      }
+    },
+    {
+      "name": "boot_near",
+      "file": "images/19_boot_near.png",
+      "size_px": [
+        250,
+        196
+      ],
+      "padding": 8,
+      "bone": "boot_near",
+      "pivot_local_px": [
+        87.5,
+        45.080000000000005
+      ],
+      "display_scale": 0.4,
+      "intrinsic_axis": 0,
+      "attachment_name": "19_boot_near",
+      "attachment": {
+        "x": 15,
+        "y": -21.168,
+        "rotation": 0,
+        "width": 250,
+        "height": 196,
+        "scaleX": 0.4,
+        "scaleY": 0.4
+      }
+    },
+    {
+      "name": "hand_near_trigger",
+      "file": "images/20_hand_near_trigger.png",
+      "size_px": [
+        224,
+        163
+      ],
+      "padding": 8,
+      "bone": "hand_near",
+      "pivot_local_px": [
+        44.800000000000004,
+        57.05
+      ],
+      "display_scale": 0.24107142857142858,
+      "intrinsic_axis": -25,
+      "attachment_name": "20_hand_near_trigger",
+      "attachment": {
+        "x": 17.1732,
+        "y": 1.5045,
+        "rotation": 25,
+        "width": 224,
+        "height": 163,
+        "scaleX": 0.2411,
+        "scaleY": 0.2411
+      }
+    },
+    {
+      "name": "thigh_far",
+      "file": "images/21_thigh_far.png",
+      "size_px": [
+        209,
+        256
+      ],
+      "padding": 8,
+      "bone": "thigh_far",
+      "pivot_local_px": [
+        104.5,
+        35.84
+      ],
+      "display_scale": 0.41429924242424243,
+      "intrinsic_axis": -90,
+      "attachment_name": "21_thigh_far",
+      "attachment": {
+        "x": 38.1818,
+        "y": 0,
+        "rotation": 90,
+        "width": 209,
+        "height": 256,
+        "scaleX": 0.4143,
+        "scaleY": 0.4143
+      }
+    },
+    {
+      "name": "shin_far",
+      "file": "images/22_shin_far.png",
+      "size_px": [
+        162,
+        246
+      ],
+      "padding": 8,
+      "bone": "shin_far",
+      "pivot_local_px": [
+        81,
+        56.580000000000005
+      ],
+      "display_scale": 0.3377110694183865,
+      "intrinsic_axis": -90,
+      "attachment_name": "22_shin_far",
+      "attachment": {
+        "x": 22.4308,
+        "y": 0,
+        "rotation": 90,
+        "width": 162,
+        "height": 246,
+        "scaleX": 0.3377,
+        "scaleY": 0.3377
+      }
+    },
+    {
+      "name": "boot_far",
+      "file": "images/23_boot_far.png",
+      "size_px": [
+        248,
+        195
+      ],
+      "padding": 8,
+      "bone": "boot_far",
+      "pivot_local_px": [
+        86.8,
+        44.85
+      ],
+      "display_scale": 0.4032258064516129,
+      "intrinsic_axis": 0,
+      "attachment_name": "23_boot_far",
+      "attachment": {
+        "x": 15,
+        "y": -21.2298,
+        "rotation": 0,
+        "width": 248,
+        "height": 195,
+        "scaleX": 0.4032,
+        "scaleY": 0.4032
+      }
+    },
+    {
+      "name": "hand_far_trigger",
+      "file": "images/24_hand_far_trigger.png",
+      "size_px": [
+        221,
+        166
+      ],
+      "padding": 8,
+      "bone": "hand_far",
+      "pivot_local_px": [
+        44.2,
+        58.099999999999994
+      ],
+      "display_scale": 0.24434389140271492,
+      "intrinsic_axis": -25,
+      "attachment_name": "24_hand_far_trigger",
+      "attachment": {
+        "x": 17.2535,
+        "y": 1.3323,
+        "rotation": 25,
+        "width": 221,
+        "height": 166,
+        "scaleX": 0.2443,
+        "scaleY": 0.2443
+      }
+    },
+    {
+      "name": "shovel",
+      "file": "images/25_shovel.png",
+      "size_px": [
+        338,
+        1418
+      ],
+      "padding": 8,
+      "bone": "shovel",
+      "pivot_local_px": [
+        169,
+        411.21999999999997
+      ],
+      "display_scale": 0.3107743061365973,
+      "intrinsic_axis": -90,
+      "attachment_name": "25_shovel",
+      "attachment": {
+        "x": 92.5424,
+        "y": 0,
+        "rotation": 90,
+        "width": 338,
+        "height": 1418,
+        "scaleX": 0.3108,
+        "scaleY": 0.3108
+      }
+    }
+  ],
+  "draw_order": [
+    "tail",
+    "scarf_tails",
+    "upperarm_far",
+    "forearm_far",
+    "boot_far",
+    "shin_far",
+    "thigh_far",
+    "boot_near",
+    "shin_near",
+    "torso",
+    "pelvis",
+    "thigh_near",
+    "tool_pouch",
+    "scarf_front",
+    "head",
+    "shovel",
+    "hand_far",
+    "upperarm_near",
+    "forearm_near",
+    "hand_near"
+  ],
+  "clips": [
+    {
+      "name": "idle",
+      "duration": 1.6,
+      "loop": true
+    },
+    {
+      "name": "run",
+      "duration": 0.8,
+      "loop": true
+    },
+    {
+      "name": "sit_drive",
+      "duration": 1,
+      "loop": true
+    },
+    {
+      "name": "sit_fire",
+      "duration": 0.7,
+      "loop": true
+    },
+    {
+      "name": "shovel_idle",
+      "duration": 1.2,
+      "loop": true
+    },
+    {
+      "name": "shovel_attack",
+      "duration": 1.05,
+      "loop": false
+    },
+    {
+      "name": "hurt",
+      "duration": 0.44,
+      "loop": false
+    },
+    {
+      "name": "death",
+      "duration": 1.3,
+      "loop": false
+    }
+  ],
+  "proportions": {
+    "head_width": 300,
+    "torso_width": 205,
+    "torso_height": 180,
+    "boot_width": 100,
+    "comparison": "same world-unit scale as default driver v1 and dog enemy v2"
+  },
+  "max_shovel_wrist_reach": 103.38416275625683,
+  "rig": "Fixed child local translations, weighted waist mesh, two arm IK constraints and rotation-only hand constraint. Palm centers at shovel local X0 and X85; wrists offset local Y25.",
+  "events": {
+    "melee_hit": 0.49,
+    "weapon_drop": 0,
+    "death": 0.8,
+    "fire": 0.1
+  },
+  "pelvis_rule": "far thigh < rounded pelvis with central groin < front thigh. Front thigh overlap cap is unoutlined.",
+  "pelvis_waist_registration_y": 14,
+  "reskin": {
+    "reference": "default-driver-spine-v3-guided",
+    "identity": "Scruffy golden terrier, copper side-swept fur forelock, cream pointed muzzle, amber eyes, cocky grin, olive steel helmet, khaki field jacket, teal scarf, olive harness, long khaki cargo trousers, brown gloves and boots",
+    "body_cuts_and_pivots": "unchanged",
+    "head_and_tail": "dog silhouettes, same attachment frame and pivots",
+    "animations": "All 8 cat-driver bone/IK clips retained; death pelvis Y registered to the new dog silhouette so it rests on ground",
+    "tool": "built-in image_gen"
+  },
+  "death_ground_registration": 3.8819814956991365
+}

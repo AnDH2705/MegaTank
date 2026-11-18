@@ -1,0 +1,220 @@
+{
+  "passed": true,
+  "character": "DOG PILOT",
+  "bones": 26,
+  "clips": [
+    "idle",
+    "run",
+    "sit_drive",
+    "sit_fire",
+    "shovel_idle",
+    "shovel_attack",
+    "hurt",
+    "death"
+  ],
+  "rig_unchanged": false,
+  "parts": [
+    {
+      "part": "head_happy",
+      "dimensions": [
+        512,
+        477
+      ],
+      "original_cut_alpha_retained": false
+    },
+    {
+      "part": "head_recoil",
+      "dimensions": [
+        512,
+        477
+      ],
+      "original_cut_alpha_retained": false
+    },
+    {
+      "part": "torso",
+      "dimensions": [
+        205,
+        180
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "pelvis",
+      "dimensions": [
+        241,
+        169
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "tail",
+      "dimensions": [
+        242,
+        234
+      ],
+      "original_cut_alpha_retained": false
+    },
+    {
+      "part": "scarf_front",
+      "dimensions": [
+        232,
+        182
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "scarf_tails",
+      "dimensions": [
+        238,
+        178
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "tool_pouch",
+      "dimensions": [
+        182,
+        229
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "upperarm_near",
+      "dimensions": [
+        178,
+        234
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "forearm_near",
+      "dimensions": [
+        152,
+        204
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "hand_near_relaxed",
+      "dimensions": [
+        204,
+        181
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "hand_near_grip",
+      "dimensions": [
+        197,
+        181
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "upperarm_far",
+      "dimensions": [
+        180,
+        231
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "forearm_far",
+      "dimensions": [
+        156,
+        204
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "hand_far_relaxed",
+      "dimensions": [
+        198,
+        179
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "hand_far_grip",
+      "dimensions": [
+        195,
+        183
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "thigh_near",
+      "dimensions": [
+        196,
+        256
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "shin_near",
+      "dimensions": [
+        169,
+        247
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "boot_near",
+      "dimensions": [
+        250,
+        196
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "hand_near_trigger",
+      "dimensions": [
+        224,
+        163
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "thigh_far",
+      "dimensions": [
+        209,
+        256
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "shin_far",
+      "dimensions": [
+        162,
+        246
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "boot_far",
+      "dimensions": [
+        248,
+        195
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "hand_far_trigger",
+      "dimensions": [
+        221,
+        166
+      ],
+      "original_cut_alpha_retained": true
+    },
+    {
+      "part": "shovel",
+      "dimensions": [
+        338,
+        1418
+      ],
+      "original_cut_alpha_retained": true
+    }
+  ],
+  "bones_constraints_and_7_clips_unchanged": true,
+  "death_pelvis_y_adjusted_for_skin": true
+}

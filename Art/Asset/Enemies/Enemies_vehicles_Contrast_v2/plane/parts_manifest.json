@@ -180,5 +180,12 @@
         19
       ]
     }
-  ]
+  ],
+  "driver_revision": {
+    "species": "dog",
+    "style_reference": "dog enemy/spine_v3",
+    "outfit": "Burgundy leather flight cap and blue goggles, slate-blue jacket, cream shearling collar, yellow scarf, tan harness, brown gloves",
+    "method": "Character/cockpit-only ImageGen edit; vehicle pixels outside edit mask preserved",
+    "date": "2026-11-18"
+  }
 }
