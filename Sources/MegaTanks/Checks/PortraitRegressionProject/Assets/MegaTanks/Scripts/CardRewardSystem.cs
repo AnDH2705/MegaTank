@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace MegaTanks
@@ -30,6 +31,18 @@ namespace MegaTanks
             Scraps -= value; return true;
         }
         public void OpenBattleReward(int wave) { OpenForWave(wave, true); }
+        public void OpenRouteShop()
+        {
+            if (IsOpen) return;
+            var repair = catalog.cards.First(card => card.effect == CardEffect.Repair && card.rarity == CardRarity.Normal);
+            var supply = catalog.cards.First(card => card.effect == CardEffect.Resupply && card.rarity == CardRarity.Normal);
+            var random = catalog.RollUniqueCards(6, repair.id, supply.id);
+            offers = new CardOffer[8];
+            offers[0] = new CardOffer { card = repair };
+            offers[1] = new CardOffer { card = supply };
+            for (int i = 0; i < random.Length; i++) offers[i + 2] = new CardOffer { card = random[i] };
+            Mode = IntermissionMode.Shop;
+        }
         public void OpenForWave(int wave, bool battleReward = false)
         {
             if (IsOpen || wave < 1) return;

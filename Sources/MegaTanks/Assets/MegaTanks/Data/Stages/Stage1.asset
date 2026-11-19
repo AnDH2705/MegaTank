@@ -29,6 +29,9 @@ MonoBehaviour:
     armor:
       level: 1
       stars: 0
+    secondArmor:
+      level: 1
+      stars: 0
     crew:
     - level: 1
       stars: 0
@@ -42,7 +45,7 @@ MonoBehaviour:
     - level: 1
       stars: 0
       station: Weapon specialist
-    - level: 1
+    - level: 5
       stars: 0
       station: Commando
   firstClearGems: 100
@@ -55,6 +58,7 @@ MonoBehaviour:
   supplyWeight: 12
   repairWeight: 12
   randomWeight: 11
+  shopWeight: 10
   waveBreakSeconds: 1.25
   randomizeSeed: 1
   seed: 10427

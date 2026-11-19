@@ -25,7 +25,7 @@ namespace MegaTanks
         public CurrencyRewards FirstCompletionRewards => new CurrencyRewards(RewardValue(firstClearPartsBase,firstClearResourcesPerStage),RewardValue(firstClearPetFoodBase,firstClearResourcesPerStage),Mathf.Max(0,firstClearGems));
         int RewardValue(int initial,int step) => checked(Mathf.Max(0,initial) + (Mathf.Max(1,stageNumber)-1)*Mathf.Max(0,step));
         [Header("Stage length")]
-        [Min(2), Tooltip("Number of rounds in this stage, including the opening battle and final boss. Set independently for each stage; minimum 2.")]
+        [Min(3), Tooltip("Number of rounds including the opening battle, guaranteed pre-boss shop, and final boss. Minimum 3.")]
         public int rounds = 5;
         [Header("Intermediate node weights")]
         [Min(0)] public int battleWeight = 45;
@@ -33,6 +33,8 @@ namespace MegaTanks
         [Min(0)] public int supplyWeight = 12;
         [Min(0)] public int repairWeight = 12;
         [Min(0)] public int randomWeight = 11;
+        [Min(0), Tooltip("Random shop weight. Random shops are at least 3 rounds apart; the guaranteed pre-boss shops bypass this spacing.")]
+        public int shopWeight = 10;
         [Min(.1f)] public float waveBreakSeconds = 1.25f;
         public bool randomizeSeed = true;
         public int seed = 10427;

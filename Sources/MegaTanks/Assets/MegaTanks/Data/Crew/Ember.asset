@@ -19,16 +19,17 @@ MonoBehaviour:
   specialty: Sub gunner
   description: Patient and sharp-eyed, Ember waits for the perfect shot.
   portrait: {fileID: 21300000, guid: 180f23b3a68644c4899bbdec1729d551, type: 3}
+  commandoPrefab: {fileID: 0}
   stats:
     accuracy:
-      value: 0
-      gain: 0
+      value: 10
+      gain: 0.25
     damageBonus:
-      value: 0
-      gain: 0
+      value: 10
+      gain: 0.25
     reloadSpeed:
-      value: 0
-      gain: 0
+      value: 10
+      gain: 0.25
     criticalChance:
       value: 0
       gain: 0

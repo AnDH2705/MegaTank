@@ -36,6 +36,8 @@ namespace MegaTanks.Editor
                         var stat=(CrewStat)field.GetValue(member.stats);if(requireZeroValues){Near(stat.value,0,member.name+" "+field.Name+" base reset");Near(stat.gain,0,member.name+" "+field.Name+" gain reset");}
                     }
                     Near(member.baseDamage,0,"Legacy crew damage reset");
+                    // Keep authored tuning in snapshots, but make fixture hit rolls and gains deterministic.
+                    if(!requireZeroValues)member.stats=new CrewStats();
                 }
                 PlayerPrefs.DeleteKey("MegaTanks.Crew.Loadout");
                 PlayerPrefs.DeleteKey(PlayerProgression.DefaultSaveKey);

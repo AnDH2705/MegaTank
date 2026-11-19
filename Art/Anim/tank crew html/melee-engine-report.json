@@ -1,0 +1,94 @@
+{
+  "passed": true,
+  "ground_encounter": {
+    "road_anchored_corpse": true,
+    "jumped": true,
+    "melee_hits": 3,
+    "dog_killed": true,
+    "death_animation_state": true,
+    "returned": true,
+    "resumed_travel": true,
+    "held_frames": 365
+  },
+  "aircraft_do_not_trigger_melee": true,
+  "boss_duels": [
+    {
+      "stage": 1,
+      "both_jump_after_stop": true,
+      "both_melee": true,
+      "boss_crew_killed": 3,
+      "allied_extra_crew": [
+        {
+          "role": "cannon",
+          "hits": 5,
+          "returned": true
+        },
+        {
+          "role": "mortar",
+          "hits": 5,
+          "returned": true
+        },
+        {
+          "role": "driver",
+          "hits": 6,
+          "returned": true
+        }
+      ],
+      "returned_before_victory": true,
+      "phase": "won",
+      "seconds": 12.85,
+      "health": 328
+    },
+    {
+      "stage": 2,
+      "both_jump_after_stop": true,
+      "both_melee": true,
+      "boss_crew_killed": 3,
+      "allied_extra_crew": [
+        {
+          "role": "cannon",
+          "hits": 8,
+          "returned": true
+        },
+        {
+          "role": "mortar",
+          "hits": 8,
+          "returned": true
+        },
+        {
+          "role": "driver",
+          "hits": 9,
+          "returned": true
+        }
+      ],
+      "returned_before_victory": true,
+      "phase": "won",
+      "seconds": 15.35,
+      "health": 259.7999999999995
+    }
+  ],
+  "complete_stages": [
+    {
+      "stage": 1,
+      "phase": "won",
+      "time": 65.7,
+      "kills": 20,
+      "total": 20,
+      "dogKills": 6,
+      "bossMeleeKills": 3,
+      "health": 267,
+      "returns": 4
+    },
+    {
+      "stage": 2,
+      "phase": "won",
+      "time": 64.7,
+      "kills": 25,
+      "total": 25,
+      "dogKills": 8,
+      "bossMeleeKills": 3,
+      "health": 185,
+      "returns": 5
+    }
+  ]
+}

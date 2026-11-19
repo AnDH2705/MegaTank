@@ -26,10 +26,15 @@ namespace CatTanks
         StudioTextStyle label, title, subtitle, small;
         readonly Color ink = Catalog.Color("#d9f2ff"), cyan = Catalog.Color("#61e3f4"), gold = Catalog.Color("#ffcf75");
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-        static void EnsureGame() {if (!FindObjectOfType<CatTanksGame>()) new GameObject("CatTanks").AddComponent<CatTanksGame>();}
+        static void EnsureGame() {if (!PreviewIsolation.IsActive && !FindObjectOfType<CatTanksGame>()) new GameObject("CatTanks").AddComponent<CatTanksGame>();}
         void Awake()
         {
-            Application.targetFrameRate = 60;
+#if UNITY_EDITOR
+            EditorTestProfile.Configure();
+#endif
+            if (PreviewIsolation.IsActive) { enabled = false; return; }
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 144;
             db = Catalog.Load(); profile = Profile.Load(db); muted = PlayerPrefs.GetInt("CatTanks.Muted", 0) != 0;
             var cam = Camera.main;
             if (!cam) {var go = new GameObject("Main Camera", typeof(Camera), typeof(AudioListener)); go.tag = "MainCamera"; cam = go.GetComponent<Camera>();}
@@ -37,6 +42,7 @@ namespace CatTanks
             if (!FindObjectOfType<Light>()) {var light = new GameObject("Moonlight", typeof(Light)).GetComponent<Light>(); light.type = LightType.Directional; light.intensity = .7f; light.transform.eulerAngles = new Vector3(35, -30, 0);}
             view = new BattleView(cam); Preview();
             audioSource = gameObject.AddComponent<AudioSource>(); shot = Tone("Cannon", 110, .085f); boom = Tone("Rocket", 60, .2f);
+            var fps=new GameObject("Frame Rate Overlay");fps.transform.SetParent(transform,false);fps.AddComponent<FrameRateOverlay>();
         }
         AudioClip Tone(string name, float hz, float length)
         {
@@ -61,6 +67,10 @@ namespace CatTanks
             profile.Save(); view.Render(battle);
         }
         void Update()
+        {
+            using(new GamePerformance.Scope(GamePerformance.Area.Update))TickGame();
+        }
+        void TickGame()
         {
             if (UnityEngine.EventSystems.EventSystem.current && UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject && UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<UnityEngine.UI.InputField>() is UnityEngine.UI.InputField input && input.isFocused) return;
             if (Input.GetKeyDown(KeyCode.F)) Screen.fullScreen = !Screen.fullScreen;
@@ -96,8 +106,8 @@ namespace CatTanks
             if (!resolved && inBattle) {battle.state = BattleState.Retreated; Resolve();}
             inBattle = false; paused = false; modal = ""; view.Dispose(); view = new BattleView(Camera.main); Preview();
         }
-        void OnApplicationPause(bool pause) {if (pause && inBattle) paused = true; if (pause) profile?.Save();}
-        void OnApplicationQuit() {profile?.Save();}
+        void OnApplicationPause(bool pause) {if (PreviewIsolation.IsActive) return; if (pause && inBattle) paused = true; if (pause) profile?.Save();}
+        void OnApplicationQuit() {if (!PreviewIsolation.IsActive) profile?.Save();}
         void OnDestroy() {view?.Dispose(); if (shot) Destroy(shot); if (boom) Destroy(boom);}
         void Notify(string value) {toast = value; toastUntil = Time.unscaledTime + 3.5f;}
         bool Pay(params (string key, int amount)[] cost) {if (profile.Spend(cost)) return true; Notify("Thiếu tài nguyên"); return false;}

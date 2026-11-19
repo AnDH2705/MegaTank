@@ -63,14 +63,17 @@ namespace MegaTanks
             return pool[UnityEngine.Random.Range(0, pool.Count)];
         }
 
-        public CardDefinition[] RollUniqueCards(int count)
+        public CardDefinition[] RollUniqueCards(int count, params string[] excludedIds)
         {
             Validate();
-            if (count < 0 || count > cards.Length)
+            var excluded = new HashSet<string>(excludedIds);
+            int available = 0;
+            foreach (var card in cards) if (!excluded.Contains(card.id)) available++;
+            if (count < 0 || count > available)
                 throw new ArgumentOutOfRangeException(nameof(count), "Not enough distinct cards for this offer.");
             var pools = new List<CardDefinition>[4];
             for (int i = 0; i < pools.Length; i++) pools[i] = new List<CardDefinition>();
-            foreach (var card in cards) pools[(int)card.rarity].Add(card);
+            foreach (var card in cards) if (!excluded.Contains(card.id)) pools[(int)card.rarity].Add(card);
             var result = new CardDefinition[count];
             float[] weights = { .50f, .30f, .15f, .05f };
             for (int slot = 0; slot < count; slot++)

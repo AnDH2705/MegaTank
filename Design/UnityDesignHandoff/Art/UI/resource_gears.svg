@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="gm-resource-icon" viewBox="0 0 64 64" aria-hidden="true">
+      <defs><linearGradient id="hud-gear-steel" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#c6f0f1"/><stop offset=".5" stop-color="#7dcbd0"/><stop offset="1" stop-color="#4595a3"/></linearGradient></defs>
+      <path d="M27 5h10l2 9 7 4 9-3 5 9-7 6v8l7 6-5 9-9-3-7 4-2 8H27l-2-8-7-4-9 3-5-9 7-6v-8l-7-6 5-9 9 3 7-4z" fill="#37616d" stroke="#242532" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M27 2h10l2 9 7 4 9-3 5 9-7 6v8l7 6-5 9-9-3-7 4-2 9H27l-2-9-7-4-9 3-5-9 7-6v-8l-7-6 5-9 9 3 7-4z" fill="url(#hud-gear-steel)" stroke="#242532" stroke-width="3" stroke-linejoin="round"/><circle cx="32" cy="31" r="13" fill="#d8f0e9" stroke="#327d8d" stroke-width="3"/><circle cx="32" cy="31" r="8" fill="#343b4d" stroke="#242532" stroke-width="2"/><path d="M20 20l5-4M27 6h7" fill="none" stroke="#f3ffff" stroke-width="3" stroke-linecap="round"/>
+    </svg>

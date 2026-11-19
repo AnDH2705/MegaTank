@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "only_boss_health_css_changed": true,
+  "all_javascript_unchanged": true,
+  "comic_burst_behind_boss_title": true,
+  "embedded_vector": true,
+  "health_logic_unchanged": true
+}

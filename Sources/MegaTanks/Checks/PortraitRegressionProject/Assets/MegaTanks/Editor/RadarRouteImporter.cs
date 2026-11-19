@@ -31,6 +31,7 @@ namespace MegaTanks.Editor
                 {"nodeCurrent","Sprites/Frames/node_current.png"},{"nodeLocked","Sprites/Frames/node_locked.png"},
                 {"battle","Sprites/Icons/01_battle.png"},{"hardBattle","Sprites/Icons/02_hard_battle.png"},
                 {"supply","Sprites/Icons/03_supply.png"},{"unknown","Sprites/Icons/04_unknown.png"},{"repair","Sprites/Icons/05_heal.png"},
+                {"shop","Sprites/Icons/06_scraps_shop.png"},
                 {"backArrow","Sprites/Controls/back_arrow.png"},{"playerTank","Sprites/Controls/player_tank_marker.png"}
             };
             var skin=AssetDatabase.LoadAssetAtPath<RouteUISkin>(SkinPath);
@@ -43,7 +44,7 @@ namespace MegaTanks.Editor
                 importer.textureType=TextureImporterType.Sprite;importer.spriteImportMode=SpriteImportMode.Single;importer.spritePixelsPerUnit=100;
                 importer.spriteBorder=borders.TryGetValue(pair.Value,out var border)?border:Vector4.zero;
                 importer.alphaIsTransparency=true;importer.mipmapEnabled=false;importer.npotScale=TextureImporterNPOTScale.None;
-                importer.maxTextureSize=2048;importer.textureCompression=TextureImporterCompression.Uncompressed;
+                importer.maxTextureSize=pair.Key=="shop"?256:2048;importer.textureCompression=TextureImporterCompression.Uncompressed;
                 importer.filterMode=FilterMode.Bilinear;importer.wrapMode=TextureWrapMode.Clamp;
                 var settings=new TextureImporterSettings();importer.ReadTextureSettings(settings);
                 settings.spriteMeshType=SpriteMeshType.FullRect;settings.spriteAlignment=(int)SpriteAlignment.Center;settings.spritePivot=Vector2.one*.5f;
@@ -55,7 +56,45 @@ namespace MegaTanks.Editor
             var ui=UnityEngine.Object.FindObjectOfType<CanvasGameUI>();var view=new SerializedObject(ui);
             view.FindProperty("routeSkin").objectReferenceValue=skin;view.ApplyModifiedPropertiesWithoutUndo();
             EditorSceneManager.MarkSceneDirty(ui.gameObject.scene);EditorSceneManager.SaveOpenScenes();AssetDatabase.SaveAssets();
-            Debug.Log("MEGATANKS_RADAR_ROUTE_IMPORTED: 16 supplied sprites, source slice borders, dedicated route skin, scene binding; procedural route logic preserved.");
+            Debug.Log("MEGATANKS_RADAR_ROUTE_IMPORTED: supplied sprites plus scraps shop icon, source slice borders, dedicated route skin, scene binding; procedural route logic preserved.");
+        }
+
+        [MenuItem("MegaTanks/Import Scraps Shop Icon")]
+        public static void ImportShopIcon()
+        {
+            const string path = ArtRoot + "Sprites/Icons/06_scraps_shop.png";
+            AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceSynchronousImport);
+            var importer = (TextureImporter)AssetImporter.GetAtPath(path);
+            if (importer == null) throw new InvalidOperationException("Missing shop icon: " + path);
+            importer.textureType = TextureImporterType.Sprite;
+            importer.spriteImportMode = SpriteImportMode.Single;
+            importer.spritePixelsPerUnit = 100;
+            importer.alphaIsTransparency = true;
+            importer.mipmapEnabled = false;
+            importer.npotScale = TextureImporterNPOTScale.None;
+            importer.maxTextureSize = 256;
+            importer.textureCompression = TextureImporterCompression.Uncompressed;
+            importer.filterMode = FilterMode.Bilinear;
+            importer.wrapMode = TextureWrapMode.Clamp;
+            var settings = new TextureImporterSettings(); importer.ReadTextureSettings(settings);
+            settings.spriteMeshType = SpriteMeshType.FullRect;
+            settings.spriteAlignment = (int)SpriteAlignment.Center;
+            settings.spritePivot = Vector2.one * .5f;
+            importer.SetTextureSettings(settings); importer.SaveAndReimport();
+            var skin = AssetDatabase.LoadAssetAtPath<RouteUISkin>(SkinPath);
+            if (skin == null) throw new InvalidOperationException("Route skin missing.");
+            skin.shop = AssetDatabase.LoadAssetAtPath<Sprite>(path);
+            EditorUtility.SetDirty(skin); AssetDatabase.SaveAssets();
+            if (skin.shop == null || skin.IconFor(StageNodeType.Shop) != skin.shop || skin.shop == skin.supply)
+                throw new InvalidOperationException("Shop must use its dedicated sprite.");
+            var image = new Texture2D(2, 2);
+            try
+            {
+                if (!image.LoadImage(File.ReadAllBytes(path)) || image.GetPixel(0, 0).a > .01f || image.GetPixel(image.width - 1, image.height - 1).a > .01f)
+                    throw new InvalidOperationException("Shop icon requires a transparent background.");
+            }
+            finally { UnityEngine.Object.DestroyImmediate(image); }
+            Debug.Log("SCRAPS_SHOP_ICON_PASS: transparent dedicated Sprite, 256px import, route Shop reference saved; supply icon preserved.");
         }
     }
 }

@@ -34,6 +34,7 @@ namespace MegaTanks
         float maxHealth;
         SpriteRenderer body;
         EnemyHealthBarUI healthBar;
+        public EnemyHealthBarUI HealthBar=>healthBar;
         Color color;
         float hitUntil;
 
@@ -98,7 +99,8 @@ namespace MegaTanks
             var healthPrefab=BattleGame.Instance.EnemyDatabase.healthBarPrefab;
             if(healthPrefab==null)throw new System.InvalidOperationException("Assign EnemyHealthBar.prefab on the Enemy Data Manager.");
             healthBar=Instantiate(healthPrefab,transform,false);
-            healthBar.Configure(healthY,artworkWidth,color,BattleGame.Instance.TankCamera);
+            if(CommandoArtwork!=null)healthBar.ConfigureCommando(healthY,new Color(.96f,.37f,.4f),BattleGame.Instance.TankCamera);
+            else healthBar.Configure(healthY,artworkWidth,color,BattleGame.Instance.TankCamera);
             if (Boss == null)
             {
                 Weapon = gameObject.AddComponent<EnemyWeapon>();
@@ -106,34 +108,48 @@ namespace MegaTanks
             }
         }
 
-        void Update()
+        void Update()=>Tick(Time.deltaTime);
+        public void Tick(float deltaTime)
         {
             if (!BattleGame.Instance.Running) return;
             if(!Alive)
             {
-                if(CommandoArtwork!=null){CommandoArtwork.Advance(Time.deltaTime);corpseTime-=Time.deltaTime;if(corpseTime<=0)Destroy(gameObject);}
+                if(CommandoArtwork!=null){CommandoArtwork.Advance(deltaTime);corpseTime-=deltaTime;if(corpseTime<=0)Destroy(gameObject);}
                 return;
             }
             if(CommandoOwner!=null)
             {
-                var game=BattleGame.Instance;Vector2 target=game.TankAimPoint;
-                if(game.Commando!=null&&game.Commando.Active&&Vector2.Distance(transform.position,game.Commando.AimPoint)<Vector2.Distance(transform.position,target))target=game.Commando.AimPoint;
-                float direction=target.x-transform.position.x;ApproachDirection=direction<0?-1:1;commandoVelocity=Vector2.zero;
-                if(Vector2.Distance(transform.position,target)>Data.weapon.range)
+                var game=BattleGame.Instance;commandoVelocity=Vector2.zero;
+                if(Weapon!=null&&Weapon.IsMelee)
                 {
-                    Vector3 position=transform.position;position.x=Mathf.MoveTowards(position.x,target.x,Speed*Time.deltaTime);
-                    if(Time.deltaTime>0)commandoVelocity=Vector2.right*((position.x-transform.position.x)/Time.deltaTime);transform.position=position;
+                    var body=GetComponent<Collider2D>();var target=CommandoMelee.PlayerTarget(game,body);
+                    if(target!=null&&!(CommandoArtwork!=null&&CommandoArtwork.IsAttacking))
+                    {
+                        float direction=target.bounds.center.x-transform.position.x;if(Mathf.Abs(direction)>.0001f)ApproachDirection=direction<0?-1:1;
+                        commandoVelocity=CommandoMelee.Approach(body,target,Speed,deltaTime);
+                    }
+                }
+                else
+                {
+                    Vector2 target=game.TankAimPoint;
+                    if(game.Commando!=null&&game.Commando.Active&&Vector2.Distance(transform.position,game.Commando.AimPoint)<Vector2.Distance(transform.position,target))target=game.Commando.AimPoint;
+                    float direction=target.x-transform.position.x;ApproachDirection=direction<0?-1:1;
+                    if(Vector2.Distance(transform.position,target)>Data.weapon.range)
+                    {
+                        Vector3 position=transform.position;position.x=Mathf.MoveTowards(position.x,target.x,Speed*deltaTime);
+                        if(deltaTime>0)commandoVelocity=Vector2.right*((position.x-transform.position.x)/deltaTime);transform.position=position;
+                    }
                 }
             }
             else if ((StoppingX-transform.position.x)*ApproachDirection > 0)
             {
                 Vector3 position = transform.position;
-                position.x = Mathf.MoveTowards(position.x,StoppingX,Speed*Time.deltaTime);
+                position.x = Mathf.MoveTowards(position.x,StoppingX,Speed*deltaTime);
                 transform.position = position;
             }
             if (Boss != null) Boss.SetHitFlash(Time.time < hitUntil);
             else if (Artwork != null) Artwork.SetHitFlash(Time.time < hitUntil);
-            else if(CommandoArtwork!=null){CommandoArtwork.Face(ApproachDirection);CommandoArtwork.Locomotion(Velocity.sqrMagnitude>.00001f);CommandoArtwork.Advance(Time.deltaTime);}
+            else if(CommandoArtwork!=null){if(!CommandoArtwork.IsAttacking)CommandoArtwork.Face(ApproachDirection);CommandoArtwork.Locomotion(Velocity.sqrMagnitude>.00001f);CommandoArtwork.Advance(deltaTime);}
             else body.color = Time.time < hitUntil ? Color.white : color;
         }
 
@@ -141,16 +157,17 @@ namespace MegaTanks
         {
             if(!Alive)return new DamageResult(false,false,0,attack.DamageType);
             var result=CombatDamage.Resolve(attack,Data,areaMultiplier);
+            if(!result.Hit)BattleGame.Instance.ShowDamageNumber(DamageNumberPosition,0,false,true);
             Damage(result.Damage);return result;
         }
+
+        Vector2 DamageNumberPosition => (Vector2)transform.position + Vector2.up * (Artwork != null ? Artwork.OwnerLocalBounds.max.y + .3f : .8f);
 
         // Direct HP loss remains available for scripted effects and debug helpers.
         public void Damage(float damage)
         {
             if (!Alive || damage <= 0) return;
-            Vector2 numberPosition = transform.position;
-            numberPosition.y += Artwork != null ? Artwork.OwnerLocalBounds.max.y + .3f : .8f;
-            BattleGame.Instance.ShowDamageNumber(numberPosition, Mathf.Min(Health, damage));
+            BattleGame.Instance.ShowDamageNumber(DamageNumberPosition, Mathf.Min(Health, damage));
             Health = Mathf.Max(0, Health - damage);
             hitUntil = Time.time + .07f;
             healthBar.SetHealth(Health / maxHealth);

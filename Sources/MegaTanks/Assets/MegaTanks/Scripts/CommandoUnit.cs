@@ -11,6 +11,8 @@ namespace MegaTanks
         SpriteRenderer portrait;
         CommandoArtwork artwork;
         CommandoArtwork artworkPrefab;
+        EnemyHealthBarUI healthBar;
+        public EnemyHealthBarUI HealthBar=>healthBar;
         public CommandoArtwork Artwork=>artwork;
         TankStats defense;
         GunStats weapon;
@@ -22,6 +24,7 @@ namespace MegaTanks
         public GunStats Weapon=>weapon;
         public Vector2 Velocity { get; private set; }
         public int ShotsFired { get; private set; }
+        public int MeleeAttacks { get; private set; }
         public Vector2 AimPoint=>transform.position;
         public void Configure(BattleGame owner)
         {
@@ -31,10 +34,10 @@ namespace MegaTanks
             hitbox=gameObject.AddComponent<BoxCollider2D>();hitbox.size=new Vector2(.65f,.9f);hitbox.isTrigger=true;
             ResetForRun();
         }
-        void Stow(){visual.SetActive(false);hitbox.enabled=false;Velocity=Vector2.zero;}
+        void Stow(){artwork?.CancelAttack();visual.SetActive(false);hitbox.enabled=false;if(healthBar!=null)healthBar.gameObject.SetActive(false);Velocity=Vector2.zero;}
         public void ResetForRun()
         {
-            initialized=defeated=false;Health=0;cooldown=0;ShotsFired=0;
+            initialized=defeated=false;Health=0;cooldown=0;ShotsFired=MeleeAttacks=0;
             if(visual!=null)Stow();
         }
         void Update()=>Tick(Time.deltaTime);
@@ -73,8 +76,12 @@ namespace MegaTanks
                     if(portrait.sprite!=null)visual.transform.localScale=Vector3.one*(.85f/Mathf.Max(portrait.sprite.bounds.size.x,portrait.sprite.bounds.size.y));
                 }
                 visual.SetActive(true);hitbox.enabled=true;
+                if(healthBar==null)healthBar=Instantiate(game.EnemyDatabase.healthBarPrefab,transform,false);
+                healthBar.ConfigureCommando(.9f,new Color(.34f,.91f,1),game.TankCamera);
+                healthBar.SetHealth(MaxHealth>0?Health/MaxHealth:0);healthBar.gameObject.SetActive(true);
             }
             cooldown=Mathf.Max(0,cooldown-deltaTime);
+            if(weapon.range<=0){TickMelee(deltaTime);return;}
             var target=weapon.range>0?game.FindTarget(AimPoint,EnemyKind.Ground,weapon.range):null;
             Velocity=Vector2.zero;
             if(target==null)
@@ -97,12 +104,33 @@ namespace MegaTanks
             shell.Initialize(AimPoint,launch,weapon.projectileSpeed,weapon.damage,new Color(.4f,1,.6f),false,weapon.range,0,ProjectileTeam.Player,inheritCannonArt:false,combatStats:weapon);
             cooldown=weapon.EffectiveReloadTime;ShotsFired++;
         }
+        void TickMelee(float deltaTime)
+        {
+            var target=game.FindMeleeTarget(hitbox,game.TankAimPoint,activationRange);
+            var body=target!=null?target.GetComponent<Collider2D>():null;
+            bool attacking=artwork!=null&&artwork.IsAttacking;
+            Velocity=body!=null&&!attacking?CommandoMelee.Approach(hitbox,body,defense.advanceSpeed,deltaTime):Vector2.zero;
+            if(artwork!=null)
+            {
+                if(body!=null&&!attacking)artwork.Face(body.bounds.center.x-transform.position.x);
+                artwork.Locomotion(Velocity.sqrMagnitude>.00001f);artwork.Advance(deltaTime);
+            }
+            if(target==null||cooldown>0||(artwork!=null&&artwork.IsAttacking)||!CommandoMelee.InReach(hitbox,body))return;
+            var attack=new DamageAttack(weapon.damage,weapon);MeleeAttacks++;cooldown=Mathf.Max(.02f,weapon.EffectiveReloadTime);
+            System.Action impact=()=>{
+                if(game.Running&&Active&&target!=null&&target.Alive&&CommandoMelee.InReach(hitbox,body))target.ReceiveAttack(attack);
+            };
+            if(artwork!=null)artwork.Attack(impact);else impact();
+        }
         public DamageResult ReceiveAttack(DamageAttack attack,float areaMultiplier=1)
         {
             if(!Active||Health<=0)return new DamageResult(false,false,0,attack.DamageType);
             var result=CombatDamage.Resolve(attack,defense,areaMultiplier);Health=Mathf.Max(0,Health-result.Damage);
+            if(!result.Hit)game.ShowDamageNumber(AimPoint+Vector2.up*.8f,0,true,true);
+            if(healthBar!=null)healthBar.SetHealth(MaxHealth>0?Health/MaxHealth:0);
             if(Health<=0)
             {
+                if(healthBar!=null)healthBar.gameObject.SetActive(false);
                 defeated=true;hitbox.enabled=false;Velocity=Vector2.zero;
                 deathTime=artwork!=null?artwork.Die():0;
                 if(deathTime<=0)Stow();

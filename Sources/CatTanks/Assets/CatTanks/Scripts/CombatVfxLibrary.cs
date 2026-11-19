@@ -16,7 +16,21 @@ namespace CatTanks
         }
         public int maxActive=48;
         public List<Entry> entries=new List<Entry>();
-        public Entry Find(string key)=>entries.Find(e=>e.key==key);
+        Dictionary<string,Entry> lookup;
+        int lookupCount=-1;
+        public void InvalidateLookup(){lookup=null;}
+        void OnEnable()=>InvalidateLookup();
+        void OnValidate()=>InvalidateLookup();
+        public Entry Find(string key)
+        {
+            if(key==null)return null;
+            if(lookup==null||lookupCount!=entries.Count)
+            {
+                lookup=new Dictionary<string,Entry>();lookupCount=entries.Count;
+                foreach(var entry in entries)if(entry!=null&&entry.key!=null&&!lookup.ContainsKey(entry.key))lookup.Add(entry.key,entry);
+            }
+            return lookup.TryGetValue(key,out var value)?value:null;
+        }
         public Entry For(BattleEffect effect)
         {
             string key=effect.visual;

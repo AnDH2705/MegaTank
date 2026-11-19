@@ -22,8 +22,8 @@ MonoBehaviour:
   commandoPrefab: {fileID: 2054359462330375265, guid: bddcf7fbc3876274cac4141fcde004ac, type: 3}
   stats:
     accuracy:
-      value: 0
-      gain: 0
+      value: 100
+      gain: 1
     damageBonus:
       value: 0
       gain: 0
@@ -37,8 +37,8 @@ MonoBehaviour:
       value: 0
       gain: 0
     hp:
-      value: 0
-      gain: 0
+      value: 50
+      gain: 5
     evasion:
       value: 0
       gain: 0
@@ -46,8 +46,8 @@ MonoBehaviour:
       value: 0
       gain: 0
     damage:
-      value: 0
-      gain: 0
+      value: 25
+      gain: 1
     armor:
       value: 0
       gain: 0
@@ -70,5 +70,5 @@ MonoBehaviour:
       value: 0
       gain: 0
     activationRange:
-      value: 0
+      value: 10
       gain: 0

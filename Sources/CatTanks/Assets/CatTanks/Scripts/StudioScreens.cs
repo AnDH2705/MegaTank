@@ -64,6 +64,7 @@ namespace CatTanks
             Surface(1103,155,438,665,C("#253455"));
             Text(1131,182,370,"ẢI "+selectedStage.index.ToString("00")+"  /  "+(selectedStage.boss?"TRẬN TRÙM":"HÀNH QUÂN"),small);
             Text(1131,226,370,selectedStage.name,title,100);
+            if(studioRoot&&studioRoot.mockupKit)SpriteBox(1131,332,370,180,selectedStage.boss?"stage_boss":selectedStage.index<=5?"stage_forest":selectedStage.index<=10?"stage_fog":selectedStage.index<=15?"stage_snow":"stage_factory",Color.white);
             Icon(1207,332,180,selectedStage.boss?"Skull":"Battle");
             Text(1131,528,370,"LỰC CHIẾN ĐỀ NGHỊ",small);
             Text(1131,558,370,N(selectedStage.recommendedPower),title);

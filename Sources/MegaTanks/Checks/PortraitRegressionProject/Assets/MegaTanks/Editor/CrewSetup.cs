@@ -32,7 +32,7 @@ namespace MegaTanks.Editor
                     text.gameObject.AddComponent<ContentSizeFitter>().verticalFit=ContentSizeFitter.FitMode.PreferredSize;
                     var scroll=viewport.GetComponent<ScrollRect>();scroll.viewport=rect;scroll.content=original;scroll.horizontal=false;scroll.vertical=true;scroll.scrollSensitivity=24;scroll.movementType=ScrollRect.MovementType.Clamped;
                 }
-                view.Get<Text>("Crew Instructions").text="Select a matching crew station. Scroll the stat panel to view all stats and level gains.";
+                view.Get<Text>("Crew Instructions").text="Select crew, then click its highlighted station. Select a station to filter.";
                 for(int i=0;i<5;i++)view.Get<Text>("Slot "+i+"/Station").text=CrewDefinition.RoleLabel((CrewRole)i).ToUpperInvariant();
                 PrefabUtility.SaveAsPrefabAsset(root,PrefabPath);
             }
@@ -111,7 +111,7 @@ namespace MegaTanks.Editor
             Image(t,"Title Plate",174,0,520,108,Color.white,skin.title);
             Button(t,"Close Popup","",0,0,180,108,skin.back);Label(t,"Popup Title","CREW",216,0,430,108,42,Ink,TextAnchor.MiddleCenter);
             Label(t,"Crew Summary","0 / 5 STATIONS FILLED",1350,22,520,55,28,Gold,TextAnchor.MiddleRight);
-            Label(t,"Crew Instructions","Choose a station, select a crew member, then assign them.",470,104,1000,45,24,Paper,TextAnchor.MiddleCenter);
+            Label(t,"Crew Instructions","Select crew, then click its highlighted station. Select a station to filter.",470,104,1000,45,24,Paper,TextAnchor.MiddleCenter);
             var tank=Rect(t,"Tank Preview",520,158,880,530);tank.gameObject.AddComponent<RectMask2D>();
             var raw=Rect(tank,"Tank Avatar",0,-285,880,1100).gameObject.AddComponent<RawImage>();raw.raycastTarget=false;
             float[] sx={58,1450,1450,58,1450},sy={202,478,202,478,340};

@@ -1,0 +1,6 @@
+Mode: built-in image generation, transparent output.
+Asset: Sprites/Icons/06_scraps_shop.png
+Style reference: Sprites/Icons/03_supply.png (existing route Supply icon).
+Unity runtime import: single Sprite, 256px maximum, no mipmaps, alpha transparency, bilinear filtering, clamp wrap.
+
+undefined

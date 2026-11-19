@@ -163,12 +163,23 @@ namespace CatTanks
         }
         public Actor Target(Actor unit)
         {
-            var candidates = enemies.Where(e => !e.dead && e.position.x > -100 && e.position.x < 1720 && Vector2.Distance(e.position, unit.position) < unit.weapon.range);
-            var locked = candidates.FirstOrDefault(e => e.id == targetId); if (locked != null) return locked;
-            if (unit.weapon.kind == "sniper") return candidates.OrderByDescending(e => (e.def.boss ? 900 : 0) + (e.def.armor > 0 ? 200 : 0)).ThenBy(e => e.hp).FirstOrDefault();
-            return candidates.OrderBy(e => Vector2.Distance(e.position, unit.position)).FirstOrDefault();
+            Actor best=null;float bestDistance=float.MaxValue;int bestPriority=int.MinValue;bool sniper=unit.weapon.kind=="sniper";
+            foreach(var enemy in enemies)
+            {
+                if(enemy.dead||enemy.position.x<=-100||enemy.position.x>=1720)continue;
+                float distance=Vector2.Distance(enemy.position,unit.position);if(distance>=unit.weapon.range)continue;
+                if(enemy.id==targetId)return enemy;
+                int priority=sniper?(enemy.def.boss?900:0)+(enemy.def.armor>0?200:0):0;
+                if(best==null||(sniper?(priority>bestPriority||priority==bestPriority&&enemy.hp<best.hp):distance<bestDistance))
+                {best=enemy;bestDistance=distance;bestPriority=priority;}
+            }
+            return best;
         }
         public void Step(float dt)
+        {
+            using(new GamePerformance.Scope(GamePerformance.Area.Simulation))StepCore(dt);
+        }
+        void StepCore(float dt)
         {
             if (state != BattleState.Playing) return;
             dt = Mathf.Min(dt, .05f); time += dt;
@@ -214,7 +225,12 @@ namespace CatTanks
             effects.RemoveAll(fx => fx.life <= 0);
             if (hp <= 0) state = BattleState.Lost;
         }
-        static void Tick(Dictionary<string, float> dict, float dt) {foreach (string k in dict.Keys.ToArray()) dict[k] = Mathf.Max(0, dict[k] - dt);}
+        readonly List<string> timerKeys=new List<string>(16);
+        void Tick(Dictionary<string, float> dict, float dt)
+        {
+            timerKeys.Clear();foreach(string key in dict.Keys)timerKeys.Add(key);
+            foreach(string key in timerKeys)dict[key]=Mathf.Max(0,dict[key]-dt);
+        }
         public float Buff(string id) => buffs.TryGetValue(id, out float n) ? n : 0;
         public float Cooldown(string id) => cooldowns.TryGetValue(id, out float n) ? n : 0;
         float EnemyBuff(string id) => enemyBuffs.TryGetValue(id, out float n) ? n : 0;
@@ -316,7 +332,8 @@ namespace CatTanks
             if (d.behavior == "bee") y = 265 + Mathf.Sin(e.age * 1.4f + e.phase) * 140;
             float speed = d.speed * (e.charging ? 5 : 1);
             if (d.behavior == "tiger" && e.age % 5 > 3.8f) speed *= 3.5f;
-            if (d.behavior == "wolf" && enemies.Any(o => o != e && !o.dead && Vector2.Distance(o.position, e.position) < 180)) speed *= 1.45f;
+            if(d.behavior=="wolf")foreach(var other in enemies)
+                if(other!=e&&!other.dead&&Vector2.Distance(other.position,e.position)<180){speed*=1.45f;break;}
             if (d.behavior == "enrage" || d.behavior == "boss") speed *= 1 + (1 - ratio) * 1.5f;
             if (e.slow > 0 || Buff("freeze") > 0) speed *= .35f; if (e.stun > 0) speed = 0;
             float stop = playerX + (d.range > 0 ? d.range : 150) + d.size * .25f;
@@ -438,8 +455,8 @@ namespace CatTanks
         public void Damage(Actor e, float amount, string kind)
         {
             if (e.dead) return; float defense = e.def.armor;
-            if (new[] {"sniper", "drill", "laser", "poison", "arrow"}.Contains(kind)) defense *= .2f;
-            if (e.def.behavior == "crystal" && new[] {"laser", "plasma", "tesla", "ice", "gravity"}.Contains(kind)) defense = .58f;
+            if(kind=="sniper"||kind=="drill"||kind=="laser"||kind=="poison"||kind=="arrow")defense*=.2f;
+            if(e.def.behavior=="crystal"&&(kind=="laser"||kind=="plasma"||kind=="tesla"||kind=="ice"||kind=="gravity"))defense=.58f;
             if (e.def.behavior == "frost" && kind == "ice") defense = .8f;
             if (e.burrowed) defense = .9f; if (e.def.behavior == "tiger" && e.age % 5 > 3.8f) defense = Mathf.Max(defense, .55f);
             float absorbed = Mathf.Min(enemyDecoyHp, amount); enemyDecoyHp -= absorbed; amount -= absorbed;

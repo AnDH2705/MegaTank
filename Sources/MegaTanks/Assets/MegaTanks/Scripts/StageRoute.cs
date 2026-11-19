@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace MegaTanks
 {
-    public enum StageNodeType { Battle, HardBattle, Supply, Repair, Random, Boss }
+    public enum StageNodeType { Battle, HardBattle, Supply, Repair, Random, Boss, Shop }
     [Serializable]
     public sealed class StageNode
     {
@@ -25,16 +25,21 @@ namespace MegaTanks
         {
             var random = new Random(seed);
             var route = new StageRoute { Seed = seed };
-            int count = Math.Max(2, definition.rounds), id = 0;
-            int[] weights = { definition.battleWeight, definition.hardBattleWeight, definition.supplyWeight, definition.repairWeight, definition.randomWeight };
+            int count = Math.Max(3, definition.rounds), id = 0, lastShopRound = -3;
+            // Explicit types preserve the serialized Boss enum value when adding Shop.
+            var types = new[] { StageNodeType.Battle, StageNodeType.HardBattle, StageNodeType.Supply, StageNodeType.Repair, StageNodeType.Random, StageNodeType.Shop };
+            int[] weights = { definition.battleWeight, definition.hardBattleWeight, definition.supplyWeight, definition.repairWeight, definition.randomWeight, 0 };
             for (int round = 0; round < count; round++)
             {
                 int nodes = round == 0 || round == count - 1 ? 1 : random.Next(2, 5);
                 var column = new List<StageNode>();
+                // A column-wide cooldown protects every route, including branches that merge.
+                weights[5] = round - lastShopRound >= 3 ? definition.shopWeight : 0;
                 for (int lane = 0; lane < nodes; lane++)
                     column.Add(new StageNode { id = id++, round = round, lane = lane,
                         height = nodes == 1 ? .5f : .12f + lane * .76f / (nodes - 1) + (float)(random.NextDouble() - .5) * .04f,
-                        type = round == 0 ? StageNodeType.Battle : round == count - 1 ? StageNodeType.Boss : WeightedType(random, weights) });
+                        type = round == 0 ? StageNodeType.Battle : round == count - 1 ? StageNodeType.Boss : round == count - 2 ? StageNodeType.Shop : WeightedType(random, weights, types) });
+                if (column.Any(node => node.type == StageNodeType.Shop)) lastShopRound = round;
                 route.rounds.Add(column);
             }
             for (int round = 0; round < count - 1; round++)
@@ -58,12 +63,12 @@ namespace MegaTanks
             }
             return route;
         }
-        static StageNodeType WeightedType(Random random, int[] weights)
+        static StageNodeType WeightedType(Random random, int[] weights, StageNodeType[] types)
         {
             int sum = weights.Sum(weight => Math.Max(0, weight));
             if (sum == 0) return StageNodeType.Battle;
             int roll = random.Next(sum);
-            for (int i = 0; i < weights.Length; i++) { roll -= Math.Max(0, weights[i]); if (roll < 0) return (StageNodeType)i; }
+            for (int i = 0; i < weights.Length; i++) { roll -= Math.Max(0, weights[i]); if (roll < 0) return types[i]; }
             return StageNodeType.Battle;
         }
         static bool CanConnect(StageNode source, StageNode destination, List<StageNode> from, List<StageNode> to)

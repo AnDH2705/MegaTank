@@ -91,7 +91,7 @@ namespace MegaTanks.Editor
                     var lengthCheck=UnityEngine.Object.Instantiate(progress.Definition);
                     try
                     {
-                        foreach(int count in new[]{2,5,7,10,15})
+                        foreach(int count in new[]{3,5,7,10,15})
                         {
                             lengthCheck.rounds=count;CheckMaps(lengthCheck);
                         }

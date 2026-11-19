@@ -58,7 +58,20 @@ namespace CatTanks
         public string[] nexus = new string[8];
         public List<string> claimed = new List<string>();
         [JsonIgnore] public static string TestSavePath;
-        [JsonIgnore] public static string SavePath => TestSavePath ?? Path.Combine(Application.persistentDataPath, "cattanks-profile.json");
+        [JsonIgnore] public static string SavePath
+        {
+            get
+            {
+#if DEVELOPMENT_BUILD || UNITY_EDITOR
+                PerformanceBenchmark.RequireSafeProfile();
+#endif
+#if UNITY_EDITOR
+                // Script reload during test Play resets statics; retain command-line isolation.
+                if(TestSavePath==null)EditorTestProfile.Configure();
+#endif
+                return TestSavePath ?? Path.Combine(Application.persistentDataPath, "cattanks-profile.json");
+            }
+        }
         [JsonIgnore] public int FloorCount => Mathf.Min(5, 1 + accountLevel / 20);
         [JsonIgnore] public int SquadCount => 2 + (accountLevel >= 8 ? 1 : 0) + (accountLevel >= 15 ? 1 : 0) + (accountLevel >= 25 ? 1 : 0);
         [JsonIgnore] public int PetCount => pets.Count == 0 ? 0 : 1 + (pets.Count >= 5 || accountLevel >= 10 ? 1 : 0) + (pets.Count >= 10 || accountLevel >= 25 ? 1 : 0);
@@ -85,6 +98,7 @@ namespace CatTanks
         }
         public static Profile Load(Catalog db)
         {
+            PreviewIsolation.RequireLiveGame();
             foreach (string path in new[] {SavePath, SavePath + ".bak"})
             {
                 if (!File.Exists(path)) continue;
@@ -100,6 +114,7 @@ namespace CatTanks
         }
         public void Save()
         {
+            PreviewIsolation.RequireLiveGame();
             Directory.CreateDirectory(Path.GetDirectoryName(SavePath));
             string tmp = SavePath + ".tmp";
             File.WriteAllText(tmp, JsonConvert.SerializeObject(this, Formatting.Indented));

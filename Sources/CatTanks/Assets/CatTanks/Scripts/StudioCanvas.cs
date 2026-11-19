@@ -19,14 +19,27 @@ namespace CatTanks
             public StudioWidgetBinding binding; public RectTransform rect; public Image image;
             public Text text; public UnityEngine.UI.Button button; public ScrollRect scroll;
             public RectTransform content; public InputField input;
+            public StudioButtonLayout layout;public bool clickBound;public string context;
         }
         readonly Dictionary<string,Widget> uiWidgets=new Dictionary<string,Widget>();
+        struct WidgetAddress:IEquatable<WidgetAddress>
+        {
+            public string view,kind,container;public float x,y;
+            public bool Equals(WidgetAddress other)=>view==other.view&&kind==other.kind&&container==other.container&&x==other.x&&y==other.y;
+            public override bool Equals(object value)=>value is WidgetAddress other&&Equals(other);
+            public override int GetHashCode(){unchecked{return ((((view.GetHashCode()*397)^kind.GetHashCode())*397^container.GetHashCode())*397^x.GetHashCode())*397^y.GetHashCode();}}
+        }
+        struct WidgetIdentity{public string id,key;}
+        readonly Dictionary<WidgetAddress,WidgetIdentity> widgetIdentities=new Dictionary<WidgetAddress,WidgetIdentity>();
         readonly HashSet<string> usedWidgets=new HashSet<string>();
         readonly HashSet<string> usedViews=new HashSet<string>();
         readonly List<UnityEngine.UI.Button> focusable=new List<UnityEngine.UI.Button>();
+        readonly List<StudioButtonLayout> activeLayouts=new List<StudioButtonLayout>();
+        readonly Dictionary<Transform,int> siblingCursors=new Dictionary<Transform,int>();
         StudioUIRoot studioRoot;
         Canvas studioCanvas;
         RectTransform uiRoot,uiParent;
+        RectTransform floatingLayer;
         StudioUITheme theme;
         Widget lastButton;
         string pendingButton,drawnContext="",renderViewKey="",uiContainer="",scrollContext="";
@@ -38,7 +51,20 @@ namespace CatTanks
         StudioTextStyle hudText,hudMeta;
         public bool UiReady=>studioCanvas&&theme&&!renderingUi;
         public StudioUIRoot CanvasRoot=>studioRoot;
-        string UiContext=>page+"/"+tab+"/"+modal+"/"+inBattle+"/"+paused+"/"+resolved;
+        string contextPage,contextTab,contextModal,cachedContext;
+        bool contextBattle,contextPaused,contextResolved;
+        string UiContext
+        {
+            get
+            {
+                if(cachedContext==null||contextPage!=page||contextTab!=tab||contextModal!=modal||contextBattle!=inBattle||contextPaused!=paused||contextResolved!=resolved)
+                {
+                    contextPage=page;contextTab=tab;contextModal=modal;contextBattle=inBattle;contextPaused=paused;contextResolved=resolved;
+                    cachedContext=page+"/"+tab+"/"+modal+"/"+inBattle+"/"+paused+"/"+resolved;
+                }
+                return cachedContext;
+            }
+        }
         static Color C(string hex)=>Catalog.Color(hex);
         void EnsureCanvas()
         {
@@ -47,13 +73,16 @@ namespace CatTanks
             if(!authoringUi)studioRoot=FindObjectOfType<StudioUIRoot>();
             if(!studioRoot&&!authoringUi)
             {
-                var prefab=Resources.Load<StudioUIRoot>("UI/CatTanksUI");
+                var prefab=Resources.Load<StudioUIRoot>("UI/Mockup/CatTanksUI");
+                if(!prefab)prefab=Resources.Load<StudioUIRoot>("UI/CatTanksUI");
                 if(prefab)studioRoot=Instantiate(prefab);
             }
 #if UNITY_EDITOR
             if(!studioRoot){authoringUi=true;CreateAuthoringCanvas();}
 #endif
             if(!studioRoot)throw new InvalidOperationException("CatTanks UI prefab is missing. Build the UI prefabs from CatTanks > UI.");
+            if(studioRoot.theme)theme=studioRoot.theme;
+            if(studioRoot.mockupKit){title.color=C("#ffcc32");subtitle.color=label.color=small.color=Color.white;}
             studioCanvas=studioRoot.GetComponent<Canvas>();uiRoot=studioRoot.viewport;
             foreach(var view in studioRoot.GetComponentsInChildren<StudioUIView>(true))
                 foreach(var binding in view.GetComponentsInChildren<StudioWidgetBinding>(true))
@@ -65,7 +94,7 @@ namespace CatTanks
         public void BeginUiAuthoring()
         {
             if(studioRoot)studioRoot.gameObject.SetActive(false);
-            studioRoot=null;studioCanvas=null;uiWidgets.Clear();authoringUi=true;EnsureCanvas();
+            studioRoot=null;studioCanvas=null;uiWidgets.Clear();widgetIdentities.Clear();lastScreenWidth=lastScreenHeight=0;authoringUi=true;EnsureCanvas();
         }
         void CreateAuthoringCanvas()
         {
@@ -96,17 +125,34 @@ namespace CatTanks
         public void RefreshCanvas()=>RefreshUi();
         void RefreshUi()
         {
+            using(new GamePerformance.Scope(GamePerformance.Area.UI))RefreshUiCore();
+        }
+        void RefreshUiCore()
+        {
             if(renderingUi||db==null)return;EnsureCanvas();renderingUi=true;
             try
             {
                 if(pendingButton!=null){dispatchOnly=true;RenderPass();dispatchOnly=false;pendingButton=null;}
+                bool resized=Screen.width!=lastScreenWidth||Screen.height!=lastScreenHeight||Screen.safeArea!=lastSafeArea;
                 nextUiRefresh=Time.unscaledTime+(inBattle?.05f:.2f);lastScreenWidth=Screen.width;lastScreenHeight=Screen.height;lastSafeArea=Screen.safeArea;
-                var safe=Screen.safeArea;float scale=Mathf.Min(safe.width/1600f,safe.height/900f);
-                uiRoot.anchorMin=uiRoot.anchorMax=uiRoot.pivot=new Vector2(.5f,.5f);uiRoot.sizeDelta=new Vector2(1600,900);uiRoot.localScale=Vector3.one*scale;
-                uiRoot.anchoredPosition=safe.center-new Vector2(Screen.width,Screen.height)/2;
-                usedWidgets.Clear();usedViews.Clear();focusable.Clear();drawnContext=UiContext;RenderPass();
+                if(resized)
+                {
+                    var safe=Screen.safeArea;float scale=Mathf.Min(safe.width/1600f,safe.height/900f);
+                    uiRoot.anchorMin=uiRoot.anchorMax=uiRoot.pivot=new Vector2(.5f,.5f);uiRoot.sizeDelta=new Vector2(1600,900);uiRoot.localScale=Vector3.one*scale;
+                    uiRoot.anchoredPosition=safe.center-new Vector2(Screen.width,Screen.height)/2;
+                }
+                usedWidgets.Clear();usedViews.Clear();focusable.Clear();activeLayouts.Clear();siblingCursors.Clear();drawnContext=UiContext;RenderPass();
                 foreach(var pair in uiWidgets)if(pair.Value.rect)pair.Value.rect.gameObject.SetActive(usedWidgets.Contains(pair.Key));
-                foreach(var view in studioRoot.GetComponentsInChildren<StudioUIView>(true))view.gameObject.SetActive(usedViews.Contains(view.key));
+                foreach(var view in studioRoot.Views)
+                {
+                    view.gameObject.SetActive(usedViews.Contains(view.key));
+                    if(studioRoot.mockupKit)
+                    {
+                        var portrait=view.transform.Find("Mockup Commander Portrait");if(portrait)portrait.SetAsLastSibling();
+                        var workshop=view.transform.Find("Mockup Workshop");if(workshop){workshop.gameObject.SetActive(profile.gear.Count==0);workshop.SetAsLastSibling();}
+                    }
+                }
+                if(studioRoot.mockupKit)foreach(var layout in activeLayouts)layout.Apply();
             }
             finally{dispatchOnly=false;renderingUi=false;}
         }
@@ -142,15 +188,26 @@ namespace CatTanks
                 var parent=layer=="screen"?studioRoot.screens:layer=="popup"?studioRoot.popups:studioRoot.notifications;
                 var rt=MakeRect((layer=="popup"?"Popup_":"Screen_")+key,parent);Place(rt,0,0,1600,900);
                 view=rt.gameObject.AddComponent<StudioUIView>();view.key=key;view.layer=layer;
+                studioRoot.InvalidateViews();
             }
 #endif
             if(!view)throw new InvalidOperationException("Missing UI view prefab: "+key);
             view.gameObject.SetActive(true);uiParent=(RectTransform)view.transform;usedViews.Add(key);
         }
-        string WidgetId(string kind,float x,float y)=>kind+":"+uiContainer+":"+x.ToString("0.###",CultureInfo.InvariantCulture)+":"+y.ToString("0.###",CultureInfo.InvariantCulture);
-        Widget GetWidget(string kind,float x,float y,float w,float h,bool dynamicLayout=false)
+        WidgetIdentity Identity(string kind,float x,float y)
         {
-            string id=WidgetId(kind,x,y),key=renderViewKey+"/"+id;usedWidgets.Add(key);
+            var address=new WidgetAddress{view=renderViewKey,kind=kind,container=uiContainer,x=x,y=y};
+            if(!widgetIdentities.TryGetValue(address,out var identity))
+            {
+                string id=kind+":"+uiContainer+":"+x.ToString("0.###",CultureInfo.InvariantCulture)+":"+y.ToString("0.###",CultureInfo.InvariantCulture);
+                identity=new WidgetIdentity{id=id,key=renderViewKey+"/"+id};widgetIdentities.Add(address,identity);
+            }
+            return identity;
+        }
+        string WidgetId(string kind,float x,float y)=>Identity(kind,x,y).id;
+        Widget GetWidget(string kind,float x,float y,float w,float h,bool dynamicLayout=false,bool placeGeometry=true)
+        {
+            var identity=Identity(kind,x,y);string id=identity.id,key=identity.key;usedWidgets.Add(key);
             if(!uiWidgets.TryGetValue(key,out var item))
             {
                 var prefab=studioRoot.Component(kind);
@@ -165,15 +222,28 @@ namespace CatTanks
                 uiWidgets[key]=item;
             }
             item.rect.gameObject.SetActive(true);
-            if(item.rect.parent!=uiParent)item.rect.SetParent(uiParent,false);
-            if(authoringUi||!item.binding.authored||dynamicLayout)Place(item.rect,x,y,w,h);
-            item.rect.SetAsLastSibling();return item;
+            var owner=item.binding.layoutOwner?item.binding.layoutOwner:uiParent;
+            if(item.rect.parent!=owner)item.rect.SetParent(owner,false);
+            if(placeGeometry&&(authoringUi||!item.binding.authored||dynamicLayout))Place(item.rect,x,y,w,h);
+            if(!item.binding.layoutOwner)
+            {
+                siblingCursors.TryGetValue(owner,out int index);
+                if(item.rect.GetSiblingIndex()!=index)item.rect.SetSiblingIndex(index);
+                siblingCursors[owner]=index+1;
+            }
+            return item;
         }
         Widget Bind(StudioWidgetBinding binding)
         {
             var go=binding.gameObject;var item=new Widget{binding=binding,rect=(RectTransform)binding.transform,image=go.GetComponent<Image>(),button=go.GetComponent<UnityEngine.UI.Button>(),scroll=go.GetComponent<ScrollRect>(),input=go.GetComponent<InputField>()};
             item.text=binding.kind=="text"?go.GetComponent<Text>():go.GetComponentInChildren<Text>(true);
             if(item.scroll)item.content=item.scroll.content;
+            if(item.button&&studioRoot.mockupKit)
+            {
+                var layout=go.GetComponent<StudioButtonLayout>();if(!layout)layout=go.AddComponent<StudioButtonLayout>();
+                if(!layout.label)layout.label=item.text;
+                item.layout=layout;
+            }
             if(item.input){item.input.onEndEdit.RemoveAllListeners();item.input.onEndEdit.AddListener(value=>{profile.name=string.IsNullOrWhiteSpace(value)?"Chỉ huy mèo":value.Trim();profile.Save();});}
             return item;
         }
@@ -210,9 +280,34 @@ namespace CatTanks
             rt.anchorMin=rt.anchorMax=new Vector2(0,1);rt.pivot=new Vector2(0,1);rt.anchoredPosition=new Vector2(x,-y);rt.sizeDelta=new Vector2(w,h);rt.localScale=Vector3.one;
         }
         bool Configure(Widget item)=>authoringUi||!item.binding.authored;
+        void FloatingText(int slot,Vector2 position,BattleEffect effect)
+        {
+            if(dispatchOnly)return;
+            if(!floatingLayer)
+            {
+                floatingLayer=new GameObject("Pooled Damage Text",typeof(RectTransform),typeof(Canvas)).GetComponent<RectTransform>();
+                floatingLayer.SetParent(studioRoot.Find("battle").transform,false);
+                floatingLayer.anchorMin=Vector2.zero;floatingLayer.anchorMax=Vector2.one;
+                floatingLayer.offsetMin=floatingLayer.offsetMax=Vector2.zero;
+            }
+            var parent=uiParent;string container=uiContainer;uiParent=floatingLayer;uiContainer="floating";
+            var item=GetWidget("text",slot,0,110,35,true,false);
+            uiParent=parent;uiContainer=container;
+            Place(item.rect,position.x-25,position.y,110,35);
+            item.text.text=effect.text;item.text.color=small.color*effect.color;item.text.fontSize=small.fontSize;
+            item.text.fontStyle=small.fontStyle;item.text.alignment=TextAnchor.UpperLeft;
+            floatingLayer.SetAsLastSibling();
+        }
         void SpriteBox(float x,float y,float w,float h,string key,Color color,bool preserve=false,string kind="image")
         {
-            if(dispatchOnly)return;var item=GetWidget(kind,x,y,w,h,key=="fill");
+            if(dispatchOnly)return;bool fill=key=="fill"||key.StartsWith("bar_fill_");var item=GetWidget(kind,x,y,w,h,fill);
+            if(studioRoot.mockupKit)
+            {
+                string skin=string.IsNullOrEmpty(item.binding.spriteKey)?key:item.binding.spriteKey;
+                StudioNineSlice.Apply(item.image,theme.Get(skin),skin.StartsWith("bar_")?5:skin=="panel"?16:14,preserve);
+                item.image.color=kind=="scrim"?color:Color.white;
+                return;
+            }
             if(Configure(item)||key=="fill")
             {
                 StudioNineSlice.Apply(item.image,theme?theme.Get(key):null,key=="bar"||key=="fill"?5:key=="panel"?16:14,preserve);item.image.color=color;
@@ -228,7 +323,7 @@ namespace CatTanks
         }
         bool Button(float x,float y,float w,float h,string value,bool enabled=true,bool primary=false)
         {
-            string id=renderViewKey+"/"+WidgetId("button",x,y);
+            string id=Identity("button",x,y).key;
             if(dispatchOnly){if(pendingButton!=id||!enabled||!uiInputAllowed)return false;pendingButton=null;return true;}
             var item=GetWidget("button",x,y,w,h);lastButton=item;
             if(Configure(item))
@@ -238,17 +333,25 @@ namespace CatTanks
             }
             SetButtonSprite(item,primary?"primary":"button");item.text.text=value;item.text.color=!enabled?C("#c6d2e8"):primary?C("#44300e"):C("#f5f6ff");item.button.interactable=enabled&&uiInputAllowed;
             var colors=item.button.colors;colors.normalColor=Color.white;colors.highlightedColor=new Color(1.15f,1.15f,1.15f);colors.pressedColor=new Color(.75f,.8f,.9f);colors.selectedColor=C("#9ae6ff");colors.disabledColor=new Color(.5f,.54f,.65f,.75f);colors.fadeDuration=reduceMotion?0:.08f;item.button.colors=colors;
-            string context=UiContext;item.button.onClick.RemoveAllListeners();item.button.onClick.AddListener(()=>{if(context!=UiContext)return;pendingButton=id;RefreshUi();});focusable.Add(item.button);return false;
+            item.context=UiContext;
+            if(!item.clickBound)
+            {
+                item.clickBound=true;item.button.onClick.RemoveAllListeners();
+                item.button.onClick.AddListener(()=>{if(item.context!=UiContext)return;pendingButton=id;RefreshUi();});
+            }
+            if(item.layout)activeLayouts.Add(item.layout);
+            focusable.Add(item.button);return false;
         }
         void SetButtonSprite(Widget item,string key){if(item!=null)StudioNineSlice.Apply(item.image,theme?theme.Get(key):null,14);}
         void Panel(float x,float y,float w,float h,float alpha=1)=>Surface(x,y,w,h,new Color(.13f,.18f,.30f,alpha));
         void Art(float x,float y,float w,float h,string key)
         {
-            if(dispatchOnly)return;var item=GetWidget("image",x,y,w,h);var sprite=Resources.Load<Sprite>("Art/"+key);StudioNineSlice.Apply(item.image,sprite?sprite:view.Art(key),14,true);item.image.color=Color.white;
+            if(dispatchOnly)return;var item=GetWidget("image",x,y,w,h);var sprite=studioRoot.mockupKit?theme.Get(key):null;if(!sprite)sprite=Resources.Load<Sprite>("Art/"+key);StudioNineSlice.Apply(item.image,sprite?sprite:view.Art(key),14,true);item.image.color=Color.white;
         }
         void Bar(float x,float y,float w,float h,float ratio,Color color)
         {
-            SpriteBox(x,y,w,h,"bar",Color.white);if(ratio>0)SpriteBox(x+3,y+3,Mathf.Max(1,(w-6)*Mathf.Clamp01(ratio)),h-6,"fill",color);
+            SpriteBox(x,y,w,h,"bar",Color.white);string fill=studioRoot&&studioRoot.mockupKit?(color.g>color.r&&color.g>color.b?"bar_fill_green":color.r>color.b?"bar_fill_gold":"bar_fill_cyan"):"fill";
+            if(ratio>0)SpriteBox(x+3,y+3,Mathf.Max(1,(w-6)*Mathf.Clamp01(ratio)),h-6,fill,color);
         }
         Vector2 BeginScroll(Rect viewport,Vector2 value,Rect content)
         {

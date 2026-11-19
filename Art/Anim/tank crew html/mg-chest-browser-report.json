@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "tested_sha256": "37cddc2f0ed26769121a4b74a1a1b1ef13ae62c2a40f9255af19429124abb696",
+  "mg_live_fire_while_melee": {
+    "shots": 6,
+    "groundSpeed": 0,
+    "companion": "combat",
+    "pose": "mg_fire",
+    "bullets": 2,
+    "muzzle": 1
+  },
+  "auto_chest_open_on_victory": true,
+  "chest_bonus": {
+    "money": 30,
+    "gears": 6
+  },
+  "consumes_only_this_battle_chest": true,
+  "no_repeat_reward": true,
+  "next_stage_works": true,
+  "resources_persist": true,
+  "page_errors": []
+}

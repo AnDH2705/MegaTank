@@ -1,0 +1,24 @@
+#tank-autobattle-flow .bt-chest-reward{margin:10px 0 18px;padding:10px 12px 12px;border:2px solid #272734;border-radius:9px;background:#303649;box-shadow:inset 0 2px #59647b}
+#tank-autobattle-flow .bt-chest-reward[hidden]{display:none}
+#tank-autobattle-flow .bt-chest-caption{display:block;color:#ffe48a;font:900 12px/1.2 system-ui,sans-serif;letter-spacing:.05em}
+#tank-autobattle-flow .bt-chest-art{position:relative;margin:7px auto 0;width:150px;height:95px}
+#tank-autobattle-flow .bt-chest-base{position:absolute;left:31px;bottom:8px;width:88px;height:48px;background:#ac592c;border:3px solid #252733;border-radius:5px 5px 9px 9px;box-shadow:inset 0 -8px #87412a}
+#tank-autobattle-flow .bt-chest-base::before,#tank-autobattle-flow .bt-chest-base::after{content:"";position:absolute;top:0;bottom:0;width:11px;background:#ffd35a;border-left:2px solid #9b6327;border-right:2px solid #9b6327}
+#tank-autobattle-flow .bt-chest-base::before{left:11px}#tank-autobattle-flow .bt-chest-base::after{right:11px}
+#tank-autobattle-flow .bt-chest-base>i{position:absolute;z-index:1;top:6px;left:32px;width:19px;height:21px;background:#ffe58c;border:3px solid #523f2b;border-radius:3px}
+#tank-autobattle-flow .bt-chest-lid{position:absolute;z-index:2;left:29px;top:22px;width:92px;height:35px;border:3px solid #252733;border-radius:18px 18px 4px 4px;background:#d18b36;box-shadow:inset 0 5px #f2bd59;transform-origin:5px 30px;transform:translateY(-13px) rotate(-17deg)}
+#tank-autobattle-flow .bt-chest-lid::before,#tank-autobattle-flow .bt-chest-lid::after{content:"";position:absolute;top:0;bottom:0;width:11px;background:#ffd35a;border-left:2px solid #a46b29;border-right:2px solid #a46b29}
+#tank-autobattle-flow .bt-chest-lid::before{left:12px}#tank-autobattle-flow .bt-chest-lid::after{right:12px}
+#tank-autobattle-flow .bt-chest-inside{position:absolute;left:33px;top:42px;width:84px;height:25px;border-radius:50%;background:#fff1a0;border:3px solid #282735}
+#tank-autobattle-flow .bt-chest-burst{position:absolute;left:17px;top:2px;width:116px;height:87px;background:#ffe784;opacity:.2;clip-path:polygon(50% 0,58% 32%,85% 8%,73% 40%,100% 50%,73% 60%,85% 92%,58% 68%,50% 100%,42% 68%,15% 92%,27% 60%,0 50%,27% 40%,15% 8%,42% 32%)}
+#tank-autobattle-flow .bt-chest-star{position:absolute;z-index:3;color:#ffe784;font:900 25px/1 sans-serif;font-style:normal;text-shadow:0 2px #a97329}
+#tank-autobattle-flow .star-a{left:8px;top:23px}#tank-autobattle-flow .star-b{right:8px;top:13px;font-size:18px}#tank-autobattle-flow .star-c{right:23px;bottom:5px;font-size:15px}
+#tank-autobattle-flow .bt-chest-prizes{display:flex;justify-content:center;gap:32px}
+#tank-autobattle-flow .bt-chest-prizes>span{display:flex;align-items:center;gap:6px;color:#fff4b8;font:950 22px/1 system-ui,sans-serif}
+#tank-autobattle-flow .bt-chest-prizes svg{width:30px;height:30px;overflow:visible}
+#tank-autobattle-flow .is-opening .bt-chest-lid{animation:bt-chest-open .8s cubic-bezier(.2,.8,.3,1) both}
+#tank-autobattle-flow .is-opening .bt-chest-prizes{animation:bt-chest-prize .5s .55s both}
+#tank-autobattle-flow .is-opening .bt-chest-star,#tank-autobattle-flow .is-opening .bt-chest-burst{animation:bt-chest-prize .6s .35s both}
+@keyframes bt-chest-open{0%,24%{transform:none}35%{transform:rotate(-4deg)}48%{transform:rotate(3deg)}100%{transform:translateY(-13px) rotate(-17deg)}}
+@keyframes bt-chest-prize{from{opacity:0;translate:0 9px;scale:.85}to{opacity:1;translate:0 0;scale:1}}
+@media(max-height:580px){#tank-autobattle-flow .bt-chest-reward{margin:6px 0 9px;padding:6px}#tank-autobattle-flow .bt-chest-art{height:80px;scale:.85;margin:-3px auto -8px}#tank-autobattle-flow .bt-chest-prizes>span{font-size:18px}#tank-autobattle-flow .bt-chest-prizes svg{width:24px;height:24px}}

@@ -10,6 +10,8 @@ namespace MegaTanks
         float cooldown;
         int remainingShots;
         public int ShotsFired { get; private set; }
+        public int MeleeAttacks { get; private set; }
+        public bool IsMelee=>owner!=null&&owner.CommandoOwner!=null&&stats.range<=0;
         public int Ammo { get; private set; }
         public int MaxAmmo => Mathf.Max(0,stats.reserveCapacity);
         public void Resupply(float fraction) { Ammo=Mathf.Min(MaxAmmo,Ammo+Mathf.CeilToInt(MaxAmmo*Mathf.Max(0,fraction))); }
@@ -19,7 +21,7 @@ namespace MegaTanks
         public void Configure(EnemyEntity enemy, EnemyWeaponStats data)
         {
             owner = enemy;
-            stats = data.Copy();Ammo=MaxAmmo;ShotsFired=remainingShots=0;cooldown=0;
+            stats = data.Copy();Ammo=MaxAmmo;ShotsFired=MeleeAttacks=remainingShots=0;cooldown=0;
             barrel = new GameObject("Enemy weapon").transform;
             barrel.SetParent(transform, false);
             barrel.localRotation = Quaternion.Euler(0, 0, 180);
@@ -28,11 +30,13 @@ namespace MegaTanks
                 ShapeFactory.Create("Barrel", barrel, new Vector2(.45f, 0), new Vector2(.7f, heavy ? .2f : .1f), new Color(.8f, .85f, .88f), false, 14);
         }
 
-        void Update()
+        void Update()=>Tick(Time.deltaTime);
+        public void Tick(float deltaTime)
         {
             var game = BattleGame.Instance;
             if (!game.Running || !owner.Alive) return;
-            cooldown = Mathf.Max(0, cooldown - Time.deltaTime);
+            cooldown = Mathf.Max(0, cooldown - deltaTime);
+            if(IsMelee){TickMelee(game);return;}
             var commando=game.Commando;
             bool attackCommando=commando!=null&&commando.Active&&Vector2.Distance(MuzzlePosition,commando.AimPoint)<=stats.range&&Vector2.Distance(MuzzlePosition,commando.AimPoint)<Vector2.Distance(MuzzlePosition,game.TankAimPoint);
             Vector2 aim=attackCommando?commando.AimPoint:game.TankAimPoint;
@@ -60,6 +64,20 @@ namespace MegaTanks
             if(owner.CommandoArtwork!=null){owner.CommandoArtwork.Face(aim.x-transform.position.x);owner.CommandoArtwork.Attack();}
             if(game.Vfx.Muzzle(owner.Artwork!=null?owner.Artwork.Muzzle:barrel,barrel.right,heavy)==null)
                 game.Flash(muzzle, new Color(1, .55f, .3f), heavy ? .3f : .15f);
+        }
+        void TickMelee(BattleGame game)
+        {
+            var body=owner.GetComponent<Collider2D>();var target=CommandoMelee.PlayerTarget(game,body);
+            if(target==null||cooldown>0||(owner.CommandoArtwork!=null&&owner.CommandoArtwork.IsAttacking)||!CommandoMelee.InReach(body,target))return;
+            var attack=new DamageAttack(stats.damage,stats);MeleeAttacks++;cooldown=Mathf.Max(.02f,stats.EffectiveReloadTime);
+            System.Action impact=()=>{
+                if(!game.Running||owner==null||!owner.Alive||!owner.gameObject.activeInHierarchy||!CommandoMelee.InReach(body,target))return;
+                var crew=target.GetComponent<CommandoUnit>();
+                if(crew!=null){if(crew.Active)crew.ReceiveAttack(attack);}
+                else if(target.GetComponent<TankHitbox>()!=null)game.ReceiveAttack(attack);
+            };
+            if(owner.CommandoArtwork!=null){owner.CommandoArtwork.Face(target.bounds.center.x-transform.position.x);owner.CommandoArtwork.Attack(impact);}
+            else impact();
         }
     }
 }

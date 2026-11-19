@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "full_runs": [
+    {
+      "stage": 1,
+      "phase": "won",
+      "waves": 8,
+      "events": [
+        {
+          "wave": 2,
+          "type": "ammo",
+          "choice": "piercing",
+          "ad": false
+        },
+        {
+          "wave": 4,
+          "type": "medical",
+          "choice": "heal",
+          "ad": false
+        },
+        {
+          "wave": 6,
+          "type": "wreck",
+          "choice": "speed",
+          "ad": false
+        },
+        {
+          "wave": 8,
+          "type": "supply",
+          "choice": "mg",
+          "ad": false
+        }
+      ],
+      "skin": "speed",
+      "health": 216,
+      "ammo": {
+        "mg": 230,
+        "cannon": 5,
+        "mortar": 0
+      },
+      "boss_crew_kills": 3,
+      "seconds": 104
+    },
+    {
+      "stage": 2,
+      "phase": "won",
+      "waves": 8,
+      "events": [
+        {
+          "wave": 2,
+          "type": "ammo",
+          "choice": "piercing",
+          "ad": false
+        },
+        {
+          "wave": 4,
+          "type": "medical",
+          "choice": "heal",
+          "ad": false
+        },
+        {
+          "wave": 6,
+          "type": "wreck",
+          "choice": "heavy",
+          "ad": false
+        },
+        {
+          "wave": 8,
+          "type": "supply",
+          "choice": "mg",
+          "ad": false
+        }
+      ],
+      "skin": "heavy",
+      "health": 323,
+      "ammo": {
+        "mg": 177,
+        "cannon": 0,
+        "mortar": 0
+      },
+      "boss_crew_kills": 3,
+      "seconds": 116
+    }
+  ],
+  "three_ammo_choices_one_ad": true,
+  "rare_ammo_changes_damage": true,
+  "supply_refills_only_selected_weapon": true,
+  "medical_heal_or_gears": true,
+  "both_native_tank_swaps": true,
+  "empty_ammo_stops_weapon": true,
+  "no_double_reward": true
+}

@@ -19,16 +19,17 @@ MonoBehaviour:
   specialty: Weapon specialist
   description: Mochi brings a steady pair of paws and boundless enthusiasm.
   portrait: {fileID: 21300000, guid: 7236bd837796cd54fb0d1b3a3168529c, type: 3}
+  commandoPrefab: {fileID: 0}
   stats:
     accuracy:
       value: 0
       gain: 0
     damageBonus:
-      value: 0
-      gain: 0
+      value: 20
+      gain: 0.1
     reloadSpeed:
-      value: 0
-      gain: 0
+      value: 10
+      gain: 0.1
     criticalChance:
       value: 0
       gain: 0

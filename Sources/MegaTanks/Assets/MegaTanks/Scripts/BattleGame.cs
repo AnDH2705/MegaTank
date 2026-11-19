@@ -81,7 +81,8 @@ namespace MegaTanks
             public float Amount { get; internal set; }
             public float Age { get; internal set; }
             public bool IsTank { get; internal set; }
-            public string DisplayText => "-" + Mathf.FloorToInt(Amount);
+            public bool IsMiss { get; internal set; }
+            public string DisplayText => IsMiss ? "Miss" : "-" + Mathf.FloorToInt(Amount);
         }
         readonly List<DamageNumber> damageNumbers = new List<DamageNumber>();
         public IReadOnlyList<DamageNumber> DamageNumbers => damageNumbers;
@@ -462,6 +463,17 @@ namespace MegaTanks
             return preferred != null ? preferred : fallback;
         }
 
+        public EnemyEntity FindMeleeTarget(Collider2D attacker,Vector2 activationOrigin,float activationRange)
+        {
+            EnemyEntity target=null;float distance=float.PositiveInfinity;
+            foreach(var enemy in enemies)
+            {
+                if(enemy==null||!enemy.Alive||!enemy.gameObject.activeInHierarchy||Vector2.Distance(activationOrigin,enemy.transform.position)>activationRange)continue;
+                var body=enemy.GetComponent<Collider2D>();if(!CommandoMelee.VerticallyReachable(attacker,body))continue;
+                float gap=CommandoMelee.DistanceSquared(attacker,body);if(gap<distance){distance=gap;target=enemy;}
+            }
+            return target;
+        }
         public void RemoveEnemy(EnemyEntity enemy, bool killed)
         {
             if (!enemies.Remove(enemy)) return;
@@ -528,7 +540,9 @@ namespace MegaTanks
         public DamageResult ReceiveAttack(DamageAttack attack, float areaMultiplier = 1)
         {
             if(!Running)return new DamageResult(false,false,0,attack.DamageType);
-            var result=CombatDamage.Resolve(attack,tankStats,areaMultiplier);DamageHull(result.Damage);return result;
+            var result=CombatDamage.Resolve(attack,tankStats,areaMultiplier);
+            if(!result.Hit)ShowDamageNumber(TankAimPoint + Vector2.up * 1.2f,0,true,true);
+            DamageHull(result.Damage);return result;
         }
 
         // Direct HP loss remains available for scripted effects and debug helpers.
@@ -611,11 +625,11 @@ namespace MegaTanks
         }
 
         public void ForgetEffect(FlashEffect effect) { effects.Remove(effect); }
-        public void ShowDamageNumber(Vector2 position, float amount, bool isTank = false)
+        public void ShowDamageNumber(Vector2 position, float amount, bool isTank = false, bool isMiss = false)
         {
-            if (amount <= 0) return;
+            if (amount <= 0 && !isMiss) return;
             if (damageNumbers.Count >= 128) damageNumbers.RemoveAt(0);
-            damageNumbers.Add(new DamageNumber { Position = position, Amount = amount, IsTank = isTank });
+            damageNumbers.Add(new DamageNumber { Position = position, Amount = amount, IsTank = isTank, IsMiss = isMiss });
         }
 
         void OnApplicationPause(bool value) { if (value && Running) SetPaused(true); }

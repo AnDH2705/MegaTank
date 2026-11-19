@@ -78,6 +78,7 @@ namespace MegaTanks
         {
             switch(type)
             {
+                case StageNodeType.Shop:return "Spend scraps · Normal repair, Normal resupply and 6 random cards.";
                 case StageNodeType.HardBattle:return "3 waves · Choose one reward after all three waves.";
                 case StageNodeType.Battle:return "1 wave · Choose one reward after victory.";
                 case StageNodeType.Supply:return "Ammo supply · One free card and an optional paid card.";

@@ -1,0 +1,73 @@
+{
+  "passed": true,
+  "source": "D:/Project/Tnak/MegaTank/Art/VFX/Reference_Arcade_v1",
+  "atlas_count": 11,
+  "assets": [
+    {
+      "name": "Explosion",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\VFX\\Reference_Arcade_v1\\Assets\\MegaTankVFX\\Art\\Atlases\\Explosion.png",
+      "source_sha256": "52f14082861f0e2393f08e83dee0a12144e3d7b8c3ddd68548a3a6ee18b84b81",
+      "bytes": 165464
+    },
+    {
+      "name": "Smoke",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\VFX\\Reference_Arcade_v1\\Assets\\MegaTankVFX\\Art\\Atlases\\Smoke.png",
+      "source_sha256": "c8bd7b807875046defb389850cf13806e922e79457aba95a44eba2bf8f4af285",
+      "bytes": 109684
+    },
+    {
+      "name": "Hit",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\VFX\\Reference_Arcade_v1\\Assets\\MegaTankVFX\\Art\\Atlases\\Hit.png",
+      "source_sha256": "73985d05d13b42727c3589d375c8147f5165b45d264a0a0d43c774ad8efcc7da",
+      "bytes": 49250
+    },
+    {
+      "name": "Muzzle",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\VFX\\Reference_Arcade_v1\\Assets\\MegaTankVFX\\Art\\Atlases\\Muzzle.png",
+      "source_sha256": "2d4e31e46ee28f496c684238e9dfb5908b8290bd40c39f7d2d275a0863a9ca97",
+      "bytes": 17378
+    },
+    {
+      "name": "Spark",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\VFX\\Reference_Arcade_v1\\Assets\\MegaTankVFX\\Art\\Atlases\\Spark.png",
+      "source_sha256": "1bf0e4c89dbfc3bf330eacb33e0084323aceac16598ade9568218da8e25edff8",
+      "bytes": 9268
+    },
+    {
+      "name": "Glow",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\VFX\\Reference_Arcade_v1\\Assets\\MegaTankVFX\\Art\\Atlases\\Glow.png",
+      "source_sha256": "f9c2e3e58ec5f77b2583977ebb14235682376f85acdbe604ad6bcb0ab8dd78c1",
+      "bytes": 22984
+    },
+    {
+      "name": "Shockwave",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\VFX\\Reference_Arcade_v1\\Assets\\MegaTankVFX\\Art\\Atlases\\Shockwave.png",
+      "source_sha256": "a6434bbea7e7cc0b225facd9181e874acfc76554feb037b7dee4e0ed14ee3c73",
+      "bytes": 31536
+    },
+    {
+      "name": "Beam",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\VFX\\Reference_Arcade_v1\\Assets\\MegaTankVFX\\Art\\Atlases\\Beam.png",
+      "source_sha256": "b85f3d8f898473830ee0b2622b3f44dec326e4a327a1a35a6d35012e5179f32b",
+      "bytes": 6638
+    },
+    {
+      "name": "FireBoltHead",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\VFX\\Reference_Arcade_v1\\Assets\\MegaTankVFX\\Art\\Atlases\\FireBoltHead.png",
+      "source_sha256": "ade32a8520b7e379e56e6eb115c755e0465e9a08291db8a39a3fdebf4a11f16b",
+      "bytes": 30474
+    },
+    {
+      "name": "Dust",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\VFX\\Reference_Arcade_v1\\Assets\\MegaTankVFX\\Art\\Atlases\\Dust.png",
+      "source_sha256": "f4a509d3843566d1131774f764abee30b7dd010ae7c113658e9d5f4403a6df64",
+      "bytes": 10188
+    },
+    {
+      "name": "BeamTrail",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\VFX\\Reference_Arcade_v1\\Assets\\MegaTankVFX\\Art\\Atlases\\BeamTrail.png",
+      "source_sha256": "957f70a57a352131b28fee889d4ccdff31942d794b89e949858b2ce725090665",
+      "bytes": 5656
+    }
+  ]
+}

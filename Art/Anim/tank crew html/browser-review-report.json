@@ -1,0 +1,160 @@
+{
+  "passed": true,
+  "offline_assets": true,
+  "resources": {
+    "initial": {
+      "money": 0,
+      "gears": 0,
+      "chests": 0
+    },
+    "formatted": [
+      "123.456",
+      "789",
+      "0"
+    ],
+    "count": 4
+  },
+  "home_crew": 5,
+  "equipment_animation": true,
+  "equipment_toggle_preserved": true,
+  "live_ground_encounter": {
+    "phase": "combat",
+    "dogs": 2,
+    "crew": 4,
+    "speed": 0
+  },
+  "pause_resume": true,
+  "bosses": [
+    {
+      "stage": 1,
+      "before": {
+        "crew": [
+          "cannon",
+          "driver",
+          "front"
+        ],
+        "friendly": "aboard",
+        "boss": 1261.6,
+        "player": 658.4
+      },
+      "jump": {
+        "friend": "jump_out",
+        "enemy": "jump_out",
+        "crew": 2,
+        "player": 658.4,
+        "boss": 1261.6
+      },
+      "fight": {
+        "friendlyAttack": 0.4666666666666666,
+        "enemyAttack": 0.49999999999999994,
+        "speed": 0,
+        "phase": "boss"
+      },
+      "boss_drop": [
+        [
+          "money",
+          100
+        ],
+        [
+          "gears",
+          20
+        ],
+        [
+          "chests",
+          1
+        ]
+      ],
+      "end": {
+        "phase": "won",
+        "companion": "aboard",
+        "bossMeleeKills": 1,
+        "returns": 4,
+        "wallet": {
+          "money": 250,
+          "gears": 44,
+          "chests": 0
+        }
+      },
+      "ownedAfter": {
+        "money": 260,
+        "gears": 44,
+        "chests": 0
+      }
+    },
+    {
+      "stage": 2,
+      "before": {
+        "crew": [
+          "mg",
+          "cannon",
+          "driver",
+          "front"
+        ],
+        "friendly": "aboard",
+        "boss": 1261.6,
+        "player": 658.4
+      },
+      "jump": {
+        "friend": "jump_out",
+        "enemy": "jump_out",
+        "crew": 3,
+        "player": 658.4,
+        "boss": 1261.6
+      },
+      "fight": {
+        "friendlyAttack": 0.4666666666666666,
+        "enemyAttack": 0.4666666666666666,
+        "speed": 0,
+        "phase": "boss"
+      },
+      "boss_drop": [
+        [
+          "money",
+          100
+        ],
+        [
+          "gears",
+          20
+        ],
+        [
+          "chests",
+          1
+        ]
+      ],
+      "end": {
+        "phase": "won",
+        "companion": "aboard",
+        "bossMeleeKills": 1,
+        "returns": 5,
+        "wallet": {
+          "money": 290,
+          "gears": 46,
+          "chests": 0
+        }
+      },
+      "ownedAfter": {
+        "money": 550,
+        "gears": 90,
+        "chests": 0
+      }
+    }
+  ],
+  "resource_credit_exactly_once": true,
+  "resource_reload_persistence": true,
+  "saved_balances": {
+    "money": 550,
+    "gears": 90,
+    "chests": 0
+  },
+  "viewports": [
+    [
+      1254,
+      830
+    ],
+    [
+      960,
+      540
+    ]
+  ],
+  "page_errors": []
+}

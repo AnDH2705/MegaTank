@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "source": "D:/Project/Tnak/MegaTank/Art/Asset/Enemies/Enemies_vehicles_Contrast_v2",
+  "revision": "2026-11-18",
+  "dog_drivers": [
+    "car",
+    "plane"
+  ],
+  "geometry_preserved": true,
+  "assets": [
+    {
+      "key": "car_01_body_static",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\Asset\\Enemies\\Enemies_vehicles_Contrast_v2\\car\\parts\\01_body_static.png",
+      "sha256": "ca65efe30767817cf24f4823d43ce53e984746335eea7fa0a30e3383f84484c3",
+      "bytes": 77678
+    },
+    {
+      "key": "car_02_wheel_rear",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\Asset\\Enemies\\Enemies_vehicles_Contrast_v2\\car\\parts\\02_wheel_rear.png",
+      "sha256": "50898824a60fae0ce52f298445b41e323eb14af33064d5eb421fbf94f012e517",
+      "bytes": 12946
+    },
+    {
+      "key": "car_03_wheel_front",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\Asset\\Enemies\\Enemies_vehicles_Contrast_v2\\car\\parts\\03_wheel_front.png",
+      "sha256": "5b9053dd0b4244913c20d09eed87346dca1df5bd0f15df2879864096b6e76c85",
+      "bytes": 13070
+    },
+    {
+      "key": "plane_01_propeller_blades",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\Asset\\Enemies\\Enemies_vehicles_Contrast_v2\\plane\\parts\\01_propeller_blades.png",
+      "sha256": "b13ce5fd8dce27a567267fd1857b3fca69554d2574cc02fc7a4d32865e9043e1",
+      "bytes": 8676
+    },
+    {
+      "key": "plane_02_wheel_rear",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\Asset\\Enemies\\Enemies_vehicles_Contrast_v2\\plane\\parts\\02_wheel_rear.png",
+      "sha256": "38364c7ad63338e31e3e4a38fe62a373e878d1208037b1632f1f2df4d714efe9",
+      "bytes": 1770
+    },
+    {
+      "key": "plane_03_wheel_main",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\Asset\\Enemies\\Enemies_vehicles_Contrast_v2\\plane\\parts\\03_wheel_main.png",
+      "sha256": "e79a9698fc9b5f7fa1157c43b34f0b22a9003a65b43f610f79bab36a154428ba",
+      "bytes": 4518
+    },
+    {
+      "key": "plane_04_body_static",
+      "source": "D:\\Project\\Tnak\\MegaTank\\Art\\Asset\\Enemies\\Enemies_vehicles_Contrast_v2\\plane\\parts\\04_body_static.png",
+      "sha256": "20b6097228b75e9c35e95a4178ca77e107624b38bbb7325ba975cb06c51f1872",
+      "bytes": 77944
+    }
+  ]
+}

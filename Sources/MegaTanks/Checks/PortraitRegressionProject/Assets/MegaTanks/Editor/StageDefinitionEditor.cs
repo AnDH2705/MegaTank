@@ -16,7 +16,7 @@ namespace MegaTanks.Editor
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();var stage=(StageDefinition)target;
-            EditorGUILayout.HelpBox("Rounds controls this stage only, including the opening battle and final boss. Stage 1 has 5 rounds; increase Rounds on later stage assets as desired. Hard battles still contain 3 combat waves within one round.",MessageType.Info);
+            EditorGUILayout.HelpBox("Rounds includes the opening battle, guaranteed pre-boss shop and final boss (minimum 3). Random shops use Shop Weight and must be at least 3 rounds apart; the pre-boss shop bypasses this cooldown. Hard battles contain 3 waves within one round.",MessageType.Info);
             EditorGUILayout.HelpBox("Regular enemy difficulty = Stage Difficulty + round (1-based). New stages default to (Stage Number − 1) × 10. Boss power uses only its template and the levels/stars configured on this stage.",MessageType.Info);
             var boss = stage.boss;
             if (boss?.template == null)
