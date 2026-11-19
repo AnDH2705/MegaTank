@@ -206,11 +206,18 @@ namespace CatTanks.MockupKit.Editor
         {
             var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(Generated + "/Prefabs/Mockup_march.prefab");
             if (!prefab) throw new InvalidOperationException("Build the preview prefabs first.");
+            for (int i = 0; i < UnityEngine.SceneManagement.SceneManager.sceneCount; i++)
+                if (string.IsNullOrEmpty(UnityEngine.SceneManagement.SceneManager.GetSceneAt(i).path))
+                    throw new InvalidOperationException("Save untitled scenes before creating a preview scene. Existing scenes have not been changed.");
             // Additive: do not close or overwrite a user's current scene.
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Additive);
             PrefabUtility.InstantiatePrefab(prefab, scene);
             var events = new GameObject("MockupKit EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
             UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(events, scene);
+            var camera = new GameObject("MockupKit Preview Camera", typeof(Camera), typeof(AudioListener));
+            camera.GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
+            camera.GetComponent<Camera>().backgroundColor = new Color(.02f, .04f, .08f);
+            UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(camera, scene);
             string path = AssetDatabase.GenerateUniqueAssetPath(Generated + "/MockupKitPreview.unity");
             EditorSceneManager.SaveScene(scene, path);
             Debug.Log("MockupKit preview scene: " + path + ". Open this scene alone before entering Play Mode.");
@@ -218,19 +225,7 @@ namespace CatTanks.MockupKit.Editor
         [MenuItem("CatTanks/Mockup Kit/4 - Validate Sprite and Layout Coverage")]
         public static void Validate()
         {
-            var library = AssetDatabase.LoadAssetAtPath<MockupKitLibrary>(LibraryPath);
-            if (!library) throw new InvalidOperationException("Import the assets first.");
-            var data = AssetDatabase.LoadAssetAtPath<TextAsset>(Root + "/Data/screen-layouts.json");
-            var layouts = JsonUtility.FromJson<KitLayouts>(data.text); int errors = 0;
-            foreach (var screen in layouts.screens)
-                foreach (var node in screen.nodes)
-                {
-                    if (!string.IsNullOrEmpty(node.sprite) && !library.Get(node.sprite)) { Debug.LogError(screen.key + ": missing " + node.sprite); errors++; }
-                    if (node.kind == "bar" && !library.Get(node.text)) { Debug.LogError(screen.key + ": missing bar fill " + node.text); errors++; }
-                    if (node.w <= 0 || node.h <= 0) { Debug.LogError(screen.key + ": invalid node size " + node.id); errors++; }
-                }
-            if (errors > 0) throw new InvalidOperationException("MockupKit validation failed: " + errors);
-            Debug.Log("MOCKUP_KIT_VALIDATE_OK: " + library.entries.Count + " sprites / " + layouts.screens.Length + " screens.");
+            MockupKitValidation.ValidateData();
         }
         [MenuItem("CatTanks/Mockup Kit/5 - Export Unitypackage")]
         public static void Export()

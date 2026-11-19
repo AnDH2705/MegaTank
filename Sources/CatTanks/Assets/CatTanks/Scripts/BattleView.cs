@@ -10,6 +10,17 @@ namespace CatTanks
         public Camera camera;
         readonly Dictionary<string, Sprite> sprites = new Dictionary<string, Sprite>();
         readonly Dictionary<int, Transform> actors = new Dictionary<int, Transform>(), projectiles = new Dictionary<int, Transform>();
+        sealed class ActorVisual
+        {
+            public Transform body,shadow,fill,healthBack,pivot,weapon;
+            public SpriteRenderer bodyRenderer,weaponRenderer;
+            public MonsterSpriteAnimator animation;
+        }
+        readonly Dictionary<int,ActorVisual> actorVisuals=new Dictionary<int,ActorVisual>();
+        readonly Stack<Transform> projectilePool=new Stack<Transform>();
+        public int CreatedProjectileViews{get;private set;}
+        readonly HashSet<int> alive=new HashSet<int>();
+        readonly List<int> retired=new List<int>();
         readonly List<GameObject> spriteFxPool = new List<GameObject>(), lineFxPool = new List<GameObject>();
         int spriteFxCursor, lineFxCursor;
         Transform tank, shield, decoyView, targetRing;
@@ -19,13 +30,15 @@ namespace CatTanks
         Material skyMaterial;
         int shownFloors = -1;
         public CombatVfxPlayer combatVfx;
+        readonly MonsterAnimationLibrary monsterAnimations;
         public BattleView(Camera cam)
         {
             camera = cam; root = new GameObject("Battle World");
             combatVfx=new CombatVfxPlayer(root.transform);
+            monsterAnimations=Resources.Load<MonsterAnimationLibrary>("MonsterAnimations");
             square = UnityEngine.Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 1, 1), Vector2.one * .5f, 1);
             disk = Shape(false); ring = Shape(true); lineMaterial = new Material(Shader.Find("Sprites/Default"));
-            Landscape();
+            Landscape();CreateWorldActors();
         }
         Sprite Shape(bool hollow)
         {
@@ -56,6 +69,15 @@ namespace CatTanks
         Transform Image(string name, Vector2 pos, float width, int order, Transform parent = null, bool flip = false)
         {
             var s = Art(name); var t = Sprite(name, s, pos, new Vector2(width, width * s.rect.height / s.rect.width), Color.white, order, parent); t.GetComponent<SpriteRenderer>().flipX = flip; return t;
+        }
+        Transform ProjectileSprite(string name,Sprite art,Vector2 pos,Vector2 size,Color color,int order)
+        {
+            if(projectilePool.Count==0){CreatedProjectileViews++;return Sprite(name,art,pos,size,color,order);}
+            var item=projectilePool.Pop();item.gameObject.SetActive(true);item.name=name;
+            item.localPosition=pos;item.localRotation=Quaternion.identity;
+            item.localScale=new Vector3(size.x,size.y/(art.rect.height/art.rect.width),1);
+            var renderer=item.GetComponent<SpriteRenderer>();renderer.sprite=art;renderer.color=color;renderer.sortingOrder=order;
+            return item;
         }
         void FxSprite(string name, Sprite art, Vector2 pos, float size, Color color, int order)
         {
@@ -125,6 +147,16 @@ namespace CatTanks
         }
         void Landscape()
         {
+            var theme=Resources.Load<StudioUITheme>("UI/Mockup/MockupGameTheme");
+            var background=theme?theme.Get("bg_battle"):null;
+            if(background)
+            {
+                var go=new GameObject("Mockup Kit Battle Background",typeof(SpriteRenderer));go.transform.SetParent(root.transform,false);
+                go.transform.localPosition=new Vector3(800,450,0);
+                go.transform.localScale=new Vector3(1600/background.bounds.size.x,900/background.bounds.size.y,1);
+                var renderer=go.GetComponent<SpriteRenderer>();renderer.sprite=background;renderer.sortingOrder=-110;
+                return;
+            }
             var rng = new System.Random(19);
             Sky(rng);
             for (int layer = 0; layer < 3; layer++)
@@ -142,6 +174,9 @@ namespace CatTanks
             for (int i = 0; i < 100; i++) Sprite("Road Stone", disk, new Vector2((float)rng.NextDouble() * 2200 - 300, (float)rng.NextDouble() * 160), new Vector2(5 + i % 6 * 8, 2 + i % 3), Catalog.Color(i % 2 == 0 ? "#224d6c" : "#6698aa"), -78);
             foreach (float x in new[] {42, 610, 1000, 1480})
                 for (int i = 0; i < 3; i++) {var t = Rect("Moon Crystal", new Vector2(x + i * 13, 193 + i * 6), new Vector2(12, 40 + i * 10), i % 2 == 0 ? "#70e5e4" : "#42b8d2", -20); t.localEulerAngles = new Vector3(0, 0, (i - 1) * 15);}
+        }
+        void CreateWorldActors()
+        {
             tank = new GameObject("Modular Cat Fortress").transform; tank.SetParent(root.transform, false);
             shield = Sprite("Energy Shield", ring, new Vector2(290, 440), new Vector2(410, 660), new Color(.4f, 1, 1, .6f), 29);
             decoyView = Image("cat-0", Vector2.zero, 95, 25); decoyView.name = "Decoy"; decoyView.gameObject.SetActive(false);
@@ -183,6 +218,7 @@ namespace CatTanks
             {
                 Sprite("Shadow", disk, new Vector2(0, -a.def.size * .4f), new Vector2(a.def.size * .9f, a.def.size * .12f), new Color(0, .1f, .2f, .3f), 5, group);
                 Image(a.asset, Vector2.zero, a.def.size, 16, group, true).name = "Body";
+                if(monsterAnimations&&monsterAnimations.Find(a.asset)!=null)group.Find("Body").gameObject.AddComponent<MonsterSpriteAnimator>().library=monsterAnimations;
                 Rect("Health Back", new Vector2(0, a.def.size * .52f), new Vector2(a.def.size * .64f, 7), "#10263b", 50, group);
                 Rect("Health Fill", new Vector2(0, a.def.size * .52f), new Vector2(a.def.size * .64f, 4), a.def.boss ? "#ff6a76" : "#e8b46a", 51, group);
             }
@@ -206,9 +242,15 @@ namespace CatTanks
                 Rect("Health Back", new Vector2(0, a.role == "companion" ? 85 : 55), new Vector2(60, 7), "#10263b", 50, group);
                 Rect("Health Fill", new Vector2(0, a.role == "companion" ? 85 : 55), new Vector2(58, 4), "#8ef587", 51, group);
             }
+            var body=group.Find("Body");var pivotView=group.Find("Weapon Pivot");var weapon=pivotView?pivotView.Find("Weapon"):null;
+            actorVisuals[a.id]=new ActorVisual{body=body,shadow=group.Find("Shadow"),fill=group.Find("Health Fill"),healthBack=group.Find("Health Back"),pivot=pivotView,weapon=weapon,bodyRenderer=body?body.GetComponent<SpriteRenderer>():null,weaponRenderer=weapon?weapon.GetComponent<SpriteRenderer>():null,animation=body?body.GetComponent<MonsterSpriteAnimator>():null};
             actors[a.id] = group; return group;
         }
         public void Render(Battle b)
+        {
+            using(new GamePerformance.Scope(GamePerformance.Area.World))RenderCore(b);
+        }
+        void RenderCore(Battle b)
         {
             int floors = b.classic ? 5 : b.profile.FloorCount; if (shownFloors != floors) Fortress(floors);
             tank.localPosition = new Vector3(b.playerX, 175 + Mathf.Sin(b.time * 9) * .8f, 0);
@@ -217,16 +259,19 @@ namespace CatTanks
             if (b.decoy != null) decoyView.localPosition = b.decoy.position;
             var target = b.enemies.Find(e => !e.dead && e.id == b.targetId); targetRing.gameObject.SetActive(target != null);
             if (target != null) {targetRing.localPosition = target.position; targetRing.localScale = Vector3.one * (target.def.size * 1.1f);}
-            var alive = new HashSet<int>();
-            foreach (var a in b.enemies.Concat(b.units))
+            alive.Clear();
+            for(int actorIndex=0;actorIndex<b.enemies.Count+b.units.Count;actorIndex++)
             {
+                var a=actorIndex<b.enemies.Count?b.enemies[actorIndex]:b.units[actorIndex-b.enemies.Count];
                 alive.Add(a.id); if (!actors.TryGetValue(a.id, out var t)) t = ActorView(a);
                 t.gameObject.SetActive(a.visible && (!a.dead || a.def != null)); t.localPosition = new Vector3(a.position.x, a.position.y, 0);
-                var body = t.Find("Body");
+                var visual=actorVisuals[a.id];var body=visual.body;
                 if (a.def != null)
                 {
-                    var sr = body.GetComponent<SpriteRenderer>();
-                    if (a.asset == "beast-0")
+                    var sr=visual.bodyRenderer;
+                    var animation=visual.animation;
+                    if(animation&&animation.Sample(a)) { }
+                    else if (a.asset == "beast-0")
                     {
                         string pose = a.flash > 0 ? "hit" : a.position.x > b.playerX + 150 + a.def.size * .25f ? "run" : a.attack > 1.4f ? "attack" : "idle";
                         sr.sprite = Art("wolf-frames/" + pose + "-" + Mathf.FloorToInt(a.age * 10) % 6);
@@ -237,23 +282,24 @@ namespace CatTanks
                     Color c = a.slow > 0 || b.Buff("freeze") > 0 ? Catalog.Color("#8ad7ff") : a.poison > 0 ? Catalog.Color("#bbf78b") : a.burn > 0 ? Catalog.Color("#ffb479") : Color.white;
                     c.a = a.dead ? Mathf.Clamp01(1 - (a.age - a.deathTime) * 2) : a.burrowed ? .25f : 1; sr.color = c;
                     if (a.dead) {body.localPosition += Vector3.down * (a.age - a.deathTime) * 40; body.localEulerAngles = new Vector3(0, 0, (a.age - a.deathTime) * -50);}
-                    var shadow = t.Find("Shadow"); shadow.localPosition = new Vector3(0, 175 - a.position.y, 0);
+                    var shadow=visual.shadow;shadow.localPosition = new Vector3(0, 175 - a.position.y, 0);
                 }
                 else
                 {
-                    var pivot = t.Find("Weapon Pivot");
+                    var pivot=visual.pivot;
                     if (pivot)
                     {
                         pivot.localEulerAngles = new Vector3(0, 0, a.angle * Mathf.Rad2Deg);
-                        var weapon = pivot.Find("Weapon").GetComponent<SpriteRenderer>(); weapon.sprite = Art(a.weapon.asset); weapon.flipX = a.weapon.flip;
-                        pivot.Find("Weapon").localPosition = new Vector3((a.role == "tower" ? 20 : 13) - a.recoil, 0, 0);
+                        var weapon=visual.weaponRenderer;weapon.sprite = Art(a.weapon.asset); weapon.flipX = a.weapon.flip;
+                        visual.weapon.localPosition = new Vector3((a.role == "tower" ? 20 : 13) - a.recoil, 0, 0);
                     }
                 }
-                var fill = t.Find("Health Fill"); float full = a.def != null ? a.def.size * .64f : 58, ratio = Mathf.Clamp01(a.hp / a.maxHp);
+                var fill=visual.fill;float full = a.def != null ? a.def.size * .64f : 58, ratio = Mathf.Clamp01(a.hp / a.maxHp);
                 fill.localScale = new Vector3(Mathf.Max(.001f, full * ratio), 4, 1); fill.localPosition = new Vector3(-(1 - ratio) * full / 2, fill.localPosition.y, 0);
-                fill.gameObject.SetActive(!a.dead && (!b.classic || a.def != null)); t.Find("Health Back").gameObject.SetActive(fill.gameObject.activeSelf);
+                fill.gameObject.SetActive(!a.dead && (!b.classic || a.def != null));visual.healthBack.gameObject.SetActive(fill.gameObject.activeSelf);
             }
-            foreach (var id in actors.Keys.Where(k => !alive.Contains(k)).ToArray()) {Object.Destroy(actors[id].gameObject); actors.Remove(id);}
+            retired.Clear();foreach(int id in actors.Keys)if(!alive.Contains(id))retired.Add(id);
+            foreach(int id in retired){Object.Destroy(actors[id].gameObject);actors.Remove(id);actorVisuals.Remove(id);}
             alive.Clear();
             foreach (var p in b.bullets)
             {
@@ -261,18 +307,20 @@ namespace CatTanks
                 if (!projectiles.TryGetValue(p.id, out var t))
                 {
                     bool round = p.weapon.kind == "plasma" || p.weapon.kind == "poison" || p.weapon.kind == "ice" || p.weapon.kind == "mortar" || p.weapon.kind == "bomb" || p.weapon.kind == "gravity";
-                    t = Sprite("Projectile " + p.id, round ? disk : square, p.position, round ? Vector2.one * 22 : new Vector2(26, 7), Catalog.Color(p.weapon.color), 35);
+                    t = ProjectileSprite("Projectile", round ? disk : square, p.position, round ? Vector2.one * 22 : new Vector2(26, 7), Catalog.Color(p.weapon.color), 35);
                     projectiles[p.id] = t;
                 }
                 t.localPosition = new Vector3(p.position.x, p.position.y, 0); t.localEulerAngles = new Vector3(0, 0, p.angle * Mathf.Rad2Deg);
             }
-            foreach (var orb in b.orbs.Where(o => !o.collected))
+            foreach (var orb in b.orbs)
             {
+                if(orb.collected)continue;
                 alive.Add(orb.id);
-                if (!projectiles.TryGetValue(orb.id, out var t)) {t = Sprite("Loot Orb", disk, orb.position, Vector2.one * 14, Catalog.Color("#ffcf75"), 40); projectiles[orb.id] = t;}
+                if (!projectiles.TryGetValue(orb.id, out var t)) {t = ProjectileSprite("Loot Orb", disk, orb.position, Vector2.one * 14, Catalog.Color("#ffcf75"), 40); projectiles[orb.id] = t;}
                 t.localPosition = orb.position + Vector2.up * Mathf.Sin(orb.age * 4) * 7;
             }
-            foreach (var id in projectiles.Keys.Where(k => !alive.Contains(k)).ToArray()) {Object.Destroy(projectiles[id].gameObject); projectiles.Remove(id);}
+            retired.Clear();foreach(int id in projectiles.Keys)if(!alive.Contains(id))retired.Add(id);
+            foreach(int id in retired){var item=projectiles[id];item.gameObject.SetActive(false);projectilePool.Push(item);projectiles.Remove(id);}
             spriteFxCursor = 0; lineFxCursor = 0;
             combatVfx.Render(b);
             foreach (var e in b.effects)

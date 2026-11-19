@@ -22,7 +22,7 @@ namespace MegaTanks.Editor
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("commandoPrefab"));
                 EditorGUILayout.LabelField("Independent hull and integrated weapon",EditorStyles.boldLabel);
                 foreach(string field in new[]{"damage","armor","armorPenetration","criticalChanceReduction","criticalDamageReduction","weaponRange","baseReloadTime","projectileSpeed","activationRange"})EditorGUILayout.PropertyField(stats.FindPropertyRelative(field),true);
-                EditorGUILayout.HelpBox("Activation Range is measured from the tank. Zero HP or zero activation range disables deployment. The commando keeps its HP when it returns to the tank; defeat lasts until the next battle. Its weapon requires positive range, base reload time and projectile speed.",MessageType.Info);
+                EditorGUILayout.HelpBox("Activation Range is measured from the tank. Zero HP or zero activation range disables deployment. The commando keeps its HP when it returns to the tank; defeat lasts until the next battle. Weapon Range 0 selects melee: it walks beside its target and strikes during the attack animation. Positive Range selects ranged attacks and requires positive base reload time and projectile speed. Reload Speed and Base Reload Time also control melee cooldown.",MessageType.Info);
             }
             serializedObject.ApplyModifiedProperties();
         }

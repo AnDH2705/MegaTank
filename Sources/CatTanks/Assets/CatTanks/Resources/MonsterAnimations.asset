@@ -1,0 +1,837 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32735895c57f824da9ea3c42421434b, type: 3}
+  m_Name: MonsterAnimations
+  m_EditorClassIdentifier: 
+  sourceSignature: NTfBngE+3PMAr/D0SwlXeor3BDJZio2oTYXiN3WVUPo=
+  revision: 4
+  entries:
+  - species: bug-0
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\01-kien-tien-phong_bug-0\Pilot_Kien_Run_V4\01-kien-tien-phong_bug-0_sheet-idle-run-attack-hit_pilot-v4.png
+    version: 4
+    idle:
+    - {fileID: 296931107, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: -1549323155, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: -1393870217, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: 1653698099, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: 367241231, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: -1275152620, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    run:
+    - {fileID: 2086368391, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: -877423606, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: 715565809, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: 32075103, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: 1438486335, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: -1817196574, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    attack:
+    - {fileID: 1328139628, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: 1398850565, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: -295891885, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: -1716107708, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: -52989653, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: -1975000510, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    hit:
+    - {fileID: 1737524667, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: 1066234889, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: 1039619931, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: 592485973, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: -656729430, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    - {fileID: 1588493438, guid: 9571e6eab7b67bc48a60b1b457112307, type: 3}
+    enterRun:
+    - {fileID: -1982679346, guid: 6ec965ef2cc6df54e895deff2928e8e3, type: 3}
+    - {fileID: 1581021863, guid: 6ec965ef2cc6df54e895deff2928e8e3, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 233
+    cellWidth: 320
+  - species: beast-0
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\02-soi-bong-dem_beast-0\Pilot_Soi_Run_V3\02-soi-bong-dem_beast-0_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: 158490150, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: 1284730276, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: -1345507351, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: 1529691180, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: -906643149, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: 590318506, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    run:
+    - {fileID: -1927360053, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: -1419679967, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: -1749458544, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: -909484581, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: 938252807, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: -1581362003, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    attack:
+    - {fileID: 1380864927, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: -1824485725, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: -1369214584, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: 903102011, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: -543786351, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: 1189397268, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    hit:
+    - {fileID: 327449720, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: 1209796338, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: -1205561587, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: -1800413362, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: -819545444, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    - {fileID: 456572304, guid: 7b8c1f191c9092e48948e1f4991780f4, type: 3}
+    enterRun:
+    - {fileID: 464880676, guid: eec3eca5703daac4c87a2f6e05db821e, type: 3}
+    - {fileID: 123682142, guid: eec3eca5703daac4c87a2f6e05db821e, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 206
+    cellWidth: 320
+  - species: bug-4
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\03-ong-sat-thu_bug-4\Pilot_Ong_Fly_V3\03-ong-sat-thu_bug-4_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: -1351219402, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: 685567801, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: 243494225, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: -119560811, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: 1176874790, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: -1036188192, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    run:
+    - {fileID: -623688503, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: -168043296, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: 993928327, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: 61534487, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: -1289434398, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: 573817838, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    attack:
+    - {fileID: -82379956, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: 835620979, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: 195897254, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: -219314618, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: -708997027, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: -2030568172, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    hit:
+    - {fileID: 962412544, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: -763384052, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: -1815886132, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: -360996718, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: 1381538903, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    - {fileID: -1403002874, guid: c16bf53345df4b94cb782d43e7df062a, type: 3}
+    enterRun:
+    - {fileID: -460407764, guid: 45981b0885be5384ea2918432d5d547e, type: 3}
+    - {fileID: 1158660693, guid: 45981b0885be5384ea2918432d5d547e, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 233
+    cellWidth: 320
+  - species: bug-1
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\04-bo-sung-do_bug-1\Pilot_Bo_Sung_Do_Run_V3\04-bo-sung-do_bug-1_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: -603487634, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: -410985276, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: 1196273351, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: 591807939, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: 669963116, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: -2115417915, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    run:
+    - {fileID: 1446173946, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: 1787033467, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: 41743102, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: 1612436356, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: -2117479054, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: -82198664, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    attack:
+    - {fileID: 1528995803, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: -82795584, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: 127050115, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: -2134319466, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: 1326065172, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: 104836518, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    hit:
+    - {fileID: -2136111108, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: 957175820, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: -2011236368, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: 1523884597, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: 1362212923, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    - {fileID: 931083058, guid: df757cf308b3da84faa9ded40e66e2ea, type: 3}
+    enterRun:
+    - {fileID: -836986683, guid: d67e3d90f0af7c740af2cd68b201b419, type: 3}
+    - {fileID: 1201081527, guid: d67e3d90f0af7c740af2cd68b201b419, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 222
+    cellWidth: 320
+  - species: beast-1
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\05-lon-rung-cuong-no_beast-1\Pilot_Lon_Rung_Run_V3\05-lon-rung-cuong-no_beast-1_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: -517388071, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: 1097475289, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: -505873504, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: 2101618116, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: -1147732764, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: -1160204157, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    run:
+    - {fileID: -715273451, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: -1006084375, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: -1905451641, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: 36359006, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: -137681112, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: -678286577, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    attack:
+    - {fileID: -1409238296, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: 1725022146, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: -463358962, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: -2015503141, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: 517823060, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: -1331702992, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    hit:
+    - {fileID: 1788739745, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: 1786749192, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: -1548671734, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: 840743223, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: 283461699, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    - {fileID: -311873054, guid: 5e6047ea38215754599534cd7f7752f2, type: 3}
+    enterRun:
+    - {fileID: 457125487, guid: 0020eedb3f9b1ae45bc675808fbb58f2, type: 3}
+    - {fileID: -1112874725, guid: 0020eedb3f9b1ae45bc675808fbb58f2, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 228
+    cellWidth: 320
+  - species: bug-2
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\06-nhen-giang-to_bug-2\Pilot_Nhen_Run_V3\06-nhen-giang-to_bug-2_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: 1121956881, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: -1112080826, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: 569168334, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: -42842832, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: 254671591, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: -1759580359, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    run:
+    - {fileID: -742300073, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: 145943916, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: 213474404, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: 1540279441, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: 1182590988, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: 108618082, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    attack:
+    - {fileID: -1259398687, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: 419436983, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: 420108069, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: 246808255, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: -1942996154, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: -643359208, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    hit:
+    - {fileID: 366546140, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: 1517049528, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: 867988692, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: -1178918283, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: 500922090, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    - {fileID: -1408891304, guid: 6a78410faf6adb649b321d472d8fda01, type: 3}
+    enterRun:
+    - {fileID: 332258788, guid: f7742a99255b6bf49884637ff381ef79, type: 3}
+    - {fileID: -2056693842, guid: f7742a99255b6bf49884637ff381ef79, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 233
+    cellWidth: 320
+  - species: bug-3
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\07-bo-ngua-dao_bug-3\Pilot_Di_Chuyen_V3\07-bo-ngua-dao_bug-3_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: -665358075, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: 2122434284, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: 616288294, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: 938049080, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: 425285871, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: -2045746173, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    run:
+    - {fileID: -567765387, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: -880487049, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: -497449335, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: 1853660489, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: 1004535232, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: 1510702053, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    attack:
+    - {fileID: 919595666, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: -860099607, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: 682657359, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: 525517268, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: 1064959797, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: 322239093, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    hit:
+    - {fileID: 515087339, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: -607955713, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: -1668850520, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: -1242057646, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: -440888191, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    - {fileID: -1919681653, guid: 4ba429b969cd2c94fb20d22b6c5295a2, type: 3}
+    enterRun:
+    - {fileID: 995227150, guid: 2d6ad59425c3e854f997d91cd56f98a9, type: 3}
+    - {fileID: -1101391305, guid: 2d6ad59425c3e854f997d91cd56f98a9, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 234
+    cellWidth: 320
+  - species: beast-2
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\08-gau-cuong-chien_beast-2\Pilot_Di_Chuyen_V3\08-gau-cuong-chien_beast-2_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: -1754240151, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: -1116622175, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: -1517779344, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: 890281178, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: 817223936, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: -1925352038, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    run:
+    - {fileID: 560482756, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: 2047121171, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: 1405432612, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: -552086318, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: 1723476787, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: 238994223, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    attack:
+    - {fileID: 169174236, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: -506858988, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: -891955179, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: 127903127, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: -1234716405, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: -961983298, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    hit:
+    - {fileID: -765990419, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: 1656929285, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: 359661229, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: -1306112357, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: 1319795550, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    - {fileID: -1860928874, guid: 53978e72e78640641b93178cc30297ab, type: 3}
+    enterRun:
+    - {fileID: 487343636, guid: daa3d83046ab1114d8587b81de2dec57, type: 3}
+    - {fileID: 76458592, guid: daa3d83046ab1114d8587b81de2dec57, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 234
+    cellWidth: 320
+  - species: bug-5
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\09-au-trung-dat_bug-5\Pilot_Di_Chuyen_V3\09-au-trung-dat_bug-5_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: -589416552, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: 2086781754, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: 619926102, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: 2028635188, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: 760885356, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: -1156259750, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    run:
+    - {fileID: 1115158058, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: -331717205, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: -1121507060, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: -2013681249, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: -362388754, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: 1954950829, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    attack:
+    - {fileID: 1098804810, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: -2051529502, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: 1720536455, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: -1155746954, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: -687821745, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: 727992777, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    hit:
+    - {fileID: 291282887, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: -858772206, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: -1819914865, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: -705179491, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: 803024995, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    - {fileID: 1607129797, guid: 58fe071dc2307b5419ac64ef63f93797, type: 3}
+    enterRun:
+    - {fileID: 741224657, guid: 608f51ab2e3998441b508a56d38bdef8, type: 3}
+    - {fileID: -689360565, guid: 608f51ab2e3998441b508a56d38bdef8, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 238
+    cellWidth: 320
+  - species: beast-4
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\10-ho-kiem_beast-4\Pilot_Di_Chuyen_V3\10-ho-kiem_beast-4_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: 693779299, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: 1506773854, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: -832928023, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: 553386788, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: -539489686, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: 610687939, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    run:
+    - {fileID: -1924674674, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: 1212053262, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: 312822279, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: -2095265763, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: 52015153, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: 1520342972, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    attack:
+    - {fileID: 679682709, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: 1582230298, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: -1492707027, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: -831572516, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: -1174085024, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: -647588608, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    hit:
+    - {fileID: 12084086, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: 841860438, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: 2109981933, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: 684452890, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: 1255992703, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    - {fileID: -1780660840, guid: f304b46ea516e5a4c9172042c8f7c82b, type: 3}
+    enterRun:
+    - {fileID: 1073547554, guid: 561c04843ffad0842a097ad7eb14e9b2, type: 3}
+    - {fileID: 1064571967, guid: 561c04843ffad0842a097ad7eb14e9b2, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 237
+    cellWidth: 320
+  - species: bug-6
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\11-bo-cap-doc_bug-6\Pilot_Di_Chuyen_V3\11-bo-cap-doc_bug-6_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: -142859120, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: 19211416, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: -1789397993, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: 1720061377, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: -2075693775, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: 236270818, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    run:
+    - {fileID: 1844541166, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: -949599751, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: 1089387625, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: 240202866, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: -699692438, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: 267648898, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    attack:
+    - {fileID: 20327998, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: 1452810121, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: 573632265, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: -2055555977, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: 1936080471, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: 2033426924, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    hit:
+    - {fileID: -170399208, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: 148737213, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: -1792856914, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: 651148661, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: 33482641, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    - {fileID: -421429198, guid: 84cf4fbe6a4a49b479ee48c13c252dbd, type: 3}
+    enterRun:
+    - {fileID: 1829462918, guid: d5183adc9ef23aa44bfb9f5c9c52dcef, type: 3}
+    - {fileID: -1472385258, guid: d5183adc9ef23aa44bfb9f5c9c52dcef, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 225
+    cellWidth: 320
+  - species: beast-3
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\12-khi-bang_beast-3\Pilot_Di_Chuyen_V3\12-khi-bang_beast-3_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: 1714538899, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: 487617717, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: -1142992196, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: 1027664461, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: -515361601, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: -347983142, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    run:
+    - {fileID: -1393626425, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: -1786341944, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: 1333570672, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: 7387072, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: 2080077122, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: -343928236, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    attack:
+    - {fileID: 410340693, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: 568656855, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: 1156419809, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: 978740756, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: 1988155910, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: 1810982482, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    hit:
+    - {fileID: -222900733, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: 520975446, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: 952457110, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: 68942588, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: -519599222, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    - {fileID: 308132570, guid: 4820d3cf12b04fe419b612323b891786, type: 3}
+    enterRun:
+    - {fileID: 1088744477, guid: 1deb3c67d9029eb4a849fb94fa01511f, type: 3}
+    - {fileID: -1390181831, guid: 1deb3c67d9029eb4a849fb94fa01511f, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 236
+    cellWidth: 320
+  - species: bug-7
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\13-buom-thoi-mien_bug-7\Pilot_Di_Chuyen_V3\13-buom-thoi-mien_bug-7_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: 2095954603, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: -296915140, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: -303971508, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: 168763738, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: 1404140084, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: 1173194793, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    run:
+    - {fileID: -2133186682, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: -1720428799, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: -118224265, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: 1076664136, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: 23080482, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: 487860529, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    attack:
+    - {fileID: 919229658, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: -1623526249, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: -638553709, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: 1450097533, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: -876183769, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: 38846303, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    hit:
+    - {fileID: -1660114638, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: -135911040, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: 440039182, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: 848105722, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: -786604568, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    - {fileID: -1483704848, guid: 1a4bd7136f71a1c49881f0303c79d9aa, type: 3}
+    enterRun:
+    - {fileID: 1749035681, guid: 5aae71dbc63972b40b3f917d15fdbc22, type: 3}
+    - {fileID: 2108868653, guid: 5aae71dbc63972b40b3f917d15fdbc22, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 248
+    cellWidth: 320
+  - species: beast-5
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\14-rua-dung-nham_beast-5\Pilot_Di_Chuyen_V3\14-rua-dung-nham_beast-5_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: 1586123872, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: 1225245122, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: 480636598, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: -2075465208, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: -1425148241, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: -2013907687, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    run:
+    - {fileID: 328346421, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: 864665602, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: 2096755575, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: 1315394624, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: 1118150260, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: -2060887712, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    attack:
+    - {fileID: -1968132914, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: 1623876985, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: -998948926, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: -211133339, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: -742058865, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: -1759801847, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    hit:
+    - {fileID: -1179957587, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: 425775968, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: -962305266, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: -878720943, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: -1872778460, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    - {fileID: 1217703147, guid: ec97e33f562bf4a45a161730b9aeb38d, type: 3}
+    enterRun:
+    - {fileID: -272922126, guid: f2fd190ea64e51143bc66e57088dfc96, type: 3}
+    - {fileID: 1755744169, guid: f2fd190ea64e51143bc66e57088dfc96, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 231
+    cellWidth: 320
+  - species: beast-6
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\15-te-giac-boc-giap_beast-6\Pilot_Di_Chuyen_V3\15-te-giac-boc-giap_beast-6_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: -1710425412, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: 1086902524, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: 1490062621, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: 1947751245, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: -2033625105, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: -2011345860, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    run:
+    - {fileID: 252583161, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: 1719064221, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: -1880732327, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: -657480857, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: 333224430, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: -31503685, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    attack:
+    - {fileID: 1057267938, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: 279466785, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: -260019757, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: -1714641105, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: -431039631, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: -1479408421, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    hit:
+    - {fileID: 638772520, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: 830699793, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: -1496032172, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: 895891019, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: 2103173943, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    - {fileID: 415780351, guid: dde9cd7c6d3d0c74a9a148231a6bb21f, type: 3}
+    enterRun:
+    - {fileID: 1061720123, guid: 705f443f05f872d49a58648a12b59296, type: 3}
+    - {fileID: 9919154, guid: 705f443f05f872d49a58648a12b59296, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 225
+    cellWidth: 320
+  - species: bug-8
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\16-bo-tinh-thach_bug-8\Pilot_Di_Chuyen_V3\16-bo-tinh-thach_bug-8_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: -832833249, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: 1485144770, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: 1495158781, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: -1029102213, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: 1970062689, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: 513144033, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    run:
+    - {fileID: 16123548, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: 1919728744, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: 1384840487, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: 1128923036, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: -34801893, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: -1024662701, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    attack:
+    - {fileID: -2145022324, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: 1202631208, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: -1606318314, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: -341733122, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: -465093191, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: 1874914645, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    hit:
+    - {fileID: -1662210659, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: 1492115845, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: 692698427, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: -91847339, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: 1022385318, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    - {fileID: 1146067482, guid: 381cdcf1fef39cd4f871d29640d6f916, type: 3}
+    enterRun:
+    - {fileID: 702881605, guid: 1f8f3602ea847214697caf35ce6e6df6, type: 3}
+    - {fileID: 772038550, guid: 1f8f3602ea847214697caf35ce6e6df6, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 223
+    cellWidth: 320
+  - species: beast-7
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\17-dai-bang-su-tu_beast-7\Pilot_Di_Chuyen_V3\17-dai-bang-su-tu_beast-7_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: 148313809, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: 1114516239, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: -884067968, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: 1166181709, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: 1180773972, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: 1028452882, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    run:
+    - {fileID: 525857097, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: -2087162763, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: -2098649651, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: 1455683767, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: 1457961417, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: -824474181, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    attack:
+    - {fileID: 1074254873, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: 1600793105, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: 1882254095, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: 995194465, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: 2020660476, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: -1549129704, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    hit:
+    - {fileID: 1633231943, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: -1190312766, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: 472133341, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: -655537453, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: -1018861231, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    - {fileID: 1332258887, guid: 5f292514b673239458d65a4badb5cb40, type: 3}
+    enterRun:
+    - {fileID: 1321775245, guid: e07f891fbfd7363499835d5cc8ec61fe, type: 3}
+    - {fileID: -476907193, guid: e07f891fbfd7363499835d5cc8ec61fe, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 232
+    cellWidth: 320
+  - species: beast-9
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\18-huou-co-thu_beast-9\Pilot_Di_Chuyen_V3\18-huou-co-thu_beast-9_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: -1026973251, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: 808885061, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: 812448365, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: 796403010, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: -505101423, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: -1779912445, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    run:
+    - {fileID: -931497596, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: -1501907029, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: 32907932, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: -2023428120, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: -1270198473, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: 1501201733, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    attack:
+    - {fileID: 918431764, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: -1787753696, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: -1404004437, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: 35973022, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: 829199592, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: -62117790, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    hit:
+    - {fileID: 607381415, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: 2082564103, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: -5936889, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: 1375646280, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: -450144702, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    - {fileID: 117081060, guid: 7aaaea34f780a8041aaca34adc3f5fdd, type: 3}
+    enterRun:
+    - {fileID: -1696635926, guid: 2e65fcc274d8f974aaca73e3115d5841, type: 3}
+    - {fileID: -1220013457, guid: 2e65fcc274d8f974aaca73e3115d5841, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 216
+    cellWidth: 320
+  - species: bug-9
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\19-bo-chua-giap-gai_bug-9\Pilot_Di_Chuyen_V3\19-bo-chua-giap-gai_bug-9_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: 2127423147, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: -1271284300, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: 1321138234, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: 1035997370, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: 2001132760, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: 327380688, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    run:
+    - {fileID: 2029957495, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: -1818094276, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: 1205653385, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: -1759204431, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: 652848557, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: 1891029440, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    attack:
+    - {fileID: 1809583744, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: -753018411, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: 465085303, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: 807100356, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: 803695392, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: -1217423666, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    hit:
+    - {fileID: 285347580, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: 840553345, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: -705567190, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: -1037638423, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: -1542364706, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    - {fileID: 671645274, guid: cf7af1286c9dc4c4baa18a7faa4154ad, type: 3}
+    enterRun:
+    - {fileID: 628383218, guid: 5fe6dfa4cc5aa10438641b9dcb4e8ff6, type: 3}
+    - {fileID: 1575954594, guid: 5fe6dfa4cc5aa10438641b9dcb4e8ff6, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 229
+    cellWidth: 320
+  - species: beast-8
+    source: D:\SeagullGame\MegaTanks\MegaTank\Art\CatTanks_Visual_Reference\01-Quai-va-animation\20-bao-long-hac-nguyet_beast-8\Pilot_Di_Chuyen_V3\20-bao-long-hac-nguyet_beast-8_sheet-idle-run-attack-hit_pilot-v3.png
+    version: 3
+    idle:
+    - {fileID: 2058811935, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: -1329387251, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: 2134053938, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: 886300111, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: 1959321867, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: -255308022, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    run:
+    - {fileID: -472575717, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: -1342714188, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: 271725543, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: 363276522, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: 18205082, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: -917924905, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    attack:
+    - {fileID: 1703626565, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: -1882303199, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: -1719120517, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: 313474796, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: -1092981486, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: -1028927975, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    hit:
+    - {fileID: 2015567231, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: -994045855, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: -2076435856, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: 1255989300, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: -637678987, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    - {fileID: -1720798915, guid: 4b2b1b63d3d82e448a270bd7aa52a5aa, type: 3}
+    enterRun:
+    - {fileID: 1249448601, guid: cab18502c06906b4293ca7b53a5b7519, type: 3}
+    - {fileID: -549849961, guid: cab18502c06906b4293ca7b53a5b7519, type: 3}
+    idleTime: 0.18
+    runTime: 0.09
+    attackTime: 0.1
+    hitTime: 0.045
+    enterTime: 0.06
+    referenceWidth: 248
+    cellWidth: 320

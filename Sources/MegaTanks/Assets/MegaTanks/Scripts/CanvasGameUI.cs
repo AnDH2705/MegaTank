@@ -91,7 +91,7 @@ namespace MegaTanks
             var v=View(screen);v.gameObject.SetActive(true);
             Click(v,"Close Popup",ClosePopup);
             if(value=="Equipment")DrawEquipment();
-            else if(value=="Crew"){crewStation=0;crewSelected=null;crewFilter=0;DrawCrew();}
+            else if(value=="Crew"){crewStation=-1;crewSelected=null;crewFilter=0;DrawCrew();}
             else { Click(v,"Dismiss Backdrop",ClosePopup);if(value=="Settings")SyncSettings(); }
         }
         public void ClosePopup()

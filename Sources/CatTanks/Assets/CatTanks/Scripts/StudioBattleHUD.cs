@@ -45,10 +45,12 @@ namespace CatTanks
                 Panel(555,208,490,76,.95f);Text(574,219,450,target.def.name+" • "+(target.hp/target.maxHp).ToString("P0")+" HP",subtitle);
                 Text(574,253,450,target.hp/target.maxHp<=.25f?"Đã đủ yếu để bắt! Nhấn C.":"Làm yếu xuống dưới 25% HP để bắt.",small);
             }
-            foreach(var fx in battle.effects.Where(e=>e.kind=="text"))
+            int floating=0;
+            foreach(var fx in battle.effects)
             {
+                if(fx.kind!="text")continue;
                 var p=Camera.main.WorldToScreenPoint(fx.position+Vector2.up*(1-fx.life/fx.maxLife)*50);var ui=ToUI(new Vector2(p.x,Screen.height-p.y));
-                textTint=fx.color;Text(ui.x-25,ui.y,110,fx.text,small);textTint=Color.white;
+                FloatingText(floating++,ui,fx);
             }
             Text(36,875,1530,"A / D  Di chuyển     Chuột  Khóa mục tiêu     1–4  Kỹ năng     C  Bắt quái     P  Tạm dừng     B  Bách khoa",small);
         }

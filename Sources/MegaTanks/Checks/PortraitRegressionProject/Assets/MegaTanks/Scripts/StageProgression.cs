@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MegaTanks
 {
-    public enum StageMode { Inactive, Combat, WaveBreak, Reward, Map, Reveal, Service, Victory }
+    public enum StageMode { Inactive, Combat, WaveBreak, Reward, Map, Reveal, Service, Victory, Shop }
     public sealed class StageProgression : MonoBehaviour
     {
         StageDefinition definition;
@@ -25,7 +25,7 @@ namespace MegaTanks
         public CardDefinition PaidServiceCard { get; private set; }
         public bool FreeClaimed { get; private set; }
         public bool PaidPurchased { get; private set; }
-        public bool HasOverlay => Mode == StageMode.Map || Mode == StageMode.Reveal || Mode == StageMode.Service || Mode == StageMode.Victory || Mode == StageMode.WaveBreak;
+        public bool HasOverlay => Mode == StageMode.Map || Mode == StageMode.Reveal || Mode == StageMode.Service || Mode == StageMode.Victory || Mode == StageMode.WaveBreak || Mode == StageMode.Shop;
         public void Configure(BattleGame battle, StageDefinition data, CardCatalog cards)
         {
             game = battle; definition = data; catalog = cards;
@@ -66,6 +66,12 @@ namespace MegaTanks
         }
         void BeginEncounter()
         {
+            if (Current.EncounterType == StageNodeType.Shop)
+            {
+                Mode = StageMode.Shop;
+                game.Rewards.OpenRouteShop();
+                return;
+            }
             if (Current.EncounterType == StageNodeType.Supply || Current.EncounterType == StageNodeType.Repair)
             {
                 CardEffect effect = Current.EncounterType == StageNodeType.Supply ? CardEffect.Resupply : CardEffect.Repair;
@@ -118,7 +124,7 @@ namespace MegaTanks
         }
         public void OnRewardChosen()
         {
-            if (Mode != StageMode.Reward) return;
+            if (Mode != StageMode.Reward && Mode != StageMode.Shop) return;
             Current.completed = true; Mode = StageMode.Map;
             game.ClearEncounterTransient();
         }

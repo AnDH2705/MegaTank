@@ -1460,6 +1460,18 @@
           "sprite": "button_disabled",
           "fontSize": 20,
           "disabled": true
+        },
+        {
+          "kind": "button",
+          "id": "preview-result",
+          "x": 1240,
+          "y": 220,
+          "w": 320,
+          "h": 48,
+          "sprite": "button_blue",
+          "text": "Xem kết quả mẫu",
+          "fontSize": 20,
+          "action": "screen:result"
         }
       ]
     },
@@ -7978,7 +7990,7 @@
           "w": 222,
           "h": 48,
           "text": "Nâng cấp · 1 lõi",
-          "action": "game:upgradeSkill:repair",
+          "action": "game:upgradeSkill:heal",
           "sprite": "button_blue",
           "fontSize": 17
         },
@@ -8032,7 +8044,7 @@
           "w": 222,
           "h": 48,
           "text": "Nâng cấp · 1 lõi",
-          "action": "game:upgradeSkill:rockets",
+          "action": "game:upgradeSkill:barrage",
           "sprite": "button_blue",
           "fontSize": 17
         },
@@ -8140,7 +8152,7 @@
           "w": 222,
           "h": 48,
           "text": "Nâng cấp · 1 lõi",
-          "action": "game:upgradeSkill:reinforce",
+          "action": "game:upgradeSkill:rally",
           "sprite": "button_blue",
           "fontSize": 17
         },
@@ -8194,7 +8206,7 @@
           "w": 222,
           "h": 48,
           "text": "Nâng cấp · 1 lõi",
-          "action": "game:upgradeSkill:ice",
+          "action": "game:upgradeSkill:freeze",
           "sprite": "button_blue",
           "fontSize": 17
         },
@@ -8302,7 +8314,7 @@
           "w": 222,
           "h": 48,
           "text": "Nâng cấp · 1 lõi",
-          "action": "game:upgradeSkill:airstrike",
+          "action": "game:upgradeSkill:orbital",
           "sprite": "button_blue",
           "fontSize": 17
         },
@@ -8464,7 +8476,7 @@
           "w": 222,
           "h": 48,
           "text": "Nâng cấp · 1 lõi",
-          "action": "game:upgradeSkill:bomb",
+          "action": "game:upgradeSkill:kamikaze",
           "sprite": "button_blue",
           "fontSize": 17
         }

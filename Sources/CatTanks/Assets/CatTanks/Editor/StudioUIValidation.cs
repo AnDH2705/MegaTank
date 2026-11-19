@@ -65,7 +65,7 @@ namespace CatTanks.Editor
                 Profile.TestSavePath = Path.GetFullPath("Logs/ui-smoke-profile.json");
                 game.profile = Profile.New(game.db); game.page="march";game.tab="cats";game.modal="";
                 await Show(game);
-                check(game.UiReady,"LayerLab theme and native Canvas loaded");
+                check(game.UiReady,"Game theme and native Canvas loaded");
                 check(!(bool)typeof(CatTanksGame).GetField("authoringUi",Private).GetValue(game)&&game.CanvasRoot.GetComponentsInChildren<StudioWidgetBinding>(true).Any(b=>b.authored),"Runtime uses the authored Canvas and widget templates");
                 check(game.CanvasRoot.GetComponentsInChildren<StudioUIView>(true).Count(v=>v.layer=="popup")==6,"Six separate popup prefab instances are present");
                 var authoredTitle=game.CanvasRoot.GetComponentsInChildren<Text>(true).First(t=>t.text=="Chuyến phiêu lưu dưới trăng");
@@ -74,7 +74,8 @@ namespace CatTanks.Editor
                 check(authoredRect.anchoredPosition==originalPosition+new Vector2(7,0),"UI data refresh preserves prefab-authored layout");
                 authoredRect.anchoredPosition=originalPosition;
                 check(game.CanvasRoot.GetComponent<Canvas>()!=null,"Native Canvas present");
-                check(Resources.Load<StudioUITheme>("StudioUITheme").assets.All(a=>a.sprite),"All theme references resolve");
+                var activeTheme=game.CanvasRoot.theme?game.CanvasRoot.theme:Resources.Load<StudioUITheme>("StudioUITheme");
+                check(activeTheme.assets.All(a=>a.sprite),"All active theme references resolve");
                 Click("Doanh trại");await Show(game);check(game.page=="barracks","Sidebar navigates through real button commands");
                 foreach(string tab in new[]{"cats","fortress","squad","skills","monsters","gear","presets","nexus"})
                 {

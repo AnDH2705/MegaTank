@@ -22,6 +22,7 @@ namespace CatTanks.MockupKit
     }
 
     // A visual assembly preview. It deliberately does not access or mutate a game profile.
+    [RequireComponent(typeof(CatTanks.PreviewIsolation))]
     public sealed class MockupKitPreview : MonoBehaviour
     {
         public MockupKitLibrary library;
@@ -32,6 +33,7 @@ namespace CatTanks.MockupKit
         string currentScreen, returnScreen = "march";
         RectTransform stage;
         public Action<string> onGameAction;
+        public string CurrentScreen => currentScreen;
 
         void Start()
         {

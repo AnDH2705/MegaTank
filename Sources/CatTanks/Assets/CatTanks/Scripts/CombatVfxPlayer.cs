@@ -17,6 +17,8 @@ namespace CatTanks
         readonly Dictionary<int,Instance> active=new Dictionary<int,Instance>();
         readonly Dictionary<string,Stack<Instance>> free=new Dictionary<string,Stack<Instance>>();
         readonly Dictionary<string,int> counts=new Dictionary<string,int>();
+        readonly HashSet<int> aliveIds=new HashSet<int>();
+        readonly List<int> retiredIds=new List<int>();
         public int ActiveCount=>active.Count;
         public int CreatedCount{get;private set;}
         public CombatVfxPlayer(Transform parent){this.parent=parent;library=Resources.Load<CombatVfxLibrary>("CombatVfxLibrary");}
@@ -25,8 +27,10 @@ namespace CatTanks
         {
             if(!library)return;
             // Retire first, allowing busy automatic weapons to reuse their previous bursts.
-            var ids=new HashSet<int>(battle.effects.Where(e=>e.kind!="text").Select(e=>e.id));
-            foreach(int id in active.Keys.Where(id=>!ids.Contains(id)).ToArray())Release(id);
+            aliveIds.Clear();retiredIds.Clear();
+            foreach(var effect in battle.effects)if(effect.kind!="text")aliveIds.Add(effect.id);
+            foreach(int id in active.Keys)if(!aliveIds.Contains(id))retiredIds.Add(id);
+            foreach(int id in retiredIds)Release(id);
             foreach(var effect in battle.effects)
             {
                 if(effect.kind=="text")continue;

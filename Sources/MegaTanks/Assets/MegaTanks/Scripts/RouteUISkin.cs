@@ -7,10 +7,12 @@ namespace MegaTanks
         public Sprite background,header,stagePlate,backPlate,legend;
         public Sprite nodeNormal,nodeAvailable,nodeCurrent,nodeLocked;
         public Sprite battle,hardBattle,supply,unknown,repair,backArrow,playerTank;
+        public Sprite shop;
         public Sprite IconFor(StageNodeType type)
         {
             switch(type)
             {
+                case StageNodeType.Shop:return shop != null ? shop : supply;
                 case StageNodeType.HardBattle:case StageNodeType.Boss:return hardBattle;
                 case StageNodeType.Supply:return supply;
                 case StageNodeType.Repair:return repair;

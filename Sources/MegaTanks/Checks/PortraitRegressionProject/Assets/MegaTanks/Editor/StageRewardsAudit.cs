@@ -93,13 +93,14 @@ namespace MegaTanks.Editor
                 switch(phase++)
                 {
                     case 0:
-                        testStage=Object.Instantiate(game.Stage.Definition);testStage.InitializeStage(1);testStage.rounds=2;testStage.randomizeSeed=false;
+                        testStage=Object.Instantiate(game.Stage.Definition);testStage.InitializeStage(1);testStage.rounds=3;testStage.randomizeSeed=false;
                         game.SelectStage(testStage);game.StartBattle();StageProgressionAudit.DisableWeapons(game);
                         Balances(game.Wallet,0,0,0,"Starting a stage does not award anything.");break;
                     case 1:
                         StageProgressionAudit.ClearWave(game);Require(game.Stage.Mode==StageMode.Reward,"Opening battle still uses run reward cards.");
                         Balances(game.Wallet,0,0,0,"Intermediate waves do not pay stage rewards.");game.Rewards.ChooseReward(0);break;
                     case 2:
+                        Require(game.Stage.SelectNode(game.Stage.Current.next[0])&&game.Stage.Mode==StageMode.Shop,"Enter guaranteed pre-boss shop.");game.Rewards.LeaveShop();
                         Require(game.Stage.Mode==StageMode.Map&&game.Stage.SelectNode(game.Stage.Current.next[0]),"Enter the connected final boss.");
                         StageProgressionAudit.DisableWeapons(game);break;
                     case 3:
@@ -114,6 +115,7 @@ namespace MegaTanks.Editor
                     case 5:
                         StageProgressionAudit.ClearWave(game);game.Rewards.ChooseReward(0);break;
                     case 6:
+                        Require(game.Stage.SelectNode(game.Stage.Current.next[0])&&game.Stage.Mode==StageMode.Shop,"Replay visits pre-boss shop.");game.Rewards.LeaveShop();
                         Require(game.Stage.SelectNode(game.Stage.Current.next[0]),"Replay reaches the boss through the route.");StageProgressionAudit.DisableWeapons(game);break;
                     case 7:
                         StageProgressionAudit.ClearWave(game);Require(game.Stage.Mode==StageMode.Victory&&!game.StageRewards.LastReceipt.firstClear,"Replay is recognized.");

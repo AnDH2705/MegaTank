@@ -10,6 +10,7 @@ namespace MegaTanks
         {
             switch (type)
             {
+                case StageNodeType.Shop: return "Shop";
                 case StageNodeType.HardBattle: return "Hard battle";
                 case StageNodeType.Supply: return "Supply";
                 case StageNodeType.Repair: return "Repair";
@@ -22,6 +23,7 @@ namespace MegaTanks
         {
             switch (type)
             {
+                case StageNodeType.Shop: return new Color(1, .78f, .3f);
                 case StageNodeType.HardBattle: return new Color(1, .35f, .25f);
                 case StageNodeType.Supply: return new Color(1, .78f, .3f);
                 case StageNodeType.Repair: return new Color(.3f, .9f, .65f);

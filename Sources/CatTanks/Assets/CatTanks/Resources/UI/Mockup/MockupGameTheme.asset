@@ -1,0 +1,595 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f7e79ddaf14d3438cb3fc1764dd9a1, type: 3}
+  m_Name: MockupGameTheme
+  m_EditorClassIdentifier: 
+  assets:
+  - key: panel_card
+    sprite: {fileID: -1289848200, guid: df62e060d30cb3943946d8c5663fb3b4, type: 3}
+  - key: panel_header
+    sprite: {fileID: -1987644331, guid: df62e060d30cb3943946d8c5663fb3b4, type: 3}
+  - key: panel_inset
+    sprite: {fileID: 1591865088, guid: df62e060d30cb3943946d8c5663fb3b4, type: 3}
+  - key: panel_main
+    sprite: {fileID: -991371429, guid: df62e060d30cb3943946d8c5663fb3b4, type: 3}
+  - key: panel_modal
+    sprite: {fileID: 595845033, guid: df62e060d30cb3943946d8c5663fb3b4, type: 3}
+  - key: panel_portrait
+    sprite: {fileID: -1269792587, guid: df62e060d30cb3943946d8c5663fb3b4, type: 3}
+  - key: panel_resource
+    sprite: {fileID: -803398442, guid: df62e060d30cb3943946d8c5663fb3b4, type: 3}
+  - key: panel_scroll
+    sprite: {fileID: 1653569135, guid: df62e060d30cb3943946d8c5663fb3b4, type: 3}
+  - key: panel_tip
+    sprite: {fileID: 402713104, guid: df62e060d30cb3943946d8c5663fb3b4, type: 3}
+  - key: button_blue
+    sprite: {fileID: 1316628372, guid: 171e163d7ed9a814ea6aa781d912f00a, type: 3}
+  - key: button_blue_pressed
+    sprite: {fileID: 2098346187, guid: 171e163d7ed9a814ea6aa781d912f00a, type: 3}
+  - key: button_cyan
+    sprite: {fileID: -229878016, guid: 171e163d7ed9a814ea6aa781d912f00a, type: 3}
+  - key: button_cyan_pressed
+    sprite: {fileID: 651538799, guid: 171e163d7ed9a814ea6aa781d912f00a, type: 3}
+  - key: button_danger
+    sprite: {fileID: 1164424386, guid: 171e163d7ed9a814ea6aa781d912f00a, type: 3}
+  - key: button_disabled
+    sprite: {fileID: 511417392, guid: 171e163d7ed9a814ea6aa781d912f00a, type: 3}
+  - key: button_gold
+    sprite: {fileID: -75034136, guid: 171e163d7ed9a814ea6aa781d912f00a, type: 3}
+  - key: button_gold_pressed
+    sprite: {fileID: -1112740915, guid: 171e163d7ed9a814ea6aa781d912f00a, type: 3}
+  - key: button_green
+    sprite: {fileID: -2102132809, guid: 171e163d7ed9a814ea6aa781d912f00a, type: 3}
+  - key: input_field
+    sprite: {fileID: -924363497, guid: 171e163d7ed9a814ea6aa781d912f00a, type: 3}
+  - key: tab_blue
+    sprite: {fileID: -887619296, guid: 171e163d7ed9a814ea6aa781d912f00a, type: 3}
+  - key: tab_selected
+    sprite: {fileID: -1957964506, guid: 171e163d7ed9a814ea6aa781d912f00a, type: 3}
+  - key: badge_boss
+    sprite: {fileID: 1138397004, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: badge_selected
+    sprite: {fileID: 906088532, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: bar_fill_cyan
+    sprite: {fileID: -145465940, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: bar_fill_gold
+    sprite: {fileID: -310328359, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: bar_fill_green
+    sprite: {fileID: -1846799415, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: bar_track
+    sprite: {fileID: -491601857, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: hazard_strip
+    sprite: {fileID: -1370798914, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: resonance_link
+    sprite: {fileID: -461920457, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: resonance_pad
+    sprite: {fileID: -1281914563, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: scroll_handle
+    sprite: {fileID: 2064393641, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: scroll_track
+    sprite: {fileID: -1749992069, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: slot_empty
+    sprite: {fileID: -176864303, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: stage_connector
+    sprite: {fileID: 185648042, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: star_empty
+    sprite: {fileID: -1731001561, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: star_gold
+    sprite: {fileID: -1606716092, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: wing_gold
+    sprite: {fileID: -1950883512, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: icon_arrow_right
+    sprite: {fileID: -1143362902, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: icon_battle
+    sprite: {fileID: 818280431, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: icon_book
+    sprite: {fileID: -863780616, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: icon_check
+    sprite: {fileID: -1784742672, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: icon_chest
+    sprite: {fileID: -2004273376, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: icon_close
+    sprite: {fileID: 940712483, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: icon_crown
+    sprite: {fileID: -1292918475, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: icon_lock
+    sprite: {fileID: 780553130, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: icon_map
+    sprite: {fileID: 1937475613, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: icon_pause
+    sprite: {fileID: 1516273558, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: icon_play
+    sprite: {fileID: -1319688879, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: icon_plus
+    sprite: {fileID: -74245588, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: icon_quests
+    sprite: {fileID: -513468384, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: icon_settings
+    sprite: {fileID: -1126353305, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: icon_skull
+    sprite: {fileID: 279339808, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: icon_town
+    sprite: {fileID: 2054612240, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: icon_attack
+    sprite: {fileID: 1061358810, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: icon_cage
+    sprite: {fileID: 1768763822, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: icon_cat_xp
+    sprite: {fileID: -1153791135, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: icon_coin
+    sprite: {fileID: -1215121849, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: icon_commander_xp
+    sprite: {fileID: 1287258073, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: icon_defense
+    sprite: {fileID: -382933701, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: icon_dust
+    sprite: {fileID: -1092456581, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: icon_essence
+    sprite: {fileID: -1472659460, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: icon_food
+    sprite: {fileID: -489288944, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: icon_forge
+    sprite: {fileID: -1291833555, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: icon_gem
+    sprite: {fileID: -1634728741, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: icon_heart
+    sprite: {fileID: 44802924, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: icon_moon_cage
+    sprite: {fileID: 1156362893, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: icon_skill_core
+    sprite: {fileID: 1901022802, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: icon_speed
+    sprite: {fileID: 1675159194, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: icon_ticket
+    sprite: {fileID: -1153586064, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: skill_airstrike
+    sprite: {fileID: 1041400665, guid: 3817d48b053ca87489d69e7f201ca2e1, type: 3}
+  - key: skill_bomb
+    sprite: {fileID: 377232269, guid: 3817d48b053ca87489d69e7f201ca2e1, type: 3}
+  - key: skill_decoy
+    sprite: {fileID: 1038306587, guid: 3817d48b053ca87489d69e7f201ca2e1, type: 3}
+  - key: skill_drone
+    sprite: {fileID: 1949804585, guid: 3817d48b053ca87489d69e7f201ca2e1, type: 3}
+  - key: skill_ice
+    sprite: {fileID: -968040827, guid: 3817d48b053ca87489d69e7f201ca2e1, type: 3}
+  - key: skill_magnet
+    sprite: {fileID: -243192024, guid: 3817d48b053ca87489d69e7f201ca2e1, type: 3}
+  - key: skill_reinforce
+    sprite: {fileID: 920073426, guid: 3817d48b053ca87489d69e7f201ca2e1, type: 3}
+  - key: skill_repair
+    sprite: {fileID: -1600604545, guid: 3817d48b053ca87489d69e7f201ca2e1, type: 3}
+  - key: skill_rockets
+    sprite: {fileID: 715500392, guid: 3817d48b053ca87489d69e7f201ca2e1, type: 3}
+  - key: skill_shield
+    sprite: {fileID: 637886602, guid: 3817d48b053ca87489d69e7f201ca2e1, type: 3}
+  - key: mascot_chest
+    sprite: {fileID: 398321670, guid: 04b67b04135287c4492238e2fa6ec875, type: 3}
+  - key: mascot_commander
+    sprite: {fileID: 164468997, guid: 04b67b04135287c4492238e2fa6ec875, type: 3}
+  - key: mascot_empty
+    sprite: {fileID: 1286303613, guid: 04b67b04135287c4492238e2fa6ec875, type: 3}
+  - key: mascot_mechanic
+    sprite: {fileID: -575857735, guid: 04b67b04135287c4492238e2fa6ec875, type: 3}
+  - key: mascot_ready
+    sprite: {fileID: -1945103443, guid: 04b67b04135287c4492238e2fa6ec875, type: 3}
+  - key: mascot_rest
+    sprite: {fileID: -694155288, guid: 04b67b04135287c4492238e2fa6ec875, type: 3}
+  - key: mascot_scout
+    sprite: {fileID: 838019096, guid: 04b67b04135287c4492238e2fa6ec875, type: 3}
+  - key: mascot_victory
+    sprite: {fileID: -1269461431, guid: 04b67b04135287c4492238e2fa6ec875, type: 3}
+  - key: avatar_banh_bao
+    sprite: {fileID: -302968985, guid: e262ef7340e729343a770fdfa561b2f2, type: 3}
+  - key: avatar_dau_den
+    sprite: {fileID: 669390609, guid: e262ef7340e729343a770fdfa561b2f2, type: 3}
+  - key: avatar_gau_beo
+    sprite: {fileID: 235296377, guid: e262ef7340e729343a770fdfa561b2f2, type: 3}
+  - key: avatar_lua_mach
+    sprite: {fileID: 988762930, guid: e262ef7340e729343a770fdfa561b2f2, type: 3}
+  - key: avatar_milo
+    sprite: {fileID: 1987324144, guid: e262ef7340e729343a770fdfa561b2f2, type: 3}
+  - key: avatar_muc_ong
+    sprite: {fileID: -1070007708, guid: e262ef7340e729343a770fdfa561b2f2, type: 3}
+  - key: prop_anvil
+    sprite: {fileID: 1597995335, guid: 6ba0432e0b84cd44c8a7f41600c5514f, type: 3}
+  - key: prop_barricade
+    sprite: {fileID: 998083906, guid: 6ba0432e0b84cd44c8a7f41600c5514f, type: 3}
+  - key: prop_cage_empty
+    sprite: {fileID: -315230524, guid: 6ba0432e0b84cd44c8a7f41600c5514f, type: 3}
+  - key: prop_crate
+    sprite: {fileID: 1945686948, guid: 6ba0432e0b84cd44c8a7f41600c5514f, type: 3}
+  - key: prop_crystal
+    sprite: {fileID: -1070107975, guid: 6ba0432e0b84cd44c8a7f41600c5514f, type: 3}
+  - key: prop_flag
+    sprite: {fileID: 1340935979, guid: 6ba0432e0b84cd44c8a7f41600c5514f, type: 3}
+  - key: prop_lantern
+    sprite: {fileID: -727058095, guid: 6ba0432e0b84cd44c8a7f41600c5514f, type: 3}
+  - key: prop_tools
+    sprite: {fileID: -376867777, guid: 6ba0432e0b84cd44c8a7f41600c5514f, type: 3}
+  - key: prop_tower
+    sprite: {fileID: 921380893, guid: 6ba0432e0b84cd44c8a7f41600c5514f, type: 3}
+  - key: stage_boss
+    sprite: {fileID: 548116698, guid: 82e312f61f241f14f9d65ac31680066c, type: 3}
+  - key: stage_desert
+    sprite: {fileID: 1322589573, guid: 82e312f61f241f14f9d65ac31680066c, type: 3}
+  - key: stage_factory
+    sprite: {fileID: -607936542, guid: 82e312f61f241f14f9d65ac31680066c, type: 3}
+  - key: stage_fog
+    sprite: {fileID: 668223397, guid: 82e312f61f241f14f9d65ac31680066c, type: 3}
+  - key: stage_forest
+    sprite: {fileID: 1695336087, guid: 82e312f61f241f14f9d65ac31680066c, type: 3}
+  - key: stage_snow
+    sprite: {fileID: 1668554310, guid: 82e312f61f241f14f9d65ac31680066c, type: 3}
+  - key: vehicle_antenna
+    sprite: {fileID: 1968190775, guid: c7571be285a1d5448b44ca3efd7dad03, type: 3}
+  - key: vehicle_armor
+    sprite: {fileID: 2061850292, guid: c7571be285a1d5448b44ca3efd7dad03, type: 3}
+  - key: vehicle_bumper
+    sprite: {fileID: 2071322396, guid: c7571be285a1d5448b44ca3efd7dad03, type: 3}
+  - key: vehicle_cabin
+    sprite: {fileID: 2034555803, guid: c7571be285a1d5448b44ca3efd7dad03, type: 3}
+  - key: vehicle_chassis
+    sprite: {fileID: 813774278, guid: c7571be285a1d5448b44ca3efd7dad03, type: 3}
+  - key: vehicle_exhaust
+    sprite: {fileID: -1459253892, guid: c7571be285a1d5448b44ca3efd7dad03, type: 3}
+  - key: vehicle_flag
+    sprite: {fileID: 2144461566, guid: c7571be285a1d5448b44ca3efd7dad03, type: 3}
+  - key: vehicle_tier
+    sprite: {fileID: -1298010482, guid: c7571be285a1d5448b44ca3efd7dad03, type: 3}
+  - key: vehicle_wheel
+    sprite: {fileID: 86023541, guid: c7571be285a1d5448b44ca3efd7dad03, type: 3}
+  - key: driver_cat
+    sprite: {fileID: 1561336831, guid: 618f5c75969c89f4f9dfabc03226a381, type: 3}
+  - key: infantry_engineer
+    sprite: {fileID: 680613244, guid: 618f5c75969c89f4f9dfabc03226a381, type: 3}
+  - key: infantry_healer
+    sprite: {fileID: 298683126, guid: 618f5c75969c89f4f9dfabc03226a381, type: 3}
+  - key: infantry_heavy
+    sprite: {fileID: 1077135802, guid: 618f5c75969c89f4f9dfabc03226a381, type: 3}
+  - key: infantry_rifle
+    sprite: {fileID: -351916542, guid: 618f5c75969c89f4f9dfabc03226a381, type: 3}
+  - key: infantry_rocket
+    sprite: {fileID: 2000265929, guid: 618f5c75969c89f4f9dfabc03226a381, type: 3}
+  - key: bg_hub
+    sprite: {fileID: 21300000, guid: d4720571201cf9c45bb1fda59b01caf7, type: 3}
+  - key: bg_battle
+    sprite: {fileID: 21300000, guid: dd2d25ad289246544bba6a681b7fe39a, type: 3}
+  - key: bg_workshop
+    sprite: {fileID: 21300000, guid: 5b829a3f1071eda4d93bc4893de7b3c7, type: 3}
+  - key: bg_stage_fog
+    sprite: {fileID: 21300000, guid: 6b7dd05014d3d8f4aaf920f76e9ba530, type: 3}
+  - key: ammo-0
+    sprite: {fileID: 21300000, guid: 62a65ba2eded72e47aae047fc88e3e90, type: 3}
+  - key: ammo-1
+    sprite: {fileID: 21300000, guid: f996cf06fd23b5f47a32c34928593209, type: 3}
+  - key: ammo-2
+    sprite: {fileID: 21300000, guid: 11d7bcdfaabd78743ac54a23864e7389, type: 3}
+  - key: ammo-3
+    sprite: {fileID: 21300000, guid: 1ed013b5934a5db4abfe2c0017dea375, type: 3}
+  - key: ammo-4
+    sprite: {fileID: 21300000, guid: 3010d259b77d5b44eb8ca7ab8afa0ed2, type: 3}
+  - key: ammo-5
+    sprite: {fileID: 21300000, guid: eb46c35a74c16534eba94e2bb3caf790, type: 3}
+  - key: ammo-6
+    sprite: {fileID: 21300000, guid: ee52039f321ca2a48afd0100ffb731ef, type: 3}
+  - key: ammo-7
+    sprite: {fileID: 21300000, guid: 60e3e39f9bab37f43985b66ef92d4a85, type: 3}
+  - key: ammo-8
+    sprite: {fileID: 21300000, guid: 4913ab436ed7c4c4e8acf4e444106e49, type: 3}
+  - key: ammo-9
+    sprite: {fileID: 21300000, guid: 090a1361c1df89040a136a97c64657b4, type: 3}
+  - key: armor-0
+    sprite: {fileID: 21300000, guid: b7af1951bf06eef4fa86746f51b884f3, type: 3}
+  - key: armor-1
+    sprite: {fileID: 21300000, guid: 6072c67e2d7227c498b4a325601948d9, type: 3}
+  - key: armor-2
+    sprite: {fileID: 21300000, guid: b1f176b9035e48848a9150cae6ef3ea7, type: 3}
+  - key: armor-3
+    sprite: {fileID: 21300000, guid: 5b7e4a6e09dd5204f8e5230d7c4f052a, type: 3}
+  - key: armor-4
+    sprite: {fileID: 21300000, guid: 439a8b5ee757e6047b8785e697a5c751, type: 3}
+  - key: armor-5
+    sprite: {fileID: 21300000, guid: 9a986db86be4da142a4da2cf7811e3eb, type: 3}
+  - key: armor-6
+    sprite: {fileID: 21300000, guid: 443fd00cde17e234982b671d494690a3, type: 3}
+  - key: armor-7
+    sprite: {fileID: 21300000, guid: 293697a07f8981f4cac96681a95754c4, type: 3}
+  - key: armor-8
+    sprite: {fileID: 21300000, guid: 3c89766233bb6f74eb48b00cbeb83a07, type: 3}
+  - key: armor-9
+    sprite: {fileID: 21300000, guid: 3c4ff2f9b6f30254badd177de4054b67, type: 3}
+  - key: beast-0
+    sprite: {fileID: 21300000, guid: ba6bea1b3bb8b1145b9bb2334d8d40b0, type: 3}
+  - key: beast-1
+    sprite: {fileID: 21300000, guid: a00ec92df4e41a34fa0ff07891496bdc, type: 3}
+  - key: beast-2
+    sprite: {fileID: 21300000, guid: dcf3d894fb042f540b9c2b6b575317b6, type: 3}
+  - key: beast-3
+    sprite: {fileID: 21300000, guid: 3587f403bc4917145b9414a0ed1cde8c, type: 3}
+  - key: beast-4
+    sprite: {fileID: 21300000, guid: d8e4baac8f0986d47921720c5d9e5ef4, type: 3}
+  - key: beast-5
+    sprite: {fileID: 21300000, guid: 4b20e4f4cbecd6c4b8931ddeceb29788, type: 3}
+  - key: beast-6
+    sprite: {fileID: 21300000, guid: e2ae1fa9d761b524ca0a41dd6ddd724e, type: 3}
+  - key: beast-7
+    sprite: {fileID: 21300000, guid: ab171b65b13509f49bee22f234f7450d, type: 3}
+  - key: beast-8
+    sprite: {fileID: 21300000, guid: f2660ce02b1a09440ade405ac0970603, type: 3}
+  - key: beast-9
+    sprite: {fileID: 21300000, guid: 9622512ff7629934195523f6d66ca8ac, type: 3}
+  - key: bug-0
+    sprite: {fileID: 21300000, guid: 979a35b0755c5c046b07e5e8c9774955, type: 3}
+  - key: bug-1
+    sprite: {fileID: 21300000, guid: 25f57cf344be7c84086651d1bbf98d8f, type: 3}
+  - key: bug-2
+    sprite: {fileID: 21300000, guid: 646af1f9b5bcee0498bbd1b63c6b8429, type: 3}
+  - key: bug-3
+    sprite: {fileID: 21300000, guid: 7bbd0bde5dc064345abd739ab5746f7c, type: 3}
+  - key: bug-4
+    sprite: {fileID: 21300000, guid: a486da3470ba0c5499e216d929e929f2, type: 3}
+  - key: bug-5
+    sprite: {fileID: 21300000, guid: a9c124cb4c723b8479d363cfa19fea36, type: 3}
+  - key: bug-6
+    sprite: {fileID: 21300000, guid: 5543cd819c117204596e806c9132b7ce, type: 3}
+  - key: bug-7
+    sprite: {fileID: 21300000, guid: 328bf82c525e5b4468b076d53d620cfe, type: 3}
+  - key: bug-8
+    sprite: {fileID: 21300000, guid: 16c6a20fa15df554b8c4cee1fe77d30d, type: 3}
+  - key: bug-9
+    sprite: {fileID: 21300000, guid: 97db31b415bed2c48b6524b1db90f11a, type: 3}
+  - key: cat-0
+    sprite: {fileID: 21300000, guid: 7abe9439b56089140880e9e0c14c2480, type: 3}
+  - key: cat-1
+    sprite: {fileID: 21300000, guid: 306f35648792cf549bf06a36e5b2cfbf, type: 3}
+  - key: cat-2
+    sprite: {fileID: 21300000, guid: 5466ec2a649fdce40b58b5c52b2381b6, type: 3}
+  - key: cat-3
+    sprite: {fileID: 21300000, guid: 1bfae82d6cd8fbd479aea7fb00e3997f, type: 3}
+  - key: cat-4
+    sprite: {fileID: 21300000, guid: b7df76382dd12b94788a5be83b9ef4e2, type: 3}
+  - key: cat-5
+    sprite: {fileID: 21300000, guid: 6b3a1cc667e5b8945864d377cc002b1f, type: 3}
+  - key: cat-6
+    sprite: {fileID: 21300000, guid: 693fd848528a57f4996447c30846d521, type: 3}
+  - key: cat-7
+    sprite: {fileID: 21300000, guid: 42532e956df503b48ad34c643f8f3b53, type: 3}
+  - key: cat-8
+    sprite: {fileID: 21300000, guid: 739d5a38f73feed4db083a885e29a745, type: 3}
+  - key: cat-9
+    sprite: {fileID: 21300000, guid: 05dad5bbf69dc854aa676b86026b7e9f, type: 3}
+  - key: gun-0
+    sprite: {fileID: 21300000, guid: 6b026519384c49d49af759a5091621df, type: 3}
+  - key: gun-1
+    sprite: {fileID: 21300000, guid: a07bee3e3de5d2949917e5328bcbeff7, type: 3}
+  - key: gun-2
+    sprite: {fileID: 21300000, guid: 22f2ca393a03a2648abc0f12490ec188, type: 3}
+  - key: gun-3
+    sprite: {fileID: 21300000, guid: 65606e189740a8c4a82fced729b0d283, type: 3}
+  - key: gun-4
+    sprite: {fileID: 21300000, guid: 6c3b0277874a459439e746f4ffeb0a53, type: 3}
+  - key: gun-5
+    sprite: {fileID: 21300000, guid: 423923dec04bb5841a3949079c30bc95, type: 3}
+  - key: gun-6
+    sprite: {fileID: 21300000, guid: 5ebd2f278a393944c8fb7dd0bd77d1e1, type: 3}
+  - key: gun-7
+    sprite: {fileID: 21300000, guid: acb4f2c1b4e936c4398f727a8289e493, type: 3}
+  - key: gun-8
+    sprite: {fileID: 21300000, guid: 85360113cc280274bb78a6fa9318c083, type: 3}
+  - key: gun-9
+    sprite: {fileID: 21300000, guid: fb7a857769458cf4988e192faf7f9a03, type: 3}
+  - key: hat-0
+    sprite: {fileID: 21300000, guid: c3a2ec13823871a4da4ce5e2a6c9f6e0, type: 3}
+  - key: hat-1
+    sprite: {fileID: 21300000, guid: 9bbe7891db7470c479a2c109aa36fd2c, type: 3}
+  - key: hat-2
+    sprite: {fileID: 21300000, guid: 61cb392b7d4a1f84fbd3ff33db8756c6, type: 3}
+  - key: hat-3
+    sprite: {fileID: 21300000, guid: bfbc3b89be4db1a4d94ca7f8f25f43a7, type: 3}
+  - key: hat-4
+    sprite: {fileID: 21300000, guid: 474b0cfbfa8e2634594c001c9b60b72a, type: 3}
+  - key: hat-5
+    sprite: {fileID: 21300000, guid: d568342299f89744ca3192529f1183a2, type: 3}
+  - key: hat-6
+    sprite: {fileID: 21300000, guid: 5e155162ea4253f4fbef0014175f635f, type: 3}
+  - key: hat-7
+    sprite: {fileID: 21300000, guid: d5f2f00fb221aba43bca7f5e43252000, type: 3}
+  - key: hat-8
+    sprite: {fileID: 21300000, guid: 1fdb34706227d6a4bb92f2d941a22cac, type: 3}
+  - key: hat-9
+    sprite: {fileID: 21300000, guid: 2c744b781452bc04e9efda9335ff4542, type: 3}
+  - key: pack-0
+    sprite: {fileID: 21300000, guid: e35d1a872c6e08d4a9d98f36843d73fb, type: 3}
+  - key: pack-1
+    sprite: {fileID: 21300000, guid: f53100e5654517042a9ad485e76b9af2, type: 3}
+  - key: pack-10
+    sprite: {fileID: 21300000, guid: c01fc5bd49430e648bbf4b713822d9c5, type: 3}
+  - key: pack-11
+    sprite: {fileID: 21300000, guid: 4be5f82d9508c4b4ab40190e0ae91426, type: 3}
+  - key: pack-12
+    sprite: {fileID: 21300000, guid: 790e87aeda684ee4685fdd655ef31901, type: 3}
+  - key: pack-13
+    sprite: {fileID: 21300000, guid: 2c4e08d486588584d9a7534048a8f7ec, type: 3}
+  - key: pack-14
+    sprite: {fileID: 21300000, guid: fa7c4a081b4da1948986bb576619ffb0, type: 3}
+  - key: pack-15
+    sprite: {fileID: 21300000, guid: 9d50bb9d2951dfd4582a882a9ab34ede, type: 3}
+  - key: pack-16
+    sprite: {fileID: 21300000, guid: fde9166290c214a4f863cb43acf9ba8a, type: 3}
+  - key: pack-17
+    sprite: {fileID: 21300000, guid: 0fbf1c9b4cc9bc240a38326495de2264, type: 3}
+  - key: pack-18
+    sprite: {fileID: 21300000, guid: 2aa3e9b07598e4745acfc04a03971ee1, type: 3}
+  - key: pack-19
+    sprite: {fileID: 21300000, guid: 064dd2c053a95a34d91b0886b8a73f36, type: 3}
+  - key: pack-2
+    sprite: {fileID: 21300000, guid: 13b2ce52d88c5034bb87bbbb913c18fc, type: 3}
+  - key: pack-3
+    sprite: {fileID: 21300000, guid: 3a08b6766bda26045ab1b97debaba11c, type: 3}
+  - key: pack-4
+    sprite: {fileID: 21300000, guid: 424af4e0418b3844483396606daa2995, type: 3}
+  - key: pack-5
+    sprite: {fileID: 21300000, guid: 97162fd608dc11b4b94de85f2d307f2e, type: 3}
+  - key: pack-6
+    sprite: {fileID: 21300000, guid: 6f311038198fc814aa6d9dbab3446511, type: 3}
+  - key: pack-7
+    sprite: {fileID: 21300000, guid: 93affe323988f184bacb892789ebeb54, type: 3}
+  - key: pack-8
+    sprite: {fileID: 21300000, guid: e0e9afd8cd1d0024682acb267e72312c, type: 3}
+  - key: pack-9
+    sprite: {fileID: 21300000, guid: aaa6bb7cef44ae740b78a93ef428675a, type: 3}
+  - key: turret_alt-0
+    sprite: {fileID: 21300000, guid: 2e12b08132f597e44a5a30e716fc56f2, type: 3}
+  - key: turret_alt-1
+    sprite: {fileID: 21300000, guid: cdf89bcb975a7ca4e8316f8034d7c19d, type: 3}
+  - key: turret_alt-2
+    sprite: {fileID: 21300000, guid: 9e56f72d6cbb68548a2c0f4a4fbf6c37, type: 3}
+  - key: turret_alt-3
+    sprite: {fileID: 21300000, guid: 25bae83fb7acc6f4287ffbd549fe58b1, type: 3}
+  - key: turret_alt-4
+    sprite: {fileID: 21300000, guid: c33b05cc0104b2640824be573384b692, type: 3}
+  - key: turret_alt-5
+    sprite: {fileID: 21300000, guid: 93e93c2df0bd93740a9842367112d7ea, type: 3}
+  - key: turret_alt-6
+    sprite: {fileID: 21300000, guid: b73e8efc34f27e843bb898e1dddd63e6, type: 3}
+  - key: turret_alt-7
+    sprite: {fileID: 21300000, guid: 6ad763bcc2e3d4d46967062d4feeca62, type: 3}
+  - key: turret_alt-8
+    sprite: {fileID: 21300000, guid: c967ef59aff3971459f784257bfbae31, type: 3}
+  - key: turret_alt-9
+    sprite: {fileID: 21300000, guid: 7c7bda331fb7434439f0c64a6d91defa, type: 3}
+  - key: turret-0
+    sprite: {fileID: 21300000, guid: 613beeba7ac9d644aa8aea4d023646e0, type: 3}
+  - key: turret-1
+    sprite: {fileID: 21300000, guid: b8913bac73c4bab4b9cc2106b1b94e4c, type: 3}
+  - key: turret-2
+    sprite: {fileID: 21300000, guid: bf18a0444cfd19d4399630457c48e22c, type: 3}
+  - key: turret-3
+    sprite: {fileID: 21300000, guid: 501dcc364d9076849a5df33035e89ff2, type: 3}
+  - key: turret-4
+    sprite: {fileID: 21300000, guid: 28663319ca7cf98409f4a806eae7b13d, type: 3}
+  - key: turret-5
+    sprite: {fileID: 21300000, guid: fbf2a2201a25f2b4fbcf4bdda9db05da, type: 3}
+  - key: turret-6
+    sprite: {fileID: 21300000, guid: 2d398775e0e961240bc29e87b726beb4, type: 3}
+  - key: turret-7
+    sprite: {fileID: 21300000, guid: 6a876c0e69d9bfc48b96ae5b10b212a9, type: 3}
+  - key: turret-8
+    sprite: {fileID: 21300000, guid: 69dc568429d26f143bbd45ae08161725, type: 3}
+  - key: turret-9
+    sprite: {fileID: 21300000, guid: 64bcb380976d7054aa9923ae97ffa549, type: 3}
+  - key: uniform-0
+    sprite: {fileID: 21300000, guid: ce98b027c661f3542b76a6a2a6a6a688, type: 3}
+  - key: uniform-1
+    sprite: {fileID: 21300000, guid: adb5bd58f7d4b934bb47e560f86e9aa9, type: 3}
+  - key: uniform-2
+    sprite: {fileID: 21300000, guid: d40d0ecea4402a34bba142b97884ef8d, type: 3}
+  - key: uniform-3
+    sprite: {fileID: 21300000, guid: 4174bdc2acadaf14093d556e3b89e033, type: 3}
+  - key: uniform-4
+    sprite: {fileID: 21300000, guid: f8ef542c702c1c84db15e493037a18e2, type: 3}
+  - key: uniform-5
+    sprite: {fileID: 21300000, guid: 51a36c11d528890419c902275d4ffa03, type: 3}
+  - key: uniform-6
+    sprite: {fileID: 21300000, guid: ab31c0a55b46068409c67d7b75c95e7a, type: 3}
+  - key: uniform-7
+    sprite: {fileID: 21300000, guid: 449d6037fee0bfc4f9306c2de0eaa80b, type: 3}
+  - key: uniform-8
+    sprite: {fileID: 21300000, guid: 41786b1c464dc7148b1bb3da07884802, type: 3}
+  - key: uniform-9
+    sprite: {fileID: 21300000, guid: f66d306496333da46ad685dc343a8e10, type: 3}
+  - key: vehicle-0
+    sprite: {fileID: 21300000, guid: 6c4e0bebfd36719499c012d0140dbb8c, type: 3}
+  - key: vehicle-1
+    sprite: {fileID: 21300000, guid: 5bb227b28d093ba4fbcdec6a1f5ccc96, type: 3}
+  - key: vehicle-2
+    sprite: {fileID: 21300000, guid: 3208b08acd19a024580385b89751d4ca, type: 3}
+  - key: vehicle-3
+    sprite: {fileID: 21300000, guid: cedc86d92ecd0264999e235fcb06aa19, type: 3}
+  - key: vehicle-4
+    sprite: {fileID: 21300000, guid: 9bd0b24d0be0f7d4eb3b76d7b54ba4f8, type: 3}
+  - key: vehicle-5
+    sprite: {fileID: 21300000, guid: 4f2fc445e4105af4da8716bf70ec4e46, type: 3}
+  - key: vehicle-6
+    sprite: {fileID: 21300000, guid: 04865207401a9164e9faf647f6cddc9f, type: 3}
+  - key: vehicle-7
+    sprite: {fileID: 21300000, guid: d2c66c0f730182c40ab7ea99d2367b04, type: 3}
+  - key: vehicle-8
+    sprite: {fileID: 21300000, guid: fc45f1955ebd32c4dbd6e4448515c2c0, type: 3}
+  - key: vehicle-9
+    sprite: {fileID: 21300000, guid: a3fb96fe54a130b45bbd28321c5cdd44, type: 3}
+  - key: wolf-frames-v1
+    sprite: {fileID: 21300000, guid: 20e4b6c3ffc59fa428c19779a5ae3e52, type: 3}
+  - key: wolf-rig-atlas-v1
+    sprite: {fileID: 21300000, guid: 3e95682f440053742b8f0a047eaa7954, type: 3}
+  - key: panel
+    sprite: {fileID: -991371429, guid: df62e060d30cb3943946d8c5663fb3b4, type: 3}
+  - key: card
+    sprite: {fileID: -1289848200, guid: df62e060d30cb3943946d8c5663fb3b4, type: 3}
+  - key: button
+    sprite: {fileID: 1316628372, guid: 171e163d7ed9a814ea6aa781d912f00a, type: 3}
+  - key: primary
+    sprite: {fileID: -75034136, guid: 171e163d7ed9a814ea6aa781d912f00a, type: 3}
+  - key: selected
+    sprite: {fileID: -229878016, guid: 171e163d7ed9a814ea6aa781d912f00a, type: 3}
+  - key: input
+    sprite: {fileID: -924363497, guid: 171e163d7ed9a814ea6aa781d912f00a, type: 3}
+  - key: bar
+    sprite: {fileID: -491601857, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: fill
+    sprite: {fileID: -145465940, guid: ae903525e8cf1394bbe6e17c26daa12a, type: 3}
+  - key: Map
+    sprite: {fileID: 1937475613, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: Battle
+    sprite: {fileID: 818280431, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: Bag_Brown
+    sprite: {fileID: 2054612240, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: Chest_Gold
+    sprite: {fileID: -2004273376, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: Calendar_Check
+    sprite: {fileID: -513468384, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: Book_1_Purple
+    sprite: {fileID: -863780616, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: Money_Coin
+    sprite: {fileID: -1215121849, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: Gem_Diamond_Purple
+    sprite: {fileID: -1634728741, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: Ticket_Gold
+    sprite: {fileID: -1153586064, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: Gear
+    sprite: {fileID: -1126353305, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: Badge_Crown
+    sprite: {fileID: -1292918475, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: Skull
+    sprite: {fileID: 279339808, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: Chest_Premium
+    sprite: {fileID: -2004273376, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: Damage
+    sprite: {fileID: 1061358810, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: Gear_Sword
+    sprite: {fileID: -1600604545, guid: 3817d48b053ca87489d69e7f201ca2e1, type: 3}
+  - key: Gem_Star_Blue
+    sprite: {fileID: 1901022802, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: Gem_Circle
+    sprite: {fileID: -1092456581, guid: f426a8630368d2c4fabb785e3fb6aca5, type: 3}
+  - key: Lock
+    sprite: {fileID: 780553130, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: Check
+    sprite: {fileID: -1784742672, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: Arrow
+    sprite: {fileID: -1143362902, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: Pause
+    sprite: {fileID: 1516273558, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: Play
+    sprite: {fileID: -1319688879, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}
+  - key: Setting
+    sprite: {fileID: -1126353305, guid: 00f50d6bdeda7614eb678a2d1e361024, type: 3}

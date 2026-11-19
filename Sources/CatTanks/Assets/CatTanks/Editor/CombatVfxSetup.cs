@@ -19,6 +19,7 @@ namespace CatTanks.Editor
             var library=AssetDatabase.LoadAssetAtPath<CombatVfxLibrary>(asset);
             if(!library){library=ScriptableObject.CreateInstance<CombatVfxLibrary>();AssetDatabase.CreateAsset(library,asset);}
             library.entries.Clear();
+            library.InvalidateLookup();
             Add(library,"muzzle","Assets/118 sprite effects bundle/MuzzleFlashes/ef_1_red.prefab",.10f,2,10);
             Add(library,"impact","Assets/Epic Toon FX/Prefabs 2D/Explosions/MetalHit2D.prefab",.55f,2.8f,10);
             Add(library,"blast","Assets/FX Quest/_Mobile/Prefabs/2D/Explosions/M_2D_AirExplode_01.prefab",.8f,2.8f,8);

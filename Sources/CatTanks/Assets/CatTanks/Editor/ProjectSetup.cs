@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Sockets;
 using Newtonsoft.Json;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -31,16 +32,20 @@ namespace CatTanks.Editor
             try
             {
                 var server = MCPServiceLocator.Server;
-                if (!server.IsLocalHttpServerReachable())
+                if (!await ProbeMcpAsync())
                 {
                     if (!server.StartLocalHttpServer(quiet: true))
                     {
                         Debug.LogWarning("CatTanks MCP: could not start the local server. Use Window > MCP for Unity to check Python/uv settings.");
                         return;
                     }
-                    for (int attempt = 0; attempt < 120 && !server.IsLocalHttpServerReachable(); attempt++)
+                    var waiting=System.Diagnostics.Stopwatch.StartNew();bool reachable=false;
+                    while(waiting.Elapsed.TotalSeconds<60)
+                    {
+                        if(await ProbeMcpAsync()){reachable=true;break;}
                         await Task.Delay(500);
-                    if (!server.IsLocalHttpServerReachable())
+                    }
+                    if (!reachable)
                     {
                         Debug.LogWarning("CatTanks MCP: local server did not become ready within 60 seconds. Check " + server.GetLocalHttpServerLaunchLogPath());
                         return;
@@ -53,6 +58,25 @@ namespace CatTanks.Editor
             catch (Exception e) {Debug.LogWarning("CatTanks MCP: " + e.Message + ". Use Window > MCP for Unity to reconnect.");}
             finally { connectingMcp = false; }
         }
+        // Never run the package's synchronous 250 ms TCP probe on the Editor thread.
+        // An unavailable server otherwise stalls Play Mode on every retry.
+        static async Task<bool> ProbeMcpAsync()
+        {
+            try
+            {
+                using(var client=new TcpClient())
+                {
+                    var connect=client.ConnectAsync("127.0.0.1",8080);
+                    if(await Task.WhenAny(connect,Task.Delay(250))!=connect)
+                    {
+                        _=connect.ContinueWith(t=>{var ignored=t.Exception;},TaskContinuationOptions.OnlyOnFaulted);
+                        return false;
+                    }
+                    await connect;return client.Connected;
+                }
+            }
+            catch{return false;}
+        }
         [MenuItem("CatTanks/Create Main Scene")]
         public static void CreateProject()
         {
@@ -62,7 +86,7 @@ namespace CatTanks.Editor
             PlayerSettings.colorSpace = ColorSpace.Gamma;
             PlayerSettings.defaultInterfaceOrientation = UIOrientation.LandscapeLeft;
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, ScriptingImplementation.Mono2x);
-            QualitySettings.vSyncCount = 1; QualitySettings.antiAliasing = 2;
+            QualitySettings.vSyncCount = 0; QualitySettings.antiAliasing = 2;
             EditorSettings.serializationMode = SerializationMode.ForceText;
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
             var camera = new GameObject("Main Camera", typeof(Camera), typeof(AudioListener)); camera.tag = "MainCamera";
