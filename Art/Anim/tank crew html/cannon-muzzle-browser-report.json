@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "tested_sha256": "713a53d3b48b9001e190db44b0bb47a371d18374d3937fd28b44862835aa09a1",
+  "flame_attached_to_cannon_mouth": true,
+  "short_burst_seconds": 0.26,
+  "no_cannon_fire_trail": true,
+  "no_cannon_projectile_smoke": true,
+  "muzzle_facing_both_factions": true,
+  "player_fire": {
+    "stats": {
+      "explosions": 0,
+      "cannonShots": 1,
+      "cannonMuzzles": 1,
+      "mortarShots": 0,
+      "muzzles": 1,
+      "hits": 0,
+      "smokeEmitted": 4,
+      "shakes": 1,
+      "activeParticles": 12,
+      "activeBursts": 1,
+      "activeTraces": 0,
+      "cannonProjectileTrails": 0,
+      "activeCannonMuzzles": 1,
+      "cameraStrength": 1.371882086167793
+    },
+    "shot": 1,
+    "flash": "player",
+    "bulletAge": 0.08333333333333333
+  },
+  "after_burst": {
+    "explosions": 0,
+    "cannonShots": 1,
+    "cannonMuzzles": 1,
+    "mortarShots": 0,
+    "muzzles": 1,
+    "hits": 1,
+    "smokeEmitted": 4,
+    "shakes": 1,
+    "activeParticles": 6,
+    "activeBursts": 1,
+    "activeTraces": 0,
+    "cannonProjectileTrails": 0,
+    "activeCannonMuzzles": 0,
+    "cameraStrength": 0
+  },
+  "page_errors": []
+}

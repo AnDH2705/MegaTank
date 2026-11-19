@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "html": "D:\\Project\\Tnak\\Equipment-test.html",
+  "backup": "D:\\Project\\Tnak\\Equipment-test.before-rogue-waves-2026-11-19.html",
+  "previews": "D:\\Project\\Tnak\\MegaTank\\Art\\Anim\\tank crew html",
+  "sha256": "65587216bbd6dbd24122dff62de74f797eb7c46541a82f2f3d72e1936f8ef443",
+  "waves": 8,
+  "encounterEvery": 2,
+  "ads": "demo badge, optional rewarded-ad adapter"
+}

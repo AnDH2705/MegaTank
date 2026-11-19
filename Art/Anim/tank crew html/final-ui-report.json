@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "tested_sha256": "37cddc2f0ed26769121a4b74a1a1b1ef13ae62c2a40f9255af19429124abb696",
+  "local_file": true,
+  "boss_health_linear_percentages": [
+    100,
+    78,
+    60,
+    40,
+    10
+  ],
+  "no_combo_multiplier": true,
+  "actual_total_health_preserved": true,
+  "flat_comic_frame": true,
+  "compact_resource_frames": true,
+  "resource_file_reload_persistence": true,
+  "new_enemy_vehicle_drivers": [
+    "dog",
+    "dog"
+  ],
+  "page_errors": []
+}

@@ -1,0 +1,123 @@
+{
+  "passed": true,
+  "tested_sha256": "37cddc2f0ed26769121a4b74a1a1b1ef13ae62c2a40f9255af19429124abb696",
+  "cases": [
+    {
+      "stage": 1,
+      "deployed": {
+        "allies": [
+          "cannon",
+          "driver",
+          "mortar"
+        ],
+        "enemyRoles": [
+          "cannon",
+          "driver",
+          "front"
+        ],
+        "insideFriendly": [
+          "mg"
+        ],
+        "insideEnemy": [],
+        "speed": 0
+      },
+      "fought": {
+        "alliedHits": [
+          {
+            "role": "cannon",
+            "hits": 1
+          },
+          {
+            "role": "mortar",
+            "hits": 1
+          },
+          {
+            "role": "driver",
+            "hits": 1
+          }
+        ],
+        "mg": 11
+      },
+      "returned": {
+        "phase": "won",
+        "roles": [
+          {
+            "role": "cannon",
+            "phase": "aboard"
+          },
+          {
+            "role": "mortar",
+            "phase": "aboard"
+          },
+          {
+            "role": "driver",
+            "phase": "aboard"
+          }
+        ],
+        "front": "aboard",
+        "bossCrewKills": 3
+      }
+    },
+    {
+      "stage": 2,
+      "deployed": {
+        "allies": [
+          "cannon",
+          "driver",
+          "mortar"
+        ],
+        "enemyRoles": [
+          "cannon",
+          "driver",
+          "front"
+        ],
+        "insideFriendly": [
+          "mg"
+        ],
+        "insideEnemy": [
+          "mg"
+        ],
+        "speed": 0
+      },
+      "fought": {
+        "alliedHits": [
+          {
+            "role": "cannon",
+            "hits": 1
+          },
+          {
+            "role": "mortar",
+            "hits": 1
+          },
+          {
+            "role": "driver",
+            "hits": 1
+          }
+        ],
+        "mg": 11
+      },
+      "returned": {
+        "phase": "won",
+        "roles": [
+          {
+            "role": "cannon",
+            "phase": "aboard"
+          },
+          {
+            "role": "mortar",
+            "phase": "aboard"
+          },
+          {
+            "role": "driver",
+            "phase": "aboard"
+          }
+        ],
+        "front": "aboard",
+        "bossCrewKills": 3
+      }
+    }
+  ],
+  "unusable_mg_also_dismounts": true,
+  "corner_chest_removed": true,
+  "page_errors": []
+}

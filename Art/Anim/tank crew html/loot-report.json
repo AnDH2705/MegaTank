@@ -1,0 +1,15 @@
+{
+  "auto_open_after_victory": true,
+  "chest_bonus_once": true,
+  "passed": true,
+  "normal_drop_is_money_or_gears": true,
+  "world_scroll_matches_road": true,
+  "proximity_pickup": true,
+  "flight_then_credit": true,
+  "no_double_credit": true,
+  "boss_rewards": {
+    "money": 130,
+    "gears": 26,
+    "chests": 0
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "mg_fires_during_melee": true,
+  "shots_in_one_second": 6,
+  "stopped_tank_does_not_stop_mg": true,
+  "mg_aircraft_priority_preserved": true,
+  "no_target_no_shots": true,
+  "player_hp": 360,
+  "boss_hp": [
+    520,
+    820
+  ],
+  "weapon_ranges_preserved": true
+}

@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "source_sha256": "4173833604d15b681eca616c63d8ef4ea6a738708d538738653b426e9f141155",
+  "modified_sha256": "65587216bbd6dbd24122dff62de74f797eb7c46541a82f2f3d72e1936f8ef443",
+  "crew_count": 5,
+  "new_sprite_sheets": 36,
+  "unrelated_assets_preserved": true,
+  "updated_enemy_vehicles": [
+    "dog-driver car",
+    "dog-pilot plane"
+  ],
+  "battle_engine_unchanged": false,
+  "ground_dogs": true,
+  "companion_jump_fight_return": true,
+  "boss_duel_melee": true,
+  "boss_crew_counts": [
+    3,
+    4
+  ],
+  "road_anchored_corpses": true,
+  "resource_panels": [
+    "money",
+    "gears"
+  ],
+  "standalone": true,
+  "bytes": 14682603
+}

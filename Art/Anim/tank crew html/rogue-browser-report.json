@@ -1,0 +1,109 @@
+{
+  "passed": true,
+  "tested_sha256": "65587216bbd6dbd24122dff62de74f797eb7c46541a82f2f3d72e1936f8ef443",
+  "natural_wave_events": [
+    {
+      "before": {
+        "type": "ammo",
+        "wave": 2,
+        "ammo": {
+          "mg": 196,
+          "cannon": 21,
+          "mortar": 12
+        },
+        "gears": 4,
+        "skin": "base"
+      },
+      "choice": "piercing",
+      "after": {
+        "ammo": {
+          "mg": 196,
+          "cannon": 21,
+          "mortar": 12
+        },
+        "gears": 4,
+        "skin": "base",
+        "ammoType": "piercing"
+      }
+    },
+    {
+      "before": {
+        "type": "medical",
+        "wave": 4,
+        "ammo": {
+          "mg": 196,
+          "cannon": 16,
+          "mortar": 8
+        },
+        "gears": 4,
+        "skin": "base"
+      },
+      "choice": "gears",
+      "after": {
+        "ammo": {
+          "mg": 196,
+          "cannon": 16,
+          "mortar": 8
+        },
+        "gears": 34,
+        "skin": "base",
+        "ammoType": "piercing"
+      }
+    },
+    {
+      "before": {
+        "type": "wreck",
+        "wave": 6,
+        "ammo": {
+          "mg": 167,
+          "cannon": 15,
+          "mortar": 6
+        },
+        "gears": 40,
+        "skin": "base"
+      },
+      "choice": "speed",
+      "after": {
+        "ammo": {
+          "mg": 167,
+          "cannon": 15,
+          "mortar": 6
+        },
+        "gears": 40,
+        "skin": "speed",
+        "ammoType": "piercing"
+      }
+    },
+    {
+      "before": {
+        "type": "supply",
+        "wave": 8,
+        "ammo": {
+          "mg": 160,
+          "cannon": 12,
+          "mortar": 1
+        },
+        "gears": 44,
+        "skin": "speed"
+      },
+      "choice": "mortar",
+      "after": {
+        "ammo": {
+          "mg": 160,
+          "cannon": 12,
+          "mortar": 9
+        },
+        "gears": 44,
+        "skin": "speed",
+        "ammoType": "piercing"
+      }
+    }
+  ],
+  "all_four_types": true,
+  "ad_badge_one_option": true,
+  "ad_adapter_false_keeps_choice_open": true,
+  "both_native_tank_skins_render_with_five_crew": true,
+  "boss_unlocks_after_choices": true,
+  "boss_melee_and_chest_preserved": true,
+  "page_errors": []
+}

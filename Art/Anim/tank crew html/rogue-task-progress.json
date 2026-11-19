@@ -1,0 +1,36 @@
+{
+  "status": "complete",
+  "requests": [
+    "larger MG effects",
+    "larger drive dust over wheels",
+    "wave progression",
+    "ammo-type tent with rare AD option",
+    "one-of-three weapon ammo supply",
+    "medical heal or gears",
+    "old-tank swap"
+  ],
+  "decisions": {
+    "waves": 8,
+    "eventEvery": 2,
+    "ammoFinite": true,
+    "ads": "demo badge with optional rewarded-ad adapter"
+  },
+  "liveBaselineSha256": "713a53d3b48b9001e190db44b0bb47a371d18374d3937fd28b44862835aa09a1",
+  "implemented": [
+    "8 waves per stage; events after waves 2/4/6/8",
+    "all 4 encounter types",
+    "finite ammo and ammo upgrades",
+    "native red/blue tank swap with geometry and crew",
+    "larger MG tracer and drive dust at wheel height"
+  ],
+  "reports": [
+    "rogue-engine-report.json",
+    "rogue-browser-report.json",
+    "vfx-browser-report.json",
+    "offline-report.json",
+    "release-rogue-waves-report.json"
+  ],
+  "liveSha256": "65587216bbd6dbd24122dff62de74f797eb7c46541a82f2f3d72e1936f8ef443",
+  "liveHtml": "D:\\Project\\Tnak\\Equipment-test.html",
+  "completedAt": "2026-11-19T15:03:41.5097071+07:00"
+}

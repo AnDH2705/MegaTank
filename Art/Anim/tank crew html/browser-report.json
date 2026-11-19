@@ -1,0 +1,56 @@
+{
+  "passed": true,
+  "http_status": 200,
+  "offline_assets": true,
+  "home_crew": [
+    "mg",
+    "cannon",
+    "mortar",
+    "driver",
+    "front"
+  ],
+  "equipment_crew": 5,
+  "equipment_animation": true,
+  "equipment_toggle_preserved": true,
+  "battle_crew": [
+    {
+      "id": "mg",
+      "pose": "driver_drive",
+      "frame": 1
+    },
+    {
+      "id": "cannon",
+      "pose": "driver_fire",
+      "frame": 0
+    },
+    {
+      "id": "mortar",
+      "pose": "fat_idle",
+      "frame": 5
+    },
+    {
+      "id": "driver",
+      "pose": "driver_drive",
+      "frame": 2
+    },
+    {
+      "id": "front",
+      "pose": "fat_idle",
+      "frame": 8
+    }
+  ],
+  "firing_pose_observed": true,
+  "pause_resume": true,
+  "return_home": true,
+  "viewports": [
+    [
+      1920,
+      1080
+    ],
+    [
+      960,
+      540
+    ]
+  ],
+  "page_errors": []
+}

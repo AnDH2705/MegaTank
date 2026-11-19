@@ -1,0 +1,748 @@
+{
+  "version": 1,
+  "source": "Native PNG frames exported by Spine 4.2.43 from the approved driver and fat cat rigs",
+  "clips": {
+    "driver_drive": {
+      "key": "crew_driver_drive",
+      "animation": "sit_drive",
+      "skin": "driver",
+      "frames": 12,
+      "cols": 4,
+      "rows": 3,
+      "cell": [
+        240,
+        360
+      ],
+      "pivot": [
+        110,
+        252
+      ],
+      "duration": 1,
+      "worldScale": 0.5
+    },
+    "driver_fire": {
+      "key": "crew_driver_fire",
+      "animation": "sit_fire",
+      "skin": "driver",
+      "frames": 12,
+      "cols": 4,
+      "rows": 3,
+      "cell": [
+        240,
+        360
+      ],
+      "pivot": [
+        110,
+        252
+      ],
+      "duration": 0.7,
+      "worldScale": 0.5
+    },
+    "driver_idle": {
+      "key": "crew_driver_idle",
+      "animation": "idle",
+      "skin": "driver",
+      "frames": 12,
+      "cols": 4,
+      "rows": 3,
+      "cell": [
+        240,
+        360
+      ],
+      "pivot": [
+        110,
+        342
+      ],
+      "duration": 1.6,
+      "worldScale": 0.5
+    },
+    "mg_drive": {
+      "key": "crew_mg_drive",
+      "animation": "sit_drive",
+      "skin": "roof",
+      "frames": 12,
+      "cols": 4,
+      "rows": 3,
+      "cell": [
+        240,
+        360
+      ],
+      "pivot": [
+        110,
+        252
+      ],
+      "duration": 1,
+      "worldScale": 0.5
+    },
+    "mg_fire": {
+      "key": "crew_mg_fire",
+      "animation": "sit_fire",
+      "skin": "roof",
+      "frames": 12,
+      "cols": 4,
+      "rows": 3,
+      "cell": [
+        240,
+        360
+      ],
+      "pivot": [
+        110,
+        252
+      ],
+      "duration": 0.7,
+      "worldScale": 0.5
+    },
+    "fat_idle": {
+      "key": "crew_fat_idle",
+      "animation": "idle",
+      "skin": "fat",
+      "frames": 12,
+      "cols": 4,
+      "rows": 3,
+      "cell": [
+        240,
+        360
+      ],
+      "pivot": [
+        110,
+        342
+      ],
+      "duration": 1.6,
+      "worldScale": 0.5
+    },
+    "fat_ready": {
+      "key": "crew_fat_ready",
+      "animation": "idle",
+      "skin": "fighter",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.6,
+      "worldScale": 0.4
+    },
+    "fat_walk": {
+      "key": "crew_fat_walk",
+      "animation": "walk",
+      "skin": "fighter",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.25,
+      "worldScale": 0.4
+    },
+    "fat_attack": {
+      "key": "crew_fat_attack",
+      "animation": "shovel_attack",
+      "skin": "fighter",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.25,
+      "worldScale": 0.4
+    },
+    "fat_hurt": {
+      "key": "crew_fat_hurt",
+      "animation": "hurt",
+      "skin": "fighter",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 0.48,
+      "worldScale": 0.4
+    },
+    "fat_death": {
+      "key": "crew_fat_death",
+      "animation": "death",
+      "skin": "fighter",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.4,
+      "worldScale": 0.4
+    },
+    "dog_idle": {
+      "key": "crew_dog_idle",
+      "animation": "idle",
+      "skin": "dog",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.4,
+      "worldScale": 0.4
+    },
+    "dog_walk": {
+      "key": "crew_dog_walk",
+      "animation": "walk",
+      "skin": "dog",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.1,
+      "worldScale": 0.4
+    },
+    "dog_attack": {
+      "key": "crew_dog_attack",
+      "animation": "melee_attack",
+      "skin": "dog",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 0.95,
+      "worldScale": 0.4
+    },
+    "dog_hurt": {
+      "key": "crew_dog_hurt",
+      "animation": "hurt",
+      "skin": "dog",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 0.44,
+      "worldScale": 0.4
+    },
+    "dog_death": {
+      "key": "crew_dog_death",
+      "animation": "death",
+      "skin": "dog",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.3,
+      "worldScale": 0.4
+    },
+    "dog_driver_drive": {
+      "key": "crew_dog_driver_drive",
+      "animation": "sit_drive",
+      "skin": "jeep",
+      "frames": 12,
+      "cols": 4,
+      "rows": 3,
+      "cell": [
+        240,
+        360
+      ],
+      "pivot": [
+        110,
+        252
+      ],
+      "duration": 1,
+      "worldScale": 0.5
+    },
+    "dog_pilot_drive": {
+      "key": "crew_dog_pilot_drive",
+      "animation": "sit_drive",
+      "skin": "pilot",
+      "frames": 12,
+      "cols": 4,
+      "rows": 3,
+      "cell": [
+        240,
+        360
+      ],
+      "pivot": [
+        110,
+        252
+      ],
+      "duration": 1,
+      "worldScale": 0.5
+    },
+    "dog_pilot_fire": {
+      "key": "crew_dog_pilot_fire",
+      "animation": "sit_fire",
+      "skin": "pilot",
+      "frames": 12,
+      "cols": 4,
+      "rows": 3,
+      "cell": [
+        240,
+        360
+      ],
+      "pivot": [
+        110,
+        252
+      ],
+      "duration": 0.7,
+      "worldScale": 0.5
+    },
+    "dog_mg_drive": {
+      "key": "crew_dog_mg_drive",
+      "animation": "sit_drive",
+      "skin": "dogroof",
+      "frames": 12,
+      "cols": 4,
+      "rows": 3,
+      "cell": [
+        240,
+        360
+      ],
+      "pivot": [
+        110,
+        252
+      ],
+      "duration": 1,
+      "worldScale": 0.5
+    },
+    "dog_mg_fire": {
+      "key": "crew_dog_mg_fire",
+      "animation": "sit_fire",
+      "skin": "dogroof",
+      "frames": 12,
+      "cols": 4,
+      "rows": 3,
+      "cell": [
+        240,
+        360
+      ],
+      "pivot": [
+        110,
+        252
+      ],
+      "duration": 0.7,
+      "worldScale": 0.5
+    },
+    "cat_ready": {
+      "key": "crew_cat_ready",
+      "animation": "shovel_idle",
+      "skin": "driver",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.2,
+      "worldScale": 0.4
+    },
+    "cat_walk": {
+      "key": "crew_cat_walk",
+      "animation": "run",
+      "skin": "driver",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 0.8,
+      "worldScale": 0.4
+    },
+    "cat_attack": {
+      "key": "crew_cat_attack",
+      "animation": "shovel_attack",
+      "skin": "driver",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.05,
+      "worldScale": 0.4
+    },
+    "cat_hurt": {
+      "key": "crew_cat_hurt",
+      "animation": "hurt",
+      "skin": "driver",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 0.44,
+      "worldScale": 0.4
+    },
+    "cat_death": {
+      "key": "crew_cat_death",
+      "animation": "death",
+      "skin": "driver",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.3,
+      "worldScale": 0.4
+    },
+    "jeep_ready": {
+      "key": "crew_jeep_ready",
+      "animation": "shovel_idle",
+      "skin": "jeep",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.2,
+      "worldScale": 0.4
+    },
+    "jeep_walk": {
+      "key": "crew_jeep_walk",
+      "animation": "run",
+      "skin": "jeep",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 0.8,
+      "worldScale": 0.4
+    },
+    "jeep_attack": {
+      "key": "crew_jeep_attack",
+      "animation": "shovel_attack",
+      "skin": "jeep",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.05,
+      "worldScale": 0.4
+    },
+    "jeep_hurt": {
+      "key": "crew_jeep_hurt",
+      "animation": "hurt",
+      "skin": "jeep",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 0.44,
+      "worldScale": 0.4
+    },
+    "jeep_death": {
+      "key": "crew_jeep_death",
+      "animation": "death",
+      "skin": "jeep",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.3,
+      "worldScale": 0.4
+    },
+    "pilot_ready": {
+      "key": "crew_pilot_ready",
+      "animation": "shovel_idle",
+      "skin": "pilot",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.2,
+      "worldScale": 0.4
+    },
+    "pilot_walk": {
+      "key": "crew_pilot_walk",
+      "animation": "run",
+      "skin": "pilot",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 0.8,
+      "worldScale": 0.4
+    },
+    "pilot_attack": {
+      "key": "crew_pilot_attack",
+      "animation": "shovel_attack",
+      "skin": "pilot",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.05,
+      "worldScale": 0.4
+    },
+    "pilot_hurt": {
+      "key": "crew_pilot_hurt",
+      "animation": "hurt",
+      "skin": "pilot",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 0.44,
+      "worldScale": 0.4
+    },
+    "pilot_death": {
+      "key": "crew_pilot_death",
+      "animation": "death",
+      "skin": "pilot",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.3,
+      "worldScale": 0.4
+    }
+  },
+  "stations": [
+    {
+      "id": "mg",
+      "label": "Xạ thủ MG",
+      "pose": "mg_drive",
+      "firePose": "mg_fire",
+      "weapon": "mg",
+      "x": 670,
+      "y": 244,
+      "scale": 0.52,
+      "phase": 0.06
+    },
+    {
+      "id": "cannon",
+      "label": "Pháo thủ",
+      "pose": "driver_drive",
+      "weapon": "cannon",
+      "x": 735,
+      "y": 614,
+      "scale": 0.53,
+      "phase": 0.23
+    },
+    {
+      "id": "mortar",
+      "label": "Tiếp đạn mortar",
+      "pose": "driver_idle",
+      "x": 386,
+      "y": 661,
+      "scale": 0.49,
+      "phase": 0.4
+    },
+    {
+      "id": "driver",
+      "label": "Lái xe",
+      "pose": "driver_drive",
+      "x": 494,
+      "y": 974,
+      "scale": 0.52,
+      "phase": 0.12
+    },
+    {
+      "id": "front",
+      "label": "Quan sát phía trước ghế lái",
+      "pose": "fat_idle",
+      "x": 835,
+      "y": 1023,
+      "scale": 0.49,
+      "phase": 0.8
+    }
+  ],
+  "bossStations": [
+    {
+      "id": "mg",
+      "label": "Chó xạ thủ MG",
+      "pose": "dog_mg_drive",
+      "firePose": "dog_mg_fire",
+      "weapon": "mg",
+      "requires": "mg",
+      "x": 670,
+      "y": 244,
+      "scale": 0.52,
+      "phase": 0.06
+    },
+    {
+      "id": "cannon",
+      "label": "Chó pháo thủ",
+      "pose": "dog_pilot_drive",
+      "firePose": "dog_pilot_fire",
+      "weapon": "cannon",
+      "requires": "cannon",
+      "x": 735,
+      "y": 614,
+      "scale": 0.53,
+      "phase": 0.23
+    },
+    {
+      "id": "driver",
+      "label": "Chó lái xe",
+      "pose": "dog_driver_drive",
+      "x": 494,
+      "y": 974,
+      "scale": 0.52,
+      "phase": 0.12
+    },
+    {
+      "id": "front",
+      "label": "Chó cận chiến tầng dưới",
+      "pose": "dog_idle",
+      "x": 835,
+      "y": 1023,
+      "scale": 0.49,
+      "phase": 0.8
+    }
+  ]
+}

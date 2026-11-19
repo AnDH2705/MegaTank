@@ -1,0 +1,59 @@
+MEGATANK — NOTE BÀN GIAO DESIGN CHO UNITY
+
+HTML Equipment-test.html là bản tham chiếu hình ảnh và luồng chơi.
+Không chốt thông số balance ở gói này; người làm Unity cân lại sau.
+
+LUỒNG GIỮA CÁC ĐỢT QUÁI
+Dọn sạch wave và đợi đội mèo ổn định đội hình. Xe đi tiếp trên map, gặp lều
+hoặc tank bỏ lại, dừng xe rồi mới mở lựa chọn. Chọn xong đi qua điểm dừng
+rồi mới vào đợt tiếp hoặc gặp boss. Không sinh quái trong đoạn tới/rời trạm.
+Đoạn tới/rời trạm xe chạy ổn định; không phóng đại độ nhún thân theo tốc độ.
+Lều dùng ảnh tent.png của project, đặt phía sau nhân vật. Trạm y tế có dấu
+chữ thập. Tank bỏ lại phải trống người, không bắn và không quay bánh.
+
+CÁC LỰA CHỌN
+Lều quân dụng: chọn một loại đạn; một lựa chọn hiếm có nhãn AD.
+Lều tiếp tế: lấy đạn cho một khẩu đang có trên xe.
+Trạm y tế: sửa máu tank hoặc lấy bánh răng.
+Tank bỏ lại: chọn đổi xe hoặc giữ xe hiện tại. Hình xem trước phải khớp
+đúng xe và các khẩu đang được lắp. Khi đổi, xe cũ được để lại trên đường.
+Nhãn AD trong HTML là mô phỏng; Unity cần nối rewarded ad thật.
+
+XE VÀ ĐỘI MÈO
+Xe có thể giống tank gốc nhưng chỉ còn pháo + MG, pháo + mortar, hoặc chỉ
+có pháo. Mèo ở khẩu bị thiếu nhảy xuống chạy theo sau xe. Cả đội vẫn đủ
+người; không xóa mèo hoặc nhân đôi mèo khi đổi xe.
+Mèo chạy theo không giữ xe đứng yên. Gặp địch mặt đất thì hỗ trợ cận chiến;
+hết địch quay lại đội hình. Đổi sang xe có vị trí tương ứng thì mèo lên lại.
+Đạn dự trữ của khẩu bị thiếu vẫn giữ lại, nhưng khẩu đó không được bắn
+và lựa chọn tiếp tế của nó bị khóa.
+Khẩu nào hết đạn thì mèo ở đó cũng nhảy xuống hỗ trợ mèo melee. Hết địch
+thì chạy theo đội hình; được tiếp đạn thì quay lại xe và tiếp tục vận hành súng.
+Xe đỏ và xe xanh phóng đồng đều phần xe để cả đội mèo giữ kích thước như
+xe gốc; không thu nhỏ mèo cho vừa khoang. Xem Preview/speed-scale-fixed.png
+và Preview/heavy-scale-fixed.png.
+
+STAGE 3
+Đông quái hơn, đạn khan hiếm. Điểm đầu chặng cho gặp xe tiếp tế.
+Thiết kế chủ đích: giữ xe cũ sẽ cạn đạn và thua; đổi xe mới có thể vượt qua.
+Xe nhặt có thể không có mortar, nhưng có đầy đạn pháo và MG. Mèo mortar
+xuống chạy theo. Nhánh thắng phải khả thi mà không cần lựa chọn AD.
+Menu có stage 3 và sau khi thắng stage 2 chuyển tiếp sang stage 3.
+
+HÌNH ẢNH VÀ VFX
+BG dùng lại các layer PNG riêng trong hai bộ nền đã có: trời đứng yên,
+cảnh xa trôi chậm, nhà và mặt đường nhanh hơn, tiền cảnh gần trôi nhanh nhất.
+Giữ nguyên canvas trong suốt và xếp đúng thứ tự; không ghép phẳng rồi cuộn.
+Lặp nền bằng tile lật ngang xen kẽ để tránh hở biên. Thi thể, lửa và đồ rơi
+đi theo mặt đường. Dừng xe tại trạm/cận chiến thì các lớp nền cùng dừng.
+Art/TankParts: PNG part để lắp xe. Art/TankLoadouts: hình xe trống theo
+cấu hình vũ khí, dùng đối chiếu; không thay part động bằng một ảnh gộp.
+Art/Environment/tent.png: ảnh lều gốc, có alpha; giữ nền trong suốt.
+Art/UI: icon và khung panel/card/button ở PNG + SVG, chữ UI để text động.
+Preview: ảnh chụp HTML để đối chiếu bố cục và đội hình.
+Nhân vật và bộ Spine/anim dùng lại trong Art/Anim của project.
+Bụi xe lớn hơn, cao ngang bánh và phủ trước bánh. Đạn MG lớn, rõ hơn.
+Lửa pháo phụt tại đầu nòng rồi tắt, không bay theo viên đạn. Mortar dùng
+bộ VFX đã xuất trong Art/VFX/Reference_Arcade_v1. Pháo và nổ có rung cam.
+Boss giữ các luật cận chiến/ra vào xe hiện có. Thắng boss tự mở rương;
+không có ô rương tích lũy ở góc. Tiền và bánh răng cộng đúng một lần.
