@@ -50,6 +50,7 @@ namespace CatTanks
         Rect lastSafeArea;
         Color textTint=Color.white;
         StudioTextStyle hudText,hudMeta;
+        Font strongFont;
         public bool UiReady=>studioCanvas&&theme&&!renderingUi;
         public StudioUIRoot CanvasRoot=>studioRoot;
         string contextPage,contextTab,contextModal,cachedContext;
@@ -85,6 +86,8 @@ namespace CatTanks
             if(studioRoot.theme)theme=studioRoot.theme;
             if(studioRoot.mockupKit){title.color=C("#ffcc32");subtitle.color=label.color=small.color=Color.white;}
             studioCanvas=studioRoot.GetComponent<Canvas>();uiRoot=studioRoot.viewport;
+            foreach(var text in studioRoot.GetComponentsInChildren<Text>(true))
+                ApplyFont(text,text.fontStyle);
             foreach(var view in studioRoot.GetComponentsInChildren<StudioUIView>(true))
                 foreach(var binding in view.GetComponentsInChildren<StudioWidgetBinding>(true))
                     uiWidgets[view.key+"/"+binding.id]=Bind(binding);
@@ -238,6 +241,7 @@ namespace CatTanks
         {
             var go=binding.gameObject;var item=new Widget{binding=binding,rect=(RectTransform)binding.transform,image=go.GetComponent<Image>(),button=go.GetComponent<UnityEngine.UI.Button>(),scroll=go.GetComponent<ScrollRect>(),input=go.GetComponent<InputField>()};
             item.text=binding.kind=="text"?go.GetComponent<Text>():go.GetComponentInChildren<Text>(true);
+            if(item.button&&item.text)ApplyFont(item.text,FontStyle.Bold);
             if(item.scroll)item.content=item.scroll.content;
             if(item.button&&studioRoot.mockupKit)
             {
@@ -296,7 +300,7 @@ namespace CatTanks
             uiParent=parent;uiContainer=container;
             Place(item.rect,position.x-25,position.y,110,35);
             item.text.text=effect.text;item.text.color=small.color*effect.color;item.text.fontSize=small.fontSize;
-            item.text.fontStyle=small.fontStyle;item.text.alignment=TextAnchor.UpperLeft;
+            ApplyFont(item.text,small.fontStyle);item.text.alignment=TextAnchor.UpperLeft;
             floatingLayer.SetAsLastSibling();
         }
         void SpriteBox(float x,float y,float w,float h,string key,Color color,bool preserve=false,string kind="image")
@@ -320,7 +324,7 @@ namespace CatTanks
         void Text(float x,float y,float w,string value,StudioTextStyle style=null,float h=35,bool dynamicLayout=false)
         {
             if(dispatchOnly)return;var s=style??label;var item=GetWidget("text",x,y,w,Mathf.Max(h,s.fontSize*1.45f),dynamicLayout);item.text.text=value;
-            if(Configure(item)){item.rect.name="Text • "+value.Replace('\n',' ');item.text.fontSize=s.fontSize;item.text.fontStyle=s.fontStyle;item.text.color=s.color*textTint;item.text.alignment=TextAnchor.UpperLeft;item.text.resizeTextForBestFit=false;}
+            if(Configure(item)){item.rect.name="Text • "+value.Replace('\n',' ');item.text.fontSize=s.fontSize;ApplyFont(item.text,s.fontStyle);item.text.color=s.color*textTint;item.text.alignment=TextAnchor.UpperLeft;item.text.resizeTextForBestFit=false;}
         }
         bool Button(float x,float y,float w,float h,string value,bool enabled=true,bool primary=false)
         {
@@ -329,7 +333,7 @@ namespace CatTanks
             var item=GetWidget("button",x,y,w,h);lastButton=item;
             if(Configure(item))
             {
-                item.rect.name="Button • "+value.Replace('\n',' ');item.text.fontSize=h<55?17:19;item.text.fontStyle=FontStyle.Bold;item.text.alignment=TextAnchor.MiddleCenter;
+                item.rect.name="Button • "+value.Replace('\n',' ');item.text.fontSize=h<55?17:19;item.text.alignment=TextAnchor.MiddleCenter;
                 var tr=(RectTransform)item.text.transform;tr.offsetMin=new Vector2(12,5);tr.offsetMax=new Vector2(-12,-5);
             }
             SetButtonSprite(item,primary?"primary":"button");item.text.text=value;item.text.color=!enabled?C("#c6d2e8"):primary?C("#44300e"):C("#f5f6ff");item.button.interactable=enabled&&uiInputAllowed;
@@ -433,9 +437,18 @@ namespace CatTanks
             if(Configure(item)){StudioNineSlice.Apply(item.image,theme?theme.Get("input"):null,12);item.image.color=C("#d9e9ff");item.text.fontSize=22;item.text.color=C("#16213b");item.text.alignment=TextAnchor.MiddleLeft;}
             if(!item.input.isFocused)item.input.SetTextWithoutNotify(profile.name);
         }
+        void ApplyFont(Text text,FontStyle style)
+        {
+            bool strong=strongFont&&(style==FontStyle.Bold||style==FontStyle.BoldAndItalic);
+            text.font=strong?strongFont:font;
+            text.fontStyle=strong?(style==FontStyle.BoldAndItalic?FontStyle.Italic:FontStyle.Normal):style;
+        }
         void Styles()
         {
-            if(label!=null)return;font=Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            if(label!=null)return;
+            font=Resources.Load<Font>("UI/Fonts/Nunito-Bold");
+            strongFont=Resources.Load<Font>("UI/Fonts/Nunito-Black");
+            if(!font)font=Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             label=new StudioTextStyle(20,C("#e4eafa"));small=new StudioTextStyle(17,C("#aabbd6"));title=new StudioTextStyle(34,C("#fff0bc"),FontStyle.Bold);subtitle=new StudioTextStyle(23,C("#e4eafa"),FontStyle.Bold);hudText=new StudioTextStyle(16,Color.white,FontStyle.Bold);hudMeta=new StudioTextStyle(15,C("#e8f4ff"));
         }
     }

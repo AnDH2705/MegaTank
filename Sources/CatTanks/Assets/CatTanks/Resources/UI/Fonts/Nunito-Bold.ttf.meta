@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: b4cc30550e534fdb814cbbe42f503af4
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Arial
+  - Segoe UI Symbol
+  fallbackFontReferences:
+  - {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  customCharacters:
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData:
+  assetBundleName:
+  assetBundleVariant:
