@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CatTanks · Phòng thử VFX</title>
+<style>
+:root{color-scheme:dark;--ink:#f1f7ff;--muted:#99adc7;--edge:#263951;--panel:#111f32;--hot:#ffce74;--cool:#77e7ee}
+*{box-sizing:border-box}
+body{margin:0;background:#0a1422;color:var(--ink);font:15px/1.5 system-ui,sans-serif}
+main{width:min(1340px,100% - 48px);margin:36px auto 56px}
+header{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:24px}
+h1,h2,p{margin:0} h1{font-size:clamp(28px,4vw,46px);letter-spacing:-.05em;line-height:1.1}
+h2{font-size:19px;letter-spacing:-.02em}
+header p,.muted{color:var(--muted)} header p{margin-top:8px}
+a{color:var(--cool);text-decoration:none} a:hover{text-decoration:underline}
+.button-link,button,select,input[type=search]{font:inherit;color:var(--ink);background:#14263a;border:1px solid var(--edge);border-radius:8px;padding:8px 12px}
+button{cursor:pointer;white-space:nowrap} button:hover{background:#20364b} button[aria-pressed=true]{border-color:#ae823b;color:var(--hot);background:#342b28}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--cool);outline-offset:2px}
+.layout{display:grid;grid-template-columns:minmax(232px,286px) minmax(0,1fr);gap:18px;align-items:start}
+aside,.stage{border:1px solid var(--edge);background:var(--panel);border-radius:14px;overflow:hidden}
+.chooser{padding:13px;display:grid;gap:9px;border-bottom:1px solid var(--edge)}
+.chooser label{font-size:12px;color:var(--muted);display:block}
+.chooser input,.chooser select{width:100%}
+.items{padding:9px;display:grid;gap:5px;max-height:545px;overflow:auto}
+.items button{border-color:transparent;background:transparent;text-align:left;padding:8px 10px;white-space:normal}
+.items button:hover{background:#1e3045} .items button[aria-pressed=true]{border-color:#ae823b;background:#342b28}
+.items small{display:block;font-size:11px;color:var(--muted);letter-spacing:.025em}
+.panel-heading{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.meta{color:var(--muted);font-size:12px}
+.viewport{position:relative;overflow:hidden;background:#101d32}
+canvas{width:100%;display:block;aspect-ratio:16/9}
+.stamp{position:absolute;bottom:10px;left:12px;color:#def6ff;background:#0a1625dd;padding:3px 8px;border-radius:6px;font:12px ui-monospace,monospace}
+.controls{padding:12px 16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.controls label{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px}
+.controls .time{flex:1;min-width:165px}
+input[type=range]{accent-color:var(--hot);width:100%}
+.status{border-top:1px solid var(--edge);padding:10px 16px;font-size:12px;color:var(--muted)}
+@media (max-width:760px){main{width:calc(100% - 24px);margin:20px auto}.layout{grid-template-columns:1fr}aside{order:2}.items{max-height:260px;grid-template-columns:repeat(2,minmax(0,1fr))}header{align-items:start}.chooser{grid-template-columns:1fr 1fr}.panel-heading{align-items:start;flex-direction:column}}
+</style>
+</head>
+<body>
+<main>
+<header><div><h1>CatTanks · Phòng thử VFX</h1><p>Xem frame, đạn bay và particle trên nền trận địa mặt trăng.</p></div><a class="button-link" href="Art_Direction.png" target="_blank" rel="noopener">Bảng mỹ thuật</a></header>
+<div class="layout">
+  <aside aria-label="Danh sách hiệu ứng">
+    <div class="chooser">
+      <div><label for="search">Tìm theo tên hoặc key</label><input id="search" type="search" placeholder="Ví dụ frost"></div>
+      <div><label for="group">Nhóm</label><select id="group"><option value="">Tất cả</option></select></div>
+    </div>
+    <div class="items" id="items"></div>
+  </aside>
+  <section class="stage" aria-label="Xem hiệu ứng">
+    <div class="panel-heading"><div><h2 id="name">Hiệu ứng</h2><p id="meta" class="meta"></p></div><button id="stress" aria-pressed="false">Bắn đồng thời</button></div>
+    <div class="viewport"><canvas id="screen" width="960" height="540" aria-label="Mô phỏng VFX"></canvas><div class="stamp" id="readout"></div></div>
+    <div class="controls">
+      <button id="play" aria-pressed="true">Tạm dừng</button>
+      <button id="step" aria-label="Tiến một khung">+1 khung</button>
+      <label class="time" for="phase">Timeline<input id="phase" type="range" min="0" max="1" step=".001" value="0"></label>
+      <label for="speed">Tốc độ<select id="speed"><option value="1">1×</option><option value=".5">0,5×</option><option value=".25">0,25×</option></select></label>
+      <label for="quality">Chi tiết<select id="quality"><option value="1">Cao</option><option value=".5">Vừa</option><option value=".33">Thấp</option></select></label>
+    </div>
+    <div class="status" id="status">Đang đọc atlas…</div>
+  </section>
+</div>
+</main>
+<script id="data" type="application/json">{"columns":16,"rows":16,"cell":128,"recipes":[{"id":"flash","label":"Chớp nòng Gatling","group":"Đạn","tile":0,"frames":8,"seconds":0.11,"size":62,"grain":-1,"count":0,"priority":1,"mode":"aim","color":"#ffffff"},{"id":"cannonflash","label":"Chớp nòng đại bác","group":"Đạn","tile":8,"frames":8,"seconds":0.22,"size":128,"grain":206,"count":2,"priority":2,"mode":"aim","color":"#ffffff"},{"id":"ignition","label":"Phụt nòng tên lửa","group":"Đạn","tile":16,"frames":8,"seconds":0.2,"size":96,"grain":201,"count":4,"priority":2,"mode":"aim","color":"#ffffff"},{"id":"hit","label":"Va chạm kim loại","group":"Đạn","tile":24,"frames":8,"seconds":0.19,"size":56,"grain":200,"count":5,"priority":1,"mode":"aim","color":"#ffffff"},{"id":"blast","label":"Nổ đại bác / cối","group":"Đạn","tile":32,"frames":8,"seconds":0.52,"size":156,"grain":201,"count":9,"priority":2,"mode":"center","color":"#ffffff"},{"id":"rocketblast","label":"Nổ chùm tên lửa","group":"Đạn","tile":40,"frames":8,"seconds":0.58,"size":156,"grain":201,"count":7,"priority":2,"mode":"center","color":"#ffffff"},{"id":"fire","label":"Lửa và cháy","group":"Nguyên tố","tile":48,"frames":8,"seconds":0.42,"size":123,"grain":201,"count":8,"priority":2,"mode":"aim","color":"#ffffff"},{"id":"frost","label":"Băng kết tinh / vỡ","group":"Nguyên tố","tile":56,"frames":8,"seconds":0.62,"size":152,"grain":202,"count":8,"priority":2,"mode":"center","color":"#ffffff"},{"id":"poison","label":"Độc nổ loang","group":"Nguyên tố","tile":64,"frames":8,"seconds":0.66,"size":130,"grain":203,"count":6,"priority":2,"mode":"center","color":"#ffffff"},{"id":"arc","label":"Điện trúng đích","group":"Nguyên tố","tile":72,"frames":8,"seconds":0.3,"size":110,"grain":202,"count":4,"priority":2,"mode":"center","color":"#ffffff"},{"id":"vortex","label":"Co sập trọng lực","group":"Nguyên tố","tile":80,"frames":8,"seconds":0.62,"size":162,"grain":204,"count":7,"priority":2,"mode":"center","color":"#ffffff"},{"id":"slash","label":"Vệt chém / cào","group":"Kẻ địch","tile":88,"frames":8,"seconds":0.28,"size":125,"grain":-1,"count":0,"priority":2,"mode":"aim","color":"#ffffff"},{"id":"crystal","label":"Vỡ tinh thể / plasma","group":"Nguyên tố","tile":96,"frames":8,"seconds":0.38,"size":112,"grain":202,"count":5,"priority":2,"mode":"center","color":"#ffffff"},{"id":"web","label":"Tơ giăng","group":"Kẻ địch","tile":104,"frames":8,"seconds":0.42,"size":128,"grain":-1,"count":0,"priority":2,"mode":"center","color":"#ffffff"},{"id":"heal","label":"Sửa chữa / hồi máu","group":"Kỹ năng","tile":112,"frames":8,"seconds":0.68,"size":164,"grain":205,"count":5,"priority":2,"mode":"center","color":"#ffffff"},{"id":"ward","label":"Xung lá chắn","group":"Kỹ năng","tile":120,"frames":8,"seconds":0.46,"size":177,"grain":202,"count":4,"priority":2,"mode":"center","color":"#ffffff"},{"id":"rally","label":"Cờ tiếp viện","group":"Kỹ năng","tile":128,"frames":8,"seconds":0.48,"size":164,"grain":200,"count":5,"priority":2,"mode":"center","color":"#ffffff"},{"id":"cage","label":"Lồng bắt quái","group":"Kỹ năng","tile":136,"frames":8,"seconds":0.72,"size":165,"grain":200,"count":6,"priority":3,"mode":"center","color":"#ffffff"},{"id":"portal","label":"Mồi nhử / triệu hồi","group":"Kỹ năng","tile":144,"frames":8,"seconds":0.55,"size":145,"grain":204,"count":6,"priority":2,"mode":"center","color":"#ffffff"},{"id":"dust","label":"Bụi đáp / đào đất","group":"Kẻ địch","tile":152,"frames":8,"seconds":0.47,"size":145,"grain":206,"count":6,"priority":1,"mode":"center","color":"#ffffff"},{"id":"death","label":"Tan biến khi hạ gục","group":"Kẻ địch","tile":160,"frames":8,"seconds":0.56,"size":133,"grain":206,"count":5,"priority":2,"mode":"center","color":"#ffffff"},{"id":"drop","label":"Xu rơi / nam châm","group":"Trạng thái","tile":168,"frames":8,"seconds":0.46,"size":89,"grain":200,"count":4,"priority":1,"mode":"center","color":"#ffffff"},{"id":"spawn","label":"Quái xuất hiện / đợt mới","group":"Kẻ địch","tile":176,"frames":8,"seconds":0.58,"size":143,"grain":204,"count":5,"priority":2,"mode":"center","color":"#ffffff"},{"id":"warning","label":"Cảnh báo húc / vùng nguy hiểm","group":"Kẻ địch","tile":184,"frames":8,"seconds":0.8,"size":164,"grain":-1,"count":0,"priority":3,"mode":"aim","color":"#ffffff"},{"id":"pulse","label":"Xung năng lượng","group":"Nguyên tố","tile":192,"frames":8,"seconds":0.42,"size":114,"grain":202,"count":4,"priority":2,"mode":"center","color":"#ffffff"},{"id":"shot-fast","label":"Đạn Gatling","group":"Đạn","tile":207,"frames":1,"seconds":0.13,"size":42,"grain":200,"count":2,"priority":1,"mode":"trail","color":"#ffffff"},{"id":"shot-shell","label":"Đạn đại bác","group":"Đạn","tile":208,"frames":1,"seconds":0.28,"size":30,"grain":206,"count":2,"priority":1,"mode":"trail","color":"#ffffff"},{"id":"shot-rocket","label":"Tên lửa","group":"Đạn","tile":209,"frames":1,"seconds":0.7,"size":48,"grain":206,"count":7,"priority":2,"mode":"trail","color":"#ffffff"},{"id":"shot-pellet","label":"Chùm đạn shotgun","group":"Đạn","tile":210,"frames":1,"seconds":0.25,"size":25,"grain":-1,"count":0,"priority":1,"mode":"trail","color":"#ffffff"},{"id":"shot-plasma","label":"Cầu plasma","group":"Nguyên tố","tile":211,"frames":1,"seconds":0.55,"size":39,"grain":202,"count":4,"priority":2,"mode":"trail","color":"#ffffff"},{"id":"shot-arrow","label":"Mũi tên","group":"Đạn","tile":212,"frames":1,"seconds":0.48,"size":37,"grain":-1,"count":0,"priority":1,"mode":"trail","color":"#ffffff"},{"id":"shot-fire","label":"Luồng lửa","group":"Nguyên tố","tile":201,"frames":1,"seconds":0.34,"size":38,"grain":206,"count":4,"priority":1,"mode":"trail","color":"#ffad58"},{"id":"shot-ice","label":"Mũi băng","group":"Nguyên tố","tile":202,"frames":1,"seconds":0.52,"size":38,"grain":202,"count":3,"priority":2,"mode":"trail","color":"#99f7ff"},{"id":"shot-poison","label":"Giọt độc","group":"Nguyên tố","tile":203,"frames":1,"seconds":0.55,"size":37,"grain":203,"count":4,"priority":2,"mode":"trail","color":"#ffffff"},{"id":"shot-gravity","label":"Hạt trọng lực","group":"Nguyên tố","tile":213,"frames":1,"seconds":0.56,"size":43,"grain":204,"count":6,"priority":2,"mode":"trail","color":"#ffffff"},{"id":"shot-blade","label":"Cưa / khoan / móng","group":"Đạn","tile":214,"frames":1,"seconds":0.4,"size":39,"grain":200,"count":2,"priority":1,"mode":"spin","color":"#ffffff"},{"id":"shot-drone","label":"Drone bám đuổi","group":"Đạn","tile":215,"frames":1,"seconds":0.65,"size":48,"grain":202,"count":3,"priority":2,"mode":"trail","color":"#ffffff"},{"id":"shot-web","label":"Bọc tơ","group":"Kẻ địch","tile":216,"frames":1,"seconds":0.45,"size":36,"grain":-1,"count":0,"priority":1,"mode":"trail","color":"#ffffff"},{"id":"shot-enemy","label":"Đạn quái","group":"Kẻ địch","tile":217,"frames":1,"seconds":0.5,"size":35,"grain":201,"count":2,"priority":2,"mode":"trail","color":"#ffffff"},{"id":"beam-ion","label":"Đường tia ion","group":"Nguyên tố","tile":223,"frames":1,"seconds":0.18,"size":13,"grain":-1,"count":0,"priority":2,"mode":"beam","color":"#4be8ff"},{"id":"beam-sniper","label":"Đường đạn bắn tỉa","group":"Đạn","tile":223,"frames":1,"seconds":0.18,"size":5,"grain":-1,"count":0,"priority":2,"mode":"beam","color":"#ffe08c"},{"id":"beam-orbital","label":"Cột không kích","group":"Kỹ năng","tile":223,"frames":1,"seconds":0.5,"size":44,"grain":202,"count":5,"priority":3,"mode":"beam","color":"#77ffec"},{"id":"chain","label":"Tia sét bám mục tiêu","group":"Nguyên tố","tile":223,"frames":1,"seconds":0.22,"size":9,"grain":-1,"count":0,"priority":2,"mode":"lightning","color":"#b3a5ff"},{"id":"shield-loop","label":"Mái chắn duy trì","group":"Trạng thái","tile":224,"frames":1,"seconds":0.8,"size":160,"grain":-1,"count":0,"priority":3,"mode":"loop","color":"#6eefff"},{"id":"target-lock","label":"Mốc khóa mục tiêu","group":"Trạng thái","tile":218,"frames":1,"seconds":0.8,"size":110,"grain":-1,"count":0,"priority":3,"mode":"loop","color":"#ffcf75"},{"id":"pick-coin","label":"Xu bay / nhặt","group":"Trạng thái","tile":220,"frames":1,"seconds":0.8,"size":32,"grain":-1,"count":0,"priority":1,"mode":"loop","color":"#ffffff"},{"id":"stun-loop","label":"Choáng","group":"Trạng thái","tile":200,"frames":1,"seconds":0.65,"size":32,"grain":-1,"count":0,"priority":1,"mode":"loop","color":"#ffffff"},{"id":"slow-loop","label":"Làm chậm / đóng băng","group":"Trạng thái","tile":202,"frames":1,"seconds":0.8,"size":32,"grain":-1,"count":0,"priority":1,"mode":"loop","color":"#ffffff"},{"id":"burn-loop","label":"Đang cháy","group":"Trạng thái","tile":201,"frames":1,"seconds":0.48,"size":30,"grain":-1,"count":0,"priority":1,"mode":"loop","color":"#ffffff"},{"id":"poison-loop","label":"Đang nhiễm độc","group":"Trạng thái","tile":203,"frames":1,"seconds":0.7,"size":27,"grain":-1,"count":0,"priority":1,"mode":"loop","color":"#ffffff"},{"id":"rally-loop","label":"Đang tăng tốc","group":"Trạng thái","tile":219,"frames":1,"seconds":0.7,"size":38,"grain":-1,"count":0,"priority":1,"mode":"loop","color":"#ffbc3b"},{"id":"danger-zone","label":"Dấu hướng tấn công","group":"Kẻ địch","tile":219,"frames":1,"seconds":0.62,"size":78,"grain":-1,"count":0,"priority":3,"mode":"loop","color":"#ff664d"},{"id":"fall-shadow","label":"Vùng đạn cối sắp rơi","group":"Kẻ địch","tile":218,"frames":1,"seconds":0.56,"size":100,"grain":-1,"count":0,"priority":3,"mode":"loop","color":"#ff975f"},{"id":"status-protect","label":"Khiên giáp/giảm sát thương","group":"Trạng thái","tile":218,"frames":1,"seconds":0.52,"size":78,"grain":-1,"count":0,"priority":2,"mode":"loop","color":"#88baff"},{"id":"p-dust","label":"Hạt bụi bánh xe / bước chân","group":"Kẻ địch","tile":206,"frames":1,"seconds":0.36,"size":74,"grain":206,"count":5,"priority":1,"mode":"particles","color":"#ffffff"},{"id":"p-sparks","label":"Tia lửa va chạm / trúng giáp","group":"Đạn","tile":200,"frames":1,"seconds":0.2,"size":58,"grain":200,"count":6,"priority":1,"mode":"particles","color":"#ffffff"},{"id":"p-embers","label":"Đốm tàn lửa","group":"Nguyên tố","tile":201,"frames":1,"seconds":0.3,"size":68,"grain":201,"count":5,"priority":1,"mode":"particles","color":"#ffffff"},{"id":"p-loot","label":"Sao nhặt xu","group":"Trạng thái","tile":200,"frames":1,"seconds":0.39,"size":74,"grain":200,"count":5,"priority":1,"mode":"particles","color":"#ffffff"}],"weapons":[{"kind":"shell","muzzle":"cannonflash","flight":"shot-shell","impact":"blast"},{"kind":"double","muzzle":"cannonflash","flight":"shot-shell","impact":"hit"},{"kind":"rocket","muzzle":"ignition","flight":"shot-rocket","impact":"rocketblast"},{"kind":"rapid","muzzle":"flash","flight":"shot-fast","impact":"hit"},{"kind":"laser","muzzle":"pulse","flight":"beam-ion","impact":"crystal"},{"kind":"flame","muzzle":"fire","flight":"shot-fire","impact":"fire"},{"kind":"mortar","muzzle":"cannonflash","flight":"shot-shell","impact":"blast"},{"kind":"sniper","muzzle":"flash","flight":"beam-sniper","impact":"hit"},{"kind":"tesla","muzzle":"pulse","flight":"chain","impact":"arc"},{"kind":"drone","muzzle":"ignition","flight":"shot-drone","impact":"pulse"},{"kind":"shotgun","muzzle":"flash","flight":"shot-pellet","impact":"hit"},{"kind":"plasma","muzzle":"pulse","flight":"shot-plasma","impact":"crystal"},{"kind":"arrow","muzzle":"flash","flight":"shot-arrow","impact":"hit"},{"kind":"ice","muzzle":"pulse","flight":"shot-ice","impact":"frost"},{"kind":"poison","muzzle":"pulse","flight":"shot-poison","impact":"poison"},{"kind":"saw","muzzle":"flash","flight":"shot-blade","impact":"slash"},{"kind":"drill","muzzle":"flash","flight":"shot-blade","impact":"hit"},{"kind":"claw","muzzle":"slash","flight":"shot-blade","impact":"slash"},{"kind":"shield","muzzle":"ward","flight":"","impact":""},{"kind":"gravity","muzzle":"pulse","flight":"shot-gravity","impact":"vortex"},{"kind":"bomb","muzzle":"cannonflash","flight":"shot-shell","impact":"rocketblast"},{"kind":"crystal","muzzle":"pulse","flight":"shot-ice","impact":"crystal"},{"kind":"heal","muzzle":"heal","flight":"","impact":""},{"kind":"web","muzzle":"web","flight":"shot-web","impact":"web"},{"kind":"enemy","muzzle":"flash","flight":"shot-enemy","impact":"hit"}],"tiles":{"clips":["flash","cannonflash","ignition","hit","blast","rocketblast","fire","frost","poison","arc","vortex","slash","crystal","web","heal","ward","rally","cage","portal","dust","death","drop","spawn","warning","pulse"],"statics":["spark","ember","ice","bubble","void","plus","smoke","tracer","shell","rocket","pellet","plasma","arrow","orb","blade","drone","webshot","enemyshot","ring","chevron","coin","cross","dot","stripe","dome"],"staticStart":200}}</script>
+<script>
+'use strict';
+const data = JSON.parse(document.getElementById('data').textContent);
+const recipes = new Map(data.recipes.map(recipe => [recipe.id, recipe]));
+const atlas = new Image();
+const $ = id => document.getElementById(id);
+const canvas = $('screen');
+const ctx = canvas.getContext('2d', {alpha: false});
+const bg = document.createElement('canvas');
+bg.width = canvas.width;
+bg.height = canvas.height;
+const landscape = bg.getContext('2d');
+let current = recipes.get('rocketblast'), clock = 0, previous = 0, playing = true, stress = false, ready = false;
+let visibleQuads = 0, lastReadout = '';
+const tau = Math.PI * 2;
+const tintCache = new Map();
+
+function hash(seed, sample) {
+  let x = (Math.imul(seed,747796405) + Math.imul(sample,2891336453) + 277803737) >>> 0;
+  x = Math.imul(x ^ (x >>> 16),2246822519) >>> 0;
+  return ((x ^ (x >>> 13)) & 65535) / 65535;
+}
+function poly(context, points, fill){
+  context.fillStyle=fill;
+  context.beginPath();
+  points.forEach(([x,y],i)=>i ? context.lineTo(x,y) : context.moveTo(x,y));
+  context.closePath();context.fill();
+}
+function drawLandscape(){
+  const sky=landscape.createLinearGradient(0,0,0,540);
+  sky.addColorStop(0,'#101931');sky.addColorStop(.75,'#213a54');sky.addColorStop(1,'#203b4e');
+  landscape.fillStyle=sky;landscape.fillRect(0,0,960,540);
+  for(let i=0;i<135;i++){
+    const x=hash(88,i)*960, y=hash(23,i)*375;
+    landscape.fillStyle=i%9===0?'#a9ccd1':'#526681';
+    landscape.fillRect(x,y,i%9===0?2:1,i%9===0?2:1);
+  }
+  landscape.beginPath();landscape.arc(771,134,70,0,tau);landscape.fillStyle='#b4c9d2';landscape.fill();
+  landscape.beginPath();landscape.arc(792,113,65,0,tau);landscape.fillStyle='#859cad';landscape.fill();
+  poly(landscape,[[0,368],[126,297],[213,356],[345,310],[452,333],[554,280],[643,321],[760,285],[889,336],[960,307],[960,540],[0,540]],'#1d3049');
+  poly(landscape,[[0,416],[148,372],[306,396],[438,394],[577,360],[682,417],[793,390],[960,413],[960,540],[0,540]],'#273f54');
+  landscape.fillStyle='#1a2a3d';landscape.fillRect(0,429,960,111);
+  landscape.fillStyle='#607386';landscape.fillRect(0,429,960,2);
+  for(let i=0;i<35;i++){
+    const x=hash(103,i)*960,y=442+hash(7,i)*98;
+    poly(landscape,[[x,y],[x+4,y-4],[x+11,y-2],[x+16,y]],i%5===0?'#506979':'#2d455b');
+  }
+  for(const x of [134,828]){
+    landscape.fillStyle='#101c2a';landscape.beginPath();landscape.ellipse(x,432,55,10,0,0,tau);landscape.fill();
+    poly(landscape,[[x-39,427],[x-50,405],[x-34,383],[x+34,383],[x+49,403],[x+35,427]],'#172331');
+    poly(landscape,[[x-37,399],[x-27,366],[x+27,366],[x+38,399]],x<400?'#bf873b':'#42766d');
+    poly(landscape,[[x-29,384],[x-24,368],[x+25,368],[x+31,384]],x<400?'#edbc60':'#7faa87');
+    const side=x<400?1:-1;
+    landscape.fillStyle='#1d2c39';landscape.fillRect(side>0?x+11:x-63,375,53,13);
+    landscape.fillStyle='#a1b7bd';landscape.fillRect(side>0?x+16:x-61,377,47,3);
+    for(const offset of [-27,0,27]){
+      landscape.fillStyle='#465864';landscape.beginPath();landscape.arc(x+offset,409,8,0,tau);landscape.fill();
+    }
+  }
+}
+function tile(id,x,y,w,h,angle=0,alpha=1,tint='#ffffff'){
+  if(!ready||alpha<=0||w<=0||h<=0)return;
+  const n=data.cell;
+  ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.globalAlpha=alpha;
+  const tx=(id%data.columns)*n, ty=Math.floor(id/data.columns)*n;
+  if(tint==='#ffffff')ctx.drawImage(atlas,tx,ty,n,n,-w/2,-h/2,w,h);
+  else {
+    const key=id+':'+tint;
+    if(!tintCache.has(key)){
+      const layer=document.createElement('canvas');layer.width=layer.height=n;
+      const paint=layer.getContext('2d');
+      paint.drawImage(atlas,tx,ty,n,n,0,0,n,n);
+      paint.globalCompositeOperation='source-in';paint.fillStyle=tint;paint.fillRect(0,0,n,n);
+      tintCache.set(key,layer);
+    }
+    ctx.drawImage(tintCache.get(key),-w/2,-h/2,w,h);
+  }
+  ctx.restore();visibleQuads++;
+}
+function segment(x,y,xx,yy,width,color,alpha){
+  ctx.save();
+  ctx.globalAlpha=alpha;ctx.lineCap='round';ctx.strokeStyle=color;ctx.lineWidth=width;
+  ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(xx,yy);ctx.stroke();ctx.restore();visibleQuads++;
+}
+function effect(recipe,x,y,p,scale,seed,endX=x+300,endY=y-100){
+  const phase=Math.max(0,Math.min(.99999,p)), size=recipe.size*scale;
+  const scaleCount=Number($('quality').value);
+  if(recipe.mode==='beam'||recipe.mode==='lightning'){
+    const nodes=recipe.mode==='lightning'?(scaleCount<.5?4:7):1;
+    let lastX=x,lastY=y;
+    for(let i=1;i<=nodes;i++){
+      const ax=x+(endX-x)*i/nodes;
+      const ay=y+(endY-y)*i/nodes+(i===nodes?0:(hash(seed+Math.floor(p*7),i)-.5)*size*3);
+      segment(lastX,lastY,ax,ay,size*.66,recipe.color,1-p);
+      segment(lastX,lastY,ax,ay,size*.22,'#fff7e6',1-p);
+      lastX=ax;lastY=ay;
+    }
+    if(recipe.id==='chain')effect(recipes.get('arc'),endX,endY,p,scale*.56,seed);
+    return;
+  }
+  const angle=recipe.mode==='spin'?p*tau*2:0;
+  const pulse=recipe.mode==='loop'? .95+.10*Math.sin(p*tau):1;
+  if(recipe.mode==='trail'){
+    x+=p*(endX-x); y+=p*(endY-y)-Math.sin(p*Math.PI)*49;
+    const trail=recipe.id==='shot-rocket'?recipes.get('shot-fire').tile:recipes.get('shot-fast').tile;
+    if(recipe.grain>=0&&recipe.count>0){
+      const total=Math.ceil(recipe.count*scaleCount);
+      for(let i=0;i<total;i++){
+        const age=(i+1)/(total+1);
+        tile(recipe.grain,x-size*(.36+age*1.8),y-age*16,size*(.35+.43*age),size*(.35+.43*age),seed+i,.42*(1-age));
+      }
+    }
+    tile(trail,x-size*.48,y,size*1.4,size*.40,0,.77);
+  }
+  if(recipe.mode!=='particles')
+    tile(recipe.tile+Math.floor(phase*recipe.frames),x,y,size*pulse,size*pulse*(recipe.id==='shield-loop'?1.4:recipe.id==='fall-shadow'?.35:1),angle,1,recipe.color);
+  if(recipe.grain<0||recipe.frames===1&&recipe.mode!=='particles')return;
+  const count=Math.round(recipe.count*scaleCount);
+  for(let i=0;i<count;i++){
+    const a=hash(seed,i)*tau, r=(.28+.40*hash(seed,i+19))*size*(1-(1-p)*(1-p));
+    const s=size*(.08+.11*hash(seed,i+53))*(1-p*.55);
+    tile(recipe.grain,x+Math.cos(a)*r,y-Math.sin(a)*r+p*p*size*.17,s,s,a+p*3,(1-p)*.92);
+  }
+}
+function battlefield(elapsed){
+  for(let i=0;i<11;i++){
+    const q=(elapsed*1.7+i*.171)%1;
+    const y=326+(i%3)*14;
+    effect(recipes.get('shot-fast'),225,y,q,.78,i,730,y);
+    if(q<.7)effect(recipes.get('flash'),218,y,q*1.4,.66,i);
+    if(q>.66)effect(recipes.get('hit'),719+i%4*22,y,(q-.66)*2.9,.78,i);
+  }
+  const shell=(elapsed*.68)%1;
+  effect(recipes.get('shot-shell'),196,316,Math.min(1,shell/.56),.88,71,720,338);
+  if(shell>.56)effect(recipes.get('blast'),720,338,(shell-.56)*2.2,.82,71);
+  const rocket=(elapsed*.51+.34)%1;
+  if(rocket<.54)for(let i=0;i<3;i++)effect(recipes.get('shot-rocket'),220,328-i*31,rocket/.54,.79,i+80,760+i*36,316+i*18);
+  if(rocket>.54)for(let i=0;i<3;i++)effect(recipes.get('rocketblast'),760+i*36,316+i*18,(rocket-.54)*2.1,.70,i+39);
+  const cycle=(elapsed*.83)%1;
+  effect(recipes.get('chain'),400,260,cycle*.90,1,51,713,260);
+  effect(recipes.get('frost'),735,397,cycle,1.06,39);
+  effect(recipes.get('heal'),140,401,(cycle+.4)%1,1.04,70);
+  effect(recipes.get('danger-zone'),643,405,cycle,1.01,17);
+}
+function updateHeading(){
+  $('name').textContent=stress?'Bắn đồng thời':current.label;
+  const technique=current.frames>1
+    ? current.count ? 'Frame-by-frame + particle' : 'Frame-by-frame'
+    : current.mode==='particles'?'Particle'
+    : current.mode==='beam'||current.mode==='lightning'?'Hình học động'
+    : current.count?'Sprite + particle':'Sprite / biến đổi';
+  $('meta').textContent=stress?'Gatling, pháo, tên lửa, sét, băng và hồi máu':current.id+' · '+technique+' · '+(current.frames>1?current.frames+' frame · ':'')+current.seconds.toFixed(2)+' s';
+}
+function list(){
+  const filter=$('group').value, key=$('search').value.trim().toLocaleLowerCase('vi');
+  const items=$('items');items.replaceChildren();
+  data.recipes.filter(r=>(!filter||r.group===filter)&&(!key||(r.label+' '+r.id).toLocaleLowerCase('vi').includes(key))).forEach(r=>{
+    const button=document.createElement('button');
+    button.type='button';button.setAttribute('aria-pressed',String(current.id===r.id&&!stress));
+    button.append(document.createTextNode(r.label));
+    const sub=document.createElement('small');sub.textContent=r.id;button.append(sub);
+    button.addEventListener('click',()=>{current=r;clock=0;setStress(false);});items.append(button);
+  });
+  if(!items.firstChild){const none=document.createElement('p');none.className='muted';none.textContent='Không tìm thấy hiệu ứng.';items.append(none);}
+}
+function setPlaying(value){
+  playing=value;$('play').textContent=value?'Tạm dừng':'Tiếp tục';$('play').setAttribute('aria-pressed',String(value));
+}
+function setStress(value){
+  stress=value;$('stress').setAttribute('aria-pressed',String(value));updateHeading();list();
+}
+function tick(now){
+  const dt=Math.min(.05,previous?(now-previous)/1000:0);previous=now;
+  if(playing)clock+=dt*Number($('speed').value);
+  ctx.drawImage(bg,0,0);visibleQuads=0;
+  const period=stress?4:current.seconds+.28;
+  const p=(clock%period)/period;
+  if(stress)battlefield(clock);
+  else {
+    const life=p*period/current.seconds;
+    if(life<1){
+      const travel=current.mode==='trail';
+      const beam=current.mode==='beam'||current.mode==='lightning';
+      effect(current,travel?252:beam?212:482,travel?343:beam?376:342,life,1.62,79,beam?748:782,beam?313:298);
+    }
+  }
+  if(playing)$('phase').value=p;
+  const value=(stress?'Tải kết hợp':'Frame '+Math.min(current.frames,Math.floor(p*(current.seconds+.28)/current.seconds*current.frames)+1)+' / '+current.frames)+' · '+visibleQuads+' lớp';
+  if(value!==lastReadout){$('readout').textContent=value;lastReadout=value;}
+  requestAnimationFrame(tick);
+}
+for(const group of new Set(data.recipes.map(r=>r.group)))$('group').add(new Option(group,group));
+$('group').addEventListener('change',list);
+$('search').addEventListener('input',list);
+$('stress').addEventListener('click',()=>{clock=0;setStress(!stress);});
+$('play').addEventListener('click',()=>setPlaying(!playing));
+$('step').addEventListener('click',()=>{setPlaying(false);clock+=stress?1/60:current.seconds/Math.max(8,current.frames);$('phase').value=(clock%(stress?4:current.seconds+.28))/(stress?4:current.seconds+.28);});
+$('phase').addEventListener('input',()=>{setPlaying(false);clock=Number($('phase').value)*(stress?4:current.seconds+.28);});
+window.addEventListener('keydown',e=>{
+  if(e.code==='Space'&&!['INPUT','BUTTON','SELECT','A'].includes(document.activeElement.tagName)){e.preventDefault();setPlaying(!playing);}
+});
+atlas.onload=()=>{ready=true;$('status').textContent=data.recipes.length+' mẫu · Atlas '+atlas.width+' × '+atlas.height+' · Số lớp hiển thị là của trình duyệt.';};
+atlas.onerror=()=>{$('status').textContent='Không tìm thấy atlas. Hãy giữ nguyên VFX_Handoff và Assets cạnh nhau sau khi giải nén.';};
+atlas.src='../Assets/CatTanksVfxKit/Resources/CatTanksVfxKit/atlas.png';
+drawLandscape();list();updateHeading();requestAnimationFrame(tick);
+</script>
+</body>
+</html>

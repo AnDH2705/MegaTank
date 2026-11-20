@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CatTanks · 5 vòng VFX</title>
+<style>
+:root { color-scheme:dark; --panel:#131f32; --border:#2b3c56; --mute:#a7b9d2; --gold:#ffd58a }
+* { box-sizing:border-box }
+body { margin:0; background:#0b1322; color:#f5f8ff; font:16px/1.5 system-ui,sans-serif }
+main { width:min(1200px,100% - 36px); margin:32px auto 48px }
+h1 { margin:0; font-size:clamp(27px,4vw,47px); letter-spacing:-.055em; line-height:1.1 }
+p { margin:8px 0 18px; color:var(--mute) }
+nav,.controls { display:flex; flex-wrap:wrap; gap:8px; align-items:center }
+button,a { font:inherit }
+button { color:#e8effd; background:#1b2b43; border:1px solid var(--border); padding:8px 12px; border-radius:7px; cursor:pointer }
+button:hover { background:#263b58 }
+button[aria-pressed=true] { background:#332c2d; border-color:#a77c36; color:var(--gold) }
+button:focus-visible,a:focus-visible,video:focus-visible { outline:2px solid #94dbed; outline-offset:2px }
+.screen { margin-top:12px; border:1px solid var(--border); background:var(--panel); border-radius:13px; overflow:hidden }
+video { width:100%; display:block; aspect-ratio:16/9; background:#101b30 }
+.details { padding:12px 15px }
+.details p { margin:0 0 12px }
+.controls button { font-size:13px }
+a { color:#9ee0ec }
+footer { margin-top:14px; display:flex; gap:18px; flex-wrap:wrap; font-size:13px }
+@media(max-width:600px) { main{width:calc(100% - 22px);margin-top:18px} }
+</style>
+</head>
+<body>
+<main>
+  <h1>CatTanks · 5 vòng VFX</h1>
+  <p>Cùng một trận thử. Đổi vòng để so chính xác cùng thời điểm.</p>
+  <nav aria-label="Phiên bản" id="rounds">
+    <button data-round="0" type="button">Mốc V2</button>
+    <button data-round="1" type="button">1 · Thân đạn</button>
+    <button data-round="2" type="button">2 · Đuôi đạn</button>
+    <button data-round="3" type="button">3 · Va chạm</button>
+    <button data-round="4" type="button">4 · Chùm rocket</button>
+    <button data-round="5" aria-pressed="true" type="button">5 · Tinh chỉnh</button>
+  </nav>
+  <section class="screen" aria-label="So sánh video">
+    <video id="movie" src="Vong_05.mp4" controls playsinline preload="metadata" aria-label="Video VFX CatTanks"></video>
+    <div class="details">
+      <p id="detail" aria-live="polite"></p>
+      <nav class="controls" id="cues" aria-label="Mốc thời gian">
+        <button data-time=".82" type="button">Gatling</button>
+        <button data-time="3.04" type="button">Đạn pháo bay</button>
+        <button data-time="3.48" type="button">Pháo trúng</button>
+        <button data-time="6.23" type="button">Chùm rocket bay</button>
+        <button data-time="10.36" type="button">Bắn dồn + sét</button>
+        <button id="slow" aria-pressed="false" type="button">0,25×</button>
+      </nav>
+    </div>
+  </section>
+  <footer>
+    <a href="Vong_05.mp4">Mở riêng clip vòng 5</a>
+    <a href="THAM_KHAO.md">Nguồn tham khảo</a>
+    <a href="UNITY_NATIVE.md">Dựng và thử trong Unity</a>
+  </footer>
+</main>
+<script>
+'use strict';
+const clips = ['../Mo_Phong_Tran_Dau_V2.mp4','Vong_01.mp4','Vong_02.mp4','Vong_03.mp4','Vong_04.mp4','Vong_05.mp4'];
+const descriptions = [
+  'Mốc so sánh. Đạn trước khi thay thiết kế và tăng cỡ.',
+  'Thân đạn mới cho Gatling, pháo và tên lửa. Chớp nòng lớn hơn.',
+  'Vệt bám theo các vị trí vừa bay qua. Đạn bung cỡ sau khi rời nòng.',
+  'Va chạm theo hình riêng. Pháo nổ hổ phách, rocket nổ đỏ san hô.',
+  'Các rocket tách ra giữa đường bay rồi hội tụ, mỗi viên có vệt khói riêng. Bổ sung hắt sáng và bụi ngang.',
+  'Đạn lớn hơn, lửa phụt biến thiên, thêm mảnh văng. Loạt rocket có một lõi nổ chính và các nổ phụ nhỏ hơn.'
+];
+const movie = document.getElementById('movie');
+const rounds = [...document.querySelectorAll('[data-round]')];
+let chosen = 5, pendingTime = null, resume = false;
+function show(index) {
+  if (index === chosen) return;
+  pendingTime = pendingTime ?? movie.currentTime;
+  resume = !movie.paused || resume;
+  chosen = index;
+  rounds.forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.round) === chosen)));
+  document.getElementById('detail').textContent = descriptions[chosen];
+  movie.src = clips[chosen];
+}
+movie.addEventListener('loadedmetadata', () => {
+  if (pendingTime !== null) {
+    movie.currentTime = Math.min(pendingTime, movie.duration || 12);
+    pendingTime = null;
+  }
+  movie.playbackRate = document.getElementById('slow').getAttribute('aria-pressed') === 'true' ? .25 : 1;
+  if (resume) { resume = false; movie.play().catch(() => {}); }
+});
+rounds.forEach(button => button.addEventListener('click', () => show(Number(button.dataset.round))));
+document.querySelectorAll('[data-time]').forEach(button => button.addEventListener('click', () => {
+  const time = Number(button.dataset.time);
+  if (movie.readyState > 0) movie.currentTime = time;
+  else pendingTime = time;
+}));
+document.getElementById('slow').addEventListener('click', event => {
+  const speed = event.currentTarget;
+  const slow = speed.getAttribute('aria-pressed') !== 'true';
+  speed.setAttribute('aria-pressed', String(slow));
+  movie.playbackRate = slow ? .25 : 1;
+});
+document.getElementById('detail').textContent = descriptions[chosen];
+</script>
+</body>
+</html>

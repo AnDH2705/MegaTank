@@ -22,18 +22,18 @@ namespace CatTanks
         public int ActiveCount=>active.Count;
         public int CreatedCount{get;private set;}
         public CombatVfxPlayer(Transform parent){this.parent=parent;library=Resources.Load<CombatVfxLibrary>("CombatVfxLibrary");}
-        public bool Handles(BattleEffect effect)=>library&&library.For(effect)!=null;
+        public bool Handles(BattleEffect effect)=>library&&!Battle.HasWeaponEffects(effect.weaponKind)&&library.For(effect)!=null;
         public void Render(Battle battle)
         {
             if(!library)return;
             // Retire first, allowing busy automatic weapons to reuse their previous bursts.
             aliveIds.Clear();retiredIds.Clear();
-            foreach(var effect in battle.effects)if(effect.kind!="text")aliveIds.Add(effect.id);
+            foreach(var effect in battle.effects)if(effect.kind!="text"&&!Battle.HasWeaponEffects(effect.weaponKind))aliveIds.Add(effect.id);
             foreach(int id in active.Keys)if(!aliveIds.Contains(id))retiredIds.Add(id);
             foreach(int id in retiredIds)Release(id);
             foreach(var effect in battle.effects)
             {
-                if(effect.kind=="text")continue;
+                if(effect.kind=="text"||Battle.HasWeaponEffects(effect.weaponKind))continue;
                 var entry=library.For(effect);if(entry==null||!entry.prefab)continue;
                 if(!active.TryGetValue(effect.id,out var item))
                 {

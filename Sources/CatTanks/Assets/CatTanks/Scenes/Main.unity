@@ -215,6 +215,7 @@ MonoBehaviour:
   inBattle: 0
   paused: 0
   muted: 0
+  useNativeWeaponVfx: 1
   page: march
   tab: cats
   modal: 

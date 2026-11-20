@@ -42,12 +42,89 @@ namespace CatTanks.Editor
                     if(round==0)warmed=player.CreatedCount;else check(player.CreatedCount==warmed,"Burst "+round+" reuses pooled instances");
                 }
                 battle.effects.Clear();player.Render(battle);check(player.ActiveCount==0,"Expired events release all active particles");
+                ValidateWeaponEffects(db, check);
                 Directory.CreateDirectory("Logs");File.WriteAllText("Logs/combat-vfx-runtime-validation.json",JsonConvert.SerializeObject(new{verdict="PASS",passed=checks.Count,counts,pooledInstances=player.CreatedCount,checks},Formatting.Indented));
                 Capture(db,lib);
                 Debug.Log("COMBAT_VFX_TESTS_PASSED "+checks.Count);
             }
             finally{UnityEngine.Object.DestroyImmediate(root);UnityEngine.Random.state=random;}
         }
+
+        static void ValidateWeaponEffects(Catalog db, Action<bool, string> check)
+        {
+            var camera = new GameObject("Weapon VFX Test Camera", typeof(Camera)).GetComponent<Camera>();
+            camera.enabled = false;
+            var view = new BattleView(camera);
+            string[] ids = { "turret-3", "turret-0", "turret-2" };
+            string[] muzzles = { "Gatling muzzle", "Cannon muzzle", "Rocket ignition" };
+            string[] shots = { "Gatling round", "Cannon shell", "Rocket" };
+            string[] hits = { "Gatling hit", "Cannon explosion", "Rocket explosion" };
+            SpriteRenderer Visible(string name) => view.root.GetComponentsInChildren<SpriteRenderer>().FirstOrDefault(s => s.name == name);
+            try
+            {
+                int projectileCount = 0, spriteCount = 0;
+                var seed = UnityEngine.Random.state;
+                for (int round = 0; round < 2; round++)
+                {
+                    UnityEngine.Random.state = seed;
+                    var battle = new Battle(db, Profile.New(db));
+                    battle.units.Clear();
+                    battle.waves = new List<Wave> { new Wave { count = 1, bursts = new List<Burst>() } };
+                    var target = battle.Spawn("bug-0", 900);
+                    target.stun = float.PositiveInfinity;
+                    target.hp = target.maxHp = 100000;
+                    var source = new Actor { role = "tower", position = new Vector2(450, target.position.y) };
+                    var impacts = new HashSet<string>();
+                    for (int i = 0; i < ids.Length; i++)
+                    {
+                        source.weapon = db.Weapon(ids[i]);
+                        battle.Fire(source, target);
+                    }
+                    view.Render(battle);
+                    for (int i = 0; i < ids.Length; i++)
+                        check(Visible(muzzles[i]) && Visible(shots[i]), ids[i] + " displays its muzzle and projectile");
+                    battle.Step(1f / 60f);
+                    view.Render(battle);
+                    var rocket = Visible("Rocket");
+                    var smoke = Visible("Rocket trail");
+                    check(rocket && smoke, "Rocket emits a smoke trail");
+                    var oldPosition = rocket.transform.localPosition;
+                    var oldSmoke = smoke.sprite;
+                    var oldSmokeColor = smoke.color;
+                    view.Render(battle);
+                    check(Visible("Rocket") == rocket && rocket.transform.localPosition == oldPosition
+                        && Visible("Rocket trail") == smoke && smoke.sprite == oldSmoke && smoke.color == oldSmokeColor,
+                        "Paused render preserves the projectile and smoke");
+
+                    for (int step = 0; step < 120; step++)
+                    {
+                        battle.Step(1f / 60f);
+                        view.Render(battle);
+                        foreach (string hit in hits)
+                            if (!impacts.Contains(hit) && Visible(hit)) impacts.Add(hit);
+                    }
+                    check(impacts.Count == hits.Length, "All three weapon effects reach impact after resuming");
+                    check(!Visible("Rocket trail") && view.combatVfx.ActiveCount == 0, "Expired weapon effects retire");
+                    int currentSprites = view.root.GetComponentsInChildren<SpriteRenderer>(true).Length;
+                    if (round == 0)
+                    {
+                        projectileCount = view.CreatedProjectileViews;
+                        spriteCount = currentSprites;
+                    }
+                    else
+                    {
+                        check(view.CreatedProjectileViews == projectileCount && currentSprites <= spriteCount,
+                            "Repeated combined shots reuse projectile and sprite views");
+                    }
+                }
+            }
+            finally
+            {
+                view.Dispose();
+                UnityEngine.Object.DestroyImmediate(camera.gameObject);
+            }
+        }
+
         static void Capture(Catalog db,CombatVfxLibrary lib)
         {
             var cameraObject=new GameObject("VFX Preview Camera");var camera=cameraObject.AddComponent<Camera>();camera.enabled=false;

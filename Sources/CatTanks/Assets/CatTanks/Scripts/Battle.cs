@@ -12,6 +12,7 @@ namespace CatTanks
         public int id, index;
         public Vector2 position;
         public float hp, maxHp, age, timer, angle, recoil, defense, slow, burn, poison, stun, attack, summon = 9, flash, deathTime, phase;
+        public float weaponHitFlash;
         public bool dead, visible = true, burrowed, charging, warning;
         public string role, asset, cat;
         public Weapon weapon;
@@ -30,7 +31,7 @@ namespace CatTanks
     public class BattleEffect
     {
         public int id;
-        public string kind, text, visual;
+        public string kind, text, visual, weaponKind;
         public Vector2 position, end;
         public Color color;
         public float size, life, maxLife;
@@ -209,7 +210,7 @@ namespace CatTanks
                 if (u.timer > 0) continue;
                 if (u.weapon.kind == "heal") {hp = Mathf.Min(maxHp, hp + u.weapon.damage); energy = Mathf.Min(600, energy + 15); u.timer = u.weapon.rate; continue;}
                 if (u.weapon.kind == "shield") {buffs["shield"] = Mathf.Max(Buff("shield"), 2); u.timer = u.weapon.rate; continue;}
-                if (target != null) {Fire(u, target); u.timer = u.weapon.rate; u.recoil = u.role == "tower" ? 10 : 5;}
+                if (target != null) {Fire(u, target); u.timer = u.weapon.rate; u.recoil = u.role == "tower" ? TowerRecoil(u.weapon.kind) : 5;}
             }
             if (Buff("drone") > 0 && (droneTimer -= dt) <= 0)
             {
@@ -319,7 +320,9 @@ namespace CatTanks
         }
         void UpdateEnemy(Actor e, float dt)
         {
-            e.age += dt; if (e.dead) return;
+            e.age += dt;
+            e.weaponHitFlash = Mathf.Max(0, e.weaponHitFlash - dt);
+            if (e.dead) return;
             e.flash = Mathf.Max(0, e.flash - dt); e.attack -= dt; e.summon -= dt;
             e.slow = Mathf.Max(0, e.slow - dt); e.burn = Mathf.Max(0, e.burn - dt); e.poison = Mathf.Max(0, e.poison - dt); e.stun = Mathf.Max(0, e.stun - dt);
             if (e.burn > 0) Damage(e, 24 * dt, "flame"); if (e.poison > 0) Damage(e, 30 * dt, "poison"); if (e.dead) return;
@@ -395,8 +398,14 @@ namespace CatTanks
                 else angle += (UnityEngine.Random.value - .5f) * .035f;
                 MakeBullet(u.position + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * (u.role == "tower" ? 70 : 40), angle, w, target);
             }
-            Effect("flash", u.position + new Vector2(Mathf.Cos(u.angle), Mathf.Sin(u.angle)) * 55, u.position, w.color, 24, .1f);
+            bool styled = HasWeaponEffects(w.kind);
+            Vector2 aim = styled ? (target.position - u.position).normalized : new Vector2(Mathf.Cos(u.angle), Mathf.Sin(u.angle));
+            float muzzleDistance = styled ? (u.role == "tower" ? 70 : 40) : 55;
+            float flashLife = w.kind == "shell" ? .25f : w.kind == "rocket" ? .18f : .1f;
+            Effect("flash", u.position + aim * muzzleDistance, u.position, w.color, 24, flashLife, weaponKind: styled ? w.kind : null);
         }
+        internal static bool HasWeaponEffects(string kind) => kind == "rapid" || kind == "shell" || kind == "rocket";
+        static float TowerRecoil(string kind) => kind == "shell" ? 16 : kind == "rocket" ? 11 : kind == "rapid" ? 5 : 10;
         public void MakeBullet(Vector2 pos, float angle, Weapon w, Actor target, bool enemy = false)
         {
             bullets.Add(new Projectile {id = nextId++, position = pos, previous = pos, start = pos, end = target?.position ?? pos, angle = angle, weapon = w, target = target, enemy = enemy, pierce = Mathf.Max(1, w.pierce), flight = target == null ? 1 : Mathf.Max(.5f, Vector2.Distance(pos, target.position) / w.speed)});
@@ -437,19 +446,36 @@ namespace CatTanks
         void Impact(Projectile b, Actor e)
         {
             var w = b.weapon;
-            if (e != null && !e.dead) {b.hit.Add(e.id); Damage(e, w.damage, w.kind); e.slow = Mathf.Max(e.slow, w.slow); e.burn = Mathf.Max(e.burn, w.burn); e.poison = Mathf.Max(e.poison, w.poison);}
+            bool styled = HasWeaponEffects(w.kind);
+            Vector2 contact = b.position;
+            if (styled && e != null && w.kind == "rapid")
+            {
+                Vector2 travel = b.position - b.previous;
+                float along = Vector2.Dot(e.position - b.previous, travel) / Mathf.Max(.001f, travel.sqrMagnitude);
+                contact = b.previous + travel * Mathf.Clamp01(along);
+            }
+            if (e != null && !e.dead)
+            {
+                b.hit.Add(e.id); Damage(e, w.damage, w.kind);
+                e.slow = Mathf.Max(e.slow, w.slow); e.burn = Mathf.Max(e.burn, w.burn); e.poison = Mathf.Max(e.poison, w.poison);
+                if (styled) e.weaponHitFlash = .08f;
+            }
             if (w.splash > 0)
             {
                 foreach (var o in enemies)
                 {
                     if (o.dead || o == e || Vector2.Distance(o.position, b.position) > w.splash + o.def.size * .2f) continue;
                     Damage(o, w.damage * .6f, w.kind); o.slow = Mathf.Max(o.slow, w.slow); o.poison = Mathf.Max(o.poison, w.poison);
+                    if (styled) o.weaponHitFlash = .06f;
                     if (w.kind == "gravity") o.position = Vector2.Lerp(o.position, b.position, .22f);
                 }
                 b.dead = true;
             }
             if (--b.pierce <= 0) b.dead = true;
-            Effect("impact", b.position, b.position, w.color, w.splash > 0 ? Mathf.Min(100, w.splash * .55f) : w.kind == "flame" ? 26 : 15, .32f, visual:ImpactVisual(w));
+            float duration = w.kind == "rocket" ? .58f : w.kind == "shell" ? .48f : w.kind == "rapid" ? .16f : .32f;
+            var direction = styled ? new Vector2(Mathf.Cos(b.angle), Mathf.Sin(b.angle)) : Vector2.zero;
+            Effect("impact", contact, contact - direction, w.color, w.splash > 0 ? Mathf.Min(100, w.splash * .55f) : w.kind == "flame" ? 26 : 15,
+                duration, visual: ImpactVisual(w), weaponKind: styled ? w.kind : null);
         }
         static string ImpactVisual(Weapon w)=>w.kind=="flame"?"fire":w.kind=="ice"?"ice":w.kind=="poison"?"poison":w.splash>0?"blast":"impact";
         public void Damage(Actor e, float amount, string kind)
@@ -537,10 +563,10 @@ namespace CatTanks
             }
             e.stun = .4f; message = "Thoát rồi!"; return false;
         }
-        public void Effect(string kind, Vector2 pos, Vector2 end, string color, float size, float life, string text = null, string visual = null)
+        public void Effect(string kind, Vector2 pos, Vector2 end, string color, float size, float life, string text = null, string visual = null, string weaponKind = null)
         {
             if (effects.Count >= 350) effects.RemoveAt(0);
-            effects.Add(new BattleEffect {id=nextEffectId++,kind = kind, position = pos, end = end, color = Catalog.Color(color), size = size, life = life, maxLife = life, text = text,visual=visual});
+            effects.Add(new BattleEffect {id=nextEffectId++,kind = kind, position = pos, end = end, color = Catalog.Color(color), size = size, life = life, maxLife = life, text = text,visual=visual,weaponKind=weaponKind});
         }
         void CollectOrb(LootOrb orb)
         {

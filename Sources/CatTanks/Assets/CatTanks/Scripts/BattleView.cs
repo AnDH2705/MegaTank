@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CatTanks
 {
-    public sealed class BattleView
+    public sealed partial class BattleView
     {
         public readonly GameObject root;
         public Camera camera;
@@ -31,10 +31,17 @@ namespace CatTanks
         int shownFloors = -1;
         public CombatVfxPlayer combatVfx;
         readonly MonsterAnimationLibrary monsterAnimations;
-        public BattleView(Camera cam)
+        readonly VfxKit.NativeWeaponVfx nativeWeaponVfx;
+        public bool UsesNativeWeaponVfx => nativeWeaponVfx != null;
+        public BattleView(Camera cam, bool useNativeWeaponVfx = false)
         {
             camera = cam; root = new GameObject("Battle World");
             combatVfx=new CombatVfxPlayer(root.transform);
+            if (useNativeWeaponVfx)
+            {
+                nativeWeaponVfx = VfxKit.NativeWeaponVfx.Create(root.transform);
+                nativeWeaponVfx?.Warm();
+            }
             monsterAnimations=Resources.Load<MonsterAnimationLibrary>("MonsterAnimations");
             square = UnityEngine.Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 1, 1), Vector2.one * .5f, 1);
             disk = Shape(false); ring = Shape(true); lineMaterial = new Material(Shader.Find("Sprites/Default"));
@@ -79,14 +86,19 @@ namespace CatTanks
             var renderer=item.GetComponent<SpriteRenderer>();renderer.sprite=art;renderer.color=color;renderer.sortingOrder=order;
             return item;
         }
-        void FxSprite(string name, Sprite art, Vector2 pos, float size, Color color, int order)
+        void FxSprite(string name, Sprite art, Vector2 pos, float size, Color color, int order) =>
+            FxSprite(name, art, pos, Vector2.one * size, color, 0, order);
+
+        void FxSprite(string name, Sprite art, Vector2 pos, Vector2 scale, Color color, float angle, int order)
         {
             if (spriteFxCursor == spriteFxPool.Count)
             {
                 var go = new GameObject("Pooled Sprite FX", typeof(SpriteRenderer)); go.transform.SetParent(root.transform, false); spriteFxPool.Add(go);
             }
             var item = spriteFxPool[spriteFxCursor++]; item.SetActive(true); item.name = name;
-            item.transform.localPosition = pos; item.transform.localScale = new Vector3(size, size, 1);
+            item.transform.localPosition = pos;
+            item.transform.localScale = new Vector3(scale.x, scale.y, 1);
+            item.transform.localRotation = Quaternion.Euler(0, 0, angle);
             var sr = item.GetComponent<SpriteRenderer>(); sr.sprite = art; sr.color = color; sr.sortingOrder = order;
         }
         LineRenderer FxLine()
@@ -280,6 +292,7 @@ namespace CatTanks
                     }
                     else body.localEulerAngles = new Vector3(0, 0, Mathf.Sin(a.age * 6 + a.phase) * (a.def.flying ? 4 : 2));
                     Color c = a.slow > 0 || b.Buff("freeze") > 0 ? Catalog.Color("#8ad7ff") : a.poison > 0 ? Catalog.Color("#bbf78b") : a.burn > 0 ? Catalog.Color("#ffb479") : Color.white;
+                    if (a.weaponHitFlash > 0) c = Color.Lerp(c, WeaponHitTint, a.weaponHitFlash / .08f);
                     c.a = a.dead ? Mathf.Clamp01(1 - (a.age - a.deathTime) * 2) : a.burrowed ? .25f : 1; sr.color = c;
                     if (a.dead) {body.localPosition += Vector3.down * (a.age - a.deathTime) * 40; body.localEulerAngles = new Vector3(0, 0, (a.age - a.deathTime) * -50);}
                     var shadow=visual.shadow;shadow.localPosition = new Vector3(0, 175 - a.position.y, 0);
@@ -301,17 +314,23 @@ namespace CatTanks
             retired.Clear();foreach(int id in actors.Keys)if(!alive.Contains(id))retired.Add(id);
             foreach(int id in retired){Object.Destroy(actors[id].gameObject);actors.Remove(id);actorVisuals.Remove(id);}
             alive.Clear();
+            spriteFxCursor = 0; lineFxCursor = 0;
+            weaponShake = Vector2.zero;
+            nativeWeaponVfx?.Begin(b);
+            bool emitRocketSmoke = SampleRocketSmoke(b);
             foreach (var p in b.bullets)
             {
+                if (nativeWeaponVfx != null && nativeWeaponVfx.Draw(p)) continue;
                 alive.Add(p.id);
                 if (!projectiles.TryGetValue(p.id, out var t))
                 {
-                    bool round = p.weapon.kind == "plasma" || p.weapon.kind == "poison" || p.weapon.kind == "ice" || p.weapon.kind == "mortar" || p.weapon.kind == "bomb" || p.weapon.kind == "gravity";
-                    t = ProjectileSprite("Projectile", round ? disk : square, p.position, round ? Vector2.one * 22 : new Vector2(26, 7), Catalog.Color(p.weapon.color), 35);
+                    t = CreateProjectileView(p);
                     projectiles[p.id] = t;
                 }
                 t.localPosition = new Vector3(p.position.x, p.position.y, 0); t.localEulerAngles = new Vector3(0, 0, p.angle * Mathf.Rad2Deg);
+                if (!p.enemy && Battle.HasWeaponEffects(p.weapon.kind)) DrawProjectileTrail(p, emitRocketSmoke);
             }
+            DrawRocketSmoke(b.time);
             foreach (var orb in b.orbs)
             {
                 if(orb.collected)continue;
@@ -321,11 +340,15 @@ namespace CatTanks
             }
             retired.Clear();foreach(int id in projectiles.Keys)if(!alive.Contains(id))retired.Add(id);
             foreach(int id in retired){var item=projectiles[id];item.gameObject.SetActive(false);projectilePool.Push(item);projectiles.Remove(id);}
-            spriteFxCursor = 0; lineFxCursor = 0;
             combatVfx.Render(b);
             foreach (var e in b.effects)
             {
                 if (e.kind == "text") continue;
+                if (Battle.HasWeaponEffects(e.weaponKind))
+                {
+                    if (nativeWeaponVfx == null || !nativeWeaponVfx.Draw(e)) DrawWeaponEffect(e);
+                    continue;
+                }
                 float frac = 1 - e.life / e.maxLife; Color color = e.color; color.a = Mathf.Clamp01(e.life / e.maxLife);
                 if (e.kind == "beam" || e.kind == "lightning")
                 {
@@ -348,15 +371,19 @@ namespace CatTanks
             }
             for (int i = spriteFxCursor; i < spriteFxPool.Count; i++) spriteFxPool[i].SetActive(false);
             for (int i = lineFxCursor; i < lineFxPool.Count; i++) lineFxPool[i].SetActive(false);
+            if (nativeWeaponVfx != null && nativeWeaponVfx.CameraKick.sqrMagnitude > weaponShake.sqrMagnitude)
+                weaponShake = nativeWeaponVfx.CameraKick;
             Resize();
         }
         public void Resize()
         {
-            camera.orthographic = true; camera.orthographicSize = Mathf.Max(450, 800 / camera.aspect); camera.transform.position = new Vector3(800, 450, -1000); camera.transform.rotation = Quaternion.identity;
+            camera.orthographic = true; camera.orthographicSize = Mathf.Max(450, 800 / camera.aspect); camera.transform.position = new Vector3(800 + weaponShake.x, 450 + weaponShake.y, -1000); camera.transform.rotation = Quaternion.identity;
         }
         public void Dispose()
         {
             Object.Destroy(skyMesh); Object.Destroy(skyMaterial);
+            DisposeWeaponEffects();
+            nativeWeaponVfx?.Dispose();
             Object.Destroy(root); foreach (var sprite in sprites.Values) Object.Destroy(sprite);
             Object.Destroy(disk.texture); Object.Destroy(ring.texture); Object.Destroy(disk); Object.Destroy(ring); Object.Destroy(square); Object.Destroy(lineMaterial);
         }
