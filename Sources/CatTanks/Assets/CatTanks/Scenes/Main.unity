@@ -216,6 +216,7 @@ MonoBehaviour:
   paused: 0
   muted: 0
   useNativeWeaponVfx: 1
+  useWebWeaponVfx: 1
   page: march
   tab: cats
   modal: 

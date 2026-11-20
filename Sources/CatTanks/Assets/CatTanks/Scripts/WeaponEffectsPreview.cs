@@ -9,20 +9,31 @@ namespace CatTanks
         static readonly string[] WeaponIds = { "turret-3", "turret-0", "turret-2" };
         const int AllWeapons = 3;
         Catalog catalog;
+        Camera previewCamera;
         Battle battle;
         BattleView view;
         int selected = AllWeapons;
-        bool paused, slow;
+        bool paused, slow, useWeb = true;
 
         void Start()
         {
             catalog = Catalog.Load();
-            var camera = new GameObject("Weapon Effects Camera", typeof(Camera)).GetComponent<Camera>();
-            camera.transform.SetParent(transform, false);
-            camera.clearFlags = CameraClearFlags.SolidColor;
-            camera.backgroundColor = Catalog.Color("#041828");
-            camera.farClipPlane = 3000;
-            view = new BattleView(camera, useNativeWeaponVfx: true);
+            previewCamera = new GameObject("Weapon Effects Camera", typeof(Camera)).GetComponent<Camera>();
+            previewCamera.transform.SetParent(transform, false);
+            previewCamera.clearFlags = CameraClearFlags.SolidColor;
+            previewCamera.backgroundColor = Catalog.Color("#041828");
+            previewCamera.farClipPlane = 3000;
+            BuildView();
+        }
+
+        void BuildView()
+        {
+            if (view != null)
+            {
+                view.root.SetActive(false);
+                view.Dispose();
+            }
+            view = new BattleView(previewCamera, useNativeWeaponVfx: true, useWebWeaponVfx: useWeb);
             view.root.transform.SetParent(transform, false);
             Restart(selected);
         }
@@ -59,6 +70,7 @@ namespace CatTanks
             if (Input.GetKeyDown(KeyCode.Alpha3)) Restart(2);
             if (Input.GetKeyDown(KeyCode.Alpha4)) Restart(AllWeapons);
             if (Input.GetKeyDown(KeyCode.R)) Restart(selected);
+            if (Input.GetKeyDown(KeyCode.W)) { useWeb = !useWeb; BuildView(); }
             if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Space)) paused = !paused;
             if (Input.GetKeyDown(KeyCode.S)) slow = !slow;
 
@@ -73,8 +85,9 @@ namespace CatTanks
             GUILayout.BeginArea(new Rect(12, 12, 520, 118), GUI.skin.box);
             GUILayout.Label(selected == AllWeapons ? "Bắn đồng thời" : catalog.Weapon(WeaponIds[selected]).name);
             GUILayout.Label("1 Gatling   2 Đại bác   3 Tên lửa   4 Bắn đồng thời");
-            GUILayout.Label("P / Space Tạm dừng   N Từng khung   S Tốc độ   R Bắt đầu lại");
-            GUILayout.Label($"{(view.UsesNativeWeaponVfx ? "Unity Native" : "Sprite fallback")}  •  {(paused ? "Tạm dừng" : "Đang chạy")}  •  {(slow ? "0,25×" : "1×")}  •  {battle.time:F2} s");
+            GUILayout.Label("P Tạm dừng   N Từng khung   S Tốc độ   R Bắt đầu lại   W Đổi bộ VFX");
+            string renderer = view.UsesWebWeaponVfx ? "Tham chiếu Web" : view.UsesNativeWeaponVfx ? "Unity Native" : "Sprite fallback";
+            GUILayout.Label($"{renderer}  •  {(paused ? "Tạm dừng" : "Đang chạy")}  •  {(slow ? "0,25×" : "1×")}  •  {battle.time:F2} s");
             GUILayout.EndArea();
         }
 

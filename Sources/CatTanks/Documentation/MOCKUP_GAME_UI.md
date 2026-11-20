@@ -18,6 +18,16 @@ Có thể chỉnh RectTransform/font trên prefab; cập nhật dữ liệu gi�
 
 `StudioButtonLayout` giữ text và icon trong hệ tọa độ của nút: nút thường căn giữa, nút menu dành chỗ riêng cho icon bên trái, nút kỹ năng chia vùng phím tắt/icon/tên/chi phí. Font được giảm vừa đủ để giữ nguyên các xuống dòng có chủ ý, không tự đẩy chữ ra ngoài nút. Builder lưu các liên kết này vào prefab; runtime cũng áp dụng cho nút sinh thêm từ component prefab. `ButtonAlignmentAudit` kiểm tra khung text/icon và độ vừa chữ khi chụp cả 21 màn/popup.
 
+## Chỉnh bản nháp bằng Layout Workshop
+
+1. Mở `Assets/CatTanks/Scenes/Main.unity`, nhấn Play và mở màn hoặc popup cần chỉnh.
+2. Vào **CatTanks → UI → Layout Workshop** rồi bấm **Chụp UI đang mở**. Cửa sổ đọc Canvas của game và các phần tử do code tạo trên màn đó.
+3. Chọn phần tử trên ảnh hoặc tìm bằng tên/ID trong danh sách. Kéo phần tử để di chuyển, kéo ô vuông góc dưới bên phải để đổi kích thước, giữ Shift để giữ tỷ lệ. Có thể nhập X, Y, Rộng và Cao bằng số.
+4. Kéo một Sprite từ Project vào ô **Sprite thay** để thử ảnh khác. Dùng ô ghi chú để mô tả hình cần vẽ hoặc nội dung muốn đổi. Chuyển sang màn khác trong Game View rồi chụp lại để chỉnh tiếp trong cùng một bản nháp.
+5. Bấm **Xuất JSON** và gửi file. Dùng **Mở JSON** để nạp lại bản nháp. Mỗi mục lưu ID màn, ID phần tử, tọa độ trước và sau, ảnh thay cùng ghi chú. Tọa độ bắt đầu từ góc trái trên của phần tử cha, theo khung thiết kế 1600 × 900.
+
+Các thay đổi hiển thị trong cửa sổ Layout Workshop. JSON dùng để bàn giao vị trí và hình ảnh cần áp dụng vào prefab hoặc code UI.
+
 ## Tạo lại asset
 
 Mở Main trong Edit Mode, chạy **CatTanks > Mockup Kit > 7 - Build and Install Live Game UI**. Lệnh này tạo lại bộ prefab live từ template có binding của game và thư viện sprite đã import, rồi cài Canvas vào Main. Nó không đọc/ghi profile. Các chỉnh sửa trực tiếp trên prefab live sẽ bị thay thế khi tạo lại; cập nhật builder nếu muốn giữ chúng sau khi rebuild.
