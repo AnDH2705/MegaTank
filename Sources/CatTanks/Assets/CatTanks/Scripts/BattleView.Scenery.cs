@@ -50,7 +50,7 @@ namespace CatTanks
             {
                 var layer = entry.layers[i];
                 var bounds = new Rect(0, layer.atlasY, sceneryAtlas.width, layer.height);
-                var art = Sprite.Create(sceneryAtlas, bounds, Vector2.one * .5f, 1, 0, SpriteMeshType.FullRect);
+                var art = UnityEngine.Sprite.Create(sceneryAtlas, bounds, Vector2.one * .5f, 1, 0, SpriteMeshType.FullRect);
                 var plane = new GameObject(LayerNames[i], typeof(SpriteRenderer));
                 plane.transform.SetParent(backdrop.transform, false);
                 plane.transform.localPosition = new Vector3(800, 900 - (layer.sceneTop + layer.height * .5f) * SceneryScale);

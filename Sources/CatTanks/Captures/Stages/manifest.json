@@ -1,0 +1,230 @@
+{
+  "verdict": "PASS",
+  "unity": "2022.3.62f2",
+  "scene": "Assets/CatTanks/Scenes/Main.unity",
+  "captured": 20,
+  "profileUnchanged": true,
+  "snapshot": "Deterministic early campaign combat using a fresh isolated test profile per stage",
+  "stages": [
+    {
+      "index": 1,
+      "name": "Thung lũng Trăng",
+      "file": "stage-01.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 0,
+      "sceneryLayers": 4,
+      "sha256": "2C8DDE4AFE759A6D7AFCF89BD273F35006FD8C4DEF00847C88D23D451936CB10"
+    },
+    {
+      "index": 2,
+      "name": "Đường mòn sương",
+      "file": "stage-02.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 2,
+      "sceneryLayers": 4,
+      "sha256": "3EC754421D98E936FF747001FECE4F65125EF2F3038CCC2EFFCF68BC5FB91123"
+    },
+    {
+      "index": 3,
+      "name": "Bìa rừng xanh",
+      "file": "stage-03.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 2,
+      "sceneryLayers": 4,
+      "sha256": "B5B64F4CC0192F5614842C30AB91AADEDB207C6F7A9B61C991178DA478608AF6"
+    },
+    {
+      "index": 4,
+      "name": "Cổng đá cổ",
+      "file": "stage-04.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 2,
+      "sceneryLayers": 4,
+      "sha256": "4FC6F5EA473A957C675E6C070A0AD91D0A2C420B3CB33E03517D6814A9115EF6"
+    },
+    {
+      "index": 5,
+      "name": "Bạo long thức giấc",
+      "file": "stage-05.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 1,
+      "sceneryLayers": 4,
+      "sha256": "CE98C69FF4DFAEE41D515F662194E7D7F13AD1A14E13F810FF408E1B756B0551"
+    },
+    {
+      "index": 6,
+      "name": "Hẻm núi gió",
+      "file": "stage-06.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 1,
+      "sceneryLayers": 4,
+      "sha256": "DB994C365EEEF4CC23FFEAE35A037867F574C3D853754BEE93EF8317E2F9C951"
+    },
+    {
+      "index": 7,
+      "name": "Xưởng bỏ hoang",
+      "file": "stage-07.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 0,
+      "sceneryLayers": 4,
+      "sha256": "BACC56FB3E6D449120F7140B82FE700F32D7D2CAC32CAF3328D97DAEFDE7580D"
+    },
+    {
+      "index": 8,
+      "name": "Đầm lầy tím",
+      "file": "stage-08.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 2,
+      "sceneryLayers": 4,
+      "sha256": "89EE46AB9EC919B1AF3EEA6D205E5D04D049A70C047DDE139F70D8B1010D35D5"
+    },
+    {
+      "index": 9,
+      "name": "Đồi pha lê",
+      "file": "stage-09.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 4,
+      "sceneryLayers": 4,
+      "sha256": "2ECB3C6BFC68CB0638D20D1FAB1877BFD55E0CEF1D547CA4016BBBB5EB0ABC19"
+    },
+    {
+      "index": 10,
+      "name": "Trăng máu",
+      "file": "stage-10.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 3,
+      "sceneryLayers": 4,
+      "sha256": "9CCA23A3AF24BF2973F75D9E768418C97CE8D58D9B80021848843F8D5B553CC8"
+    },
+    {
+      "index": 11,
+      "name": "Lối mòn băng",
+      "file": "stage-11.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 4,
+      "sceneryLayers": 4,
+      "sha256": "6BD5FB88B2330C5008D551F3BFC69EDC3A34AFE5FF03F4A608A9D05FE2C00796"
+    },
+    {
+      "index": 12,
+      "name": "Khu mỏ sâu",
+      "file": "stage-12.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 4,
+      "sceneryLayers": 4,
+      "sha256": "231CCE178F1AA8B73E16A6EF51B8AD5DA94141656E85678ED985B4068EB6B627"
+    },
+    {
+      "index": 13,
+      "name": "Rừng cổ thụ",
+      "file": "stage-13.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 4,
+      "sceneryLayers": 4,
+      "sha256": "039A327DF474F603F87EEF14345B1528BF71AC1B33905E48E73110071745B3BB"
+    },
+    {
+      "index": 14,
+      "name": "Bãi săn đêm",
+      "file": "stage-14.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 5,
+      "sceneryLayers": 4,
+      "sha256": "C226A2922CD1CDA4142E62946881C2C2349C4BB5A46EA93C3D17AC065653639A"
+    },
+    {
+      "index": 15,
+      "name": "Tiếng gầm thứ ba",
+      "file": "stage-15.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 5,
+      "sceneryLayers": 4,
+      "sha256": "A0FECA40C2539F8DA30ABCE94A48E415A6745E8A4B325F1DA0BC8AB9F3028DFB"
+    },
+    {
+      "index": 16,
+      "name": "Thành đá",
+      "file": "stage-16.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 5,
+      "sceneryLayers": 4,
+      "sha256": "36482C310685E55FD5AF67D2CC432D182B11473F38AF64F9D86CAC398FFBE99E"
+    },
+    {
+      "index": 17,
+      "name": "Đèo sấm",
+      "file": "stage-17.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 5,
+      "sceneryLayers": 4,
+      "sha256": "FB0C4CD1226DF80E60749A4B2B9A8DF4ACDF0039C116FC2F3C15B97F856E96CC"
+    },
+    {
+      "index": 18,
+      "name": "Pháo tuyến cuối",
+      "file": "stage-18.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 6,
+      "sceneryLayers": 4,
+      "sha256": "91832BCF593D489A582D53764C833E4FAF5AD57E190123E958758D75114E962D"
+    },
+    {
+      "index": 19,
+      "name": "Thung lũng quên",
+      "file": "stage-19.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 6,
+      "sceneryLayers": 4,
+      "sha256": "8660EF0BF5300532D2F7D230ED1DB9B86939C3C2B85416EF7D95B2A61C01C11A"
+    },
+    {
+      "index": 20,
+      "name": "Vua Hắc Nguyệt",
+      "file": "stage-20.png",
+      "width": 1600,
+      "height": 900,
+      "battleTime": 8.00005,
+      "enemies": 6,
+      "sceneryLayers": 4,
+      "sha256": "8239305FE010524B5368452124250A3A1077A127382CBD6B3E7814E95A1CD5D2"
+    }
+  ]
+}
