@@ -8,7 +8,7 @@ namespace CatTanks
     {
         const float SceneryScale = 1600f / 1920f;
         static readonly string[] LayerNames = {"Sky", "Distant Landscape", "Midground", "Road"};
-        static readonly float[] LayerMotion = {.008f, .025f, .05f, 0f};
+        static readonly float[] LayerMotion = {.003f, .010f, .022f, 0f};
         static SceneryCatalog sceneryCatalog;
 
         [Serializable]

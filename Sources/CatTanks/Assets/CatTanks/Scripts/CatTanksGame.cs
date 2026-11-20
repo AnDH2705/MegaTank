@@ -15,6 +15,7 @@ namespace CatTanks
         public BattleView view;
         public bool inBattle, paused, muted;
         [SerializeField] bool useNativeWeaponVfx = true;
+        [SerializeField] bool useWebWeaponVfx = true;
         public string page = "march", tab = "cats", modal = "", toast = "";
         public int selectedCat, selectedTurret, selectedPet, bookTab, selectedOpponent;
         float toastUntil, soundAt;
@@ -64,7 +65,7 @@ namespace CatTanks
         {
             modal = ""; paused = false; resolved = false; receipt = null; inBattle = true;
             battle = new Battle(db, profile, arena ? Mathf.Min(20, Mathf.Max(1, profile.highestCleared)) : profile.selected, classic, arena, selectedOpponent); battle.onFire = PlayShot;
-            view.Dispose(); view = new BattleView(Camera.main, classic ? 1 : battle.stage.index, useNativeWeaponVfx);
+            view.Dispose(); view = new BattleView(Camera.main, classic ? 1 : battle.stage.index, useNativeWeaponVfx, useWebWeaponVfx);
             profile.Save(); view.Render(battle);
         }
         void Update()

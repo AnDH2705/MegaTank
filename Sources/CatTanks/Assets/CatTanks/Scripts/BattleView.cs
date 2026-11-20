@@ -32,12 +32,16 @@ namespace CatTanks
         public CombatVfxPlayer combatVfx;
         readonly MonsterAnimationLibrary monsterAnimations;
         readonly VfxKit.NativeWeaponVfx nativeWeaponVfx;
+        readonly VfxKit.WebCombatVfx webVfx;
+        static readonly System.Predicate<BattleEffect> RenderedByWeb = VfxKit.WebCombatVfx.Handles;
         public bool UsesNativeWeaponVfx => nativeWeaponVfx != null;
-        public BattleView(Camera cam, int stageIndex = 0, bool useNativeWeaponVfx = false)
+        public bool UsesWebWeaponVfx => webVfx != null;
+        public BattleView(Camera cam, int stageIndex = 0, bool useNativeWeaponVfx = false, bool useWebWeaponVfx = false)
         {
             camera = cam; root = new GameObject("Battle World");
             combatVfx=new CombatVfxPlayer(root.transform);
-            if (useNativeWeaponVfx)
+            if (useWebWeaponVfx) webVfx = VfxKit.WebCombatVfx.Create(root.transform);
+            if (webVfx == null && useNativeWeaponVfx)
             {
                 nativeWeaponVfx = VfxKit.NativeWeaponVfx.Create(root.transform);
                 nativeWeaponVfx?.Warm();
@@ -248,10 +252,11 @@ namespace CatTanks
         }
         void RenderCore(Battle b)
         {
+            b.useWebEffects = webVfx != null;
             ScrollScenery(b.playerX);
             int floors = b.classic ? 5 : b.profile.FloorCount; if (shownFloors != floors) Fortress(floors);
             tank.localPosition = new Vector3(b.playerX, 175 + Mathf.Sin(b.time * 9) * .8f, 0);
-            shield.gameObject.SetActive(b.Buff("shield") > 0); shield.localPosition = new Vector3(b.playerX, 440, 0);
+            shield.gameObject.SetActive(webVfx == null && b.Buff("shield") > 0); shield.localPosition = new Vector3(b.playerX, 440, 0);
             decoyView.gameObject.SetActive(b.decoy != null);
             if (b.decoy != null) decoyView.localPosition = b.decoy.position;
             var target = b.enemies.Find(e => !e.dead && e.id == b.targetId); targetRing.gameObject.SetActive(target != null);
@@ -277,7 +282,8 @@ namespace CatTanks
                     }
                     else body.localEulerAngles = new Vector3(0, 0, Mathf.Sin(a.age * 6 + a.phase) * (a.def.flying ? 4 : 2));
                     Color c = a.slow > 0 || b.Buff("freeze") > 0 ? Catalog.Color("#8ad7ff") : a.poison > 0 ? Catalog.Color("#bbf78b") : a.burn > 0 ? Catalog.Color("#ffb479") : Color.white;
-                    if (a.weaponHitFlash > 0) c = Color.Lerp(c, WeaponHitTint, a.weaponHitFlash / .08f);
+                    if (webVfx != null && a.flash > 0) c = Color.white;
+                    else if (webVfx == null && a.weaponHitFlash > 0) c = Color.Lerp(c, WeaponHitTint, a.weaponHitFlash / .08f);
                     c.a = a.dead ? Mathf.Clamp01(1 - (a.age - a.deathTime) * 2) : a.burrowed ? .25f : 1; sr.color = c;
                     if (a.dead) {body.localPosition += Vector3.down * (a.age - a.deathTime) * 40; body.localEulerAngles = new Vector3(0, 0, (a.age - a.deathTime) * -50);}
                     var shadow=visual.shadow;shadow.localPosition = new Vector3(0, 175 - a.position.y, 0);
@@ -301,21 +307,41 @@ namespace CatTanks
             alive.Clear();
             spriteFxCursor = 0; lineFxCursor = 0;
             weaponShake = Vector2.zero;
+            webVfx?.Begin(b);
             nativeWeaponVfx?.Begin(b);
-            bool emitRocketSmoke = SampleRocketSmoke(b);
+            bool emitRocketSmoke = webVfx == null && SampleRocketSmoke(b);
             foreach (var p in b.bullets)
             {
+                Sprite webArt = null;
+                if (webVfx != null)
+                {
+                    webVfx.Projectile(p);
+                    webArt = webVfx.ProjectileArt(p.weapon.kind);
+                    if (!webArt) continue;
+                }
                 if (nativeWeaponVfx != null && nativeWeaponVfx.Draw(p)) continue;
                 alive.Add(p.id);
                 if (!projectiles.TryGetValue(p.id, out var t))
                 {
-                    t = CreateProjectileView(p);
+                    if (webArt)
+                    {
+                        float width = VfxKit.WebCombatVfx.ProjectileWidth(p.weapon.kind);
+                        t = ProjectileSprite("Web " + p.weapon.kind, webArt, p.position,
+                            new Vector2(width, width * webArt.rect.height / webArt.rect.width), Color.white, 36);
+                    }
+                    else t = CreateProjectileView(p);
                     projectiles[p.id] = t;
                 }
-                t.localPosition = new Vector3(p.position.x, p.position.y, 0); t.localEulerAngles = new Vector3(0, 0, p.angle * Mathf.Rad2Deg);
-                if (!p.enemy && Battle.HasWeaponEffects(p.weapon.kind)) DrawProjectileTrail(p, emitRocketSmoke);
+                t.localPosition = new Vector3(p.position.x, p.position.y, 0);
+                t.localEulerAngles = new Vector3(0, 0, (p.angle - (webArt ? .48f : 0)) * Mathf.Rad2Deg);
+                if (webVfx == null && !p.enemy && Battle.HasWeaponEffects(p.weapon.kind)) DrawProjectileTrail(p, emitRocketSmoke);
             }
-            DrawRocketSmoke(b.time);
+            if (webVfx == null) DrawRocketSmoke(b.time);
+            else
+            {
+                webVfx.End();
+                weaponShake = webVfx.CameraKick;
+            }
             foreach (var orb in b.orbs)
             {
                 if(orb.collected)continue;
@@ -325,10 +351,10 @@ namespace CatTanks
             }
             retired.Clear();foreach(int id in projectiles.Keys)if(!alive.Contains(id))retired.Add(id);
             foreach(int id in retired){var item=projectiles[id];item.gameObject.SetActive(false);projectilePool.Push(item);projectiles.Remove(id);}
-            combatVfx.Render(b);
+            combatVfx.Render(b, webVfx == null ? null : RenderedByWeb);
             foreach (var e in b.effects)
             {
-                if (e.kind == "text") continue;
+                if (e.kind == "text" || e.kind == "web" || webVfx != null && RenderedByWeb(e)) continue;
                 if (Battle.HasWeaponEffects(e.weaponKind))
                 {
                     if (nativeWeaponVfx == null || !nativeWeaponVfx.Draw(e)) DrawWeaponEffect(e);
@@ -370,6 +396,7 @@ namespace CatTanks
             DisposeScenery();
             DisposeWeaponEffects();
             nativeWeaponVfx?.Dispose();
+            webVfx?.Dispose();
             Object.Destroy(root); foreach (var sprite in sprites.Values) Object.Destroy(sprite);
             Object.Destroy(disk.texture); Object.Destroy(ring.texture); Object.Destroy(disk); Object.Destroy(ring); Object.Destroy(square); Object.Destroy(lineMaterial);
         }

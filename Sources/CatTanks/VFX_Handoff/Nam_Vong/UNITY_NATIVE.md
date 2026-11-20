@@ -4,10 +4,10 @@ CatTanks đang dùng **Built-in Render Pipeline** trên Unity 2022.3.62f2. Mẫu
 
 ## Đường chạy Unity
 
-1. Mở **CatTanks → Combat → Open Native Weapon Preview**, sau đó vào Play Mode. Màn thử dùng đúng phát bắn của `Battle`, cùng Gatling, đại bác và tên lửa trong catalog. Dòng trạng thái phải hiện **Unity Native**.
+1. Mở **CatTanks → Combat → Open Native Weapon Preview**, sau đó vào Play Mode. Màn thử dùng đúng phát bắn của `Battle`, cùng Gatling, đại bác và tên lửa trong catalog. Phím **W** chuyển giữa **Tham chiếu Web** và **Unity Native**.
 2. Phím **1–3** thử từng vũ khí. **4** bắn đồng thời, **P** tạm dừng, **N** bước từng frame, **S** xem 0,25×. Mở Hierarchy để xem nhóm Native weapon VFX pool và các ParticleSystem, SpriteRenderer, LineRenderer đang dùng.
 3. Chạy **CatTanks → Combat → Validate Native Weapon VFX** trong Play Mode. Mã kiểm tra việc tạo trail, phát hạt, giữ trạng thái khi pause, thu hồi và tái sử dụng pool. Log thành công là `CATTANKS_NATIVE_WEAPON_VFX_PASSED`.
-4. **Use Native Weapon Vfx** đã bật mặc định ở component **CatTanks Game** trong `Main.unity`. Mở một trận có Gatling, đại bác hoặc tên lửa để xem. Có thể tắt ô này khi đo trước/sau bằng cùng trận, cấu hình và thiết bị. Các hệ effect nằm ngoài ba vũ khí này tiếp tục qua route hiện tại.
+4. `Main.unity` bật **Use Web Weapon Vfx** mặc định để dùng bộ [Meow Bastion Web](../WEB_REFERENCE.md). Tắt riêng ô đó để thử **Use Native Weapon Vfx**. Mở một trận mới sau mỗi lần đổi và dùng cùng cấu hình khi đo. Các hệ effect riêng của Unity tiếp tục qua route hiện có.
 
 ## Tính năng đang được gọi
 

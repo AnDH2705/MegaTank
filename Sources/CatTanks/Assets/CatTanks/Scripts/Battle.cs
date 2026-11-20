@@ -74,6 +74,7 @@ namespace CatTanks
         public int cages, moonCages, cageUsed, moonUsed;
         public string message;
         public Action<Weapon> onFire;
+        internal bool useWebEffects;
         public Battle(Catalog catalog, Profile save, int stageIndex = 1, bool isClassic = false, bool isArena = false, int opponentIndex = 0)
         {
             db = catalog; profile = save; classic = isClassic; arena = isArena;
@@ -154,7 +155,9 @@ namespace CatTanks
             var d = db.Monster(species); var w = waves[wave];
             float health = d.hp * (classic ? 1 : d.boss ? w.bossHpMult : w.enemyHpMult);
             var e = new Actor {id = nextId++, asset = species, def = d, role = "enemy", position = new Vector2(x < 0 ? 1590 + UnityEngine.Random.value * 100 : x, 175 + d.size * .43f + (d.flying ? 200 : 0)), hp = health, maxHp = health, phase = UnityEngine.Random.value * 6.28f, attack = 1.6f + UnityEngine.Random.value * 2};
-            enemies.Add(e); seen.Add(species); return e;
+            enemies.Add(e); seen.Add(species);
+            if (e.position.x < 1000) WebEffect("spawn", new Vector2(e.position.x, 185));
+            return e;
         }
         void AssignBanks()
         {
@@ -208,7 +211,7 @@ namespace CatTanks
                 var target = Target(u);
                 if (target != null) u.angle = Mathf.Atan2(target.position.y - u.position.y, target.position.x - u.position.x);
                 if (u.timer > 0) continue;
-                if (u.weapon.kind == "heal") {hp = Mathf.Min(maxHp, hp + u.weapon.damage); energy = Mathf.Min(600, energy + 15); u.timer = u.weapon.rate; continue;}
+                if (u.weapon.kind == "heal") {hp = Mathf.Min(maxHp, hp + u.weapon.damage); energy = Mathf.Min(600, energy + 15); WebEffect("repair", new Vector2(playerX, 350)); u.timer = u.weapon.rate; continue;}
                 if (u.weapon.kind == "shield") {buffs["shield"] = Mathf.Max(Buff("shield"), 2); u.timer = u.weapon.rate; continue;}
                 if (target != null) {Fire(u, target); u.timer = u.weapon.rate; u.recoil = u.role == "tower" ? TowerRecoil(u.weapon.kind) : 5;}
             }
@@ -355,13 +358,17 @@ namespace CatTanks
                         MakeBullet(e.position, a, new Weapon {kind = kind, color = d.color, damage = damage, speed = 280, range = 1900}, null, true);
                     }
                 }
-                else EnemyHit(e.position, damage * (e.charging ? 2 : 1) * (d.behavior == "enrage" ? 2 - ratio : 1));
+                else
+                {
+                    EnemyHit(e.position, damage * (e.charging ? 2 : 1) * (d.behavior == "enrage" ? 2 - ratio : 1));
+                    WebEffect("melee", new Vector2(playerX + 100, e.position.y), "#ffd79a");
+                }
                 if (d.behavior == "lava" && e.position.x < playerX + 350) HurtPlayer(120 * (classic ? 1 : waves[wave].enemyAtkMult));
             }
             if (d.behavior == "healer" && e.summon <= 0)
             {
                 foreach (var o in enemies) if (!o.dead && Vector2.Distance(o.position, e.position) < 460) o.hp = Mathf.Min(o.maxHp, o.hp + 180);
-                e.summon = 3; Effect("ring", e.position, e.position, "#99ffc0", 150, .6f);
+                e.summon = 3; Effect("ring", e.position, e.position, "#99ffc0", 150, .6f, visual: useWebEffects ? "web-aura" : null);
             }
             if ((d.behavior == "queen" || d.boss) && e.summon <= 0)
             {
@@ -372,6 +379,13 @@ namespace CatTanks
         public void Fire(Actor u, Actor target)
         {
             var w = u.weapon; onFire?.Invoke(w);
+            if (useWebEffects)
+            {
+                var direction = (target.position - u.position).normalized;
+                bool tower = u.role == "tower";
+                Effect("flash", u.position + direction * (tower ? 76 : 42), u.position, w.color, 24, .12f, weaponKind: w.kind);
+                if (tower) WebEffect("casing", u.position + new Vector2(-20, -5));
+            }
             if (w.kind == "laser" || w.kind == "sniper")
             {
                 Vector2 dir = (target.position - u.position).normalized;
@@ -398,6 +412,7 @@ namespace CatTanks
                 else angle += (UnityEngine.Random.value - .5f) * .035f;
                 MakeBullet(u.position + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * (u.role == "tower" ? 70 : 40), angle, w, target);
             }
+            if (useWebEffects) return;
             bool styled = HasWeaponEffects(w.kind);
             Vector2 aim = styled ? (target.position - u.position).normalized : new Vector2(Mathf.Cos(u.angle), Mathf.Sin(u.angle));
             float muzzleDistance = styled ? (u.role == "tower" ? 70 : 40) : 55;
@@ -448,7 +463,7 @@ namespace CatTanks
             var w = b.weapon;
             bool styled = HasWeaponEffects(w.kind);
             Vector2 contact = b.position;
-            if (styled && e != null && w.kind == "rapid")
+            if (!useWebEffects && styled && e != null && w.kind == "rapid")
             {
                 Vector2 travel = b.position - b.previous;
                 float along = Vector2.Dot(e.position - b.previous, travel) / Mathf.Max(.001f, travel.sqrMagnitude);
@@ -492,10 +507,18 @@ namespace CatTanks
             e.dead = true; e.deathTime = e.age; kills++;
             if (classic) coins += Mathf.RoundToInt(e.maxHp / 15);
             else orbs.Add(new LootOrb {id = nextId++, coins = e.def.boss ? 10 : 1, position = new Vector2(e.position.x, 200)});
-            energy = Mathf.Min(600, energy + (classic ? 6 : 12)); Effect("explosion", e.position, e.position, e.def.color, e.def.size * .35f, .6f);
+            energy = Mathf.Min(600, energy + (classic ? 6 : 12));
+            float radius = e.def.size * (useWebEffects ? e.def.boss ? .9f : .6f : .35f);
+            Effect("explosion", e.position, e.position, e.def.color, radius, .6f, visual: useWebEffects && e.def.boss ? "web-boss" : null);
             if (targetId == e.id) targetId = -1;
         }
-        void HurtPlayer(float amount) {if (state == BattleState.Playing) hp = Mathf.Max(0, hp - amount * (Buff("shield") > 0 ? .06f : 1));}
+        void HurtPlayer(float amount)
+        {
+            if (state != BattleState.Playing) return;
+            bool shielded = Buff("shield") > 0;
+            hp = Mathf.Max(0, hp - amount * (shielded ? .06f : 1));
+            if (amount > 40) WebEffect("shake", Vector2.zero, size: shielded ? 1 : 4);
+        }
         void EnemyHit(Vector2 position, float amount)
         {
             amount *= EnemyBuff("rally") > 0 ? 1.3f : 1;
@@ -520,9 +543,10 @@ namespace CatTanks
             if (energy < s.cost) {message = "Chưa đủ năng lượng"; return false;}
             energy -= s.cost; cooldowns[id] = s.cooldown; if (s.duration > 0) buffs[id] = s.duration;
             if (id == "heal") {hp = Mathf.Min(maxHp, hp + (classic ? 9000 : s.healVehicle)); buffs["poison"] = 0; foreach (var u in units) if (!u.dead) u.hp = Mathf.Min(u.maxHp, u.hp + u.maxHp * .4f);}
-            if (id == "freeze") foreach (var e in enemies.Where(e => !e.dead).ToArray()) {e.slow = 6; Damage(e, classic ? 120 : s.damage, "ice");Effect("impact",e.position,e.position,"#99efff",e.def.size*.4f,.65f,visual:"ice");}
+            if (id == "freeze") foreach (var e in enemies.Where(e => !e.dead).ToArray()) {e.slow = 6; Damage(e, classic ? 120 : s.damage, "ice");Effect("impact",e.position,e.position,"#99efff",e.def.size*.4f,.65f,visual:useWebEffects?"web-freeze":"ice");}
             if (id == "barrage")
             {
+                WebEffect("shake", Vector2.zero, size: 7);
                 var targets = enemies.Where(e => !e.dead).ToArray();
                 for (int i = 0; i < (classic ? 18 : s.rockets) && targets.Length > 0; i++)
                 {
@@ -542,7 +566,7 @@ namespace CatTanks
             }
             if (id == "decoy") decoy = new Actor {position = new Vector2(playerX + 150, 220), hp = 800, maxHp = 800, age = time + s.duration};
             if (id == "magnet") foreach (var orb in orbs) CollectOrb(orb);
-            if(id!="freeze")Effect("ring", new Vector2(playerX, 350), Vector2.zero, id == "heal" ? "#99ffc0" : "#69efff", 240, .7f, visual:id=="heal"?"heal":id=="shield"?"shield":"buff"); message = s.name; return true;
+            if(id!="freeze" && (!useWebEffects || (id != "barrage" && id != "shield" && id != "drone")))Effect("ring", new Vector2(playerX, 350), Vector2.zero, id == "heal" ? "#99ffc0" : "#69efff", 240, .7f, visual:id=="heal"?"heal":id=="shield"?"shield":"buff"); message = s.name; return true;
         }
         public bool Catch(bool moon)
         {
@@ -567,6 +591,10 @@ namespace CatTanks
         {
             if (effects.Count >= 350) effects.RemoveAt(0);
             effects.Add(new BattleEffect {id=nextEffectId++,kind = kind, position = pos, end = end, color = Catalog.Color(color), size = size, life = life, maxLife = life, text = text,visual=visual,weaponKind=weaponKind});
+        }
+        void WebEffect(string visual, Vector2 position, string color = "#ffffff", float size = 0)
+        {
+            if (useWebEffects) Effect("web", position, position, color, size, .12f, visual: visual);
         }
         void CollectOrb(LootOrb orb)
         {
