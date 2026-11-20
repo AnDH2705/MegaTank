@@ -15,7 +15,7 @@ namespace CatTanks.Editor
             foreach(var layout in root.GetComponentsInChildren<StudioButtonLayout>())
             {
                 var rect=(RectTransform)layout.transform;
-                foreach(var graphic in new Graphic[]{layout.label,layout.icon,layout.hotkey,layout.caption,layout.cost}.Where(g=>g&&g.gameObject.activeInHierarchy))
+                foreach(var graphic in new Graphic[]{layout.label,layout.icon,layout.badge,layout.hotkey,layout.caption,layout.cost}.Where(g=>g&&g.isActiveAndEnabled))
                 {
                     if(graphic.transform.parent!=rect)throw new Exception("Button content detached: "+graphic.name);
                     var bounds=RectTransformUtility.CalculateRelativeRectTransformBounds(rect,graphic.rectTransform);

@@ -68,7 +68,25 @@ namespace CatTanks.Editor
                 game.profile.Add("summonScroll",20);game.profile.Add("gem",10000);game.profile.Add("skillCore",50);
                 await Page(game,"march");
                 Check(Texts(game).Any(t=>t.text==game.profile.Get("coins").ToString("N0")),"Currency displays live profile values");
+                var stageCards = game.CanvasRoot.GetComponentsInChildren<StudioButtonLayout>()
+                    .Where(l => l.content == StudioButtonLayout.Content.Stage).ToArray();
+                Check(stageCards.Length == 20 && stageCards.All(l => l.icon.sprite && !l.icon.raycastTarget),
+                    "All stage buttons have interactive artwork");
+                game.profile.highestCleared = 0;
+                await Show(game);
+                var stageTwo = stageCards.Single(l => l.icon.sprite.name == "stage-02");
+                Check(stageTwo.badge.sprite == game.CanvasRoot.theme.Get("Lock"), "Locked stage shows a lock badge");
+                ClickBinding(game, "button::461:330", false);
+                Check(game.profile.selected == 1, "Locked stage card cannot change the selection");
+                game.profile.highestCleared = 20;
+                await Show(game);
+                ClickBinding(game, "button::461:330");
+                Check(game.profile.selected == 2, "Illustrated stage card selects its stage");
+                ClickBinding(game, "button::310:330");
                 await Page(game,"barracks","cats");int level=game.profile.cats[0].level,gold=game.profile.Get("coins");
+                ClickBinding(game, "button::435:340");
+                Check(game.selectedCat == 1, "The entire cat portrait card selects the cat");
+                ClickBinding(game, "button::290:340");
                 Click(game,"Nâng cấp ·");await Show(game);
                 Check(game.profile.cats[0].level==level+1&&game.profile.Get("coins")<gold,"Cat upgrade button changes level and charges actual cost");
                 await Page(game,"barracks","squad");Click(game,"Bộ binh 1:");await Show(game);
@@ -94,10 +112,17 @@ namespace CatTanks.Editor
                 game.modal="settings";await Show(game);var input=game.CanvasRoot.GetComponentsInChildren<InputField>().First();
                 input.SetTextWithoutNotify("Mockup UI test");input.onEndEdit.Invoke("Mockup UI test");
                 Check(game.profile.name=="Mockup UI test"&&Profile.Load(game.db).name=="Mockup UI test","Name input persists to the isolated test profile");
-                await Page(game,"march");Click(game,"CHUẨN BỊ XUẤT KÍCH");await Show(game);
-                Check(game.modal=="prebattle","Deploy action opens the prebattle prefab");Click(game,"XUẤT KÍCH");await Show(game);
+                await Page(game,"march");
+                string stageArt=$"stage-{game.profile.selected:00}";
+                Check(game.CanvasRoot.GetComponentsInChildren<Image>().Any(i=>i.sprite&&i.sprite.name==stageArt),"March shows the selected stage artwork");
+                Click(game,"CHUẨN BỊ XUẤT KÍCH");await Show(game);
+                Check(game.modal=="prebattle","Deploy action opens the prebattle prefab");
+                Check(game.CanvasRoot.GetComponentsInChildren<StudioWidgetBinding>().Any(b=>b.id=="image::1034:175"&&b.GetComponent<Image>().sprite?.name==stageArt),"Prebattle uses the same stage artwork");
+                Click(game,"XUẤT KÍCH");await Show(game);
                 Check(game.inBattle&&game.battle.state==BattleState.Playing,"Deploy button starts actual combat");
-                Check(GameObject.Find("Mockup Kit Battle Background"),"Combat uses the Mockup Kit world background");
+                var scenery=game.view.root.transform.Find("Mockup Kit Battle Background");
+                var planes=scenery?scenery.GetComponentsInChildren<SpriteRenderer>():Array.Empty<SpriteRenderer>();
+                Check(planes.Length==4&&planes.All(p=>p.sprite&&p.sprite.texture.name==stageArt),"Combat uses all four scenery layers from the selected stage");
                 game.battle.energy=600;ClickBinding(game,"button::330:742");await Show(game);
                 Check(game.battle.Cooldown(game.battle.skills[0].id)>0&&game.battle.energy<600,"HUD skill button consumes energy and starts cooldown");
                 game.paused=true;await Show(game);float clock=game.battle.time;await Task.Delay(120);

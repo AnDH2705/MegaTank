@@ -8,14 +8,13 @@ namespace CatTanks
         void BattleHUD()
         {
             Panel(24,20,440,84,.97f);
-            if(Button(36,34,62,54,"II"))paused=!paused;
-            Icon(112,36,44,"Money_Coin");Text(172,36,270,N(battle.coins)+" xu",subtitle);Text(172,70,270,battle.kills+" mục tiêu bị hạ",small);
+            if(IllustratedButton(36,34,62,54,"II","Pause",content:StudioButtonLayout.Content.Symbol))paused=!paused;
+            Art(112,36,44,44,"item-coins");Text(172,36,270,N(battle.coins)+" xu",subtitle);Text(172,70,270,battle.kills+" mục tiêu bị hạ",small);
             Panel(550,20,500,84,.97f);
             Text(572,30,455,battle.classic?$"THỬ THÁCH • ĐỢT {battle.wave+1}/6":battle.arena?"ĐẤU TRƯỜNG • MÔ PHỎNG":$"ẢI {battle.stage.index} • {battle.stage.name}",subtitle);
             Text(572,69,455,$"{Mathf.FloorToInt(battle.time/60):00}:{Mathf.FloorToInt(battle.time%60):00}   •   {battle.spawned}/{battle.waves[battle.wave].count} đã xuất hiện",small);
-            if(Button(1160,34,190,54,"BÁCH KHOA"))modal="book";
-            if(Button(1363,34,103,54,muted?"Âm: Tắt":"Âm: Bật"))ToggleSound();
-            if(Button(1478,34,96,54,"Thoát"))paused=true;
+            if(IllustratedButton(1220,34,180,54,"BÁCH KHOA","Book_1_Purple"))modal="book";
+            if(IllustratedButton(1418,34,156,54,muted?"Âm: Tắt":"Âm: Bật","UI/music"))ToggleSound();
             Panel(30,116,510,78,.96f);Text(48,126,470,$"PHÁO ĐÀI   {N(battle.hp)} / {N(battle.maxHp)} HP",small);
             Bar(48,162,474,16,battle.hp/battle.maxHp,C("#81e65a"));
             float hp=battle.enemies.Where(e=>!e.dead).Sum(e=>e.hp),max=battle.enemies.Where(e=>!e.dead).Sum(e=>e.maxHp);
@@ -30,14 +29,16 @@ namespace CatTanks
                 bool available=cd<=0&&battle.energy>=skill.cost&&!paused&&modal=="";
                 if(Button(x,742,135,112,"",available))battle.UseSkill(skill.id);
                 if(!dispatchOnly&&available)SetButtonSprite(lastButton,"selected");
-                Icon(x+48,750,34,i%2==0?"Gear":"Damage");Text(x+10,750,30,(i+1).ToString(),hudMeta);
+                Art(x+48,750,34,34,"skill-"+skill.id);Text(x+10,750,30,(i+1).ToString(),hudMeta);
                 Text(x+10,789,117,skill.name,hudText,38);
                 Text(x+10,828,117,cd>0?Mathf.CeilToInt(cd)+"s hồi":skill.cost+" NL",hudMeta,26);
             }
             if(!battle.classic&&!battle.arena)
             {
-                if(Button(1250,744,145,108,$"[C] BẮT QUÁI\n{battle.cages} lồng thú",!paused&&battle.cages>0))battle.Catch(false);
-                if(Button(1410,744,150,108,$"[Shift+C]\n{battle.moonCages} lồng trăng",!paused&&battle.moonCages>0))battle.Catch(true);
+                if(IllustratedButton(1250,744,145,108,$"Lồng thú ×{battle.cages}\n[C]","item-beastCage",
+                    !paused&&battle.cages>0,content:StudioButtonLayout.Content.Tile))battle.Catch(false);
+                if(IllustratedButton(1410,744,150,108,$"Lồng trăng ×{battle.moonCages}\n[Shift+C]","item-moonCage",
+                    !paused&&battle.moonCages>0,content:StudioButtonLayout.Content.Tile))battle.Catch(true);
             }
             var target=battle.enemies.Find(e=>e.id==battle.targetId&&!e.dead);
             if(target!=null)
@@ -57,7 +58,7 @@ namespace CatTanks
         void PausePopup()
         {
             Panel(490,270,620,330);Text(555,310,490,"NGHỈ MỘT CHÚT NHÉ!",title);
-            if(Button(550,401,500,60,"Tiếp tục",true,true))paused=false;
+            if(IllustratedButton(550,401,500,60,"Tiếp tục","Play",primary:true))paused=false;
             if(Button(550,486,500,60,"Rút lui về doanh trại")){Hub();page="barracks";tab="cats";}
         }
     }

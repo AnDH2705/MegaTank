@@ -1,0 +1,22 @@
+{"stages": [
+  {"index":1,"layers":[{"sceneTop":-16,"atlasY":946,"height":661},{"sceneTop":426,"atlasY":638,"height":304},{"sceneTop":535,"atlasY":249,"height":385},{"sceneTop":854,"atlasY":3,"height":242}]},
+  {"index":2,"layers":[{"sceneTop":-16,"atlasY":931,"height":620},{"sceneTop":449,"atlasY":644,"height":283},{"sceneTop":540,"atlasY":252,"height":388},{"sceneTop":851,"atlasY":3,"height":245}]},
+  {"index":3,"layers":[{"sceneTop":-16,"atlasY":1166,"height":597},{"sceneTop":240,"atlasY":700,"height":462},{"sceneTop":477,"atlasY":253,"height":443},{"sceneTop":852,"atlasY":5,"height":244}]},
+  {"index":4,"layers":[{"sceneTop":-16,"atlasY":1221,"height":622},{"sceneTop":312,"atlasY":776,"height":441},{"sceneTop":405,"atlasY":253,"height":519},{"sceneTop":851,"atlasY":4,"height":245}]},
+  {"index":5,"layers":[{"sceneTop":-16,"atlasY":1145,"height":626},{"sceneTop":280,"atlasY":688,"height":453},{"sceneTop":496,"atlasY":269,"height":415},{"sceneTop":835,"atlasY":4,"height":261}]},
+  {"index":6,"layers":[{"sceneTop":-16,"atlasY":1057,"height":670},{"sceneTop":370,"atlasY":643,"height":410},{"sceneTop":535,"atlasY":252,"height":387},{"sceneTop":853,"atlasY":5,"height":243}]},
+  {"index":7,"layers":[{"sceneTop":-16,"atlasY":1156,"height":607},{"sceneTop":249,"atlasY":765,"height":387},{"sceneTop":412,"atlasY":253,"height":508},{"sceneTop":852,"atlasY":5,"height":244}]},
+  {"index":8,"layers":[{"sceneTop":-16,"atlasY":1083,"height":652},{"sceneTop":279,"atlasY":671,"height":408},{"sceneTop":517,"atlasY":253,"height":414},{"sceneTop":851,"atlasY":4,"height":245}]},
+  {"index":9,"layers":[{"sceneTop":-16,"atlasY":1002,"height":669},{"sceneTop":455,"atlasY":684,"height":314},{"sceneTop":516,"atlasY":272,"height":408},{"sceneTop":834,"atlasY":6,"height":262}]},
+  {"index":10,"layers":[{"sceneTop":-16,"atlasY":998,"height":673},{"sceneTop":439,"atlasY":625,"height":369},{"sceneTop":564,"atlasY":251,"height":370},{"sceneTop":852,"atlasY":3,"height":244}]},
+  {"index":11,"layers":[{"sceneTop":-16,"atlasY":1034,"height":621},{"sceneTop":405,"atlasY":681,"height":349},{"sceneTop":498,"atlasY":253,"height":424},{"sceneTop":850,"atlasY":3,"height":246}]},
+  {"index":12,"layers":[{"sceneTop":-16,"atlasY":1030,"height":605},{"sceneTop":402,"atlasY":717,"height":309},{"sceneTop":477,"atlasY":260,"height":453},{"sceneTop":846,"atlasY":6,"height":250}]},
+  {"index":13,"layers":[{"sceneTop":-16,"atlasY":1071,"height":624},{"sceneTop":290,"atlasY":663,"height":404},{"sceneTop":529,"atlasY":262,"height":397},{"sceneTop":841,"atlasY":3,"height":255}]},
+  {"index":14,"layers":[{"sceneTop":-16,"atlasY":875,"height":644},{"sceneTop":491,"atlasY":605,"height":266},{"sceneTop":594,"atlasY":263,"height":338},{"sceneTop":841,"atlasY":4,"height":255}]},
+  {"index":15,"layers":[{"sceneTop":-16,"atlasY":1001,"height":610},{"sceneTop":361,"atlasY":667,"height":330},{"sceneTop":521,"atlasY":259,"height":404},{"sceneTop":844,"atlasY":3,"height":252}]},
+  {"index":16,"layers":[{"sceneTop":-16,"atlasY":1138,"height":605},{"sceneTop":286,"atlasY":759,"height":375},{"sceneTop":416,"atlasY":252,"height":503},{"sceneTop":852,"atlasY":4,"height":244}]},
+  {"index":17,"layers":[{"sceneTop":-16,"atlasY":1208,"height":675},{"sceneTop":281,"atlasY":663,"height":541},{"sceneTop":524,"atlasY":259,"height":400},{"sceneTop":846,"atlasY":5,"height":250}]},
+  {"index":18,"layers":[{"sceneTop":-16,"atlasY":861,"height":650},{"sceneTop":491,"atlasY":618,"height":239},{"sceneTop":560,"atlasY":248,"height":366},{"sceneTop":857,"atlasY":5,"height":239}]},
+  {"index":19,"layers":[{"sceneTop":-16,"atlasY":1171,"height":636},{"sceneTop":364,"atlasY":769,"height":398},{"sceneTop":436,"atlasY":271,"height":494},{"sceneTop":834,"atlasY":5,"height":262}]},
+  {"index":20,"layers":[{"sceneTop":-16,"atlasY":1085,"height":734},{"sceneTop":372,"atlasY":644,"height":437},{"sceneTop":532,"atlasY":253,"height":387},{"sceneTop":853,"atlasY":6,"height":243}]}
+]}

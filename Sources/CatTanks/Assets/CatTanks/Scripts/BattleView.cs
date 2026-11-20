@@ -33,7 +33,7 @@ namespace CatTanks
         readonly MonsterAnimationLibrary monsterAnimations;
         readonly VfxKit.NativeWeaponVfx nativeWeaponVfx;
         public bool UsesNativeWeaponVfx => nativeWeaponVfx != null;
-        public BattleView(Camera cam, bool useNativeWeaponVfx = false)
+        public BattleView(Camera cam, int stageIndex = 0, bool useNativeWeaponVfx = false)
         {
             camera = cam; root = new GameObject("Battle World");
             combatVfx=new CombatVfxPlayer(root.transform);
@@ -45,7 +45,8 @@ namespace CatTanks
             monsterAnimations=Resources.Load<MonsterAnimationLibrary>("MonsterAnimations");
             square = UnityEngine.Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 1, 1), Vector2.one * .5f, 1);
             disk = Shape(false); ring = Shape(true); lineMaterial = new Material(Shader.Find("Sprites/Default"));
-            Landscape();CreateWorldActors();
+            if (!LoadScenery(stageIndex)) Landscape();
+            CreateWorldActors();
         }
         Sprite Shape(bool hollow)
         {
@@ -197,30 +198,11 @@ namespace CatTanks
         void Fortress(int floors)
         {
             foreach (Transform child in tank) Object.Destroy(child.gameObject);
-            int height = floors * 80;
-            Rect("Chassis Outline", new Vector2(0, 31), new Vector2(310, 65), "#102536", 10, tank);
-            Rect("Armored Chassis", new Vector2(0, 45), new Vector2(294, 51), "#ffbd3a", 11, tank);
-            Rect("Chassis Highlight", new Vector2(0, 63), new Vector2(270, 8), "#ffe795", 12, tank);
-            for (int i = 0; i < 4; i++)
-            {
-                Sprite("Wheel", disk, new Vector2(-112 + i * 73, 24), Vector2.one * 50, Catalog.Color("#152e3c"), 13, tank);
-                Sprite("Hub", disk, new Vector2(-112 + i * 73, 24), Vector2.one * 29, Catalog.Color("#7e9297"), 14, tank);
-                Sprite("Axle", disk, new Vector2(-112 + i * 73, 24), Vector2.one * 11, Catalog.Color("#344a54"), 15, tank);
-            }
+            Sprite("Chassis", Art("fortress-chassis"), new Vector2(0, 35), new Vector2(320, 73), Color.white, 13, tank);
+            var deck = Art("fortress-floor");
             for (int i = 0; i < floors; i++)
-            {
-                float y = 94 + i * 80;
-                Rect("Floor " + i, new Vector2(0, y), new Vector2(248, 78), "#122c3c", 11, tank);
-                Rect("Rear Armor", new Vector2(-107, y + 3), new Vector2(56, 75), "#ffbe39", 12, tank);
-                Rect("Panel", new Vector2(-107, y + 9), new Vector2(35, 31), new[] {"#f19035", "#5cc571", "#f18c32", "#5eb7e7", "#ff9344"}[i], 13, tank);
-                Rect("Deck", new Vector2(6, y - 35), new Vector2(260, 12), "#ffbf37", 13, tank);
-                Rect("Deck Highlight", new Vector2(6, y - 31), new Vector2(250, 4), "#ffe59c", 14, tank);
-                Rect("Seat", new Vector2(-28, y - 10), new Vector2(44, 22), "#465e6a", 12, tank);
-                Rect("Front Strut", new Vector2(121, y - 2), new Vector2(12, 39), "#a9b9bf", 12, tank);
-            }
-            Rect("Command Roof", new Vector2(0, height + 57), new Vector2(270, 17), "#ffbd3a", 13, tank);
-            Rect("Antenna", new Vector2(-100, height + 85), new Vector2(5, 42), "#a9b9bf", 13, tank);
-            Sprite("Signal Light", disk, new Vector2(-100, height + 109), Vector2.one * 13, Catalog.Color("#79efff"), 14, tank);
+                Sprite("Floor " + (i + 1), deck, new Vector2(0, 94 + i * 80), new Vector2(272, 101), Color.white, 11, tank);
+            Sprite("Command Roof", Art("fortress-roof"), new Vector2(0, floors * 80 + 88), new Vector2(274, 82), Color.white, 13, tank);
             shownFloors = floors;
         }
         Transform ActorView(Actor a)
@@ -238,12 +220,14 @@ namespace CatTanks
             {
                 if (!string.IsNullOrEmpty(a.cat))
                 {
-                    float width = a.role == "companion" ? 110 : a.role == "tower" ? 64 : 52;
-                    Image(a.cat, new Vector2(a.role == "tower" ? -43 : -5, a.role == "tower" ? 10 : 17), width, 20, group).name = "Body";
+                    bool tower = a.role == "tower";
+                    float catX = tower ? -63 : -5;
+                    float width = a.role == "companion" ? 110 : tower ? 64 : 52;
+                    Image(a.cat, new Vector2(catX, tower ? 10 : 17), width, 20, group).name = "Body";
                     if (a.role != "companion")
                     {
-                        Image("uniform-" + a.index % 10, new Vector2(a.role == "tower" ? -43 : -4, 0), a.role == "tower" ? 43 : 39, 21, group);
-                        Image("hat-" + a.index % 10, new Vector2(a.role == "tower" ? -43 : -4, 39), a.role == "tower" ? 48 : 43, 22, group);
+                        Image("uniform-" + a.index % 10, new Vector2(catX, tower ? -6 : 0), tower ? 43 : 39, 21, group);
+                        Image("hat-" + a.index % 10, new Vector2(catX, 39), tower ? 48 : 43, 22, group);
                     }
                 }
                 if (a.role != "companion")
@@ -264,6 +248,7 @@ namespace CatTanks
         }
         void RenderCore(Battle b)
         {
+            ScrollScenery(b.playerX);
             int floors = b.classic ? 5 : b.profile.FloorCount; if (shownFloors != floors) Fortress(floors);
             tank.localPosition = new Vector3(b.playerX, 175 + Mathf.Sin(b.time * 9) * .8f, 0);
             shield.gameObject.SetActive(b.Buff("shield") > 0); shield.localPosition = new Vector3(b.playerX, 440, 0);
@@ -382,6 +367,7 @@ namespace CatTanks
         public void Dispose()
         {
             Object.Destroy(skyMesh); Object.Destroy(skyMaterial);
+            DisposeScenery();
             DisposeWeaponEffects();
             nativeWeaponVfx?.Dispose();
             Object.Destroy(root); foreach (var sprite in sprites.Values) Object.Destroy(sprite);

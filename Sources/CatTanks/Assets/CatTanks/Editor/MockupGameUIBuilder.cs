@@ -181,13 +181,6 @@ namespace CatTanks.Editor
                 var workshop=new GameObject("Mockup Workshop",typeof(RectTransform),typeof(Image));workshop.transform.SetParent(go.transform,false);
                 Place((RectTransform)workshop.transform,300,650,720,130);var image=workshop.GetComponent<Image>();image.sprite=theme.Get("bg_workshop");image.raycastTarget=false;
             }
-            if(view.key=="march")
-            {
-                var vignette=new GameObject("Selected Stage Vignette",typeof(RectTransform),typeof(Image),typeof(StudioWidgetBinding));vignette.transform.SetParent(go.transform,false);
-                Place((RectTransform)vignette.transform,1131,332,370,180);var image=vignette.GetComponent<Image>();image.sprite=theme.Get("stage_forest");image.raycastTarget=false;
-                var binding=vignette.GetComponent<StudioWidgetBinding>();binding.id="image::1131:332";binding.kind="image";binding.authored=true;
-                var emblem=go.GetComponentsInChildren<StudioWidgetBinding>(true).FirstOrDefault(b=>b.id=="image::1207:332");if(emblem)Place((RectTransform)emblem.transform,1250,368,100,100);
-            }
         }
         static void Place(RectTransform rect,float x,float y,float w,float h)
         {

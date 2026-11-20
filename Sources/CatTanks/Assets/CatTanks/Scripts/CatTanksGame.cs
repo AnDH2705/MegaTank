@@ -63,8 +63,8 @@ namespace CatTanks
         public void StartBattle(bool classic = false, bool arena = false)
         {
             modal = ""; paused = false; resolved = false; receipt = null; inBattle = true;
-            view.Dispose(); view = new BattleView(Camera.main, useNativeWeaponVfx);
             battle = new Battle(db, profile, arena ? Mathf.Min(20, Mathf.Max(1, profile.highestCleared)) : profile.selected, classic, arena, selectedOpponent); battle.onFire = PlayShot;
+            view.Dispose(); view = new BattleView(Camera.main, classic ? 1 : battle.stage.index, useNativeWeaponVfx);
             profile.Save(); view.Render(battle);
         }
         void Update()
@@ -132,20 +132,24 @@ namespace CatTanks
             Text(260, 240, 1000, $"Đề nghị {N(s.recommendedPower)} lực chiến  ·  Pháo đài {N(profile.MaxHp)} HP  ·  {profile.FloorCount} tầng", subtitle);
             Text(260, 300, 1000, "Đội hình dùng trang bị hiện tại trong Doanh trại. Pháo và bộ binh tự động tấn công.", label);
             Text(260, 355, 1000, "3 đợt tiếp viện xuất hiện tại giây 0 / 25 / 55. Chọn mục tiêu bằng chuột để tập trung hỏa lực.", label, 65);
+            Art(1034, 175, 300, 150, StagePreview(s));
             for (int i = 0; i < profile.FloorCount; i++) {Art(275 + i * 180, 440, 130, 80, profile.floors[i].turret); Text(270 + i * 180, 530, 160, "Tầng " + (i + 1), small);}
             int moonCages = Mathf.Min(5, profile.Get("moonCage")), beastCages = Mathf.Min(5 - moonCages, profile.Get("beastCage"));
             Text(260, 584, 1000, $"Mang {beastCages} lồng thú · {moonCages} lồng trăng (tối đa 5). Quái dưới 25% HP mới bắt được.", small, 50);
             if (Button(260, 670, 230, 54, "Trở về")) modal = "";
             if (Button(520, 670, 480, 54, "Chỉnh đội hình")) {modal = ""; page = "barracks"; tab = "squad";}
-            if (Button(1050, 670, 280, 54, "XUẤT KÍCH", true, true)) StartBattle();
+            if (IllustratedButton(1050, 670, 280, 54, "XUẤT KÍCH", "Battle", primary: true)) StartBattle();
         }
         void Result()
         {
-            Panel(310, 235, 980, 445); Text(360, 275, 880, battle.state == BattleState.Won ? "CHIẾN THẮNG DƯỚI TRĂNG!" : "PHÁO ĐÀI CẦN TIẾP VIỆN", title);
-            Text(360, 350, 880, $"{battle.kills} quái bị hạ  ·  {N(battle.time)} giây  ·  {battle.caught.Count} quái bắt được", subtitle);
-            Text(360, 410, 880, Rewards(receipt ?? new Dictionary<string, int>()), label, 90);
+            bool won = battle.state == BattleState.Won;
+            Panel(310, 235, 980, 445);
+            Text(360, 275, 630, won ? "CHIẾN THẮNG DƯỚI TRĂNG!" : "PHÁO ĐÀI CẦN TIẾP VIỆN", title, dynamicLayout: true);
+            Text(360, 350, 630, $"{battle.kills} quái bị hạ  ·  {N(battle.time)} giây  ·  {battle.caught.Count} quái bắt được", subtitle, 60, dynamicLayout: true);
+            Text(360, 410, 630, Rewards(receipt ?? new Dictionary<string, int>()), label, 115, dynamicLayout: true);
+            Art(998, 270, 237, 252, won ? "Screens/victory" : "Screens/defeat");
             if (Button(360, 555, 380, 70, "VỀ DOANH TRẠI")) {Hub(); page = "barracks"; tab = "cats";}
-            if (Button(800, 555, 430, 70, battle.state == BattleState.Won && !battle.classic && !battle.arena && profile.selected < 20 ? "ẢI TIẾP THEO" : "THỬ LẠI", true, true))
+            if (Button(800, 555, 430, 70, won && !battle.classic && !battle.arena && profile.selected < 20 ? "ẢI TIẾP THEO" : "THỬ LẠI", true, true))
             {
                 bool classic = battle.classic, arena = battle.arena;
                 if (battle.state == BattleState.Won && !classic && !arena && profile.selected < 20) profile.selected++;
@@ -170,7 +174,8 @@ namespace CatTanks
             Panel(110, 75, 1380, 760); Text(150, 105, 900, "Bách khoa trăng xanh", title);
             if (Button(1310, 103, 135, 50, "Đóng [B]")) modal = "";
             string[] names = {"THÁP PHÁO", "VŨ KHÍ MÈO", "MODULE", "QUÁI VẬT", "MÈO"};
-            for (int i = 0; i < 5; i++) if (TabButton(150 + i * 245, 175, 230, 48, names[i], bookTab == i)) {bookTab = i; scroll = Vector2.zero;}
+            string[] icons = {"turret-0", "gun-0", "pack-0", "bug-0", "cat-0"};
+            for (int i = 0; i < 5; i++) if (TabButton(150 + i * 245, 175, 230, 48, names[i], bookTab == i, icons[i])) {bookTab = i; scroll = Vector2.zero;}
             int count = bookTab == 3 ? db.monsters.Count : bookTab == 4 ? db.cats.Count : db.weapons.Count(w => bookTab == 0 ? w.id.StartsWith("turret") : bookTab == 1 ? w.id.StartsWith("gun") : w.id.StartsWith("pack"));
             scroll = BeginScroll(new Rect(145, 250, 1310, 550), scroll, new Rect(0, 0, 1275, Mathf.Ceil(count / 4f) * 250));
             for (int i = 0; i < count; i++)

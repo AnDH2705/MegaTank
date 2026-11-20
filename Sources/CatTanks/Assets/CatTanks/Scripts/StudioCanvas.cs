@@ -22,6 +22,7 @@ namespace CatTanks
             public StudioButtonLayout layout;public bool clickBound;public string context;
         }
         readonly Dictionary<string,Widget> uiWidgets=new Dictionary<string,Widget>();
+        readonly Dictionary<string,Sprite> uiArtSprites=new Dictionary<string,Sprite>();
         struct WidgetAddress:IEquatable<WidgetAddress>
         {
             public string view,kind,container;public float x,y;
@@ -316,9 +317,9 @@ namespace CatTanks
         }
         void Surface(float x,float y,float w,float h,Color color)=>SpriteBox(x,y,w,h,"panel",color);
         void Icon(float x,float y,float size,string key)=>SpriteBox(x,y,size,size,key,Color.white,true);
-        void Text(float x,float y,float w,string value,StudioTextStyle style=null,float h=35)
+        void Text(float x,float y,float w,string value,StudioTextStyle style=null,float h=35,bool dynamicLayout=false)
         {
-            if(dispatchOnly)return;var s=style??label;var item=GetWidget("text",x,y,w,Mathf.Max(h,s.fontSize*1.45f));item.text.text=value;
+            if(dispatchOnly)return;var s=style??label;var item=GetWidget("text",x,y,w,Mathf.Max(h,s.fontSize*1.45f),dynamicLayout);item.text.text=value;
             if(Configure(item)){item.rect.name="Text • "+value.Replace('\n',' ');item.text.fontSize=s.fontSize;item.text.fontStyle=s.fontStyle;item.text.color=s.color*textTint;item.text.alignment=TextAnchor.UpperLeft;item.text.resizeTextForBestFit=false;}
         }
         bool Button(float x,float y,float w,float h,string value,bool enabled=true,bool primary=false)
@@ -343,10 +344,73 @@ namespace CatTanks
             focusable.Add(item.button);return false;
         }
         void SetButtonSprite(Widget item,string key){if(item!=null)StudioNineSlice.Apply(item.image,theme?theme.Get(key):null,14);}
+        bool IllustratedButton(float x, float y, float w, float h, string value, string artKey, bool enabled = true,
+            bool primary = false, StudioButtonLayout.Content content = StudioButtonLayout.Content.Illustrated, string badgeKey = null, bool selected = false)
+        {
+            bool clicked = Button(x, y, w, h, value, enabled, primary);
+            if (dispatchOnly) return clicked;
+
+            var item = lastButton;
+            if (selected) SetButtonSprite(item, "selected");
+            var layout = item.layout;
+            if (!layout)
+            {
+                layout = item.rect.gameObject.AddComponent<StudioButtonLayout>();
+                item.layout = layout;
+                layout.label = item.text;
+            }
+            layout.content = content;
+            if (!layout.icon)
+                layout.icon = ButtonImage("Artwork", item.rect);
+            layout.icon.sprite = UiArt(artKey);
+            layout.icon.preserveAspect = true;
+            layout.icon.color = enabled ? Color.white : new Color(.76f, .82f, .92f, .58f);
+            if (content == StudioButtonLayout.Content.Stage)
+            {
+                if (!layout.badge)
+                {
+                    layout.badge = ButtonImage("Stage status", item.rect);
+                    layout.badge.transform.SetAsLastSibling();
+                }
+                layout.badge.sprite = string.IsNullOrEmpty(badgeKey) ? null : UiArt(badgeKey);
+                layout.badge.enabled = layout.badge.sprite;
+                item.text.color = Color.white;
+                if (!item.text.TryGetComponent<Outline>(out var outline))
+                {
+                    outline = item.text.gameObject.AddComponent<Outline>();
+                    outline.effectColor = new Color(.02f, .05f, .12f, 1);
+                    outline.effectDistance = new Vector2(2, -2);
+                }
+                if (!enabled) layout.icon.color = new Color(.64f, .71f, .83f, .38f);
+            }
+            if (content == StudioButtonLayout.Content.Symbol) item.text.color = Color.clear;
+            if (!studioRoot.mockupKit) layout.Apply();
+            return clicked;
+        }
+        static Image ButtonImage(string name, RectTransform parent)
+        {
+            var child = new GameObject(name, typeof(RectTransform), typeof(Image));
+            child.transform.SetParent(parent, false);
+            child.transform.SetAsFirstSibling();
+            var image = child.GetComponent<Image>();
+            image.raycastTarget = false;
+            image.preserveAspect = true;
+            return image;
+        }
+        Sprite UiArt(string key)
+        {
+            if (string.IsNullOrEmpty(key)) return null;
+            var sprite = theme ? theme.Get(key) : null;
+            if (sprite) return sprite;
+            if (uiArtSprites.TryGetValue(key, out sprite)) return sprite;
+            sprite = Resources.Load<Sprite>("Art/" + key);
+            if (sprite) uiArtSprites.Add(key, sprite);
+            return sprite;
+        }
         void Panel(float x,float y,float w,float h,float alpha=1)=>Surface(x,y,w,h,new Color(.13f,.18f,.30f,alpha));
         void Art(float x,float y,float w,float h,string key)
         {
-            if(dispatchOnly)return;var item=GetWidget("image",x,y,w,h);var sprite=studioRoot.mockupKit?theme.Get(key):null;if(!sprite)sprite=Resources.Load<Sprite>("Art/"+key);StudioNineSlice.Apply(item.image,sprite?sprite:view.Art(key),14,true);item.image.color=Color.white;
+            if(dispatchOnly)return;var item=GetWidget("image",x,y,w,h);var sprite=UiArt(key);StudioNineSlice.Apply(item.image,sprite?sprite:view.Art(key),14,true);item.image.color=Color.white;
         }
         void Bar(float x,float y,float w,float h,float ratio,Color color)
         {

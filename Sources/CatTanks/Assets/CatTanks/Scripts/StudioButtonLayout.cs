@@ -6,10 +6,11 @@ namespace CatTanks
     [DisallowMultipleComponent]
     public sealed class StudioButtonLayout : MonoBehaviour
     {
-        public enum Content { Centered, Navigation, Skill }
+        public enum Content { Centered, Navigation, Skill, Illustrated, Tile, Stage, Symbol }
         public Content content;
         public Text label,hotkey,caption,cost;
         public Image icon;
+        public Image badge;
         public int fontSize=19;
         readonly TextGenerator generator=new TextGenerator();
         struct FitCache
@@ -22,6 +23,11 @@ namespace CatTanks
         public void Apply()
         {
             var rect=(RectTransform)transform;float w=rect.rect.width,h=rect.rect.height;
+            if (content is Content.Illustrated or Content.Tile or Content.Stage or Content.Symbol)
+            {
+                ApplyIllustration(w, h);
+                return;
+            }
             if(label)
             {
                 label.gameObject.SetActive(content!=Content.Skill);
@@ -36,11 +42,38 @@ namespace CatTanks
             }
             if(content==Content.Skill)
             {
-                if(icon){Place(icon.rectTransform,(w-32)*.5f,9,32,32);icon.preserveAspect=true;icon.raycastTarget=false;}
+                if(icon){Place(icon.rectTransform,(w-43)*.5f,6,43,43);icon.preserveAspect=true;icon.raycastTarget=false;}
                 if(hotkey){Place(hotkey.rectTransform,8,8,24,24);hotkey.alignment=TextAnchor.MiddleCenter;Fit(hotkey,14,ref hotkeyFit);}
-                if(caption){Place(caption.rectTransform,8,45,w-16,36);caption.alignment=TextAnchor.MiddleCenter;Fit(caption,16,ref captionFit);}
+                if(caption){Place(caption.rectTransform,8,48,w-16,31);caption.alignment=TextAnchor.MiddleCenter;Fit(caption,16,ref captionFit);}
                 if(cost){Place(cost.rectTransform,8,h-27,w-16,20);cost.alignment=TextAnchor.MiddleCenter;Fit(cost,14,ref costFit);}
             }
+        }
+        void ApplyIllustration(float width, float height)
+        {
+            label.gameObject.SetActive(true);
+            label.alignment = TextAnchor.MiddleCenter;
+            if (content == Content.Stage)
+            {
+                Place(icon.rectTransform, 6, 5, width - 12, height - 10);
+                Place(label.rectTransform, 8, height - 29, 34, 22);
+                Place(badge.rectTransform, width - 33, 8, 22, 22);
+            }
+            else if (content == Content.Tile)
+            {
+                float captionHeight = height > 124 ? 34 : 37;
+                Place(icon.rectTransform, 10, 7, width - 20, height - captionHeight - 12);
+                Place(label.rectTransform, 6, height - captionHeight - 6, width - 12, captionHeight);
+            }
+            else
+            {
+                bool symbol = content == Content.Symbol;
+                bool compact = !symbol && width <= 160;
+                float size = Mathf.Min(height - 14, compact ? 26 : 42);
+                float left = symbol ? (width - size) * .5f : compact ? 8 : 10;
+                Place(icon.rectTransform, left, (height - size) * .5f, size, size);
+                Stretch(label.rectTransform, symbol ? 6 : left + size + 6, 6, compact ? 9 : 10, 6);
+            }
+            Fit(label, fontSize, ref labelFit);
         }
         void Fit(Text text,int maximum,ref FitCache cache)
         {

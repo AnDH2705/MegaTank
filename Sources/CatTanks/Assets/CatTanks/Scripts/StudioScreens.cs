@@ -12,10 +12,10 @@ namespace CatTanks
             Surface(24,125,210,740,C("#1e2c49"));
             Icon(30,23,64,"Badge_Crown"); Text(110,22,550,"MEOW BASTION",title);
             Text(112,68,550,"PHÁO ĐÀI TRĂNG XANH",small);
-            Resource(770,"Money_Coin",N(profile.Get("coins")),"XU");
-            Resource(983,"Gem_Diamond_Purple",N(profile.Get("gem")),"NGỌC");
-            Resource(1196,"Ticket_Gold",N(profile.Get("summonScroll")),"VÉ GỌI MÈO");
-            if (Button(1432,27,140,58,"Cài đặt")) modal="settings";
+            Resource(770,"item-coins",N(profile.Get("coins")),"XU");
+            Resource(983,"item-gem",N(profile.Get("gem")),"NGỌC");
+            Resource(1196,"item-summonScroll",N(profile.Get("summonScroll")),"VÉ GỌI MÈO");
+            if (IllustratedButton(1432,27,140,58,"Cài đặt","Setting")) modal="settings";
             Text(44,150,170,"CHỈ HUY  /  CẤP "+profile.accountLevel,small);
             Text(44,181,170,profile.name,subtitle,56);
             string[] nav={"march","barracks","town","chest","quests","book"};
@@ -38,7 +38,7 @@ namespace CatTanks
         }
         void Resource(float x,string icon,string value,string caption)
         {
-            Surface(x,22,195,76,C("#24324e")); Icon(x+10,37,44,icon);
+            Surface(x,22,195,76,C("#24324e")); Art(x+10,37,44,44,icon);
             Text(x+64,30,125,value,subtitle); Text(x+64,63,125,caption,small);
         }
         void March()
@@ -56,30 +56,31 @@ namespace CatTanks
                 {
                     int i=row*5+col; var stage=db.stages[i]; float x=310+col*151;
                     bool unlocked=i<=profile.highestCleared, selected=profile.selected==i+1;
-                    string status=i<profile.highestCleared?"ĐÃ QUA":unlocked?stage.boss?"TRÙM":"SẴN SÀNG":"KHÓA";
-                    if(Button(x,y,137,66,$"{stage.index:00}  {(stage.boss?"• TRÙM":"")}\n{status}",unlocked,selected)) {profile.selected=i+1;profile.Save();}
+                    string badge = !unlocked ? "Lock" : i < profile.highestCleared ? "Check" : stage.boss ? "Skull" : null;
+                    if(IllustratedButton(x,y,137,66,$"{stage.index:00}",StagePreview(stage),unlocked,selected,
+                        StudioButtonLayout.Content.Stage,badge)) {profile.selected=i+1;profile.Save();}
                 }
             }
             var selectedStage=db.stages[profile.selected-1];
             Surface(1103,155,438,665,C("#253455"));
             Text(1131,182,370,"ẢI "+selectedStage.index.ToString("00")+"  /  "+(selectedStage.boss?"TRẬN TRÙM":"HÀNH QUÂN"),small);
             Text(1131,226,370,selectedStage.name,title,100);
-            if(studioRoot&&studioRoot.mockupKit)SpriteBox(1131,332,370,180,selectedStage.boss?"stage_boss":selectedStage.index<=5?"stage_forest":selectedStage.index<=10?"stage_fog":selectedStage.index<=15?"stage_snow":"stage_factory",Color.white);
-            Icon(1207,332,180,selectedStage.boss?"Skull":"Battle");
+            Art(1131,332,370,180,StagePreview(selectedStage));
             Text(1131,528,370,"LỰC CHIẾN ĐỀ NGHỊ",small);
             Text(1131,558,370,N(selectedStage.recommendedPower),title);
             Text(1131,612,370,profile.Power(db)>=selectedStage.recommendedPower?"Đội của bạn đã sẵn sàng":"Gợi ý: nâng cấp mèo trước khi đi",small,52);
             bool cleared=selectedStage.index<=profile.highestCleared;
             Text(1131,669,370,cleared?"Thưởng khi chơi lại":"Thưởng lần đầu",small);
             Text(1131,697,370,Rewards(cleared?selectedStage.repeatRewards:selectedStage.firstClearRewards),small,55);
-            if(Button(1131,758,382,58,"CHUẨN BỊ XUẤT KÍCH  ›",true,true))modal="prebattle";
-            Surface(286,730,795,91,C("#20304b")); Icon(306,748,50,"Chest_Gold");
+            if(IllustratedButton(1131,758,382,58,"CHUẨN BỊ XUẤT KÍCH  ›","Battle",primary:true))modal="prebattle";
+            Surface(286,730,795,91,C("#20304b")); Art(306,748,50,50,"item-afkChest");
             Text(376,746,650,"Mỗi 5 ải là một trận trùm",subtitle);
             Text(376,782,650,"Thu thập mèo, trang bị và mở rộng pháo đài trên hành trình.",small);
         }
-        bool TabButton(float x,float y,float w,float h,string value,bool selected)
+        static string StagePreview(Stage stage) => $"StagePreviews/stage-{stage.index:00}";
+        bool TabButton(float x,float y,float w,float h,string value,bool selected,string artKey=null)
         {
-            bool clicked=Button(x,y,w,h,value);
+            bool clicked=artKey==null ? Button(x,y,w,h,value) : IllustratedButton(x,y,w,h,value,artKey);
             if(dispatchOnly)return clicked;
             var item=lastButton;
             if(selected)SetButtonSprite(item,"selected");
