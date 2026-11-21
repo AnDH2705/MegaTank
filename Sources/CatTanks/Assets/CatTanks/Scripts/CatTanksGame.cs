@@ -128,29 +128,38 @@ namespace CatTanks
         string Rewards(Dictionary<string, int> values) => string.Join("    ", values.Where(v => v.Value > 0).Select(v => "+" + N(v.Value) + " " + Currency(v.Key)));
         void Prebattle()
         {
-            Panel(220, 140, 1160, 620); var s = db.stages[profile.selected - 1];
-            Text(260, 175, 1000, "Ải " + s.index + " · " + s.name, title);
-            Text(260, 240, 1000, $"Đề nghị {N(s.recommendedPower)} lực chiến  ·  Pháo đài {N(profile.MaxHp)} HP  ·  {profile.FloorCount} tầng", subtitle);
-            Text(260, 300, 1000, "Đội hình dùng trang bị hiện tại trong Doanh trại. Pháo và bộ binh tự động tấn công.", label);
-            Text(260, 355, 1000, "3 đợt tiếp viện xuất hiện tại giây 0 / 25 / 55. Chọn mục tiêu bằng chuột để tập trung hỏa lực.", label, 65);
-            Art(1034, 175, 300, 150, StagePreview(s));
-            for (int i = 0; i < profile.FloorCount; i++) {Art(275 + i * 180, 440, 130, 80, profile.floors[i].turret); Text(270 + i * 180, 530, 160, "Tầng " + (i + 1), small);}
+            Panel(202, 103, 1196, 694); var s = db.stages[profile.selected - 1];
+            Text(236, 133, 715, "Ải " + s.index + " · " + s.name, title, 63);
+            Text(236, 218, 688, $"Đề nghị {N(s.recommendedPower)} lực chiến  ·  Pháo đài {N(profile.MaxHp)} HP  ·  {profile.FloorCount} tầng", subtitle, 60);
+            Text(236, 286, 688, "Đội hình dùng trang bị hiện tại trong Doanh trại. Pháo và bộ binh tự động tấn công.", label, 55);
+            Text(236, 349, 688, "3 đợt tiếp viện xuất hiện tại giây 0 / 25 / 55. Chọn mục tiêu bằng chuột để tập trung hỏa lực.", label, 60);
+            Surface(944, 150, 420, 260, Color.white,catsFrame:"Roster");
+            Art(956, 162, 396, 236, StagePreview(s));
+            Surface(236, 438, 1128, 164, Color.white,catsFrame:"Roster");
+            for (int i = 0; i < profile.FloorCount; i++)
+            {
+                float x=252+i*221;
+                Surface(x, 452, 205, 136, Color.white,catsFrame:"Tile");
+                Art(x+37, 460, 131, 82, profile.floors[i].turret);
+                Text(x+18, 550, 169, "Tầng " + (i + 1), small, 28);
+            }
             int moonCages = Mathf.Min(5, profile.Get("moonCage")), beastCages = Mathf.Min(5 - moonCages, profile.Get("beastCage"));
-            Text(260, 584, 1000, $"Mang {beastCages} lồng thú · {moonCages} lồng trăng (tối đa 5). Quái dưới 25% HP mới bắt được.", small, 50);
-            if (Button(260, 670, 230, 54, "Trở về")) modal = "";
-            if (Button(520, 670, 480, 54, "Chỉnh đội hình")) {modal = ""; page = "barracks"; tab = "squad";}
-            if (IllustratedButton(1050, 670, 280, 54, "XUẤT KÍCH", "Battle", primary: true)) StartBattle();
+            Text(236, 619, 1120, $"Mang {beastCages} lồng thú · {moonCages} lồng trăng (tối đa 5). Quái dưới 25% HP mới bắt được.", small, 52);
+            if (Button(236, 709, 216, 60, "Trở về")) modal = "";
+            if (IllustratedButton(464, 709, 376, 60, "Chỉnh đội hình", "cat-0",normalSpriteKey:"blue")) {modal = ""; page = "barracks"; tab = "squad";}
+            if (IllustratedButton(852, 709, 512, 60, "XUẤT KÍCH", "Battle", primary: true)) StartBattle();
         }
         void Result()
         {
             bool won = battle.state == BattleState.Won;
-            Panel(310, 235, 980, 445);
-            Text(360, 275, 630, won ? "CHIẾN THẮNG DƯỚI TRĂNG!" : "PHÁO ĐÀI CẦN TIẾP VIỆN", title, dynamicLayout: true);
-            Text(360, 350, 630, $"{battle.kills} quái bị hạ  ·  {N(battle.time)} giây  ·  {battle.caught.Count} quái bắt được", subtitle, 60, dynamicLayout: true);
-            Text(360, 410, 630, Rewards(receipt ?? new Dictionary<string, int>()), label, 115, dynamicLayout: true);
-            Art(998, 270, 237, 252, won ? "Screens/victory" : "Screens/defeat");
-            if (Button(360, 555, 380, 70, "VỀ DOANH TRẠI")) {Hub(); page = "barracks"; tab = "cats";}
-            if (Button(800, 555, 430, 70, won && !battle.classic && !battle.arena && profile.selected < 20 ? "ẢI TIẾP THEO" : "THỬ LẠI", true, true))
+            Panel(260, 201, 1080, 498);
+            Text(294, 244, 660, won ? "CHIẾN THẮNG DƯỚI TRĂNG!" : "PHÁO ĐÀI CẦN TIẾP VIỆN", title, 61, dynamicLayout: true);
+            Text(294, 330, 660, $"{battle.kills} quái bị hạ  ·  {N(battle.time)} giây  ·  {battle.caught.Count} quái bắt được", subtitle, 60, dynamicLayout: true);
+            Surface(294, 401, 665, 137, Color.white,catsFrame:"Roster");
+            Text(314, 420, 625, Rewards(receipt ?? new Dictionary<string, int>()), label, 104, dynamicLayout: true);
+            Art(978, 231, 328, 311, won ? "Screens/victory" : "Screens/defeat");
+            if (Button(294, 594, 492, 69, "VỀ DOANH TRẠI",normalSpriteKey:"blue")) {Hub(); page = "barracks"; tab = "cats";}
+            if (Button(800, 594, 506, 69, won && !battle.classic && !battle.arena && profile.selected < 20 ? "ẢI TIẾP THEO" : "THỬ LẠI", true, true))
             {
                 bool classic = battle.classic, arena = battle.arena;
                 if (battle.state == BattleState.Won && !classic && !arena && profile.selected < 20) profile.selected++;
@@ -160,33 +169,36 @@ namespace CatTanks
         void ToggleSound() {muted = !muted; PlayerPrefs.SetInt("CatTanks.Muted", muted ? 1 : 0); PlayerPrefs.Save();}
         void Settings()
         {
-            Panel(330, 170, 940, 570); Text(380, 205, 800, "Cài đặt chỉ huy", title);
-            Text(380, 280, 200, "Tên chỉ huy", label); NameInput(590, 276, 610, 45);
-            if (Button(380, 350, 380, 60, muted ? "Bật âm thanh" : "Tắt âm thanh")) ToggleSound();
-            if (Button(800, 350, 400, 60, "Toàn màn hình")) Screen.fullScreen = !Screen.fullScreen;
-            if (Button(380, 440, 380, 60, "Xuất hồ sơ JSON")) {profile.Save(); string path = Path.Combine(Application.persistentDataPath, "cattanks-export-" + DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".json"); File.WriteAllText(path, JsonConvert.SerializeObject(profile, Formatting.Indented)); Notify("Đã xuất: " + path);}
-            if (Button(800, 440, 400, 60, "Thử thách trăng · 6 đợt")) StartBattle(true);
-            if (Button(380, 530, 820, 54, reduceMotion ? "Giảm chuyển động: BẬT" : "Giảm chuyển động: TẮT")) { reduceMotion = !reduceMotion; PlayerPrefs.SetInt("CatTanks.ReducedMotion", reduceMotion ? 1 : 0); PlayerPrefs.Save(); }
-            Text(380, 598, 820, "Tiến trình lưu trên máy • Esc để đóng • Tab / Enter để điều hướng", small, 40);
-            if (Button(380, 645, 820, 55, "LƯU & ĐÓNG", true, true)) {profile.Save(); modal = "";}
+            Panel(328, 151, 944, 598);
+            Text(364, 186, 872, "Cài đặt chỉ huy", title, 57);
+            Surface(364, 254, 872, 75, Color.white,catsFrame:"Roster");
+            Text(384, 271, 194, "Tên chỉ huy", label); NameInput(574, 265, 642, 50);
+            if (Button(364, 348, 430, 60, muted ? "Bật âm thanh" : "Tắt âm thanh",normalSpriteKey:"blue")) ToggleSound();
+            if (Button(806, 348, 430, 60, "Toàn màn hình",normalSpriteKey:"blue")) Screen.fullScreen = !Screen.fullScreen;
+            if (Button(364, 423, 430, 60, "Xuất hồ sơ JSON")) {profile.Save(); string path = Path.Combine(Application.persistentDataPath, "cattanks-export-" + DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".json"); File.WriteAllText(path, JsonConvert.SerializeObject(profile, Formatting.Indented)); Notify("Đã xuất: " + path);}
+            if (Button(806, 423, 430, 60, "Thử thách trăng · 6 đợt")) StartBattle(true);
+            if (Button(364, 499, 872, 57, reduceMotion ? "Giảm chuyển động: BẬT" : "Giảm chuyển động: TẮT",normalSpriteKey:"blue")) { reduceMotion = !reduceMotion; PlayerPrefs.SetInt("CatTanks.ReducedMotion", reduceMotion ? 1 : 0); PlayerPrefs.Save(); }
+            Text(364, 582, 872, "Tiến trình lưu trên máy • Esc để đóng • Tab / Enter để điều hướng", small, 40);
+            if (Button(364, 647, 872, 64, "LƯU & ĐÓNG", true, true)) {profile.Save(); modal = "";}
         }
         void Book()
         {
-            Panel(110, 75, 1380, 760); Text(150, 105, 900, "Bách khoa trăng xanh", title);
-            if (Button(1310, 103, 135, 50, "Đóng [B]")) modal = "";
+            Panel(98, 70, 1404, 760); Text(134, 97, 1100, "Bách khoa trăng xanh", title, 57);
+            if (Button(1312, 95, 152, 52, "Đóng [B]")) modal = "";
             string[] names = {"THÁP PHÁO", "VŨ KHÍ MÈO", "MODULE", "QUÁI VẬT", "MÈO"};
             string[] icons = {"turret-0", "gun-0", "pack-0", "bug-0", "cat-0"};
-            for (int i = 0; i < 5; i++) if (TabButton(150 + i * 245, 175, 230, 48, names[i], bookTab == i, icons[i])) {bookTab = i; scroll = Vector2.zero;}
+            for (int i = 0; i < 5; i++) if (TabButton(134 + i * 268, 165, 258, 54, names[i], bookTab == i, icons[i])) {bookTab = i; scroll = Vector2.zero;}
             int count = bookTab == 3 ? db.monsters.Count : bookTab == 4 ? db.cats.Count : db.weapons.Count(w => bookTab == 0 ? w.id.StartsWith("turret") : bookTab == 1 ? w.id.StartsWith("gun") : w.id.StartsWith("pack"));
-            scroll = BeginScroll(new Rect(145, 250, 1310, 550), scroll, new Rect(0, 0, 1275, Mathf.Ceil(count / 4f) * 250));
+            Surface(124, 232, 1352, 575, Color.white,catsFrame:"Roster");
+            scroll = BeginScroll(new Rect(138, 246, 1324, 547), scroll, new Rect(0, 0, 1300, Mathf.Ceil(count / 4f) * 260));
             for (int i = 0; i < count; i++)
             {
-                float x = i % 4 * 317, y = i / 4 * 250; Panel(x, y, 300, 232);
+                float x = i % 4 * 326, y = i / 4 * 260; Panel(x, y, 314, 248);
                 string asset, name, desc;
                 if (bookTab == 3) {var d = db.monsters[i]; asset = d.asset; name = d.name; desc = $"HP {N(d.hp)} · ATK {N(d.damage)}\n" + d.description;}
                 else if (bookTab == 4) {var d = db.cats[i]; asset = d.id; name = d.name; desc = d.rarity + " · " + d.role + "\n" + (d.specialty == "operator" ? "Chuyên vận hành pháo" : "Chuyên bộ binh");}
                 else {var d = db.weapons.Where(w => bookTab == 0 ? w.id.StartsWith("turret") : bookTab == 1 ? w.id.StartsWith("gun") : w.id.StartsWith("pack")).ElementAt(i); asset = d.asset; name = d.name; desc = $"ATK {N(d.damage)} · {d.rate:0.##}s\n" + d.description;}
-                Art(x + 25, y + 10, 250, 100, asset); Text(x + 15, y + 120, 270, name, subtitle); Text(x + 15, y + 157, 270, desc, small, 70);
+                Art(x + 27, y + 10, 260, 100, asset); Text(x + 15, y + 117, 284, name, subtitle, 47); Text(x + 15, y + 166, 284, desc, small, 74);
             }
             EndScroll();
         }

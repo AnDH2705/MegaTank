@@ -302,8 +302,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 612, y: -330}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 616, y: -304}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8342941632494857207
 MonoBehaviour:
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::612:330
+  id: button::616:304
   kind: button
   authored: 1
 --- !u!222 &5208168464326499301
@@ -437,8 +437,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1131, y: -226}
-  m_SizeDelta: {x: 370, y: 100}
+  m_AnchoredPosition: {x: 1130, y: -284}
+  m_SizeDelta: {x: 402, y: 76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7778822046068669420
 MonoBehaviour:
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::1131:226
+  id: text::1130:284
   kind: text
   authored: 1
 --- !u!222 &5410526098150376706
@@ -532,7 +532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 350, y: -446}
+  m_AnchoredPosition: {x: 350, y: -449}
   m_SizeDelta: {x: 670, y: 6}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3296876163056861629
@@ -547,7 +547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: image::350:446
+  id: image::350:449
   kind: image
   authored: 1
 --- !u!222 &6511479285222383767
@@ -920,8 +920,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 914, y: -419}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 922, y: -408}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3760523359477871442
 MonoBehaviour:
@@ -935,7 +935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::914:419
+  id: button::922:408
   kind: button
   authored: 1
 --- !u!222 &8458028580428086962
@@ -1292,8 +1292,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1131, y: -558}
-  m_SizeDelta: {x: 370, y: 49.300003}
+  m_AnchoredPosition: {x: 1130, y: -563}
+  m_SizeDelta: {x: 402, y: 49.300003}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6030068251215379311
 MonoBehaviour:
@@ -1307,7 +1307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::1131:558
+  id: text::1130:563
   kind: text
   authored: 1
 --- !u!222 &5440786032661621565
@@ -1957,8 +1957,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 612, y: -508}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 616, y: -512}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5244058203523355350
 MonoBehaviour:
@@ -1972,7 +1972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::612:508
+  id: button::616:512
   kind: button
   authored: 1
 --- !u!222 &1780853725111020730
@@ -2092,8 +2092,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1131, y: -669}
-  m_SizeDelta: {x: 370, y: 35}
+  m_AnchoredPosition: {x: 1130, y: -648}
+  m_SizeDelta: {x: 402, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &872674003960297019
 MonoBehaviour:
@@ -2107,7 +2107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::1131:669
+  id: text::1130:648
   kind: text
   authored: 1
 --- !u!222 &864743082807128776
@@ -2284,8 +2284,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 763, y: -419}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 769, y: -408}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7596272268221096057
 MonoBehaviour:
@@ -2299,7 +2299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::763:419
+  id: button::769:408
   kind: button
   authored: 1
 --- !u!222 &5323950317126267647
@@ -2590,8 +2590,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 292, y: -204}
-  m_SizeDelta: {x: 790, y: 35}
+  m_AnchoredPosition: {x: 286, y: -192}
+  m_SizeDelta: {x: 800, y: 35}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6205521851170993106
 MonoBehaviour:
@@ -2605,7 +2605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::292:204
+  id: text::286:192
   kind: text
   authored: 1
 --- !u!222 &500881494994999074
@@ -2688,8 +2688,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 763, y: -597}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 769, y: -616}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &168450938445346837
 MonoBehaviour:
@@ -2703,7 +2703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::763:597
+  id: button::769:616
   kind: button
   authored: 1
 --- !u!222 &5955848044966430000
@@ -3211,8 +3211,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 310, y: -330}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 310, y: -304}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6438908514420115599
 MonoBehaviour:
@@ -3226,7 +3226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::310:330
+  id: button::310:304
   kind: button
   authored: 1
 --- !u!222 &8403883673601141748
@@ -3530,8 +3530,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 461, y: -330}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 463, y: -304}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1734614091736106292
 MonoBehaviour:
@@ -3545,7 +3545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::461:330
+  id: button::463:304
   kind: button
   authored: 1
 --- !u!222 &7634245241228371193
@@ -3744,8 +3744,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 850, y: -280}
-  m_SizeDelta: {x: 205, y: 35}
+  m_AnchoredPosition: {x: 866, y: -266}
+  m_SizeDelta: {x: 196, y: 35}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1004556916101510872
 MonoBehaviour:
@@ -3759,7 +3759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::850:280
+  id: text::866:266
   kind: text
   authored: 1
 --- !u!222 &6558019998940713974
@@ -3841,8 +3841,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 914, y: -597}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 922, y: -616}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7682169327140868409
 MonoBehaviour:
@@ -3856,7 +3856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::914:597
+  id: button::922:616
   kind: button
   authored: 1
 --- !u!222 &2884937306913889760
@@ -4337,8 +4337,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 280, y: -875}
-  m_SizeDelta: {x: 1250, y: 35}
+  m_AnchoredPosition: {x: 286, y: -836}
+  m_SizeDelta: {x: 1250, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6027409408229658377
 MonoBehaviour:
@@ -4352,7 +4352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::280:875
+  id: text::286:836
   kind: text
   authored: 1
 --- !u!222 &8548761184240955251
@@ -4951,8 +4951,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 310, y: -419}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 310, y: -408}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4351585164100469617
 MonoBehaviour:
@@ -4966,7 +4966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::310:419
+  id: button::310:408
   kind: button
   authored: 1
 --- !u!222 &4745980953136446556
@@ -5183,8 +5183,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 914, y: -330}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 922, y: -304}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6230214080205870257
 MonoBehaviour:
@@ -5198,7 +5198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::914:330
+  id: button::922:304
   kind: button
   authored: 1
 --- !u!222 &4674985275095847920
@@ -5318,7 +5318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 350, y: -624}
+  m_AnchoredPosition: {x: 350, y: -657}
   m_SizeDelta: {x: 670, y: 6}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8536249069252520053
@@ -5333,7 +5333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: image::350:624
+  id: image::350:657
   kind: image
   authored: 1
 --- !u!222 &3183212883339900605
@@ -5506,8 +5506,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 612, y: -419}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 616, y: -408}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5174225575852958088
 MonoBehaviour:
@@ -5521,7 +5521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::612:419
+  id: button::616:408
   kind: button
   authored: 1
 --- !u!222 &3551596081127628614
@@ -5778,7 +5778,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 310, y: -280}
+  m_AnchoredPosition: {x: 310, y: -266}
   m_SizeDelta: {x: 520, y: 35}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1347964576821071669
@@ -5793,7 +5793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::310:280
+  id: text::310:266
   kind: text
   authored: 1
 --- !u!222 &6144244418601876546
@@ -6300,8 +6300,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 376, y: -746}
-  m_SizeDelta: {x: 650, y: 35}
+  m_AnchoredPosition: {x: 376, y: -740}
+  m_SizeDelta: {x: 686, y: 35}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2896998113680004853
 MonoBehaviour:
@@ -6315,7 +6315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::376:746
+  id: text::376:740
   kind: text
   authored: 1
 --- !u!222 &8556046049839187872
@@ -6397,8 +6397,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 310, y: -508}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 310, y: -512}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7359635868642802390
 MonoBehaviour:
@@ -6412,7 +6412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::310:508
+  id: button::310:512
   kind: button
   authored: 1
 --- !u!222 &7803312701022230494
@@ -6532,8 +6532,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1131, y: -612}
-  m_SizeDelta: {x: 370, y: 52}
+  m_AnchoredPosition: {x: 1130, y: -613}
+  m_SizeDelta: {x: 402, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8335882753789934377
 MonoBehaviour:
@@ -6547,7 +6547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::1131:612
+  id: text::1130:613
   kind: text
   authored: 1
 --- !u!222 &5957014841524836775
@@ -6629,8 +6629,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 612, y: -597}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 616, y: -616}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1968251347358615479
 MonoBehaviour:
@@ -6644,7 +6644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::612:597
+  id: button::616:616
   kind: button
   authored: 1
 --- !u!222 &3972542729088568497
@@ -6766,8 +6766,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 914, y: -508}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 922, y: -512}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5727322635590021992
 MonoBehaviour:
@@ -6781,7 +6781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::914:508
+  id: button::922:512
   kind: button
   authored: 1
 --- !u!222 &745622049638632490
@@ -6994,8 +6994,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 763, y: -508}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 769, y: -512}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4207967705349058224
 MonoBehaviour:
@@ -7009,7 +7009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::763:508
+  id: button::769:512
   kind: button
   authored: 1
 --- !u!222 &8933752377493260961
@@ -7131,8 +7131,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1131, y: -758}
-  m_SizeDelta: {x: 382, y: 58}
+  m_AnchoredPosition: {x: 1130, y: -736}
+  m_SizeDelta: {x: 402, y: 64}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8172091989064906516
 MonoBehaviour:
@@ -7146,7 +7146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::1131:758
+  id: button::1130:736
   kind: button
   authored: 1
 --- !u!222 &3503090298625038196
@@ -7585,7 +7585,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 350, y: -357}
+  m_AnchoredPosition: {x: 350, y: -345}
   m_SizeDelta: {x: 670, y: 6}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8322170263882137123
@@ -7600,7 +7600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: image::350:357
+  id: image::350:345
   kind: image
   authored: 1
 --- !u!222 &7925612682007888221
@@ -7755,7 +7755,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 350, y: -535}
+  m_AnchoredPosition: {x: 350, y: -553}
   m_SizeDelta: {x: 670, y: 6}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7509140823905437430
@@ -7770,7 +7770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: image::350:535
+  id: image::350:553
   kind: image
   authored: 1
 --- !u!222 &3840720214491248564
@@ -7846,8 +7846,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1103, y: -155}
-  m_SizeDelta: {x: 438, y: 665}
+  m_AnchoredPosition: {x: 1106, y: -244}
+  m_SizeDelta: {x: 450, y: 578}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1791013346987848829
 MonoBehaviour:
@@ -7861,7 +7861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: image::1103:155
+  id: image::1106:244
   kind: image
   authored: 1
 --- !u!222 &6829461668446342745
@@ -7938,8 +7938,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1131, y: -697}
-  m_SizeDelta: {x: 370, y: 55}
+  m_AnchoredPosition: {x: 1130, y: -677}
+  m_SizeDelta: {x: 402, y: 51}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &490163587609820267
 MonoBehaviour:
@@ -7953,7 +7953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::1131:697
+  id: text::1130:677
   kind: text
   authored: 1
 --- !u!222 &7045265948236499121
@@ -8205,8 +8205,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 310, y: -597}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 310, y: -616}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2743997849767962148
 MonoBehaviour:
@@ -8220,7 +8220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::310:597
+  id: button::310:616
   kind: button
   authored: 1
 --- !u!222 &5539539644053455054
@@ -8421,8 +8421,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 461, y: -597}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 463, y: -616}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6764029781716935503
 MonoBehaviour:
@@ -8436,7 +8436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::461:597
+  id: button::463:616
   kind: button
   authored: 1
 --- !u!222 &2974315671440746299
@@ -8558,8 +8558,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 461, y: -419}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 463, y: -408}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7392154693652394657
 MonoBehaviour:
@@ -8573,7 +8573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::461:419
+  id: button::463:408
   kind: button
   authored: 1
 --- !u!222 &2710974078303691119
@@ -9221,8 +9221,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 763, y: -330}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 769, y: -304}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6667948665538265709
 MonoBehaviour:
@@ -9236,7 +9236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::763:330
+  id: button::769:304
   kind: button
   authored: 1
 --- !u!222 &4259012172553423291
@@ -9451,8 +9451,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1131, y: -182}
-  m_SizeDelta: {x: 370, y: 35}
+  m_AnchoredPosition: {x: 1130, y: -256}
+  m_SizeDelta: {x: 402, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7028499019467159862
 MonoBehaviour:
@@ -9466,7 +9466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::1131:182
+  id: text::1130:256
   kind: text
   authored: 1
 --- !u!222 &4741543569326465534
@@ -9546,8 +9546,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1131, y: -528}
-  m_SizeDelta: {x: 370, y: 35}
+  m_AnchoredPosition: {x: 1130, y: -538}
+  m_SizeDelta: {x: 402, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2469352133584809444
 MonoBehaviour:
@@ -9561,7 +9561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::1131:528
+  id: text::1130:538
   kind: text
   authored: 1
 --- !u!222 &6956032464061463932
@@ -9857,8 +9857,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 286, y: -730}
-  m_SizeDelta: {x: 795, y: 91}
+  m_AnchoredPosition: {x: 286, y: -736}
+  m_SizeDelta: {x: 800, y: 68}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3304338141595273856
 MonoBehaviour:
@@ -9872,7 +9872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: image::286:730
+  id: image::286:736
   kind: image
   authored: 1
 --- !u!222 &157609873641347753
@@ -10122,8 +10122,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 286, y: -260}
-  m_SizeDelta: {x: 795, y: 450}
+  m_AnchoredPosition: {x: 286, y: -244}
+  m_SizeDelta: {x: 800, y: 482}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7917571054029899799
 MonoBehaviour:
@@ -10137,7 +10137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: image::286:260
+  id: image::286:244
   kind: image
   authored: 1
 --- !u!222 &5724631132618457243
@@ -10215,8 +10215,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 461, y: -508}
-  m_SizeDelta: {x: 137, y: 66}
+  m_AnchoredPosition: {x: 463, y: -512}
+  m_SizeDelta: {x: 140, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4771758190455827011
 MonoBehaviour:
@@ -10230,7 +10230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::461:508
+  id: button::463:512
   kind: button
   authored: 1
 --- !u!222 &8120100478737781618
@@ -10521,8 +10521,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 376, y: -782}
-  m_SizeDelta: {x: 650, y: 35}
+  m_AnchoredPosition: {x: 376, y: -769}
+  m_SizeDelta: {x: 686, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3233043701173961979
 MonoBehaviour:
@@ -10536,7 +10536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::376:782
+  id: text::376:769
   kind: text
   authored: 1
 --- !u!222 &3725099103266115821
@@ -10870,7 +10870,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 290, y: -152}
+  m_AnchoredPosition: {x: 286, y: -140}
   m_SizeDelta: {x: 800, y: 49.300003}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3647378430849850849
@@ -10885,7 +10885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::290:152
+  id: text::286:140
   kind: text
   authored: 1
 --- !u!222 &546198303629642512
@@ -10965,7 +10965,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 306, y: -748}
+  m_AnchoredPosition: {x: 306, y: -745}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5869388989520182593
@@ -10980,7 +10980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: image::306:748
+  id: image::306:745
   kind: image
   authored: 1
 --- !u!222 &941809589738160678
