@@ -67,8 +67,9 @@ namespace CatTanks.Editor
                 await Show(game);
                 check(game.UiReady,"Game theme and native Canvas loaded");
                 check(!(bool)typeof(CatTanksGame).GetField("authoringUi",Private).GetValue(game)&&game.CanvasRoot.GetComponentsInChildren<StudioWidgetBinding>(true).Any(b=>b.authored),"Runtime uses the authored Canvas and widget templates");
-                check(game.CanvasRoot.GetComponentsInChildren<StudioUIView>(true).Count(v=>v.layer=="popup")==6,"Six separate popup prefab instances are present");
-                var authoredTitle=game.CanvasRoot.GetComponentsInChildren<Text>(true).First(t=>t.text=="Chuyến phiêu lưu dưới trăng");
+                check(game.CanvasRoot.GetComponentsInChildren<StudioUIView>(true).Count(v=>v.layer=="popup"&&v.key!="map")==6,"Six separate popup prefab instances are present");
+                game.page="barracks";game.tab="cats";await Show(game);
+                var authoredTitle=game.CanvasRoot.GetComponentsInChildren<Text>(true).First(t=>t.text=="Những người giữ pháo đài");
                 var authoredRect=(RectTransform)authoredTitle.transform;var originalPosition=authoredRect.anchoredPosition;
                 authoredRect.anchoredPosition=originalPosition+new Vector2(7,0);await Show(game);
                 check(authoredRect.anchoredPosition==originalPosition+new Vector2(7,0),"UI data refresh preserves prefab-authored layout");
@@ -76,7 +77,7 @@ namespace CatTanks.Editor
                 check(game.CanvasRoot.GetComponent<Canvas>()!=null,"Native Canvas present");
                 var activeTheme=game.CanvasRoot.theme?game.CanvasRoot.theme:Resources.Load<StudioUITheme>("StudioUITheme");
                 check(activeTheme.assets.All(a=>a.sprite),"All active theme references resolve");
-                Click("Doanh trại");await Show(game);check(game.page=="barracks","Sidebar navigates through real button commands");
+                Click("Doanh trại");await Show(game);check(game.page=="barracks","Home buttons navigate through real button commands");
                 foreach(string tab in new[]{"cats","fortress","squad","skills","monsters","gear","presets","nexus"})
                 {
                     game.tab=tab;await Show(game);check(ActiveButtons().Length>8,"Barracks renders: "+tab);
@@ -86,7 +87,7 @@ namespace CatTanks.Editor
                 var slot=ActiveButtons().FirstOrDefault(b=>b.GetComponentInChildren<Text>().text.Contains("Bộ binh 1:"));
                 check(slot!=null,"Squad picker trigger present");slot.onClick.Invoke();await Show(game);
                 check(game.modal=="choice","Explicit squad picker opens");
-                check(!ActiveButtons().First(b=>b.GetComponentInChildren<Text>().text.Contains("Hành quân")).interactable,"Modal blocks background controls");
+                check(!ActiveButtons().First(b=>b.GetComponentInChildren<Text>().text=="‹").interactable,"Modal blocks background controls");
                 Click("Để trống vị trí");await Show(game);check(game.modal==""&&game.profile.squad[0]=="","Picker applies selected squad member");
                 game.page="town";
                 foreach(string tab in new[]{"summon","shop","arena"}) {game.tab=tab;await Show(game);check(ActiveButtons().Length>=10,"Town renders: "+tab);}
@@ -100,7 +101,7 @@ namespace CatTanks.Editor
                 for(int i=0;i<5;i++)await Show(game);
                 check(game.CanvasRoot.GetComponentsInChildren<RectTransform>(true).Length==before,"Repeated refresh reuses authored widgets");
                 game.StartBattle();await Show(game);check(game.inBattle&&ActiveButtons().Any(b=>b.GetComponentInChildren<Text>().text.Contains("BÁCH KHOA")),"Battle HUD renders");
-                game.paused=true;await Show(game);Click("Tiếp tục");await Show(game);check(!game.paused,"Pause overlay resumes gameplay");
+                game.paused=true;await Show(game);Click("TIẾP TỤC");await Show(game);check(!game.paused,"Pause overlay resumes gameplay");
                 game.paused=true;await Show(game);Click("Rút lui");await Show(game);check(!game.inBattle,"Retreat returns to hub");
                 File.WriteAllText("Logs/ui-smoke-validation.json",JsonConvert.SerializeObject(new{verdict="PASS",count=checks.Count,checks},Formatting.Indented));
                 Debug.Log("CATTANKS_UI_SMOKE_PASS: "+checks.Count+" checks");

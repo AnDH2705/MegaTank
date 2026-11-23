@@ -53,7 +53,7 @@ namespace CatTanks.Editor
                     string[] pages={"march","barracks","barracks","barracks","barracks","barracks","barracks","barracks","barracks","town","town","town","chest","quests"};
                     string[] tabs={"cats","cats","fortress","squad","skills","monsters","gear","presets","nexus","summon","shop","arena","cats","cats"};
                     for(int i=0;i<pages.Length;i++){game.page=pages[i];game.tab=tabs[i];game.modal="";await Show(game);}
-                    game.modal="settings";await Show(game);game.modal="prebattle";await Show(game);
+                    game.modal="settings";await Show(game);game.modal="prebattle";await Show(game);game.modal="map";await Show(game);
                     game.modal="book";
                     for(int i=0;i<5;i++){game.bookTab=i;await Show(game);}
                     typeof(CatTanksGame).GetMethod("Pick",Private).Invoke(game,new object[]{"Chọn đồng đội",game.db.cats.Select(c=>c.name).Concat(new[]{"Để trống vị trí"}),new Action<int>(i=>{})});await Show(game);
@@ -106,7 +106,7 @@ namespace CatTanks.Editor
             foreach(var item in paths)
             {
                 var prefab=AssetDatabase.LoadAssetAtPath<GameObject>(item.path);var instance=(GameObject)PrefabUtility.InstantiatePrefab(prefab,item.layer=="popup"?config.popups:item.layer=="notification"?config.notifications:config.screens);
-                instance.SetActive(item.key=="march");
+                instance.SetActive(item.key=="home");
             }
             config.components=componentPaths.ToArray();PrefabUtility.SaveAsPrefabAsset(root,Root+"/CatTanksUI.prefab");UnityEngine.Object.DestroyImmediate(root);AssetDatabase.SaveAssets();
         }

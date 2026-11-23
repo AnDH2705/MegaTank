@@ -55,7 +55,7 @@ namespace CatTanks.Editor
                 Check(!PreviewIsolation.IsActive,"Live UI does not activate preview isolation");
                 await Show(game);
                 Check(game.CanvasRoot.mockupKit&&game.CanvasRoot.theme,"Mockup Kit is the active game Canvas/theme");
-                Check(game.CanvasRoot.GetComponentsInChildren<StudioUIView>(true).Count(v=>v.layer=="popup")==6,"Six independent popup prefab instances are loaded");
+                Check(game.CanvasRoot.GetComponentsInChildren<StudioUIView>(true).Count(v=>v.layer=="popup"&&v.key!="map")==6,"Six independent popup prefab instances are loaded");
                 Check(game.CanvasRoot.GetComponentsInChildren<Image>(true).Where(i=>i.sprite).All(i=>!AssetDatabase.GetAssetPath(i.sprite).Contains("Layer Lab")),"Live Canvas uses Mockup Kit assets");
                 string smoke="Logs/ui-smoke-validation.json";if(File.Exists(smoke))File.Delete(smoke);
                 StudioUIValidation.Run();
@@ -68,10 +68,13 @@ namespace CatTanks.Editor
                 game.profile.Add("summonScroll",20);game.profile.Add("gem",10000);game.profile.Add("skillCore",50);
                 await Page(game,"march");
                 Check(Texts(game).Any(t=>t.text==game.profile.Get("coins").ToString("N0")),"Currency displays live profile values");
+                // Lưới 20 ải giờ nằm trong popup Bản đồ của màn chính.
+                game.modal="map";await Show(game);
                 var stageCards = game.CanvasRoot.GetComponentsInChildren<StudioButtonLayout>()
                     .Where(l => l.content == StudioButtonLayout.Content.Stage).ToArray();
                 Check(stageCards.Length == 20 && stageCards.All(l => l.icon.sprite && !l.icon.raycastTarget),
                     "All stage buttons have interactive artwork");
+                game.modal="";await Show(game);
                 game.profile.highestCleared = 0;
                 await Show(game);
                 var stageTwo = stageCards.Single(l => l.icon.sprite.name == "stage-02");
@@ -91,7 +94,7 @@ namespace CatTanks.Editor
                 Check(game.profile.cats[0].level==level+1&&game.profile.Get("coins")<gold,"Cat upgrade button changes level and charges actual cost");
                 await Page(game,"barracks","squad");Click(game,"Bộ binh 1:");await Show(game);
                 Check(game.modal=="choice","Squad slot opens the choice prefab");
-                Check(!Buttons(game).First(b=>Label(b).Contains("Hành quân")).interactable,"Choice popup blocks background navigation");
+                Check(!Buttons(game).First(b=>Label(b)=="‹").interactable,"Choice popup blocks background navigation");
                 Click(game,"Để trống vị trí");await Show(game);Check(game.profile.squad[0]==""&&game.modal=="","Picker changes the actual squad");
                 await Page(game,"barracks","skills");int cores=game.profile.Get("skillCore");ClickBinding(game,"button::295:534");await Show(game);
                 Check(game.profile.skillLevels["heal"]==2&&game.profile.Get("skillCore")==cores-1,"Skill upgrade uses the canonical skill and real core cost");
@@ -115,9 +118,9 @@ namespace CatTanks.Editor
                 await Page(game,"march");
                 string stageArt=$"stage-{game.profile.selected:00}";
                 Check(game.CanvasRoot.GetComponentsInChildren<Image>().Any(i=>i.sprite&&i.sprite.name==stageArt),"March shows the selected stage artwork");
-                Click(game,"CHUẨN BỊ XUẤT KÍCH");await Show(game);
+                Click(game,"XUẤT KÍCH");await Show(game);
                 Check(game.modal=="prebattle","Deploy action opens the prebattle prefab");
-                Check(game.CanvasRoot.GetComponentsInChildren<StudioWidgetBinding>().Any(b=>b.id=="image::956:162"&&b.GetComponent<Image>().sprite?.name==stageArt),"Prebattle uses the same stage artwork");
+                Check(game.CanvasRoot.GetComponentsInChildren<StudioWidgetBinding>().Any(b=>b.id=="image::246:174"&&b.GetComponent<Image>().sprite?.name==stageArt),"Prebattle uses the same stage artwork");
                 Click(game,"XUẤT KÍCH");await Show(game);
                 Check(game.inBattle&&game.battle.state==BattleState.Playing,"Deploy button starts actual combat");
                 var scenery=game.view.root.transform.Find("Mockup Kit Battle Background");
@@ -126,8 +129,8 @@ namespace CatTanks.Editor
                 game.battle.energy=600;ClickBinding(game,"button::330:742");await Show(game);
                 Check(game.battle.Cooldown(game.battle.skills[0].id)>0&&game.battle.energy<600,"HUD skill button consumes energy and starts cooldown");
                 game.paused=true;await Show(game);float clock=game.battle.time;await Task.Delay(120);
-                Check(game.battle.time==clock,"Pause popup stops simulation");Click(game,"Tiếp tục");await Show(game);Check(!game.paused,"Pause popup resumes combat");
-                game.paused=true;await Show(game);Click(game,"Rút lui về doanh trại");await Show(game);Check(!game.inBattle,"Retreat action returns to the real hub");
+                Check(game.battle.time==clock,"Pause popup stops simulation");Click(game,"TIẾP TỤC");await Show(game);Check(!game.paused,"Pause popup resumes combat");
+                game.paused=true;await Show(game);Click(game,"Rút lui");await Show(game);Check(!game.inBattle,"Retreat action returns to the real hub");
                 Check(MonsterAnimationValidation.CaptureCombatGallery()==20,"All 20 latest monster animations render through BattleView");
                 await CaptureGallery(game);
                 PerformanceRegression.Validate(game);
@@ -142,11 +145,11 @@ namespace CatTanks.Editor
         static async Task CaptureGallery(CatTanksGame game)
         {
             Directory.CreateDirectory("Captures/MockupGameUI");
-            foreach(string key in new[]{"march","barracks-cats","barracks-fortress","barracks-squad","barracks-skills","barracks-monsters","barracks-gear","barracks-presets","barracks-nexus","town-summon","town-shop","town-arena","chest","quests"})
+            foreach(string key in new[]{"home","barracks-cats","barracks-fortress","barracks-squad","barracks-skills","barracks-monsters","barracks-gear","barracks-presets","barracks-nexus","town-summon","town-shop","town-arena","chest","quests"})
             {
-                var parts=key.Split('-');await Page(game,parts[0],parts.Length>1?parts[1]:"cats");Capture(game,key);
+                var parts=key.Split('-');await Page(game,parts[0]=="home"?"march":parts[0],parts.Length>1?parts[1]:"cats");Capture(game,key);
             }
-            foreach(string key in new[]{"settings","book","prebattle"}){game.modal=key;await Show(game);Capture(game,key);}
+            foreach(string key in new[]{"settings","book","prebattle","map"}){game.modal=key;await Show(game);Capture(game,key);}
             await Page(game,"barracks","squad");Click(game,"Bộ binh 1:");await Show(game);Capture(game,"choice");
             game.modal="";game.StartBattle();game.enabled=false;game.battle.Spawn("bug-0",1000);game.battle.Step(.05f);game.view.Render(game.battle);
             await Show(game);Capture(game,"battle");game.paused=true;await Show(game);Capture(game,"pause");
