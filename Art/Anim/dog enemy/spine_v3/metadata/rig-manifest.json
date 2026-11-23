@@ -1,6 +1,6 @@
 {
   "character": "dog enemy villain",
-  "version": 2,
+  "version": 3,
   "method": "Fixed local joint positions. Only pelvis translates; torso/head/shoulders/elbows/wrists inherit full parent transform. Baton and grenade are children of near hand.",
   "parts": [
     {
@@ -824,6 +824,11 @@
       "name": "death",
       "duration": 1.3,
       "loop": false
+    },
+    {
+      "name": "throw_grenade_overhand",
+      "duration": 1.35,
+      "loop": false
     }
   ],
   "joint_anchors": {
@@ -854,5 +859,11 @@
     "hurt": 0,
     "death": 0.75
   },
-  "pelvis_rule": "far thigh < rounded pelvis with central groin < front thigh. Front thigh overlap cap is unoutlined."
+  "pelvis_rule": "far thigh < rounded pelvis with central groin < front thigh. Front thigh overlap cap is unoutlined.",
+  "events_by_clip": {
+    "throw_grenade_overhand": {
+      "grenade_release": 0.64,
+      "spawn_bone": "grenade_spawn"
+    }
+  }
 }

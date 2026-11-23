@@ -1,0 +1,33 @@
+ENEMY TRỰC THĂNG CHÓ BẮN MG — V1
+
+Hình dáng
+Trực thăng nhỏ, cabin tròn thấy một chó phi công, đuôi dài và cánh đuôi, cánh quạt chính phía trên, càng đáp phía dưới. Súng máy nhiều nòng gắn dưới mũi, chĩa chéo xuống phía trước như phác thảo người dùng. Art comic olive/cam gỉ đồng bộ bộ xe và nhân vật đang có.
+
+Hành vi đề xuất
+Tiếp cận trên không, giữ khoảng phía trước/trên tank, bắn thành loạt rồi dịch vị trí hoặc bay tiếp. Tái sử dụng hệ địch bay, phát hiện mục tiêu và MG projectile/hit của project. Đăng ký đúng nhóm địch bay trong wave; chỉ cộng kill và kết thúc wave một lần. Tái sử dụng quy tắc vũ khí nào bắn được địch trên không, không cho lính cận chiến đánh mục tiêu còn đang bay.
+
+Lắp part
+parts/ có 10 PNG RGBA, dùng 9 layer cơ khí khi bay. Cánh chính đang bay dùng 09_main_rotor_blur.png: texture tròn trong suốt được chiếu thành đĩa elip mờ. 08_main_rotor.png giữ làm tùy chọn cánh đứng/chậm, không hiển thị cùng đĩa blur trong demo. Các part còn lại là cabin sau, đuôi, cánh đuôi, càng đáp, trục cánh chính, ghế, cabin ngoài và súng MG. Thêm một chó phi công từ rig cũ; người nằm sau cabin ngoài, hiện qua cửa sổ alpha. Ghế/joystick ở sau người, bụng cabin che chân.
+
+metadata/parts_manifest.json ghi vị trí, kích thước lắp, pivot, thứ tự lớp, socket phi công và đầu nòng. Canvas gốc trên trái/Y xuống. Với hệ số đổi đơn vị u: localX = (pivotCanvasX − originX) × u; localY = (originY − pivotCanvasY) × u. origin_px là gốc cụm trên không, không phải điểm tiếp đất. pivot_normalized ĐÃ dùng quy ước Unity gốc dưới trái/Y lên; không đảo Y lần nữa. Áp dụng size_px của từng layer, kể cả tỷ lệ dọc riêng của cánh chính; không mặc định dùng kích thước PNG hoặc scale đều.
+
+Ảnh part native hướng phải, đuôi ở trái. Demo lật toàn bộ trực thăng thành enemy hướng trái. Flip root cùng phi công, muzzle socket và hướng projectile. Phi công draw order 40, cabin ngoài 50, MG 60, cánh chính 70. Giữ tỉ lệ chó nhất quán với bộ nhân vật; preview_scale chỉ là hệ số atlas demo, không phải world scale Unity.
+
+Animation
+• Bay: cả cụm nhấp nhô và nghiêng nhẹ, không làm các part rời khỏi khớp.
+• Cánh chính: dùng đĩa blur tròn chiếu thành elip, tâm khớp trên trục. Xoay texture tròn BÊN TRONG một parent ép dọc; giữ nguyên độ rộng/cao của elip và alpha dịu. Không co giãn chiều dài cánh theo cos, không xoay trực tiếp sprite elip thành chong chóng đứng. Trục/hub của 04_rotor_mast.png vẫn rõ và cố định tương đối với thân. Chi tiết ở ROTOR_BLUR_SETUP_VI.txt và rotors.main trong manifest.
+• Cánh đuôi: quay trong mặt phẳng ảnh quanh đúng tâm hub.
+• MG: xoay quanh hardpoint dưới mũi để chĩa xuống phía trước, bắn từng loạt. Tính đầu nòng sau cả gun rotation, body bank, bob và root flip. Tracer đã bắn ra bay độc lập, không kéo theo chuyển động thân trực thăng.
+• Muzzle flash ngắn tại đầu MG, tracer ngắn theo từng viên, khói nhẹ. Dùng lại VFX MG của project; không dùng lửa pháo/trail tên lửa và không rung camera mạnh liên tục theo từng viên MG.
+
+Nhân vật / VFX tái sử dụng
+Rig: MegaTank/Art/Anim/dog pilot/spine_v1. preview-assets/pilot_fly.png và pilot_fire.png là atlas sit_drive/sit_fire, có thông tin frame ở metadata/reused_pilot_clips.json. Chúng dùng để xem trước; dùng rig gốc nếu cần animation xương. VFX atlas Muzzle, Beam, Smoke, Glow và metadata kèm theo là asset hiện có.
+
+Bị phá hủy / loot
+Dùng hệ máu, nổ và thưởng của địch bay hiện tại. Khi bị hạ, tắt bắn, chạy hiệu ứng rơi/nổ theo hệ sẵn có. Loot sinh một lần, rơi xuống đường rồi neo vào mặt đường để trôi cùng BG/camera. Mảnh xác sau khi chạm đường cũng theo cùng quy tắc. Không tự sinh thêm chó lính từ trực thăng nếu chưa có thiết kế riêng.
+
+Bàn giao
+previews/: PNG lắp/bắn nền trong suốt, GIF trên nền sáng và trên map.
+preview.html: mở trực tiếp, chọn bay/bắn, kéo timeline, bật map/pivot.
+source/: phác thảo người dùng, ảnh tham khảo rotor, sheet gốc, texture blur gốc và các prompt built-in image_gen.
+Đây là bộ part/metadata và demo art, chưa phải prefab/controller Unity hoặc Spine rig mới. Không kèm bảng balance; timing và độ cao trong GIF chỉ minh họa.

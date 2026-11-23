@@ -1,0 +1,12 @@
+CÁNH CHÍNH — ĐĨA MỜ ELIP
+
+Art mới: parts/09_main_rotor_blur.png, texture TRÒN trên canvas vuông, pivot giữa ảnh. PNG có alpha; giữ nền trong suốt, dùng alpha blend thường. Không dùng Additive cho bóng mờ này. Thông tin lắp và opacity ở metadata/parts_manifest.json → rotors.main.
+
+Thứ tự transform cho Unity hoặc nếu lắp bằng bone trong Spine:
+body → rotor_anchor (tại đầu trục) → rotor_plane (ép dọc) → rotor_spin (quay) → ảnh tròn.
+
+rotor_anchor theo bob/bank/flip của thân. rotor_plane giữ nguyên tỷ lệ elip; rotor_spin xoay texture tròn quanh tâm. Hub/trục nằm ở nhánh thân, không theo spin hay bị ép dọc cùng texture. Cách này làm vệt bên trong xoay mà khung ngoài vẫn là một elip ngang. Nếu xoay trực tiếp ảnh đã ép thành elip, toàn bộ elip sẽ dựng đứng theo góc quay và sai phối cảnh.
+
+Không cần mesh/deform hoặc vẽ frame mới cho hiệu ứng đang bay này. Trong demo, transform và alpha đã đủ. Nếu dùng Spine, dựng chuỗi bone tương đương và kiểm tra kết quả squash/quay trong runtime; chưa có file rig Spine mới đi kèm bộ này.
+
+08_main_rotor.png là tùy chọn cánh đứng/chậm nếu sau này làm khởi động hoặc tắt động cơ. Demo bay/bắn chỉ hiện đĩa blur. Không vẽ đồng thời thanh cánh cũ ở opacity 100% trên đĩa mờ.
