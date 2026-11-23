@@ -568,15 +568,24 @@ namespace CatTanks
             if (id == "magnet") foreach (var orb in orbs) CollectOrb(orb);
             if(id!="freeze" && (!useWebEffects || (id != "barrage" && id != "shield" && id != "drone")))Effect("ring", new Vector2(playerX, 350), Vector2.zero, id == "heal" ? "#99ffc0" : "#69efff", 240, .7f, visual:id=="heal"?"heal":id=="shield"?"shield":"buff"); message = s.name; return true;
         }
+        internal bool CaptureEnabled => !classic && !arena;
+        internal static float CaptureHealthThreshold(bool boss) => boss ? .1f : .25f;
+        internal static bool IsWeakEnoughToCapture(Actor target)
+        {
+            float ratio = target.hp / target.maxHp;
+            float threshold = CaptureHealthThreshold(target.def.boss);
+            return target.def.boss ? ratio < threshold : ratio <= threshold;
+        }
+
         public bool Catch(bool moon)
         {
-            if (classic || arena || state != BattleState.Playing) return false;
+            if (!CaptureEnabled || state != BattleState.Playing) return false;
             var e = enemies.Find(v => v.id == targetId && !v.dead);
             if (e == null) {message = "Chọn mục tiêu trước khi ném lồng"; return false;}
             if (throwsUsed >= 5 || (moon ? moonCages : cages) <= 0) {message = "Hết lồng đã mang"; return false;}
             if (e.def.boss && !moon) {message = "Cần Lồng trăng"; return false;}
-            float ratio = e.hp / e.maxHp, threshold = e.def.boss ? .1f : .25f;
-            if (ratio > threshold || e.def.boss && ratio >= threshold) {message = e.def.boss ? "Trùm còn trên 10% máu" : "Cần giảm máu mục tiêu xuống 25%"; return false;}
+            if (!IsWeakEnoughToCapture(e)) {message = e.def.boss ? "Cần giảm HP của trùm xuống dưới 10%" : "Cần giảm máu mục tiêu xuống 25%"; return false;}
+            float ratio = e.hp / e.maxHp, threshold = CaptureHealthThreshold(e.def.boss);
             var entry = db.monsterBook.First(x => (string)x["speciesId"] == e.asset); string rarity = (string)entry["catchRarity"];
             float chance = e.def.boss ? .02f : db.B("monsters.capture.baseChance." + (moon ? "moonCage" : "beastCage") + "." + rarity);
             chance *= .45f + .55f * (threshold - ratio) / threshold;

@@ -44,7 +44,7 @@ namespace CatTanks
         StudioUITheme theme;
         Widget lastButton;
         string pendingButton,drawnContext="",renderViewKey="",uiContainer="",scrollContext="";
-        bool uiInputAllowed=true,renderingUi,dispatchOnly,authoringUi,reduceMotion,useCodeGeometry;
+        bool uiInputAllowed=true,renderingUi,dispatchOnly,authoringUi,reduceMotion,useCodeGeometry,drawingHubChrome;
         float nextUiRefresh;
         int lastScreenWidth,lastScreenHeight;
         Rect lastSafeArea;
@@ -188,7 +188,7 @@ namespace CatTanks
         string NormalizeTownTab(){if(tab!="summon"&&tab!="shop"&&tab!="arena")tab="summon";return tab;}
         void SelectView(string key,string layer)
         {
-            renderViewKey=key;uiContainer="";useCodeGeometry=false;if(dispatchOnly)return;
+            renderViewKey=key;uiContainer="";useCodeGeometry=false;drawingHubChrome=false;if(dispatchOnly)return;
             var view=studioRoot.Find(key);
 #if UNITY_EDITOR
             if(!view&&authoringUi)
@@ -386,7 +386,7 @@ namespace CatTanks
         bool UsesCatsArt => renderViewKey=="barracks-cats";
         bool UsesManagementArt => renderViewKey.StartsWith("barracks-",StringComparison.Ordinal)||
             renderViewKey.StartsWith("town-",StringComparison.Ordinal)||renderViewKey is "chest" or "quests";
-        bool UsesSharedArt => UsesManagementArt||renderViewKey is "battle" or "prebattle" or "result" or "settings" or "book" or "choice" or "pause";
+        bool UsesSharedArt => drawingHubChrome||UsesManagementArt||renderViewKey is "battle" or "prebattle" or "result" or "settings" or "book" or "choice" or "pause";
         Sprite MarchFrame(string name)=>UiArt("Interface/March/"+name);
         Sprite CatsFrame(string name)=>UiArt("Interface/Cats/"+name);
         static void MarchLettering(Text text,float width)

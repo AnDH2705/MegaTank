@@ -31,7 +31,7 @@ namespace CatTanks
         {
             Text(290, 228, 700, "Những người giữ pháo đài", title, 57);
             Art(290, 281, 29, 29, "item-catXp");
-            Text(327, 285, 1143, $"{profile.cats.Count}/10 mèo · {N(profile.Get("catXp"))} XP mèo · {profile.Get("soulEssence")} tinh chất · Mở thêm mèo tại Thành mèo / Triệu hồi", small);
+            Text(327, 285, 1143, $"{profile.cats.Count}/10 mèo · {N(profile.Get("catXp"))} XP mèo · {profile.Get("soulEssence")} tinh chất · Mở thêm mèo tại Thành mèo / {SummonTabLabel}", small);
             Surface(282, 322, 756, 410, new Color(.13f,.18f,.30f), catsFrame:"Roster");
             for (int i = 0; i < profile.cats.Count; i++)
             {

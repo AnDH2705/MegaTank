@@ -7,9 +7,10 @@ namespace CatTanks
 {
     public sealed partial class CatTanksGame
     {
+        const string SummonTabLabel = "Gọi đồng đội";
         void Town()
         {
-            string[] tabs={"summon","shop","arena"},names={"GỌI ĐỒNG ĐỘI","TIẾP TẾ","ĐẤU TRƯỜNG"};
+            string[] tabs={"summon","shop","arena"},names={SummonTabLabel.ToUpperInvariant(),"TIẾP TẾ","ĐẤU TRƯỜNG"};
             string[] icons={"item-summonScroll","item-afkChest","item-arenaToken"};
             if(!tabs.Contains(tab))tab="summon";
             for(int i=0;i<3;i++)if(TabButton(290+i*405,148,385,55,names[i],tab==tabs[i],icons[i])){tab=tabs[i];scroll=Vector2.zero;}
@@ -78,12 +79,12 @@ namespace CatTanks
             profile.RefreshDay();Text(290,165,1100,"Một ngày đầy chiến công",title,57);
             Text(292,220,1150,"Hoàn thành 5 nhiệm vụ để nhận rương ngày. Tiến độ làm mới theo ngày trên máy.",label);
             string[] ids={"idle","wins","upgrade","capture","pvp"},names={"Thu nhận chiến lợi phẩm AFK","Thắng 3 trận hành quân","Nâng cấp đồng đội hoặc pháo","Mở lồng hoặc bắt một quái","Tham gia một trận đấu trường"};
-            string[] icons={"Chest_Gold","Battle","Gear","Bag_Brown","Badge_Crown"};
+            string[] icons={"Chest_Gold","Battle","item-catXp","item-beastCage","Badge_Crown"};
             for(int i=0;i<5;i++)
             {
                 float y=284+i*86;int need=i==1?3:1,n=profile.daily.TryGetValue(ids[i],out int v)?v:0;
                 bool claimed=profile.claimed.Contains(ids[i]),ready=n>=need&&!claimed;
-                Surface(282,y,1266,76,Color.white,catsFrame:ready?"Roster":"Detail");Icon(307,y+12,50,icons[i]);
+                Surface(282,y,1266,76,Color.white,catsFrame:ready?"Roster":"Detail");Art(307,y+12,50,50,icons[i]);
                 Text(377,y+8,775,names[i],subtitle);Text(377,y+43,775,$"{Mathf.Min(n,need)}/{need}    •    40 xu + 10 XP mèo",small,25);
                 if(Button(1190,y+12,332,52,claimed?"ĐÃ NHẬN":ready?"NHẬN THƯỞNG":"ĐANG THỰC HIỆN",ready,ready))
                 {profile.claimed.Add(ids[i]);profile.Add("coins",40);profile.Add("catXp",10);Changed("Đã nhận thưởng nhiệm vụ");}

@@ -13,7 +13,7 @@ namespace CatTanks
             Panel(490,19,620,75,.97f);
             Text(514,27,572,battle.classic?$"THỬ THÁCH • ĐỢT {battle.wave+1}/6":battle.arena?"ĐẤU TRƯỜNG • MÔ PHỎNG":$"ẢI {battle.stage.index} • {battle.stage.name}",subtitle);
             Text(514,61,572,$"{Mathf.FloorToInt(battle.time/60):00}:{Mathf.FloorToInt(battle.time%60):00}   •   {battle.spawned}/{battle.waves[battle.wave].count} đã xuất hiện",small,25);
-            if(IllustratedButton(1212,27,198,56,"BÁCH KHOA","Book_1_Purple",normalSpriteKey:"blue"))modal="book";
+            if(IllustratedButton(1212,27,198,56,"BÁCH KHOA","Book_1_Purple",normalSpriteKey:"blue"))ToggleBook();
             if(IllustratedButton(1422,27,154,56,muted?"Âm: Tắt":"Âm: Bật","UI/music",normalSpriteKey:"blue"))ToggleSound();
             Panel(24,106,496,65,.96f);Text(42,111,460,$"PHÁO ĐÀI   {N(battle.hp)} / {N(battle.maxHp)} HP",small,26);
             Bar(42,142,460,15,battle.hp/battle.maxHp,C("#81e65a"));
@@ -33,7 +33,7 @@ namespace CatTanks
                 Text(x+10,789,117,skill.name,hudText,38);
                 Text(x+10,828,117,cd>0?Mathf.CeilToInt(cd)+"s hồi":skill.cost+" NL",hudMeta,26);
             }
-            if(!battle.classic&&!battle.arena)
+            if(battle.CaptureEnabled)
             {
                 if(IllustratedButton(1250,744,145,108,$"Lồng thú ×{battle.cages}\n[C]","item-beastCage",
                     !paused&&battle.cages>0,content:StudioButtonLayout.Content.Tile))battle.Catch(false);
@@ -44,7 +44,7 @@ namespace CatTanks
             if(target!=null)
             {
                 Panel(550,111,500,61,.95f);Text(570,116,460,target.def.name+" • "+(target.hp/target.maxHp).ToString("P0")+" HP",label,27);
-                Text(570,141,460,target.hp/target.maxHp<=.25f?"Đã đủ yếu để bắt! Nhấn C.":"Làm yếu xuống dưới 25% HP để bắt.",small,25);
+                if(battle.CaptureEnabled)Text(570,141,460,CaptureHint(target),small,25);
             }
             int floating=0;
             foreach(var fx in battle.effects)
@@ -53,7 +53,18 @@ namespace CatTanks
                 var p=Camera.main.WorldToScreenPoint(fx.position+Vector2.up*(1-fx.life/fx.maxLife)*50);var ui=ToUI(new Vector2(p.x,Screen.height-p.y));
                 FloatingText(floating++,ui,fx);
             }
-            Text(37,875,1526,"A / D  Di chuyển     Chuột  Khóa mục tiêu     1–4  Kỹ năng     C  Bắt quái     P  Tạm dừng     B  Bách khoa",small,25);
+            string captureKeys=battle.CaptureEnabled?"     C / Shift+C  Bắt quái":"";
+            Text(37,875,1526,"A / D  Di chuyển     Chuột  Khóa mục tiêu     1–4  Kỹ năng"+captureKeys+"     P  Tạm dừng     B  Bách khoa",small,25);
+        }
+        string CaptureHint(Actor target)
+        {
+            bool boss=target.def.boss;
+            float threshold=Battle.CaptureHealthThreshold(boss);
+            if(!Battle.IsWeakEnoughToCapture(target))
+                return boss?$"Trùm: dưới {threshold:0%} HP, cần Lồng trăng.":$"Giảm HP còn {threshold:0%} hoặc thấp hơn để bắt.";
+            if(!boss&&battle.cages>0)return "Đủ điều kiện ném Lồng thú [C].";
+            if(battle.moonCages>0)return "Đủ điều kiện ném Lồng trăng [Shift+C].";
+            return boss?"Cần Lồng trăng để bắt trùm.":"Hết lồng đã mang.";
         }
         void PausePopup()
         {

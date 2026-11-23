@@ -77,15 +77,15 @@ namespace CatTanks
             if (UnityEngine.EventSystems.EventSystem.current && UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject && UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<UnityEngine.UI.InputField>() is UnityEngine.UI.InputField input && input.isFocused) return;
             if (Input.GetKeyDown(KeyCode.F)) Screen.fullScreen = !Screen.fullScreen;
             if (Input.GetKeyDown(KeyCode.Escape)) {if (!string.IsNullOrEmpty(modal)) modal = ""; else if (inBattle && !resolved) paused = !paused; else if (!inBattle) { page = "march"; tab = "cats"; }}
+            else if (Input.GetKeyDown(KeyCode.B)) ToggleBook();
             if (!inBattle) {view.Resize(); return;}
             bool spaceForPause = Input.GetKeyDown(KeyCode.Space) && !(UnityEngine.EventSystems.EventSystem.current && UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject);
             if ((Input.GetKeyDown(KeyCode.P) || spaceForPause) && !resolved && modal == "") paused = !paused;
-            if (Input.GetKeyDown(KeyCode.B)) modal = modal == "book" ? "" : "book";
             if (!paused && string.IsNullOrEmpty(modal) && battle.state == BattleState.Playing)
             {
                 battle.move = (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) ? 1 : 0) - (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) ? 1 : 0);
                 for (int i = 0; i < battle.skills.Count && i < 6; i++) if (Input.GetKeyDown((KeyCode)((int)KeyCode.Alpha1 + i))) battle.UseSkill(battle.skills[i].id);
-                if (Input.GetKeyDown(KeyCode.C)) battle.Catch(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift));
+                if (battle.CaptureEnabled && Input.GetKeyDown(KeyCode.C)) battle.Catch(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift));
                 if (Input.GetMouseButtonDown(0))
                 {
                     Vector2 mouse = Input.mousePosition; Vector2 ui = ToUI(new Vector2(mouse.x, Screen.height - mouse.y));
@@ -144,7 +144,7 @@ namespace CatTanks
                 Text(x+18, 550, 169, "Tầng " + (i + 1), small, 28);
             }
             int moonCages = Mathf.Min(5, profile.Get("moonCage")), beastCages = Mathf.Min(5 - moonCages, profile.Get("beastCage"));
-            Text(236, 619, 1120, $"Mang {beastCages} lồng thú · {moonCages} lồng trăng (tối đa 5). Quái dưới 25% HP mới bắt được.", small, 52);
+            Text(236, 619, 1120, $"Mang {beastCages} lồng thú · {moonCages} lồng trăng (tối đa 5).\nQuái thường: {Battle.CaptureHealthThreshold(false):0%} HP trở xuống. Trùm: dưới {Battle.CaptureHealthThreshold(true):0%} HP, dùng Lồng trăng (Shift+C).", small, 52);
             if (Button(236, 709, 216, 60, "Trở về")) modal = "";
             if (IllustratedButton(464, 709, 376, 60, "Chỉnh đội hình", "cat-0",normalSpriteKey:"blue")) {modal = ""; page = "barracks"; tab = "squad";}
             if (IllustratedButton(852, 709, 512, 60, "XUẤT KÍCH", "Battle", primary: true)) StartBattle();
@@ -181,10 +181,16 @@ namespace CatTanks
             Text(364, 582, 872, "Tiến trình lưu trên máy • Esc để đóng • Tab / Enter để điều hướng", small, 40);
             if (Button(364, 647, 872, 64, "LƯU & ĐÓNG", true, true)) {profile.Save(); modal = "";}
         }
+        void ToggleBook()
+        {
+            if (modal == "book") modal = "";
+            else if (modal == "" && (!inBattle || (!paused && !resolved))) modal = "book";
+        }
+
         void Book()
         {
             Panel(98, 70, 1404, 760); Text(134, 97, 1100, "Bách khoa trăng xanh", title, 57);
-            if (Button(1312, 95, 152, 52, "Đóng [B]")) modal = "";
+            if (Button(1312, 95, 152, 52, "Đóng [B]")) ToggleBook();
             string[] names = {"THÁP PHÁO", "VŨ KHÍ MÈO", "MODULE", "QUÁI VẬT", "MÈO"};
             string[] icons = {"turret-0", "gun-0", "pack-0", "bug-0", "cat-0"};
             for (int i = 0; i < 5; i++) if (TabButton(134 + i * 268, 165, 258, 54, names[i], bookTab == i, icons[i])) {bookTab = i; scroll = Vector2.zero;}
