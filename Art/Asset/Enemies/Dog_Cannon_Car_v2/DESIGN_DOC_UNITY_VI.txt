@@ -1,0 +1,30 @@
+ENEMY CHÓ LÁI XE PHÁO — DESIGN V2
+
+Hình dáng đã chốt theo hướng ảnh tham khảo
+Xe bọc thép ngắn, hai bánh nhìn thấy ở góc ngang. Cabin và chó lái nằm GIỮA hai trục bánh. Pháo gọn đặt trực tiếp trên nóc cabin, hướng qua đầu xe; bệ thấp, nòng trượt riêng khi recoil. Đầu xe ngắn, giáp olive/cam gỉ và nét viền comic đồng bộ bộ nhân vật hiện tại. Hai ảnh mẫu chỉ định hướng dáng xe; không dùng phong cách render 3D của ảnh mẫu.
+
+Tách part và lắp
+9 PNG RGBA trong parts/. Bánh và giảm xóc mỗi ảnh dùng hai lần, thành 11 instance cơ khí. Thêm đúng một dog jeep driver đã có trong project. Người lái nằm sau lớp cabin ngoài, hiện qua cửa sổ có alpha trong suốt. Ghế ở phía sau người, phần cửa che chân ngồi. Không đặt chó lên mui hay ra đầu/đuôi xe.
+
+metadata/parts_manifest.json ghi kích thước lắp, tọa độ, pivot và thứ tự lớp. Dùng size_px để scale từng part, không coi kích thước PNG là kích thước lắp. Canvas gốc trên trái, Y xuống; origin_px ở mặt đường. Sang Unity, với cùng hệ số đổi đơn vị u: localX = (pivotCanvasX − originX) × u; localY = (originY − pivotCanvasY) × u. pivot_normalized trong manifest ĐÃ là quy ước Unity, gốc dưới trái/Y lên; không đảo Y lần nữa.
+
+Ảnh part nguyên bản hướng phải. Preview lật toàn bộ cụm sang trái để làm địch. Khi flip root, hướng đạn và socket đầu nòng phải flip cùng xe. Người lái ở draw order 40, cabin ngoài 50, ghế 18. Giữ bánh ở root; thân, ghế, chó và bệ pháo theo hull. Căn quy mô xe theo tỷ lệ chó của project; preview_scale chỉ áp dụng atlas demo, không phải world scale Unity.
+
+Nhân vật
+Dùng lại rig MegaTank/Art/Anim/dog jeep driver/spine_v1. preview-assets/driver_drive.png là atlas pose lái dùng để xem trước; metadata/reused_driver_clips.json ghi chia frame. Đây không phải rig Spine mới.
+
+Gameplay / anim
+Dùng AI và projectile của xe địch đang có: tiến đến tầm pháo, dừng, ngắm/bắn, nạp, di chuyển tiếp. Bánh ngừng quay khi dừng. Bệ pháo áp sát nóc, gốc nòng chồng kín dưới breech trong cả recoil. Chỉ nòng lùi rồi trả lại; bệ không rời mái xe. Chó và thân phản ứng nhẹ theo phát bắn.
+
+Muzzle flash gắn tại đầu nòng và theo recoil, chạy ngắn mỗi phát. Khói sinh tại đầu nòng rồi tan. Viên đạn là vật thể riêng; không biến lửa đầu nòng thành trail. Rung camera một nhịp theo quy tắc VFX pháo hiện có. preview-assets/ có atlas VFX và đạn tái sử dụng cùng metadata.
+
+Dùng hệ máu, nổ, loot và xác của xe địch hiện tại. Kill/loot chỉ tính một lần. Xác và vật phẩm neo vào mặt đường, trôi cùng BG khi camera đi tiếp. Asset này có một chó lái; chỉ áp dụng thoát xe nếu hệ thống project đã quy định.
+
+Tệp bàn giao
+previews/assembled.png, cannon_fire.png: PNG lắp nền trong suốt.
+previews/dog-cannon-car-demo.gif: diễn hoạt trên nền sáng.
+previews/dog-cannon-car-on-map.gif: diễn hoạt trong bối cảnh game.
+preview.html: mở trực tiếp để xem chạy/bắn, kéo timeline và bật pivot.
+source/: sheet gốc, prompt tạo/cắt nền bằng built-in image_gen và hai ảnh tham khảo người dùng gửi.
+
+Đây là bộ art/metadata và demo lắp, chưa phải prefab/controller Unity. Không kèm bảng balance; timing GIF chỉ để minh họa chuyển động.

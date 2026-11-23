@@ -1,0 +1,38 @@
+{
+  "Muzzle": {
+    "key": "arcade_vfx_Muzzle",
+    "cols": 2,
+    "rows": 1,
+    "count": 2,
+    "fps": 30,
+    "blend": "Additive",
+    "file": "preview-assets/vfx_Muzzle.png"
+  },
+  "Smoke": {
+    "key": "arcade_vfx_Smoke",
+    "cols": 4,
+    "rows": 2,
+    "count": 8,
+    "fps": 12,
+    "blend": "Alpha",
+    "file": "preview-assets/vfx_Smoke.png"
+  },
+  "Glow": {
+    "key": "arcade_vfx_Glow",
+    "cols": 1,
+    "rows": 1,
+    "count": 1,
+    "fps": 1,
+    "blend": "Additive",
+    "file": "preview-assets/vfx_Glow.png"
+  },
+  "Hit": {
+    "key": "arcade_vfx_Hit",
+    "cols": 4,
+    "rows": 1,
+    "count": 4,
+    "fps": 30,
+    "blend": "Additive",
+    "file": "preview-assets/vfx_Hit.png"
+  }
+}

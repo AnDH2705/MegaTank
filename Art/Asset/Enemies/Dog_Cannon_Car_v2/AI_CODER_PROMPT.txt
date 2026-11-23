@@ -1,0 +1,9 @@
+Tích hợp enemy dog_cannon_car theo bộ art V2 này vào MegaTank. Đọc DESIGN_DOC_UNITY_VI.txt và metadata/parts_manifest.json, xem GIF trước.
+
+Xe bọc thép compact, CHÓ LÁI GIỮA hai bánh, PHÁO TRÊN NÓC cabin hướng về đầu xe. Lắp 9 PNG thành 11 instance cơ khí, dùng lại một rig dog jeep driver trong project. Giữ tỷ lệ nhân vật, scale xe theo người lái. Cửa sổ PNG là alpha để thấy chó phía sau lớp cabin.
+
+Áp dụng kích thước lắp, tọa độ canvas Y xuống, pivot và draw order của manifest. pivot_normalized đã theo Unity Y lên, đừng đảo hai lần. Native hướng phải, preview enemy lật trái; flip root cùng socket/hướng bắn.
+
+Dùng AI xe địch và projectile pháo hiện có: chạy vào tầm, dừng, bắn/nạp rồi đi tiếp. Bánh dừng khi xe đứng; bệ nằm sát nóc, chỉ nòng recoil. Muzzle flash gắn đầu nòng, viên đạn bay riêng không mang trail lửa này. Dùng hệ máu/nổ/loot/xác theo mặt đường đang có, không tính kill/loot hai lần. Một chó lái, không tự sinh nhóm lính mới.
+
+Tạo prefab/animation/controller theo repo hiện có. Kiểm tra alpha cửa sổ, tỷ lệ chó, khớp tay/ghế, vị trí bánh, seam gốc nòng và hướng bắn khi flip. HTML chỉ là demo; không đọc data URL base64 vào context. Không coi timing GIF là thông số balance. Bộ này chưa có prefab hoặc rig Spine mới.

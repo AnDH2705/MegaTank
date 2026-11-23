@@ -1,0 +1,68 @@
+{
+  "passed": true,
+  "parts": 9,
+  "driver_count": 1,
+  "states": [
+    {
+      "mode": "combined",
+      "time": 0,
+      "driver_count": 1,
+      "driving": true,
+      "shotAge": 99,
+      "muzzle": {
+        "x": 1176,
+        "y": 220
+      },
+      "recoil": 0,
+      "flash": false
+    },
+    {
+      "mode": "combined",
+      "time": 1.25,
+      "driver_count": 1,
+      "driving": false,
+      "shotAge": 0.050000000000000044,
+      "muzzle": {
+        "x": 1168.190092695884,
+        "y": 222.61944293578114
+      },
+      "recoil": 7.809907304116052,
+      "flash": true
+    },
+    {
+      "mode": "combined",
+      "time": 1.65,
+      "driver_count": 1,
+      "driving": false,
+      "shotAge": 0.44999999999999996,
+      "muzzle": {
+        "x": 1176,
+        "y": 220
+      },
+      "recoil": 0,
+      "flash": false
+    }
+  ],
+  "gif_exported": true,
+  "muzzle_flash_anchored_to_barrel": true,
+  "no_fire_trail": true,
+  "balance_parameters_included": false,
+  "page_errors": [],
+  "gif_metadata": [
+    {
+      "file": "dog-cannon-car-demo.gif",
+      "pages": 53,
+      "width": 800,
+      "height": 500,
+      "duration_ms": 4320
+    },
+    {
+      "file": "dog-cannon-car-on-map.gif",
+      "pages": 53,
+      "width": 800,
+      "height": 500,
+      "duration_ms": 4320
+    }
+  ],
+  "documentation_present": true
+}

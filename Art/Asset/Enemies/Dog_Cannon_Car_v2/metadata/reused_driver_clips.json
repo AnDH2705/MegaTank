@@ -1,0 +1,24 @@
+{
+  "source": "MegaTank/Art/Anim/dog jeep driver/spine_v1",
+  "clips": {
+    "drive": {
+      "key": "crew_dog_driver_drive",
+      "animation": "sit_drive",
+      "skin": "jeep",
+      "frames": 12,
+      "cols": 4,
+      "rows": 3,
+      "cell": [
+        240,
+        360
+      ],
+      "pivot": [
+        110,
+        252
+      ],
+      "duration": 1,
+      "worldScale": 0.5,
+      "file": "preview-assets/driver_drive.png"
+    }
+  }
+}
