@@ -1,0 +1,13 @@
+Hãy thêm enemy TrojanScrapCat vào project Unity hiện tại dựa trên
+DESIGN_DOC_UNITY_VI.txt và previews/trojan-cat-reveal-demo.gif.
+Không nạp base64 trong preview.html vào context; HTML chỉ để mở xem trực tiếp.
+
+Dùng PNG trong parts và metadata/parts_manifest.json để lắp SpriteRenderer,
+pivot và draw order. Giữ style và kích thước chó melee đã có của project.
+Tái sử dụng prefab chó hiện có; bọc một carrier chở đúng ba occupant, đến
+gần player thì hất ShellRoot và cho ba chó nhảy xuống ba vị trí riêng.
+TryRevealOnce phải chống gọi lặp từ proximity, damage và animation event.
+Wave chờ payload, loot không tính hai lần; vỏ bỏ lại trôi theo mặt đường.
+Không viết thêm một hệ combat/loot/wave độc lập nếu project đã có hệ đó.
+Không dùng GIF như animation runtime. Balance để Inspector/cấu hình hiện có,
+không xem các thời điểm trong demo HTML là số liệu gameplay đã chốt.

@@ -1,0 +1,525 @@
+{
+  "version": 1,
+  "enemy_id": "trojan_scrap_cat",
+  "canvas_px": [
+    1600,
+    1000
+  ],
+  "origin_px": [
+    800,
+    952
+  ],
+  "facing": "left",
+  "source": {
+    "tool": "built-in image_gen",
+    "sheet": "source/generated_parts_sheet.png",
+    "sha256": "86c4ed294e64ffd616e98a8011c96c00c267b884f10987f668325a4193569a84",
+    "reference": "source/user_sketch.png"
+  },
+  "parts": {
+    "06_outer_body": {
+      "file": "parts/06_outer_body.png",
+      "size_px": [
+        479,
+        305
+      ],
+      "source_rect": {
+        "left": 419,
+        "top": 122,
+        "width": 455,
+        "height": 281
+      },
+      "transparent_padding": 12,
+      "sha256": "802d6794ffa5efc1e5faca6fb8c69d083ef50d01f6733a1f34b071ae66ba01b8"
+    },
+    "05_cat_head": {
+      "file": "parts/05_cat_head.png",
+      "size_px": [
+        400,
+        414
+      ],
+      "source_rect": {
+        "left": 18,
+        "top": 32,
+        "width": 376,
+        "height": 390
+      },
+      "transparent_padding": 12,
+      "sha256": "d21205e0076fe86e924c51cd3e8f6e23a8c9c8362e653a1c911f0ea0b46a585d"
+    },
+    "07_belly_hatch": {
+      "file": "parts/07_belly_hatch.png",
+      "size_px": [
+        448,
+        284
+      ],
+      "source_rect": {
+        "left": 428,
+        "top": 906,
+        "width": 424,
+        "height": 260
+      },
+      "transparent_padding": 12,
+      "sha256": "1b706dbd2ccfb7b33123aad8f33e87c70aee9be922bb71216b9678bf45616164"
+    },
+    "00_inner_wall": {
+      "file": "parts/00_inner_wall.png",
+      "size_px": [
+        420,
+        261
+      ],
+      "source_rect": {
+        "left": 11,
+        "top": 545,
+        "width": 396,
+        "height": 237
+      },
+      "transparent_padding": 12,
+      "sha256": "41b74b7566e7fbfe347ad863337f5b24c48ca7db6ec6aebfd69c6bb5ae060945"
+    },
+    "02_wheel": {
+      "file": "parts/02_wheel.png",
+      "size_px": [
+        332,
+        342
+      ],
+      "source_rect": {
+        "left": 56,
+        "top": 894,
+        "width": 308,
+        "height": 318
+      },
+      "transparent_padding": 12,
+      "sha256": "e7621ed50b2a553b51a09302c616985ffa4ae5dad554babf09d56eee191c0fd0"
+    },
+    "04_cat_tail": {
+      "file": "parts/04_cat_tail.png",
+      "size_px": [
+        303,
+        432
+      ],
+      "source_rect": {
+        "left": 940,
+        "top": 34,
+        "width": 279,
+        "height": 408
+      },
+      "transparent_padding": 12,
+      "sha256": "b9fa578161b0e578298e125e24872944cd77a74988a2e3ffaf31f00df4eaba91"
+    },
+    "01_leg_strut": {
+      "file": "parts/01_leg_strut.png",
+      "size_px": [
+        230,
+        362
+      ],
+      "source_rect": {
+        "left": 962,
+        "top": 489,
+        "width": 206,
+        "height": 338
+      },
+      "transparent_padding": 12,
+      "sha256": "501b7a2f94da61b0e2c21ee5c3dbe6aaaecdeaccd963c88c70fddaae0365927b"
+    },
+    "08_scrap_fragment": {
+      "file": "parts/08_scrap_fragment.png",
+      "size_px": [
+        345,
+        247
+      ],
+      "source_rect": {
+        "left": 892,
+        "top": 926,
+        "width": 321,
+        "height": 223
+      },
+      "transparent_padding": 12,
+      "sha256": "f051b4276088ce994c9f9390970b7604d973b4e679277725e65bc46b0ab4fa93"
+    },
+    "03_chassis": {
+      "file": "parts/03_chassis.png",
+      "size_px": [
+        496,
+        152
+      ],
+      "source_rect": {
+        "left": 414,
+        "top": 615,
+        "width": 472,
+        "height": 128
+      },
+      "transparent_padding": 12,
+      "sha256": "5674ecaf513b7b5c9265c20beddc4633c9de189fd195d8a0bcf5c145b2df9409"
+    }
+  },
+  "layers": [
+    {
+      "id": "tail",
+      "part": "04_cat_tail",
+      "file": "parts/04_cat_tail.png",
+      "position_px": [
+        950,
+        210
+      ],
+      "size_px": [
+        230,
+        327.9207920792079
+      ],
+      "pivot_canvas_px": [
+        996,
+        505.1287128712871
+      ],
+      "pivot_normalized": [
+        0.2,
+        0.09999999999999998
+      ],
+      "z_order": 5,
+      "parent": "shell_root"
+    },
+    {
+      "id": "inner_wall",
+      "part": "00_inner_wall",
+      "file": "parts/00_inner_wall.png",
+      "position_px": [
+        430,
+        380
+      ],
+      "size_px": [
+        610,
+        379.07142857142856
+      ],
+      "pivot_canvas_px": [
+        735,
+        569.5357142857142
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "z_order": 10,
+      "parent": "root"
+    },
+    {
+      "id": "leg_0",
+      "part": "01_leg_strut",
+      "file": "parts/01_leg_strut.png",
+      "position_px": [
+        384.50276243093924,
+        804.84
+      ],
+      "size_px": [
+        60.994475138121544,
+        96
+      ],
+      "pivot_canvas_px": [
+        415,
+        852.84
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "z_order": 20,
+      "parent": "root"
+    },
+    {
+      "id": "leg_1",
+      "part": "01_leg_strut",
+      "file": "parts/01_leg_strut.png",
+      "position_px": [
+        563.5027624309392,
+        804.84
+      ],
+      "size_px": [
+        60.994475138121544,
+        96
+      ],
+      "pivot_canvas_px": [
+        594,
+        852.84
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "z_order": 20,
+      "parent": "root"
+    },
+    {
+      "id": "leg_2",
+      "part": "01_leg_strut",
+      "file": "parts/01_leg_strut.png",
+      "position_px": [
+        739.5027624309392,
+        804.84
+      ],
+      "size_px": [
+        60.994475138121544,
+        96
+      ],
+      "pivot_canvas_px": [
+        770,
+        852.84
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "z_order": 20,
+      "parent": "root"
+    },
+    {
+      "id": "leg_3",
+      "part": "01_leg_strut",
+      "file": "parts/01_leg_strut.png",
+      "position_px": [
+        908.5027624309392,
+        804.84
+      ],
+      "size_px": [
+        60.994475138121544,
+        96
+      ],
+      "pivot_canvas_px": [
+        939,
+        852.84
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "z_order": 20,
+      "parent": "root"
+    },
+    {
+      "id": "chassis",
+      "part": "03_chassis",
+      "file": "parts/03_chassis.png",
+      "position_px": [
+        300,
+        650
+      ],
+      "size_px": [
+        760,
+        232.90322580645162
+      ],
+      "pivot_canvas_px": [
+        680,
+        766.4516129032259
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "z_order": 30,
+      "parent": "root"
+    },
+    {
+      "id": "wheel_0",
+      "part": "02_wheel",
+      "file": "parts/02_wheel.png",
+      "position_px": [
+        343,
+        810.8313253012049
+      ],
+      "size_px": [
+        144,
+        148.33734939759037
+      ],
+      "pivot_canvas_px": [
+        415,
+        885
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "z_order": 35,
+      "parent": "root"
+    },
+    {
+      "id": "wheel_1",
+      "part": "02_wheel",
+      "file": "parts/02_wheel.png",
+      "position_px": [
+        522,
+        810.8313253012049
+      ],
+      "size_px": [
+        144,
+        148.33734939759037
+      ],
+      "pivot_canvas_px": [
+        594,
+        885
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "z_order": 35,
+      "parent": "root"
+    },
+    {
+      "id": "wheel_2",
+      "part": "02_wheel",
+      "file": "parts/02_wheel.png",
+      "position_px": [
+        698,
+        810.8313253012049
+      ],
+      "size_px": [
+        144,
+        148.33734939759037
+      ],
+      "pivot_canvas_px": [
+        770,
+        885
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "z_order": 35,
+      "parent": "root"
+    },
+    {
+      "id": "wheel_3",
+      "part": "02_wheel",
+      "file": "parts/02_wheel.png",
+      "position_px": [
+        867,
+        810.8313253012049
+      ],
+      "size_px": [
+        144,
+        148.33734939759037
+      ],
+      "pivot_canvas_px": [
+        939,
+        885
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "z_order": 35,
+      "parent": "root"
+    },
+    {
+      "id": "outer_body",
+      "part": "06_outer_body",
+      "file": "parts/06_outer_body.png",
+      "position_px": [
+        410,
+        360
+      ],
+      "size_px": [
+        640,
+        407.51565762004174
+      ],
+      "pivot_canvas_px": [
+        730,
+        384.4509394572025
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.94
+      ],
+      "z_order": 50,
+      "parent": "shell_root"
+    },
+    {
+      "id": "head",
+      "part": "05_cat_head",
+      "file": "parts/05_cat_head.png",
+      "position_px": [
+        120,
+        200
+      ],
+      "size_px": [
+        420,
+        434.7
+      ],
+      "pivot_canvas_px": [
+        477,
+        547.76
+      ],
+      "pivot_normalized": [
+        0.85,
+        0.19999999999999996
+      ],
+      "z_order": 55,
+      "parent": "shell_root"
+    }
+  ],
+  "shell_root": {
+    "pivot_px": [
+      710,
+      570
+    ],
+    "members": [
+      "tail",
+      "outer_body",
+      "head"
+    ]
+  },
+  "dog_sockets": [
+    {
+      "id": "dog_A",
+      "position_px": [
+        520,
+        840
+      ],
+      "depth": 0
+    },
+    {
+      "id": "dog_B",
+      "position_px": [
+        650,
+        840
+      ],
+      "depth": 1
+    },
+    {
+      "id": "dog_C",
+      "position_px": [
+        780,
+        840
+      ],
+      "depth": 2
+    }
+  ],
+  "feet_aperture_px": [
+    410,
+    775,
+    620,
+    70
+  ],
+  "landing_points": [
+    {
+      "id": "land_A",
+      "position_px": [
+        120,
+        920
+      ]
+    },
+    {
+      "id": "land_B",
+      "position_px": [
+        310,
+        955
+      ]
+    },
+    {
+      "id": "land_C",
+      "position_px": [
+        500,
+        990
+      ]
+    }
+  ],
+  "dog_source_project_path": "MegaTank/Art/Anim/dog enemy/spine_v3",
+  "balance_parameters_included": false
+}

@@ -1,0 +1,88 @@
+MEGATANK — ENEMY: MÈO GỖ THÀNH TROY
+Art và behavior brief để đưa cho AI coder. Không chốt thông số balance.
+
+Ý TƯỞNG
+Một chiếc xe gỗ–scrap giả làm mèo, chở đúng ba chó melee đã có trong project.
+Thân và gầm gọn, ba chó đứng sát/đè lớp trong khoang là chủ đích; không kéo
+dài thân để tách riêng từng chó. Giữ kích thước chó và đầu mèo.
+Vỏ thùng bia gỗ, mặt mèo ngố, tai nhọn, đuôi gỗ và bánh nhỏ. Chân chó thò
+ra dưới bụng để gợi ý đây là một màn ngụy trang. Giữ phong cách 2D comic.
+
+LUỒNG CHÍNH
+DisguisedApproach -> Tell -> ShellClear -> DeployDogs -> EmptyWreck
+Xe tiến về phía player, bánh lăn và chân chó nhúc nhích dưới vỏ. Khi vào
+vùng áp sát/cận chiến đang có của game, dừng xe, cho vỏ rung ngắn rồi hất
+cả đầu + thân + đuôi mèo lên phía sau. Ba chó nhảy ra hơi lệch nhịp, đáp ở
+ba vị trí riêng và chuyển sang AI melee hiện có. Không xếp chồng điểm đáp.
+Chó giữ kích thước của prefab chó hiện tại; chỉnh vỏ để đủ chỗ chứa chúng.
+
+BIẾN THỂ
+ReleaseMode = ShellThrow là mặc định, như GIF trojan-cat-reveal-demo.gif.
+ReleaseMode = SideOpen dùng pivot trên mép vỏ hông để mở tấm thân, giữ đầu
+và đuôi trên khung. Chỉ chọn một kiểu release cho một instance.
+Part 07_belly_hatch là nắp phụ tùy chọn, không bắt buộc lắp trong skin chính.
+
+CHÓ BÊN TRONG
+Dùng lại dog enemy/spine_v3 của project: walk, melee_attack, hurt và death.
+Ba occupant có ID A/B/C cố định theo metadata/parts_manifest.json.
+Trong vỏ: AI và hurtbox của chó chưa hoạt động; chỉ phần chân được nhìn
+thấy qua khoảng hở dưới vỏ. Có thể dùng mask/occlusion, không bake chân
+chó vào PNG vỏ. Khi shell đã rời đủ chỗ, chạy jump_out cho từng occupant.
+Chó chỉ bắt đầu đi/đánh sau khi chân chạm đất. Sau đó carrier không điều
+khiển AI, máu, bị đánh hoặc chết của ba chó nữa.
+
+UNITY HIERARCHY GỢI Ý
+TrojanCarrierRoot
+  CoreRoot: inner_wall, chassis, bốn chân đỡ, bốn wheel pivot
+  ShellRoot: outer_body, cat_head, cat_tail
+  OccupantSockets: dog_A, dog_B, dog_C
+  LandingPoints: land_A, land_B, land_C
+  Trigger / carrier collider
+Chuyển chó ra khỏi CarrierRoot khi nhảy, giữ world transform. Không để
+scale/rotation của vỏ bay kéo theo chó. Collider vỏ tắt khi mở để không
+chặn chó vừa thoát ra. Toàn bộ hướng đi có thể lật ngang qua một root.
+
+LẮP PART
+Đọc metadata/parts_manifest.json để lấy vị trí, size, pivot, parent và draw
+order. Tọa độ manifest là pixel góc trái trên; Unity cần đổi trục Y.
+PNG có padding trong suốt, không tự trim rồi bỏ qua offset.
+Một ảnh wheel dùng cho bốn bánh, pivot đúng tâm; một strut dùng bốn lần.
+Inner wall nằm sau chó; chassis và bánh ở dưới; side cover và đầu che phía
+trước. Giữ artwork kín ở các mép chồng nhau khi xoay/mở.
+Đây là PNG part rời và manifest lắp part, chưa phải prefab hay rig Spine
+đã import vào Unity. GIF là minh họa chuyển động, không dùng làm sprite sheet.
+
+HOOK CHO CODE
+TryRevealOnce(reason) là cổng chung cho proximity và carrier bị phá trước
+khi áp sát. Gắn guard revealStarted trước khi chạy animation hay callback.
+OnShellClear: giải phóng đúng ba occupant còn sống, đăng ký chúng vào wave.
+OnDogLanded(A/B/C): bật AI/hurtbox/collision phù hợp của chó đó.
+OnCarrierBroken trước reveal: vẫn đi qua TryRevealOnce, không làm mất payload.
+Không spawn thêm ba chó trong cả trigger lẫn AnimationEvent. Nếu tạo sẵn
+ba child dormant thì chỉ activate/reparent, không instantiate lần thứ hai.
+Pooling/despawn do dọn màn không được tự kích hoạt reveal trong OnDisable.
+
+WAVE, LOOT VÀ VỎ BỎ LẠI
+Wave vẫn chờ ba chó, không kết thúc ngay lúc vỏ bị hất đi. Đăng ký payload
+trước khi bỏ carrier khỏi danh sách active để tránh một frame trống quái.
+Vỏ, khung và mảnh gỗ sau reveal là cosmetic wreck; dùng cơ chế bám mặt
+đường/trôi cùng BG và dọn xác đang có. Không tính chúng thành quái sống.
+Mặc định phần thưởng nằm ở ba chó theo luật loot hiện có; không cộng
+thưởng ba chó lần nữa chỉ vì carrier đã mở. Balance do coder/designer cân lại.
+
+CHECKLIST NGHIỆM THU
+- Vỏ kín che đầu/thân chó, chỉ ló chân; bánh quay quanh tâm.
+- Trigger và phá vỏ cùng lúc vẫn chỉ có đúng ba chó, không lặp release.
+- Cả ba đáp ở vị trí khác nhau, giữ size prefab, không bị kéo theo ShellRoot.
+- Chó dùng đủ walk/attack/hurt/death; wave chưa clear khi chúng còn sống.
+- Vỏ nằm sau trận đánh và trôi đúng với mặt đường, không dính camera.
+- ShellThrow và SideOpen cùng dùng bộ part, không cần vẽ lại chó.
+
+FILE THAM CHIẾU
+previews/trojan-cat-reveal-demo.gif: bản lắp thử được yêu cầu.
+previews/assembled_closed.png: silhouette đóng vỏ.
+previews/inside_three_dogs.png: đối chiếu ba occupant.
+preview.html: xem vỏ đóng, bên trong, hất vỏ hoặc mở hông, có timeline/pivot.
+source/imagegen_prompt.txt: prompt vẽ bằng imagegen tích hợp.
+preview-assets/dog_*.png chỉ phục vụ preview từ bộ chó đã duyệt; khi làm
+Unity ưu tiên dùng prefab/Spine chó của project, không thay bằng GIF.

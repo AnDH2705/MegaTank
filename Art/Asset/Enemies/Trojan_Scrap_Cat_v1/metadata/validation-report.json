@@ -1,0 +1,136 @@
+{
+  "passed": true,
+  "parts": 9,
+  "occupants": 3,
+  "states": [
+    {
+      "mode": "closed",
+      "time": 0.25,
+      "dogs": [
+        {
+          "id": "dog_A",
+          "x": 520,
+          "y": 840,
+          "phase": "hidden"
+        },
+        {
+          "id": "dog_B",
+          "x": 650,
+          "y": 840,
+          "phase": "hidden"
+        },
+        {
+          "id": "dog_C",
+          "x": 780,
+          "y": 840,
+          "phase": "hidden"
+        }
+      ],
+      "visibleDogCount": 0
+    },
+    {
+      "mode": "cutaway",
+      "time": 0,
+      "dogs": [
+        {
+          "id": "dog_A",
+          "x": 520,
+          "y": 840,
+          "phase": "inside"
+        },
+        {
+          "id": "dog_B",
+          "x": 650,
+          "y": 840,
+          "phase": "inside"
+        },
+        {
+          "id": "dog_C",
+          "x": 780,
+          "y": 840,
+          "phase": "inside"
+        }
+      ],
+      "visibleDogCount": 3
+    },
+    {
+      "mode": "shell",
+      "time": 1.25,
+      "dogs": [
+        {
+          "id": "dog_A",
+          "x": 120,
+          "y": 920,
+          "phase": "melee"
+        },
+        {
+          "id": "dog_B",
+          "x": 310,
+          "y": 955,
+          "phase": "melee"
+        },
+        {
+          "id": "dog_C",
+          "x": 556,
+          "y": 848,
+          "phase": "jump"
+        }
+      ],
+      "visibleDogCount": 3
+    },
+    {
+      "mode": "shell",
+      "time": 2.1,
+      "dogs": [
+        {
+          "id": "dog_A",
+          "x": 120,
+          "y": 920,
+          "phase": "melee"
+        },
+        {
+          "id": "dog_B",
+          "x": 310,
+          "y": 955,
+          "phase": "melee"
+        },
+        {
+          "id": "dog_C",
+          "x": 500,
+          "y": 990,
+          "phase": "melee"
+        }
+      ],
+      "visibleDogCount": 3
+    },
+    {
+      "mode": "hatch",
+      "time": 1.1,
+      "dogs": [
+        {
+          "id": "dog_A",
+          "x": 286.1538461538461,
+          "y": 716.7810650887575,
+          "phase": "jump"
+        },
+        {
+          "id": "dog_B",
+          "x": 524.4615384615385,
+          "y": 719.4319526627219,
+          "phase": "jump"
+        },
+        {
+          "id": "dog_C",
+          "x": 736.9230769230769,
+          "y": 771.9526627218935,
+          "phase": "jump"
+        }
+      ],
+      "visibleDogCount": 3
+    }
+  ],
+  "page_errors": [],
+  "source_generated_with": "built-in image_gen",
+  "part_pngs_have_alpha": true,
+  "balance_parameters_included": false
+}

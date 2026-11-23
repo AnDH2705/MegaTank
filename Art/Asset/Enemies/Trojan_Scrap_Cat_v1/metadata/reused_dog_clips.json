@@ -1,0 +1,100 @@
+{
+  "source": "Existing approved dog-enemy-v3 Spine export",
+  "clips": {
+    "idle": {
+      "key": "crew_dog_idle",
+      "animation": "idle",
+      "skin": "dog",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.4,
+      "worldScale": 0.4,
+      "file": "preview-assets/dog_idle.png"
+    },
+    "walk": {
+      "key": "crew_dog_walk",
+      "animation": "walk",
+      "skin": "dog",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.1,
+      "worldScale": 0.4,
+      "file": "preview-assets/dog_walk.png"
+    },
+    "attack": {
+      "key": "crew_dog_attack",
+      "animation": "melee_attack",
+      "skin": "dog",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 0.95,
+      "worldScale": 0.4,
+      "file": "preview-assets/dog_attack.png"
+    },
+    "hurt": {
+      "key": "crew_dog_hurt",
+      "animation": "hurt",
+      "skin": "dog",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 0.44,
+      "worldScale": 0.4,
+      "file": "preview-assets/dog_hurt.png"
+    },
+    "death": {
+      "key": "crew_dog_death",
+      "animation": "death",
+      "skin": "dog",
+      "frames": 18,
+      "cols": 6,
+      "rows": 3,
+      "cell": [
+        320,
+        304
+      ],
+      "pivot": [
+        136,
+        288
+      ],
+      "duration": 1.3,
+      "worldScale": 0.4,
+      "file": "preview-assets/dog_death.png"
+    }
+  }
+}
