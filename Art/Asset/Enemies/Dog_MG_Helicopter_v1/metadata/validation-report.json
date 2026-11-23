@@ -1,6 +1,7 @@
 {
   "passed": true,
-  "parts": 9,
+  "parts": 10,
+  "active_layers": 9,
   "pilot_count": 1,
   "states": [
     {
@@ -11,7 +12,16 @@
       "flash": false,
       "shot_age": 99,
       "tracers": 0,
-      "main_rotor_scale": 1,
+      "main_rotor_mode": "blur_disc",
+      "main_rotor_phase": 0,
+      "main_rotor_size": [
+        1120,
+        184.8
+      ],
+      "main_rotor_hub": {
+        "x": 580,
+        "y": 246
+      },
       "tail_rotor_angle": 0,
       "muzzle": {
         "x": 232.8534003778782,
@@ -31,7 +41,16 @@
       "flash": true,
       "shot_age": 0.040000000000000036,
       "tracers": 1,
-      "main_rotor_scale": 0.9884325402609582,
+      "main_rotor_mode": "blur_disc",
+      "main_rotor_phase": 7.420142648478749,
+      "main_rotor_size": [
+        1120,
+        184.8
+      ],
+      "main_rotor_hub": {
+        "x": 573.9168157353229,
+        "y": 243.9318969304798
+      },
       "tail_rotor_angle": 44.64,
       "muzzle": {
         "x": 238.0431495272769,
@@ -51,7 +70,16 @@
       "flash": false,
       "shot_age": 0.4099999999999997,
       "tracers": 3,
-      "main_rotor_scale": 0.22759650030902204,
+      "main_rotor_mode": "blur_disc",
+      "main_rotor_phase": 15.857562918119905,
+      "main_rotor_size": [
+        1120,
+        184.8
+      ],
+      "main_rotor_hub": {
+        "x": 584.6900223989552,
+        "y": 254.09725695449737
+      },
       "tail_rotor_angle": 95.39999999999999,
       "muzzle": {
         "x": 228.15038328885635,
@@ -67,6 +95,8 @@
   "gif_exported": true,
   "enemy_fires_forward_down": true,
   "rotors_animated": true,
+  "main_rotor_blur_disc": true,
+  "ellipse_size_fixed": true,
   "pause_deterministic": true,
   "balance_parameters_included": false,
   "page_errors": [],

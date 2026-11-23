@@ -1,7 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
   "enemy_id": "dog_mg_helicopter",
-  "design": "Rounded helicopter, visible dog pilot, front-belly MG angled forward/down, landing skids",
+  "design": "Rounded helicopter, visible dog pilot, front-belly MG angled forward/down, landing skids, translucent elliptical main rotor disc",
   "canvas_px": [
     1600,
     1000
@@ -125,7 +125,8 @@
         "height": 103
       },
       "transparent_padding": 12,
-      "sha256": "78348a5085198f8726d09d3b4eb803478c14e3c168dfac533db95e3be04731ef"
+      "sha256": "78348a5085198f8726d09d3b4eb803478c14e3c168dfac533db95e3be04731ef",
+      "role": "optional stopped/slow rotor; hidden during flight blur"
     },
     "04_rotor_mast": {
       "file": "parts/04_rotor_mast.png",
@@ -156,6 +157,28 @@
       },
       "transparent_padding": 12,
       "sha256": "58a6ac14d816621db979ef0503f323bbab60b6c66797063fc81a1d2b0e228637"
+    },
+    "09_main_rotor_blur": {
+      "file": "parts/09_main_rotor_blur.png",
+      "size_px": [
+        947,
+        947
+      ],
+      "source_file": "source/generated_rotor_blur.png",
+      "source_rect": {
+        "left": 173,
+        "top": 165,
+        "width": 906,
+        "height": 915
+      },
+      "transparent_padding": {
+        "left": 20,
+        "right": 21,
+        "top": 16,
+        "bottom": 16
+      },
+      "sha256": "b179e1984b34cef5f7039bb2745e4ee88781b02567173462ed2402200b894fe4",
+      "role": "active fast-spin circular motion blur; project into an ellipse at render time"
     }
   },
   "layers": [
@@ -345,23 +368,23 @@
     },
     {
       "id": "main_rotor",
-      "part": "08_main_rotor",
-      "file": "parts/08_main_rotor.png",
+      "part": "09_main_rotor_blur",
+      "file": "parts/09_main_rotor_blur.png",
       "position_px": [
-        483.73702422145334,
-        142.41176470588232
+        460,
+        153.6
       ],
       "size_px": [
-        1080,
-        154.24567474048445
+        1120,
+        184.8
       ],
       "pivot_canvas_px": [
         1020,
-        225
+        246
       ],
       "pivot_normalized": [
-        0.49653979238754326,
-        0.4645669291338582
+        0.5,
+        0.5
       ],
       "z_order": 70,
       "parent": "hull"
@@ -394,11 +417,17 @@
   },
   "rotors": {
     "main": {
+      "mode": "blur_disc",
+      "part": "09_main_rotor_blur",
       "pivot_px": [
         1020,
-        225
+        246
       ],
-      "animation": "horizontal rotor sweep around vertical mast; keep hub fixed"
+      "projection_ratio": 0.165,
+      "opacity": 0.42,
+      "animation": "rotate square circular texture inside a vertically squashed parent; ellipse dimensions and hub stay fixed",
+      "stopped_part": "08_main_rotor",
+      "source": "source/generated_rotor_blur.png"
     },
     "tail": {
       "pivot_px": [
