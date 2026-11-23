@@ -342,7 +342,7 @@ namespace CatTanks
         }
         void Surface(float x,float y,float w,float h,Color color,string marchFrame=null,string catsFrame=null)=>SpriteBox(x,y,w,h,"panel",color,marchFrame:marchFrame,catsFrame:catsFrame);
         void Icon(float x,float y,float size,string key)=>SpriteBox(x,y,size,size,key,Color.white,true);
-        void Text(float x,float y,float w,string value,StudioTextStyle style=null,float h=35,bool dynamicLayout=false,bool richText=false,TextAnchor? align=null)
+        void Text(float x,float y,float w,string value,StudioTextStyle style=null,float h=35,bool dynamicLayout=false,bool richText=false,TextAnchor? align=null,int? size=null)
         {
             if(dispatchOnly)return;var s=style??label;var item=GetWidget("text",x,y,w,Mathf.Max(h,s.fontSize*1.45f),dynamicLayout);item.text.text=value;
             if(richText)item.text.supportRichText=true;
@@ -358,6 +358,8 @@ namespace CatTanks
                 }
                 MarchLettering(item.text,s==title?3:1);
             }
+            // Cỡ chữ riêng: tự co (tối thiểu 16) để tên dài không xuống dòng.
+            if(size.HasValue){item.text.fontSize=size.Value;item.text.resizeTextForBestFit=true;item.text.resizeTextMaxSize=size.Value;item.text.resizeTextMinSize=16;}
         }
         bool Button(float x,float y,float w,float h,string value,bool enabled=true,bool primary=false,string normalSpriteKey="button")
         {

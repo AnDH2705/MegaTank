@@ -12,6 +12,7 @@ namespace CatTanks
         public Image icon;
         public Image badge;
         public int fontSize=19;
+        [Tooltip("Cỡ icon tối đa cho nút có hình (0 = mặc định 42px).")] public float iconSize;
         readonly TextGenerator generator=new TextGenerator();
         struct FitCache
         {
@@ -68,7 +69,7 @@ namespace CatTanks
             {
                 bool symbol = content == Content.Symbol;
                 bool compact = !symbol && width <= 160;
-                float size = Mathf.Min(height - 14, compact ? 26 : 42);
+                float size = Mathf.Min(height - 14, compact ? 26 : iconSize > 0 ? iconSize : 42);
                 float left = symbol ? (width - size) * .5f : compact ? 8 : 10;
                 Place(icon.rectTransform, left, (height - size) * .5f, size, size);
                 Stretch(label.rectTransform, symbol ? 6 : left + size + 6, 6, compact ? 9 : 10, 6);

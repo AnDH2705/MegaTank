@@ -79,8 +79,13 @@ namespace CatTanks
                 Text(x+54,y+30,160,Currency(gains[i].Key),small,24);
             }
             if(IllustratedButton(836,649,682,72,elapsed<60?"ĐANG TÍCH LŨY • ĐỢI 1 PHÚT":"NHẬN TOÀN BỘ","item-afkChest",elapsed>=60,true))
-            {profile.Grant(rewards);profile.lastIdle=Math.Max(profile.lastIdle,Profile.Now);profile.Track("idle");Changed("Đã nhận chiến lợi phẩm AFK");}
+            ClaimIdle();
             Text(836,746,676,"Vượt thêm ải để tăng thu nhập.",small);
+        }
+        // Nhận rương AFK: dùng chung cho trang Rương AFK và ô rương trên màn chính.
+        void ClaimIdle()
+        {
+            var rewards=profile.Idle(Profile.Now);profile.Grant(rewards);profile.lastIdle=Math.Max(profile.lastIdle,Profile.Now);profile.Track("idle");Changed("Đã nhận chiến lợi phẩm AFK");
         }
         void Quests()
         {

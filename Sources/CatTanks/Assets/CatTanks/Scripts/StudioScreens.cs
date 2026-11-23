@@ -28,53 +28,95 @@ namespace CatTanks
         {
             var stage=db.stages[Mathf.Clamp(profile.selected,1,db.stages.Count)-1];
             int lastOpen=Mathf.Min(db.stages.Count,profile.highestCleared+1);
-            Art(0,0,1600,100,"Interface/Cats/Header");
-            Art(12,6,322,72,"Interface/Cats/Brand");
-            HubWallet();
-
-            Surface(18,108,320,86,Color.white,catsFrame:"Ink");
-            Art(30,116,70,70,"cat-0");
-            Text(108,116,222,profile.name,subtitle,34);
-            Text(108,152,222,"CHỈ HUY  ·  CẤP "+profile.accountLevel,small,28);
-
-            if(HomeTile(18,214,146,124,"Bản đồ","Map"))modal="map";
-            if(HomeTile(18,350,146,124,"Nhiệm vụ","Calendar_Check")){page="quests";scroll=Vector2.zero;}
-            if(HomeTile(18,486,146,124,"Bách khoa","Book_1_Purple"))ToggleBook();
-            if(HomeTile(1438,120,146,134,"Doanh trại","Battle")){page="barracks";scroll=Vector2.zero;}
-            if(HomeTile(1438,266,146,134,"Thành mèo","Interface/Cats/Tab-fortress")){page="town";scroll=Vector2.zero;}
-            if(HomeTile(1438,412,146,134,"Rương AFK","Chest_Gold")){page="chest";scroll=Vector2.zero;}
-
-            Surface(18,760,790,124,Color.white,catsFrame:"Board");
-            if(Button(34,776,58,92,"‹",profile.selected>1,true))SelectStage(profile.selected-1);
-            Enlarge(44);
-            Art(104,774,150,96,StagePreview(stage));
-            Text(268,770,450,$"ẢI {stage.index:00} / {db.stages.Count}   ·   "+(stage.boss?"TRẬN TRÙM":"HÀNH QUÂN"),small,26);
-            Text(268,792,450,stage.name,title,44);
-            bool cleared=stage.index<=profile.highestCleared;
-            Text(268,844,450,(cleared?"Chơi lại: ":"Lần đầu: ")+Rewards(cleared?stage.repeatRewards:stage.firstClearRewards),small,28);
-            if(Button(734,776,58,92,"›",profile.selected<lastOpen,true))SelectStage(profile.selected+1);
-            Enlarge(44);
-
             float power=profile.Power(db);
-            Surface(824,790,330,94,Color.white,catsFrame:"Ink");
-            Art(840,812,40,48,"Interface/Cats/PowerIcon");
-            Text(890,800,250,power>=stage.recommendedPower?"LỰC CHIẾN  ·  SẴN SÀNG":"LỰC CHIẾN  ·  NÊN NÂNG CẤP",small,26);
-            Text(890,828,250,N(power)+" / "+N(stage.recommendedPower),subtitle,40);
 
-            if(IllustratedButton(1300,730,284,154,"XUẤT KÍCH","Battle",primary:true,content:StudioButtonLayout.Content.Tile))modal="prebattle";
+            // Thanh trên: chỉ huy (cấp + thanh kinh nghiệm), ví tiền, cài đặt.
+            Art(0,0,1600,92,"Interface/Cats/Header");
+            Surface(14,10,330,84,Color.white,catsFrame:"Ink");
+            Art(24,16,70,70,"cat-0");
+            Text(102,14,232,profile.name,subtitle,32);
+            Text(102,48,70,"CẤP "+profile.accountLevel,small,26);
+            Bar(172,54,154,14,profile.accountXp/(float)(15+profile.accountLevel*4),cyan);
+            HomeWallet(820,"CoinIcon",N(profile.Get("coins")));
+            HomeWallet(1035,"GemIcon",N(profile.Get("gem")));
+            HomeWallet(1250,"TicketIcon",N(profile.Get("summonScroll")));
+            if(IllustratedButton(1468,14,114,68,"Cài đặt","Interface/Cats/SettingsIcon",normalSpriteKey:"blue",content:StudioButtonLayout.Content.Symbol))modal="settings";
+
+            // Lối tắt phụ bên trái.
+            if(HomeShortcut(116,"Bản đồ","Map"))modal=MapView;
+            if(HomeShortcut(230,"Bách khoa","Book_1_Purple"))ToggleBook();
+            if(HomeShortcut(344,"Thử thách","Badge_Crown"))StartBattle(true);
+
+            // Rương AFK ngay trên màn chính: thời gian treo, thanh 12 giờ, phần thưởng đang tích.
+            float elapsed=Mathf.Clamp(Profile.Now-profile.lastIdle,0,43200);var idle=profile.Idle(Profile.Now);
+            Surface(14,566,350,206,Color.white,catsFrame:"Ink");
+            Art(26,580,124,124,"item-afkChest");
+            Text(160,578,196,"RƯƠNG AFK",subtitle,32);
+            Text(160,608,196,$"{Mathf.FloorToInt(elapsed/3600):00}:{Mathf.FloorToInt(elapsed%3600/60):00}:{Mathf.FloorToInt(elapsed%60):00}",title,48,size:34);
+            Bar(160,660,188,14,elapsed/43200,gold);
+            var gains=new System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string,int>>();
+            foreach(var r in idle)if(r.Value>0&&gains.Count<3)gains.Add(r);
+            for(int i=0;i<gains.Count;i++)
+            {
+                string icon=RewardIcon(gains[i].Key);
+                if(icon!=null)Art(26+i*76,714,34,34,icon);
+                Text(62+i*76,718,44,"+"+CompactNumber(gains[i].Value),small,26);
+            }
+            if(Button(262,706,92,54,"NHẬN",elapsed>=60,true))ClaimIdle();
+            Enlarge(20);
+
+            // Ải hiện tại và nút xuất kích ở góc phải dưới.
+            Surface(1176,548,410,226,Color.white,catsFrame:"Board");
+            Text(1196,560,370,$"ẢI {stage.index:00} / {db.stages.Count}   ·   "+(stage.boss?"TRẬN TRÙM":"HÀNH QUÂN"),small,26,align:TextAnchor.UpperCenter);
+            if(Button(1196,592,48,58,"‹",profile.selected>1,true))SelectStage(profile.selected-1);
+            Enlarge(36);
+            Text(1250,592,262,stage.name,title,58,align:TextAnchor.MiddleCenter,size:30);
+            if(Button(1518,592,48,58,"›",profile.selected<lastOpen,true))SelectStage(profile.selected+1);
+            Enlarge(36);
+            Text(1196,648,370,$"Lực chiến {N(power)} / {N(stage.recommendedPower)}   ·   "+(power>=stage.recommendedPower?"Sẵn sàng":"Nên nâng cấp"),small,26,align:TextAnchor.UpperCenter);
+            if(IllustratedButton(1196,684,370,78,"XUẤT KÍCH","Battle",primary:true))modal="prebattle";
             Enlarge(30);
+
+            BottomNav();
         }
+        // Thanh điều hướng cố định ở đáy theo bố cục quen thuộc của game idle; Hành quân nằm giữa.
+        void BottomNav()
+        {
+            SpriteBox(0,786,1600,114,"",new Color(.12f,.1f,.33f,1),false,"scrim");
+            SpriteBox(0,782,1600,6,"",C("#140c30"),false,"scrim");
+            if(NavTab(0,"Thành mèo","Interface/Cats/Tab-fortress")){page="town";tab="summon";scroll=Vector2.zero;}
+            if(NavTab(1,"Đấu trường","item-arenaToken")){page="town";tab="arena";scroll=Vector2.zero;}
+            if(IllustratedButton(670,762,260,136,"Hành quân","Map",primary:true,content:StudioButtonLayout.Content.Tile,selected:page=="march")){page="march";modal="";}
+            Enlarge(24);
+            if(NavTab(3,"Doanh trại","Battle")){page="barracks";scroll=Vector2.zero;}
+            if(NavTab(4,"Nhiệm vụ","Calendar_Check")){page="quests";scroll=Vector2.zero;}
+        }
+        bool NavTab(int index,string value,string icon)
+        {
+            bool clicked=IllustratedButton(index*320+24,796,272,98,value,icon);
+            Enlarge(22);
+            if(!dispatchOnly&&lastButton.layout)lastButton.layout.iconSize=72;
+            return clicked;
+        }
+        bool HomeShortcut(float y,string value,string icon)
+        {
+            bool clicked=IllustratedButton(14,y,104,104,value,icon,content:StudioButtonLayout.Content.Tile);
+            if(!dispatchOnly)SetButtonSprite(lastButton,"button");
+            Enlarge(16);
+            return clicked;
+        }
+        void HomeWallet(float x,string icon,string value)
+        {
+            Surface(x,16,200,64,Color.white,catsFrame:"Ink");
+            Art(x+10,26,44,44,"Interface/Cats/"+icon);
+            Text(x+62,26,130,value,subtitle,40);
+        }
+        static string CompactNumber(int n)=>n>=1000000?(n/1000000f).ToString("0.#")+"M":n>=10000?(n/1000)+"K":n.ToString("N0");
         // Nút lớn ở màn chính cần chữ to hơn mức mặc định của nút.
         void Enlarge(int size)
         {
             if(dispatchOnly||lastButton==null)return;
             lastButton.text.fontSize=size;if(lastButton.layout)lastButton.layout.fontSize=size;
-        }
-        bool HomeTile(float x,float y,float w,float h,string value,string icon)
-        {
-            bool clicked=IllustratedButton(x,y,w,h,value,icon,content:StudioButtonLayout.Content.Tile);
-            if(!dispatchOnly)SetButtonSprite(lastButton,"button");
-            return clicked;
         }
         void SubPageChrome()
         {
