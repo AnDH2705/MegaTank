@@ -1,0 +1,43 @@
+{
+  "source": "MegaTank/Art/Anim/dog pilot/spine_v1",
+  "clips": {
+    "fly": {
+      "key": "crew_dog_pilot_drive",
+      "animation": "sit_drive",
+      "skin": "pilot",
+      "frames": 12,
+      "cols": 4,
+      "rows": 3,
+      "cell": [
+        240,
+        360
+      ],
+      "pivot": [
+        110,
+        252
+      ],
+      "duration": 1,
+      "worldScale": 0.5,
+      "file": "preview-assets/pilot_fly.png"
+    },
+    "fire": {
+      "key": "crew_dog_pilot_fire",
+      "animation": "sit_fire",
+      "skin": "pilot",
+      "frames": 12,
+      "cols": 4,
+      "rows": 3,
+      "cell": [
+        240,
+        360
+      ],
+      "pivot": [
+        110,
+        252
+      ],
+      "duration": 0.7,
+      "worldScale": 0.5,
+      "file": "preview-assets/pilot_fire.png"
+    }
+  }
+}

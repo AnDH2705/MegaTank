@@ -1,0 +1,9 @@
+Tích hợp enemy dog_mg_helicopter vào MegaTank từ bộ part này. Đọc DESIGN_DOC_UNITY_VI.txt và metadata/parts_manifest.json, xem GIF trước.
+
+Lắp 9 PNG thành trực thăng cabin tròn, đuôi dài, càng đáp, một chó phi công có sẵn và MG dưới mũi chĩa chéo xuống trước. Giữ tỷ lệ chó đồng bộ project. Chó phía sau cabin ngoài, hiện qua cửa sổ alpha. Native hướng phải, demo enemy lật trái; flip root, socket và hướng bắn cùng nhau.
+
+Tôn trọng tọa độ canvas Y xuống, size_px từng layer, pivot và draw order. pivot_normalized đã theo Unity Y lên. Hub cánh chính khớp trục: quét cánh quanh trục đứng hoặc dùng hiệu ứng 2D tương đương, không xoay cả thanh như chong chóng đứng. Cánh đuôi xoay quanh hub trong mặt phẳng ảnh. Cả máy bay bob/bank nhẹ, không làm lệch khớp.
+
+Dùng AI địch bay và hệ MG hiện có: tiếp cận trên không, bắn loạt vào tank rồi dịch vị trí. Đầu nòng phải tính đủ gun aim, body bank/bob và root flip. Muzzle flash bám nòng; tracer đã bắn bay độc lập. Đăng ký wave/kill một lần; dùng quy tắc targeting trên không của project. Dùng hệ rơi/nổ/loot hiện có, loot rơi xuống đường rồi theo BG. Không tự sinh lính chó mới.
+
+Tạo prefab/animation/controller theo cấu trúc repo. Kiểm tra alpha cockpit, tỷ lệ phi công, khớp cánh/trục/đuôi/càng, hướng MG và muzzle khi flip. HTML chỉ là demo art; không đọc data URL base64 vào context. Không lấy timing/độ cao GIF làm balance bắt buộc. Bộ bàn giao chưa có prefab Unity hoặc rig Spine mới.
