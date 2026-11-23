@@ -68,9 +68,14 @@ namespace CatTanks
         }
         void PausePopup()
         {
-            Panel(448,257,704,386);Text(488,299,624,"NGHỈ MỘT CHÚT NHÉ!",title,57);
-            if(IllustratedButton(488,387,624,72,"Tiếp tục","Play",primary:true))paused=false;
-            if(Button(488,475,624,72,"Rút lui về doanh trại",normalSpriteKey:"blue")){Hub();page="barracks";tab="cats";}
+            PopupFrame(480,230,640,450,"Tạm dừng",false);
+            Art(512,290,170,170,"cat-0");
+            Text(700,300,390,"Nghỉ một chút nhé!",subtitle,40);
+            Text(700,344,390,(battle.classic?"Thử thách trăng":battle.arena?"Đấu trường":$"Ải {battle.stage.index:00}")+$" · {Mathf.FloorToInt(battle.time/60):00}:{Mathf.FloorToInt(battle.time%60):00}\nPháo đài {N(battle.hp)} / {N(battle.maxHp)} HP",small,60);
+            if(IllustratedButton(520,480,560,80,"TIẾP TỤC","Play",primary:true))paused=false;
+            Enlarge(26);
+            if(IllustratedButton(520,578,270,66,"Cài đặt","Interface/Cats/SettingsIcon",normalSpriteKey:"blue"))modal="settings";
+            if(Button(810,578,270,66,"Rút lui")){Hub();page="march";}
         }
     }
 }

@@ -44,7 +44,7 @@ namespace CatTanks
         StudioUITheme theme;
         Widget lastButton;
         string pendingButton,drawnContext="",renderViewKey="",uiContainer="",scrollContext="";
-        bool uiInputAllowed=true,renderingUi,dispatchOnly,authoringUi,reduceMotion,useCodeGeometry,drawingHubChrome;
+        bool uiInputAllowed=true,renderingUi,dispatchOnly,authoringUi,reduceMotion,useCodeGeometry,drawingHubChrome,popupLayer;
         float nextUiRefresh;
         int lastScreenWidth,lastScreenHeight;
         Rect lastSafeArea;
@@ -167,7 +167,7 @@ namespace CatTanks
             if(inBattle){useCodeGeometry=true;BattleHUD();}else HubUI();
             if(modal!="")
             {
-                BeginPopup(modal);
+                BeginPopup(modal,modal is "settings" or "book" or "prebattle" or "choice" or MapView);
                 if(modal=="book")Book();else if(modal=="settings")Settings();else if(modal=="prebattle")Prebattle();else if(modal=="choice")ChoiceModal();else if(modal==MapView)MapPopup();
             }
             else if(inBattle&&resolved){BeginPopup("result");Result();}
@@ -177,9 +177,10 @@ namespace CatTanks
                 SelectView("toast","notification");Surface(438,806,870,64,C("#183e53"));Icon(454,820,32,"Check");Text(500,822,780,toast,label,40);
             }
         }
-        void BeginPopup(string key)
+        void BeginPopup(string key,bool closable=false)
         {
-            SelectView(key,"popup");uiInputAllowed=true;Scrim();useCodeGeometry=true;
+            SelectView(key,"popup");uiInputAllowed=true;useCodeGeometry=true;
+            if(closable){if(ScrimButton())modal="";}else Scrim();
         }
         string NormalizeBarracksTab()
         {
@@ -188,7 +189,7 @@ namespace CatTanks
         string NormalizeTownTab(){if(tab!="summon"&&tab!="shop"&&tab!="arena")tab="summon";return tab;}
         void SelectView(string key,string layer)
         {
-            renderViewKey=key;uiContainer="";useCodeGeometry=false;drawingHubChrome=false;if(dispatchOnly)return;
+            renderViewKey=key;uiContainer="";useCodeGeometry=false;drawingHubChrome=false;popupLayer=layer=="popup";if(dispatchOnly)return;
             var view=studioRoot.Find(key);
             // Màn chính, chrome trang con và popup Bản đồ chưa có prefab: tạo view rỗng lúc chạy, widget do code đặt vị trí.
             if(!view&&(authoringUi||IsRuntimeView(key)))
@@ -311,6 +312,8 @@ namespace CatTanks
         void SpriteBox(float x,float y,float w,float h,string key,Color color,bool preserve=false,string kind="image",string marchFrame=null,string catsFrame=null)
         {
             if(dispatchOnly)return;bool fill=key=="fill"||key.StartsWith("bar_fill_");var item=GetWidget(kind,x,y,w,h,fill);
+            // Bảng trong popup chặn chạm để chạm ra ngoài (vào nền mờ) mới đóng popup.
+            if(popupLayer&&key=="panel"&&item.image)item.image.raycastTarget=true;
             string managementFrame=catsFrame??(useCodeGeometry&&key=="panel"?(renderViewKey=="battle"?"CombatPlate":"Detail"):null);
             if(UsesSharedArt&&managementFrame!=null&&CatsFrame(managementFrame) is Sprite catsSprite&&catsSprite)
             {
@@ -339,11 +342,12 @@ namespace CatTanks
         }
         void Surface(float x,float y,float w,float h,Color color,string marchFrame=null,string catsFrame=null)=>SpriteBox(x,y,w,h,"panel",color,marchFrame:marchFrame,catsFrame:catsFrame);
         void Icon(float x,float y,float size,string key)=>SpriteBox(x,y,size,size,key,Color.white,true);
-        void Text(float x,float y,float w,string value,StudioTextStyle style=null,float h=35,bool dynamicLayout=false,bool richText=false)
+        void Text(float x,float y,float w,string value,StudioTextStyle style=null,float h=35,bool dynamicLayout=false,bool richText=false,TextAnchor? align=null)
         {
             if(dispatchOnly)return;var s=style??label;var item=GetWidget("text",x,y,w,Mathf.Max(h,s.fontSize*1.45f),dynamicLayout);item.text.text=value;
             if(richText)item.text.supportRichText=true;
             if(Configure(item)){item.rect.name="Text • "+value.Replace('\n',' ');item.text.fontSize=s.fontSize;ApplyFont(item.text,s.fontStyle);item.text.color=s.color*textTint;item.text.alignment=TextAnchor.UpperLeft;item.text.resizeTextForBestFit=false;}
+            if(align.HasValue)item.text.alignment=align.Value;
             if((UsesMarchArt||UsesSharedArt)&&item.text.color.a>0)
             {
                 item.text.color=s==title?C("#ffe461"):C("#fff8f3");

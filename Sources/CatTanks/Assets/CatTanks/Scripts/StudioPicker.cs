@@ -16,13 +16,12 @@ namespace CatTanks
         }
         void ChoiceModal()
         {
-            Panel(286,127,1028,646);Text(324,164,760,choiceTitle,title,76);
-            Text(324,244,940,"Chọn một mục để áp dụng. Esc để giữ nguyên.",small);
-            if(Button(1114,164,162,52,"Đóng"))modal="";
-            Surface(312,286,976,460,Color.white,catsFrame:"Roster");
-            BeginScroll(new Rect(326,300,948,432),scroll,new Rect(0,0,928,Mathf.Ceil(choiceLabels.Length/2f)*74));
+            PopupFrame(286,150,1028,620,choiceTitle,true);
+            Text(312,200,976,"Chọn một mục để áp dụng · chạm ra ngoài để giữ nguyên",small,28,align:TextAnchor.UpperCenter);
+            Surface(312,246,976,500,Color.white,catsFrame:"Roster");
+            BeginScroll(new Rect(326,260,948,472),scroll,new Rect(0,0,928,Mathf.Ceil(choiceLabels.Length/2f)*80));
             for(int i=0;i<choiceLabels.Length;i++)
-                if(Button(i%2*466,i/2*74,450,62,choiceLabels[i],normalSpriteKey:"blue")) {modal="";choiceAction?.Invoke(i);}
+                if(Button(i%2*466,i/2*80,450,68,choiceLabels[i],normalSpriteKey:"blue")) {modal="";choiceAction?.Invoke(i);}
             EndScroll();
         }
     }

@@ -131,58 +131,87 @@ namespace CatTanks
         string Rewards(Dictionary<string, int> values) => string.Join("    ", values.Where(v => v.Value > 0).Select(v => "+" + N(v.Value) + " " + Currency(v.Key)));
         void Prebattle()
         {
-            Panel(202, 103, 1196, 694); var s = db.stages[profile.selected - 1];
-            Text(236, 133, 715, "Ải " + s.index + " · " + s.name, title, 63);
-            Text(236, 218, 688, $"Đề nghị {N(s.recommendedPower)} lực chiến  ·  Pháo đài {N(profile.MaxHp)} HP  ·  {profile.FloorCount} tầng", subtitle, 60);
-            Text(236, 286, 688, "Đội hình dùng trang bị hiện tại trong Doanh trại. Pháo và bộ binh tự động tấn công.", label, 55);
-            Text(236, 349, 688, "3 đợt tiếp viện xuất hiện tại giây 0 / 25 / 55. Chọn mục tiêu bằng chuột để tập trung hỏa lực.", label, 60);
-            Surface(944, 150, 420, 260, Color.white,catsFrame:"Roster");
-            Art(956, 162, 396, 236, StagePreview(s));
-            Surface(236, 438, 1128, 164, Color.white,catsFrame:"Roster");
+            var s = db.stages[profile.selected - 1];
+            PopupFrame(200, 110, 1200, 690, $"Ải {s.index:00} · {s.name}", true);
+            Surface(232, 160, 548, 330, Color.white, catsFrame: "Roster");
+            Art(246, 174, 520, 302, StagePreview(s));
+            if (s.boss) Text(258, 436, 300, "TRẬN TRÙM", subtitle, 40);
+            int moonCages = Mathf.Min(5, profile.Get("moonCage")), beastCages = Mathf.Min(5 - moonCages, profile.Get("beastCage"));
+            PrebattleStat(160, "Interface/Cats/PowerIcon", "LỰC CHIẾN ĐỀ NGHỊ", $"{N(s.recommendedPower)}   ·   đội bạn {N(profile.Power(db))}");
+            PrebattleStat(272, "Interface/Cats/Heart", "PHÁO ĐÀI", $"{N(profile.MaxHp)} HP   ·   {profile.FloorCount} tầng");
+            PrebattleStat(384, "item-beastCage", "LỒNG MANG THEO (TỐI ĐA 5)", $"{beastCages} lồng thú   ·   {moonCages} lồng trăng");
+            Text(232, 500, 1136, $"Bắt quái: quái thường từ {Battle.CaptureHealthThreshold(false):0%} HP trở xuống · trùm dưới {Battle.CaptureHealthThreshold(true):0%} HP, dùng Lồng trăng (Shift+C)", small, 28, align: TextAnchor.UpperCenter);
+            Surface(232, 538, 1136, 136, Color.white, catsFrame: "Roster");
             for (int i = 0; i < profile.FloorCount; i++)
             {
-                float x=252+i*221;
-                Surface(x, 452, 205, 136, Color.white,catsFrame:"Tile");
-                Art(x+37, 460, 131, 82, profile.floors[i].turret);
-                Text(x+18, 550, 169, "Tầng " + (i + 1), small, 28);
+                float x = 232 + (1136 - (profile.FloorCount * 221 - 16)) / 2f + i * 221;
+                Surface(x, 550, 205, 112, Color.white, catsFrame: "Tile");
+                Art(x + 37, 556, 131, 70, profile.floors[i].turret);
+                Text(x + 10, 626, 185, "Tầng " + (i + 1), small, 28, align: TextAnchor.UpperCenter);
             }
-            int moonCages = Mathf.Min(5, profile.Get("moonCage")), beastCages = Mathf.Min(5 - moonCages, profile.Get("beastCage"));
-            Text(236, 619, 1120, $"Mang {beastCages} lồng thú · {moonCages} lồng trăng (tối đa 5).\nQuái thường: {Battle.CaptureHealthThreshold(false):0%} HP trở xuống. Trùm: dưới {Battle.CaptureHealthThreshold(true):0%} HP, dùng Lồng trăng (Shift+C).", small, 52);
-            if (Button(236, 709, 216, 60, "Trở về")) modal = "";
-            if (IllustratedButton(464, 709, 376, 60, "Chỉnh đội hình", "cat-0",normalSpriteKey:"blue")) {modal = ""; page = "barracks"; tab = "squad";}
-            if (IllustratedButton(852, 709, 512, 60, "XUẤT KÍCH", "Battle", primary: true)) StartBattle();
+            if (IllustratedButton(232, 698, 420, 82, "Chỉnh đội hình", "cat-0", normalSpriteKey: "blue")) {modal = ""; page = "barracks"; tab = "squad";}
+            if (IllustratedButton(680, 690, 688, 96, "XUẤT KÍCH", "Battle", primary: true)) StartBattle();
+            Enlarge(30);
+        }
+        void PrebattleStat(float y, string icon, string caption, string value)
+        {
+            Surface(806, y, 562, 100, Color.white, catsFrame: "Ink");
+            Art(824, y + 20, 60, 60, icon);
+            Text(900, y + 14, 450, caption, small, 26);
+            Text(900, y + 42, 450, value, subtitle, 40);
         }
         void Result()
         {
             bool won = battle.state == BattleState.Won;
-            Panel(260, 201, 1080, 498);
-            Text(294, 244, 660, won ? "CHIẾN THẮNG DƯỚI TRĂNG!" : "PHÁO ĐÀI CẦN TIẾP VIỆN", title, 61, dynamicLayout: true);
-            Text(294, 330, 660, $"{battle.kills} quái bị hạ  ·  {N(battle.time)} giây  ·  {battle.caught.Count} quái bắt được", subtitle, 60, dynamicLayout: true);
-            Surface(294, 401, 665, 137, Color.white,catsFrame:"Roster");
-            Text(314, 420, 625, Rewards(receipt ?? new Dictionary<string, int>()), label, 104, dynamicLayout: true);
-            Art(978, 231, 328, 311, won ? "Screens/victory" : "Screens/defeat");
-            if (Button(294, 594, 492, 69, "VỀ DOANH TRẠI",normalSpriteKey:"blue")) {Hub(); page = "barracks"; tab = "cats";}
-            if (Button(800, 594, 506, 69, won && !battle.classic && !battle.arena && profile.selected < 20 ? "ẢI TIẾP THEO" : "THỬ LẠI", true, true))
+            PopupFrame(280, 160, 1040, 580, won ? "Chiến thắng!" : "Thất bại", false);
+            Art(306, 214, 310, 310, won ? "Screens/victory" : "Screens/defeat");
+            Text(640, 214, 650, won ? "Pháo đài trụ vững dưới trăng!" : "Pháo đài cần tiếp viện…", subtitle, 40);
+            ResultStat(0, "Interface/Cats/Sword", N(battle.kills), "quái bị hạ");
+            ResultStat(1, "Interface/Cats/Speed", N(battle.time) + " giây", "thời gian");
+            ResultStat(2, "item-beastCage", N(battle.caught.Count), "quái bắt được");
+            Surface(640, 362, 650, 180, Color.white, catsFrame: "Roster");
+            Text(662, 374, 300, "PHẦN THƯỞNG", small, 26);
+            var rewards = (receipt ?? new Dictionary<string, int>()).Where(v => v.Value > 0).Take(6).ToList();
+            if (rewards.Count == 0) Text(662, 420, 600, "Không có phần thưởng lần này.", label, 36);
+            for (int i = 0; i < rewards.Count; i++)
+            {
+                float x = 662 + i % 3 * 208, y = 410 + i / 3 * 62;
+                string icon = RewardIcon(rewards[i].Key);
+                if (icon != null) Art(x, y, 46, 46, icon);
+                Text(x + 54, y + 2, 150, "+" + N(rewards[i].Value), subtitle, 30);
+                Text(x + 54, y + 30, 150, Currency(rewards[i].Key), small, 24);
+            }
+            if (Button(310, 594, 430, 86, "VỀ MÀN CHÍNH", normalSpriteKey: "blue")) {Hub(); page = "march";}
+            Enlarge(24);
+            if (Button(770, 588, 520, 98, won && !battle.classic && !battle.arena && profile.selected < 20 ? "ẢI TIẾP THEO" : "THỬ LẠI", true, true))
             {
                 bool classic = battle.classic, arena = battle.arena;
                 if (battle.state == BattleState.Won && !classic && !arena && profile.selected < 20) profile.selected++;
                 StartBattle(classic, arena);
             }
+            Enlarge(30);
+        }
+        void ResultStat(int i, string icon, string value, string caption)
+        {
+            float x = 640 + i * 222;
+            Surface(x, 256, 206, 92, Color.white, catsFrame: "Ink");
+            Art(x + 14, 276, 48, 48, icon);
+            Text(x + 72, 262, 126, value, subtitle, 36);
+            Text(x + 72, 300, 126, caption, small, 26);
         }
         void ToggleSound() {muted = !muted; PlayerPrefs.SetInt("CatTanks.Muted", muted ? 1 : 0); PlayerPrefs.Save();}
         void Settings()
         {
-            Panel(328, 151, 944, 598);
-            Text(364, 186, 872, "Cài đặt chỉ huy", title, 57);
-            Surface(364, 254, 872, 75, Color.white,catsFrame:"Roster");
-            Text(384, 271, 194, "Tên chỉ huy", label); NameInput(574, 265, 642, 50);
-            if (Button(364, 348, 430, 60, muted ? "Bật âm thanh" : "Tắt âm thanh",normalSpriteKey:"blue")) ToggleSound();
-            if (Button(806, 348, 430, 60, "Toàn màn hình",normalSpriteKey:"blue")) Screen.fullScreen = !Screen.fullScreen;
-            if (Button(364, 423, 430, 60, "Xuất hồ sơ JSON")) {profile.Save(); string path = Path.Combine(Application.persistentDataPath, "cattanks-export-" + DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".json"); File.WriteAllText(path, JsonConvert.SerializeObject(profile, Formatting.Indented)); Notify("Đã xuất: " + path);}
-            if (Button(806, 423, 430, 60, "Thử thách trăng · 6 đợt")) StartBattle(true);
-            if (Button(364, 499, 872, 57, reduceMotion ? "Giảm chuyển động: BẬT" : "Giảm chuyển động: TẮT",normalSpriteKey:"blue")) { reduceMotion = !reduceMotion; PlayerPrefs.SetInt("CatTanks.ReducedMotion", reduceMotion ? 1 : 0); PlayerPrefs.Save(); }
-            Text(364, 582, 872, "Tiến trình lưu trên máy • Esc để đóng • Tab / Enter để điều hướng", small, 40);
-            if (Button(364, 647, 872, 64, "LƯU & ĐÓNG", true, true)) {profile.Save(); modal = "";}
+            PopupFrame(430, 120, 740, 620, "Cài đặt", true);
+            SettingRow(170, "Tên chỉ huy", "cat-0"); NameInput(740, 182, 374, 50);
+            SettingRow(256, "Âm thanh", "UI/music"); if (TogglePill(256, !muted)) ToggleSound();
+            SettingRow(342, "Toàn màn hình", "Interface/Cats/InfoIcon"); if (TogglePill(342, Screen.fullScreen)) Screen.fullScreen = !Screen.fullScreen;
+            SettingRow(428, "Giảm chuyển động", "Interface/Cats/Speed"); if (TogglePill(428, reduceMotion)) { reduceMotion = !reduceMotion; PlayerPrefs.SetInt("CatTanks.ReducedMotion", reduceMotion ? 1 : 0); PlayerPrefs.Save(); }
+            if (!inBattle && Button(470, 526, 320, 64, "Thử thách trăng · 6 đợt", normalSpriteKey: "blue")) StartBattle(true);
+            if (Button(inBattle ? 470 : 810, 526, inBattle ? 660 : 320, 64, "Xuất hồ sơ JSON")) {profile.Save(); string path = Path.Combine(Application.persistentDataPath, "cattanks-export-" + DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".json"); File.WriteAllText(path, JsonConvert.SerializeObject(profile, Formatting.Indented)); Notify("Đã xuất: " + path);}
+            Text(470, 598, 660, "Tiến trình tự lưu trên máy  ·  Esc hoặc chạm ra ngoài để đóng", small, 28, align: TextAnchor.UpperCenter);
+            if (Button(470, 638, 660, 80, "LƯU & ĐÓNG", true, true)) {profile.Save(); modal = "";}
+            Enlarge(26);
         }
         void ToggleBook()
         {
@@ -192,8 +221,7 @@ namespace CatTanks
 
         void Book()
         {
-            Panel(98, 70, 1404, 760); Text(134, 97, 1100, "Bách khoa trăng xanh", title, 57);
-            if (Button(1312, 95, 152, 52, "Đóng [B]")) ToggleBook();
+            PopupFrame(98, 90, 1404, 740, "Bách khoa trăng xanh", true);
             string[] names = {"THÁP PHÁO", "VŨ KHÍ MÈO", "MODULE", "QUÁI VẬT", "MÈO"};
             string[] icons = {"turret-0", "gun-0", "pack-0", "bug-0", "cat-0"};
             for (int i = 0; i < 5; i++) if (TabButton(134 + i * 268, 165, 258, 54, names[i], bookTab == i, icons[i])) {bookTab = i; scroll = Vector2.zero;}

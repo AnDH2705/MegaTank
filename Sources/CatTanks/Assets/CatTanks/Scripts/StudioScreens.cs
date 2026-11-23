@@ -101,12 +101,50 @@ namespace CatTanks
         {
             profile.selected=Mathf.Clamp(index,1,db.stages.Count);profile.Save();RebuildHubScene();
         }
+        // ---- Khung popup kiểu game: bảng tím, băng tiêu đề giữa mép trên, nút X ở góc, chạm nền mờ để đóng ----
+        static readonly Color ScrimColor=new Color(.025f,.035f,.075f,.82f);
+        bool ScrimButton()
+        {
+            bool clicked=Button(-500,-500,2600,1900,"");
+            if(dispatchOnly)return clicked;
+            var item=lastButton;
+            item.image.sprite=null;item.image.type=UnityEngine.UI.Image.Type.Simple;item.image.color=ScrimColor;item.text.text="";
+            item.button.transition=UnityEngine.UI.Selectable.Transition.None;
+            focusable.Remove(item.button);if(item.layout)activeLayouts.Remove(item.layout);
+            return clicked;
+        }
+        void PopupFrame(float x,float y,float w,float h,string heading,bool closable)
+        {
+            Panel(x,y,w,h);
+            float bw=Mathf.Clamp(heading.Length*24+90,360,w-150);
+            Surface(x+(w-bw)/2,y-34,bw,76,Color.white,catsFrame:"Violet");
+            Text(x+(w-bw)/2,y-34,bw,heading,title,76,align:TextAnchor.MiddleCenter);
+            if(closable&&Button(x+w-54,y-26,66,66,"X",normalSpriteKey:"blue"))modal="";
+            if(closable)Enlarge(30);
+        }
+        // Một dòng cài đặt: khung tối, icon, nhãn; phần điều khiển đặt ở bên phải (x≥920).
+        void SettingRow(float y,string name,string icon)
+        {
+            Surface(470,y,660,74,Color.white,catsFrame:"Ink");
+            Art(488,y+13,48,48,icon);
+            Text(550,y+18,330,name,subtitle,38);
+        }
+        bool TogglePill(float y,bool on)
+        {
+            bool clicked=Button(930,y+10,184,54,on?"BẬT":"TẮT",true,on,on?"button":"blue");
+            Enlarge(22);
+            return clicked;
+        }
+        static string RewardIcon(string key)=>key switch
+        {
+            "accountXp"=>"Badge_Crown",
+            "coins" or "gem" or "catXp" or "spiritDust" or "forgeStone" or "soulEssence" or "summonScroll" or "skillCore" or "beastCage" or "moonCage" or "monsterChow" or "arenaToken" or "relicStone" or "artifact"=>"item-"+key,
+            _=>null
+        };
         void MapPopup()
         {
-            Panel(130,60,1340,780);
-            Text(170,84,1000,"Chuyến phiêu lưu dưới trăng",title,57);
-            Text(170,146,1000,$"CHIẾN DỊCH   ·   {profile.highestCleared} / {db.stages.Count} ĐÃ QUA   ·   Mỗi 5 ải là một trận trùm",small,28);
-            if(Button(1290,84,150,56,"Đóng"))modal="";
+            PopupFrame(130,80,1340,760,"Bản đồ chiến dịch",true);
+            Text(170,124,1260,$"{profile.highestCleared} / {db.stages.Count} ẢI ĐÃ QUA   ·   Mỗi 5 ải là một trận trùm   ·   Chọn ải để xem trên màn chính",small,28,align:TextAnchor.UpperCenter);
             for(int i=0;i<db.stages.Count&&i<20;i++)
             {
                 var stage=db.stages[i];float x=170+i%5*256,y=196+i/5*156;
