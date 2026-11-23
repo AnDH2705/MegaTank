@@ -1,0 +1,12 @@
+{
+  "clip": "throw_grenade_overhand",
+  "duration": 1.35,
+  "loop": false,
+  "release_event": "grenade_release",
+  "release_time": 0.64,
+  "spawn_bone": "grenade_spawn",
+  "method": "Skeletal animation: longer wind-up, fast shoulder cast, forward weight transfer, recovery; planted feet solved at fixed leg lengths",
+  "max_foot_plant_error": 6.637016871120738e-14,
+  "existing_clip": "throw_grenade retained unchanged",
+  "art_reused": true
+}

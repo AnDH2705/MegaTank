@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "engine": "Spine 4.2.43 Professional: native project saved from original rig plus one animation, native JSON roundtrip comparison and native PNG render",
+  "clip": "throw_grenade_overhand",
+  "duration": 1.35,
+  "native_frames": 42,
+  "release_event": "grenade_release",
+  "release_time": 0.64,
+  "spawn_bone": "grenade_spawn",
+  "existing_animations_preserved": [
+    "death",
+    "hurt",
+    "idle",
+    "melee_attack",
+    "throw_grenade",
+    "walk"
+  ],
+  "rig_structure_preserved": true,
+  "art_and_atlas_preserved": true,
+  "max_bone_length_error": 4.263256414560601e-14,
+  "max_foot_plant_error": 0.03200940058396091,
+  "preview": {
+    "frames": 42,
+    "duration_ms": 1710
+  },
+  "demo_preview": {
+    "frames": 42,
+    "duration_ms": 1710
+  },
+  "demo_projectile_is_separate_overlay": true,
+  "errors": []
+}
