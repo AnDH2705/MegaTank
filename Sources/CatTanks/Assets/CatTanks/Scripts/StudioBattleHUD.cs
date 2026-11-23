@@ -53,8 +53,6 @@ namespace CatTanks
                 var p=Camera.main.WorldToScreenPoint(fx.position+Vector2.up*(1-fx.life/fx.maxLife)*50);var ui=ToUI(new Vector2(p.x,Screen.height-p.y));
                 FloatingText(floating++,ui,fx);
             }
-            string captureKeys=battle.CaptureEnabled?"     C / Shift+C  Bắt quái":"";
-            Text(37,875,1526,"A / D  Di chuyển     Chuột  Khóa mục tiêu     1–4  Kỹ năng"+captureKeys+"     P  Tạm dừng     B  Bách khoa",small,25);
         }
         string CaptureHint(Actor target)
         {

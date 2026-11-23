@@ -69,7 +69,15 @@ namespace CatTanks
             Text(836,383,676,"TÍCH LŨY TỐI ĐA 12 GIỜ",small);
             Bar(836,422,676,22,elapsed/43200,gold);
             Surface(836,464,682,146,Color.white,catsFrame:"Roster");
-            Text(856,485,638,Rewards(rewards),label,108);
+            var gains=rewards.Where(r=>r.Value>0).Take(6).ToList();
+            if(gains.Count==0)Text(856,516,638,"Chưa có gì để nhận · quay lại sau ít phút nhé!",label,36);
+            for(int i=0;i<gains.Count;i++)
+            {
+                float x=856+i%3*220,y=476+i/3*64;string icon=RewardIcon(gains[i].Key);
+                if(icon!=null)Art(x,y,46,46,icon);
+                Text(x+54,y+2,160,"+"+N(gains[i].Value),subtitle,30);
+                Text(x+54,y+30,160,Currency(gains[i].Key),small,24);
+            }
             if(IllustratedButton(836,649,682,72,elapsed<60?"ĐANG TÍCH LŨY • ĐỢI 1 PHÚT":"NHẬN TOÀN BỘ","item-afkChest",elapsed>=60,true))
             {profile.Grant(rewards);profile.lastIdle=Math.Max(profile.lastIdle,Profile.Now);profile.Track("idle");Changed("Đã nhận chiến lợi phẩm AFK");}
             Text(836,746,676,"Vượt thêm ải để tăng thu nhập.",small);
@@ -90,7 +98,14 @@ namespace CatTanks
                 {profile.claimed.Add(ids[i]);profile.Add("coins",40);profile.Add("catXp",10);Changed("Đã nhận thưởng nhiệm vụ");}
             }
             bool complete=ids.All(profile.claimed.Contains),bonus=profile.claimed.Contains("bonus");
-            if(IllustratedButton(282,733,1266,65,bonus?"ĐÃ NHẬN RƯƠNG NGÀY":$"{ids.Count(profile.claimed.Contains)}/5 NHIỆM VỤ    •    RƯƠNG NGÀY: 800 XU + 20 NGỌC + VẬT LIỆU","item-afkChest",complete&&!bonus,true))
+            int done=ids.Count(profile.claimed.Contains);
+            Surface(282,722,1266,88,Color.white,catsFrame:"Ink");
+            Art(300,732,68,68,"item-afkChest");
+            Text(384,732,420,"RƯƠNG NGÀY",subtitle,34);
+            Text(384,768,420,"800 xu · 20 ngọc · 200 bụi · 1 vé · 10 thức ăn",small,26);
+            Text(820,730,360,$"{done} / 5 NHIỆM VỤ",small,26,align:TextAnchor.UpperCenter);
+            Bar(820,762,360,24,done/5f,gold);
+            if(Button(1206,738,320,60,bonus?"ĐÃ NHẬN":complete?"MỞ RƯƠNG":"CHƯA ĐỦ",complete&&!bonus,complete&&!bonus))
             {profile.claimed.Add("bonus");profile.Grant(new Dictionary<string,int>{{"coins",800},{"spiritDust",200},{"gem",20},{"summonScroll",1},{"monsterChow",10},{"accountXp",150}});Changed("Đã nhận rương ngày");}
         }
     }
