@@ -44,12 +44,13 @@ namespace CatTanks
         StudioUITheme theme;
         Widget lastButton;
         string pendingButton,drawnContext="",renderViewKey="",uiContainer="",scrollContext="";
-        bool uiInputAllowed=true,renderingUi,dispatchOnly,authoringUi,reduceMotion;
+        bool uiInputAllowed=true,renderingUi,dispatchOnly,authoringUi,reduceMotion,useCodeGeometry;
         float nextUiRefresh;
         int lastScreenWidth,lastScreenHeight;
         Rect lastSafeArea;
         Color textTint=Color.white;
         StudioTextStyle hudText,hudMeta;
+        Font strongFont;
         public bool UiReady=>studioCanvas&&theme&&!renderingUi;
         public StudioUIRoot CanvasRoot=>studioRoot;
         string contextPage,contextTab,contextModal,cachedContext;
@@ -85,6 +86,8 @@ namespace CatTanks
             if(studioRoot.theme)theme=studioRoot.theme;
             if(studioRoot.mockupKit){title.color=C("#ffcc32");subtitle.color=label.color=small.color=Color.white;}
             studioCanvas=studioRoot.GetComponent<Canvas>();uiRoot=studioRoot.viewport;
+            foreach(var text in studioRoot.GetComponentsInChildren<Text>(true))
+                ApplyFont(text,text.fontStyle);
             foreach(var view in studioRoot.GetComponentsInChildren<StudioUIView>(true))
                 foreach(var binding in view.GetComponentsInChildren<StudioWidgetBinding>(true))
                     uiWidgets[view.key+"/"+binding.id]=Bind(binding);
@@ -161,18 +164,22 @@ namespace CatTanks
         {
             string key=inBattle?"battle":page=="barracks"?"barracks-"+NormalizeBarracksTab():page=="town"?"town-"+NormalizeTownTab():page;
             SelectView(key,"screen");uiInputAllowed=modal==""&&(!inBattle||(!paused&&!resolved));
-            if(inBattle)BattleHUD();else HubUI();
+            if(inBattle){useCodeGeometry=true;BattleHUD();}else HubUI();
             if(modal!="")
             {
-                SelectView(modal,"popup");uiInputAllowed=true;Scrim();
+                BeginPopup(modal);
                 if(modal=="book")Book();else if(modal=="settings")Settings();else if(modal=="prebattle")Prebattle();else if(modal=="choice")ChoiceModal();
             }
-            else if(inBattle&&resolved){SelectView("result","popup");uiInputAllowed=true;Scrim();Result();}
-            else if(inBattle&&paused){SelectView("pause","popup");uiInputAllowed=true;Scrim();PausePopup();}
+            else if(inBattle&&resolved){BeginPopup("result");Result();}
+            else if(inBattle&&paused){BeginPopup("pause");PausePopup();}
             if(Time.unscaledTime<toastUntil)
             {
                 SelectView("toast","notification");Surface(438,806,870,64,C("#183e53"));Icon(454,820,32,"Check");Text(500,822,780,toast,label,40);
             }
+        }
+        void BeginPopup(string key)
+        {
+            SelectView(key,"popup");uiInputAllowed=true;Scrim();useCodeGeometry=true;
         }
         string NormalizeBarracksTab()
         {
@@ -181,7 +188,7 @@ namespace CatTanks
         string NormalizeTownTab(){if(tab!="summon"&&tab!="shop"&&tab!="arena")tab="summon";return tab;}
         void SelectView(string key,string layer)
         {
-            renderViewKey=key;uiContainer="";if(dispatchOnly)return;
+            renderViewKey=key;uiContainer="";useCodeGeometry=false;if(dispatchOnly)return;
             var view=studioRoot.Find(key);
 #if UNITY_EDITOR
             if(!view&&authoringUi)
@@ -225,7 +232,7 @@ namespace CatTanks
             item.rect.gameObject.SetActive(true);
             var owner=item.binding.layoutOwner?item.binding.layoutOwner:uiParent;
             if(item.rect.parent!=owner)item.rect.SetParent(owner,false);
-            if(placeGeometry&&(authoringUi||!item.binding.authored||dynamicLayout))Place(item.rect,x,y,w,h);
+            if(placeGeometry&&(authoringUi||!item.binding.authored||dynamicLayout||(useCodeGeometry&&!item.binding.layoutOwner)))Place(item.rect,x,y,w,h);
             if(!item.binding.layoutOwner)
             {
                 siblingCursors.TryGetValue(owner,out int index);
@@ -238,6 +245,7 @@ namespace CatTanks
         {
             var go=binding.gameObject;var item=new Widget{binding=binding,rect=(RectTransform)binding.transform,image=go.GetComponent<Image>(),button=go.GetComponent<UnityEngine.UI.Button>(),scroll=go.GetComponent<ScrollRect>(),input=go.GetComponent<InputField>()};
             item.text=binding.kind=="text"?go.GetComponent<Text>():go.GetComponentInChildren<Text>(true);
+            if(item.button&&item.text)ApplyFont(item.text,FontStyle.Bold);
             if(item.scroll)item.content=item.scroll.content;
             if(item.button&&studioRoot.mockupKit)
             {
@@ -296,12 +304,25 @@ namespace CatTanks
             uiParent=parent;uiContainer=container;
             Place(item.rect,position.x-25,position.y,110,35);
             item.text.text=effect.text;item.text.color=small.color*effect.color;item.text.fontSize=small.fontSize;
-            item.text.fontStyle=small.fontStyle;item.text.alignment=TextAnchor.UpperLeft;
+            ApplyFont(item.text,small.fontStyle);item.text.alignment=TextAnchor.UpperLeft;
             floatingLayer.SetAsLastSibling();
         }
-        void SpriteBox(float x,float y,float w,float h,string key,Color color,bool preserve=false,string kind="image")
+        void SpriteBox(float x,float y,float w,float h,string key,Color color,bool preserve=false,string kind="image",string marchFrame=null,string catsFrame=null)
         {
             if(dispatchOnly)return;bool fill=key=="fill"||key.StartsWith("bar_fill_");var item=GetWidget(kind,x,y,w,h,fill);
+            string managementFrame=catsFrame??(useCodeGeometry&&key=="panel"?(renderViewKey=="battle"?"CombatPlate":"Detail"):null);
+            if(UsesSharedArt&&managementFrame!=null&&CatsFrame(managementFrame) is Sprite catsSprite&&catsSprite)
+            {
+                StudioNineSlice.Apply(item.image,catsSprite,18);
+                item.image.color=Color.white;
+                return;
+            }
+            if(UsesMarchArt&&marchFrame!=null&&MarchFrame(marchFrame) is Sprite frame&&frame)
+            {
+                StudioNineSlice.Apply(item.image,frame,18);
+                item.image.color=Color.white;
+                return;
+            }
             if(studioRoot.mockupKit)
             {
                 string skin=string.IsNullOrEmpty(item.binding.spriteKey)?key:item.binding.spriteKey;
@@ -315,24 +336,42 @@ namespace CatTanks
             }
             else if(theme&&item.image.sprite!=theme.Get(key))StudioNineSlice.Apply(item.image,theme.Get(key),key=="bar"?5:key=="panel"?16:14,preserve);
         }
-        void Surface(float x,float y,float w,float h,Color color)=>SpriteBox(x,y,w,h,"panel",color);
+        void Surface(float x,float y,float w,float h,Color color,string marchFrame=null,string catsFrame=null)=>SpriteBox(x,y,w,h,"panel",color,marchFrame:marchFrame,catsFrame:catsFrame);
         void Icon(float x,float y,float size,string key)=>SpriteBox(x,y,size,size,key,Color.white,true);
-        void Text(float x,float y,float w,string value,StudioTextStyle style=null,float h=35,bool dynamicLayout=false)
+        void Text(float x,float y,float w,string value,StudioTextStyle style=null,float h=35,bool dynamicLayout=false,bool richText=false)
         {
             if(dispatchOnly)return;var s=style??label;var item=GetWidget("text",x,y,w,Mathf.Max(h,s.fontSize*1.45f),dynamicLayout);item.text.text=value;
-            if(Configure(item)){item.rect.name="Text • "+value.Replace('\n',' ');item.text.fontSize=s.fontSize;item.text.fontStyle=s.fontStyle;item.text.color=s.color*textTint;item.text.alignment=TextAnchor.UpperLeft;item.text.resizeTextForBestFit=false;}
+            if(richText)item.text.supportRichText=true;
+            if(Configure(item)){item.rect.name="Text • "+value.Replace('\n',' ');item.text.fontSize=s.fontSize;ApplyFont(item.text,s.fontStyle);item.text.color=s.color*textTint;item.text.alignment=TextAnchor.UpperLeft;item.text.resizeTextForBestFit=false;}
+            if((UsesMarchArt||UsesSharedArt)&&item.text.color.a>0)
+            {
+                item.text.color=s==title?C("#ffe461"):C("#fff8f3");
+                if(s==title)
+                {
+                    ApplyFont(item.text,FontStyle.BoldAndItalic);
+                    item.text.fontSize=(UsesSharedArt&&h>=55)||h>=70?40:36;
+                }
+                MarchLettering(item.text,s==title?3:1);
+            }
         }
-        bool Button(float x,float y,float w,float h,string value,bool enabled=true,bool primary=false)
+        bool Button(float x,float y,float w,float h,string value,bool enabled=true,bool primary=false,string normalSpriteKey="button")
         {
             string id=Identity("button",x,y).key;
             if(dispatchOnly){if(pendingButton!=id||!enabled||!uiInputAllowed)return false;pendingButton=null;return true;}
             var item=GetWidget("button",x,y,w,h);lastButton=item;
             if(Configure(item))
             {
-                item.rect.name="Button • "+value.Replace('\n',' ');item.text.fontSize=h<55?17:19;item.text.fontStyle=FontStyle.Bold;item.text.alignment=TextAnchor.MiddleCenter;
+                item.rect.name="Button • "+value.Replace('\n',' ');item.text.fontSize=h<55?17:19;item.text.alignment=TextAnchor.MiddleCenter;
                 var tr=(RectTransform)item.text.transform;tr.offsetMin=new Vector2(12,5);tr.offsetMax=new Vector2(-12,-5);
             }
-            SetButtonSprite(item,primary?"primary":"button");item.text.text=value;item.text.color=!enabled?C("#c6d2e8"):primary?C("#44300e"):C("#f5f6ff");item.button.interactable=enabled&&uiInputAllowed;
+            SetButtonSprite(item,primary?"primary":normalSpriteKey);item.text.text=value;item.text.color=!enabled?C("#c6d2e8"):primary?C("#44300e"):C("#f5f6ff");item.button.interactable=enabled&&uiInputAllowed;
+            if(UsesMarchArt||UsesSharedArt)
+            {
+                bool goldLabel=primary&&(enabled||!useCodeGeometry);
+                if(goldLabel)item.text.color=C("#241333");
+                MarchLettering(item.text,goldLabel?0:1);
+                if(UsesSharedArt&&useCodeGeometry&&item.layout)item.layout.fontSize=h>=55?22:18;
+            }
             var colors=item.button.colors;colors.normalColor=Color.white;colors.highlightedColor=new Color(1.15f,1.15f,1.15f);colors.pressedColor=new Color(.75f,.8f,.9f);colors.selectedColor=C("#9ae6ff");colors.disabledColor=new Color(.5f,.54f,.65f,.75f);colors.fadeDuration=reduceMotion?0:.08f;item.button.colors=colors;
             item.context=UiContext;
             if(!item.clickBound)
@@ -343,15 +382,54 @@ namespace CatTanks
             if(item.layout)activeLayouts.Add(item.layout);
             focusable.Add(item.button);return false;
         }
-        void SetButtonSprite(Widget item,string key){if(item!=null)StudioNineSlice.Apply(item.image,theme?theme.Get(key):null,14);}
-        bool IllustratedButton(float x, float y, float w, float h, string value, string artKey, bool enabled = true,
-            bool primary = false, StudioButtonLayout.Content content = StudioButtonLayout.Content.Illustrated, string badgeKey = null, bool selected = false)
+        bool UsesMarchArt => renderViewKey=="march";
+        bool UsesCatsArt => renderViewKey=="barracks-cats";
+        bool UsesManagementArt => renderViewKey.StartsWith("barracks-",StringComparison.Ordinal)||
+            renderViewKey.StartsWith("town-",StringComparison.Ordinal)||renderViewKey is "chest" or "quests";
+        bool UsesSharedArt => UsesManagementArt||renderViewKey is "battle" or "prebattle" or "result" or "settings" or "book" or "choice" or "pause";
+        Sprite MarchFrame(string name)=>UiArt("Interface/March/"+name);
+        Sprite CatsFrame(string name)=>UiArt("Interface/Cats/"+name);
+        static void MarchLettering(Text text,float width)
         {
-            bool clicked = Button(x, y, w, h, value, enabled, primary);
+            if(!text.TryGetComponent<Outline>(out var outline))
+            {
+                if(width<=0)return;
+                outline=text.gameObject.AddComponent<Outline>();
+            }
+            outline.effectColor=C("#140c30");
+            outline.effectDistance=new Vector2(width,-width);
+            outline.enabled=width>0;
+        }
+        void SetButtonSprite(Widget item,string key)
+        {
+            if(item==null)return;
+            var sprite=UsesSharedArt?CatsFrame(key switch
+            {
+                "primary" or "selected"=>"Gold",
+                "blue"=>"Blue",
+                "cats-tab-selected" or "cats-tile-selected"=>"Cyan",
+                "cats-tile"=>"Tile",
+                _=>"Violet"
+            }):UsesMarchArt?MarchFrame(key switch
+            {
+                "button"=>"VioletButton",
+                "blue"=>"BluePanel",
+                "stage"=>"BluePanel",
+                _=>"GoldButton"
+            }):null;
+            StudioNineSlice.Apply(item.image,sprite?sprite:theme?theme.Get(key):null,UsesMarchArt||UsesSharedArt?18:14);
+        }
+        bool IllustratedButton(float x, float y, float w, float h, string value, string artKey, bool enabled = true,
+            bool primary = false, StudioButtonLayout.Content content = StudioButtonLayout.Content.Illustrated, string badgeKey = null, bool selected = false,
+            string normalSpriteKey = "button")
+        {
+            string frameKey = UsesSharedArt && content == StudioButtonLayout.Content.Tile ? "cats-tile" :
+                UsesMarchArt && content == StudioButtonLayout.Content.Stage ? "stage" : normalSpriteKey;
+            bool clicked = Button(x, y, w, h, value, enabled, primary, frameKey);
             if (dispatchOnly) return clicked;
 
             var item = lastButton;
-            if (selected) SetButtonSprite(item, "selected");
+            if (selected) SetButtonSprite(item, UsesSharedArt && content == StudioButtonLayout.Content.Tile ? "cats-tile-selected" : "selected");
             var layout = item.layout;
             if (!layout)
             {
@@ -360,6 +438,8 @@ namespace CatTanks
                 layout.label = item.text;
             }
             layout.content = content;
+            if(UsesMarchArt&&content==StudioButtonLayout.Content.Illustrated)layout.fontSize=24;
+            if(UsesSharedArt)layout.fontSize=content==StudioButtonLayout.Content.Tile?20:w>=200?22:18;
             if (!layout.icon)
                 layout.icon = ButtonImage("Artwork", item.rect);
             layout.icon.sprite = UiArt(artKey);
@@ -381,6 +461,7 @@ namespace CatTanks
                     outline.effectColor = new Color(.02f, .05f, .12f, 1);
                     outline.effectDistance = new Vector2(2, -2);
                 }
+                if(UsesMarchArt)MarchLettering(item.text,2);
                 if (!enabled) layout.icon.color = new Color(.64f, .71f, .83f, .38f);
             }
             if (content == StudioButtonLayout.Content.Symbol) item.text.color = Color.clear;
@@ -433,9 +514,18 @@ namespace CatTanks
             if(Configure(item)){StudioNineSlice.Apply(item.image,theme?theme.Get("input"):null,12);item.image.color=C("#d9e9ff");item.text.fontSize=22;item.text.color=C("#16213b");item.text.alignment=TextAnchor.MiddleLeft;}
             if(!item.input.isFocused)item.input.SetTextWithoutNotify(profile.name);
         }
+        void ApplyFont(Text text,FontStyle style)
+        {
+            bool strong=strongFont&&(style==FontStyle.Bold||style==FontStyle.BoldAndItalic);
+            text.font=strong?strongFont:font;
+            text.fontStyle=strong?(style==FontStyle.BoldAndItalic?FontStyle.Italic:FontStyle.Normal):style;
+        }
         void Styles()
         {
-            if(label!=null)return;font=Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            if(label!=null)return;
+            font=Resources.Load<Font>("UI/Fonts/Nunito-Bold");
+            strongFont=Resources.Load<Font>("UI/Fonts/Nunito-Black");
+            if(!font)font=Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             label=new StudioTextStyle(20,C("#e4eafa"));small=new StudioTextStyle(17,C("#aabbd6"));title=new StudioTextStyle(34,C("#fff0bc"),FontStyle.Bold);subtitle=new StudioTextStyle(23,C("#e4eafa"),FontStyle.Bold);hudText=new StudioTextStyle(16,Color.white,FontStyle.Bold);hudMeta=new StudioTextStyle(15,C("#e8f4ff"));
         }
     }

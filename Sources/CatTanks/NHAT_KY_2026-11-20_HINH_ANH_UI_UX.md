@@ -4,6 +4,21 @@
 
 **Agent này chỉ phụ trách hình ảnh và UI/UX của CatTanks** tại `Sources/CatTanks`. Phạm vi gồm sprite, bối cảnh, poster, ảnh khởi động, icon, bố cục và tương tác giao diện, cùng phần code Unity cần để hiển thị và kiểm tra các hạng mục đó. Phân công này áp dụng riêng cho agent của phiên này.
 
+## Mở Layout Workshop để làm tiếp ngày 21/11
+
+- Mở project Unity tại `F:\tank\MegaTank\Sources\CatTanks` và mở [Main.unity](Assets/CatTanks/Scenes/Main.unity).
+- Nhấn **Play**, vào màn hoặc popup cần sửa. Trong menu Unity, chọn **CatTanks → UI → Layout Workshop**, rồi bấm **Chụp UI đang mở**.
+- Kéo phần tử để đổi vị trí, kéo góc dưới bên phải để đổi kích thước, giữ **Shift** để giữ tỷ lệ. Có thể thử sprite khác hoặc ghi chú hình cần vẽ ngay trong tool.
+- Bấm **Xuất JSON** và chọn nơi lưu. Tên file gợi ý là `CatTanks-UI-Layout.json`. Phiên sau gửi file này hoặc mở lại bằng **Mở JSON**. File lưu ID màn, ID phần tử, tọa độ, sprite thay và ghi chú để áp dụng vào prefab hoặc code UI.
+- [Mã nguồn Layout Workshop](Assets/CatTanks/Editor/UiLayoutWorkshop.cs) · [Hướng dẫn chi tiết](Documentation/MOCKUP_GAME_UI.md#chỉnh-bản-nháp-bằng-layout-workshop)
+
+## Cập nhật cuối phiên
+
+- Mẫu màu ải 01 đã được duyệt. Đã dùng mẫu đó cho toàn bộ 20 nền chiến đấu và đồng bộ ảnh chọn ải. Nét mảnh, mỗi ải có bảng màu riêng, vùng giao tranh giảm độ rực và tương phản để mèo và quái dễ nhìn. [Ảnh mẫu ải 01](Captures/Stage01-Color-Comparison.jpg) · [Nền chiến đấu](Assets/CatTanks/Resources/Scenery) · [Ảnh chọn ải](Assets/CatTanks/Resources/Art/StagePreviews)
+- Cập nhật nền sảnh, xưởng, màn chọn ải, nền dự phòng trong trận và ảnh thu nhỏ dùng chung của Mockup Kit. [Asset Mockup Kit](Assets/CatTanksMockupKit/Textures/Generated)
+- Đổi UI trong game sang Nunito Bold 700 cho chữ thường và Nunito Black 900 cho nút, tiêu đề. Đã đối chiếu dấu tiếng Việt trong cả hai file font và đo tám nhãn tab của màn Doanh trại. [Font](Assets/CatTanks/Resources/UI/Fonts) · [Code Canvas](Assets/CatTanks/Scripts/StudioCanvas.cs)
+- Khi có Unity Editor, mở `Main.unity` để kiểm tra chữ trên nút hẹp như **CỘNG HƯỞNG**, dấu tiếng Việt trong HUD và popup, cùng độ nổi của mèo và quái khi nền chuyển động. Phiên này đã kiểm tra file và cú pháp, còn bước kiểm tra trực tiếp trong game.
+
 ## Sprite nhân vật, trang bị và pháo đài
 
 - Dùng ImageGen vẽ lại 110 sprite mèo, vũ khí cá nhân, tháp pháo, module, trang bị, đạn và xe hỗ trợ. Thay PNG tại chỗ trong cả thư mục game và Mockup Kit, giữ tên và GUID Unity.

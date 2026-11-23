@@ -209,8 +209,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 290, y: -790}
-  m_SizeDelta: {x: 710, y: 60}
+  m_AnchoredPosition: {x: 298, y: -748}
+  m_SizeDelta: {x: 724, y: 48}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3955827280539872263
 MonoBehaviour:
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::290:790
+  id: text::298:748
   kind: text
   authored: 1
   spriteKey: 
@@ -847,8 +847,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 435, y: -680}
-  m_SizeDelta: {x: 135, y: 68}
+  m_AnchoredPosition: {x: 445, y: -532}
+  m_SizeDelta: {x: 136, y: 184}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4441476779939737919
 MonoBehaviour:
@@ -862,7 +862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::435:680
+  id: button::445:532
   kind: button
   authored: 1
   spriteKey: 
@@ -1006,8 +1006,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 725, y: -465}
-  m_SizeDelta: {x: 135, y: 68}
+  m_AnchoredPosition: {x: 739, y: -334}
+  m_SizeDelta: {x: 136, y: 184}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7121860834390346158
 MonoBehaviour:
@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::725:465
+  id: button::739:334
   kind: button
   authored: 1
   spriteKey: 
@@ -1876,8 +1876,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1075, y: -730}
-  m_SizeDelta: {x: 198, y: 52}
+  m_AnchoredPosition: {x: 1078, y: -724}
+  m_SizeDelta: {x: 215, y: 52}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7275033484139620487
 MonoBehaviour:
@@ -1891,7 +1891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::1075:730
+  id: button::1078:724
   kind: button
   authored: 1
   spriteKey: 
@@ -2205,8 +2205,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 290, y: -285}
-  m_SizeDelta: {x: 1180, y: 35}
+  m_AnchoredPosition: {x: 327, y: -285}
+  m_SizeDelta: {x: 1143, y: 35}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8658061956934086080
 MonoBehaviour:
@@ -2220,7 +2220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::290:285
+  id: text::327:285
   kind: text
   authored: 1
   spriteKey: 
@@ -2492,8 +2492,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 435, y: -465}
-  m_SizeDelta: {x: 135, y: 68}
+  m_AnchoredPosition: {x: 445, y: -334}
+  m_SizeDelta: {x: 136, y: 184}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4683773195185174811
 MonoBehaviour:
@@ -2507,7 +2507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::435:465
+  id: button::445:334
   kind: button
   authored: 1
   spriteKey: 
@@ -3144,8 +3144,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 725, y: -680}
-  m_SizeDelta: {x: 135, y: 68}
+  m_AnchoredPosition: {x: 739, y: -532}
+  m_SizeDelta: {x: 136, y: 184}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &45662684209847716
 MonoBehaviour:
@@ -3159,7 +3159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::725:680
+  id: button::739:532
   kind: button
   authored: 1
   spriteKey: 
@@ -3810,8 +3810,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1075, y: -660}
-  m_SizeDelta: {x: 415, y: 55}
+  m_AnchoredPosition: {x: 1078, y: -658}
+  m_SizeDelta: {x: 446, y: 55}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8487679314898783261
 MonoBehaviour:
@@ -3825,7 +3825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::1075:660
+  id: button::1078:658
   kind: button
   authored: 1
   spriteKey: 
@@ -4231,8 +4231,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1075, y: -350}
-  m_SizeDelta: {x: 415, y: 49.300003}
+  m_AnchoredPosition: {x: 1078, y: -342}
+  m_SizeDelta: {x: 446, y: 57}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5312825055098795377
 MonoBehaviour:
@@ -4246,7 +4246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::1075:350
+  id: text::1078:342
   kind: text
   authored: 1
   spriteKey: 
@@ -4648,8 +4648,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 870, y: -465}
-  m_SizeDelta: {x: 135, y: 68}
+  m_AnchoredPosition: {x: 886, y: -334}
+  m_SizeDelta: {x: 136, y: 184}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7938109458876728705
 MonoBehaviour:
@@ -4663,7 +4663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::870:465
+  id: button::886:334
   kind: button
   authored: 1
   spriteKey: 
@@ -5523,8 +5523,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 290, y: -680}
-  m_SizeDelta: {x: 135, y: 68}
+  m_AnchoredPosition: {x: 298, y: -532}
+  m_SizeDelta: {x: 136, y: 184}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6633672323671039695
 MonoBehaviour:
@@ -5538,7 +5538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::290:680
+  id: button::298:532
   kind: button
   authored: 1
   spriteKey: 
@@ -7836,8 +7836,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1288, y: -730}
-  m_SizeDelta: {x: 202, y: 52}
+  m_AnchoredPosition: {x: 1309, y: -724}
+  m_SizeDelta: {x: 215, y: 52}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2656338518392358771
 MonoBehaviour:
@@ -7851,7 +7851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::1288:730
+  id: button::1309:724
   kind: button
   authored: 1
   spriteKey: 
@@ -8483,8 +8483,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 280, y: -875}
-  m_SizeDelta: {x: 1250, y: 35}
+  m_AnchoredPosition: {x: 347, y: -836}
+  m_SizeDelta: {x: 1200, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3278849396214404598
 MonoBehaviour:
@@ -8498,7 +8498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::280:875
+  id: text::347:836
   kind: text
   authored: 1
   spriteKey: 
@@ -8677,8 +8677,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 870, y: -680}
-  m_SizeDelta: {x: 135, y: 68}
+  m_AnchoredPosition: {x: 886, y: -532}
+  m_SizeDelta: {x: 136, y: 184}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8963281991041462341
 MonoBehaviour:
@@ -8692,7 +8692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::870:680
+  id: button::886:532
   kind: button
   authored: 1
   spriteKey: 
@@ -8836,8 +8836,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 580, y: -465}
-  m_SizeDelta: {x: 135, y: 68}
+  m_AnchoredPosition: {x: 592, y: -334}
+  m_SizeDelta: {x: 136, y: 184}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6092600447890573405
 MonoBehaviour:
@@ -8851,7 +8851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::580:465
+  id: button::592:334
   kind: button
   authored: 1
   spriteKey: 
@@ -9259,8 +9259,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1075, y: -410}
-  m_SizeDelta: {x: 415, y: 160}
+  m_AnchoredPosition: {x: 1078, y: -419}
+  m_SizeDelta: {x: 446, y: 54}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7803488220367478416
 MonoBehaviour:
@@ -9274,7 +9274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::1075:410
+  id: text::1078:419
   kind: text
   authored: 1
   spriteKey: 
@@ -9797,7 +9797,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 290, y: -228}
-  m_SizeDelta: {x: 700, y: 49.300003}
+  m_SizeDelta: {x: 700, y: 57}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4006242187375144576
 MonoBehaviour:
@@ -9989,8 +9989,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 290, y: -465}
-  m_SizeDelta: {x: 135, y: 68}
+  m_AnchoredPosition: {x: 298, y: -334}
+  m_SizeDelta: {x: 136, y: 184}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &713618842886767039
 MonoBehaviour:
@@ -10004,7 +10004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::290:465
+  id: button::298:334
   kind: button
   authored: 1
   spriteKey: 
@@ -10990,8 +10990,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 580, y: -680}
-  m_SizeDelta: {x: 135, y: 68}
+  m_AnchoredPosition: {x: 592, y: -532}
+  m_SizeDelta: {x: 136, y: 184}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8805349107319907867
 MonoBehaviour:
@@ -11005,7 +11005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::580:680
+  id: button::592:532
   kind: button
   authored: 1
   spriteKey: 
@@ -11239,8 +11239,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1050, y: -330}
-  m_SizeDelta: {x: 465, y: 480}
+  m_AnchoredPosition: {x: 1054, y: -322}
+  m_SizeDelta: {x: 494, y: 477}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8466624704885826302
 MonoBehaviour:
@@ -11254,7 +11254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: image::1050:330
+  id: image::1054:322
   kind: image
   authored: 1
   spriteKey: panel_card
@@ -11525,8 +11525,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1075, y: -590}
-  m_SizeDelta: {x: 415, y: 58}
+  m_AnchoredPosition: {x: 1078, y: -590}
+  m_SizeDelta: {x: 446, y: 58}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &620964621655312004
 MonoBehaviour:
@@ -11540,7 +11540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: button::1075:590
+  id: button::1078:590
   kind: button
   authored: 1
   spriteKey: 
@@ -12440,8 +12440,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1075, y: -393}
-  m_SizeDelta: {x: 415, y: 35}
+  m_AnchoredPosition: {x: 1085, y: -392}
+  m_SizeDelta: {x: 85, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4679877853124008978
 MonoBehaviour:
@@ -12455,7 +12455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be48759c7b5ab45897534d3db8f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: text::1075:393
+  id: text::1085:392
   kind: text
   authored: 1
   spriteKey: 

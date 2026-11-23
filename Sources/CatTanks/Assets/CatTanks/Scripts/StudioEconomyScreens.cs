@@ -13,24 +13,27 @@ namespace CatTanks
             string[] icons={"item-summonScroll","item-afkChest","item-arenaToken"};
             if(!tabs.Contains(tab))tab="summon";
             for(int i=0;i<3;i++)if(TabButton(290+i*405,148,385,55,names[i],tab==tabs[i],icons[i])){tab=tabs[i];scroll=Vector2.zero;}
+            useCodeGeometry=true;
             if(tab=="shop"){Shop();return;} if(tab=="arena"){Arena();return;}
-            Text(290,232,1100,"Một tín hiệu. Một đồng đội mới.",title);
-            Text(292,290,1140,"Bảo đảm mèo Elite sau 10 lượt. Bản sao giúp đồng đội thăng bậc.",label);
+            Text(290,226,1220,"Một tín hiệu. Một đồng đội mới.",title,57);
+            Text(290,285,1220,"Bảo đảm mèo Elite sau 10 lượt. Bản sao giúp đồng đội thăng bậc.",label);
+            Surface(282,326,1266,309,Color.white,catsFrame:"Roster");
             string[] cats={"cat-2","cat-0","cat-4"};string[] roles={"BỘ BINH","GIỮ PHÁO ĐÀI","ĐỒNG ĐỘI MỚI"};
             for(int i=0;i<3;i++)
             {
-                float x=340+i*374;Surface(x,356,330,279,C(i==1?"#344469":"#202f4d"));
-                Art(x+50,374,230,185,cats[i]);Text(x+64,581,240,roles[i],subtitle);
+                float x=302+i*414;Surface(x,345,398,271,Color.white,catsFrame:i==1?"Cyan":"Tile");
+                Art(x+81,357,236,194,cats[i]);Text(x+26,571,344,roles[i],subtitle);
             }
-            Text(340,657,1150,$"{profile.Get("summonScroll")} VÉ ĐANG CÓ    •    Còn {10-profile.pityElite} lượt đến mèo Elite",subtitle);
+            Surface(282,651,1266,152,Color.white,catsFrame:"Detail");
+            Text(302,665,1216,$"{profile.Get("summonScroll")} VÉ ĐANG CÓ    •    Còn {10-profile.pityElite} lượt đến mèo Elite",subtitle);
             bool unlocked=profile.highestCleared>=4;
-            if(IllustratedButton(340,724,530,72,"GỌI 1 LẦN  •  1 VÉ","item-summonScroll",unlocked&&profile.Get("summonScroll")>=1)) {Notify(profile.Summon(db,1));Changed(toast);}
-            if(IllustratedButton(900,724,560,72,"GỌI 10 LẦN  •  10 VÉ","item-summonScroll",unlocked&&profile.Get("summonScroll")>=10,true)) {Notify(profile.Summon(db,10));Changed(toast);}
-            Text(340,813,1130,unlocked?"Vé có thể nhận từ chiến dịch, nhiệm vụ và cửa hàng.":"MỞ KHÓA SAU ẢI 4 • Nâng cấp ba mèo đầu tiên trong Doanh trại để tiến xa hơn.",small);
+            if(IllustratedButton(302,703,602,60,"GỌI 1 LẦN  •  1 VÉ","item-summonScroll",unlocked&&profile.Get("summonScroll")>=1,normalSpriteKey:"blue")) {Notify(profile.Summon(db,1));Changed(toast);}
+            if(IllustratedButton(918,703,610,60,"GỌI 10 LẦN  •  10 VÉ","item-summonScroll",unlocked&&profile.Get("summonScroll")>=10,true)) {Notify(profile.Summon(db,10));Changed(toast);}
+            Text(302,771,1216,unlocked?"Vé có thể nhận từ chiến dịch, nhiệm vụ và cửa hàng.":"MỞ KHÓA SAU ẢI 4 • Nâng cấp ba mèo đầu tiên trong Doanh trại để tiến xa hơn.",small,25);
         }
         void Shop()
         {
-            Text(290,230,1100,"Trạm tiếp tế",title);
+            Text(290,226,1100,"Trạm tiếp tế",title,54);
             Art(290,280,32,32,"item-arenaToken");
             Text(330,285,1152,$"Vật phẩm làm mới mỗi ngày  •  {profile.Get("arenaToken")} huy hiệu đấu trường  •  {N(profile.Get("spiritDust"))} bụi",small);
             var stock=new[]{
@@ -39,51 +42,54 @@ namespace CatTanks
                 ("150 bụi","arenaToken",8,"spiritDust",150,5),("20 tinh chất","arenaToken",8,"soulEssence",20,3),("5 đá rèn","arenaToken",10,"forgeStone",5,3),
                 ("Vé triệu hồi","arenaToken",16,"summonScroll",1,2),("15 thức ăn","arenaToken",6,"monsterChow",15,5),("Lõi kỹ năng","arenaToken",40,"skillCore",1,1)};
             profile.RefreshDay();
-            BeginScroll(new Rect(290,333,1230,488),scroll,new Rect(0,0,1190,630));
+            Surface(282,322,1266,478,Color.white,catsFrame:"Roster");
+            BeginScroll(new Rect(298,338,1234,446),scroll,new Rect(0,0,1215,588));
             for(int i=0;i<stock.Length;i++)
             {
                 var v=stock[i];string key="shop-"+i;int bought=profile.bought.TryGetValue(key,out int n)?n:0;
-                float x=i%4*298,y=i/4*210;Panel(x,y,280,194);Art(x+16,y+16,58,58,"item-"+v.Item4);
-                Text(x+88,y+18,175,v.Item1,subtitle,58);Text(x+88,y+80,175,$"Còn {v.Item6-bought}/{v.Item6}",small);
+                float x=i%4*304,y=i/4*196;Surface(x,y,292,183,Color.white,catsFrame:"Tile");Art(x+16,y+15,64,64,"item-"+v.Item4);
+                Text(x+95,y+19,181,v.Item1,subtitle,49);Text(x+95,y+72,181,$"Còn {v.Item6-bought}/{v.Item6}",small);
                 bool canBuy=profile.highestCleared>=3&&bought<v.Item6&&profile.Get(v.Item2)>=v.Item3;
                 string caption=profile.highestCleared<3?"MỞ SAU ẢI 3":bought>=v.Item6?"HẾT HÔM NAY":Cost((v.Item2,v.Item3));
-                if(Button(x+14,y+130,252,50,caption,canBuy,true))
+                if(Button(x+14,y+119,264,50,caption,canBuy,true))
                     if(Pay((v.Item2,v.Item3))){profile.Add(v.Item4,v.Item5);profile.bought[key]=bought+1;Changed("Đã nhận "+v.Item1);}
             }
             EndScroll();
         }
         void Chest()
         {
-            Text(290,165,1100,"Chiến lợi phẩm đang chờ bạn",title);
+            Text(290,165,1100,"Chiến lợi phẩm đang chờ bạn",title,57);
             Text(292,220,1120,"Mèo vẫn thu thập tài nguyên khi bạn vắng mặt. Nhớ trở về nhận nhé!",label);
             float elapsed=Mathf.Clamp(Profile.Now-profile.lastIdle,0,43200);var rewards=profile.Idle(Profile.Now);
-            Surface(290,300,510,490,C("#243656"));Art(365,348,360,360,"item-afkChest");
-            Text(335,719,420,"RƯƠNG CHIẾN LỢI PHẨM",subtitle);
-            Surface(830,300,690,490,C("#1d2c48"));
-            Text(865,333,620,$"{Mathf.FloorToInt(elapsed/3600):00} GIỜ  {Mathf.FloorToInt(elapsed%3600/60):00} PHÚT",title);
-            Text(865,391,620,"TÍCH LŨY TỐI ĐA 12 GIỜ",small);
-            Text(865,451,600,Rewards(rewards),label,128);Bar(865,597,620,24,elapsed/43200,gold);
-            if(IllustratedButton(865,659,620,76,elapsed<60?"ĐANG TÍCH LŨY • ĐỢI 1 PHÚT":"NHẬN TOÀN BỘ","item-afkChest",elapsed>=60,true))
+            Surface(282,289,506,510,Color.white,catsFrame:"Roster");Art(361,337,348,340,"item-afkChest");
+            Text(318,718,440,"RƯƠNG CHIẾN LỢI PHẨM",subtitle);
+            Surface(806,289,742,510,Color.white,catsFrame:"Detail");
+            Text(836,324,676,$"{Mathf.FloorToInt(elapsed/3600):00} GIỜ  {Mathf.FloorToInt(elapsed%3600/60):00} PHÚT",title,57);
+            Text(836,383,676,"TÍCH LŨY TỐI ĐA 12 GIỜ",small);
+            Bar(836,422,676,22,elapsed/43200,gold);
+            Surface(836,464,682,146,Color.white,catsFrame:"Roster");
+            Text(856,485,638,Rewards(rewards),label,108);
+            if(IllustratedButton(836,649,682,72,elapsed<60?"ĐANG TÍCH LŨY • ĐỢI 1 PHÚT":"NHẬN TOÀN BỘ","item-afkChest",elapsed>=60,true))
             {profile.Grant(rewards);profile.lastIdle=Math.Max(profile.lastIdle,Profile.Now);profile.Track("idle");Changed("Đã nhận chiến lợi phẩm AFK");}
-            Text(865,751,620,"Vượt thêm ải để tăng thu nhập.",small);
+            Text(836,746,676,"Vượt thêm ải để tăng thu nhập.",small);
         }
         void Quests()
         {
-            profile.RefreshDay();Text(290,165,1100,"Một ngày đầy chiến công",title);
+            profile.RefreshDay();Text(290,165,1100,"Một ngày đầy chiến công",title,57);
             Text(292,220,1150,"Hoàn thành 5 nhiệm vụ để nhận rương ngày. Tiến độ làm mới theo ngày trên máy.",label);
             string[] ids={"idle","wins","upgrade","capture","pvp"},names={"Thu nhận chiến lợi phẩm AFK","Thắng 3 trận hành quân","Nâng cấp đồng đội hoặc pháo","Mở lồng hoặc bắt một quái","Tham gia một trận đấu trường"};
             string[] icons={"Chest_Gold","Battle","Gear","Bag_Brown","Badge_Crown"};
             for(int i=0;i<5;i++)
             {
-                float y=296+i*88;int need=i==1?3:1,n=profile.daily.TryGetValue(ids[i],out int v)?v:0;
+                float y=284+i*86;int need=i==1?3:1,n=profile.daily.TryGetValue(ids[i],out int v)?v:0;
                 bool claimed=profile.claimed.Contains(ids[i]),ready=n>=need&&!claimed;
-                Surface(290,y,1225,76,C(ready?"#29495a":"#202f4c"));Icon(310,y+12,50,icons[i]);
-                Text(381,y+9,680,names[i],subtitle);Text(381,y+43,680,$"{Mathf.Min(n,need)}/{need}    •    40 xu + 10 XP mèo",small);
-                if(Button(1190,y+10,305,56,claimed?"ĐÃ NHẬN":ready?"NHẬN THƯỞNG":"ĐANG THỰC HIỆN",ready,ready))
+                Surface(282,y,1266,76,Color.white,catsFrame:ready?"Roster":"Detail");Icon(307,y+12,50,icons[i]);
+                Text(377,y+8,775,names[i],subtitle);Text(377,y+43,775,$"{Mathf.Min(n,need)}/{need}    •    40 xu + 10 XP mèo",small,25);
+                if(Button(1190,y+12,332,52,claimed?"ĐÃ NHẬN":ready?"NHẬN THƯỞNG":"ĐANG THỰC HIỆN",ready,ready))
                 {profile.claimed.Add(ids[i]);profile.Add("coins",40);profile.Add("catXp",10);Changed("Đã nhận thưởng nhiệm vụ");}
             }
             bool complete=ids.All(profile.claimed.Contains),bonus=profile.claimed.Contains("bonus");
-            if(Button(290,761,1225,67,bonus?"ĐÃ NHẬN RƯƠNG NGÀY":$"{ids.Count(profile.claimed.Contains)}/5 NHIỆM VỤ    •    RƯƠNG NGÀY: 800 XU + 20 NGỌC + VẬT LIỆU",complete&&!bonus,true))
+            if(IllustratedButton(282,733,1266,65,bonus?"ĐÃ NHẬN RƯƠNG NGÀY":$"{ids.Count(profile.claimed.Contains)}/5 NHIỆM VỤ    •    RƯƠNG NGÀY: 800 XU + 20 NGỌC + VẬT LIỆU","item-afkChest",complete&&!bonus,true))
             {profile.claimed.Add("bonus");profile.Grant(new Dictionary<string,int>{{"coins",800},{"spiritDust",200},{"gem",20},{"summonScroll",1},{"monsterChow",10},{"accountXp",150}});Changed("Đã nhận rương ngày");}
         }
     }
