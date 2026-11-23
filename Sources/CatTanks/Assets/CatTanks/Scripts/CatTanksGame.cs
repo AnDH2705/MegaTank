@@ -42,7 +42,7 @@ namespace CatTanks
             if (!cam) {var go = new GameObject("Main Camera", typeof(Camera), typeof(AudioListener)); go.tag = "MainCamera"; cam = go.GetComponent<Camera>();}
             cam.backgroundColor = Catalog.Color("#041828"); cam.clearFlags = CameraClearFlags.SolidColor; cam.farClipPlane = 3000;
             if (!FindObjectOfType<Light>()) {var light = new GameObject("Moonlight", typeof(Light)).GetComponent<Light>(); light.type = LightType.Directional; light.intensity = .7f; light.transform.eulerAngles = new Vector3(35, -30, 0);}
-            view = new BattleView(cam); Preview();
+            view = new BattleView(cam, profile.selected); Preview();
             audioSource = gameObject.AddComponent<AudioSource>(); shot = Tone("Cannon", 110, .085f); boom = Tone("Rocket", 60, .2f);
             var fps=new GameObject("Frame Rate Overlay");fps.transform.SetParent(transform,false);fps.AddComponent<FrameRateOverlay>();
         }
@@ -57,9 +57,12 @@ namespace CatTanks
             if (muted || Time.unscaledTime < soundAt) return;
             soundAt = Time.unscaledTime + .08f; audioSource.PlayOneShot(w.splash > 0 ? boom : shot, .25f);
         }
+        // Ở màn chính pháo đài đứng gần giữa (giới hạn phải của playerX) để không bị các nút hai bên che.
+        const float HubFortressX = 550;
+        void RebuildHubScene() {view?.Dispose(); view = new BattleView(Camera.main, profile.selected); Preview();}
         void Preview()
         {
-            battle = new Battle(db, profile, profile.selected); battle.Step(.001f); view.Render(battle);
+            battle = new Battle(db, profile, profile.selected); battle.playerX = HubFortressX; battle.Step(.001f); view.Render(battle);
         }
         public void StartBattle(bool classic = false, bool arena = false)
         {
@@ -106,14 +109,14 @@ namespace CatTanks
         void Hub()
         {
             if (!resolved && inBattle) {battle.state = BattleState.Retreated; Resolve();}
-            inBattle = false; paused = false; modal = ""; view.Dispose(); view = new BattleView(Camera.main); Preview();
+            inBattle = false; paused = false; modal = ""; RebuildHubScene();
         }
         void OnApplicationPause(bool pause) {if (PreviewIsolation.IsActive) return; if (pause && inBattle) paused = true; if (pause) profile?.Save();}
         void OnApplicationQuit() {if (!PreviewIsolation.IsActive) profile?.Save();}
         void OnDestroy() {view?.Dispose(); if (shot) Destroy(shot); if (boom) Destroy(boom);}
         void Notify(string value) {toast = value; toastUntil = Time.unscaledTime + 3.5f;}
         bool Pay(params (string key, int amount)[] cost) {if (profile.Spend(cost)) return true; Notify("Thiếu tài nguyên"); return false;}
-        void Changed(string message = "Đã lưu") {profile.Save(); Notify(message); if (!inBattle) {view.Dispose(); view = new BattleView(Camera.main); Preview();}}
+        void Changed(string message = "Đã lưu") {profile.Save(); Notify(message); if (!inBattle) RebuildHubScene();}
         public static Vector2 ToUI(Vector2 screen)
         {
             Rect safe = Screen.safeArea; float scale = Mathf.Min(safe.width / 1600f, safe.height / 900f);

@@ -83,7 +83,7 @@ namespace CatTanks
             {text.fontSize=cache.result;text.raycastTarget=false;return;}
             var settings=text.GetGenerationSettings(size);
             settings.resizeTextForBestFit=false;settings.horizontalOverflow=HorizontalWrapMode.Overflow;settings.verticalOverflow=VerticalWrapMode.Overflow;
-            int font=Mathf.Clamp(maximum,13,24);
+            int font=Mathf.Clamp(maximum,13,48);
             while(font>13)
             {
                 settings.fontSize=font;

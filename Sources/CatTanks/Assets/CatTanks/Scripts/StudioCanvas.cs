@@ -162,13 +162,13 @@ namespace CatTanks
         }
         void RenderPass()
         {
-            string key=inBattle?"battle":page=="barracks"?"barracks-"+NormalizeBarracksTab():page=="town"?"town-"+NormalizeTownTab():page;
+            string key=inBattle?"battle":page=="march"?HomeView:page=="barracks"?"barracks-"+NormalizeBarracksTab():page=="town"?"town-"+NormalizeTownTab():page;
             SelectView(key,"screen");uiInputAllowed=modal==""&&(!inBattle||(!paused&&!resolved));
             if(inBattle){useCodeGeometry=true;BattleHUD();}else HubUI();
             if(modal!="")
             {
                 BeginPopup(modal);
-                if(modal=="book")Book();else if(modal=="settings")Settings();else if(modal=="prebattle")Prebattle();else if(modal=="choice")ChoiceModal();
+                if(modal=="book")Book();else if(modal=="settings")Settings();else if(modal=="prebattle")Prebattle();else if(modal=="choice")ChoiceModal();else if(modal==MapView)MapPopup();
             }
             else if(inBattle&&resolved){BeginPopup("result");Result();}
             else if(inBattle&&paused){BeginPopup("pause");PausePopup();}
@@ -190,17 +190,18 @@ namespace CatTanks
         {
             renderViewKey=key;uiContainer="";useCodeGeometry=false;drawingHubChrome=false;if(dispatchOnly)return;
             var view=studioRoot.Find(key);
-#if UNITY_EDITOR
-            if(!view&&authoringUi)
+            // Màn chính, chrome trang con và popup Bản đồ chưa có prefab: tạo view rỗng lúc chạy, widget do code đặt vị trí.
+            if(!view&&(authoringUi||IsRuntimeView(key)))
             {
                 var parent=layer=="screen"?studioRoot.screens:layer=="popup"?studioRoot.popups:studioRoot.notifications;
-                var rt=MakeRect((layer=="popup"?"Popup_":"Screen_")+key,parent);Place(rt,0,0,1600,900);
+                var rt=new GameObject((layer=="popup"?"Popup_":"Screen_")+key,typeof(RectTransform)).GetComponent<RectTransform>();
+                rt.SetParent(parent,false);Place(rt,0,0,1600,900);
                 view=rt.gameObject.AddComponent<StudioUIView>();view.key=key;view.layer=layer;
                 studioRoot.InvalidateViews();
             }
-#endif
             if(!view)throw new InvalidOperationException("Missing UI view prefab: "+key);
             view.gameObject.SetActive(true);uiParent=(RectTransform)view.transform;usedViews.Add(key);
+            if(layer=="screen")FrameView(uiParent,key);
         }
         WidgetIdentity Identity(string kind,float x,float y)
         {
@@ -386,7 +387,7 @@ namespace CatTanks
         bool UsesCatsArt => renderViewKey=="barracks-cats";
         bool UsesManagementArt => renderViewKey.StartsWith("barracks-",StringComparison.Ordinal)||
             renderViewKey.StartsWith("town-",StringComparison.Ordinal)||renderViewKey is "chest" or "quests";
-        bool UsesSharedArt => drawingHubChrome||UsesManagementArt||renderViewKey is "battle" or "prebattle" or "result" or "settings" or "book" or "choice" or "pause";
+        bool UsesSharedArt => drawingHubChrome||UsesManagementArt||IsRuntimeView(renderViewKey)||renderViewKey is "battle" or "prebattle" or "result" or "settings" or "book" or "choice" or "pause";
         Sprite MarchFrame(string name)=>UiArt("Interface/March/"+name);
         Sprite CatsFrame(string name)=>UiArt("Interface/Cats/"+name);
         static void MarchLettering(Text text,float width)
@@ -508,6 +509,7 @@ namespace CatTanks
         }
         void EndScroll(){uiContainer="";if(!dispatchOnly)uiParent=(RectTransform)studioRoot.Find(renderViewKey).transform;}
         void Scrim()=>SpriteBox(-500,-500,2600,1900,"",new Color(.025f,.035f,.075f,.82f),false,"scrim");
+        void Backdrop(Color color)=>SpriteBox(-500,-500,2600,1900,"",color,false,"scrim");
         void NameInput(float x,float y,float w,float h)
         {
             if(dispatchOnly)return;var item=GetWidget("input",x,y,w,h);
