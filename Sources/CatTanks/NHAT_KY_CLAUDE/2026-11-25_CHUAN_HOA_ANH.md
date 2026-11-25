@@ -1,6 +1,6 @@
 # 25/11/2026 – Chuẩn hoá ảnh nhân vật, đồ, vũ khí, quái
 
-Nhiệm vụ thường trực mới: tìm, làm sạch và làm nét các ảnh chưa chuẩn hoá. Làm trên nhánh `art/chuan-hoa-anh` (worktree `F:\tank\MegaTank-art-clean`). **Chưa chép ảnh nào vào game**, đang chờ duyệt.
+Nhiệm vụ thường trực mới: tìm, làm sạch và làm nét các ảnh chưa chuẩn hoá. Làm trên nhánh `art/chuan-hoa-anh` (worktree `F:\tank\MegaTank-art-clean`). Người dùng đã duyệt: ảnh đã áp vào game (Resources/Art + MockupKit/Original) và gộp vào main.
 
 ## Đã chốt với người dùng
 - Phạm vi: nhân vật, đồ, vũ khí (cat, hat, armor, uniform, gear-boots, gun, turret, turret_alt, pack), cộng thêm quái vì đang lỗi nặng.

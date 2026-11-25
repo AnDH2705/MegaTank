@@ -11,4 +11,4 @@ Mỗi phiên làm việc có một file, đặt tên theo mẫu `YYYY-MM-DD_<m�
 | 25/11/2026 | [2026-11-25_GAMEPLAY_CHIEN_DAU.md](2026-11-25_GAMEPLAY_CHIEN_DAU.md) | Thử từng súng, mèo, quái, kỹ năng; phương án cân bằng v1 đã chạy mô phỏng; đề xuất làm game hấp dẫn hơn |
 | 25/11/2026 | [2026-11-25_ASSET_NHAN_VAT_MOI.md](2026-11-25_ASSET_NHAN_VAT_MOI.md) | Đưa bộ ảnh mèo, chim, súng, mũ áo, giày, tháp pháo mới vào game; thêm 10 mèo; module thành chim chiến |
 | 25/11/2026 | [2026-11-25_UI_UX.md](2026-11-25_UI_UX.md) | Doanh trại, Thành mèo, Đấu trường, Nhiệm vụ theo bố cục game idle (chỉ cách sắp xếp) |
-| 25/11/2026 | [2026-11-25_CHUAN_HOA_ANH.md](2026-11-25_CHUAN_HOA_ANH.md) | Quét và làm sạch ảnh nhân vật/đồ/vũ khí/quái: công cụ Tools/ArtClean, cắt lại 20 quái từ ảnh gốc (chờ duyệt) |
+| 25/11/2026 | [2026-11-25_CHUAN_HOA_ANH.md](2026-11-25_CHUAN_HOA_ANH.md) | Quét và làm sạch ảnh nhân vật/đồ/vũ khí/quái: công cụ Tools/ArtClean, cắt lại 20 quái từ ảnh gốc (đã duyệt, đã áp) |
