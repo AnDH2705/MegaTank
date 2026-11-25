@@ -69,21 +69,20 @@ namespace CatTanks
             PopupFrame(120,90,1360,750,$"Ải {s.index:00} · {s.name}",true);
             Text(150,138,1300,$"LỰC CHIẾN ĐỘI BẠN {N(power)}   ·   ĐỀ NGHỊ {N(s.recommendedPower)}   ·   "+(power>=s.recommendedPower?"SẴN SÀNG":"NÊN NÂNG CẤP"),subtitle,36,align:TextAnchor.UpperCenter);
 
-            // Đội của bạn: chạm ô để chỉnh (mở Đội hình, ‹ quay lại đây).
+            // Đội của bạn: chiếc xe pháo đài ghép đúng như trong trận, bộ binh đứng trước xe.
+            // Chạm một tầng hoặc một mèo để mở Đội hình đúng ô đó (‹ quay lại đây).
             Surface(150,184,640,430,Color.white,catsFrame:"Roster");
             Text(168,194,600,"ĐỘI CỦA BẠN · chạm để chỉnh",subtitle,36);
+            FortressPortrait(330,594,Mathf.Min(1.05f,360f/(profile.FloorCount*80+129)));
+            Text(500,238,272,"PHÁO ĐÀI",subtitle,36);
+            Text(500,272,272,$"{profile.FloorCount}/5 tầng · HP {N(profile.MaxHp)}\nChạm một tầng để đổi pháo hoặc mèo vận hành.",small,80);
+            Text(500,462,272,"BỘ BINH",subtitle,36);
             for(int i=0;i<5;i++)
             {
-                float x=166+i*124;bool open=i<profile.FloorCount;var f=profile.floors[i];
-                if(IllustratedButton(x,236,116,170,open?"Tầng "+(i+1):"Khóa",open?f.turret:"Lock",true,content:StudioButtonLayout.Content.Tile))EditFormation("op-"+i);
-                Enlarge(16);
-                if(open&&!string.IsNullOrEmpty(f.cat)){Surface(x+62,240,50,50,Color.white,catsFrame:"Ink");Art(x+64,242,46,46,f.cat);}
-            }
-            for(int i=0;i<5;i++)
-            {
-                float x=166+i*124;bool open=i<profile.SquadCount;string id=profile.squad[i];
-                if(IllustratedButton(x,420,116,180,!open?"Khóa":string.IsNullOrEmpty(id)?"Dân quân":db.Cat(id).name,!open?"Lock":string.IsNullOrEmpty(id)?"cat-0":id,true,content:StudioButtonLayout.Content.Tile))EditFormation("inf-"+i);
-                Enlarge(16);
+                float x=500+i*56;bool open=i<profile.SquadCount;string id=profile.squad[i];
+                if(!open)Art(x+10,540,36,36,"Lock");
+                else Art(x,526,54,62,string.IsNullOrEmpty(id)?"cat-0":id);
+                if(HotSpot(x,506,54,90))EditFormation("inf-"+i);
             }
 
             // Quái sẽ gặp.
@@ -114,6 +113,30 @@ namespace CatTanks
             if(IllustratedButton(810,628,640,120,"XUẤT KÍCH","Battle",primary:true))StartBattle();
             Enlarge(36);
             Text(150,760,1300,$"Bắt quái: khóa mục tiêu, còn {Battle.CaptureHealthThreshold(false):0%} HP (trùm {Battle.CaptureHealthThreshold(true):0%}) thì nó kiệt sức vài giây · ném lồng [C] / Lồng trăng [Shift+C]",small,28,align:TextAnchor.UpperCenter);
+        }
+        // Vẽ xe pháo đài trong UI theo đúng kích thước khi ghép trong trận (BattleView.Fortress, đơn vị thế giới),
+        // thu nhỏ theo scale; (cx, groundY) là tâm ngang và mặt đất. Mỗi tầng có pháo và mèo vận hành.
+        void FortressPortrait(float cx,float groundY,float scale)
+        {
+            int floors=profile.FloorCount;
+            void Piece(string key,float worldY,float w,float h)=>Art(cx-w*scale/2,groundY-(worldY+h/2)*scale,w*scale,h*scale,key);
+            for(int i=0;i<floors;i++)Piece("fortress-floor",94+i*80,272,101);
+            Piece("fortress-chassis",35,320,73);
+            Piece("fortress-roof",floors*80+88,274,82);
+            for(int i=0;i<floors;i++)
+            {
+                var f=profile.floors[i];float centerY=groundY-(94+i*80)*scale;
+                if(!string.IsNullOrEmpty(f.cat))Art(cx-(63+40)*scale,centerY-46*scale,80*scale,80*scale,f.cat);
+                Art(cx+(20-75)*scale,centerY-50*scale,150*scale,94*scale,db.Weapon(f.turret).asset);
+                if(HotSpot(cx-136*scale,centerY-40*scale,272*scale,80*scale))EditFormation("op-"+i);
+            }
+        }
+        // Vùng chạm trong suốt đặt lên trên hình.
+        bool HotSpot(float x,float y,float w,float h)
+        {
+            bool clicked=Button(x,y,w,h,"");
+            if(!dispatchOnly&&lastButton!=null){lastButton.image.color=Color.clear;lastButton.text.text="";}
+            return clicked;
         }
         void EditFormation(string slot)
         {
