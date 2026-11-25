@@ -1,0 +1,25 @@
+{
+  "source": "Crew_demo.psd",
+  "layout": "ui-layout.json",
+  "nine_slice": "ui-sprites.json",
+  "skills": "skills.json",
+  "hero_fragment": "decor/hero_fragment.png",
+  "portrait_driver": "illustrations/cat_driver.png",
+  "portrait_melee": "illustrations/cat_melee.png",
+  "font": "font/font-atlas.json",
+  "font_atlas": "font/font-atlas.png",
+  "font_postscript_name": "AntiqueOliCom-RegIta",
+  "roster_selected_outline": "decor/roster_selected_outline.png",
+  "equipped_check": "decor/check_equipped.png",
+  "position_label_backgrounds": {
+    "normal": "slices/slot_label_normal.png",
+    "selected": "slices/slot_label_selected.png"
+  },
+  "position_labels": {
+    "mg": "text/slot_mg.png",
+    "mortar": "text/slot_mortar.png",
+    "cannon": "text/slot_cannon.png",
+    "driver": "text/slot_driver.png",
+    "melee": "text/slot_melee.png"
+  }
+}

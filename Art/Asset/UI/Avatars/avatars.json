@@ -1,0 +1,67 @@
+{
+  "format": "PNG RGBA",
+  "portrait_style": "2D comic",
+  "source_tool": "built-in image_gen",
+  "assets": [
+    {
+      "id": "cat_driver",
+      "file": "cat_driver.png",
+      "size_px": [
+        1024,
+        1024
+      ],
+      "alpha": true,
+      "locked": false,
+      "sha256": "aa8a1290e8c24d98f90e6a993b33acbb671cd74a9942a95cf247b4497f62baf5"
+    },
+    {
+      "id": "cat_melee",
+      "file": "cat_melee.png",
+      "size_px": [
+        1024,
+        1024
+      ],
+      "alpha": true,
+      "locked": false,
+      "sha256": "7115fcbdf1ed18c4d6c52687e40c2a1b8dcca900a17e538a02a8c95274c67e70"
+    },
+    {
+      "id": "locked_driver",
+      "file": "locked_driver.png",
+      "size_px": [
+        1024,
+        1024
+      ],
+      "alpha": true,
+      "locked": true,
+      "sha256": "6cd65329e8d453fbf582501c5d24935ffe53f4c1b1996cc007b0efe2ba90a1ff"
+    },
+    {
+      "id": "locked_melee",
+      "file": "locked_melee.png",
+      "size_px": [
+        1024,
+        1024
+      ],
+      "alpha": true,
+      "locked": true,
+      "sha256": "108b74f77762de30353e0146ec71ddeeb2c884c64b3295dd064101a413118b4c"
+    },
+    {
+      "id": "locked_unknown",
+      "file": "locked_unknown.png",
+      "size_px": [
+        1024,
+        1024
+      ],
+      "alpha": true,
+      "locked": true,
+      "sha256": "ce552d797811c67167e28b51862c5dcdd4d9f0b7e3f298d32b48e5bf461e3261"
+    }
+  ],
+  "pairs": {
+    "cat_driver": "locked_driver",
+    "cat_melee": "locked_melee"
+  },
+  "generic_locked": "locked_unknown"
+}

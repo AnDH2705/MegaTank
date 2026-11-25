@@ -1,0 +1,60 @@
+CREW UI — GIỮ DESIGN GỐC
+
+Nguồn: Crew_demo.psd / Crew_demo.png. Giữ canvas 770x436, layout, tank kaki, màu, độ nghiêng và font AntiqueOliCom-RegIta. PSD và PNG ref không chỉnh sửa. Asset lấy từ layer/smart object gốc, xuất PNG 4x; avatar/icon được dựng từ ảnh nhúng độ phân giải cao theo đúng transform.
+
+TRẠNG THÁI UI / BINDING
+- activeSlotId: ghế đang chọn (MG / MORTAR / CANNON / DRIVER / MELEE). Nhãn dưới ghế màu tối, ghế active có nhãn vàng.
+- selectedCrewId: nhân vật đang preview ở bảng giữa. Viền xanh trong roster theo ID này, kể cả chưa Equip.
+- equippedCrewId = crewAssignment[activeSlotId]: nhân vật được lắp ở ghế đó. Có TÍCH XANH riêng. Tick không di chuyển khi chỉ click preview.
+- Một card có thể đồng thời có viền xanh và tích xanh; khi preview card khác, viền và tick có thể nằm trên hai card khác nhau.
+- Equip mới cập nhật assignment. Nếu người mới đang ở ghế khác, swap khi phù hợp, nếu không đưa người cũ về bench. Mỗi nhân vật chỉ lắp một ghế.
+- List lọc theo allowedRoles từ CharacterDefinition; dữ liệu eligibility và tên roster hiện chỉ minh họa. Center hiển thị Equipped lúc mở ghế; click ứng viên đổi sang preview.
+- Level Up tăng level; Ascend tăng sao, là hai thao tác riêng.
+- 5/20 = mảnh đang có / mảnh cần cho sao kế tiếp, tính RIÊNG theo nhân vật. Icon mảnh: decor/hero_fragment.png (miếng ghép).
+- Thiếu mảnh: nút xám, phần vàng thể hiện tiến độ, có icon và số mảnh. Đủ mảnh: nút đầy vàng, chữ ASCEND, enabled; không hiện bộ đếm nữa. Bấm trừ mảnh và tăng sao rồi cập nhật ngưỡng tiếp theo.
+- Skill chưa mở dùng grayscale. Tooltip cho biết tên, tác dụng và điều kiện mở. Không bake grayscale vào toàn bộ bộ icon.
+- Demo HTML lưu đội hình/progress; chưa nối stat/economy/rig ngoài UI. Nối hệ thống Unity thật vào các binding trên. Không kèm bảng thông số balance.
+
+UNITY / ASSET
+- ui-layout.json chứa vị trí crop và tên layer PSD; không tự đổi bố cục. PNG part 4x đặt RectTransform theo box_native (770x436). Canvas Scaler reference 770x436; có thể nhân đồng đều toàn hierarchy sang 1920.
+- unity/Editor/CrewUISpriteImporter.cs tự đặt Sprite Single/Full Rect, alpha, Bilinear, mipmap off, PPU 400 cho pack 4x và Sprite Border theo ui-sprites.json. Canvas reference PPU 100. Chưa chạy compile trong Unity Editor.
+- slices/: Image Type=Sliced + Fill Center. Border theo LEFT, BOTTOM, RIGHT, TOP, tính trên pixel texture. Nội dung/text/icon là layer riêng.
+- Panel/khung nghiêng: base sliced đã gỡ skew; lấy skew_degrees từ manifest và thêm CrewPanelSkew lên background Image riêng. Không skew parent chứa text/portrait.
+- ribbon_name và label plate chỉ kéo chiều ngang; giữ chiều cao theo design. Hai slash, back chevron, tick, star, portrait, puzzle icon dùng Simple + Preserve Aspect.
+- Nguồn ảnh cat_driver/cat_melee nằm trong illustrations/. Frame đã lắp sẵn trong layers/ dùng để đối chiếu; bản UI production có thể ghép portrait riêng với frame.
+- Font gốc có tên ở art-links.json; các label gốc đã tách PNG trong text/. Có bitmap atlas và metrics trong font/ để giữ đúng mặt chữ khi máy dev chưa có font.
+- Gom slices/decor vào Sprite Atlas, rotation off, tight packing off, padding 4px; portrait/skill có thể ở atlas riêng.
+- source/imagegen_prompts.json ghi prompt icon mảnh mới; phần UI còn lại tách từ PSD, không dùng AI vẽ lại.
+
+TÊN SKILL / ICON
+
+MELEE
+- Shovel Slam | melee_shovel_damage | Tăng sát thương cận chiến | ../Skill_Icons/melee_shovel_damage.png
+- Rapid Strikes | melee_combo | Đánh cận chiến nhanh, liên tiếp | ../Skill_Icons/melee_combo.png
+- Iron Hide | melee_resistance | Chống chịu của mèo cận chiến | ../Skill_Icons/melee_resistance.png
+
+DRIVER
+- Full Throttle | driver_tank_speed | Tốc độ di chuyển của tank | ../Skill_Icons/driver_tank_speed.png
+- Reinforced Armor | driver_tank_armor | Chống chịu của tank | ../Skill_Icons/driver_tank_armor.png
+- Crew Rally | driver_team_buff | Buff hỗ trợ đồng đội | ../Skill_Icons/driver_team_buff.png
+
+CANNON
+- Steady Aim | cannon_accuracy | Độ chính xác của pháo tank | layers/icon_skill_1.png
+- Quick Reload | cannon_fire_rate | Tốc độ bắn của pháo tank | layers/icon_skill_2.png
+- Heavy Shells | cannon_damage | Sát thương của pháo tank | layers/icon_skill_3.png
+
+MORTAR
+- Pinpoint Strike | mortar_accuracy | Độ chính xác của mortar | ../Skill_Icons/mortar_accuracy.png
+- Extra Rounds | mortar_ammo | Tăng số đạn mortar | ../Skill_Icons/mortar_ammo.png
+- Explosive Payload | mortar_damage | Sát thương mortar | ../Skill_Icons/mortar_damage.png
+
+MG
+- Extended Belt | mg_ammo | Tăng số đạn MG | ../Skill_Icons/mg_ammo.png
+- Bullet Storm | mg_fire_rate | Tốc độ bắn MG | ../Skill_Icons/mg_fire_rate.png
+- Stopping Power | mg_damage | Sát thương MG | ../Skill_Icons/mg_damage.png
+
+Trong PSD, một số layer icon pháo có tên khác chức năng hiển thị; ưu tiên mapping trong skills.json theo thứ tự Steady Aim / Quick Reload / Heavy Shells.
+
+HTML: D:/Project/Tnak/Equipment-test.html (nút Crew hoặc #crew). Không commit, không tạo ZIP.
+
+Back plate (button_back) cũng chỉ kéo chiều ngang và giữ chiều cao theo fixed_height_logical trong manifest. Tick và khung selected có đường dẫn riêng trong art-links.json.

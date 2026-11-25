@@ -1,0 +1,45 @@
+{
+  "tool": "built-in image_gen",
+  "shared_style": "Use case: stylized-concept\nAsset type: ONE small isolated RPG STAT ICON for a cute comic cat/tank game.\nInput image 1 is a STYLE REFERENCE only. Match its extremely bold clean BLACK outer contour, playful sticker-like graphic shape, bright saturated flat colors, simple polygon cel-shading facets, 1 small crisp white highlight, and charming rounded cartoon proportions. Not pixel art, not 3D, not a rendered metal prop or painterly illustration.\nComposition: a single large coherent emblem centered on a square TRANSPARENT RGBA canvas. Entire icon completely visible, with 12 percent clear transparent padding on ALL sides. A simple silhouette that stays recognizable at 32 to 64 pixels. One main symbol, at most one small supporting cue. Some cute personality is good, but keep the stat meaning obvious.\nNo colored square background, no white panel, no frame, no scene, no ground or cast shadow, no UI numbers, words, labels, letters, watermark or logo. Do not reproduce the reference collage. No crown unless requested. No speed-ray background or tile from other skill-icon styles. Use thick near-black outlines, flat brilliant fills, no gradients, no soft glow. True transparency outside every contour and inside open holes. This is one finished standalone icon, not a set.",
+  "icons": [
+    {
+      "id": "atk",
+      "name": "ATK",
+      "meaning_vi": "Sức tấn công",
+      "subject": "A chunky ORANGE-RED CAT PAW clenched into a powerful FIST in a short dark red cuff, tilted diagonally upward as if punching, with ONE small sharp orange/yellow impact spark near the upper-right. Rounded three knuckle bumps and a clear thumb, one simple darker red shadow facet. Strong bold attack/power silhouette, not a shield, not a heart, not an entire character. Keep the fist the main symbol. Small playful determined energy like the reference."
+    },
+    {
+      "id": "accuracy",
+      "name": "Accuracy",
+      "meaning_vi": "Độ chính xác",
+      "subject": "A thick CYAN-BLUE circular CROSSHAIR TARGET with four bold black-outlined aiming ticks and a small bright yellow bullseye at its exact center; ONE tiny yellow/orange dart points diagonally into that center. Large clean reticle, wide open transparent spaces, minimal simple facets. Represents precision/accuracy immediately. Do not make it a clock, gear, compass or full weapon."
+    },
+    {
+      "id": "move_speed",
+      "name": "Move Speed",
+      "meaning_vi": "Tốc độ di chuyển",
+      "subject": "A chunky LIME-GREEN cartoon RUNNING BOOT / sneaker with ONE small cream-white WING attached at the ankle, tilted forward toward the right, and two short yellow/orange speed streaks trailing left. Thick black outline, simple sole, one darker green shadow facet, one crisp white highlight. Represents movement speed, no wheels, tank, animal portrait or lightning cloud."
+    },
+    {
+      "id": "hp",
+      "name": "HP",
+      "meaning_vi": "Máu tối đa",
+      "subject": "One big friendly CORAL-RED / HOT-PINK HEART with two very small triangular CAT-EAR points on its upper lobes, thick black outline, one simple darker red shadow facet, one crisp white highlight and a tiny happy black curved smile. Keep the HEART shape immediately recognizable as health/HP. No medical bag, no plus symbol, no wings, no shield, no dripping blood or realistic anatomy."
+    },
+    {
+      "id": "crit_rate",
+      "name": "Crit Rate",
+      "meaning_vi": "Tỉ lệ chí mạng",
+      "subject": "A chunky small PURPLE DICE with two simple visible white pips, popping in front of ONE large sharp GOLDEN-YELLOW critical-impact STARBURST with one hot pink shadow facet. Thick bold black outline around both connected shapes. The dice signals CHANCE and the sharp burst signals a CRITICAL HIT. Keep it clean and compact, no numerals, percent sign, letters, swords, face portrait or background explosion."
+    },
+    {
+      "id": "defense",
+      "name": "Defense",
+      "meaning_vi": "Phòng thủ",
+      "subject": "One sturdy TEAL-BLUE cartoon SHIELD with a simple CREAM/GOLD CAT-PAW emblem at the center, thick black outer contour, slightly rounded upper corners, pointed lower tip, one darker blue polygon shadow facet and one crisp white highlight. Strong clean protective silhouette, no hand, no tank, no heart, no weapon or busy effects. Match the playful simple sticker-style reference."
+    }
+  ],
+  "style_anchor": "atk.png",
+  "additional_style_instruction": "Image 2 is the approved ATK icon STYLE ANCHOR only. Match its bold black contour thickness, bright simple color facets, clean highlight and transparent sticker treatment. Use the requested stat symbol, not its fist or impact symbol unless requested.",
+  "reference_order": "ATK: style-reference only. Remaining icons: style-reference + approved ATK icon."
+}

@@ -1,0 +1,16 @@
+CREW UI — bản giữ design Crew_demo.psd
+
+Đọc: Art/Asset/UI/Crew/DESIGN_UNITY_VI.txt
+Mapping tên 15 skill và icon: Art/Asset/UI/Crew/skills.json
+Layout gốc: Art/Asset/UI/Crew/ui-layout.json
+Border 9-slice: Art/Asset/UI/Crew/ui-sprites.json
+
+Viền xanh roster = selectedCrewId (preview).
+Tích xanh = crewAssignment[activeSlotId] (đang equip ở ghế đang mở).
+Click preview không đổi tick; Equip mới đổi assignment.
+Icon mảnh tướng: Art/Asset/UI/Crew/decor/hero_fragment.png
+5/20 là mảnh nâng sao; đủ mảnh đổi thành nút vàng ASCEND.
+Nhãn vị trí MG / MORTAR / CANNON / DRIVER / MELEE đã thêm lại.
+
+HTML: D:/Project/Tnak/Equipment-test.html, nút Crew hoặc URL #crew.
+Không kèm bảng balance. PSD và PNG thiết kế nguồn được giữ nguyên.

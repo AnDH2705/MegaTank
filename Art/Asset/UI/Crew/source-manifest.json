@@ -1,0 +1,17 @@
+{
+  "source": "Crew_demo.psd",
+  "source_canvas": [
+    770,
+    436
+  ],
+  "extraction": "Photoshop native renderer; source document never saved or changed",
+  "font": "AntiqueOliCom-RegIta",
+  "font_available": true,
+  "bitmap_font_size": 64,
+  "raster_quality": "Original embedded PNGs re-rendered at their PSD transforms and masks; original Photoshop typeface rendered at 4x; source colors and geometry retained.",
+  "requested_additions": [
+    "position labels restored from previous HTML",
+    "separate equipped check and selected frame",
+    "new hero fragment puzzle icon (built-in image_gen)"
+  ]
+}
