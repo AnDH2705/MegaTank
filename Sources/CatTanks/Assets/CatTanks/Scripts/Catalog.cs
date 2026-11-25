@@ -23,7 +23,7 @@ namespace CatTanks
     }
     [Serializable] public class CatDef
     {
-        public string id, name, specialty, role, rarity, sprite;
+        public string id, name, specialty, role, rarity, sprite, gun;
         public Dictionary<string, float> baseStats, growth;
     }
     [Serializable] public class Burst { public float after, spacing; public int count; }

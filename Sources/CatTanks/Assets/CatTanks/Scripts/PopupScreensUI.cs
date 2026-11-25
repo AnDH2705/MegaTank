@@ -51,7 +51,7 @@ namespace CatTanks
         void Book()
         {
             PopupFrame(98,90,1404,740,"Bách khoa trăng xanh",true);
-            string[] names={"THÁP PHÁO","VŨ KHÍ MÈO","MODULE","QUÁI VẬT","MÈO"};
+            string[] names={"THÁP PHÁO","VŨ KHÍ MÈO","CHIM CHIẾN","QUÁI VẬT","MÈO"};
             string[] icons={"turret-0","gun-0","pack-0","bug-0","cat-0"};
             for(int i=0;i<5;i++)if(TabButton(134+i*268,165,258,54,names[i],bookTab==i,icons[i])){bookTab=i;bookPick=0;scroll=Vector2.zero;}
             var entries=BookEntries();

@@ -104,7 +104,7 @@ namespace CatTanks.Editor
             var assertions = new List<string>();
             void Check(bool condition, string name) {if (!condition) throw new Exception("FAILED: " + name); assertions.Add(name);}
             var db = Catalog.Load();
-            Check(db.weapons.Count == 40 && db.monsters.Count == 20 && db.cats.Count == 10 && db.stages.Count == 20, "Original catalogs: 40 weapons, 20 monsters, 10 cats, 20 stages");
+            Check(db.weapons.Count == 40 && db.monsters.Count == 20 && db.cats.Count == 20 && db.stages.Count == 20 && db.cats.All(c => db.weapons.Any(w => w.id == c.gun)), "Catalogs: 40 weapons, 20 monsters, 20 cats (each with a real gun), 20 stages");
             foreach (var w in db.weapons) Check(Resources.Load<Texture2D>("Art/" + w.asset) != null, "Weapon art: " + w.id);
             foreach (var m in db.monsters) Check(Resources.Load<Texture2D>("Art/" + m.asset) != null, "Monster art: " + m.asset);
             var p = Profile.New(db); Check(p.cats.Count == 3 && p.FloorCount == 1 && p.Get("coins") == 2000, "Starter profile and wallet");

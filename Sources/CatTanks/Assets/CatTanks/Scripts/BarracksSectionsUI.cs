@@ -17,7 +17,7 @@ namespace CatTanks
     {
         const string FortView="barracks-fort",TeamView="barracks-team",SavesView="barracks-saves",SkillView="barracks-skill",PetView="barracks-pet",CrystalView="barracks-crystal";
         string teamSlot="op-0";
-        int skillSlotPick,selectedSkill;
+        int skillSlotPick,selectedSkill,teamCatPage;
 
         string BarracksSectionView()=>tab switch
         {
@@ -80,12 +80,21 @@ namespace CatTanks
             }
             else
             {
-                for(int i=0;i<profile.cats.Count&&i<10;i++)
+                // 10 mèo mỗi trang; có hơn 10 mèo thì hiện nút lật trang.
+                int pages=Mathf.Max(1,(profile.cats.Count+9)/10);teamCatPage=Mathf.Clamp(teamCatPage,0,pages-1);
+                if(pages>1)
                 {
+                    Text(1180,660,110,$"{teamCatPage+1}/{pages}",small,30,align:TextAnchor.UpperCenter);
+                    if(Button(1300,652,80,40,"‹",teamCatPage>0,normalSpriteKey:"blue"))teamCatPage--;
+                    if(Button(1390,652,80,40,"›",teamCatPage<pages-1,normalSpriteKey:"blue"))teamCatPage++;
+                }
+                for(int k=0;k<10;k++)
+                {
+                    int i=teamCatPage*10+k;if(i>=profile.cats.Count)break;
                     var c=profile.cats[i];string place=TeamPlace(c.id);
-                    if(IllustratedButton(134+i*134,694,124,180,db.Cat(c.id).name,c.id,content:StudioButtonLayout.Content.Tile,selected:TeamSlotValue()==c.id))SetTeamSlot(c.id);
+                    if(IllustratedButton(134+k*134,694,124,180,db.Cat(c.id).name,c.id,content:StudioButtonLayout.Content.Tile,selected:TeamSlotValue()==c.id))SetTeamSlot(c.id);
                     Enlarge(17);
-                    if(place!=null)Text(134+i*134,700,124,place,small,26,align:TextAnchor.UpperCenter);
+                    if(place!=null)Text(134+k*134,700,124,place,small,26,align:TextAnchor.UpperCenter);
                 }
             }
         }
@@ -239,17 +248,17 @@ namespace CatTanks
             selectedTurret=Mathf.Clamp(selectedTurret,0,profile.turrets.Count-1);
             var turret=profile.turrets[selectedTurret];var weapon=db.Weapon(turret.id);
             int cap=40+8*turret.stars;
-            // Pháo lớn ở giữa, hai ô module bên dưới.
+            // Pháo lớn ở giữa, hai ô chim chiến (module) bên dưới.
             Art(500,240,546,340,turret.id);
             int floor=profile.floors.FindIndex(v=>v.turret==turret.id);
             Text(500,586,546,floor>=0?$"ĐANG LẮP Ở TẦNG {floor+1}":"CHƯA LẮP · đổi ở mục Đội hình",small,30,align:TextAnchor.UpperCenter);
             for(int slot=0;slot<2;slot++)
             {
                 string id=turret.modules[slot];bool empty=string.IsNullOrEmpty(id);
-                if(IllustratedButton(560+slot*236,630,220,250,empty?$"Module {slot+1}":db.Weapon(id).name,empty?"Gear":id,content:StudioButtonLayout.Content.Tile))
+                if(IllustratedButton(560+slot*236,630,220,250,empty?$"Chim {slot+1}":db.Weapon(id).name,empty?"Gear":id,content:StudioButtonLayout.Content.Tile))
                 {
                     var options=new[]{""}.Concat(profile.modules).ToArray();int chosen=slot;
-                    Pick("Chọn module "+(slot+1),options.Select(v=>string.IsNullOrEmpty(v)?"Gỡ module":db.Weapon(v).name),at=>{turret.modules[chosen]=options[at];Changed("Đã đổi module");},options.Select(v=>string.IsNullOrEmpty(v)?"Gear":v));
+                    Pick("Chọn chim "+(slot+1),options.Select(v=>string.IsNullOrEmpty(v)?"Gỡ chim":db.Weapon(v).name),at=>{turret.modules[chosen]=options[at];Changed("Đã đổi chim");},options.Select(v=>string.IsNullOrEmpty(v)?"Gear":v));
                 }
                 if(!dispatchOnly&&empty&&lastButton.layout&&lastButton.layout.icon)lastButton.layout.icon.color=new Color(1,1,1,.35f);
                 Enlarge(18);
