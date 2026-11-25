@@ -57,7 +57,8 @@ namespace CatTanks
                 if(!dispatchOnly&&open&&string.IsNullOrEmpty(id)&&lastButton.layout&&lastButton.layout.icon)lastButton.layout.icon.color=new Color(1,1,1,.35f);
                 Enlarge(18);
             }
-            Text(814,406,652,"Mèo đúng chuyên môn nhận thêm 15% chỉ số. Ghế trống: pháo giữ 70% sát thương. Ô bộ binh trống dùng dân quân. Đội hình khóa lúc bắt đầu trận.",small,80);
+            float specialty=db.B("cats.specialtyBonus");
+            Text(814,406,652,$"Mèo đúng chuyên môn nhận thêm {specialty:0%} ATK và HP. Ghế trống: pháo giữ 70% sát thương. Ô bộ binh trống dùng dân quân. Đội hình khóa lúc bắt đầu trận.",small,80);
             Surface(810,500,656,116,Color.white,catsFrame:"Ink");
             Text(828,512,620,"ĐANG CHỌN: "+TeamSlotName(),subtitle,36);
             bool turretSlot=teamSlot.StartsWith("tur-",StringComparison.Ordinal);

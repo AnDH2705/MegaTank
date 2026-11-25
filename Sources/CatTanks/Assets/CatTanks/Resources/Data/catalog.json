@@ -8,8 +8,8 @@
       "color": "#ffc34b",
       "description": "Đạn pháo nổ, bỏ qua một phần giáp.",
       "speed": 780,
-      "range": 1450,
-      "splash": 90,
+      "range": 1000,
+      "splash": 110,
       "pierce": 1,
       "id": "turret-0",
       "asset": "turret-0",
@@ -24,7 +24,7 @@
       "color": "#ffe68a",
       "description": "Hai viên bắn lệch nhịp, tập trung một mục tiêu.",
       "speed": 780,
-      "range": 1450,
+      "range": 1000,
       "id": "turret-1",
       "asset": "turret-1",
       "family": "THÁP PHÁO",
@@ -38,7 +38,7 @@
       "color": "#ff8350",
       "description": "Ba tên lửa bám mục tiêu; nổ lan.",
       "speed": 480,
-      "range": 1450,
+      "range": 1150,
       "count": 3,
       "splash": 100,
       "id": "turret-2",
@@ -54,7 +54,7 @@
       "color": "#ffe49b",
       "description": "Đạn liên thanh; tốc độ cao, độ tản nhỏ.",
       "speed": 780,
-      "range": 1450,
+      "range": 1000,
       "id": "turret-3",
       "asset": "turret-3",
       "family": "THÁP PHÁO",
@@ -64,11 +64,11 @@
       "name": "Pháo ion",
       "kind": "laser",
       "rate": 2.6,
-      "damage": 115,
+      "damage": 100,
       "color": "#69efff",
       "description": "Chùm sáng xuyên hàng quái; phá giáp.",
       "speed": 780,
-      "range": 1450,
+      "range": 1150,
       "pierce": 5,
       "id": "turret-4",
       "asset": "turret-4",
@@ -79,11 +79,11 @@
       "name": "Hỏa long",
       "kind": "flame",
       "rate": 0.3,
-      "damage": 28,
+      "damage": 40,
       "color": "#ff862e",
       "description": "Phun lửa hình nón; thiêu đốt liên tục.",
       "speed": 540,
-      "range": 670,
+      "range": 720,
       "burn": 4,
       "splash": 80,
       "id": "turret-5",
@@ -99,7 +99,7 @@
       "color": "#ffce75",
       "description": "Đạn cầu vồng bay cao rồi nổ rộng.",
       "speed": 390,
-      "range": 1450,
+      "range": 1150,
       "splash": 160,
       "id": "turret-6",
       "asset": "turret-6",
@@ -109,13 +109,13 @@
     {
       "name": "Mắt đại bàng",
       "kind": "sniper",
-      "rate": 2.6,
-      "damage": 230,
+      "rate": 3,
+      "damage": 200,
       "color": "#b3f5ff",
       "description": "Ngắm quái ít máu; đạn xuyên giáp chính xác.",
       "speed": 780,
-      "range": 1450,
-      "pierce": 3,
+      "range": 1200,
+      "pierce": 2,
       "id": "turret-7",
       "asset": "turret-7",
       "family": "THÁP PHÁO",
@@ -129,7 +129,7 @@
       "color": "#59f6ff",
       "description": "Sét giật tối đa bốn mục tiêu, gây choáng.",
       "speed": 780,
-      "range": 1450,
+      "range": 1000,
       "chain": 4,
       "stun": 0.5,
       "id": "turret-8",
@@ -140,13 +140,13 @@
     {
       "name": "Trạm chỉ huy",
       "kind": "drone",
-      "rate": 3.8,
-      "damage": 70,
+      "rate": 2.6,
+      "damage": 85,
       "color": "#ffde7b",
       "description": "Điều khiển hai drone bắn đạn dẫn đường.",
       "speed": 550,
-      "range": 1450,
-      "count": 2,
+      "range": 1050,
+      "count": 3,
       "id": "turret-9",
       "asset": "turret-9",
       "family": "THÁP PHÁO",
@@ -160,7 +160,7 @@
       "color": "#ffd675",
       "description": "Loạt ba viên đạn từ mèo bộ binh.",
       "speed": 780,
-      "range": 1450,
+      "range": 900,
       "count": 3,
       "id": "gun-0",
       "asset": "gun-0",
@@ -171,11 +171,11 @@
       "name": "Mini Gatling",
       "kind": "rapid",
       "rate": 0.17,
-      "damage": 9,
+      "damage": 13,
       "color": "#ffe5a3",
       "description": "Bắn liên thanh, ưu tiên quái bay.",
       "speed": 780,
-      "range": 1450,
+      "range": 900,
       "id": "gun-1",
       "asset": "gun-1",
       "family": "VŨ KHÍ CÁ NHÂN",
@@ -184,13 +184,13 @@
     {
       "name": "Bazooka cá ngừ",
       "kind": "rocket",
-      "rate": 3.6,
+      "rate": 2.6,
       "damage": 150,
       "color": "#ff975b",
       "description": "Tên lửa bám đuôi, nổ lan.",
       "speed": 450,
-      "range": 1450,
-      "splash": 110,
+      "range": 1000,
+      "splash": 130,
       "id": "gun-2",
       "asset": "gun-2",
       "family": "VŨ KHÍ CÁ NHÂN",
@@ -204,7 +204,7 @@
       "color": "#cbf6a2",
       "description": "Một phát đạn tốc độ cao, xuyên hai quái.",
       "speed": 780,
-      "range": 1450,
+      "range": 1100,
       "pierce": 2,
       "id": "gun-3",
       "asset": "gun-3",
@@ -215,11 +215,11 @@
       "name": "Shotgun đỏ",
       "kind": "shotgun",
       "rate": 1.4,
-      "damage": 24,
+      "damage": 34,
       "color": "#ffad78",
       "description": "Chùm năm viên tỏa quạt ở cự ly gần.",
       "speed": 780,
-      "range": 680,
+      "range": 700,
       "count": 5,
       "id": "gun-4",
       "asset": "gun-4",
@@ -234,7 +234,7 @@
       "color": "#61ebff",
       "description": "Quả cầu plasma nổ, xuyên giáp.",
       "speed": 510,
-      "range": 1450,
+      "range": 950,
       "splash": 75,
       "id": "gun-5",
       "asset": "gun-5",
@@ -245,11 +245,11 @@
       "name": "Súng phun lửa",
       "kind": "flame",
       "rate": 0.35,
-      "damage": 18,
+      "damage": 28,
       "color": "#ffa342",
       "description": "Ngọn lửa duy trì thiêu đốt.",
       "speed": 520,
-      "range": 570,
+      "range": 650,
       "burn": 4,
       "id": "gun-6",
       "asset": "gun-6",
@@ -264,7 +264,7 @@
       "color": "#ffde68",
       "description": "Lựu đạn cầu vồng, sát thương vùng.",
       "speed": 400,
-      "range": 1450,
+      "range": 1050,
       "splash": 130,
       "id": "gun-7",
       "asset": "gun-7",
@@ -275,11 +275,11 @@
       "name": "Nỏ thợ săn",
       "kind": "arrow",
       "rate": 1.5,
-      "damage": 95,
+      "damage": 70,
       "color": "#f5deb2",
       "description": "Mũi tên xuyên hai mục tiêu, gây chảy máu.",
       "speed": 780,
-      "range": 1450,
+      "range": 1000,
       "pierce": 2,
       "burn": 2,
       "id": "gun-8",
@@ -290,12 +290,12 @@
     {
       "name": "Drone bỏ túi",
       "kind": "drone",
-      "rate": 1.6,
-      "damage": 45,
+      "rate": 1.3,
+      "damage": 70,
       "color": "#79ecff",
       "description": "Drone cá nhân bay lên và khóa quái bay.",
       "speed": 570,
-      "range": 1450,
+      "range": 950,
       "id": "gun-9",
       "asset": "gun-9",
       "family": "VŨ KHÍ CÁ NHÂN",
@@ -309,7 +309,7 @@
       "color": "#ffdc80",
       "description": "Xả đạn liên thanh từ bệ phụ.",
       "speed": 780,
-      "range": 1450,
+      "range": 1000,
       "id": "pack-0",
       "asset": "pack-0",
       "family": "VŨ KHÍ PHỤ",
@@ -323,7 +323,7 @@
       "color": "#ff965d",
       "description": "Bốn quả đạn tỏa ra rồi bám mục tiêu.",
       "speed": 420,
-      "range": 1450,
+      "range": 1000,
       "count": 4,
       "splash": 75,
       "id": "pack-1",
@@ -339,7 +339,7 @@
       "color": "#ffd378",
       "description": "Đạn pháo hạng nặng, nổ lan.",
       "speed": 780,
-      "range": 1450,
+      "range": 1000,
       "splash": 100,
       "id": "pack-2",
       "asset": "pack-2",
@@ -354,7 +354,7 @@
       "color": "#55eaff",
       "description": "Sét chuyền qua ba mục tiêu.",
       "speed": 780,
-      "range": 1450,
+      "range": 1000,
       "chain": 3,
       "stun": 0.6,
       "id": "pack-3",
@@ -370,7 +370,7 @@
       "color": "#ffb281",
       "description": "Hai tên lửa dẫn đường.",
       "speed": 470,
-      "range": 1450,
+      "range": 1000,
       "count": 2,
       "splash": 90,
       "id": "pack-4",
@@ -401,7 +401,7 @@
       "color": "#a3f5ff",
       "description": "Đạn băng làm chậm 65% trong ba giây.",
       "speed": 620,
-      "range": 1450,
+      "range": 1000,
       "slow": 3,
       "id": "pack-6",
       "asset": "pack-6",
@@ -416,7 +416,7 @@
       "color": "#b6fa58",
       "description": "Mây độc lan rộng, gây độc sáu giây.",
       "speed": 450,
-      "range": 1450,
+      "range": 1000,
       "poison": 6,
       "splash": 130,
       "id": "pack-7",
@@ -432,7 +432,7 @@
       "color": "#e4e6ff",
       "description": "Lưỡi cưa quay, xuyên ba quái.",
       "speed": 590,
-      "range": 1450,
+      "range": 1000,
       "pierce": 3,
       "id": "pack-8",
       "asset": "pack-8",
@@ -447,7 +447,7 @@
       "color": "#ffcd66",
       "description": "Mũi khoan xuyên giáp dày.",
       "speed": 650,
-      "range": 1450,
+      "range": 1000,
       "pierce": 2,
       "id": "pack-9",
       "asset": "pack-9",
@@ -462,7 +462,7 @@
       "color": "#ff596c",
       "description": "Tia laser xuyên đội hình.",
       "speed": 780,
-      "range": 1450,
+      "range": 1000,
       "pierce": 5,
       "id": "pack-10",
       "asset": "pack-10",
@@ -477,7 +477,7 @@
       "color": "#d48aff",
       "description": "Cầu năng lượng nổ lớn.",
       "speed": 350,
-      "range": 1450,
+      "range": 1000,
       "splash": 155,
       "id": "pack-11",
       "asset": "pack-11",
@@ -507,7 +507,7 @@
       "color": "#6af2ff",
       "description": "Phát xung khiên bảo vệ pháo đài hai giây.",
       "speed": 780,
-      "range": 1450,
+      "range": 1000,
       "id": "pack-13",
       "asset": "pack-13",
       "family": "VŨ KHÍ PHỤ",
@@ -521,7 +521,7 @@
       "color": "#a2b8ff",
       "description": "Kéo quái lại quanh điểm va chạm, làm chậm.",
       "speed": 420,
-      "range": 1450,
+      "range": 1000,
       "splash": 190,
       "slow": 3,
       "id": "pack-14",
@@ -537,7 +537,7 @@
       "color": "#ffdc8b",
       "description": "Đạn rơi từ trên cao, nổ vùng rộng.",
       "speed": 360,
-      "range": 1450,
+      "range": 1000,
       "splash": 150,
       "id": "pack-15",
       "asset": "pack-15",
@@ -552,7 +552,7 @@
       "color": "#fff4c1",
       "description": "Xuyên giáp, ưu tiên quái tinh anh.",
       "speed": 780,
-      "range": 1450,
+      "range": 1000,
       "pierce": 3,
       "id": "pack-16",
       "asset": "pack-16",
@@ -567,7 +567,7 @@
       "color": "#ffb57d",
       "description": "Bom bay chậm, vụ nổ diện rộng.",
       "speed": 320,
-      "range": 1450,
+      "range": 1000,
       "splash": 190,
       "id": "pack-17",
       "asset": "pack-17",
@@ -582,7 +582,7 @@
       "color": "#ffdd74",
       "description": "Năm mảnh tinh thạch tỏa quạt.",
       "speed": 780,
-      "range": 1450,
+      "range": 1000,
       "count": 5,
       "pierce": 1,
       "id": "pack-18",
@@ -598,7 +598,7 @@
       "color": "#99ffc0",
       "description": "Hồi máu pháo đài và tăng năng lượng.",
       "speed": 780,
-      "range": 1450,
+      "range": 1000,
       "id": "pack-19",
       "asset": "pack-19",
       "family": "VŨ KHÍ PHỤ",
@@ -673,7 +673,7 @@
       "behavior": "web",
       "description": "Phun tơ từ xa, làm chậm di chuyển xe.",
       "color": "#c79ae0",
-      "range": 760
+      "range": 520
     },
     {
       "name": "Bọ ngựa đao",
@@ -729,7 +729,7 @@
       "behavior": "venom",
       "description": "Phun nọc tầm xa, gây độc pháo đài.",
       "color": "#c298ed",
-      "range": 720
+      "range": 500
     },
     {
       "name": "Khỉ băng",
@@ -741,7 +741,7 @@
       "behavior": "frost",
       "description": "Ném băng từ xa, làm chậm tốc độ súng.",
       "color": "#8eeaff",
-      "range": 790
+      "range": 560
     },
     {
       "name": "Bướm thôi miên",
@@ -754,7 +754,7 @@
       "description": "Bay cao, rải bụi độc theo ba hướng.",
       "color": "#edb569",
       "flying": true,
-      "range": 730
+      "range": 520
     },
     {
       "name": "Rùa dung nham",
@@ -790,7 +790,7 @@
       "behavior": "crystal",
       "description": "Vỏ tinh thể giảm năng lượng, bắn mảnh pha lê.",
       "color": "#ffce69",
-      "range": 680
+      "range": 480
     },
     {
       "name": "Đại bàng sư tử",
@@ -803,7 +803,7 @@
       "description": "Bay lượn, bắn lông vũ theo loạt.",
       "color": "#ffd99b",
       "flying": true,
-      "range": 800
+      "range": 560
     },
     {
       "name": "Hươu cổ thụ",
@@ -815,7 +815,7 @@
       "behavior": "healer",
       "description": "Phát hào quang hồi máu cho quái xung quanh.",
       "color": "#b5ed8e",
-      "range": 880
+      "range": 620
     },
     {
       "name": "Bọ chúa giáp gai",
@@ -828,7 +828,7 @@
       "description": "Triệu hồi kiến; bắn đạn độc từng đợt.",
       "color": "#ed8e9c",
       "armor": 0.32,
-      "range": 760
+      "range": 540
     },
     {
       "name": "Bạo long hắc nguyệt",
@@ -840,7 +840,7 @@
       "behavior": "boss",
       "description": "Ba pha: phun lửa, gọi quái, cuồng nộ dưới 35% máu.",
       "color": "#ff767d",
-      "range": 850,
+      "range": 480,
       "armor": 0.2,
       "boss": true
     }
@@ -1092,9 +1092,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.13,
-          "enemyAtkMult": 0.17,
-          "bossHpMult": 0.018
+          "enemyHpMult": 0.8,
+          "enemyAtkMult": 1.6,
+          "bossHpMult": 0.05,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -1145,9 +1146,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.1456,
-          "enemyAtkMult": 0.19040000000000004,
-          "bossHpMult": 0.02016
+          "enemyHpMult": 0.86,
+          "enemyAtkMult": 1.72,
+          "bossHpMult": 0.0538,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -1201,9 +1203,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.16307200000000002,
-          "enemyAtkMult": 0.21324800000000005,
-          "bossHpMult": 0.0225792
+          "enemyHpMult": 0.9245,
+          "enemyAtkMult": 1.849,
+          "bossHpMult": 0.0578,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -1258,9 +1261,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.18264064000000005,
-          "enemyAtkMult": 0.2388377600000001,
-          "bossHpMult": 0.025288704000000006
+          "enemyHpMult": 0.9938,
+          "enemyAtkMult": 1.9877,
+          "bossHpMult": 0.0621,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -1317,9 +1321,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.2045575168000001,
-          "enemyAtkMult": 0.2674982912000001,
-          "bossHpMult": 0.02832334848000001
+          "enemyHpMult": 1.0684,
+          "enemyAtkMult": 2.1368,
+          "bossHpMult": 0.0668,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -1379,9 +1384,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.2291044188160001,
-          "enemyAtkMult": 0.29959808614400013,
-          "bossHpMult": 0.03172215029760001
+          "enemyHpMult": 1.1485,
+          "enemyAtkMult": 2.297,
+          "bossHpMult": 0.0718,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -1439,9 +1445,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.25659694907392017,
-          "enemyAtkMult": 0.3355498564812802,
-          "bossHpMult": 0.03552880833331202
+          "enemyHpMult": 1.2346,
+          "enemyAtkMult": 2.4693,
+          "bossHpMult": 0.0772,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -1500,9 +1507,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.2873885829627906,
-          "enemyAtkMult": 0.3758158392590339,
-          "bossHpMult": 0.039792265333309464
+          "enemyHpMult": 1.3272,
+          "enemyAtkMult": 2.6545,
+          "bossHpMult": 0.083,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -1560,9 +1568,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.3218752129183255,
-          "enemyAtkMult": 0.42091373997011794,
-          "bossHpMult": 0.044567337173306604
+          "enemyHpMult": 1.4268,
+          "enemyAtkMult": 2.8536,
+          "bossHpMult": 0.0892,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -1622,9 +1631,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.3605002384685246,
-          "enemyAtkMult": 0.47142338876653217,
-          "bossHpMult": 0.0499154176341034
+          "enemyHpMult": 1.5338,
+          "enemyAtkMult": 3.0676,
+          "bossHpMult": 0.0959,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -1688,9 +1698,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.4037602670847476,
-          "enemyAtkMult": 0.5279941954185161,
-          "bossHpMult": 0.05590526775019581
+          "enemyHpMult": 1.6488,
+          "enemyAtkMult": 3.2977,
+          "bossHpMult": 0.1031,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -1751,9 +1762,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.45221149913491737,
-          "enemyAtkMult": 0.5913534988687381,
-          "bossHpMult": 0.06261389988021931
+          "enemyHpMult": 1.7725,
+          "enemyAtkMult": 3.545,
+          "bossHpMult": 0.1108,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -1815,9 +1827,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.5064768790311075,
-          "enemyAtkMult": 0.6623159187329868,
-          "bossHpMult": 0.07012756786584565
+          "enemyHpMult": 1.9054,
+          "enemyAtkMult": 3.8108,
+          "bossHpMult": 0.1191,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -1880,9 +1893,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.5672541045148405,
-          "enemyAtkMult": 0.7417938289809453,
-          "bossHpMult": 0.07854287600974713
+          "enemyHpMult": 2.0483,
+          "enemyAtkMult": 4.0967,
+          "bossHpMult": 0.128,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -1947,9 +1961,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.6353245970566214,
-          "enemyAtkMult": 0.8308090884586588,
-          "bossHpMult": 0.08796802113091678
+          "enemyHpMult": 2.202,
+          "enemyAtkMult": 4.4039,
+          "bossHpMult": 0.1376,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -2018,9 +2033,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.711563548703416,
-          "enemyAtkMult": 0.9305061790736978,
-          "bossHpMult": 0.09852418366662681
+          "enemyHpMult": 2.3671,
+          "enemyAtkMult": 4.7342,
+          "bossHpMult": 0.1479,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -2086,9 +2102,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.7969511745478259,
-          "enemyAtkMult": 1.0421669205625417,
-          "bossHpMult": 0.11034708570662204
+          "enemyHpMult": 2.5446,
+          "enemyAtkMult": 5.0893,
+          "bossHpMult": 0.159,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -2154,9 +2171,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.8925853154935651,
-          "enemyAtkMult": 1.1672269510300468,
-          "bossHpMult": 0.12358873599141669
+          "enemyHpMult": 2.7355,
+          "enemyAtkMult": 5.471,
+          "bossHpMult": 0.171,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -2222,9 +2240,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 0.9996955533527931,
-          "enemyAtkMult": 1.3072941851536526,
-          "bossHpMult": 0.13841938431038672
+          "enemyHpMult": 2.9406,
+          "enemyAtkMult": 5.8813,
+          "bossHpMult": 0.1838,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -2291,9 +2310,10 @@
               "spacing": 0.28
             }
           ],
-          "enemyHpMult": 1.1196590197551284,
-          "enemyAtkMult": 1.464169487372091,
-          "bossHpMult": 0.15502971042763314
+          "enemyHpMult": 3.1612,
+          "enemyAtkMult": 6.3224,
+          "bossHpMult": 0.1976,
+          "enemySpeedMult": 2.5
         }
       ],
       "firstClearRewards": {
@@ -2325,7 +2345,8 @@
       "baseCd": 8,
       "kind": "heal",
       "healVehicle": 9000,
-      "healUnitPct": 0.4
+      "healUnitPct": 0.4,
+      "healPct": 0.3
     },
     {
       "id": "barrage",
@@ -2336,8 +2357,8 @@
       "baseCost": 140,
       "baseCd": 10,
       "kind": "barrage",
-      "rockets": 18,
-      "rocketDamage": 190
+      "rockets": 10,
+      "rocketDamage": 240
     },
     {
       "id": "shield",
@@ -2581,7 +2602,7 @@
       "maxLevel": 240
     },
     "cats": {
-      "specialtyBonus": 0.15
+      "specialtyBonus": 0.3
     },
     "account": {
       "xpBase": 15,
@@ -2689,7 +2710,7 @@
     },
     "loadoutEnergy": {
       "max": 600,
-      "startFrac": 0.3333333333333333,
+      "startFrac": 0.2,
       "regen": 16,
       "onKill": 12
     },
@@ -2699,7 +2720,21 @@
     },
     "combat": {
       "healUnitPct": 0.4,
-      "defendRadius": 140
+      "defendRadius": 140,
+      "dotScale": 0.35,
+      "antiAir": {
+        "rapid": 1.5,
+        "double": 1.3,
+        "arrow": 1.3,
+        "drone": 1.5,
+        "rocket": 1.2,
+        "mortar": 0.4,
+        "bomb": 0.4,
+        "flame": 0.6,
+        "shotgun": 0.6,
+        "claw": 0.6,
+        "shell": 0.7
+      }
     },
     "skills": {
       "maxLevel": 8,
@@ -2825,7 +2860,7 @@
         "energyCost": 0,
         "hpThreshold": 0.25,
         "bossHpThreshold": 0.1,
-        "bossBaseChance": 0.02,
+        "bossBaseChance": 0.12,
         "maxThrows": 5,
         "chanceCap": 0.9,
         "hpSlope": 0.55,
@@ -2844,7 +2879,8 @@
             "LEGENDARY": 0.16,
             "MYTHIC": 0
           }
-        }
+        },
+        "dazeSeconds": 4
       },
       "startingBag": {
         "beastCage": 3,
@@ -2949,14 +2985,15 @@
       }
     },
     "campaign": {
-      "hpBase": 0.13,
-      "atkBase": 0.17,
-      "growth": 1.12,
-      "bossHpBase": 0.018,
+      "hpBase": 0.8,
+      "atkBase": 1.6,
+      "growth": 1.075,
+      "bossHpBase": 0.05,
       "firstGoldBase": 100,
       "firstGoldStep": 30,
       "repeatGoldBase": 40,
-      "repeatGoldStep": 12
+      "repeatGoldStep": 12,
+      "speedMult": 2.5
     }
   },
   "monsterBook": [

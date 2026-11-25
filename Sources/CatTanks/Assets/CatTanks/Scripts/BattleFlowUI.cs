@@ -113,7 +113,7 @@ namespace CatTanks
             Art(530,690,40,40,"item-moonCage");Text(578,696,200,$"{moonCages} lồng trăng",label,32);
             if(IllustratedButton(810,628,640,120,"XUẤT KÍCH","Battle",primary:true))StartBattle();
             Enlarge(36);
-            Text(150,760,1300,$"Bắt quái: quái thường từ {Battle.CaptureHealthThreshold(false):0%} HP trở xuống · trùm dưới {Battle.CaptureHealthThreshold(true):0%} HP, dùng Lồng trăng (Shift+C)",small,28,align:TextAnchor.UpperCenter);
+            Text(150,760,1300,$"Bắt quái: khóa mục tiêu, còn {Battle.CaptureHealthThreshold(false):0%} HP (trùm {Battle.CaptureHealthThreshold(true):0%}) thì nó kiệt sức vài giây · ném lồng [C] / Lồng trăng [Shift+C]",small,28,align:TextAnchor.UpperCenter);
         }
         void EditFormation(string slot)
         {

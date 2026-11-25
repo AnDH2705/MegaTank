@@ -32,7 +32,7 @@ namespace CatTanks
         public string name;
         public JArray types;
         public int count;
-        public float spacing = 1, enemyHpMult = 1, enemyAtkMult = 1, bossHpMult = 1;
+        public float spacing = 1, enemyHpMult = 1, enemyAtkMult = 1, bossHpMult = 1, enemySpeedMult = 1;
         public bool boss;
         public List<Burst> bursts;
     }
@@ -49,7 +49,7 @@ namespace CatTanks
     {
         public string id, name, kind;
         public int baseCost, cost, rockets;
-        public float baseCd, cooldown, duration, healVehicle, healUnitPct, slow, damage, rocketDamage, bossMult = 1, splash;
+        public float baseCd, cooldown, duration, healVehicle, healPct, healUnitPct, slow, damage, rocketDamage, bossMult = 1, splash;
         public JObject unlock;
         public SkillDef Copy() => (SkillDef)MemberwiseClone();
     }

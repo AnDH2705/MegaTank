@@ -154,7 +154,7 @@ namespace CatTanks
                 string key = g.id.StartsWith("gun") ? "atk" : g.id == "gear-helm" ? "maxHp" : g.id == "gear-chest" ? "def" : "speed";
                 s[key] += (key == "atk" ? 20 : key == "maxHp" ? 80 : key == "def" ? 12 : 8) * mult;
             }
-            if (d.specialty == role) { s["atk"] *= 1.15f; s["maxHp"] *= 1.15f; }
+            if (d.specialty == role) { float bonus = 1 + db.B("cats.specialtyBonus"); s["atk"] *= bonus; s["maxHp"] *= bonus; }
             return s.ToDictionary(k => k.Key, k => Mathf.Floor(k.Value));
         }
         public float Power(Catalog db) => cats.Sum(c => {var s = Stats(c, db); return s["maxHp"] * .15f + s["atk"] * 1.6f + s["def"] * 1.2f + s["speed"] * 2;});
