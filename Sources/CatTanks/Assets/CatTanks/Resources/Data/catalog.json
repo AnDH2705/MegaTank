@@ -14,7 +14,7 @@
       "id": "turret-0",
       "asset": "turret-0",
       "family": "THÁP PHÁO",
-      "flip": true
+      "flip": false
     },
     {
       "name": "Pháo nòng đôi",
@@ -28,7 +28,7 @@
       "id": "turret-1",
       "asset": "turret-1",
       "family": "THÁP PHÁO",
-      "flip": true
+      "flip": false
     },
     {
       "name": "Chùm tên lửa",
@@ -44,7 +44,7 @@
       "id": "turret-2",
       "asset": "turret-2",
       "family": "THÁP PHÁO",
-      "flip": true
+      "flip": false
     },
     {
       "name": "Gatling cầu vồng",
@@ -58,7 +58,7 @@
       "id": "turret-3",
       "asset": "turret-3",
       "family": "THÁP PHÁO",
-      "flip": true
+      "flip": false
     },
     {
       "name": "Pháo ion",
@@ -73,7 +73,7 @@
       "id": "turret-4",
       "asset": "turret-4",
       "family": "THÁP PHÁO",
-      "flip": true
+      "flip": false
     },
     {
       "name": "Hỏa long",
@@ -89,7 +89,7 @@
       "id": "turret-5",
       "asset": "turret-5",
       "family": "THÁP PHÁO",
-      "flip": true
+      "flip": false
     },
     {
       "name": "Cối cầu vồng",
@@ -104,7 +104,7 @@
       "id": "turret-6",
       "asset": "turret-6",
       "family": "THÁP PHÁO",
-      "flip": true
+      "flip": false
     },
     {
       "name": "Mắt đại bàng",
@@ -119,7 +119,7 @@
       "id": "turret-7",
       "asset": "turret-7",
       "family": "THÁP PHÁO",
-      "flip": true
+      "flip": false
     },
     {
       "name": "Tesla liên hoàn",
@@ -135,7 +135,7 @@
       "id": "turret-8",
       "asset": "turret-8",
       "family": "THÁP PHÁO",
-      "flip": true
+      "flip": false
     },
     {
       "name": "Trạm chỉ huy",
@@ -150,7 +150,7 @@
       "id": "turret-9",
       "asset": "turret-9",
       "family": "THÁP PHÁO",
-      "flip": true
+      "flip": false
     },
     {
       "name": "Paw-47",
