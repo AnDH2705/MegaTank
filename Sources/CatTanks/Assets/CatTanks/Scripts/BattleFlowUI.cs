@@ -126,7 +126,14 @@ namespace CatTanks
             for(int i=0;i<floors;i++)
             {
                 var f=profile.floors[i];float centerY=groundY-(94+i*80)*scale;
-                if(!string.IsNullOrEmpty(f.cat))Art(cx-(63+40)*scale,centerY-46*scale,80*scale,80*scale,f.cat);
+                // Mèo vận hành dáng nằm, kèm áo và mũ, cùng vị trí như BattleView.ActorView (vai "tower").
+                void Worn(string key,float wx,float wy,float w)=>Art(cx+(wx-w/2)*scale,centerY-(wy+w/2)*scale,w*scale,w*scale,key);
+                if(!string.IsNullOrEmpty(f.cat))
+                {
+                    Worn(f.cat,-63,8,74);
+                    Worn("uniform-"+i%10,-61,-4,44);
+                    Worn("hat-"+i%10,-52,31,40);
+                }
                 Art(cx+(20-75)*scale,centerY-50*scale,150*scale,94*scale,db.Weapon(f.turret).asset);
                 if(HotSpot(cx-136*scale,centerY-40*scale,272*scale,80*scale))EditFormation("op-"+i);
             }

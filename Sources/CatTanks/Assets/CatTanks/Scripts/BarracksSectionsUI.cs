@@ -262,7 +262,7 @@ namespace CatTanks
                 }
                 if(!dispatchOnly&&empty&&lastButton.layout&&lastButton.layout.icon)lastButton.layout.icon.color=new Color(1,1,1,.35f);
                 Enlarge(18);
-                Text(560+slot*236,636,220,"MODULE "+(slot+1),small,26,align:TextAnchor.UpperCenter);
+                Text(560+slot*236,636,220,"CHIM CHIẾN "+(slot+1),small,26,align:TextAnchor.UpperCenter);
             }
 
             // Bảng nâng cấp bên phải.
