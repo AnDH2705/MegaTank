@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "animation": {
+    "frames": 8,
+    "fps": 12,
+    "loop": true
+  },
+  "units": "pixels",
+  "frameHeight": 256,
+  "groundAnchorY": 224,
+  "blendMode": "normal / source-over",
+  "alpha": "straight RGBA",
+  "caps": {
+    "left": {
+      "file": "assets/fire_left_8f.png",
+      "cellWidth": 80,
+      "cellHeight": 256,
+      "columns": 1,
+      "rows": 8
+    },
+    "right": {
+      "file": "assets/fire_right_8f.png",
+      "cellWidth": 80,
+      "cellHeight": 256,
+      "columns": 1,
+      "rows": 8
+    }
+  },
+  "middle": {
+    "file": "assets/fire_middle_3variants_8f.png",
+    "cellWidth": 192,
+    "cellHeight": 256,
+    "columns": 3,
+    "rows": 8,
+    "columnsAreVariants": true,
+    "rowsAreAnimationFrames": true,
+    "overlapPixels": 32,
+    "stridePixels": 160,
+    "edgeFeatherPixels": 16
+  },
+  "fullStrip": {
+    "file": "assets/fire_strip_8f.png",
+    "cellWidth": 736,
+    "cellHeight": 256,
+    "columns": 2,
+    "rows": 4,
+    "frameOrder": "left-to-right, top-to-bottom"
+  },
+  "range": {
+    "xStart": 320,
+    "xEnd": 1280,
+    "groundY": 1000
+  },
+  "styleReference": "industrial street background",
+  "generation": "built-in image generation; sprites packed and ground baselines aligned after generation"
+}

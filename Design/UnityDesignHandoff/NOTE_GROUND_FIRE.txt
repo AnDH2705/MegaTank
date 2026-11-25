@@ -1,0 +1,15 @@
+GROUND FIRE — LỬA MẶT ĐẤT
+
+Bộ asset và hướng dẫn đầy đủ: Art/Asset/vfx/ground_fire_vfx/HUONG_DAN.txt
+Preview: Art/Asset/vfx/ground_fire_vfx/preview.html
+GIF: Art/Asset/vfx/ground_fire_vfx/ground_fire_range_demo.gif
+Mapping atlas/pivot: Art/Asset/vfx/ground_fire_vfx/ground_fire.json
+
+Lõi trắng vàng/cam cùng chất Arcade VFX cũ. Có cap/middle để ghép độ dài.
+Glow additive + rising embers + glints là lớp Particle System riêng trong preset.
+Copy cả ground_fire_vfx vào Assets rồi chạy MegaTank VFX > Build Ground Fire.
+Builder: Art/Asset/vfx/ground_fire_vfx/Unity/Editor/GroundFireBuilder.cs
+
+Chưa tự gắn damage/loại đạn vào demo Equipment-test.html. World-space theo mặt đường;
+vùng damage tách khỏi hình lửa. Không có bảng balance.
+Preview đã kiểm trên trình duyệt; cần dev import/kiểm preset trong Unity đích.

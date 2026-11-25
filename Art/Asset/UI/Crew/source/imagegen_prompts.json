@@ -1,0 +1,5 @@
+{
+  "mode": "built-in image_gen",
+  "asset": "../decor/hero_fragment.png",
+  "prompt": "Create one polished 2D comic mobile-game UI item icon for a cat tank game: a HERO FRAGMENT represented by ONE classic jigsaw puzzle piece. Cute, punchy, very readable small silhouette. The piece is vivid turquoise/cyan with a simple flat darker teal side accent and a small warm golden-yellow cat paw emblem centered on its face (three toe pads and one central pad, no face). Classic chunky jigsaw contours: one outward round tab on the top, an outward tab on the right, inward round sockets on the left and bottom; slight playful clockwise tilt. Extremely clean smooth vector-like cartoon rendering, bold uniform black ink outline, flat saturated colors, just one tiny flat pale highlight. Match colorful game stat icons with thick black contour; NOT pixel art, NOT 3D, no realistic materials. No lettering, no numbers, no panel, no badge frame, no extra pieces, no sparkles, no ground shadow. One centered isolated object, generous even transparent padding around every edge, object occupies about 76% of a square canvas. Actual transparent background with clean alpha."
+}

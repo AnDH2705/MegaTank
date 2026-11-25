@@ -51,6 +51,30 @@
     "xEnd": 1280,
     "groundY": 1000
   },
-  "styleReference": "industrial street background",
-  "generation": "built-in image generation; sprites packed and ground baselines aligned after generation"
+  "styleReference": "Ground-fire silhouette reference + existing MegaTank FireBoltHead finish",
+  "generation": "Built-in imagegen, native alpha; atlas gutters cleaned and eight floor baselines aligned",
+  "layers": {
+    "core": {
+      "blend": "alpha",
+      "file": "assets/fire_strip_8f.png"
+    },
+    "glow": {
+      "blend": "additive",
+      "file": "assets/glow.png"
+    },
+    "embers": {
+      "blend": "additive",
+      "file": "assets/spark.png"
+    },
+    "glints": {
+      "blend": "additive",
+      "file": "assets/spark.png"
+    }
+  },
+  "unity": {
+    "menu": "MegaTank VFX/Build Ground Fire",
+    "builder": "Unity/Editor/GroundFireBuilder.cs",
+    "prefab": "Unity/Generated/GroundFire.prefab",
+    "bloom": "optional HDR + Bloom; no scene or volume is modified by the builder"
+  }
 }

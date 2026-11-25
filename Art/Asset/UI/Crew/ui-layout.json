@@ -1,0 +1,912 @@
+{
+  "canvas": [
+    770,
+    436
+  ],
+  "export_scale": 4,
+  "source": "Crew_demo.psd",
+  "layers": [
+    {
+      "id": "garage",
+      "file": "illustrations/garage.png",
+      "box_native": [
+        0,
+        1,
+        770,
+        435
+      ],
+      "psd_layer_names": [
+        "Background"
+      ],
+      "size_px": [
+        3080,
+        1736
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "back",
+      "file": "decor/back.png",
+      "box_native": [
+        0,
+        1,
+        76,
+        48
+      ],
+      "psd_layer_names": [
+        "BtnBAck"
+      ],
+      "size_px": [
+        304,
+        188
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "tank",
+      "file": "illustrations/tank.png",
+      "box_native": [
+        84,
+        96,
+        343,
+        363
+      ],
+      "psd_layer_names": [
+        "tank_assembled"
+      ],
+      "size_px": [
+        1036,
+        1068
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "panel_detail",
+      "file": "layers/panel_detail.png",
+      "box_native": [
+        306,
+        0,
+        639,
+        436
+      ],
+      "psd_layer_names": [
+        "Rectangle 2 copy"
+      ],
+      "size_px": [
+        1332,
+        1744
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "panel_roster",
+      "file": "layers/panel_roster.png",
+      "box_native": [
+        523,
+        0,
+        770,
+        436
+      ],
+      "psd_layer_names": [
+        "Rectangle 2"
+      ],
+      "size_px": [
+        988,
+        1744
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "panel_stats",
+      "file": "layers/panel_stats.png",
+      "box_native": [
+        342,
+        136,
+        542,
+        251
+      ],
+      "psd_layer_names": [
+        "Rectangle 6"
+      ],
+      "size_px": [
+        800,
+        460
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "portrait_normal",
+      "file": "layers/portrait_normal.png",
+      "box_native": [
+        156,
+        85,
+        221,
+        150
+      ],
+      "psd_layer_names": [
+        "Rectangle 7"
+      ],
+      "size_px": [
+        260,
+        260
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "portrait_selected",
+      "file": "layers/portrait_selected.png",
+      "box_native": [
+        200,
+        159,
+        271,
+        230
+      ],
+      "psd_layer_names": [
+        "Rectangle 7 copy",
+        "Rectangle 7 copy 4"
+      ],
+      "size_px": [
+        284,
+        284
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "portrait_roster",
+      "file": "layers/portrait_roster.png",
+      "box_native": [
+        563,
+        61,
+        637,
+        134
+      ],
+      "psd_layer_names": [
+        "Rectangle 3"
+      ],
+      "size_px": [
+        296,
+        292
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "portrait_empty",
+      "file": "layers/portrait_empty.png",
+      "box_native": [
+        670,
+        354,
+        740,
+        423
+      ],
+      "psd_layer_names": [
+        "Rectangle 3 copy 6"
+      ],
+      "size_px": [
+        280,
+        276
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "portrait_driver",
+      "file": "layers/portrait_driver.png",
+      "box_native": [
+        355,
+        63,
+        423,
+        128
+      ],
+      "psd_layer_names": [
+        "cat_driver copy 4"
+      ],
+      "size_px": [
+        272,
+        260
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "portrait_locked",
+      "file": "layers/portrait_locked.png",
+      "box_native": [
+        690,
+        136,
+        758,
+        201
+      ],
+      "psd_layer_names": [
+        "locked_driver"
+      ],
+      "size_px": [
+        272,
+        260
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "portrait_slot",
+      "file": "layers/portrait_slot.png",
+      "box_native": [
+        156,
+        85,
+        221,
+        150
+      ],
+      "psd_layer_names": [
+        "Rectangle 7",
+        "cat_driver copy 5"
+      ],
+      "size_px": [
+        260,
+        260
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "portrait_melee_slot",
+      "file": "layers/portrait_melee_slot.png",
+      "box_native": [
+        191,
+        246,
+        256,
+        311
+      ],
+      "psd_layer_names": [
+        "Rectangle 7 copy 5",
+        "cat_melee copy"
+      ],
+      "size_px": [
+        260,
+        260
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "portrait_selected_slot",
+      "file": "layers/portrait_selected_slot.png",
+      "box_native": [
+        200,
+        159,
+        271,
+        230
+      ],
+      "psd_layer_names": [
+        "Rectangle 7 copy",
+        "Rectangle 7 copy 4",
+        "cat_driver copy 6"
+      ],
+      "size_px": [
+        284,
+        284
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "portrait_driver_roster",
+      "file": "layers/portrait_driver_roster.png",
+      "box_native": [
+        563,
+        61,
+        637,
+        134
+      ],
+      "psd_layer_names": [
+        "Rectangle 3",
+        "cat_driver"
+      ],
+      "size_px": [
+        296,
+        292
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "portrait_driver_roster_normal",
+      "file": "layers/portrait_driver_roster_normal.png",
+      "box_native": [
+        697,
+        63,
+        767,
+        132
+      ],
+      "psd_layer_names": [
+        "Rectangle 3 copy 2",
+        "cat_driver copy"
+      ],
+      "size_px": [
+        280,
+        276
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "portrait_roster_normal",
+      "file": "layers/portrait_roster_normal.png",
+      "box_native": [
+        697,
+        63,
+        767,
+        132
+      ],
+      "psd_layer_names": [
+        "Rectangle 3 copy 2"
+      ],
+      "size_px": [
+        280,
+        276
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "selection_outline",
+      "file": "decor/selection_outline.png",
+      "box_native": [
+        200,
+        159,
+        271,
+        230
+      ],
+      "psd_layer_names": [
+        "Rectangle 7 copy"
+      ],
+      "size_px": [
+        284,
+        284
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "portrait_melee_roster",
+      "file": "layers/portrait_melee_roster.png",
+      "box_native": [
+        631,
+        63,
+        701,
+        132
+      ],
+      "psd_layer_names": [
+        "Rectangle 3 copy",
+        "cat_melee"
+      ],
+      "size_px": [
+        280,
+        276
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "skill_frame",
+      "file": "layers/skill_frame.png",
+      "box_native": [
+        341,
+        262,
+        389,
+        310
+      ],
+      "psd_layer_names": [
+        "Rectangle 5"
+      ],
+      "size_px": [
+        192,
+        192
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "ribbon_name",
+      "file": "decor/ribbon_name.png",
+      "box_native": [
+        425,
+        62,
+        547,
+        86
+      ],
+      "psd_layer_names": [
+        "Rectangle 4"
+      ],
+      "size_px": [
+        488,
+        96
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "star_gold",
+      "file": "decor/star_gold.png",
+      "box_native": [
+        425,
+        102,
+        442,
+        119
+      ],
+      "psd_layer_names": [
+        "Star 1"
+      ],
+      "size_px": [
+        68,
+        68
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "button_yellow",
+      "file": "layers/button_yellow.png",
+      "box_native": [
+        328,
+        347,
+        449,
+        384
+      ],
+      "psd_layer_names": [
+        "Btn"
+      ],
+      "size_px": [
+        484,
+        148
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "button_disabled",
+      "file": "layers/button_disabled.png",
+      "box_native": [
+        449,
+        347,
+        521,
+        384
+      ],
+      "psd_layer_names": [
+        "Btn copy 2"
+      ],
+      "size_px": [
+        288,
+        148
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "button_fragment",
+      "file": "layers/button_fragment.png",
+      "box_native": [
+        449,
+        347,
+        470,
+        384
+      ],
+      "psd_layer_names": [
+        "Btn copy 3"
+      ],
+      "size_px": [
+        84,
+        148
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "button_green",
+      "file": "layers/button_green.png",
+      "box_native": [
+        327,
+        390,
+        514,
+        427
+      ],
+      "psd_layer_names": [
+        "Btn copy"
+      ],
+      "size_px": [
+        748,
+        148
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "text_role",
+      "file": "text/text_role.png",
+      "box_native": [
+        396,
+        18,
+        515,
+        33
+      ],
+      "psd_layer_names": [
+        "Tank Cannon"
+      ],
+      "size_px": [
+        476,
+        60
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "text_roster",
+      "file": "text/text_roster.png",
+      "box_native": [
+        594,
+        18,
+        750,
+        35
+      ],
+      "psd_layer_names": [
+        "Select your crew:"
+      ],
+      "size_px": [
+        624,
+        68
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "text_name",
+      "file": "text/text_name.png",
+      "box_native": [
+        431,
+        68,
+        466,
+        77
+      ],
+      "psd_layer_names": [
+        "Elein"
+      ],
+      "size_px": [
+        140,
+        36
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "text_level",
+      "file": "text/text_level.png",
+      "box_native": [
+        429,
+        90,
+        469,
+        99
+      ],
+      "psd_layer_names": [
+        "LV.50"
+      ],
+      "size_px": [
+        160,
+        36
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "text_levelup",
+      "file": "text/text_levelup.png",
+      "box_native": [
+        349,
+        360,
+        427,
+        370
+      ],
+      "psd_layer_names": [
+        "LEVEL UP!"
+      ],
+      "size_px": [
+        312,
+        40
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "text_equip",
+      "file": "text/text_equip.png",
+      "box_native": [
+        396,
+        402,
+        443,
+        415
+      ],
+      "psd_layer_names": [
+        "Equip"
+      ],
+      "size_px": [
+        188,
+        52
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "text_fragments",
+      "file": "text/text_fragments.png",
+      "box_native": [
+        458,
+        358,
+        498,
+        374
+      ],
+      "psd_layer_names": [
+        "5/20"
+      ],
+      "size_px": [
+        160,
+        64
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "text_steady_aim",
+      "file": "text/text_steady_aim.png",
+      "box_native": [
+        344,
+        313,
+        386,
+        333
+      ],
+      "psd_layer_names": [
+        "Steady  Aim"
+      ],
+      "size_px": [
+        168,
+        80
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "text_quick_reload",
+      "file": "text/text_quick_reload.png",
+      "box_native": [
+        411,
+        313,
+        454,
+        333
+      ],
+      "psd_layer_names": [
+        "Quick  Reload"
+      ],
+      "size_px": [
+        172,
+        80
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "text_heavy_shells",
+      "file": "text/text_heavy_shells.png",
+      "box_native": [
+        481,
+        313,
+        519,
+        333
+      ],
+      "psd_layer_names": [
+        "Heavy Shells"
+      ],
+      "size_px": [
+        152,
+        80
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "text_stat",
+      "file": "text/text_stat.png",
+      "box_native": [
+        387,
+        152,
+        416,
+        159
+      ],
+      "psd_layer_names": [
+        "9999"
+      ],
+      "size_px": [
+        116,
+        28
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "icon_atk",
+      "file": "layers/icon_atk.png",
+      "box_native": [
+        357,
+        142,
+        378,
+        164
+      ],
+      "psd_layer_names": [
+        "atk"
+      ],
+      "size_px": [
+        84,
+        88
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "icon_hp",
+      "file": "layers/icon_hp.png",
+      "box_native": [
+        451,
+        144,
+        472,
+        164
+      ],
+      "psd_layer_names": [
+        "hp"
+      ],
+      "size_px": [
+        84,
+        80
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "icon_accuracy",
+      "file": "layers/icon_accuracy.png",
+      "box_native": [
+        356,
+        177,
+        378,
+        199
+      ],
+      "psd_layer_names": [
+        "accuracy"
+      ],
+      "size_px": [
+        88,
+        88
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "icon_defense",
+      "file": "layers/icon_defense.png",
+      "box_native": [
+        452,
+        177,
+        471,
+        199
+      ],
+      "psd_layer_names": [
+        "defense"
+      ],
+      "size_px": [
+        76,
+        88
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "icon_move_speed",
+      "file": "layers/icon_move_speed.png",
+      "box_native": [
+        356,
+        217,
+        378,
+        235
+      ],
+      "psd_layer_names": [
+        "move_speed"
+      ],
+      "size_px": [
+        88,
+        72
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "icon_crit_rate",
+      "file": "layers/icon_crit_rate.png",
+      "box_native": [
+        451,
+        213,
+        474,
+        237
+      ],
+      "psd_layer_names": [
+        "crit_rate"
+      ],
+      "size_px": [
+        92,
+        96
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "icon_skill_1",
+      "file": "layers/icon_skill_1.png",
+      "box_native": [
+        345,
+        266,
+        385,
+        307
+      ],
+      "psd_layer_names": [
+        "cannon_accuracy"
+      ],
+      "size_px": [
+        160,
+        164
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "icon_skill_2",
+      "file": "layers/icon_skill_2.png",
+      "box_native": [
+        412,
+        266,
+        452,
+        306
+      ],
+      "psd_layer_names": [
+        "cannon_damage"
+      ],
+      "size_px": [
+        160,
+        160
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "icon_skill_3",
+      "file": "layers/icon_skill_3.png",
+      "box_native": [
+        479,
+        266,
+        519,
+        306
+      ],
+      "psd_layer_names": [
+        "cannon_fire_rate"
+      ],
+      "size_px": [
+        160,
+        160
+      ],
+      "image_type": "Simple"
+    },
+    {
+      "id": "roster_selected_outline",
+      "file": "decor/roster_selected_outline.png",
+      "box_native": [
+        563,
+        61,
+        637,
+        134
+      ],
+      "size_px": [
+        296,
+        292
+      ],
+      "image_type": "Simple",
+      "preserve_aspect": true
+    },
+    {
+      "id": "check_equipped",
+      "file": "decor/check_equipped.png",
+      "box_native": [
+        618,
+        112,
+        634,
+        128
+      ],
+      "size_px": [
+        64,
+        64
+      ],
+      "image_type": "Simple",
+      "preserve_aspect": true
+    },
+    {
+      "id": "hero_fragment",
+      "file": "decor/hero_fragment.png",
+      "box_native": [
+        453,
+        357,
+        468,
+        372
+      ],
+      "size_px": [
+        512,
+        512
+      ],
+      "image_type": "Simple",
+      "preserve_aspect": true
+    }
+  ]
+}
