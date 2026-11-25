@@ -90,7 +90,7 @@ namespace CatTanks.Editor
                 check(!ActiveButtons().First(b=>b.GetComponentInChildren<Text>().text=="‹").interactable,"Modal blocks background controls");
                 Click("Để trống vị trí");await Show(game);check(game.modal==""&&game.profile.squad[0]=="","Picker applies selected squad member");
                 game.page="town";
-                foreach(string tab in new[]{"summon","shop","arena"}) {game.tab=tab;await Show(game);check(ActiveButtons().Length>=10,"Town renders: "+tab);}
+                foreach(string tab in new[]{"hub","summon","shop","arena"}) {game.tab=tab;await Show(game);check(ActiveButtons().Length>=4,"Town renders: "+tab);}
                 foreach(string page in new[]{"chest","quests","march"}) {game.page=page;await Show(game);check(ActiveButtons().Length>=7,"Hub renders: "+page);}
                 game.modal="settings";await Show(game);check(UnityEngine.Object.FindObjectsOfType<InputField>().Any(i=>i.isActiveAndEnabled),"Editable commander name present");
                 game.modal="book";

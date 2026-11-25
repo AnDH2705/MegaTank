@@ -232,20 +232,5 @@ namespace CatTanks
             }
             Text(298, 781, 1210, "Thêm ô khi vượt ải 4 / 6 / 8 / 10 / 13. Mèo đang Cộng hưởng phải rời ô trước khi nâng cấp trực tiếp.", small, 25);
         }
-        void Arena()
-        {
-            Text(290, 227, 1210, "Đấu trường trăng · mô phỏng local", title, 57);
-            Text(290, 286, 1224, "Đối thủ mô phỏng dùng đội quái theo tiến độ, có AI kỹ năng. Điểm Elo tính theo rating đối thủ. Chưa có online.", label, 56);
-            Surface(282, 347, 1266, 266, Color.white, catsFrame:"Roster");
-            for (int i = 0; i < Opponent.All.Length; i++)
-            {
-                var o = Opponent.All[i]; float x = 298 + i % 3 * 414, y = 365 + i / 3 * 114;
-                if (Button(x, y, 398, 100, $"{o.name} · Cấp {o.level}\n{o.rating} điểm", true, selectedOpponent == i, "blue")) selectedOpponent = i;
-            }
-            var selected = Opponent.All[selectedOpponent];
-            Surface(282, 631, 1266, 168, Color.white, catsFrame:"Detail");
-            Text(306, 653, 1198, $"Bạn: {profile.rating} điểm · Thắng +{Battle.RatingDelta(profile.rating, selected.rating, true)} / Thua {Battle.RatingDelta(profile.rating, selected.rating, false)} · {profile.Get("arenaToken")} huy hiệu · Tối đa 40/ngày", subtitle, 55);
-            if (IllustratedButton(306, 719, 1218, 60, profile.highestCleared >= 5 ? "VÀO ĐẤU TRƯỜNG" : "VƯỢT ẢI 5 ĐỂ MỞ KHÓA", "item-arenaToken", profile.highestCleared >= 5, true)) StartBattle(false, true);
-        }
     }
 }

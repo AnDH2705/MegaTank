@@ -16,21 +16,26 @@ namespace CatTanks
             Backdrop(new Color(.17f,.13f,.42f,.97f));
             if(IsRuntimeView(renderViewKey))
             {
-                // Danh sách và chi tiết mèo: view tạo lúc chạy, toạ độ 1600×900 không thu phóng.
+                // Các màn theo bố cục game idle: view tạo lúc chạy, toạ độ 1600×900 không thu phóng.
                 useCodeGeometry=true;
                 Surface(100,84,1400,830,Color.white,catsFrame:"Board");
-                if(renderViewKey==CatView)CatDetailUI();else RosterUI();
+                switch(renderViewKey)
+                {
+                    case CatView:CatDetailUI();break;
+                    case TownHubView:TownHubUI();break;
+                    case TavernView:TavernUI();break;
+                    case StoreView:StoreUI();break;
+                    case PvpView:PvpUI();break;
+                    case QuestView:QuestBoardUI();break;
+                    default:RosterUI();break;
+                }
                 SubPageChrome();
                 return;
             }
             Surface(254,125,1322,740,C("#17243e"),"BluePanel",UsesCatsArt?"Board":"CommandBoard");
             Art(264,108,1324,780,UsesCatsArt?"Interface/Cats/BoardAccent":"Interface/Cats/CommandAccent");
-            if(page=="barracks")BarracksSection(); else if(page=="town")Town();
-            else if(page=="chest"||page=="quests")
-            {
-                useCodeGeometry=true;
-                if(page=="chest")Chest();else Quests();
-            }
+            if(page=="barracks")BarracksSection();
+            else if(page=="chest"){useCodeGeometry=true;Chest();}
             SubPageChrome();
         }
         void HomeUI()
@@ -93,7 +98,7 @@ namespace CatTanks
         {
             SpriteBox(0,786,1600,114,"",new Color(.12f,.1f,.33f,1),false,"scrim");
             SpriteBox(0,782,1600,6,"",C("#140c30"),false,"scrim");
-            if(NavTab(0,"Thành mèo","Interface/Cats/Tab-fortress",page=="town"&&tab!="arena")){page="town";tab="summon";scroll=Vector2.zero;}
+            if(NavTab(0,"Thành mèo","Interface/Cats/Tab-fortress",page=="town"&&tab!="arena")){page="town";tab="hub";scroll=Vector2.zero;}
             if(NavTab(1,"Đấu trường","item-arenaToken",page=="town"&&tab=="arena")){page="town";tab="arena";scroll=Vector2.zero;}
             if(NavTab(2,"Hành quân","Map",page=="march")){page="march";modal="";}
             if(NavTab(3,"Doanh trại","Interface/Cats/Tab-cats",page=="barracks")){page="barracks";tab="cats";scroll=Vector2.zero;}
@@ -140,11 +145,19 @@ namespace CatTanks
             if(!dispatchOnly&&uiParent.GetSiblingIndex()!=uiParent.parent.childCount-1)uiParent.SetAsLastSibling();
             Art(0,0,1600,100,"Interface/Cats/Header");
             // Trong Doanh trại, ‹ quay về danh sách mèo trước rồi mới về màn chính.
-            if(Button(18,14,76,70,"‹",true,true)){if(page=="barracks"&&tab!="cats")tab="cats";else page="march";scroll=Vector2.zero;}
+            // Trong Thành mèo, Gọi đồng đội / Tiếp tế quay về thị trấn.
+            if(Button(18,14,76,70,"‹",true,true))StepBack();
             Text(112,16,660,PageTitle,title,60);
             HubWallet();
         }
-        string PageTitle=>page switch{"barracks"=>BarracksTitle,"town"=>"Thành mèo","chest"=>"Rương AFK","quests"=>"Nhiệm vụ",_=>""};
+        void StepBack()
+        {
+            scroll=Vector2.zero;
+            if(page=="barracks"&&tab!="cats")tab="cats";
+            else if(page=="town"&&tab is "summon" or "shop")tab="hub";
+            else{page="march";tab="cats";}
+        }
+        string PageTitle=>page switch{"barracks"=>BarracksTitle,"town"=>TownTitle,"chest"=>"Rương AFK","quests"=>"Nhiệm vụ",_=>""};
         void HubWallet()
         {
             Resource(800,"CoinIcon",N(profile.Get("coins")),"XU");
@@ -215,8 +228,8 @@ namespace CatTanks
             }
         }
         static string StagePreview(Stage stage) => $"StagePreviews/stage-{stage.index:00}";
-        static bool IsSubPage(string key)=>!IsRuntimeView(key)&&key.StartsWith("barracks-",System.StringComparison.Ordinal)||key.StartsWith("town-",System.StringComparison.Ordinal)||key is "chest" or "quests";
-        static bool IsRuntimeView(string key)=>key is HomeView or ChromeView or MapView or RosterView or CatView;
+        static bool IsSubPage(string key)=>!IsRuntimeView(key)&&(key.StartsWith("barracks-",System.StringComparison.Ordinal)||key.StartsWith("town-",System.StringComparison.Ordinal)||key is "chest" or "quests");
+        static bool IsRuntimeView(string key)=>key is HomeView or ChromeView or MapView or RosterView or CatView or TownHubView or TavernView or StoreView or PvpView or QuestView;
         // Trang con được dời/thu phóng vào vùng trống; các view khác giữ nguyên khung 1600×900.
         static void FrameView(RectTransform rt,string key)
         {

@@ -7,3 +7,4 @@ Mỗi phiên làm việc có một file, đặt tên theo mẫu `YYYY-MM-DD_<m�
 | Ngày | File | Nội dung |
 |---|---|---|
 | 23/11/2026 | [2026-11-23_UI_UX.md](2026-11-23_UI_UX.md) | Đổi UI từ bố cục kiểu web sang bố cục game: màn chính, popup, trang con |
+| 25/11/2026 | [2026-11-25_UI_UX.md](2026-11-25_UI_UX.md) | Doanh trại, Thành mèo, Đấu trường, Nhiệm vụ theo bố cục game idle (chỉ cách sắp xếp) |

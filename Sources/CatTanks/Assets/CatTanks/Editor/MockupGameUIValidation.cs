@@ -103,11 +103,11 @@ namespace CatTanks.Editor
                 Click(game,"GỌI 1 LẦN");await Show(game);
                 Check(game.profile.Get("summonScroll")==tickets-1&&game.profile.cats.Sum(c=>1+c.copies)==owned+1,"Summon button spends one ticket and grants a cat/copy");
                 await Page(game,"town","shop");int cages=game.profile.Get("beastCage");gold=game.profile.Get("coins");
-                ClickBinding(game,"button:scroll::298:338:14:119");await Show(game);
+                ClickBinding(game,"button::386:358");await Show(game);
                 Check(game.profile.Get("beastCage")==cages+1&&game.profile.Get("coins")==gold-1500,"Shop button spends coins and grants exactly one cage");
-                game.profile.daily["idle"]=1;await Page(game,"quests");gold=game.profile.Get("coins");ClickBinding(game,"button::1190:296");await Show(game);
+                game.profile.daily["idle"]=1;await Page(game,"quests");gold=game.profile.Get("coins");ClickBinding(game,"button::1220:268");await Show(game);
                 Check(game.profile.claimed.Contains("idle")&&game.profile.Get("coins")==gold+40,"Quest claim grants the real reward once");
-                ClickBinding(game,"button::1190:296",false);await Show(game);Check(game.profile.Get("coins")==gold+40,"Claimed quest cannot grant a second reward");
+                ClickBinding(game,"button::1220:268",false);await Show(game);Check(game.profile.Get("coins")==gold+40,"Claimed quest cannot grant a second reward");
                 game.profile.lastIdle=Profile.Now-3600;await Page(game,"chest");gold=game.profile.Get("coins");Click(game,"NHẬN TOÀN BỘ");await Show(game);
                 Check(game.profile.Get("coins")>gold&&Profile.Now-game.profile.lastIdle<5,"AFK claim updates wallet and collection time");
                 await Page(game,"barracks","presets");ClickBinding(game,"button::862:369");await Show(game);
@@ -146,7 +146,7 @@ namespace CatTanks.Editor
         static async Task CaptureGallery(CatTanksGame game)
         {
             Directory.CreateDirectory("Captures/MockupGameUI");
-            foreach(string key in new[]{"home","barracks-cats","barracks-cat","barracks-fortress","barracks-squad","barracks-skills","barracks-monsters","barracks-presets","barracks-nexus","town-summon","town-shop","town-arena","chest","quests"})
+            foreach(string key in new[]{"home","barracks-cats","barracks-cat","barracks-fortress","barracks-squad","barracks-skills","barracks-monsters","barracks-presets","barracks-nexus","town-hub","town-summon","town-shop","town-arena","chest","quests"})
             {
                 var parts=key.Split('-');await Page(game,parts[0]=="home"?"march":parts[0],parts.Length>1?parts[1]:"cats");Capture(game,key);
             }

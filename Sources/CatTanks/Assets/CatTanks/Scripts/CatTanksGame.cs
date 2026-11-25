@@ -79,7 +79,7 @@ namespace CatTanks
         {
             if (UnityEngine.EventSystems.EventSystem.current && UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject && UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<UnityEngine.UI.InputField>() is UnityEngine.UI.InputField input && input.isFocused) return;
             if (Input.GetKeyDown(KeyCode.F)) Screen.fullScreen = !Screen.fullScreen;
-            if (Input.GetKeyDown(KeyCode.Escape)) {if (!string.IsNullOrEmpty(modal)) modal = ""; else if (inBattle && !resolved) paused = !paused; else if (!inBattle) { if (page == "barracks" && tab != "cats") tab = "cats"; else { page = "march"; tab = "cats"; } }}
+            if (Input.GetKeyDown(KeyCode.Escape)) {if (!string.IsNullOrEmpty(modal)) modal = ""; else if (inBattle && !resolved) paused = !paused; else if (!inBattle && page != "march") StepBack();}
             else if (Input.GetKeyDown(KeyCode.B)) ToggleBook();
             if (!inBattle) {view.Resize(); return;}
             bool spaceForPause = Input.GetKeyDown(KeyCode.Space) && !(UnityEngine.EventSystems.EventSystem.current && UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject);
