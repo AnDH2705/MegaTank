@@ -40,7 +40,6 @@ namespace CatTanks
             }
             Surface(254,125,1322,740,C("#17243e"),"BluePanel",UsesCatsArt?"Board":"CommandBoard");
             Art(264,108,1324,780,UsesCatsArt?"Interface/Cats/BoardAccent":"Interface/Cats/CommandAccent");
-            if(page=="chest"){useCodeGeometry=true;Chest();}
             SubPageChrome();
         }
         void HomeUI()
@@ -69,7 +68,9 @@ namespace CatTanks
             // Rương AFK ngay trên màn chính: thời gian treo, thanh 12 giờ, phần thưởng đang tích.
             float elapsed=Mathf.Clamp(Profile.Now-profile.lastIdle,0,43200);var idle=profile.Idle(Profile.Now);
             Surface(14,566,350,206,Color.white,catsFrame:"Ink");
-            Art(26,580,124,124,"item-afkChest");
+            // Chạm rương để mở bảng chiến lợi phẩm chi tiết.
+            if(IllustratedButton(26,580,124,124,"Rương AFK","item-afkChest",content:StudioButtonLayout.Content.Symbol))modal=ChestModal;
+            if(!dispatchOnly&&lastButton.image)lastButton.image.color=Color.clear;
             Text(160,578,196,"RƯƠNG AFK",subtitle,32);
             Text(160,608,196,$"{Mathf.FloorToInt(elapsed/3600):00}:{Mathf.FloorToInt(elapsed%3600/60):00}:{Mathf.FloorToInt(elapsed%60):00}",title,48,size:34);
             Bar(160,660,188,14,elapsed/43200,gold);
@@ -158,6 +159,9 @@ namespace CatTanks
         void StepBack()
         {
             scroll=Vector2.zero;
+            // Vào Đội hình từ popup Chuẩn bị xuất kích thì ‹ quay lại popup đó.
+            if(backToPrebattle&&page=="barracks"){backToPrebattle=false;page="march";tab="cats";modal="prebattle";return;}
+            backToPrebattle=false;
             if(page=="barracks"&&tab!="cats")tab="cats";
             else if(page=="town"&&tab is "summon" or "shop")tab="hub";
             else{page="march";tab="cats";}
@@ -235,7 +239,7 @@ namespace CatTanks
         static string StagePreview(Stage stage) => $"StagePreviews/stage-{stage.index:00}";
         static bool IsSubPage(string key)=>!IsRuntimeView(key)&&(key.StartsWith("barracks-",System.StringComparison.Ordinal)||key.StartsWith("town-",System.StringComparison.Ordinal)||key is "chest" or "quests");
         static bool IsRuntimeView(string key)=>key is HomeView or ChromeView or MapView or RosterView or CatView or TownHubView or TavernView or StoreView or PvpView or QuestView
-            or FortView or TeamView or SavesView or SkillView or PetView or CrystalView;
+            or FortView or TeamView or SavesView or SkillView or PetView or CrystalView or ChestModal;
         // Trang con được dời/thu phóng vào vùng trống; các view khác giữ nguyên khung 1600×900.
         static void FrameView(RectTransform rt,string key)
         {

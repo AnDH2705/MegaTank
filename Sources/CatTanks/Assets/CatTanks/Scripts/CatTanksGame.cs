@@ -149,7 +149,7 @@ namespace CatTanks
                 Art(x + 37, 556, 131, 70, profile.floors[i].turret);
                 Text(x + 10, 626, 185, "Tầng " + (i + 1), small, 28, align: TextAnchor.UpperCenter);
             }
-            if (IllustratedButton(232, 698, 420, 82, "Chỉnh đội hình", "cat-0", normalSpriteKey: "blue")) {modal = ""; page = "barracks"; tab = "squad";}
+            if (IllustratedButton(232, 698, 420, 82, "Chỉnh đội hình", "cat-0", normalSpriteKey: "blue")) {modal = ""; page = "barracks"; tab = "squad"; backToPrebattle = true;}
             if (IllustratedButton(680, 690, 688, 96, "XUẤT KÍCH", "Battle", primary: true)) StartBattle();
             Enlarge(30);
         }
@@ -181,7 +181,7 @@ namespace CatTanks
                 Text(x + 54, y + 2, 150, "+" + N(rewards[i].Value), subtitle, 30);
                 Text(x + 54, y + 30, 150, Currency(rewards[i].Key), small, 24);
             }
-            if (Button(310, 594, 430, 86, "VỀ MÀN CHÍNH", normalSpriteKey: "blue")) {Hub(); page = "march";}
+            if (Button(310, 594, 430, 86, battle.arena ? "VỀ ĐẤU TRƯỜNG" : "VỀ MÀN CHÍNH", normalSpriteKey: "blue")) ReturnFromBattle();
             Enlarge(24);
             if (Button(770, 588, 520, 98, won && !battle.classic && !battle.arena && profile.selected < 20 ? "ẢI TIẾP THEO" : "THỬ LẠI", true, true))
             {
@@ -219,25 +219,5 @@ namespace CatTanks
             else if (modal == "" && (!inBattle || (!paused && !resolved))) modal = "book";
         }
 
-        void Book()
-        {
-            PopupFrame(98, 90, 1404, 740, "Bách khoa trăng xanh", true);
-            string[] names = {"THÁP PHÁO", "VŨ KHÍ MÈO", "MODULE", "QUÁI VẬT", "MÈO"};
-            string[] icons = {"turret-0", "gun-0", "pack-0", "bug-0", "cat-0"};
-            for (int i = 0; i < 5; i++) if (TabButton(134 + i * 268, 165, 258, 54, names[i], bookTab == i, icons[i])) {bookTab = i; scroll = Vector2.zero;}
-            int count = bookTab == 3 ? db.monsters.Count : bookTab == 4 ? db.cats.Count : db.weapons.Count(w => bookTab == 0 ? w.id.StartsWith("turret") : bookTab == 1 ? w.id.StartsWith("gun") : w.id.StartsWith("pack"));
-            Surface(124, 232, 1352, 575, Color.white,catsFrame:"Roster");
-            scroll = BeginScroll(new Rect(138, 246, 1324, 547), scroll, new Rect(0, 0, 1300, Mathf.Ceil(count / 4f) * 260));
-            for (int i = 0; i < count; i++)
-            {
-                float x = i % 4 * 326, y = i / 4 * 260; Panel(x, y, 314, 248);
-                string asset, name, desc;
-                if (bookTab == 3) {var d = db.monsters[i]; asset = d.asset; name = d.name; desc = $"HP {N(d.hp)} · ATK {N(d.damage)}\n" + d.description;}
-                else if (bookTab == 4) {var d = db.cats[i]; asset = d.id; name = d.name; desc = d.rarity + " · " + d.role + "\n" + (d.specialty == "operator" ? "Chuyên vận hành pháo" : "Chuyên bộ binh");}
-                else {var d = db.weapons.Where(w => bookTab == 0 ? w.id.StartsWith("turret") : bookTab == 1 ? w.id.StartsWith("gun") : w.id.StartsWith("pack")).ElementAt(i); asset = d.asset; name = d.name; desc = $"ATK {N(d.damage)} · {d.rate:0.##}s\n" + d.description;}
-                Art(x + 27, y + 10, 260, 100, asset); Text(x + 15, y + 117, 284, name, subtitle, 47); Text(x + 15, y + 166, 284, desc, small, 74);
-            }
-            EndScroll();
-        }
     }
 }

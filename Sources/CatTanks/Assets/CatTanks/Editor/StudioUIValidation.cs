@@ -67,7 +67,7 @@ namespace CatTanks.Editor
                 await Show(game);
                 check(game.UiReady,"Game theme and native Canvas loaded");
                 check(!(bool)typeof(CatTanksGame).GetField("authoringUi",Private).GetValue(game)&&game.CanvasRoot.GetComponentsInChildren<StudioWidgetBinding>(true).Any(b=>b.authored),"Runtime uses the authored Canvas and widget templates");
-                check(game.CanvasRoot.GetComponentsInChildren<StudioUIView>(true).Count(v=>v.layer=="popup"&&v.key!="map")==6,"Six separate popup prefab instances are present");
+                check(game.CanvasRoot.GetComponentsInChildren<StudioUIView>(true).Count(v=>v.layer=="popup"&&v.key!="map"&&v.key!="afk")==6,"Six separate popup prefab instances are present");
                 game.page="barracks";game.tab="cats";await Show(game);
                 // Danh sách mèo dùng view tạo lúc chạy (toạ độ theo code) thay cho prefab tab MÈO cũ.
                 check(game.CanvasRoot.GetComponentsInChildren<Text>().Any(t=>t.text=="Những người giữ pháo đài"),"Barracks opens on the cat roster");

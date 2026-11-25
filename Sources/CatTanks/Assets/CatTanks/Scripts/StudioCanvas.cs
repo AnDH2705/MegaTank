@@ -162,13 +162,15 @@ namespace CatTanks
         }
         void RenderPass()
         {
+            // Trang Rương AFK cũ giờ là popup trên màn chính.
+            if(page=="chest"){page="march";modal=ChestModal;}
             string key=inBattle?"battle":page=="march"?HomeView:page=="barracks"?NormalizeBarracksTab():page=="town"?NormalizeTownTab():page=="quests"?QuestView:page;
             SelectView(key,"screen");uiInputAllowed=modal==""&&(!inBattle||(!paused&&!resolved));
             if(inBattle){useCodeGeometry=true;BattleHUD();}else HubUI();
             if(modal!="")
             {
-                BeginPopup(modal,modal is "settings" or "book" or "prebattle" or "choice" or MapView);
-                if(modal=="book")Book();else if(modal=="settings")Settings();else if(modal=="prebattle")Prebattle();else if(modal=="choice")ChoiceModal();else if(modal==MapView)MapPopup();
+                BeginPopup(modal,modal is "settings" or "book" or "prebattle" or "choice" or MapView or ChestModal);
+                if(modal=="book")Book();else if(modal=="settings")Settings();else if(modal=="prebattle")Prebattle();else if(modal=="choice")ChoiceModal();else if(modal==MapView)MapPopup();else if(modal==ChestModal)ChestPopup();
             }
             else if(inBattle&&resolved){BeginPopup("result");Result();}
             else if(inBattle&&paused){BeginPopup("pause");PausePopup();}

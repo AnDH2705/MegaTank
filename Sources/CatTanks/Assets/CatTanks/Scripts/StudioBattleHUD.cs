@@ -73,7 +73,7 @@ namespace CatTanks
             if(IllustratedButton(520,480,560,80,"TIẾP TỤC","Play",primary:true))paused=false;
             Enlarge(26);
             if(IllustratedButton(520,578,270,66,"Cài đặt","Interface/Cats/SettingsIcon",normalSpriteKey:"blue"))modal="settings";
-            if(Button(810,578,270,66,"Rút lui")){Hub();page="march";}
+            if(Button(810,578,270,66,"Rút lui"))ReturnFromBattle();
         }
     }
 }
