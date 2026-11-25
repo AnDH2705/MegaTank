@@ -94,10 +94,10 @@ namespace CatTanks.Editor
                 Check(game.profile.cats[0].level==level+1&&game.profile.Get("coins")<gold,"Cat upgrade button changes level and charges actual cost");
                 await Page(game,"barracks","squad");ClickBinding(game,"button::810:226");await Show(game);
                 Click(game,"Gỡ khỏi ô");await Show(game);Check(game.profile.squad[0]=="","Formation slot clears the actual squad member");
-                await Page(game,"barracks","fortress");Click(game,"Module 1");await Show(game);
-                Check(game.modal=="choice","Module slot opens the choice prefab");
+                await Page(game,"barracks","fortress");Click(game,"Chim 1");await Show(game);
+                Check(game.modal=="choice","Bird (module) slot opens the choice prefab");
                 Check(!Buttons(game).First(b=>Label(b)=="‹").interactable,"Choice popup blocks background navigation");
-                Click(game,"Gỡ module");await Show(game);Check(game.modal=="","Picker closes after choosing");
+                Click(game,"Gỡ chim");await Show(game);Check(game.modal=="","Picker closes after choosing");
                 await Page(game,"barracks","skills");int cores=game.profile.Get("skillCore");Click(game,"NÂNG CẤP ·");await Show(game);
                 Check(game.profile.skillLevels["heal"]==2&&game.profile.Get("skillCore")==cores-1,"Skill upgrade uses the canonical skill and real core cost");
                 await Page(game,"town","summon");int tickets=game.profile.Get("summonScroll"),owned=game.profile.cats.Sum(c=>1+c.copies);
@@ -152,7 +152,7 @@ namespace CatTanks.Editor
                 var parts=key.Split('-');await Page(game,parts[0]=="home"?"march":parts[0],parts.Length>1?parts[1]:"cats");Capture(game,key);
             }
             foreach(string key in new[]{"settings","book","prebattle","map"}){game.modal=key;await Show(game);Capture(game,key);}
-            await Page(game,"barracks","fortress");Click(game,"Module 1");await Show(game);Capture(game,"choice");
+            await Page(game,"barracks","fortress");Click(game,"Chim 1");await Show(game);Capture(game,"choice");
             game.modal="";game.StartBattle();game.enabled=false;game.battle.Spawn("bug-0",1000);game.battle.Step(.05f);game.view.Render(game.battle);
             await Show(game);Capture(game,"battle");game.paused=true;await Show(game);Capture(game,"pause");
             game.battle.state=BattleState.Won;typeof(CatTanksGame).GetMethod("Resolve",Private).Invoke(game,null);await Show(game);Capture(game,"result");

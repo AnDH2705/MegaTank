@@ -14,7 +14,7 @@ namespace CatTanks
         const string RosterView="barracks-roster",CatView="barracks-cat";
         static readonly string[] BarracksTabs={"cats","cat","fortress","squad","skills","monsters","presets","nexus"};
         static readonly string[] RoleKeys={"","TANK","WARRIOR","RANGER","MAGE","HEALER","ASSASSIN"};
-        string rosterRole="";
+        string rosterRole="";int rosterPage;
 
         string BarracksViewKey()=>tab=="cat"?CatView:BarracksSectionView();
         static string RoleName(string role)=>role switch
@@ -33,9 +33,20 @@ namespace CatTanks
         void RosterUI()
         {
             Text(130,108,700,"Những người giữ pháo đài",title,55);
-            Text(980,120,200,$"{profile.cats.Count}/10 mèo",subtitle,40,align:TextAnchor.UpperRight);
+            Text(980,120,200,$"{profile.cats.Count}/{db.cats.Count} mèo",subtitle,40,align:TextAnchor.UpperRight);
             for(int i=0;i<RoleKeys.Length;i++)
-                if(TabButton(130+i*144,166,136,48,RoleName(RoleKeys[i]),rosterRole==RoleKeys[i])){rosterRole=RoleKeys[i];}
+                if(TabButton(130+i*144,166,136,48,RoleName(RoleKeys[i]),rosterRole==RoleKeys[i])){rosterRole=RoleKeys[i];rosterPage=0;}
+            // 10 thẻ mỗi trang (lưới 5x2); lật trang khi có hơn 10 mèo khớp bộ lọc.
+            int matching=profile.cats.Count(c=>rosterRole==""||db.Cat(c.id).role==rosterRole),pages=Mathf.Max(1,(matching+9)/10);
+            rosterPage=Mathf.Clamp(rosterPage,0,pages-1);
+            if(pages>1)
+            {
+                // đặt ở hàng tiêu đề, giữa tiêu đề và dòng đếm mèo (hàng tab vai trò đã kín tới x≈1130)
+                Text(840,120,56,$"{rosterPage+1}/{pages}",small,30,align:TextAnchor.UpperCenter);
+                if(Button(898,108,38,44,"‹",rosterPage>0,normalSpriteKey:"blue"))rosterPage--;
+                if(Button(940,108,38,44,"›",rosterPage<pages-1,normalSpriteKey:"blue"))rosterPage++;
+            }
+            int skip=rosterPage*10;
 
             Surface(118,226,1078,548,Color.white,catsFrame:"Roster");
             int shown=0;
@@ -43,6 +54,7 @@ namespace CatTanks
             {
                 var c=profile.cats[i];var def=db.Cat(c.id);
                 if(rosterRole!=""&&def.role!=rosterRole)continue;
+                if(skip>0){skip--;continue;}
                 float x=140+shown%5*210,y=246+shown/5*258;shown++;
                 int rank=RarityRank(def.rarity);
                 if(IllustratedButton(x,y,196,244,def.name,c.id,content:StudioButtonLayout.Content.Tile,selected:selectedCat==i)){selectedCat=i;tab="cat";}

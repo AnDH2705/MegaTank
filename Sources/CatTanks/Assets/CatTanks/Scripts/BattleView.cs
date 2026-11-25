@@ -63,6 +63,7 @@ namespace CatTanks
             }
             tx.SetPixels(pixels); tx.Apply(); return UnityEngine.Sprite.Create(tx, new Rect(0, 0, 128, 128), Vector2.one * .5f, 128);
         }
+        const float AuxBirdWidth = 80;
         public Sprite Art(string name)
         {
             if (string.IsNullOrEmpty(name)) return square;
@@ -224,20 +225,20 @@ namespace CatTanks
             {
                 if (!string.IsNullOrEmpty(a.cat))
                 {
-                    bool tower = a.role == "tower";
-                    float catX = tower ? -63 : -5;
-                    float width = a.role == "companion" ? 110 : tower ? 64 : 52;
-                    Image(a.cat, new Vector2(catX, tower ? 10 : 17), width, 20, group).name = "Body";
-                    if (a.role != "companion")
+                    bool tower = a.role == "tower", companion = a.role == "companion";
+                    // Mèo dáng nằm (bộ ảnh 25/11): đầu lệch phải và thấp, nên mũ dịch sang phải và hạ xuống, áo ôm phần thân.
+                    if (companion) Image(a.cat, new Vector2(-5, 17), 110, 20, group).name = "Body";
+                    else
                     {
-                        Image("uniform-" + a.index % 10, new Vector2(catX, tower ? -6 : 0), tower ? 43 : 39, 21, group);
-                        Image("hat-" + a.index % 10, new Vector2(catX, 39), tower ? 48 : 43, 22, group);
+                        Image(a.cat, tower ? new Vector2(-63, 8) : new Vector2(-8, 14), tower ? 74 : 60, 20, group).name = "Body";
+                        Image("uniform-" + a.index % 10, tower ? new Vector2(-61, -4) : new Vector2(-6, 2), tower ? 44 : 38, 21, group);
+                        Image("hat-" + a.index % 10, tower ? new Vector2(-52, 31) : new Vector2(2, 33), tower ? 40 : 34, 22, group);
                     }
                 }
                 if (a.role != "companion")
                 {
                     var pivot = new GameObject("Weapon Pivot").transform; pivot.SetParent(group, false);
-                    Image(a.weapon.asset, new Vector2(a.role == "tower" ? 20 : 13, 0), a.role == "tower" ? 117 : 57, 24, pivot, a.weapon.flip).name = "Weapon";
+                    Image(a.weapon.asset, new Vector2(a.role == "tower" ? 20 : 13, 0), a.role == "tower" ? 117 : a.role == "aux" ? AuxBirdWidth : 57, 24, pivot, a.weapon.flip).name = "Weapon";
                 }
                 Rect("Health Back", new Vector2(0, a.role == "companion" ? 85 : 55), new Vector2(60, 7), "#10263b", 50, group);
                 Rect("Health Fill", new Vector2(0, a.role == "companion" ? 85 : 55), new Vector2(58, 4), "#8ef587", 51, group);
@@ -293,9 +294,19 @@ namespace CatTanks
                     var pivot=visual.pivot;
                     if (pivot)
                     {
-                        pivot.localEulerAngles = new Vector3(0, 0, a.angle * Mathf.Rad2Deg);
                         var weapon=visual.weaponRenderer;weapon.sprite = Art(a.weapon.asset); weapon.flipX = a.weapon.flip;
-                        visual.weapon.localPosition = new Vector3((a.role == "tower" ? 20 : 13) - a.recoil, 0, 0);
+                        if (a.role == "aux")
+                        {
+                            // Module là chim chiến: bay lơ lửng, không xoay theo hướng ngắm.
+                            float flap = b.time * 3.2f + a.index * 1.7f;
+                            pivot.localEulerAngles = new Vector3(0, 0, Mathf.Sin(flap) * 5);
+                            visual.weapon.localPosition = new Vector3(13 - a.recoil * .3f, Mathf.Sin(flap * 1.3f) * 6, 0);
+                        }
+                        else
+                        {
+                            pivot.localEulerAngles = new Vector3(0, 0, a.angle * Mathf.Rad2Deg);
+                            visual.weapon.localPosition = new Vector3((a.role == "tower" ? 20 : 13) - a.recoil, 0, 0);
+                        }
                     }
                 }
                 var fill=visual.fill;float full = a.def != null ? a.def.size * .64f : 58, ratio = Mathf.Clamp01(a.hp / a.maxHp);

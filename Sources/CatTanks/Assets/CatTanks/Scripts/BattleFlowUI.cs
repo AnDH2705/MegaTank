@@ -54,7 +54,7 @@ namespace CatTanks
             Text(1058,524,362,$"Lực chiến đề nghị {N(pick.recommendedPower)}\nĐội bạn {N(power)} · "+(power>=pick.recommendedPower?"Sẵn sàng":"Nên nâng cấp"),small,56);
             var firstClear=new List<string>();
             if(!string.IsNullOrEmpty(pick.gearReward))firstClear.Add("trang bị");
-            if(!string.IsNullOrEmpty(pick.moduleReward))firstClear.Add("module "+db.Weapon(pick.moduleReward).name);
+            if(!string.IsNullOrEmpty(pick.moduleReward))firstClear.Add("chim "+db.Weapon(pick.moduleReward).name);
             Text(1058,586,362,firstClear.Count>0?"Thưởng lần đầu: "+string.Join(", ",firstClear):"Thưởng: xu, XP mèo, bụi",small,56);
             if(Button(1056,656,366,60,"CHỌN ẢI NÀY",pickOpen,normalSpriteKey:"blue")){modal="";SelectStage(mapPick+1);}
             Enlarge(22);

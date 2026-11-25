@@ -123,7 +123,7 @@ namespace CatTanks
                 {
                     var c = i < save.SquadCount ? save.cats.Find(v => v.id == save.squad[i]) : null;
                     var stats = c == null ? null : save.Stats(c, db, "infantry");
-                    string gun = c == null ? "gun-0" : c.id.Replace("cat-", "gun-");
+                    string gun = c == null ? "gun-0" : db.Cat(c.id).gun ?? c.id.Replace("cat-", "gun-");
                     if (c != null && c.gear.TryGetValue("weapon", out var uid)) gun = save.gear.Find(g => g.uid == uid)?.id ?? gun;
                     var w = db.Weapon(gun).Copy(); w.damage *= stats == null ? .75f : 1 + stats["atk"] / 50;
                     if (stats != null) w.rate = Mathf.Max(.15f, w.rate / (1 + stats["speed"] / 500));

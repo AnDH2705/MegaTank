@@ -302,21 +302,21 @@
       "flip": false
     },
     {
-      "name": "Ba lô Gatling",
+      "name": "Sẻ Gatling",
       "kind": "rapid",
       "rate": 0.2,
       "damage": 12,
       "color": "#ffdc80",
-      "description": "Xả đạn liên thanh từ bệ phụ.",
+      "description": "Xả đạn liên thanh từ chim chiến.",
       "speed": 780,
       "range": 1000,
       "id": "pack-0",
       "asset": "pack-0",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Hỏa tiễn bốn nòng",
+      "name": "Đại bàng hỏa tiễn",
       "kind": "rocket",
       "rate": 3.6,
       "damage": 54,
@@ -328,11 +328,11 @@
       "splash": 75,
       "id": "pack-1",
       "asset": "pack-1",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Đại bác hỗ trợ",
+      "name": "Cú đại bác",
       "kind": "shell",
       "rate": 2.5,
       "damage": 125,
@@ -343,11 +343,11 @@
       "splash": 100,
       "id": "pack-2",
       "asset": "pack-2",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Cuộn Tesla",
+      "name": "Giẻ cùi Tesla",
       "kind": "tesla",
       "rate": 2.4,
       "damage": 70,
@@ -359,11 +359,11 @@
       "stun": 0.6,
       "id": "pack-3",
       "asset": "pack-3",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Tên lửa song sinh",
+      "name": "Quạ tên lửa",
       "kind": "rocket",
       "rate": 2.8,
       "damage": 86,
@@ -375,11 +375,11 @@
       "splash": 90,
       "id": "pack-4",
       "asset": "pack-4",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Hỏa diệm",
+      "name": "Phượng hoàng lửa",
       "kind": "flame",
       "rate": 0.4,
       "damage": 25,
@@ -390,11 +390,11 @@
       "burn": 5,
       "id": "pack-5",
       "asset": "pack-5",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Băng cực quang",
+      "name": "Cánh cụt băng",
       "kind": "ice",
       "rate": 0.9,
       "damage": 50,
@@ -405,11 +405,11 @@
       "slow": 3,
       "id": "pack-6",
       "asset": "pack-6",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Độc tố xanh",
+      "name": "Vẹt lá độc",
       "kind": "poison",
       "rate": 1.6,
       "damage": 40,
@@ -421,11 +421,11 @@
       "splash": 130,
       "id": "pack-7",
       "asset": "pack-7",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Cưa vòng",
+      "name": "Én cưa vòng",
       "kind": "saw",
       "rate": 2.1,
       "damage": 105,
@@ -436,11 +436,11 @@
       "pierce": 3,
       "id": "pack-8",
       "asset": "pack-8",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Mũi khoan",
+      "name": "Chim ruồi khoan",
       "kind": "drill",
       "rate": 2.5,
       "damage": 155,
@@ -451,11 +451,11 @@
       "pierce": 2,
       "id": "pack-9",
       "asset": "pack-9",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Laser đỏ",
+      "name": "Sơn ca laser",
       "kind": "laser",
       "rate": 2.4,
       "damage": 120,
@@ -466,11 +466,11 @@
       "pierce": 5,
       "id": "pack-10",
       "asset": "pack-10",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Hạt nhân tím",
+      "name": "Vẹt Ara plasma",
       "kind": "plasma",
       "rate": 2.6,
       "damage": 160,
@@ -481,11 +481,11 @@
       "splash": 155,
       "id": "pack-11",
       "asset": "pack-11",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Vuốt thép",
+      "name": "Mòng biển vuốt thép",
       "kind": "claw",
       "rate": 1.4,
       "damage": 110,
@@ -496,11 +496,11 @@
       "count": 3,
       "id": "pack-12",
       "asset": "pack-12",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Khiên năng lượng",
+      "name": "Cú tuyết hộ vệ",
       "kind": "shield",
       "rate": 8,
       "damage": 0,
@@ -510,11 +510,11 @@
       "range": 1000,
       "id": "pack-13",
       "asset": "pack-13",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Sóng trọng lực",
+      "name": "Hồng hạc trọng lực",
       "kind": "gravity",
       "rate": 3,
       "damage": 75,
@@ -526,11 +526,11 @@
       "slow": 3,
       "id": "pack-14",
       "asset": "pack-14",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Súng cối chiến thuật",
+      "name": "Toucan súng cối",
       "kind": "mortar",
       "rate": 2.8,
       "damage": 160,
@@ -541,11 +541,11 @@
       "splash": 150,
       "id": "pack-15",
       "asset": "pack-15",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Thiện xạ cam",
+      "name": "Vẹt mào thiện xạ",
       "kind": "sniper",
       "rate": 3,
       "damage": 215,
@@ -556,11 +556,11 @@
       "pierce": 3,
       "id": "pack-16",
       "asset": "pack-16",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Bom đầu lâu",
+      "name": "Quạ ôm bom",
       "kind": "bomb",
       "rate": 3.8,
       "damage": 225,
@@ -571,11 +571,11 @@
       "splash": 190,
       "id": "pack-17",
       "asset": "pack-17",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Mảnh tinh thạch",
+      "name": "Giẻ cùi tinh thạch",
       "kind": "crystal",
       "rate": 2,
       "damage": 50,
@@ -587,11 +587,11 @@
       "pierce": 1,
       "id": "pack-18",
       "asset": "pack-18",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     },
     {
-      "name": "Trạm cứu thương",
+      "name": "Bồ câu cứu thương",
       "kind": "heal",
       "rate": 7,
       "damage": 240,
@@ -601,7 +601,7 @@
       "range": 1000,
       "id": "pack-19",
       "asset": "pack-19",
-      "family": "VŨ KHÍ PHỤ",
+      "family": "CHIM CHIẾN",
       "flip": true
     }
   ],
@@ -865,7 +865,8 @@
         "speed": 0.4
       },
       "sprite": "cat-0",
-      "classic": true
+      "classic": true,
+      "gun": "gun-0"
     },
     {
       "id": "cat-1",
@@ -886,7 +887,8 @@
         "speed": 0.5
       },
       "sprite": "cat-1",
-      "classic": true
+      "classic": true,
+      "gun": "gun-1"
     },
     {
       "id": "cat-2",
@@ -907,7 +909,8 @@
         "speed": 0.4
       },
       "sprite": "cat-2",
-      "classic": true
+      "classic": true,
+      "gun": "gun-2"
     },
     {
       "id": "cat-3",
@@ -928,7 +931,8 @@
         "speed": 0.45
       },
       "sprite": "cat-3",
-      "classic": true
+      "classic": true,
+      "gun": "gun-3"
     },
     {
       "id": "cat-4",
@@ -949,7 +953,8 @@
         "speed": 0.6
       },
       "sprite": "cat-4",
-      "classic": true
+      "classic": true,
+      "gun": "gun-4"
     },
     {
       "id": "cat-5",
@@ -970,7 +975,8 @@
         "speed": 0.55
       },
       "sprite": "cat-5",
-      "classic": true
+      "classic": true,
+      "gun": "gun-5"
     },
     {
       "id": "cat-6",
@@ -991,7 +997,8 @@
         "speed": 0.4
       },
       "sprite": "cat-6",
-      "classic": true
+      "classic": true,
+      "gun": "gun-6"
     },
     {
       "id": "cat-7",
@@ -1012,7 +1019,8 @@
         "speed": 0.3
       },
       "sprite": "cat-7",
-      "classic": true
+      "classic": true,
+      "gun": "gun-7"
     },
     {
       "id": "cat-8",
@@ -1033,7 +1041,8 @@
         "speed": 0.4
       },
       "sprite": "cat-8",
-      "classic": true
+      "classic": true,
+      "gun": "gun-8"
     },
     {
       "id": "cat-9",
@@ -1054,7 +1063,218 @@
         "speed": 0.5
       },
       "sprite": "cat-9",
-      "classic": true
+      "classic": true,
+      "gun": "gun-9"
+    },
+    {
+      "id": "cat-10",
+      "name": "Cà Phê",
+      "specialty": "infantry",
+      "role": "WARRIOR",
+      "rarity": "COMMON",
+      "baseStats": {
+        "maxHp": 280,
+        "atk": 42,
+        "def": 16,
+        "speed": 98
+      },
+      "growth": {
+        "maxHp": 24,
+        "atk": 3.3,
+        "def": 1.1,
+        "speed": 0.5
+      },
+      "sprite": "cat-10",
+      "gun": "gun-7"
+    },
+    {
+      "id": "cat-11",
+      "name": "Than",
+      "specialty": "operator",
+      "role": "TANK",
+      "rarity": "COMMON",
+      "baseStats": {
+        "maxHp": 390,
+        "atk": 32,
+        "def": 27,
+        "speed": 80
+      },
+      "growth": {
+        "maxHp": 33,
+        "atk": 2.5,
+        "def": 1.8,
+        "speed": 0.3
+      },
+      "sprite": "cat-11",
+      "gun": "gun-0"
+    },
+    {
+      "id": "cat-12",
+      "name": "Kem Dâu",
+      "specialty": "infantry",
+      "role": "HEALER",
+      "rarity": "COMMON",
+      "baseStats": {
+        "maxHp": 290,
+        "atk": 40,
+        "def": 17,
+        "speed": 96
+      },
+      "growth": {
+        "maxHp": 25,
+        "atk": 3.1,
+        "def": 1.2,
+        "speed": 0.45
+      },
+      "sprite": "cat-12",
+      "gun": "gun-5"
+    },
+    {
+      "id": "cat-13",
+      "name": "Oải Hương",
+      "specialty": "operator",
+      "role": "MAGE",
+      "rarity": "COMMON",
+      "baseStats": {
+        "maxHp": 330,
+        "atk": 37,
+        "def": 21,
+        "speed": 90
+      },
+      "growth": {
+        "maxHp": 27,
+        "atk": 3,
+        "def": 1.4,
+        "speed": 0.4
+      },
+      "sprite": "cat-13",
+      "gun": "gun-3"
+    },
+    {
+      "id": "cat-14",
+      "name": "Bóng Đêm",
+      "specialty": "infantry",
+      "role": "ASSASSIN",
+      "rarity": "RARE",
+      "baseStats": {
+        "maxHp": 250,
+        "atk": 58,
+        "def": 13,
+        "speed": 112
+      },
+      "growth": {
+        "maxHp": 21,
+        "atk": 4.4,
+        "def": 0.9,
+        "speed": 0.6
+      },
+      "sprite": "cat-14",
+      "gun": "gun-4"
+    },
+    {
+      "id": "cat-15",
+      "name": "Bạch Hổ",
+      "specialty": "operator",
+      "role": "WARRIOR",
+      "rarity": "ELITE",
+      "baseStats": {
+        "maxHp": 410,
+        "atk": 40,
+        "def": 28,
+        "speed": 86
+      },
+      "growth": {
+        "maxHp": 35,
+        "atk": 3,
+        "def": 1.9,
+        "speed": 0.4
+      },
+      "sprite": "cat-15",
+      "gun": "gun-1"
+    },
+    {
+      "id": "cat-16",
+      "name": "Báo Đốm",
+      "specialty": "infantry",
+      "role": "RANGER",
+      "rarity": "ELITE",
+      "baseStats": {
+        "maxHp": 260,
+        "atk": 58,
+        "def": 14,
+        "speed": 114
+      },
+      "growth": {
+        "maxHp": 22,
+        "atk": 4.4,
+        "def": 1,
+        "speed": 0.6
+      },
+      "sprite": "cat-16",
+      "gun": "gun-8"
+    },
+    {
+      "id": "cat-17",
+      "name": "Lam",
+      "specialty": "operator",
+      "role": "MAGE",
+      "rarity": "RARE",
+      "baseStats": {
+        "maxHp": 340,
+        "atk": 44,
+        "def": 22,
+        "speed": 92
+      },
+      "growth": {
+        "maxHp": 29,
+        "atk": 3.4,
+        "def": 1.5,
+        "speed": 0.42
+      },
+      "sprite": "cat-17",
+      "gun": "gun-9"
+    },
+    {
+      "id": "cat-18",
+      "name": "Sô-cô-la",
+      "specialty": "infantry",
+      "role": "TANK",
+      "rarity": "RARE",
+      "baseStats": {
+        "maxHp": 300,
+        "atk": 48,
+        "def": 18,
+        "speed": 100
+      },
+      "growth": {
+        "maxHp": 26,
+        "atk": 3.6,
+        "def": 1.3,
+        "speed": 0.5
+      },
+      "sprite": "cat-18",
+      "gun": "gun-2"
+    },
+    {
+      "id": "cat-19",
+      "name": "Đào",
+      "specialty": "infantry",
+      "role": "HEALER",
+      "rarity": "ELITE",
+      "baseStats": {
+        "maxHp": 310,
+        "atk": 46,
+        "def": 19,
+        "speed": 96
+      },
+      "growth": {
+        "maxHp": 28,
+        "atk": 3.5,
+        "def": 1.4,
+        "speed": 0.45
+      },
+      "sprite": "cat-19",
+      "gun": "gun-6"
     }
   ],
   "stages": [
