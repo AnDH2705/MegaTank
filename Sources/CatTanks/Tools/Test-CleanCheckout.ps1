@@ -13,17 +13,20 @@ if (-not (Test-Path -LiteralPath $UnityPath)) { throw "Unity $version is require
 
 # Export HEAD, not the working tree: stashed/uncommitted fixes and Library caches
 # must never make this check pass on only one developer's machine.
-$runRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot ('Temp/PostPull/' + [Guid]::NewGuid().ToString('N'))))
+# Unity clears its Temp tree when the main project opens. Keep this independent
+# checkout in Builds so opening the game cannot delete an in-progress test.
+$runRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot ('Builds/PullCheck/' + [Guid]::NewGuid().ToString('N').Substring(0,8))))
 if (-not $runRoot.StartsWith($projectRoot + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) { throw 'Invalid temporary checkout path.' }
 New-Item -ItemType Directory -Path $runRoot -Force | Out-Null
 $archive = Join-Path $runRoot 'tracked.zip'
 $checkoutRoot = Join-Path $runRoot 'checkout'
 Write-Host "Exporting committed project $revision"
-& git -C $repoRoot archive --format=zip "--output=$archive" HEAD -- $prefix
+& git -C $repoRoot archive --format=zip "--output=$archive" $revision -- $prefix
 if ($LASTEXITCODE -ne 0) { throw 'git archive failed.' }
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 [IO.Compression.ZipFile]::ExtractToDirectory($archive, $checkoutRoot)
 $cleanProject = [IO.Path]::GetFullPath((Join-Path $checkoutRoot $prefix))
+if (-not (Test-Path -LiteralPath (Join-Path $cleanProject 'Assets/CatTanks/Scenes/Main.unity'))) { throw 'Committed Main.unity is missing from the export.' }
 $hadLibrary = Test-Path -LiteralPath (Join-Path $cleanProject 'Library')
 if ($hadLibrary) { throw 'A clean checkout must not contain Library.' }
 $logs = Join-Path $cleanProject 'Logs'
