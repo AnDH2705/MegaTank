@@ -10,8 +10,8 @@ namespace CatTanks
     {
         void CatStat(float x,float y,string icon,string caption,float value)
         {
-            Art(x,y,32,32,"Interface/Cats/"+icon);
-            Text(x+42,y+2,164,caption+" "+N(value),label);
+            Art(x,y,37,37,"Interface/Cats/"+icon);
+            Text(x+48,y,194,caption+"  "+N(value),subtitle,37,align:TextAnchor.MiddleLeft,size:24);
         }
         void OpenCage(bool moon)
         {

@@ -7,6 +7,7 @@ namespace CatTanks
         // Màn chính kiểu game: cảnh ải và pháo đài làm nền, nút lớn hai bên, chọn ải ở góc dưới.
         // Các trang con mở toàn màn hình; phần chrome (Back, tiêu đề, tiền tệ) vẽ ở view "hub-chrome" phía trên.
         const string HomeView="home",ChromeView="hub-chrome",MapView="map";
+        const string TownCatChromeView = "town-cat-chrome";
         // Khung nội dung cũ (254,125)-(1576,865) được dời/thu phóng vào vùng trống sau khi bỏ sidebar và header.
         const float SubPageScale=1.06f,SubPageLeft=100,SubPageTop=98;
 
@@ -18,7 +19,8 @@ namespace CatTanks
             {
                 // Các màn theo bố cục game idle: view tạo lúc chạy, toạ độ 1600×900 không thu phóng.
                 useCodeGeometry=true;
-                Surface(100,84,1400,830,Color.white,catsFrame:"Board");
+                if (renderViewKey != TownHubView && renderViewKey != CatView)
+                    Surface(100,84,1400,830,Color.white,catsFrame:"Board");
                 switch(renderViewKey)
                 {
                     case CatView:CatDetailUI();break;
@@ -100,19 +102,23 @@ namespace CatTanks
             BottomNav();
         }
         // Thanh điều hướng cố định ở đáy theo bố cục quen thuộc của game idle; Hành quân nằm giữa.
-        void BottomNav()
+        void BottomNav(bool townArtwork = false)
         {
-            SpriteBox(0,786,1600,114,"",new Color(.12f,.1f,.33f,1),false,"scrim");
-            SpriteBox(0,782,1600,6,"",C("#140c30"),false,"scrim");
-            if(NavTab(0,"Thành mèo","Interface/Cats/Tab-fortress",page=="town"&&tab!="arena")){page="town";tab="hub";scroll=Vector2.zero;}
-            if(NavTab(1,"Đấu trường","item-arenaToken",page=="town"&&tab=="arena")){page="town";tab="arena";scroll=Vector2.zero;}
-            if(NavTab(2,"Hành quân","Map",page=="march")){page="march";modal="";}
-            if(NavTab(3,"Doanh trại","Interface/Cats/Tab-cats",page=="barracks")){page="barracks";tab="cats";scroll=Vector2.zero;}
-            if(NavTab(4,"Nhiệm vụ","Calendar_Check",page=="quests")){page="quests";scroll=Vector2.zero;}
+            if (!townArtwork)
+            {
+                SpriteBox(0,786,1600,114,"",new Color(.12f,.1f,.33f,1),false,"scrim");
+                SpriteBox(0,782,1600,6,"",C("#140c30"),false,"scrim");
+            }
+            if(NavTab(0,"Thành mèo","Interface/Cats/Tab-fortress",page=="town"&&tab!="arena",townArtwork)){page="town";tab="hub";scroll=Vector2.zero;}
+            if(NavTab(1,"Đấu trường","item-arenaToken",page=="town"&&tab=="arena",townArtwork)){page="town";tab="arena";scroll=Vector2.zero;}
+            if(NavTab(2,"Hành quân","Map",page=="march",townArtwork)){page="march";modal="";}
+            if(NavTab(3,"Doanh trại","Interface/Cats/Tab-cats",page=="barracks",townArtwork)){page="barracks";tab="cats";scroll=Vector2.zero;}
+            if(NavTab(4,"Nhiệm vụ","Calendar_Check",page=="quests",townArtwork)){page="quests";scroll=Vector2.zero;}
         }
         // Tab đang mở: ô vàng lớn nhô lên khỏi thanh; các tab khác là nút tím.
-        bool NavTab(int index,string value,string icon,bool active)
+        bool NavTab(int index,string value,string icon,bool active,bool townArtwork)
         {
+            if (townArtwork) return TownArtworkButton(TownNavBounds[index], value);
             if(active)
             {
                 bool open=IllustratedButton(index*320+30,762,260,136,value,icon,primary:true,content:StudioButtonLayout.Content.Tile);
@@ -146,15 +152,33 @@ namespace CatTanks
         }
         void SubPageChrome()
         {
-            SelectView(ChromeView,"screen");
+            bool upgradedChrome = renderViewKey == TownHubView || renderViewKey == CatView;
+            SelectView(upgradedChrome ? TownCatChromeView : ChromeView, "screen");
             // View tạo lúc chạy sau chrome sẽ nằm đè lên; luôn đưa chrome lên trên cùng.
             if(!dispatchOnly&&uiParent.GetSiblingIndex()!=uiParent.parent.childCount-1)uiParent.SetAsLastSibling();
+            if (upgradedChrome)
+            {
+                useCodeGeometry = true;
+                drawingHubChrome = true;
+                UpgradedTownCatChrome();
+                return;
+            }
             Art(0,0,1600,100,"Interface/Cats/Header");
             // Trong Doanh trại, ‹ quay về danh sách mèo trước rồi mới về màn chính.
             // Trong Thành mèo, Gọi đồng đội / Tiếp tế quay về thị trấn.
             if(Button(18,14,76,70,"‹",true,true))StepBack();
             Text(112,16,660,PageTitle,title,60);
             HubWallet();
+        }
+        void UpgradedTownCatChrome()
+        {
+            Art(0, 0, 1600, 96 * TownArtworkY, "Interface/Cats/TownCatHeader");
+            if (TownArtworkButton(new Rect(10, 10, 92, 71), "‹")) StepBack();
+            Text(112, 5, 500, PageTitle, title, 73, align: TextAnchor.MiddleLeft, size: 48);
+            Text(857 * TownArtworkX, 14, 124 * TownArtworkX, N(profile.Get("coins")), subtitle, 35, align: TextAnchor.MiddleLeft, size: 26);
+            Text(1094 * TownArtworkX, 14, 123 * TownArtworkX, N(profile.Get("gem")), subtitle, 35, align: TextAnchor.MiddleLeft, size: 26);
+            Text(1327 * TownArtworkX, 14, 114 * TownArtworkX, N(profile.Get("summonScroll")), subtitle, 35, align: TextAnchor.MiddleLeft, size: 26);
+            if (TownArtworkButton(new Rect(1480, 9, 181, 73), "Cài đặt")) modal = "settings";
         }
         void StepBack()
         {
@@ -225,7 +249,7 @@ namespace CatTanks
         };
         static string StagePreview(Stage stage) => $"StagePreviews/stage-{stage.index:00}";
         static bool IsSubPage(string key)=>!IsRuntimeView(key)&&(key.StartsWith("barracks-",System.StringComparison.Ordinal)||key.StartsWith("town-",System.StringComparison.Ordinal)||key is "chest" or "quests");
-        static bool IsRuntimeView(string key)=>key is HomeView or ChromeView or MapView or RosterView or CatView or TownHubView or TavernView or StoreView or PvpView or QuestView
+        static bool IsRuntimeView(string key)=>key is HomeView or ChromeView or TownCatChromeView or MapView or RosterView or CatView or TownHubView or TavernView or StoreView or PvpView or QuestView
             or FortView or TeamView or SavesView or SkillView or PetView or CrystalView or ChestModal or TitleView;
         // Trang con được dời/thu phóng vào vùng trống; các view khác giữ nguyên khung 1600×900.
         static void FrameView(RectTransform rt,string key)

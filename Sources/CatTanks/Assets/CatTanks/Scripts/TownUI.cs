@@ -17,27 +17,70 @@ namespace CatTanks
         string TownTitle=>tab switch{"summon"=>SummonTabLabel,"shop"=>"Tiếp tế","arena"=>"Đấu trường",_=>"Thành mèo"};
         bool TownUnlocked(int stage)=>profile.highestCleared>=stage;
 
+        const float TownArtworkX = 1600f / 1672f;
+        const float TownArtworkY = 900f / 941f;
+        static readonly Rect[] TownCardBounds =
+        {
+            new Rect(108, 105, 481, 675),
+            new Rect(596, 105, 478, 675),
+            new Rect(1081, 105, 482, 675)
+        };
+        static readonly Rect[] TownNavBounds =
+        {
+            new Rect(27, 800, 273, 127),
+            new Rect(338, 825, 299, 103),
+            new Rect(677, 825, 299, 103),
+            new Rect(1012, 825, 298, 103),
+            new Rect(1355, 825, 295, 103)
+        };
+
         // ---- Thị trấn: ba công trình lớn ----
         void TownHubUI()
         {
+            const float artTop = 96 * TownArtworkY;
+            Art(0, artTop, 1600, 900 - artTop, "Interface/Cats/TownHubArtwork");
             string[] tabs={"summon","shop","arena"};
             string[] names={SummonTabLabel,"Tiếp tế","Đấu trường"};
-            string[] art={"cat-4","item-afkChest","item-arenaToken"};
             string[] status=
             {
-                TownUnlocked(4)?$"{profile.Get("summonScroll")} vé · còn {10-profile.pityElite} lượt đến Elite":"Mở sau ải 4",
+                TownUnlocked(4)?$"{profile.Get("summonScroll")} vé · còn {10-profile.pityElite} lượt đến <color=#ffe45b>Elite</color>":"Mở sau ải 4",
                 TownUnlocked(3)?"Hàng làm mới mỗi ngày":"Mở sau ải 3",
                 TownUnlocked(5)?$"{profile.rating} điểm · {profile.Get("arenaToken")} huy hiệu":"Mở sau ải 5"
             };
-            for(int i=0;i<3;i++)
+            for (int i = 0; i < TownCardBounds.Length; i++)
             {
-                float x=130+i*456;
-                if(IllustratedButton(x,120,428,640,names[i],art[i],content:StudioButtonLayout.Content.Tile)){tab=tabs[i];scroll=Vector2.zero;}
-                Enlarge(34);
-                Surface(x+24,138,380,52,Color.white,catsFrame:"Ink");
-                Text(x+24,138,380,status[i],subtitle,52,align:TextAnchor.MiddleCenter,size:22);
+                var card = TownCardBounds[i];
+                if (TownArtworkButton(card, names[i]))
+                {
+                    tab = tabs[i];
+                    scroll = Vector2.zero;
+                }
+                Text((card.x + 35) * TownArtworkX, 132 * TownArtworkY, (card.width - 70) * TownArtworkX,
+                    status[i], subtitle, 55 * TownArtworkY, richText: true, align: TextAnchor.MiddleCenter, size: 25);
+                Text((card.center.x - 129) * TownArtworkX, 688 * TownArtworkY, 258 * TownArtworkX,
+                    names[i], subtitle, 61 * TownArtworkY, align: TextAnchor.MiddleCenter, size: 32);
             }
-            BottomNav();
+            BottomNav(townArtwork: true);
+        }
+
+        bool TownArtworkButton(Rect bounds, string name)
+        {
+            bool clicked = Button(bounds.x * TownArtworkX, bounds.y * TownArtworkY,
+                bounds.width * TownArtworkX, bounds.height * TownArtworkY, name);
+            if (dispatchOnly) return clicked;
+
+            StudioNineSlice.Apply(lastButton.image, null);
+            lastButton.image.color = Color.white;
+            lastButton.text.color = Color.clear;
+            var colors = lastButton.button.colors;
+            colors.normalColor = Color.clear;
+            colors.highlightedColor = new Color(.61f, .83f, 1f, .13f);
+            colors.pressedColor = new Color(.04f, .09f, .25f, .25f);
+            colors.selectedColor = new Color(.61f, .83f, 1f, .22f);
+            colors.disabledColor = Color.clear;
+            colors.fadeDuration = 0;
+            lastButton.button.colors = colors;
+            return clicked;
         }
 
         // ---- Gọi đồng đội: linh vật lớn ở giữa, bảo hiểm Elite, hai nút gọi ở đáy ----

@@ -94,63 +94,72 @@ namespace CatTanks
             selectedCat=Mathf.Clamp(selectedCat,0,count-1);
             var cat=profile.cats[selectedCat];var def=db.Cat(cat.id);var stats=profile.Stats(cat,db);
 
-            // Mèo to ở giữa, ‹ › đổi mèo, trang bị và cổ vật xếp quanh.
-            Art(340,190,340,420,cat.id);
-            if(Button(128,370,64,100,"‹",count>1,true))selectedCat=(selectedCat+count-1)%count;
+            Art(0, 0, 1600, 900, "Interface/Cats/CatDetailHangar");
+            if (!dispatchOnly)
+            {
+                const float portraitWidth = 352;
+                const float podiumY = 573;
+                var portrait = UiArt(cat.id);
+                if (!portrait) portrait = view.Art(cat.id);
+                float portraitHeight = Mathf.Min(350, portraitWidth * portrait.rect.height / portrait.rect.width);
+                Art(329, podiumY - portraitHeight, portraitWidth, portraitHeight, cat.id);
+            }
+            if(Button(108,382,66,105,"‹",count>1,true))selectedCat=(selectedCat+count-1)%count;
             Enlarge(46);
-            if(Button(828,370,64,100,"›",count>1,true))selectedCat=(selectedCat+1)%count;
+            if(Button(831,382,66,105,"›",count>1,true))selectedCat=(selectedCat+1)%count;
             Enlarge(46);
-            GearSlotButton(208,200,cat,"weapon","Vũ khí","gun-0");
-            GearSlotButton(208,346,cat,"helm","Mũ","hat-0");
-            GearSlotButton(692,200,cat,"chest","Áo giáp","armor-0");
-            GearSlotButton(692,346,cat,"boots","Giày","gear-boots");
-            ArtifactSlotButton(450,636,cat);
+            GearSlotButton(194,200,cat,"weapon","Vũ khí","gun-0");
+            GearSlotButton(194,360,cat,"helm","Mũ","hat-0");
+            GearSlotButton(675,200,cat,"chest","Áo giáp","armor-0");
+            GearSlotButton(675,360,cat,"boots","Giày","gear-boots");
+            ArtifactSlotButton(442,669,cat);
 
             // Bảng thông tin bên phải.
-            Surface(930,112,552,662,Color.white,catsFrame:"Detail");
-            Text(960,122,180,def.name,title,64,size:46);
-            Surface(1140,146,112,38,Color.white,catsFrame:"Rarity");
-            Text(1140,147,112,def.rarity,small,36,align:TextAnchor.MiddleCenter);
-            Text(1262,138,200,new string('★',RarityRank(def.rarity)),title,48,size:30);
-            Text(962,198,480,RoleName(def.role).ToUpper()+"  ·  Bậc "+cat.tier,subtitle,36);
+            Art(909, 105, 622, 742, "Interface/Cats/CatDetailFrame");
+            Text(962,133,194,def.name,title,64,size:49);
+            Surface(1164,149,117,45,Color.white,catsFrame:"Rarity");
+            Text(1164,149,117,def.rarity,subtitle,45,align:TextAnchor.MiddleCenter,size:18);
+            for (int i = 0; i < RarityRank(def.rarity); i++)
+                Art(1298 + i * 35, 150, 34, 39, "Interface/Cats/CatDetailStar");
+            Text(964,198,520,RoleName(def.role).ToUpper()+"  ·  Bậc "+cat.tier,subtitle,41,size:23);
 
             int cap=(int)db.balance["ascension"]["levelCaps"][cat.tier];int effective=profile.EffectiveLevel(cat);
-            Surface(950,238,512,70,Color.white,catsFrame:"Ink");
-            Art(966,250,46,46,"Interface/Cats/PowerIcon");
-            Text(1020,244,200,"LỰC CHIẾN",small,24);
-            Text(1020,262,220,N(stats["maxHp"]*.15f+stats["atk"]*1.6f+stats["def"]*1.2f+stats["speed"]*2),title,44,size:30);
-            Text(1220,246,220,$"Cấp {cat.level} / {cap}"+(effective!=cat.level?"\nCộng hưởng "+effective:""),subtitle,58,align:TextAnchor.UpperRight);
-            CatStat(966,324,"Heart","HP",stats["maxHp"]);
-            CatStat(1216,324,"Sword","ATK",stats["atk"]);
-            CatStat(966,370,"Shield","DEF",stats["def"]);
-            CatStat(1216,370,"Speed","SPD",stats["speed"]);
+            Surface(946,251,550,79,Color.white,catsFrame:"Ink");
+            Art(968,263,52,52,"Interface/Cats/PowerIcon");
+            Text(1028,257,200,"LỰC CHIẾN",subtitle,30,size:20);
+            Text(1028,278,223,N(stats["maxHp"]*.15f+stats["atk"]*1.6f+stats["def"]*1.2f+stats["speed"]*2),title,44,size:34);
+            Text(1252,257,227,$"Cấp {cat.level} / {cap}"+(effective!=cat.level?"\nCộng hưởng "+effective:""),subtitle,61,align:TextAnchor.MiddleRight,size:23);
+            CatStat(966,343,"Heart","HP",stats["maxHp"]);
+            CatStat(1243,343,"Sword","ATK",stats["atk"]);
+            CatStat(966,388,"Shield","DEF",stats["def"]);
+            CatStat(1243,388,"Speed","SPD",stats["speed"]);
 
             var tiers=((JObject)db.balance["ascension"]["levelCaps"]).Properties().Select(p=>p.Name).ToArray();
             int rank=Array.IndexOf(tiers,cat.tier);int copies=rank<11?(int)db.balance["ascension"]["needSelf"][rank]:0;int essence=10+rank*15;
-            Text(966,420,490,$"Bản sao {cat.copies}/{copies}  ·  Tinh chất {N(profile.Get("soulEssence"))}/{essence}  ·  Di vật {cat.relic}/10",small,30);
-            if(Button(960,458,240,58,"Thăng bậc",rank<tiers.Length-1))
+            Text(966,432,515,$"Bản sao {cat.copies}/{copies}  ·  Tinh chất {N(profile.Get("soulEssence"))}/{essence}  ·  Di vật {cat.relic}/10",subtitle,38,size:19);
+            if(Button(957,476,255,63,"Thăng bậc",rank<tiers.Length-1))
             {
                 if(cat.copies<copies)Notify("Thiếu bản sao");
                 else if(Pay(("soulEssence",essence))){cat.copies-=copies;cat.tier=tiers[rank+1];Changed("Đã thăng bậc "+cat.tier);}
             }
             int relicCost=Mathf.Max(10,cat.relic*10);
-            if(IllustratedButton(1214,458,234,58,$"Di vật · {relicCost} đá","item-relicStone",cat.relic<10)){if(Pay(("relicStone",relicCost))){cat.relic++;Changed();}}
-            if(Button(960,526,488,48,"Tái chế 1 bản sao · +20 tinh chất",cat.copies>0,normalSpriteKey:"blue"))
+            if(IllustratedButton(1228,476,263,63,$"Di vật · {relicCost} đá","item-relicStone",cat.relic<10)){if(Pay(("relicStone",relicCost))){cat.relic++;Changed();}}
+            if(Button(957,548,534,55,"Tái chế 1 bản sao · +20 tinh chất",cat.copies>0,normalSpriteKey:"blue"))
                 Pick("Tái chế bản sao "+def.name+"?",new[]{"Giữ lại bản sao","Tái chế • Nhận 20 tinh chất"},at=>{if(at==1){cat.copies--;profile.Add("soulEssence",20);Changed("+20 tinh chất");}});
 
             // Khối nâng cấp: giá ngay trên nút NÂNG CẤP lớn.
             int goldCost=Mathf.FloorToInt(80*Mathf.Pow(cat.level,1.45f)),xpCost=Mathf.FloorToInt(25*Mathf.Pow(cat.level,1.22f));
-            Surface(950,590,512,168,Color.white,catsFrame:"Ink");
-            Art(972,608,38,38,"item-coins");
-            Text(1016,610,110,N(goldCost),subtitle,36);
-            Art(1124,608,38,38,"item-catXp");
-            Text(1168,610,110,N(xpCost),subtitle,36);
-            Text(1290,614,150,$"Cấp {cat.level} → {cat.level+1}",small,30,align:TextAnchor.UpperRight);
-            if(Button(966,662,480,82,"NÂNG CẤP",profile.Get("coins")>=goldCost&&profile.Get("catXp")>=xpCost,true))
+            Surface(945,617,554,182,Color.white,catsFrame:"Ink");
+            Art(968,633,44,44,"item-coins");
+            Text(1018,633,120,N(goldCost),subtitle,44,align:TextAnchor.MiddleLeft,size:24);
+            Art(1142,633,40,44,"item-catXp");
+            Text(1187,633,105,N(xpCost),subtitle,44,align:TextAnchor.MiddleLeft,size:24);
+            Text(1298,633,181,$"Cấp {cat.level} › {cat.level+1}",subtitle,44,align:TextAnchor.MiddleRight,size:22);
+            if(Button(963,685,518,100,"NÂNG CẤP",profile.Get("coins")>=goldCost&&profile.Get("catXp")>=xpCost,true))
             {
                 if(profile.LevelCat(cat,db))Changed("Mèo đã lên cấp");else Notify("Thiếu tài nguyên hoặc đã đạt giới hạn cấp");
             }
-            Enlarge(32);
+            Enlarge(38);
         }
 
         string GearName(Gear g)=>g.id.StartsWith("gun")?db.Weapon(g.id).name:g.id=="gear-helm"?"Mũ giáp":g.id=="gear-chest"?"Áo giáp":"Giày hành quân";
@@ -159,10 +168,13 @@ namespace CatTanks
         void GearSlotButton(float x,float y,OwnedCat cat,string slot,string caption,string placeholder)
         {
             var current=cat.gear.TryGetValue(slot,out var uid)?profile.gear.Find(g=>g.uid==uid):null;
-            if(IllustratedButton(x,y,120,120,caption,current==null?placeholder:GearAsset(current),content:StudioButtonLayout.Content.Tile))PickGear(cat,slot,caption,current);
+            if(IllustratedButton(x,y,143,139,caption,current==null?placeholder:GearAsset(current),content:StudioButtonLayout.Content.Tile))PickGear(cat,slot,caption,current);
+            if(!dispatchOnly)SetButtonSprite(lastButton,"button");
             if(!dispatchOnly&&current==null&&lastButton.layout&&lastButton.layout.icon)lastButton.layout.icon.color=new Color(1,1,1,.35f);
-            Enlarge(17);
-            if(current!=null&&current.stars>0)Text(x+10,y+4,100,new string('★',current.stars),title,30,size:18);
+            Enlarge(20);
+            if (current != null)
+                for (int i = 0; i < current.stars; i++)
+                    Art(x + 10 + i * 18, y + 8, 18, 18, "Interface/Cats/CatDetailStar");
         }
         void PickGear(OwnedCat cat,string slot,string caption,Gear current)
         {
@@ -191,7 +203,7 @@ namespace CatTanks
         void ArtifactSlotButton(float x,float y,OwnedCat cat)
         {
             var artifact=profile.artifacts.Find(a=>a.id==cat.artifact);
-            if(IllustratedButton(x,y,120,120,artifact==null?"Cổ vật":artifact.name,"item-artifact",content:StudioButtonLayout.Content.Tile))
+            if(IllustratedButton(x,y,152,141,artifact==null?"Cổ vật":artifact.name,"item-artifact",content:StudioButtonLayout.Content.Tile))
             {
                 if(profile.artifacts.Count==0){Notify("Chưa có cổ vật.");return;}
                 var choices=new[]{""}.Concat(profile.artifacts.Select(a=>a.id)).ToArray();
@@ -201,8 +213,9 @@ namespace CatTanks
                     cat.artifact=next;Changed("Đã cập nhật cổ vật");
                 },choices.Select(id=>"item-artifact"));
             }
+            if(!dispatchOnly)SetButtonSprite(lastButton,"button");
             if(!dispatchOnly&&artifact==null&&lastButton.layout&&lastButton.layout.icon)lastButton.layout.icon.color=new Color(1,1,1,.35f);
-            Enlarge(17);
+            Enlarge(20);
         }
     }
 }
