@@ -55,6 +55,15 @@ MG
 
 Trong PSD, một số layer icon pháo có tên khác chức năng hiển thị; ưu tiên mapping trong skills.json theo thứ tự Steady Aim / Quick Reload / Heavy Shells.
 
-HTML: D:/Project/Tnak/Equipment-test.html (nút Crew hoặc #crew). Không commit, không tạo ZIP.
+HTML: D:/Project/Tnak/MegaTank/Art/Equipment-test.html (nút Crew hoặc #crew). Không commit, không tạo ZIP.
 
 Back plate (button_back) cũng chỉ kéo chiều ngang và giữ chiều cao theo fixed_height_logical trong manifest. Tick và khung selected có đường dẫn riêng trong art-links.json.
+
+CHUYỂN CẢNH / FADE TỪ PHẢI
+
+- Áp dụng Main ↔ Crew, Main ↔ Equipment, Main ↔ Tech và các nút MAIN từ trận đấu. Giữ đoạn xe tiến vào trận đang có.
+- Màn mới đi từ bên phải (offset khoảng 6% chiều ngang) về vị trí gốc, alpha 0 → 1 trong 0,36 giây, ease out. Màn cũ fade out khoảng 0,2 giây.
+- Chặn thao tác chuyển màn chồng nhau trong lúc transition; mở lại tương tác khi hoàn tất hoặc hủy.
+- Unity: dùng CanvasGroup cho alpha và RectTransform của wrapper chuyển cảnh cho vị trí. Chạy theo unscaled time. Cache vị trí gốc rồi khôi phục, không sửa vị trí từng part/khung hay transform dùng rig/skew.
+- Khi quay về Main, khởi động lại world/canvas sau khi cập nhật màn, tránh xe đứng hình sau Equipment.
+- Nếu bật Reduce Motion hoặc trình duyệt không hỗ trợ animation thì chuyển trực tiếp. HTML dùng snapshot DOM/canvas và Web Animations.

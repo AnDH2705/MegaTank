@@ -1555,6 +1555,9 @@ html&gt;body{padding:0}&lt;/style&gt;
 .cr-tooltip strong{display:block;margin-bottom:.3cqw;color:#ffdf24}
 .cr-feedback{position:absolute;z-index:25;left:43%;right:29%;top:7.8%;margin:0;padding:.45cqw;background:#23252bee;color:#ffdf24;text-align:center;font:700 1.05cqw/1.2 Arial,sans-serif;pointer-events:none}
 &lt;/style&gt;
+&lt;style id=&quot;tank-scene-transition-style&quot;&gt;.tank-scene-snapshot{position:fixed;z-index:2147483000;overflow:hidden;pointer-events:none;contain:strict}
+#tank-autobattle-flow[data-scene-transition=&quot;running&quot;]{pointer-events:none}
+&lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;script type=&quot;application/json&quot; id=&quot;codex-visualization-widget-state&quot;&gt;__CODEX_VISUALIZATION_WIDGET_STATE__&lt;/script&gt;
@@ -2222,7 +2225,7 @@ html&gt;body{padding:0}&lt;/style&gt;
   outer.addEventListener('tank:stage',event=&gt;{selected=event.detail===1?1:0;render();});
   root.querySelector('[data-prev-stage]').addEventListener('click',()=&gt;{selected=Math.max(0,selected-1);render();});
   root.querySelector('[data-next-stage]').addEventListener('click',()=&gt;{selected=Math.min(stages.length-1,selected+1);render();});
-  function openScene(key,source){
+  function openScene(key,source){return globalThis.TankSceneTransition.run(()=&gt;{
    const info=key==='battle'?{title:'Chiến đấu',heading:'STAGE '+String(selected+1).padStart(2,'0'),copy:stages[selected].name}:scenes[key];
    lastFocus=source;
    scene.querySelector('[data-scene-title]').textContent=info.title;
@@ -2234,10 +2237,10 @@ html&gt;body{padding:0}&lt;/style&gt;
    image.style.width=key==='battle'?'300px':'160px';
    scene.hidden=false;
    scene.querySelector('[data-back]').focus();
-  }
+  });}
   root.querySelectorAll('[data-scene]').forEach(button=&gt;button.addEventListener('click',()=&gt;openScene(button.dataset.scene,button)));
   // Play is handled by the automatic battle controller.
-  root.querySelector('[data-back]').addEventListener('click',()=&gt;{scene.hidden=true;if(lastFocus)lastFocus.focus();});
+  root.querySelector('[data-back]').addEventListener('click',()=&gt;globalThis.TankSceneTransition.run(()=&gt;{scene.hidden=true;if(lastFocus)lastFocus.focus();}));
   root.querySelector('[data-menu]').addEventListener('click',event=&gt;{lastFocus=event.currentTarget;settings.hidden=false;settings.querySelector('button').focus();});
   function closeSettings(){settings.hidden=true;if(lastFocus)lastFocus.focus();}
   root.querySelectorAll('[data-close]').forEach(button=&gt;button.addEventListener('click',closeSettings));
@@ -5134,9 +5137,9 @@ html&gt;body{padding:0}&lt;/style&gt;
  $('[data-order]').addEventListener('change',render);
  $('[data-direction]').addEventListener('click',()=&gt;{ascending=!ascending;$('[data-direction]').textContent=ascending?'ASC ↑':'DESC ↓';render();});
  $('[data-equip]').addEventListener('click',()=&gt;{if(!items.some(item=&gt;item.id===selected))return;if(mounted.has(selected))mounted.delete(selected);else mounted.add(selected);render();});
- $('[data-equipment-close]').addEventListener('click',()=&gt;{crewView.stop();screen.hidden=true;main.hidden=false;main.querySelector('[data-scene=&quot;equipment&quot;]').focus();});
+ $('[data-equipment-close]').addEventListener('click',()=&gt;globalThis.TankSceneTransition.run(()=&gt;{crewView.stop();screen.hidden=true;main.hidden=false;main.querySelector('[data-scene=&quot;equipment&quot;]').focus();}));
  const mainEquipment=main.querySelector('[data-scene=&quot;equipment&quot;]');
- mainEquipment.addEventListener('click',event=&gt;{event.stopImmediatePropagation();main.hidden=true;screen.hidden=false;crewView.start();root.dispatchEvent(new CustomEvent('tank:equipment',{detail:true}));$('[data-equipment-close]').focus();},true);
+ mainEquipment.addEventListener('click',event=&gt;{event.stopImmediatePropagation();globalThis.TankSceneTransition.run(()=&gt;{main.hidden=true;screen.hidden=false;crewView.start();root.dispatchEvent(new CustomEvent('tank:equipment',{detail:true}));$('[data-equipment-close]').focus();});},true);
  render();
 })();
 &lt;/script&gt;
@@ -6377,8 +6380,8 @@ html&gt;body{padding:0}&lt;/style&gt;
  for(const selector of ['[data-prev-stage]','[data-next-stage]'])mainRoot.querySelector(selector).addEventListener('click',idle);
  mainRoot.addEventListener('tank:stage',()=&gt;{if(!running)idle();});
  root.addEventListener('tank:equipment',()=&gt;{world.hidden=true;});
- root.querySelector('[data-equipment-close]').addEventListener('click',idle);
- $('[data-bt-home]').addEventListener('click',exit);$('[data-bt-dialog-main]').addEventListener('click',exit);$('[data-bt-pause]').addEventListener('click',pause);
+ root.querySelector('[data-equipment-close]').addEventListener('click',()=&gt;globalThis.TankSceneTransition.afterUpdate(idle));
+ $('[data-bt-home]').addEventListener('click',()=&gt;globalThis.TankSceneTransition.run(exit));$('[data-bt-dialog-main]').addEventListener('click',()=&gt;globalThis.TankSceneTransition.run(exit));$('[data-bt-pause]').addEventListener('click',pause);
  $('[data-bt-primary]').addEventListener('click',()=&gt;{if(primaryAction)primaryAction();});
  battle.addEventListener('keydown',event=&gt;{
   if(event.key==='Escape'){event.preventDefault();if(paused&amp;&amp;primaryAction)primaryAction();else pause();}
@@ -7150,6 +7153,42 @@ html&gt;body{padding:0}&lt;/style&gt;
     &quot;purpose&quot;: &quot;Sát thương MG&quot;
   }
 ]&lt;/script&gt;
+&lt;script id=&quot;tank-scene-transition-runtime&quot;&gt;(function(host){
+ 'use strict';
+ const root=document.getElementById('tank-autobattle-flow'),html=document.documentElement;
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)'),duration=360,easing='cubic-bezier(.22,1,.36,1)';
+ let active=null;
+ function snapshot(){
+  const box=root.getBoundingClientRect(),copy=root.cloneNode(true),layer=document.createElement('div');
+  layer.className='tank-scene-snapshot';layer.inert=true;layer.setAttribute('aria-hidden','true');
+  Object.assign(layer.style,{left:box.left+'px',top:box.top+'px',width:box.width+'px',height:box.height+'px'});
+  Object.assign(copy.style,{width:box.width+'px',height:box.height+'px',margin:'0',transform:'none',opacity:'1'});
+  copy.inert=true;delete copy.dataset.sceneTransition;
+  const from=root.querySelectorAll('canvas'),to=copy.querySelectorAll('canvas');
+  from.forEach((canvas,i)=&gt;{if(canvas.width&amp;&amp;canvas.height)to[i].getContext('2d').drawImage(canvas,0,0);});
+  layer.append(copy);document.body.append(layer);return layer;
+ }
+ function unlock(token){if(active!==token)return;token.layer?.remove();html.style.overflowX=token.overflowX;delete root.dataset.sceneTransition;active=null;}
+ function run(update){
+  if(active)return false;
+  if(reduced.matches||document.hidden||!root.animate){update();return true;}
+  const token={layer:null,animations:[],updated:false,overflowX:html.style.overflowX,updateDone:null};active=token;
+  try{
+   token.layer=snapshot();root.dataset.sceneTransition='running';html.style.overflowX='clip';
+   update();token.updated=true;token.updateDone=Promise.resolve();
+   const incoming=root.animate([{opacity:0,transform:'translateX(6%)'},{opacity:1,transform:'translateX(0)'}],{duration,easing,fill:'none'});
+   const outgoing=token.layer.animate([{opacity:1},{opacity:0}],{duration:200,easing:'ease-out',fill:'forwards'});
+   token.animations=[incoming,outgoing];
+   outgoing.finished.catch(()=&gt;{}).then(()=&gt;token.layer?.remove());
+   Promise.all(token.animations.map(a=&gt;a.finished.catch(()=&gt;{}))).finally(()=&gt;unlock(token));
+  }catch(error){token.animations.forEach(a=&gt;a.cancel());unlock(token);throw error;}
+  return true;
+ }
+ function afterUpdate(callback){if(active&amp;&amp;!active.updated&amp;&amp;active.updateDone)active.updateDone.then(callback);else callback();}
+ reduced.addEventListener('change',()=&gt;{if(reduced.matches)active?.animations.forEach(a=&gt;a.finish());});
+ host.TankSceneTransition={run,afterUpdate,isRunning:()=&gt;!!active,duration};
+})(globalThis);
+&lt;/script&gt;
 &lt;script id=&quot;crew-ui-runtime&quot;&gt;(function(host){
  'use strict';
  const root=document.getElementById('tank-autobattle-flow'),screen=root.querySelector('[data-crew-view]'),design=screen.querySelector('[data-cr-design]'),main=root.querySelector('[data-main-view]');
@@ -7214,8 +7253,8 @@ html&gt;body{padding:0}&lt;/style&gt;
  }
  function resize(){design.style.transform='scale('+(screen.clientWidth/770)+')';}
  new ResizeObserver(resize).observe(screen);
- function open(){if(['battle','launch'].includes(root.dataset.mode))return;main.hidden=true;screen.hidden=false;root.dataset.mode='crew';selectedId=state.assignments[selectedRole]||selectedId;render();}
- function close(){screen.hidden=true;main.hidden=false;$('[data-cr-tooltip]').hidden=true;if(root.tankBattle)root.tankBattle.exit();else root.dataset.mode='main';root.querySelector('[data-scene=&quot;crew&quot;]').focus();}
+ function open(){if(['battle','launch'].includes(root.dataset.mode))return;host.TankSceneTransition.run(()=&gt;{main.hidden=true;screen.hidden=false;root.dataset.mode='crew';selectedId=state.assignments[selectedRole]||selectedId;render();});}
+ function close(){host.TankSceneTransition.run(()=&gt;{screen.hidden=true;main.hidden=false;$('[data-cr-tooltip]').hidden=true;if(root.tankBattle)root.tankBattle.exit();else root.dataset.mode='main';root.querySelector('[data-scene=&quot;crew&quot;]').focus();});}
  root.querySelectorAll('[data-scene=&quot;crew&quot;]').forEach(b=&gt;b.addEventListener('click',e=&gt;{e.preventDefault();e.stopImmediatePropagation();open();},true));
  screen.addEventListener('keydown',e=&gt;{if(e.key==='Escape'){e.preventDefault();if(!$('[data-cr-tooltip]').hidden)$('[data-cr-tooltip]').hidden=true;else close();}});screen.addEventListener('click',e=&gt;{if(!e.target.closest('[data-cr-skill]'))$('[data-cr-tooltip]').hidden=true;});
  addEventListener('message',e=&gt;{if(e.source!==parent)return;if(e.data?.type==='tank:crew:open'){open();return;}if(e.data?.type==='tank:crew:restore'){restore(e.data.state);loading=false;selectedId=state.assignments[selectedRole]||'elein';render();}});

@@ -12,5 +12,7 @@ Icon mảnh tướng: Art/Asset/UI/Crew/decor/hero_fragment.png
 5/20 là mảnh nâng sao; đủ mảnh đổi thành nút vàng ASCEND.
 Nhãn vị trí MG / MORTAR / CANNON / DRIVER / MELEE đã thêm lại.
 
-HTML: D:/Project/Tnak/Equipment-test.html, nút Crew hoặc URL #crew.
+HTML: D:/Project/Tnak/MegaTank/Art/Equipment-test.html, nút Crew hoặc URL #crew.
 Không kèm bảng balance. PSD và PNG thiết kế nguồn được giữ nguyên.
+
+Transition: màn mới fade + trượt từ phải; hướng dẫn Unity ở mục CHUYỂN CẢNH trong DESIGN_UNITY_VI.txt.
