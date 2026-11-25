@@ -87,10 +87,11 @@ namespace CatTanks.Editor
                 Check(game.profile.selected == 2, "Illustrated stage card selects its stage");
                 ClickBinding(game, "button::310:304");
                 await Page(game,"barracks","cats");int level=game.profile.cats[0].level,gold=game.profile.Get("coins");
-                ClickBinding(game, "button::445:334");
-                Check(game.selectedCat == 1, "The entire cat portrait card selects the cat");
-                ClickBinding(game, "button::298:334");
-                Click(game,"Nâng cấp ·");await Show(game);
+                ClickBinding(game, "button::350:246");
+                Check(game.selectedCat == 1 && game.tab == "cat", "The entire cat card opens that cat's detail page");
+                await Show(game);ClickBinding(game, "button::128:370");
+                Check(game.selectedCat == 0, "‹ on the detail page switches to the previous cat");
+                await Show(game);Click(game,"NÂNG CẤP");await Show(game);
                 Check(game.profile.cats[0].level==level+1&&game.profile.Get("coins")<gold,"Cat upgrade button changes level and charges actual cost");
                 await Page(game,"barracks","squad");Click(game,"Bộ binh 1:");await Show(game);
                 Check(game.modal=="choice","Squad slot opens the choice prefab");
@@ -145,7 +146,7 @@ namespace CatTanks.Editor
         static async Task CaptureGallery(CatTanksGame game)
         {
             Directory.CreateDirectory("Captures/MockupGameUI");
-            foreach(string key in new[]{"home","barracks-cats","barracks-fortress","barracks-squad","barracks-skills","barracks-monsters","barracks-gear","barracks-presets","barracks-nexus","town-summon","town-shop","town-arena","chest","quests"})
+            foreach(string key in new[]{"home","barracks-cats","barracks-cat","barracks-fortress","barracks-squad","barracks-skills","barracks-monsters","barracks-presets","barracks-nexus","town-summon","town-shop","town-arena","chest","quests"})
             {
                 var parts=key.Split('-');await Page(game,parts[0]=="home"?"march":parts[0],parts.Length>1?parts[1]:"cats");Capture(game,key);
             }

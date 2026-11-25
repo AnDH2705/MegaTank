@@ -51,7 +51,7 @@ namespace CatTanks.Editor
                         game.profile.Add("coins",100000);game.profile.Add("catXp",10000);game.profile.Add("skillCore",30);
                     }
                     string[] pages={"march","barracks","barracks","barracks","barracks","barracks","barracks","barracks","barracks","town","town","town","chest","quests"};
-                    string[] tabs={"cats","cats","fortress","squad","skills","monsters","gear","presets","nexus","summon","shop","arena","cats","cats"};
+                    string[] tabs={"cats","cats","cat","fortress","squad","skills","monsters","presets","nexus","summon","shop","arena","cats","cats"};
                     for(int i=0;i<pages.Length;i++){game.page=pages[i];game.tab=tabs[i];game.modal="";await Show(game);}
                     game.modal="settings";await Show(game);game.modal="prebattle";await Show(game);game.modal="map";await Show(game);
                     game.modal="book";

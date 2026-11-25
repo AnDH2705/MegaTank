@@ -26,7 +26,7 @@ namespace CatTanks.Editor
                 game.profile=JsonConvert.DeserializeObject<Profile>(JsonConvert.SerializeObject(saved));
                 Directory.CreateDirectory("Captures/StudioUI");
                 string[] pages={"march","barracks","barracks","barracks","barracks","barracks","barracks","barracks","barracks","town","town","town","chest","quests"};
-                string[] tabs={"cats","cats","fortress","squad","skills","monsters","gear","presets","nexus","summon","shop","arena","cats","cats"};
+                string[] tabs={"cats","cats","cat","fortress","squad","skills","monsters","presets","nexus","summon","shop","arena","cats","cats"};
                 for(int i=0;i<pages.Length;i++)
                 {
                     game.page=pages[i];game.tab=tabs[i];game.modal="";
@@ -69,16 +69,16 @@ namespace CatTanks.Editor
                 check(!(bool)typeof(CatTanksGame).GetField("authoringUi",Private).GetValue(game)&&game.CanvasRoot.GetComponentsInChildren<StudioWidgetBinding>(true).Any(b=>b.authored),"Runtime uses the authored Canvas and widget templates");
                 check(game.CanvasRoot.GetComponentsInChildren<StudioUIView>(true).Count(v=>v.layer=="popup"&&v.key!="map")==6,"Six separate popup prefab instances are present");
                 game.page="barracks";game.tab="cats";await Show(game);
-                var authoredTitle=game.CanvasRoot.GetComponentsInChildren<Text>(true).First(t=>t.text=="Những người giữ pháo đài");
-                var authoredRect=(RectTransform)authoredTitle.transform;var originalPosition=authoredRect.anchoredPosition;
-                authoredRect.anchoredPosition=originalPosition+new Vector2(7,0);await Show(game);
-                check(authoredRect.anchoredPosition==originalPosition+new Vector2(7,0),"UI data refresh preserves prefab-authored layout");
-                authoredRect.anchoredPosition=originalPosition;
+                // Danh sách mèo dùng view tạo lúc chạy (toạ độ theo code) thay cho prefab tab MÈO cũ.
+                check(game.CanvasRoot.GetComponentsInChildren<Text>().Any(t=>t.text=="Những người giữ pháo đài"),"Barracks opens on the cat roster");
+                game.tab="cat";await Show(game);
+                check(game.CanvasRoot.GetComponentsInChildren<Button>().Any(b=>b.GetComponentInChildren<Text>()?.text=="NÂNG CẤP"),"Cat detail page renders the level-up button");
+                game.tab="cats";await Show(game);
                 check(game.CanvasRoot.GetComponent<Canvas>()!=null,"Native Canvas present");
                 var activeTheme=game.CanvasRoot.theme?game.CanvasRoot.theme:Resources.Load<StudioUITheme>("StudioUITheme");
                 check(activeTheme.assets.All(a=>a.sprite),"All active theme references resolve");
                 Click("Doanh trại");await Show(game);check(game.page=="barracks","Home buttons navigate through real button commands");
-                foreach(string tab in new[]{"cats","fortress","squad","skills","monsters","gear","presets","nexus"})
+                foreach(string tab in new[]{"cats","cat","fortress","squad","skills","monsters","presets","nexus"})
                 {
                     game.tab=tab;await Show(game);check(ActiveButtons().Length>8,"Barracks renders: "+tab);
                 }

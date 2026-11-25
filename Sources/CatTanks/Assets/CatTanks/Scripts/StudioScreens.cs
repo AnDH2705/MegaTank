@@ -14,9 +14,18 @@ namespace CatTanks
         {
             if(page=="march"){HomeUI();return;}
             Backdrop(new Color(.17f,.13f,.42f,.97f));
+            if(IsRuntimeView(renderViewKey))
+            {
+                // Danh sách và chi tiết mèo: view tạo lúc chạy, toạ độ 1600×900 không thu phóng.
+                useCodeGeometry=true;
+                Surface(100,84,1400,830,Color.white,catsFrame:"Board");
+                if(renderViewKey==CatView)CatDetailUI();else RosterUI();
+                SubPageChrome();
+                return;
+            }
             Surface(254,125,1322,740,C("#17243e"),"BluePanel",UsesCatsArt?"Board":"CommandBoard");
             Art(264,108,1324,780,UsesCatsArt?"Interface/Cats/BoardAccent":"Interface/Cats/CommandAccent");
-            if(page=="barracks")Barracks(); else if(page=="town")Town();
+            if(page=="barracks")BarracksSection(); else if(page=="town")Town();
             else if(page=="chest"||page=="quests")
             {
                 useCodeGeometry=true;
@@ -84,15 +93,21 @@ namespace CatTanks
         {
             SpriteBox(0,786,1600,114,"",new Color(.12f,.1f,.33f,1),false,"scrim");
             SpriteBox(0,782,1600,6,"",C("#140c30"),false,"scrim");
-            if(NavTab(0,"Thành mèo","Interface/Cats/Tab-fortress")){page="town";tab="summon";scroll=Vector2.zero;}
-            if(NavTab(1,"Đấu trường","item-arenaToken")){page="town";tab="arena";scroll=Vector2.zero;}
-            if(IllustratedButton(670,762,260,136,"Hành quân","Map",primary:true,content:StudioButtonLayout.Content.Tile,selected:page=="march")){page="march";modal="";}
-            Enlarge(24);
-            if(NavTab(3,"Doanh trại","Battle")){page="barracks";scroll=Vector2.zero;}
-            if(NavTab(4,"Nhiệm vụ","Calendar_Check")){page="quests";scroll=Vector2.zero;}
+            if(NavTab(0,"Thành mèo","Interface/Cats/Tab-fortress",page=="town"&&tab!="arena")){page="town";tab="summon";scroll=Vector2.zero;}
+            if(NavTab(1,"Đấu trường","item-arenaToken",page=="town"&&tab=="arena")){page="town";tab="arena";scroll=Vector2.zero;}
+            if(NavTab(2,"Hành quân","Map",page=="march")){page="march";modal="";}
+            if(NavTab(3,"Doanh trại","Interface/Cats/Tab-cats",page=="barracks")){page="barracks";tab="cats";scroll=Vector2.zero;}
+            if(NavTab(4,"Nhiệm vụ","Calendar_Check",page=="quests")){page="quests";scroll=Vector2.zero;}
         }
-        bool NavTab(int index,string value,string icon)
+        // Tab đang mở: ô vàng lớn nhô lên khỏi thanh; các tab khác là nút tím.
+        bool NavTab(int index,string value,string icon,bool active)
         {
+            if(active)
+            {
+                bool open=IllustratedButton(index*320+30,762,260,136,value,icon,primary:true,content:StudioButtonLayout.Content.Tile);
+                Enlarge(24);
+                return open;
+            }
             bool clicked=IllustratedButton(index*320+24,796,272,98,value,icon);
             Enlarge(22);
             if(!dispatchOnly&&lastButton.layout)lastButton.layout.iconSize=72;
@@ -121,12 +136,15 @@ namespace CatTanks
         void SubPageChrome()
         {
             SelectView(ChromeView,"screen");
+            // View tạo lúc chạy sau chrome sẽ nằm đè lên; luôn đưa chrome lên trên cùng.
+            if(!dispatchOnly&&uiParent.GetSiblingIndex()!=uiParent.parent.childCount-1)uiParent.SetAsLastSibling();
             Art(0,0,1600,100,"Interface/Cats/Header");
-            if(Button(18,14,76,70,"‹",true,true)){page="march";scroll=Vector2.zero;}
+            // Trong Doanh trại, ‹ quay về danh sách mèo trước rồi mới về màn chính.
+            if(Button(18,14,76,70,"‹",true,true)){if(page=="barracks"&&tab!="cats")tab="cats";else page="march";scroll=Vector2.zero;}
             Text(112,16,660,PageTitle,title,60);
             HubWallet();
         }
-        string PageTitle=>page switch{"barracks"=>"Doanh trại","town"=>"Thành mèo","chest"=>"Rương AFK","quests"=>"Nhiệm vụ",_=>""};
+        string PageTitle=>page switch{"barracks"=>BarracksTitle,"town"=>"Thành mèo","chest"=>"Rương AFK","quests"=>"Nhiệm vụ",_=>""};
         void HubWallet()
         {
             Resource(800,"CoinIcon",N(profile.Get("coins")),"XU");
@@ -197,8 +215,8 @@ namespace CatTanks
             }
         }
         static string StagePreview(Stage stage) => $"StagePreviews/stage-{stage.index:00}";
-        static bool IsSubPage(string key)=>key.StartsWith("barracks-",System.StringComparison.Ordinal)||key.StartsWith("town-",System.StringComparison.Ordinal)||key is "chest" or "quests";
-        static bool IsRuntimeView(string key)=>key is HomeView or ChromeView or MapView;
+        static bool IsSubPage(string key)=>!IsRuntimeView(key)&&key.StartsWith("barracks-",System.StringComparison.Ordinal)||key.StartsWith("town-",System.StringComparison.Ordinal)||key is "chest" or "quests";
+        static bool IsRuntimeView(string key)=>key is HomeView or ChromeView or MapView or RosterView or CatView;
         // Trang con được dời/thu phóng vào vùng trống; các view khác giữ nguyên khung 1600×900.
         static void FrameView(RectTransform rt,string key)
         {

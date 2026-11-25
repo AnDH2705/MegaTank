@@ -162,7 +162,7 @@ namespace CatTanks
         }
         void RenderPass()
         {
-            string key=inBattle?"battle":page=="march"?HomeView:page=="barracks"?"barracks-"+NormalizeBarracksTab():page=="town"?"town-"+NormalizeTownTab():page;
+            string key=inBattle?"battle":page=="march"?HomeView:page=="barracks"?NormalizeBarracksTab():page=="town"?"town-"+NormalizeTownTab():page;
             SelectView(key,"screen");uiInputAllowed=modal==""&&(!inBattle||(!paused&&!resolved));
             if(inBattle){useCodeGeometry=true;BattleHUD();}else HubUI();
             if(modal!="")
@@ -184,7 +184,8 @@ namespace CatTanks
         }
         string NormalizeBarracksTab()
         {
-            if(Array.IndexOf(new[]{"cats","fortress","squad","skills","monsters","gear","presets","nexus"},tab)<0)tab="cats";return tab;
+            // Trả về key view; tab "gear" cũ đã gộp vào trang chi tiết mèo.
+            if(Array.IndexOf(BarracksTabs,tab)<0)tab="cats";return BarracksViewKey();
         }
         string NormalizeTownTab(){if(tab!="summon"&&tab!="shop"&&tab!="arena")tab="summon";return tab;}
         void SelectView(string key,string layer)

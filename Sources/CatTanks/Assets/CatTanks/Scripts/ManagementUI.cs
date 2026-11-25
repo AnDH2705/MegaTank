@@ -8,61 +8,6 @@ namespace CatTanks
 {
     public sealed partial class CatTanksGame
     {
-        int gearCat;
-        void Barracks()
-        {
-            string[] tabs = {"cats", "fortress", "squad", "skills", "monsters", "gear", "presets", "nexus"};
-            string[] names = {"MÈO", "PHÁO ĐÀI", "ĐỘI HÌNH", "KỸ NĂNG", "QUÁI THÚ", "TRANG BỊ", "ĐỘI LƯU", "CỘNG HƯỞNG"};
-            string[] icons = {"cat-0", "vehicle-0", "skill-rally", "item-skillCore", "item-beastCage", "armor-0", "Book_1_Purple", "item-soulEssence"};
-            if (!tabs.Contains(tab)) tab = "cats";
-            for (int i = 0; i < tabs.Length; i++)
-            {
-                string icon=UsesManagementArt?"Interface/Cats/Tab-"+tabs[i]:icons[i];
-                if (TabButton(283 + i * 158, 148, 146, 50, names[i], tab == tabs[i], icon)) {tab = tabs[i]; scroll = Vector2.zero;}
-            }
-            useCodeGeometry=!UsesCatsArt;
-            switch (tab)
-            {
-                case "cats": Cats(); break; case "fortress": FortressUI(); break; case "squad": SquadUI(); break;
-                case "skills": SkillsUI(); break; case "monsters": MonstersUI(); break; case "gear": GearUI(); break; case "presets": PresetsUI(); break; case "nexus": NexusUI(); break;
-            }
-        }
-        void Cats()
-        {
-            Text(290, 228, 700, "Những người giữ pháo đài", title, 57);
-            Art(290, 281, 29, 29, "item-catXp");
-            Text(327, 285, 1143, $"{profile.cats.Count}/10 mèo · {N(profile.Get("catXp"))} XP mèo · {profile.Get("soulEssence")} tinh chất · Mở thêm mèo tại Thành mèo / {SummonTabLabel}", small);
-            Surface(282, 322, 756, 410, new Color(.13f,.18f,.30f), catsFrame:"Roster");
-            for (int i = 0; i < profile.cats.Count; i++)
-            {
-                var c = profile.cats[i]; float x = 298 + i % 5 * 147, y = 334 + i / 5 * 198;
-                if (IllustratedButton(x, y, 136, 184, db.Cat(c.id).name + " · Cấp " + c.level, c.id,
-                    content: StudioButtonLayout.Content.Tile, selected: selectedCat == i)) selectedCat = i;
-            }
-            selectedCat = Mathf.Clamp(selectedCat, 0, profile.cats.Count - 1); var cat = profile.cats[selectedCat]; var def = db.Cat(cat.id); var stats = profile.Stats(cat, db);
-            Surface(1054, 322, 494, 477, new Color(.13f,.18f,.30f), catsFrame:"Detail");
-            Text(1078, 342, 446, def.name, title, 57);
-            Surface(1074, 389, 96, 28, Color.white, catsFrame:"Rarity");
-            Text(1085, 392, 85, def.rarity, small, 25);
-            Text(1078, 419, 446, $"{def.role}  /  {cat.tier}\nCấp thực {cat.level} · Cấp cộng hưởng {profile.EffectiveLevel(cat)}", label, 54);
-            CatStat(1078, 479, "Heart", "HP", stats["maxHp"]);
-            CatStat(1302, 479, "Sword", "ATK", stats["atk"]);
-            CatStat(1078, 513, "Shield", "DEF", stats["def"]);
-            CatStat(1302, 513, "Speed", "SPD", stats["speed"]);
-            Text(1078, 548, 446, $"Bản sao: {cat.copies} · Di vật: {cat.relic}", label);
-            int goldCost = Mathf.FloorToInt(80 * Mathf.Pow(cat.level, 1.45f)), xpCost = Mathf.FloorToInt(25 * Mathf.Pow(cat.level, 1.22f));
-            if (IllustratedButton(1078, 590, 446, 58, "Nâng cấp · " + Cost(("coins", goldCost), ("catXp", xpCost)), "item-catXp", profile.Get("coins") >= goldCost && profile.Get("catXp") >= xpCost, true)) {if (profile.LevelCat(cat, db)) Changed("Mèo đã lên cấp"); else Notify("Thiếu tài nguyên hoặc đã đạt giới hạn cấp");}
-            var tiers = ((JObject)db.balance["ascension"]["levelCaps"]).Properties().Select(p => p.Name).ToArray(); int rank = Array.IndexOf(tiers, cat.tier); int copies = rank < 11 ? (int)db.balance["ascension"]["needSelf"][rank] : 0;
-            if (Button(1078, 658, 446, 55, $"Thăng bậc · {copies} bản sao / {10 + rank * 15} tinh chất", rank < tiers.Length - 1))
-            {
-                if (cat.copies < copies) Notify("Thiếu bản sao");
-                else if (Pay(("soulEssence", 10 + rank * 15))) {cat.copies -= copies; cat.tier = tiers[rank + 1]; Changed("Đã thăng bậc " + cat.tier);}
-            }
-            if (Button(1078, 724, 215, 52, "Tái chế 1 bản sao", cat.copies > 0, normalSpriteKey:"blue")) Pick("Tái chế bản sao " + def.name + "?", new[] {"Giữ lại bản sao", "Tái chế • Nhận 20 tinh chất"}, at => {if(at == 1) {cat.copies--; profile.Add("soulEssence", 20); Changed("+20 tinh chất");}});
-            int relicCost = Mathf.Max(10, cat.relic * 10);
-            if (IllustratedButton(1309, 724, 215, 52, "Di vật · " + relicCost + " đá", "item-relicStone", cat.relic < 10)) {if (Pay(("relicStone", relicCost))) {cat.relic++; Changed();}}
-            Text(298, 748, 724, "Cộng hưởng: xếp mèo vào ô Cộng hưởng để nhận cấp của mèo thấp nhất trong nhóm 5 mèo neo.", small, 48);
-        }
         void CatStat(float x,float y,string icon,string caption,float value)
         {
             Art(x,y,32,32,"Interface/Cats/"+icon);
@@ -244,41 +189,6 @@ namespace CatTanks
         }
         string GearAsset(Gear g) => g.id.StartsWith("gun") ? g.id : g.id == "gear-helm" ? "hat-0" : g.id == "gear-chest" ? "armor-0" : "gear-boots";
         string GearSlot(Gear g) => g.id.StartsWith("gun") ? "weapon" : g.id == "gear-helm" ? "helm" : g.id == "gear-chest" ? "chest" : "boots";
-        void GearUI()
-        {
-            Text(290, 225, 1100, "Kho trang bị & xưởng rèn", title, 57);
-            Text(290, 283, 1150, "Trang bị nhận từ chiến dịch. Mỗi món chỉ gán cho một mèo. Nâng sao bằng xu và đá rèn.", small);
-            gearCat = Mathf.Clamp(gearCat, 0, profile.cats.Count - 1); var cat = profile.cats[gearCat];
-            Surface(282, 320, 1266, 82, Color.white, catsFrame:"Roster");
-            if (IllustratedButton(298, 334, 568, 54, "Mèo đang chọn: " + db.Cat(cat.id).name + "  ›", cat.id, normalSpriteKey:"blue")) Pick("Chọn mèo để trang bị", profile.cats.Select(c => db.Cat(c.id).name), at => {gearCat = at;});
-            var artifact = profile.artifacts.Find(a => a.id == cat.artifact);
-            if (IllustratedButton(882, 334, 650, 54, "Cổ vật: " + (artifact?.name ?? "Trống") + "  ›", "item-artifact"))
-            {
-                var choices = new[] {""}.Concat(profile.artifacts.Select(a => a.id)).ToArray();
-                Pick("Chọn cổ vật", choices.Select(id => string.IsNullOrEmpty(id) ? "Gỡ cổ vật" : profile.artifacts.First(a => a.id == id).name), at =>
-                {
-                    string next = choices[at]; foreach (var c in profile.cats) if (c.artifact == next) c.artifact = "";
-                    cat.artifact = next; Changed("Đã cập nhật cổ vật");
-                });
-            }
-            Surface(282, 418, 1266, 381, Color.white, catsFrame:"Detail");
-            if (profile.gear.Count == 0) {Text(306, 445, 1100, "Chưa có trang bị. Vượt ải 2–4 và 6–7 để nhận những món đầu tiên.", label); return;}
-            scroll = BeginScroll(new Rect(298, 434, 1234, 349), scroll, new Rect(0, 0, 1212, Mathf.Ceil(profile.gear.Count / 4f) * 280));
-            for (int i = 0; i < profile.gear.Count; i++)
-            {
-                var g = profile.gear[i]; float x = i % 4 * 303, y = i / 4 * 280; Panel(x, y, 291, 266); Art(x + 36, y + 10, 219, 75, GearAsset(g));
-                string gearName = g.id.StartsWith("gun") ? db.Weapon(g.id).name : g.id == "gear-helm" ? "Mũ giáp" : g.id == "gear-chest" ? "Áo giáp" : "Giày hành quân";
-                Text(x + 15, y + 92, 261, gearName + " · " + g.stars + "★", label, 48); Text(x + 15, y + 139, 261, g.rarity, small, 25);
-                if (Button(x + 15, y + 169, 261, 40, cat.gear.Values.Contains(g.uid) ? "Tháo trang bị" : "Trang bị cho " + db.Cat(cat.id).name, normalSpriteKey:"blue"))
-                {
-                    if (cat.gear.Values.Contains(g.uid)) cat.gear.Remove(GearSlot(g));
-                    else {foreach (var c in profile.cats) foreach (var key in c.gear.Where(v => v.Value == g.uid).Select(v => v.Key).ToArray()) c.gear.Remove(key); cat.gear[GearSlot(g)] = g.uid;}
-                    Changed();
-                }
-                if (Button(x + 15, y + 216, 261, 40, $"Rèn · {200 * (g.stars + 1)} xu / {5 + g.stars * 5} đá", g.stars < 5)) {if (Pay(("coins", 200 * (g.stars + 1)), ("forgeStone", 5 + g.stars * 5))) {g.stars++; profile.Track("upgrade"); Changed();}}
-            }
-            EndScroll();
-        }
         void PresetsUI()
         {
             Text(290, 225, 1150, "Ba đội hình dự phòng", title, 57);
