@@ -12,15 +12,21 @@ namespace CatTanks.Editor
     [InitializeOnLoad]
     public static class MockupInteractivePlay
     {
-        const string Active="MockupInteractive.Active",Before="MockupInteractive.Before",TestPath="MockupInteractive.TestPath";
+        const string Active="MockupInteractive.Active",Before="MockupInteractive.Before",TestPath="MockupInteractive.TestPath",PendingStart="MockupInteractive.PendingStart";
         static MockupInteractivePlay()
         {
             EditorApplication.playModeStateChanged+=state=>
             {
                 if(!SessionState.GetBool(Active,false))return;
-                if(state==PlayModeStateChange.EnteredPlayMode)ConfirmReady();
+                if(state==PlayModeStateChange.EnteredPlayMode&&SessionState.GetBool(PendingStart,false))
+                {
+                    SessionState.SetBool(PendingStart,false);ConfirmReady();
+                }
                 if(state==PlayModeStateChange.EnteredEditMode)
+                {
+                    SessionState.SetBool(PendingStart,false);
                     Debug.Log("MOCKUP_INTERACTIVE_STOPPED: original_profile_unchanged="+(Fingerprint()==SessionState.GetString(Before,"")));
+                }
             };
         }
         public static void Open()
@@ -36,15 +42,21 @@ namespace CatTanks.Editor
                 File.Copy(original,path);
                 if(File.Exists(original+".bak"))File.Copy(original+".bak",path+".bak",true);
             }
-            SessionState.SetString(Before,Fingerprint());SessionState.SetString(TestPath,path);SessionState.SetBool(Active,true);
+            SessionState.SetString(Before,Fingerprint());SessionState.SetString(TestPath,path);SessionState.SetBool(Active,true);SessionState.SetBool(PendingStart,true);
             EditorSceneManager.OpenScene("Assets/CatTanks/Scenes/Main.unity",OpenSceneMode.Single);
             FocusGameView();EditorApplication.isPlaying=true;
         }
         static async void ConfirmReady()
         {
-            await Task.Delay(250);
-            var game=UnityEngine.Object.FindObjectOfType<CatTanksGame>();
-            bool ready=game&&game.profile!=null&&game.CanvasRoot&&game.CanvasRoot.mockupKit&&Profile.TestSavePath==SessionState.GetString(TestPath,"");
+            CatTanksGame game=null;bool ready=false;
+            for(int attempt=0;attempt<100&&EditorApplication.isPlaying;attempt++)
+            {
+                game=UnityEngine.Object.FindObjectOfType<CatTanksGame>();
+                ready=game&&game.profile!=null&&game.CanvasRoot&&game.CanvasRoot.mockupKit&&Profile.TestSavePath==SessionState.GetString(TestPath,"");
+                if(ready)break;
+                await Task.Delay(100);
+            }
+            if(!EditorApplication.isPlaying)return;
             bool unchanged=Fingerprint()==SessionState.GetString(Before,"");
             if(!ready||!unchanged)
             {

@@ -66,6 +66,7 @@ namespace CatTanks
         }
         public void StartBattle(bool classic = false, bool arena = false)
         {
+            titleScreen = false;
             modal = ""; paused = false; resolved = false; receipt = null; inBattle = true;
             battle = new Battle(db, profile, arena ? Mathf.Min(20, Mathf.Max(1, profile.highestCleared)) : profile.selected, classic, arena, selectedOpponent); battle.onFire = PlayShot;
             view.Dispose(); view = new BattleView(Camera.main, classic ? 1 : battle.stage.index, useNativeWeaponVfx, useWebWeaponVfx);

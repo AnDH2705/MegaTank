@@ -318,8 +318,9 @@ namespace CatTanks
         void SpriteBox(float x,float y,float w,float h,string key,Color color,bool preserve=false,string kind="image",string marchFrame=null,string catsFrame=null)
         {
             if(dispatchOnly)return;bool fill=key=="fill"||key.StartsWith("bar_fill_");var item=GetWidget(kind,x,y,w,h,fill);
-            // Bảng trong popup chặn chạm để chạm ra ngoài (vào nền mờ) mới đóng popup.
-            if(popupLayer&&key=="panel"&&item.image)item.image.raycastTarget=true;
+            // Popup panels block the dismiss scrim. Title decorations must pass taps
+            // through to the full-screen start button, including its visible prompt.
+            if(popupLayer&&key=="panel"&&item.image)item.image.raycastTarget=renderViewKey!=TitleView;
             string managementFrame=catsFrame??(useCodeGeometry&&key=="panel"?(renderViewKey=="battle"?"CombatPlate":"Detail"):null);
             if(UsesSharedArt&&managementFrame!=null&&CatsFrame(managementFrame) is Sprite catsSprite&&catsSprite)
             {

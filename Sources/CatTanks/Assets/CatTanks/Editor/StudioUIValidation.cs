@@ -66,6 +66,7 @@ namespace CatTanks.Editor
                 game.profile = Profile.New(game.db); game.page="march";game.tab="cats";game.modal="";
                 await Show(game);
                 check(game.UiReady,"Game theme and native Canvas loaded");
+                if(!game.inBattle)await PlayModeReadiness.ValidateTitle(game,checks);
                 check(!(bool)typeof(CatTanksGame).GetField("authoringUi",Private).GetValue(game)&&game.CanvasRoot.GetComponentsInChildren<StudioWidgetBinding>(true).Any(b=>b.authored),"Runtime uses the authored Canvas and widget templates");
                 check(game.CanvasRoot.GetComponentsInChildren<StudioUIView>(true).Count(v=>v.layer=="popup"&&v.key!="map"&&v.key!="afk"&&v.key!="title")==6,"Six separate popup prefab instances are present");
                 game.page="barracks";game.tab="cats";await Show(game);
