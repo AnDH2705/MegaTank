@@ -19,7 +19,7 @@ namespace CatTanks.Editor
         public static async void CaptureGallery()
         {
             if(running||!EditorApplication.isPlaying)return;running=true;
-            var game=UnityEngine.Object.FindObjectOfType<CatTanksGame>();var saved=game.profile;string savedPath=Profile.TestSavePath;
+            var game=UnityEngine.Object.FindObjectOfType<CatTanksGame>();game.titleScreen=false;var saved=game.profile;string savedPath=Profile.TestSavePath;
             try
             {
                 Profile.TestSavePath=Path.GetFullPath("Logs/ui-gallery-profile.json");
@@ -56,7 +56,7 @@ namespace CatTanks.Editor
             if (running) return;
             if (!EditorApplication.isPlaying) {Debug.LogWarning("Enter Play Mode before running UI smoke checks.");return;}
             running = true;
-            var game = UnityEngine.Object.FindObjectOfType<CatTanksGame>();
+            var game = UnityEngine.Object.FindObjectOfType<CatTanksGame>();game.titleScreen=false;
             var savedProfile = game.profile; string savedPath = Profile.TestSavePath;
             var checks = new List<string>();
             Action<bool,string> check = (pass,name) => {if (!pass) throw new Exception(name); checks.Add(name);};
@@ -67,7 +67,7 @@ namespace CatTanks.Editor
                 await Show(game);
                 check(game.UiReady,"Game theme and native Canvas loaded");
                 check(!(bool)typeof(CatTanksGame).GetField("authoringUi",Private).GetValue(game)&&game.CanvasRoot.GetComponentsInChildren<StudioWidgetBinding>(true).Any(b=>b.authored),"Runtime uses the authored Canvas and widget templates");
-                check(game.CanvasRoot.GetComponentsInChildren<StudioUIView>(true).Count(v=>v.layer=="popup"&&v.key!="map"&&v.key!="afk")==6,"Six separate popup prefab instances are present");
+                check(game.CanvasRoot.GetComponentsInChildren<StudioUIView>(true).Count(v=>v.layer=="popup"&&v.key!="map"&&v.key!="afk"&&v.key!="title")==6,"Six separate popup prefab instances are present");
                 game.page="barracks";game.tab="cats";await Show(game);
                 // Danh sách mèo dùng view tạo lúc chạy (toạ độ theo code) thay cho prefab tab MÈO cũ.
                 check(game.CanvasRoot.GetComponentsInChildren<Text>().Any(t=>t.text=="Những người giữ pháo đài"),"Barracks opens on the cat roster");

@@ -49,13 +49,13 @@ namespace CatTanks.Editor
             try
             {
                 await Task.Delay(150);
-                var game=UnityEngine.Object.FindObjectOfType<CatTanksGame>();
+                var game=UnityEngine.Object.FindObjectOfType<CatTanksGame>();game.titleScreen=false;
                 Check(game&&game.profile!=null,"Live game boots with a profile");
                 Check(Profile.TestSavePath!=null&&Path.GetFullPath(Profile.TestSavePath).StartsWith(Path.GetFullPath("Logs")+Path.DirectorySeparatorChar,StringComparison.OrdinalIgnoreCase),"Profile redirection happened before game Awake");
                 Check(!PreviewIsolation.IsActive,"Live UI does not activate preview isolation");
                 await Show(game);
                 Check(game.CanvasRoot.mockupKit&&game.CanvasRoot.theme,"Mockup Kit is the active game Canvas/theme");
-                Check(game.CanvasRoot.GetComponentsInChildren<StudioUIView>(true).Count(v=>v.layer=="popup"&&v.key!="map")==6,"Six independent popup prefab instances are loaded");
+                Check(game.CanvasRoot.GetComponentsInChildren<StudioUIView>(true).Count(v=>v.layer=="popup"&&v.key!="map"&&v.key!="afk"&&v.key!="title")==6,"Six independent popup prefab instances are loaded");
                 Check(game.CanvasRoot.GetComponentsInChildren<Image>(true).Where(i=>i.sprite).All(i=>!AssetDatabase.GetAssetPath(i.sprite).Contains("Layer Lab")),"Live Canvas uses Mockup Kit assets");
                 string smoke="Logs/ui-smoke-validation.json";if(File.Exists(smoke))File.Delete(smoke);
                 StudioUIValidation.Run();

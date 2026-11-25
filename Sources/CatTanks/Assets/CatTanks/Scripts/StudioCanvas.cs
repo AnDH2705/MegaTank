@@ -165,8 +165,10 @@ namespace CatTanks
             // Trang Rương AFK cũ giờ là popup trên màn chính.
             if(page=="chest"){page="march";modal=ChestModal;}
             string key=inBattle?"battle":page=="march"?HomeView:page=="barracks"?NormalizeBarracksTab():page=="town"?NormalizeTownTab():page=="quests"?QuestView:page;
-            SelectView(key,"screen");uiInputAllowed=modal==""&&(!inBattle||(!paused&&!resolved));
-            if(inBattle){useCodeGeometry=true;BattleHUD();}else HubUI();
+            bool title=titleScreen&&!inBattle;
+            SelectView(key,"screen");uiInputAllowed=modal==""&&!title&&(!inBattle||(!paused&&!resolved));
+            // Màn mở đầu chỉ để lại cảnh ải làm nền, chưa vẽ giao diện màn chính.
+            if(inBattle){useCodeGeometry=true;BattleHUD();}else if(!title)HubUI();
             if(modal!="")
             {
                 BeginPopup(modal,modal is "settings" or "book" or "prebattle" or "choice" or MapView or ChestModal);
@@ -174,6 +176,7 @@ namespace CatTanks
             }
             else if(inBattle&&resolved){BeginPopup("result");Result();}
             else if(inBattle&&paused){BeginPopup("pause");PausePopup();}
+            if(title)TitleOverlay();
             if(Time.unscaledTime<toastUntil)
             {
                 SelectView("toast","notification");Surface(438,806,870,64,C("#183e53"));Icon(454,820,32,"Check");Text(500,822,780,toast,label,40);

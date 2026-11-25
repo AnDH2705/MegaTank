@@ -226,7 +226,7 @@ namespace CatTanks
         static string StagePreview(Stage stage) => $"StagePreviews/stage-{stage.index:00}";
         static bool IsSubPage(string key)=>!IsRuntimeView(key)&&(key.StartsWith("barracks-",System.StringComparison.Ordinal)||key.StartsWith("town-",System.StringComparison.Ordinal)||key is "chest" or "quests");
         static bool IsRuntimeView(string key)=>key is HomeView or ChromeView or MapView or RosterView or CatView or TownHubView or TavernView or StoreView or PvpView or QuestView
-            or FortView or TeamView or SavesView or SkillView or PetView or CrystalView or ChestModal;
+            or FortView or TeamView or SavesView or SkillView or PetView or CrystalView or ChestModal or TitleView;
         // Trang con được dời/thu phóng vào vùng trống; các view khác giữ nguyên khung 1600×900.
         static void FrameView(RectTransform rt,string key)
         {

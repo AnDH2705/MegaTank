@@ -32,7 +32,7 @@ namespace CatTanks.Editor
         {
             if(running)return;
             if(!EditorApplication.isPlaying){Debug.LogError("Enter Play Mode to capture the authored UI templates.");return;}
-            running=true;var game=UnityEngine.Object.FindObjectOfType<CatTanksGame>();var saved=game.profile;string savePath=Profile.TestSavePath;
+            running=true;var game=UnityEngine.Object.FindObjectOfType<CatTanksGame>();game.titleScreen=false;var saved=game.profile;string savePath=Profile.TestSavePath;
             try
             {
                 Directory.CreateDirectory(Root+"/Screens");Directory.CreateDirectory(Root+"/Popups");Directory.CreateDirectory(Root+"/Components");
