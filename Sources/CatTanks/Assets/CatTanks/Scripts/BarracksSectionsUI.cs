@@ -248,7 +248,7 @@ namespace CatTanks
                 if(IllustratedButton(560+slot*236,630,220,250,empty?$"Module {slot+1}":db.Weapon(id).name,empty?"Gear":id,content:StudioButtonLayout.Content.Tile))
                 {
                     var options=new[]{""}.Concat(profile.modules).ToArray();int chosen=slot;
-                    Pick("Chọn module "+(slot+1),options.Select(v=>string.IsNullOrEmpty(v)?"Gỡ module":db.Weapon(v).name),at=>{turret.modules[chosen]=options[at];Changed("Đã đổi module");});
+                    Pick("Chọn module "+(slot+1),options.Select(v=>string.IsNullOrEmpty(v)?"Gỡ module":db.Weapon(v).name),at=>{turret.modules[chosen]=options[at];Changed("Đã đổi module");},options.Select(v=>string.IsNullOrEmpty(v)?"Gear":v));
                 }
                 if(!dispatchOnly&&empty&&lastButton.layout&&lastButton.layout.icon)lastButton.layout.icon.color=new Color(1,1,1,.35f);
                 Enlarge(18);
@@ -298,7 +298,7 @@ namespace CatTanks
                 if(IllustratedButton(134+slot*296,246,282,82,caption,!open?"Lock":pet==null?"item-beastCage":pet.id,open,normalSpriteKey:"blue"))
                 {
                     var choices=new[]{""}.Concat(profile.pets.Select(p=>p.id).Where(id=>!profile.petSlots.Contains(id)||id==profile.petSlots[slot])).ToArray();int chosen=slot;
-                    Pick("Chọn quái đồng hành",choices.Select(v=>string.IsNullOrEmpty(v)?"Để trống":db.Monster(v).name),at=>{profile.petSlots[chosen]=choices[at];Changed("Đã đổi đồng hành");});
+                    Pick("Chọn quái đồng hành",choices.Select(v=>string.IsNullOrEmpty(v)?"Để trống":db.Monster(v).name),at=>{profile.petSlots[chosen]=choices[at];Changed("Đã đổi đồng hành");},choices.Select(v=>string.IsNullOrEmpty(v)?"item-beastCage":v));
                 }
                 Enlarge(19);
             }
@@ -384,7 +384,7 @@ namespace CatTanks
                 if(IllustratedButton(x,694,156,158,!open?"Chưa mở":empty?"Trống":db.Cat(current).name,!open?"Lock":empty?"item-soulEssence":current,open,content:StudioButtonLayout.Content.Tile))
                 {
                     var options=new[]{""}.Concat(profile.cats.Where(c=>!anchors.Contains(c)&&(!profile.nexus.Contains(c.id)||c.id==current)).Select(c=>c.id)).ToArray();int chosen=i;
-                    Pick("Chọn mèo Cộng hưởng",options.Select(id=>string.IsNullOrEmpty(id)?"Để trống ô":db.Cat(id).name),at=>{profile.nexus[chosen]=options[at];Changed("Đã cập nhật Cộng hưởng");});
+                    Pick("Chọn mèo Cộng hưởng",options.Select(id=>string.IsNullOrEmpty(id)?"Để trống ô":db.Cat(id).name),at=>{profile.nexus[chosen]=options[at];Changed("Đã cập nhật Cộng hưởng");},options.Select(id=>string.IsNullOrEmpty(id)?"item-soulEssence":id));
                 }
                 if(!dispatchOnly&&open&&empty&&lastButton.layout&&lastButton.layout.icon)lastButton.layout.icon.color=new Color(1,1,1,.35f);
                 Enlarge(17);

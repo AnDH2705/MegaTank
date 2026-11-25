@@ -68,24 +68,23 @@ namespace CatTanks.Editor
                 game.profile.Add("summonScroll",20);game.profile.Add("gem",10000);game.profile.Add("skillCore",50);
                 await Page(game,"march");
                 Check(Texts(game).Any(t=>t.text==game.profile.Get("coins").ToString("N0")),"Currency displays live profile values");
-                // Lưới 20 ải giờ nằm trong popup Bản đồ của màn chính.
+                // Bản đồ chương: mỗi chương 5 ải nối thành đường đi; chọn nút ải rồi bấm CHỌN ẢI NÀY.
                 game.modal="map";await Show(game);
                 var stageCards = game.CanvasRoot.GetComponentsInChildren<StudioButtonLayout>()
                     .Where(l => l.content == StudioButtonLayout.Content.Stage).ToArray();
-                Check(stageCards.Length == 20 && stageCards.All(l => l.icon.sprite && !l.icon.raycastTarget),
-                    "All stage buttons have interactive artwork");
-                game.modal="";await Show(game);
+                Check(stageCards.Length == 5 && stageCards.All(l => l.icon.sprite && !l.icon.raycastTarget),
+                    "Chapter map shows five stage nodes with artwork");
                 game.profile.highestCleared = 0;
                 await Show(game);
                 var stageTwo = stageCards.Single(l => l.icon.sprite.name == "stage-02");
                 Check(stageTwo.badge.sprite == game.CanvasRoot.theme.Get("Lock"), "Locked stage shows a lock badge");
-                ClickBinding(game, "button::463:304", false);
-                Check(game.profile.selected == 1, "Locked stage card cannot change the selection");
+                ClickBinding(game, "button::360:440", false);
+                Check(game.profile.selected == 1, "Locked stage node cannot change the selection");
                 game.profile.highestCleared = 20;
                 await Show(game);
-                ClickBinding(game, "button::463:304");
-                Check(game.profile.selected == 2, "Illustrated stage card selects its stage");
-                ClickBinding(game, "button::310:304");
+                ClickBinding(game, "button::360:440");await Show(game);Click(game,"CHỌN ẢI NÀY");await Show(game);
+                Check(game.profile.selected == 2 && game.modal == "", "Stage node + CHỌN ẢI NÀY selects its stage");
+                game.modal="map";await Show(game);ClickBinding(game, "button::190:600");await Show(game);Click(game,"CHỌN ẢI NÀY");await Show(game);
                 await Page(game,"barracks","cats");int level=game.profile.cats[0].level,gold=game.profile.Get("coins");
                 ClickBinding(game, "button::350:246");
                 Check(game.selectedCat == 1 && game.tab == "cat", "The entire cat card opens that cat's detail page");

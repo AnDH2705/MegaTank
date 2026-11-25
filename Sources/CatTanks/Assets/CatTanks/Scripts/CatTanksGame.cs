@@ -129,42 +129,12 @@ namespace CatTanks
             switch (id) {case "coins": return "xu"; case "gem": return "ngọc"; case "spiritDust": return "bụi"; case "catXp": return "XP mèo"; case "forgeStone": return "đá rèn"; case "soulEssence": return "tinh chất"; case "summonScroll": return "vé"; case "skillCore": return "lõi"; case "beastCage": return "lồng thú"; case "moonCage": return "lồng trăng"; case "monsterChow": return "thức ăn"; case "arenaToken": return "huy hiệu"; case "accountXp": return "XP chỉ huy"; default: return id;}
         }
         string Rewards(Dictionary<string, int> values) => string.Join("    ", values.Where(v => v.Value > 0).Select(v => "+" + N(v.Value) + " " + Currency(v.Key)));
-        void Prebattle()
-        {
-            var s = db.stages[profile.selected - 1];
-            PopupFrame(200, 110, 1200, 690, $"Ải {s.index:00} · {s.name}", true);
-            Surface(232, 160, 548, 330, Color.white, catsFrame: "Roster");
-            Art(246, 174, 520, 302, StagePreview(s));
-            if (s.boss) Text(258, 436, 300, "TRẬN TRÙM", subtitle, 40);
-            int moonCages = Mathf.Min(5, profile.Get("moonCage")), beastCages = Mathf.Min(5 - moonCages, profile.Get("beastCage"));
-            PrebattleStat(160, "Interface/Cats/PowerIcon", "LỰC CHIẾN ĐỀ NGHỊ", $"{N(s.recommendedPower)}   ·   đội bạn {N(profile.Power(db))}");
-            PrebattleStat(272, "Interface/Cats/Heart", "PHÁO ĐÀI", $"{N(profile.MaxHp)} HP   ·   {profile.FloorCount} tầng");
-            PrebattleStat(384, "item-beastCage", "LỒNG MANG THEO (TỐI ĐA 5)", $"{beastCages} lồng thú   ·   {moonCages} lồng trăng");
-            Text(232, 500, 1136, $"Bắt quái: quái thường từ {Battle.CaptureHealthThreshold(false):0%} HP trở xuống · trùm dưới {Battle.CaptureHealthThreshold(true):0%} HP, dùng Lồng trăng (Shift+C)", small, 28, align: TextAnchor.UpperCenter);
-            Surface(232, 538, 1136, 136, Color.white, catsFrame: "Roster");
-            for (int i = 0; i < profile.FloorCount; i++)
-            {
-                float x = 232 + (1136 - (profile.FloorCount * 221 - 16)) / 2f + i * 221;
-                Surface(x, 550, 205, 112, Color.white, catsFrame: "Tile");
-                Art(x + 37, 556, 131, 70, profile.floors[i].turret);
-                Text(x + 10, 626, 185, "Tầng " + (i + 1), small, 28, align: TextAnchor.UpperCenter);
-            }
-            if (IllustratedButton(232, 698, 420, 82, "Chỉnh đội hình", "cat-0", normalSpriteKey: "blue")) {modal = ""; page = "barracks"; tab = "squad"; backToPrebattle = true;}
-            if (IllustratedButton(680, 690, 688, 96, "XUẤT KÍCH", "Battle", primary: true)) StartBattle();
-            Enlarge(30);
-        }
-        void PrebattleStat(float y, string icon, string caption, string value)
-        {
-            Surface(806, y, 562, 100, Color.white, catsFrame: "Ink");
-            Art(824, y + 20, 60, 60, icon);
-            Text(900, y + 14, 450, caption, small, 26);
-            Text(900, y + 42, 450, value, subtitle, 40);
-        }
         void Result()
         {
             bool won = battle.state == BattleState.Won;
             PopupFrame(280, 160, 1040, 580, won ? "Chiến thắng!" : "Thất bại", false);
-            Art(306, 214, 310, 310, won ? "Screens/victory" : "Screens/defeat");
+            Art(326, 200, 270, 196, won ? "Screens/victory" : "Screens/defeat");
+            ResultMvp(306, 406);
             Text(640, 214, 650, won ? "Pháo đài trụ vững dưới trăng!" : "Pháo đài cần tiếp viện…", subtitle, 40);
             ResultStat(0, "Interface/Cats/Sword", N(battle.kills), "quái bị hạ");
             ResultStat(1, "Interface/Cats/Speed", N(battle.time) + " giây", "thời gian");

@@ -54,6 +54,7 @@ namespace CatTanks
         public readonly Stage stage;
         public readonly Opponent opponent;
         public List<Actor> enemies = new List<Actor>(), units = new List<Actor>();
+        public readonly Dictionary<Weapon, float> damageBy = new Dictionary<Weapon, float>();
         public List<Projectile> bullets = new List<Projectile>();
         public List<BattleEffect> effects = new List<BattleEffect>();
         public List<string> caught = new List<string>();
@@ -390,7 +391,7 @@ namespace CatTanks
             {
                 Vector2 dir = (target.position - u.position).normalized;
                 var line = enemies.Where(e => !e.dead && Vector2.Dot(e.position - u.position, dir) > 0 && Mathf.Abs((e.position.x - u.position.x) * dir.y - (e.position.y - u.position.y) * dir.x) < e.def.size * .38f).OrderBy(e => Vector2.Distance(e.position, u.position)).Take(w.pierce).ToArray();
-                foreach (var e in line) Damage(e, w.damage, w.kind);
+                foreach (var e in line) Damage(e, w.damage, w.kind, w);
                 Effect("beam", u.position, u.position + dir * 1500, w.color, w.kind == "laser" ? 12 : 4, .18f); return;
             }
             if (w.kind == "tesla")
@@ -398,7 +399,7 @@ namespace CatTanks
                 Actor current = target; Vector2 origin = u.position; var hit = new HashSet<int>();
                 for (int i = 0; i < w.chain && current != null; i++)
                 {
-                    Effect("lightning", origin, current.position, w.color, 5, .22f); Damage(current, w.damage * (1 - i * .14f), "tesla"); current.stun = w.stun > 0 ? w.stun : .4f; hit.Add(current.id); origin = current.position;
+                    Effect("lightning", origin, current.position, w.color, 5, .22f); Damage(current, w.damage * (1 - i * .14f), "tesla", w); current.stun = w.stun > 0 ? w.stun : .4f; hit.Add(current.id); origin = current.position;
                     current = enemies.Where(e => !e.dead && !hit.Contains(e.id) && Vector2.Distance(e.position, origin) < 350).OrderBy(e => Vector2.Distance(e.position, origin)).FirstOrDefault();
                 }
                 return;
@@ -471,7 +472,7 @@ namespace CatTanks
             }
             if (e != null && !e.dead)
             {
-                b.hit.Add(e.id); Damage(e, w.damage, w.kind);
+                b.hit.Add(e.id); Damage(e, w.damage, w.kind, w);
                 e.slow = Mathf.Max(e.slow, w.slow); e.burn = Mathf.Max(e.burn, w.burn); e.poison = Mathf.Max(e.poison, w.poison);
                 if (styled) e.weaponHitFlash = .08f;
             }
@@ -480,7 +481,7 @@ namespace CatTanks
                 foreach (var o in enemies)
                 {
                     if (o.dead || o == e || Vector2.Distance(o.position, b.position) > w.splash + o.def.size * .2f) continue;
-                    Damage(o, w.damage * .6f, w.kind); o.slow = Mathf.Max(o.slow, w.slow); o.poison = Mathf.Max(o.poison, w.poison);
+                    Damage(o, w.damage * .6f, w.kind, w); o.slow = Mathf.Max(o.slow, w.slow); o.poison = Mathf.Max(o.poison, w.poison);
                     if (styled) o.weaponHitFlash = .06f;
                     if (w.kind == "gravity") o.position = Vector2.Lerp(o.position, b.position, .22f);
                 }
@@ -493,7 +494,7 @@ namespace CatTanks
                 duration, visual: ImpactVisual(w), weaponKind: styled ? w.kind : null);
         }
         static string ImpactVisual(Weapon w)=>w.kind=="flame"?"fire":w.kind=="ice"?"ice":w.kind=="poison"?"poison":w.splash>0?"blast":"impact";
-        public void Damage(Actor e, float amount, string kind)
+        public void Damage(Actor e, float amount, string kind, Weapon source = null)
         {
             if (e.dead) return; float defense = e.def.armor;
             if(kind=="sniper"||kind=="drill"||kind=="laser"||kind=="poison"||kind=="arrow")defense*=.2f;
@@ -502,6 +503,8 @@ namespace CatTanks
             if (e.burrowed) defense = .9f; if (e.def.behavior == "tiger" && e.age % 5 > 3.8f) defense = Mathf.Max(defense, .55f);
             float absorbed = Mathf.Min(enemyDecoyHp, amount); enemyDecoyHp -= absorbed; amount -= absorbed;
             float dealt = amount * (1 - defense) * (EnemyBuff("shield") > 0 ? .5f : 1); e.hp -= dealt; e.flash = .1f;
+            // Ghi sát thương theo vũ khí (mỗi đơn vị giữ bản sao vũ khí riêng) để màn kết quả chọn MVP.
+            if (source != null) {damageBy.TryGetValue(source, out float sum); damageBy[source] = sum + Mathf.Min(dealt, dealt + e.hp);}
             if (amount >= 12) Effect("text", e.position + Vector2.up * e.def.size * .3f, Vector2.zero, "#ffe7a2", 18, .65f, Mathf.RoundToInt(dealt).ToString());
             if (e.hp > 0) return;
             e.dead = true; e.deathTime = e.age; kills++;

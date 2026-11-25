@@ -154,19 +154,19 @@ namespace CatTanks
         }
         void PickGear(OwnedCat cat,string slot,string caption,Gear current)
         {
-            var options=new List<string>();var actions=new List<Action>();
+            var options=new List<string>();var actions=new List<Action>();var icons=new List<string>();
             if(current!=null)
             {
                 int coin=200*(current.stars+1),stone=5+current.stars*5;
-                options.Add(current.stars<5?$"Rèn {GearName(current)} · {coin} xu / {stone} đá":GearName(current)+" đã rèn tối đa 5★");
+                options.Add(current.stars<5?$"Rèn · {coin} xu / {stone} đá":"Đã rèn tối đa 5★");icons.Add("item-forgeStone");
                 actions.Add(()=>{if(current.stars<5&&Pay(("coins",coin),("forgeStone",stone))){current.stars++;profile.Track("upgrade");Changed("Đã rèn trang bị");}});
-                options.Add("Tháo "+GearName(current));
+                options.Add("Tháo "+GearName(current));icons.Add(GearAsset(current));
                 actions.Add(()=>{cat.gear.Remove(slot);Changed("Đã tháo trang bị");});
             }
             foreach(var g in profile.gear.Where(v=>GearSlot(v)==slot&&v!=current))
             {
                 var owner=profile.cats.Find(c=>c!=cat&&c.gear.ContainsValue(g.uid));
-                options.Add($"{GearName(g)} · {g.stars}★ · {g.rarity}"+(owner!=null?" · đang dùng: "+db.Cat(owner.id).name:""));
+                options.Add($"{GearName(g)} · {g.stars}★"+(owner!=null?" · của "+db.Cat(owner.id).name:""));icons.Add(GearAsset(g));
                 actions.Add(()=>
                 {
                     foreach(var c in profile.cats)foreach(var key in c.gear.Where(v=>v.Value==g.uid).Select(v=>v.Key).ToArray())c.gear.Remove(key);
@@ -174,7 +174,7 @@ namespace CatTanks
                 });
             }
             if(options.Count==0){Notify("Chưa có "+caption.ToLower()+". Vượt ải 2–4 và 6–7 để nhận trang bị.");return;}
-            Pick(caption+" · "+db.Cat(cat.id).name,options,at=>actions[at]());
+            Pick(caption+" · "+db.Cat(cat.id).name,options,at=>actions[at](),icons);
         }
         void ArtifactSlotButton(float x,float y,OwnedCat cat)
         {
@@ -187,7 +187,7 @@ namespace CatTanks
                 {
                     string next=choices[at];foreach(var c in profile.cats)if(c.artifact==next)c.artifact="";
                     cat.artifact=next;Changed("Đã cập nhật cổ vật");
-                });
+                },choices.Select(id=>"item-artifact"));
             }
             if(!dispatchOnly&&artifact==null&&lastButton.layout&&lastButton.layout.icon)lastButton.layout.icon.color=new Color(1,1,1,.35f);
             Enlarge(17);

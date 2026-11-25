@@ -223,19 +223,6 @@ namespace CatTanks
             "coins" or "gem" or "catXp" or "spiritDust" or "forgeStone" or "soulEssence" or "summonScroll" or "skillCore" or "beastCage" or "moonCage" or "monsterChow" or "arenaToken" or "relicStone" or "artifact"=>"item-"+key,
             _=>null
         };
-        void MapPopup()
-        {
-            PopupFrame(130,80,1340,760,"Bản đồ chiến dịch",true);
-            Text(170,124,1260,$"{profile.highestCleared} / {db.stages.Count} ẢI ĐÃ QUA   ·   Mỗi 5 ải là một trận trùm   ·   Chọn ải để xem trên màn chính",small,28,align:TextAnchor.UpperCenter);
-            for(int i=0;i<db.stages.Count&&i<20;i++)
-            {
-                var stage=db.stages[i];float x=170+i%5*256,y=196+i/5*156;
-                bool unlocked=i<=profile.highestCleared;
-                string badge=!unlocked?"Lock":i<profile.highestCleared?"Check":stage.boss?"Skull":null;
-                if(IllustratedButton(x,y,240,140,$"{stage.index:00}",StagePreview(stage),unlocked,false,
-                    StudioButtonLayout.Content.Stage,badge,profile.selected==i+1)){modal="";SelectStage(i+1);}
-            }
-        }
         static string StagePreview(Stage stage) => $"StagePreviews/stage-{stage.index:00}";
         static bool IsSubPage(string key)=>!IsRuntimeView(key)&&(key.StartsWith("barracks-",System.StringComparison.Ordinal)||key.StartsWith("town-",System.StringComparison.Ordinal)||key is "chest" or "quests");
         static bool IsRuntimeView(string key)=>key is HomeView or ChromeView or MapView or RosterView or CatView or TownHubView or TavernView or StoreView or PvpView or QuestView

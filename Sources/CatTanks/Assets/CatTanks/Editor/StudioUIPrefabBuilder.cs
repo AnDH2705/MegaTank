@@ -56,7 +56,7 @@ namespace CatTanks.Editor
                     game.modal="settings";await Show(game);game.modal="prebattle";await Show(game);game.modal="map";await Show(game);
                     game.modal="book";
                     for(int i=0;i<5;i++){game.bookTab=i;await Show(game);}
-                    typeof(CatTanksGame).GetMethod("Pick",Private).Invoke(game,new object[]{"Chọn đồng đội",game.db.cats.Select(c=>c.name).Concat(new[]{"Để trống vị trí"}),new Action<int>(i=>{})});await Show(game);
+                    typeof(CatTanksGame).GetMethod("Pick",Private).Invoke(game,new object[]{"Chọn đồng đội",game.db.cats.Select(c=>c.name).Concat(new[]{"Để trống vị trí"}),new Action<int>(i=>{}),null});await Show(game);
                 }
                 game.modal="";game.StartBattle();game.paused=true;await Show(game);
                 game.battle.state=BattleState.Won;typeof(CatTanksGame).GetMethod("Resolve",Private).Invoke(game,null);await Show(game);
