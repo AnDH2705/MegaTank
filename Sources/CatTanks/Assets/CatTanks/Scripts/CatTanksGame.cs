@@ -140,7 +140,7 @@ namespace CatTanks
             PrebattleStat(160, "Interface/Cats/PowerIcon", "LỰC CHIẾN ĐỀ NGHỊ", $"{N(s.recommendedPower)}   ·   đội bạn {N(profile.Power(db))}");
             PrebattleStat(272, "Interface/Cats/Heart", "PHÁO ĐÀI", $"{N(profile.MaxHp)} HP   ·   {profile.FloorCount} tầng");
             PrebattleStat(384, "item-beastCage", "LỒNG MANG THEO (TỐI ĐA 5)", $"{beastCages} lồng thú   ·   {moonCages} lồng trăng");
-            Text(232, 500, 1136, $"Bắt quái: quái thường từ {Battle.CaptureHealthThreshold(false):0%} HP trở xuống · trùm dưới {Battle.CaptureHealthThreshold(true):0%} HP, dùng Lồng trăng (Shift+C)", small, 28, align: TextAnchor.UpperCenter);
+            Text(232, 500, 1136, $"Bắt quái: khóa mục tiêu, còn {Battle.CaptureHealthThreshold(false):0%} HP (trùm {Battle.CaptureHealthThreshold(true):0%}) thì nó kiệt sức vài giây · ném lồng [C] / Lồng trăng [Shift+C]", small, 28, align: TextAnchor.UpperCenter);
             Surface(232, 538, 1136, 136, Color.white, catsFrame: "Roster");
             for (int i = 0; i < profile.FloorCount; i++)
             {

@@ -58,6 +58,8 @@ namespace CatTanks
         {
             bool boss=target.def.boss;
             float threshold=Battle.CaptureHealthThreshold(boss);
+            if(battle.IsDazed(target))
+                return $"Kiệt sức · còn {battle.DazeLeft(target):0.0}s để ném "+(boss?"Lồng trăng [Shift+C].":"lồng [C] / [Shift+C].");
             if(!Battle.IsWeakEnoughToCapture(target))
                 return boss?$"Trùm: dưới {threshold:0%} HP, cần Lồng trăng.":$"Giảm HP còn {threshold:0%} hoặc thấp hơn để bắt.";
             if(!boss&&battle.cages>0)return "Đủ điều kiện ném Lồng thú [C].";

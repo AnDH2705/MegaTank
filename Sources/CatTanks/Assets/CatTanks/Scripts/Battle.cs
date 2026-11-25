@@ -12,7 +12,7 @@ namespace CatTanks
         public int id, index;
         public Vector2 position;
         public float hp, maxHp, age, timer, angle, recoil, defense, slow, burn, poison, stun, attack, summon = 9, flash, deathTime, phase;
-        public float weaponHitFlash;
+        public float weaponHitFlash, burnDps, poisonDps, dazeStart = -1;
         public bool dead, visible = true, burrowed, charging, warning;
         public string role, asset, cat;
         public Weapon weapon;
@@ -65,7 +65,7 @@ namespace CatTanks
         public List<Wave> waves;
         public BattleState state = BattleState.Playing;
         public float time, hp, maxHp, energy, energyMax = 600, playerX = 290, move, spawnTimer = .8f, waveGap, droneTimer;
-        float energyRegen = 16, enemyEnergy = 200, enemyClock, enemyDroneTimer, enemyDecoyHp;
+        float energyRegen = 16, enemyEnergy = 200, enemyClock, enemyDroneTimer, enemyDecoyHp, specialtyMult, dotScale, dazeTime;
         Dictionary<string, float> enemyCooldowns = new Dictionary<string, float>(), enemyBuffs = new Dictionary<string, float>();
         public int wave, spawned, kills, coins, targetId = -1, nextId = 1, bank = -1, throwsUsed;
         int[] burstCounts;
@@ -90,7 +90,8 @@ namespace CatTanks
                     w.types = new Newtonsoft.Json.Linq.JArray(w.types.Where(t => (string)t != "beast-8"));
                 }
             }
-            maxHp = classic ? 48000 : save.MaxHp; hp = maxHp; energy = classic ? 600 : 200;
+            maxHp = classic ? 48000 : save.MaxHp; hp = maxHp; energy = classic ? 600 : Mathf.Round(energyMax * db.B("loadoutEnergy.startFrac"));
+            specialtyMult = 1 + db.B("cats.specialtyBonus"); dotScale = db.B("combat.dotScale"); dazeTime = db.B("monsters.capture.dazeSeconds");
             moonCages = classic || arena ? 0 : Mathf.Min(5, profile.Get("moonCage")); cages = classic || arena ? 0 : Mathf.Min(5 - moonCages, profile.Get("beastCage"));
             if (classic)
             {
@@ -106,10 +107,16 @@ namespace CatTanks
                     var f = save.floors[i]; var turret = save.turrets.Find(t => t.id == f.turret); var cat = save.cats.Find(c => c.id == f.cat);
                     var w = db.Weapon(turret.id).Copy(); var stats = cat == null ? null : save.Stats(cat, db);
                     float damage = w.damage * (1 + .08f * (turret.level - 1)) * (1 + .14f * turret.stars);
-                    w.damage = stats == null ? damage * .7f : (damage * (1 + stats["atk"] / 50 * .5f) + stats["atk"] * .15f) * (db.Cat(cat.id).specialty == "operator" ? 1.15f : 1);
+                    w.damage = stats == null ? damage * .7f : (damage * (1 + stats["atk"] / 50 * .5f) + stats["atk"] * .15f) * (db.Cat(cat.id).specialty == "operator" ? specialtyMult : 1);
                     if (stats != null) w.rate = Mathf.Max(.15f, w.rate / (1 + Mathf.Min(.3f, stats["speed"] / 100 * .25f)));
                     var u = AddUnit("tower", i, cat?.id, w, stats == null ? 240 : save.Stats(cat, db, "operator")["maxHp"]); u.defense = stats == null ? 0 : stats["def"];
-                    foreach (var id in turret.modules) if (!string.IsNullOrEmpty(id)) AddUnit("aux", units.Count(a => a.role == "aux"), "", db.Weapon(id).Copy(), 300);
+                    foreach (var id in turret.modules)
+                    {
+                        if (string.IsNullOrEmpty(id)) continue;
+                        // Modules scale with the host turret so they stay relevant late.
+                        var module = db.Weapon(id).Copy(); module.damage *= (1 + .08f * (turret.level - 1)) * (1 + .14f * turret.stars);
+                        AddUnit("aux", units.Count(a => a.role == "aux"), "", module, 300);
+                    }
                 }
                 for (int i = 0; i < 5; i++)
                 {
@@ -141,7 +148,7 @@ namespace CatTanks
                     var copy = s.Copy(); int level = save.skillLevels.TryGetValue(id, out int n) ? n : 1;
                     copy.cost = Mathf.FloorToInt(copy.baseCost * Mathf.Max(.55f, 1 - .06f * (level - 1)));
                     copy.cooldown = Mathf.Max(5, copy.baseCd - .25f * (level - 1));
-                    copy.damage *= 1 + .1f * (level - 1); copy.healVehicle *= 1 + .1f * (level - 1); copy.rocketDamage *= 1 + .1f * (level - 1); skills.Add(copy);
+                    copy.damage *= 1 + .1f * (level - 1); copy.healVehicle *= 1 + .1f * (level - 1); copy.healPct *= 1 + .1f * (level - 1); copy.rocketDamage *= 1 + .1f * (level - 1); skills.Add(copy);
                 }
             }
         }
@@ -172,7 +179,7 @@ namespace CatTanks
             {
                 if(enemy.dead||enemy.position.x<=-100||enemy.position.x>=1720)continue;
                 float distance=Vector2.Distance(enemy.position,unit.position);if(distance>=unit.weapon.range)continue;
-                if(enemy.id==targetId)return enemy;
+                if(enemy.id==targetId){if(IsDazed(enemy))continue;return enemy;}
                 int priority=sniper?(enemy.def.boss?900:0)+(enemy.def.armor>0?200:0):0;
                 if(best==null||(sniper?(priority>bestPriority||priority==bestPriority&&enemy.hp<best.hp):distance<bestDistance))
                 {best=enemy;bestDistance=distance;bestPriority=priority;}
@@ -328,7 +335,8 @@ namespace CatTanks
             if (e.dead) return;
             e.flash = Mathf.Max(0, e.flash - dt); e.attack -= dt; e.summon -= dt;
             e.slow = Mathf.Max(0, e.slow - dt); e.burn = Mathf.Max(0, e.burn - dt); e.poison = Mathf.Max(0, e.poison - dt); e.stun = Mathf.Max(0, e.stun - dt);
-            if (e.burn > 0) Damage(e, 24 * dt, "flame"); if (e.poison > 0) Damage(e, 30 * dt, "poison"); if (e.dead) return;
+            if (e.burn > 0) Damage(e, (e.burnDps > 0 ? e.burnDps : 24) * dt, "flame"); if (e.poison > 0) Damage(e, (e.poisonDps > 0 ? e.poisonDps : 30) * dt, "poison"); if (e.dead) return;
+            if (IsDazed(e)) e.stun = Mathf.Max(e.stun, .1f);
             var d = e.def; float ratio = e.hp / e.maxHp;
             e.burrowed = d.behavior == "burrow" && e.age % 7 < 2.4f;
             e.charging = (d.behavior == "charge" || d.behavior == "rhino") && e.age % 7 > 5.3f;
@@ -336,7 +344,7 @@ namespace CatTanks
             float leap = d.behavior == "leap" ? Mathf.Max(0, Mathf.Sin(e.age * 2.3f)) * 95 : 0;
             float y = 175 + d.size * .43f + (d.flying ? 190 + Mathf.Sin(e.age * 2 + e.phase) * 58 : leap);
             if (d.behavior == "bee") y = 265 + Mathf.Sin(e.age * 1.4f + e.phase) * 140;
-            float speed = d.speed * (e.charging ? 5 : 1);
+            float speed = d.speed * (e.charging ? 5 : 1) * (classic ? 1 : waves[wave].enemySpeedMult);
             if (d.behavior == "tiger" && e.age % 5 > 3.8f) speed *= 3.5f;
             if(d.behavior=="wolf")foreach(var other in enemies)
                 if(other!=e&&!other.dead&&Vector2.Distance(other.position,e.position)<180){speed*=1.45f;break;}
@@ -473,6 +481,8 @@ namespace CatTanks
             {
                 b.hit.Add(e.id); Damage(e, w.damage, w.kind);
                 e.slow = Mathf.Max(e.slow, w.slow); e.burn = Mathf.Max(e.burn, w.burn); e.poison = Mathf.Max(e.poison, w.poison);
+                if (w.burn > 0) e.burnDps = Mathf.Max(e.burnDps, Mathf.Max(24, w.damage * dotScale));
+                if (w.poison > 0) e.poisonDps = Mathf.Max(e.poisonDps, Mathf.Max(30, w.damage * dotScale));
                 if (styled) e.weaponHitFlash = .08f;
             }
             if (w.splash > 0)
@@ -481,6 +491,7 @@ namespace CatTanks
                 {
                     if (o.dead || o == e || Vector2.Distance(o.position, b.position) > w.splash + o.def.size * .2f) continue;
                     Damage(o, w.damage * .6f, w.kind); o.slow = Mathf.Max(o.slow, w.slow); o.poison = Mathf.Max(o.poison, w.poison);
+                    if (w.poison > 0) o.poisonDps = Mathf.Max(o.poisonDps, Mathf.Max(30, w.damage * dotScale));
                     if (styled) o.weaponHitFlash = .06f;
                     if (w.kind == "gravity") o.position = Vector2.Lerp(o.position, b.position, .22f);
                 }
@@ -496,12 +507,18 @@ namespace CatTanks
         public void Damage(Actor e, float amount, string kind)
         {
             if (e.dead) return; float defense = e.def.armor;
+            if (e.def.flying) amount *= AntiAirMult(kind);
             if(kind=="sniper"||kind=="drill"||kind=="laser"||kind=="poison"||kind=="arrow")defense*=.2f;
             if(e.def.behavior=="crystal"&&(kind=="laser"||kind=="plasma"||kind=="tesla"||kind=="ice"||kind=="gravity"))defense=.58f;
             if (e.def.behavior == "frost" && kind == "ice") defense = .8f;
             if (e.burrowed) defense = .9f; if (e.def.behavior == "tiger" && e.age % 5 > 3.8f) defense = Mathf.Max(defense, .55f);
             float absorbed = Mathf.Min(enemyDecoyHp, amount); enemyDecoyHp -= absorbed; amount -= absorbed;
-            float dealt = amount * (1 - defense) * (EnemyBuff("shield") > 0 ? .5f : 1); e.hp -= dealt; e.flash = .1f;
+            float dealt = amount * (1 - defense) * (EnemyBuff("shield") > 0 ? .5f : 1);
+            // A locked target the player can cage is never killed outright: it drops to 1% HP and stays dazed for a few seconds.
+            bool cageable = CanDaze(e);
+            if (cageable && (e.dazeStart < 0 || time - e.dazeStart < dazeTime)) dealt = Mathf.Min(dealt, Mathf.Max(0, e.hp - e.maxHp * .01f));
+            e.hp -= dealt; e.flash = .1f;
+            if (cageable && e.dazeStart < 0 && IsWeakEnoughToCapture(e)) {e.dazeStart = time; message = e.def.name + " kiệt sức · ném lồng ngay!";}
             if (amount >= 12) Effect("text", e.position + Vector2.up * e.def.size * .3f, Vector2.zero, "#ffe7a2", 18, .65f, Mathf.RoundToInt(dealt).ToString());
             if (e.hp > 0) return;
             e.dead = true; e.deathTime = e.age; kills++;
@@ -528,8 +545,10 @@ namespace CatTanks
                 var u = units.Where(a => !a.dead && a.visible && a.role != "aux" && Vector2.Distance(a.position, new Vector2(Mathf.Min(position.x, playerX + 80), Mathf.Min(position.y, 650))) < 140).OrderBy(a => a.role == "tower" ? 1 : 0).ThenBy(a => Vector2.Distance(a.position, position)).FirstOrDefault();
                 if (u != null)
                 {
-                    u.hp = Mathf.Max(0, u.hp - amount * 80 / (80 + u.defense) * (Buff("shield") > 0 ? .06f : 1)); u.dead = u.hp <= 0; u.flash = .1f;
+                    // Hits on a crew member damage the fortress (reduced by that cat's defense); crews are knocked back, never lost for the battle.
+                    u.flash = .1f;
                     if (amount > 100) {u.position += Vector2.left * (u.role == "infantry" ? 78 : 130); u.stun = .6f;}
+                    HurtPlayer(amount * 80 / (80 + u.defense));
                     return;
                 }
             }
@@ -542,7 +561,7 @@ namespace CatTanks
             if (Cooldown(id) > 0) {message = "Kỹ năng đang hồi chiêu"; return false;}
             if (energy < s.cost) {message = "Chưa đủ năng lượng"; return false;}
             energy -= s.cost; cooldowns[id] = s.cooldown; if (s.duration > 0) buffs[id] = s.duration;
-            if (id == "heal") {hp = Mathf.Min(maxHp, hp + (classic ? 9000 : s.healVehicle)); buffs["poison"] = 0; foreach (var u in units) if (!u.dead) u.hp = Mathf.Min(u.maxHp, u.hp + u.maxHp * .4f);}
+            if (id == "heal") {hp = Mathf.Min(maxHp, hp + (classic ? 9000 : s.healPct > 0 ? maxHp * s.healPct : s.healVehicle)); buffs["poison"] = 0; foreach (var u in units) if (!u.dead) u.hp = Mathf.Min(u.maxHp, u.hp + u.maxHp * .4f);}
             if (id == "freeze") foreach (var e in enemies.Where(e => !e.dead).ToArray()) {e.slow = 6; Damage(e, classic ? 120 : s.damage, "ice");Effect("impact",e.position,e.position,"#99efff",e.def.size*.4f,.65f,visual:useWebEffects?"web-freeze":"ice");}
             if (id == "barrage")
             {
@@ -576,6 +595,14 @@ namespace CatTanks
             float threshold = CaptureHealthThreshold(target.def.boss);
             return target.def.boss ? ratio < threshold : ratio <= threshold;
         }
+        bool CanDaze(Actor e) => CaptureEnabled && dazeTime > 0 && e.id == targetId && throwsUsed < 5 && (e.def.boss ? moonCages > 0 : cages + moonCages > 0);
+        internal bool IsDazed(Actor e) => !e.dead && e.dazeStart >= 0 && e.id == targetId && time - e.dazeStart < dazeTime;
+        internal float DazeLeft(Actor e) => IsDazed(e) ? dazeTime - (time - e.dazeStart) : 0;
+        float AntiAirMult(string kind)
+        {
+            var token = db.balance.SelectToken("combat.antiAir." + kind);
+            return token == null ? 1 : (float)token;
+        }
 
         public bool Catch(bool moon)
         {
@@ -587,7 +614,7 @@ namespace CatTanks
             if (!IsWeakEnoughToCapture(e)) {message = e.def.boss ? "Cần giảm HP của trùm xuống dưới 10%" : "Cần giảm máu mục tiêu xuống 25%"; return false;}
             float ratio = e.hp / e.maxHp, threshold = CaptureHealthThreshold(e.def.boss);
             var entry = db.monsterBook.First(x => (string)x["speciesId"] == e.asset); string rarity = (string)entry["catchRarity"];
-            float chance = e.def.boss ? .02f : db.B("monsters.capture.baseChance." + (moon ? "moonCage" : "beastCage") + "." + rarity);
+            float chance = e.def.boss ? db.B("monsters.capture.bossBaseChance") : db.B("monsters.capture.baseChance." + (moon ? "moonCage" : "beastCage") + "." + rarity);
             chance *= .45f + .55f * (threshold - ratio) / threshold;
             throwsUsed++; if (moon) {moonCages--; moonUsed++; profile.Add("moonCage", -1);} else {cages--; cageUsed++; profile.Add("beastCage", -1);} profile.Save();
             if (UnityEngine.Random.value < Mathf.Min(.9f, chance))
