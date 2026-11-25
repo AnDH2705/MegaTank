@@ -80,15 +80,19 @@ namespace CatTanks.Editor
                 Click("Doanh trại");await Show(game);check(game.page=="barracks","Home buttons navigate through real button commands");
                 foreach(string tab in new[]{"cats","cat","fortress","squad","skills","monsters","presets","nexus"})
                 {
-                    game.tab=tab;await Show(game);check(ActiveButtons().Length>8,"Barracks renders: "+tab);
+                    game.tab=tab;await Show(game);check(ActiveButtons().Length>=6,"Barracks renders: "+tab);
                 }
+                // Đội hình: chạm ô bộ binh 1 rồi "Gỡ khỏi ô".
                 game.tab="squad";await Show(game);
-                // Use a known squad slot label, regardless of which starting cat occupies it.
-                var slot=ActiveButtons().FirstOrDefault(b=>b.GetComponentInChildren<Text>().text.Contains("Bộ binh 1:"));
-                check(slot!=null,"Squad picker trigger present");slot.onClick.Invoke();await Show(game);
-                check(game.modal=="choice","Explicit squad picker opens");
+                var slot=ActiveButtons().FirstOrDefault(b=>b.TryGetComponent<StudioWidgetBinding>(out var w)&&w.id=="button::810:226");
+                check(slot!=null,"Formation infantry slot present");slot.onClick.Invoke();await Show(game);
+                Click("Gỡ khỏi ô");await Show(game);check(game.profile.squad[0]=="","Formation slot can be cleared");
+                // Popup chọn (module pháo) chặn thao tác phía sau.
+                game.tab="fortress";await Show(game);
+                Click("Module 1");await Show(game);
+                check(game.modal=="choice","Explicit module picker opens");
                 check(!ActiveButtons().First(b=>b.GetComponentInChildren<Text>().text=="‹").interactable,"Modal blocks background controls");
-                Click("Để trống vị trí");await Show(game);check(game.modal==""&&game.profile.squad[0]=="","Picker applies selected squad member");
+                Click("Gỡ module");await Show(game);check(game.modal==""&&game.profile.turrets[0].modules[0]=="","Picker applies selected module");
                 game.page="town";
                 foreach(string tab in new[]{"hub","summon","shop","arena"}) {game.tab=tab;await Show(game);check(ActiveButtons().Length>=4,"Town renders: "+tab);}
                 foreach(string page in new[]{"chest","quests","march"}) {game.page=page;await Show(game);check(ActiveButtons().Length>=7,"Hub renders: "+page);}

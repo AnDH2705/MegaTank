@@ -93,11 +93,13 @@ namespace CatTanks.Editor
                 Check(game.selectedCat == 0, "‹ on the detail page switches to the previous cat");
                 await Show(game);Click(game,"NÂNG CẤP");await Show(game);
                 Check(game.profile.cats[0].level==level+1&&game.profile.Get("coins")<gold,"Cat upgrade button changes level and charges actual cost");
-                await Page(game,"barracks","squad");Click(game,"Bộ binh 1:");await Show(game);
-                Check(game.modal=="choice","Squad slot opens the choice prefab");
+                await Page(game,"barracks","squad");ClickBinding(game,"button::810:226");await Show(game);
+                Click(game,"Gỡ khỏi ô");await Show(game);Check(game.profile.squad[0]=="","Formation slot clears the actual squad member");
+                await Page(game,"barracks","fortress");Click(game,"Module 1");await Show(game);
+                Check(game.modal=="choice","Module slot opens the choice prefab");
                 Check(!Buttons(game).First(b=>Label(b)=="‹").interactable,"Choice popup blocks background navigation");
-                Click(game,"Để trống vị trí");await Show(game);Check(game.profile.squad[0]==""&&game.modal=="","Picker changes the actual squad");
-                await Page(game,"barracks","skills");int cores=game.profile.Get("skillCore");ClickBinding(game,"button::295:534");await Show(game);
+                Click(game,"Gỡ module");await Show(game);Check(game.modal=="","Picker closes after choosing");
+                await Page(game,"barracks","skills");int cores=game.profile.Get("skillCore");Click(game,"NÂNG CẤP ·");await Show(game);
                 Check(game.profile.skillLevels["heal"]==2&&game.profile.Get("skillCore")==cores-1,"Skill upgrade uses the canonical skill and real core cost");
                 await Page(game,"town","summon");int tickets=game.profile.Get("summonScroll"),owned=game.profile.cats.Sum(c=>1+c.copies);
                 Click(game,"GỌI 1 LẦN");await Show(game);
@@ -110,7 +112,7 @@ namespace CatTanks.Editor
                 ClickBinding(game,"button::1220:268",false);await Show(game);Check(game.profile.Get("coins")==gold+40,"Claimed quest cannot grant a second reward");
                 game.profile.lastIdle=Profile.Now-3600;await Page(game,"chest");gold=game.profile.Get("coins");Click(game,"NHẬN TOÀN BỘ");await Show(game);
                 Check(game.profile.Get("coins")>gold&&Profile.Now-game.profile.lastIdle<5,"AFK claim updates wallet and collection time");
-                await Page(game,"barracks","presets");ClickBinding(game,"button::862:369");await Show(game);
+                await Page(game,"barracks","presets");Click(game,"LƯU ĐỘI HIỆN TẠI");await Show(game);
                 Check(game.profile.presets[0]!=null,"Preset button saves a real loadout");
                 game.profile.squad[0]="cat-0";ClickBinding(game,"button::1186:369");await Show(game);Check(game.profile.squad[0]=="","Preset button restores the saved loadout");
                 game.modal="settings";await Show(game);var input=game.CanvasRoot.GetComponentsInChildren<InputField>().First();
@@ -151,7 +153,7 @@ namespace CatTanks.Editor
                 var parts=key.Split('-');await Page(game,parts[0]=="home"?"march":parts[0],parts.Length>1?parts[1]:"cats");Capture(game,key);
             }
             foreach(string key in new[]{"settings","book","prebattle","map"}){game.modal=key;await Show(game);Capture(game,key);}
-            await Page(game,"barracks","squad");Click(game,"Bộ binh 1:");await Show(game);Capture(game,"choice");
+            await Page(game,"barracks","fortress");Click(game,"Module 1");await Show(game);Capture(game,"choice");
             game.modal="";game.StartBattle();game.enabled=false;game.battle.Spawn("bug-0",1000);game.battle.Step(.05f);game.view.Render(game.battle);
             await Show(game);Capture(game,"battle");game.paused=true;await Show(game);Capture(game,"pause");
             game.battle.state=BattleState.Won;typeof(CatTanksGame).GetMethod("Resolve",Private).Invoke(game,null);await Show(game);Capture(game,"result");

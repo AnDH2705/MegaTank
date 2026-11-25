@@ -27,6 +27,12 @@ namespace CatTanks
                     case StoreView:StoreUI();break;
                     case PvpView:PvpUI();break;
                     case QuestView:QuestBoardUI();break;
+                    case FortView:FortWorkshopUI();break;
+                    case TeamView:TeamUI();break;
+                    case SavesView:SavesUI();break;
+                    case SkillView:SkillDeckUI();break;
+                    case PetView:PetStorageUI();break;
+                    case CrystalView:CrystalUI();break;
                     default:RosterUI();break;
                 }
                 SubPageChrome();
@@ -34,8 +40,7 @@ namespace CatTanks
             }
             Surface(254,125,1322,740,C("#17243e"),"BluePanel",UsesCatsArt?"Board":"CommandBoard");
             Art(264,108,1324,780,UsesCatsArt?"Interface/Cats/BoardAccent":"Interface/Cats/CommandAccent");
-            if(page=="barracks")BarracksSection();
-            else if(page=="chest"){useCodeGeometry=true;Chest();}
+            if(page=="chest"){useCodeGeometry=true;Chest();}
             SubPageChrome();
         }
         void HomeUI()
@@ -229,7 +234,8 @@ namespace CatTanks
         }
         static string StagePreview(Stage stage) => $"StagePreviews/stage-{stage.index:00}";
         static bool IsSubPage(string key)=>!IsRuntimeView(key)&&(key.StartsWith("barracks-",System.StringComparison.Ordinal)||key.StartsWith("town-",System.StringComparison.Ordinal)||key is "chest" or "quests");
-        static bool IsRuntimeView(string key)=>key is HomeView or ChromeView or MapView or RosterView or CatView or TownHubView or TavernView or StoreView or PvpView or QuestView;
+        static bool IsRuntimeView(string key)=>key is HomeView or ChromeView or MapView or RosterView or CatView or TownHubView or TavernView or StoreView or PvpView or QuestView
+            or FortView or TeamView or SavesView or SkillView or PetView or CrystalView;
         // Trang con được dời/thu phóng vào vùng trống; các view khác giữ nguyên khung 1600×900.
         static void FrameView(RectTransform rt,string key)
         {

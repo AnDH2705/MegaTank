@@ -8,7 +8,7 @@ namespace CatTanks
 {
     // Doanh trại theo bố cục quen thuộc của game idle (chỉ cách sắp xếp, art vẫn là của CatTanks):
     // danh sách mèo là màn mặc định → bấm thẻ mở trang chi tiết (trang bị quanh mèo, nút NÂNG CẤP lớn);
-    // các mục Đội hình, Kỹ năng, Pháo đài, Quái thú, Cộng hưởng vào từ cột phải và giữ nội dung cũ.
+    // các mục Đội hình, Kỹ năng, Pháo đài, Quái thú, Cộng hưởng vào từ cột phải (xem BarracksSectionsUI.cs).
     public sealed partial class CatTanksGame
     {
         const string RosterView="barracks-roster",CatView="barracks-cat";
@@ -16,7 +16,7 @@ namespace CatTanks
         static readonly string[] RoleKeys={"","TANK","WARRIOR","RANGER","MAGE","HEALER","ASSASSIN"};
         string rosterRole="";
 
-        string BarracksViewKey()=>tab=="cats"?RosterView:tab=="cat"?CatView:"barracks-"+tab;
+        string BarracksViewKey()=>tab=="cat"?CatView:BarracksSectionView();
         static string RoleName(string role)=>role switch
         {
             "TANK"=>"Đỡ đòn","WARRIOR"=>"Chiến binh","RANGER"=>"Xạ thủ","MAGE"=>"Phép","HEALER"=>"Hồi máu","ASSASSIN"=>"Sát thủ",_=>"Tất cả"
@@ -28,22 +28,6 @@ namespace CatTanks
             "fortress"=>"Pháo đài","squad" or "presets"=>"Đội hình","skills"=>"Kỹ năng","monsters"=>"Quái thú","nexus"=>"Cộng hưởng",
             _=>"Doanh trại"
         };
-
-        // Các mục cũ (Pháo đài, Đội hình…) giữ nội dung prefab; Đội hình và Đội lưu dùng chung hai tab.
-        void BarracksSection()
-        {
-            if(tab is "squad" or "presets")
-            {
-                if(TabButton(283,148,300,50,"BỐ TRÍ",tab=="squad","Interface/Cats/Tab-squad")){tab="squad";scroll=Vector2.zero;}
-                if(TabButton(599,148,300,50,"ĐỘI LƯU",tab=="presets","Interface/Cats/Tab-presets")){tab="presets";scroll=Vector2.zero;}
-            }
-            useCodeGeometry=true;
-            switch(tab)
-            {
-                case "fortress":FortressUI();break;case "squad":SquadUI();break;case "skills":SkillsUI();break;
-                case "monsters":MonstersUI();break;case "presets":PresetsUI();break;case "nexus":NexusUI();break;
-            }
-        }
 
         // ---- Danh sách mèo ----
         void RosterUI()
