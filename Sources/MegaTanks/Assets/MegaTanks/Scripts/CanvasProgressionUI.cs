@@ -25,6 +25,7 @@ namespace MegaTanks
         }
         void DrawProgression(UIView v, Object definition, bool crew)
         {
+            if(crew&&v.GetComponent<CrewHtmlScreen>()!=null){if(popup=="Crew")v.GetComponent<CrewHtmlScreen>().Refresh();return;}
             bool supported = game.Progression.Supports(definition);
             foreach (string key in new[] { "Progression Panel", "Progression Summary", "Level Up", "Star Up" }) Active(v, key, supported);
             v.Get<UIStarStrip>("Detail Stars").Stars = supported ? game.Progression.Get(definition).Stars : 0;
@@ -126,3 +127,4 @@ namespace MegaTanks
         }
     }
 }
+

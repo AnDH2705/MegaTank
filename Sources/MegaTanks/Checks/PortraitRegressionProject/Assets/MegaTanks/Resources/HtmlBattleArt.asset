@@ -1,0 +1,1884 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08afde38307351c4d93737a40e7586dd, type: 3}
+  m_Name: HtmlBattleArt
+  m_EditorClassIdentifier: 
+  data:
+    images:
+    - key: tank_base_01_track_chassis
+      file: tank_base_01_track_chassis.png
+      source: Design\UnityDesignHandoff\Art\TankParts\base\01_track_chassis.png
+      sprite: {fileID: 21300000, guid: c6a8cf76bc73ece48a457e6e4853942b, type: 3}
+      texture: {fileID: 2800000, guid: c6a8cf76bc73ece48a457e6e4853942b, type: 3}
+    - key: tank_base_02_wheel_01
+      file: tank_base_02_wheel_01.png
+      source: Design\UnityDesignHandoff\Art\TankParts\base\02_wheel_01.png
+      sprite: {fileID: 21300000, guid: 3e2d2d66776087b47a700f8739cbd09a, type: 3}
+      texture: {fileID: 2800000, guid: 3e2d2d66776087b47a700f8739cbd09a, type: 3}
+    - key: tank_base_03_wheel_02
+      file: tank_base_03_wheel_02.png
+      source: Design\UnityDesignHandoff\Art\TankParts\base\03_wheel_02.png
+      sprite: {fileID: 21300000, guid: e78d278d96bbaba46902e7a2b792b4d1, type: 3}
+      texture: {fileID: 2800000, guid: e78d278d96bbaba46902e7a2b792b4d1, type: 3}
+    - key: tank_base_04_wheel_03
+      file: tank_base_04_wheel_03.png
+      source: Design\UnityDesignHandoff\Art\TankParts\base\04_wheel_03.png
+      sprite: {fileID: 21300000, guid: 8038cc8c91a025c4ebe6e64558b28cac, type: 3}
+      texture: {fileID: 2800000, guid: 8038cc8c91a025c4ebe6e64558b28cac, type: 3}
+    - key: tank_base_05_wheel_04
+      file: tank_base_05_wheel_04.png
+      source: Design\UnityDesignHandoff\Art\TankParts\base\05_wheel_04.png
+      sprite: {fileID: 21300000, guid: b0a6a610ed4ec2c49b401d158da1fc9e, type: 3}
+      texture: {fileID: 2800000, guid: b0a6a610ed4ec2c49b401d158da1fc9e, type: 3}
+    - key: tank_base_06_main_cannon_barrel
+      file: tank_base_06_main_cannon_barrel.png
+      source: Design\UnityDesignHandoff\Art\TankParts\base\06_main_cannon_barrel.png
+      sprite: {fileID: 21300000, guid: 7f0a20b3cb7bb7c4cb53d11f23b2585a, type: 3}
+      texture: {fileID: 2800000, guid: 7f0a20b3cb7bb7c4cb53d11f23b2585a, type: 3}
+    - key: tank_base_07_body_static
+      file: tank_base_07_body_static.png
+      source: Design\UnityDesignHandoff\Art\TankParts\base\07_body_static.png
+      sprite: {fileID: 21300000, guid: da5ef5dc5a28d414ab9c72a7261886e9, type: 3}
+      texture: {fileID: 2800000, guid: da5ef5dc5a28d414ab9c72a7261886e9, type: 3}
+    - key: tank_base_11_front_hull_frame
+      file: tank_base_11_front_hull_frame.png
+      source: Design\UnityDesignHandoff\Art\TankParts\base\11_front_hull_frame.png
+      sprite: {fileID: 21300000, guid: 4db558ef775906142b2eb6a359aac303, type: 3}
+      texture: {fileID: 2800000, guid: 4db558ef775906142b2eb6a359aac303, type: 3}
+    - key: tank_base_08_roof_machine_gun
+      file: tank_base_08_roof_machine_gun.png
+      source: Design\UnityDesignHandoff\Art\TankParts\base\08_roof_machine_gun.png
+      sprite: {fileID: 21300000, guid: 3445047a948a5a24585c336b2a1f9913, type: 3}
+      texture: {fileID: 2800000, guid: 3445047a948a5a24585c336b2a1f9913, type: 3}
+    - key: tank_base_09_mortar_barrel
+      file: tank_base_09_mortar_barrel.png
+      source: Design\UnityDesignHandoff\Art\TankParts\base\09_mortar_barrel.png
+      sprite: {fileID: 21300000, guid: 78b3cee3d8ca31f46b9fdc6660c37f59, type: 3}
+      texture: {fileID: 2800000, guid: 78b3cee3d8ca31f46b9fdc6660c37f59, type: 3}
+    - key: tank_base_10_mortar_front_support
+      file: tank_base_10_mortar_front_support.png
+      source: Design\UnityDesignHandoff\Art\TankParts\base\10_mortar_front_support.png
+      sprite: {fileID: 21300000, guid: 882a61dbd70d79f42a4706a08b789e67, type: 3}
+      texture: {fileID: 2800000, guid: 882a61dbd70d79f42a4706a08b789e67, type: 3}
+    - key: tank_speed_01_track_chassis
+      file: tank_speed_01_track_chassis.png
+      source: Design\UnityDesignHandoff\Art\TankParts\speed\01_track_chassis.png
+      sprite: {fileID: 21300000, guid: d68367ee56602a349a0974a3088033c8, type: 3}
+      texture: {fileID: 2800000, guid: d68367ee56602a349a0974a3088033c8, type: 3}
+    - key: tank_speed_02_wheel_01
+      file: tank_speed_02_wheel_01.png
+      source: Design\UnityDesignHandoff\Art\TankParts\speed\02_wheel_01.png
+      sprite: {fileID: 21300000, guid: 1a87cba78748b3c4aba8f81931901ed1, type: 3}
+      texture: {fileID: 2800000, guid: 1a87cba78748b3c4aba8f81931901ed1, type: 3}
+    - key: tank_speed_03_wheel_02
+      file: tank_speed_03_wheel_02.png
+      source: Design\UnityDesignHandoff\Art\TankParts\speed\03_wheel_02.png
+      sprite: {fileID: 21300000, guid: 17a885c5b456a494f890fab62fa837f0, type: 3}
+      texture: {fileID: 2800000, guid: 17a885c5b456a494f890fab62fa837f0, type: 3}
+    - key: tank_speed_04_wheel_03
+      file: tank_speed_04_wheel_03.png
+      source: Design\UnityDesignHandoff\Art\TankParts\speed\04_wheel_03.png
+      sprite: {fileID: 21300000, guid: f9cad7c1966adfd4e97628a3b3ce6bac, type: 3}
+      texture: {fileID: 2800000, guid: f9cad7c1966adfd4e97628a3b3ce6bac, type: 3}
+    - key: tank_speed_05_wheel_04
+      file: tank_speed_05_wheel_04.png
+      source: Design\UnityDesignHandoff\Art\TankParts\speed\05_wheel_04.png
+      sprite: {fileID: 21300000, guid: d148c38ddcf88a746b87510b71919919, type: 3}
+      texture: {fileID: 2800000, guid: d148c38ddcf88a746b87510b71919919, type: 3}
+    - key: tank_speed_06_main_cannon_barrel
+      file: tank_speed_06_main_cannon_barrel.png
+      source: Design\UnityDesignHandoff\Art\TankParts\speed\06_main_cannon_barrel.png
+      sprite: {fileID: 21300000, guid: 4ef3d790f526e694c8dccdaa8a0473e8, type: 3}
+      texture: {fileID: 2800000, guid: 4ef3d790f526e694c8dccdaa8a0473e8, type: 3}
+    - key: tank_speed_07_body_static
+      file: tank_speed_07_body_static.png
+      source: Design\UnityDesignHandoff\Art\TankParts\speed\07_body_static.png
+      sprite: {fileID: 21300000, guid: f06d7e9e0f31e944bb153ebd958db502, type: 3}
+      texture: {fileID: 2800000, guid: f06d7e9e0f31e944bb153ebd958db502, type: 3}
+    - key: tank_speed_11_front_hull_frame
+      file: tank_speed_11_front_hull_frame.png
+      source: Design\UnityDesignHandoff\Art\TankParts\speed\11_front_hull_frame.png
+      sprite: {fileID: 21300000, guid: 1dce4ade73c4c8342875845917089c33, type: 3}
+      texture: {fileID: 2800000, guid: 1dce4ade73c4c8342875845917089c33, type: 3}
+    - key: tank_speed_08_roof_machine_gun
+      file: tank_speed_08_roof_machine_gun.png
+      source: Design\UnityDesignHandoff\Art\TankParts\speed\08_roof_machine_gun.png
+      sprite: {fileID: 21300000, guid: 18ebab7d43320264b9d97e76b4b957e6, type: 3}
+      texture: {fileID: 2800000, guid: 18ebab7d43320264b9d97e76b4b957e6, type: 3}
+    - key: tank_speed_09_mortar_barrel
+      file: tank_speed_09_mortar_barrel.png
+      source: Design\UnityDesignHandoff\Art\TankParts\speed\09_mortar_barrel.png
+      sprite: {fileID: 21300000, guid: 6e70e1623d9c8bd4db1b4f07be92b809, type: 3}
+      texture: {fileID: 2800000, guid: 6e70e1623d9c8bd4db1b4f07be92b809, type: 3}
+    - key: tank_speed_10_mortar_front_support
+      file: tank_speed_10_mortar_front_support.png
+      source: Design\UnityDesignHandoff\Art\TankParts\speed\10_mortar_front_support.png
+      sprite: {fileID: 21300000, guid: 487ea3422081f1541bb7bdc9e8ce1bd3, type: 3}
+      texture: {fileID: 2800000, guid: 487ea3422081f1541bb7bdc9e8ce1bd3, type: 3}
+    - key: tank_heavy_01_track_chassis
+      file: tank_heavy_01_track_chassis.png
+      source: Design\UnityDesignHandoff\Art\TankParts\heavy\01_track_chassis.png
+      sprite: {fileID: 21300000, guid: 1e9d6ee5a004bd24ca1df3b401707b9c, type: 3}
+      texture: {fileID: 2800000, guid: 1e9d6ee5a004bd24ca1df3b401707b9c, type: 3}
+    - key: tank_heavy_02_wheel_01
+      file: tank_heavy_02_wheel_01.png
+      source: Design\UnityDesignHandoff\Art\TankParts\heavy\02_wheel_01.png
+      sprite: {fileID: 21300000, guid: 782e28d298d0d224abf895c8136b774a, type: 3}
+      texture: {fileID: 2800000, guid: 782e28d298d0d224abf895c8136b774a, type: 3}
+    - key: tank_heavy_03_wheel_02
+      file: tank_heavy_03_wheel_02.png
+      source: Design\UnityDesignHandoff\Art\TankParts\heavy\03_wheel_02.png
+      sprite: {fileID: 21300000, guid: e6a7ceb937e6f394a9cb4608215e516d, type: 3}
+      texture: {fileID: 2800000, guid: e6a7ceb937e6f394a9cb4608215e516d, type: 3}
+    - key: tank_heavy_04_wheel_03
+      file: tank_heavy_04_wheel_03.png
+      source: Design\UnityDesignHandoff\Art\TankParts\heavy\04_wheel_03.png
+      sprite: {fileID: 21300000, guid: 532de6de3f2b1014a97f1454f3f30549, type: 3}
+      texture: {fileID: 2800000, guid: 532de6de3f2b1014a97f1454f3f30549, type: 3}
+    - key: tank_heavy_05_wheel_04
+      file: tank_heavy_05_wheel_04.png
+      source: Design\UnityDesignHandoff\Art\TankParts\heavy\05_wheel_04.png
+      sprite: {fileID: 21300000, guid: 0af74adcf312fb74a82b902f7cafd28c, type: 3}
+      texture: {fileID: 2800000, guid: 0af74adcf312fb74a82b902f7cafd28c, type: 3}
+    - key: tank_heavy_06_main_cannon_barrel
+      file: tank_heavy_06_main_cannon_barrel.png
+      source: Design\UnityDesignHandoff\Art\TankParts\heavy\06_main_cannon_barrel.png
+      sprite: {fileID: 21300000, guid: 51332ac34a8b32b418e9b9ec52b9bac3, type: 3}
+      texture: {fileID: 2800000, guid: 51332ac34a8b32b418e9b9ec52b9bac3, type: 3}
+    - key: tank_heavy_07_body_static
+      file: tank_heavy_07_body_static.png
+      source: Design\UnityDesignHandoff\Art\TankParts\heavy\07_body_static.png
+      sprite: {fileID: 21300000, guid: c85c315735220924bac65282dd22268c, type: 3}
+      texture: {fileID: 2800000, guid: c85c315735220924bac65282dd22268c, type: 3}
+    - key: tank_heavy_11_front_hull_frame
+      file: tank_heavy_11_front_hull_frame.png
+      source: Design\UnityDesignHandoff\Art\TankParts\heavy\11_front_hull_frame.png
+      sprite: {fileID: 21300000, guid: d3dae4970c2346b42b068e36c1728658, type: 3}
+      texture: {fileID: 2800000, guid: d3dae4970c2346b42b068e36c1728658, type: 3}
+    - key: tank_heavy_08_roof_machine_gun
+      file: tank_heavy_08_roof_machine_gun.png
+      source: Design\UnityDesignHandoff\Art\TankParts\heavy\08_roof_machine_gun.png
+      sprite: {fileID: 21300000, guid: 7ba16da79f9a6af4aa6c883fcb46900b, type: 3}
+      texture: {fileID: 2800000, guid: 7ba16da79f9a6af4aa6c883fcb46900b, type: 3}
+    - key: tank_heavy_09_mortar_barrel
+      file: tank_heavy_09_mortar_barrel.png
+      source: Design\UnityDesignHandoff\Art\TankParts\heavy\09_mortar_barrel.png
+      sprite: {fileID: 21300000, guid: 8e2fe0300d93bfa4d975518b939db21f, type: 3}
+      texture: {fileID: 2800000, guid: 8e2fe0300d93bfa4d975518b939db21f, type: 3}
+    - key: tank_heavy_10_mortar_front_support
+      file: tank_heavy_10_mortar_front_support.png
+      source: Design\UnityDesignHandoff\Art\TankParts\heavy\10_mortar_front_support.png
+      sprite: {fileID: 21300000, guid: 458f7131be6f2d241863a96ef9bee3a6, type: 3}
+      texture: {fileID: 2800000, guid: 458f7131be6f2d241863a96ef9bee3a6, type: 3}
+    - key: car_01_body_static
+      file: car_01_body_static.png
+      source: Art\Asset\Enemies\Enemies_vehicles_Contrast_v2\car\parts\01_body_static.png
+      sprite: {fileID: 21300000, guid: fbb4ecd512c469f4b936378020ed81af, type: 3}
+      texture: {fileID: 2800000, guid: fbb4ecd512c469f4b936378020ed81af, type: 3}
+    - key: car_02_wheel_rear
+      file: car_02_wheel_rear.png
+      source: Art\Asset\Enemies\Enemies_vehicles_Contrast_v2\car\parts\02_wheel_rear.png
+      sprite: {fileID: 21300000, guid: b7bb87ce906caa24f9be544e11d87544, type: 3}
+      texture: {fileID: 2800000, guid: b7bb87ce906caa24f9be544e11d87544, type: 3}
+    - key: car_03_wheel_front
+      file: car_03_wheel_front.png
+      source: Art\Asset\Enemies\Enemies_vehicles_Contrast_v2\car\parts\03_wheel_front.png
+      sprite: {fileID: 21300000, guid: 7b0c0e8261171a844bc7d0aa39358747, type: 3}
+      texture: {fileID: 2800000, guid: 7b0c0e8261171a844bc7d0aa39358747, type: 3}
+    - key: plane_01_propeller_blades
+      file: plane_01_propeller_blades.png
+      source: Art\Asset\Enemies\Enemies_vehicles_Contrast_v2\plane\parts\01_propeller_blades.png
+      sprite: {fileID: 21300000, guid: c0ebebcf7d98f8c478f26d9e59701697, type: 3}
+      texture: {fileID: 2800000, guid: c0ebebcf7d98f8c478f26d9e59701697, type: 3}
+    - key: plane_02_wheel_rear
+      file: plane_02_wheel_rear.png
+      source: Art\Asset\Enemies\Enemies_vehicles_Contrast_v2\plane\parts\02_wheel_rear.png
+      sprite: {fileID: 21300000, guid: dcc6bc39f6da1d0459b7320ef886d57a, type: 3}
+      texture: {fileID: 2800000, guid: dcc6bc39f6da1d0459b7320ef886d57a, type: 3}
+    - key: plane_03_wheel_main
+      file: plane_03_wheel_main.png
+      source: Art\Asset\Enemies\Enemies_vehicles_Contrast_v2\plane\parts\03_wheel_main.png
+      sprite: {fileID: 21300000, guid: ccd20ed6283be434d85d77c711f45d12, type: 3}
+      texture: {fileID: 2800000, guid: ccd20ed6283be434d85d77c711f45d12, type: 3}
+    - key: plane_04_body_static
+      file: plane_04_body_static.png
+      source: Art\Asset\Enemies\Enemies_vehicles_Contrast_v2\plane\parts\04_body_static.png
+      sprite: {fileID: 21300000, guid: 4d9db1747965937478407affd2887fc3, type: 3}
+      texture: {fileID: 2800000, guid: 4d9db1747965937478407affd2887fc3, type: 3}
+    - key: industrial_bg_00_sky_static
+      file: industrial_bg_00_sky_static.png
+      source: Design\UnityDesignHandoff\Art\Backgrounds\industrial_bg\00_sky_static.png
+      sprite: {fileID: 21300000, guid: 3267bc5ba82ea244d8402c8a6e32ea2d, type: 3}
+      texture: {fileID: 2800000, guid: 3267bc5ba82ea244d8402c8a6e32ea2d, type: 3}
+    - key: industrial_bg_01_far_factories
+      file: industrial_bg_01_far_factories.png
+      source: Design\UnityDesignHandoff\Art\Backgrounds\industrial_bg\01_far_factories.png
+      sprite: {fileID: 21300000, guid: 376055b9bc5acb6478f83600a33cf1d8, type: 3}
+      texture: {fileID: 2800000, guid: 376055b9bc5acb6478f83600a33cf1d8, type: 3}
+    - key: industrial_bg_02_mid_industry
+      file: industrial_bg_02_mid_industry.png
+      source: Design\UnityDesignHandoff\Art\Backgrounds\industrial_bg\02_mid_industry.png
+      sprite: {fileID: 21300000, guid: f70ce4f803979664bb187c53701dc880, type: 3}
+      texture: {fileID: 2800000, guid: f70ce4f803979664bb187c53701dc880, type: 3}
+    - key: industrial_bg_03_road
+      file: industrial_bg_03_road.png
+      source: Design\UnityDesignHandoff\Art\Backgrounds\industrial_bg\03_road.png
+      sprite: {fileID: 21300000, guid: 22dcf949ecc219747934b604a9283002, type: 3}
+      texture: {fileID: 2800000, guid: 22dcf949ecc219747934b604a9283002, type: 3}
+    - key: industrial_bg_04_street_buildings
+      file: industrial_bg_04_street_buildings.png
+      source: Design\UnityDesignHandoff\Art\Backgrounds\industrial_bg\04_street_buildings.png
+      sprite: {fileID: 21300000, guid: 1620e371b948dc34d8a768ee5c39dbce, type: 3}
+      texture: {fileID: 2800000, guid: 1620e371b948dc34d8a768ee5c39dbce, type: 3}
+    - key: industrial_bg_05_rubble_weeds
+      file: industrial_bg_05_rubble_weeds.png
+      source: Design\UnityDesignHandoff\Art\Backgrounds\industrial_bg\05_rubble_weeds.png
+      sprite: {fileID: 21300000, guid: e00677a9800f12f4088a367e1fda94dc, type: 3}
+      texture: {fileID: 2800000, guid: e00677a9800f12f4088a367e1fda94dc, type: 3}
+    - key: parallax_bg_00_sky_static
+      file: parallax_bg_00_sky_static.png
+      source: Design\UnityDesignHandoff\Art\Backgrounds\parallax_bg\00_sky_static.png
+      sprite: {fileID: 21300000, guid: d98f89919bffbc24faa37186c115de4e, type: 3}
+      texture: {fileID: 2800000, guid: d98f89919bffbc24faa37186c115de4e, type: 3}
+    - key: parallax_bg_01_far_city
+      file: parallax_bg_01_far_city.png
+      source: Design\UnityDesignHandoff\Art\Backgrounds\parallax_bg\01_far_city.png
+      sprite: {fileID: 21300000, guid: f86aa352786f540468e68b9110d7d151, type: 3}
+      texture: {fileID: 2800000, guid: f86aa352786f540468e68b9110d7d151, type: 3}
+    - key: parallax_bg_02_viaduct
+      file: parallax_bg_02_viaduct.png
+      source: Design\UnityDesignHandoff\Art\Backgrounds\parallax_bg\02_viaduct.png
+      sprite: {fileID: 21300000, guid: 691641b1048446c41986e84bdb8a05ae, type: 3}
+      texture: {fileID: 2800000, guid: 691641b1048446c41986e84bdb8a05ae, type: 3}
+    - key: parallax_bg_03_road
+      file: parallax_bg_03_road.png
+      source: Design\UnityDesignHandoff\Art\Backgrounds\parallax_bg\03_road.png
+      sprite: {fileID: 21300000, guid: cd2235a7f24f0c14389ff768fb75b7e9, type: 3}
+      texture: {fileID: 2800000, guid: cd2235a7f24f0c14389ff768fb75b7e9, type: 3}
+    - key: parallax_bg_04_street_buildings
+      file: parallax_bg_04_street_buildings.png
+      source: Design\UnityDesignHandoff\Art\Backgrounds\parallax_bg\04_street_buildings.png
+      sprite: {fileID: 21300000, guid: b3602989a57204f49b1c958aa121bb76, type: 3}
+      texture: {fileID: 2800000, guid: b3602989a57204f49b1c958aa121bb76, type: 3}
+    - key: parallax_bg_05_foreground_debris
+      file: parallax_bg_05_foreground_debris.png
+      source: Design\UnityDesignHandoff\Art\Backgrounds\parallax_bg\05_foreground_debris.png
+      sprite: {fileID: 21300000, guid: 0f151da8690e9254485c8ed31d595a96, type: 3}
+      texture: {fileID: 2800000, guid: 0f151da8690e9254485c8ed31d595a96, type: 3}
+    - key: parallax_bg_06_overhead_cables
+      file: parallax_bg_06_overhead_cables.png
+      source: Design\UnityDesignHandoff\Art\Backgrounds\parallax_bg\06_overhead_cables.png
+      sprite: {fileID: 21300000, guid: a4e7d1ca3b579cc4badd140f7820a189, type: 3}
+      texture: {fileID: 2800000, guid: a4e7d1ca3b579cc4badd140f7820a189, type: 3}
+    - key: ui_ad_badge
+      file: ui_ad_badge.png
+      source: Design\UnityDesignHandoff\Art\UI\ad_badge.png
+      sprite: {fileID: 21300000, guid: 57e0019d54704bc4babf30bf4fc0d130, type: 3}
+      texture: {fileID: 2800000, guid: 57e0019d54704bc4babf30bf4fc0d130, type: 3}
+    - key: ui_button
+      file: ui_button.png
+      source: Design\UnityDesignHandoff\Art\UI\button.png
+      sprite: {fileID: 21300000, guid: f85022dbfaa36eb4dbef0a1b466e13bf, type: 3}
+      texture: {fileID: 2800000, guid: f85022dbfaa36eb4dbef0a1b466e13bf, type: 3}
+    - key: ui_cannon
+      file: ui_cannon.png
+      source: Design\UnityDesignHandoff\Art\UI\cannon.png
+      sprite: {fileID: 21300000, guid: c1ff626120cece543b08bfafe4a2717e, type: 3}
+      texture: {fileID: 2800000, guid: c1ff626120cece543b08bfafe4a2717e, type: 3}
+    - key: ui_card_rare
+      file: ui_card_rare.png
+      source: Design\UnityDesignHandoff\Art\UI\card_rare.png
+      sprite: {fileID: 21300000, guid: 47a11763bf33d3648bac31cedf918b62, type: 3}
+      texture: {fileID: 2800000, guid: 47a11763bf33d3648bac31cedf918b62, type: 3}
+    - key: ui_card
+      file: ui_card.png
+      source: Design\UnityDesignHandoff\Art\UI\card.png
+      sprite: {fileID: 21300000, guid: 211a8156c4bc0c04994bab59d96fdc03, type: 3}
+      texture: {fileID: 2800000, guid: 211a8156c4bc0c04994bab59d96fdc03, type: 3}
+    - key: ui_explosive
+      file: ui_explosive.png
+      source: Design\UnityDesignHandoff\Art\UI\explosive.png
+      sprite: {fileID: 21300000, guid: ebe40bb918b44f741829f6fb2de4d9b6, type: 3}
+      texture: {fileID: 2800000, guid: ebe40bb918b44f741829f6fb2de4d9b6, type: 3}
+    - key: ui_gears
+      file: ui_gears.png
+      source: Design\UnityDesignHandoff\Art\UI\gears.png
+      sprite: {fileID: 21300000, guid: 75ef2bada3dced14b96283366c4cc02c, type: 3}
+      texture: {fileID: 2800000, guid: 75ef2bada3dced14b96283366c4cc02c, type: 3}
+    - key: ui_heal
+      file: ui_heal.png
+      source: Design\UnityDesignHandoff\Art\UI\heal.png
+      sprite: {fileID: 21300000, guid: 79b46984af7e95a46ad8ceaa6c50def8, type: 3}
+      texture: {fileID: 2800000, guid: 79b46984af7e95a46ad8ceaa6c50def8, type: 3}
+    - key: ui_mg
+      file: ui_mg.png
+      source: Design\UnityDesignHandoff\Art\UI\mg.png
+      sprite: {fileID: 21300000, guid: 660c803ab88b5b9428322d0e28ff8aa6, type: 3}
+      texture: {fileID: 2800000, guid: 660c803ab88b5b9428322d0e28ff8aa6, type: 3}
+    - key: ui_mortar
+      file: ui_mortar.png
+      source: Design\UnityDesignHandoff\Art\UI\mortar.png
+      sprite: {fileID: 21300000, guid: cc3976a455d0e9c4a9e99505ddc3471c, type: 3}
+      texture: {fileID: 2800000, guid: cc3976a455d0e9c4a9e99505ddc3471c, type: 3}
+    - key: ui_panel
+      file: ui_panel.png
+      source: Design\UnityDesignHandoff\Art\UI\panel.png
+      sprite: {fileID: 21300000, guid: d46146d8cf62fce4bb626f5cf93d0bab, type: 3}
+      texture: {fileID: 2800000, guid: d46146d8cf62fce4bb626f5cf93d0bab, type: 3}
+    - key: ui_piercing
+      file: ui_piercing.png
+      source: Design\UnityDesignHandoff\Art\UI\piercing.png
+      sprite: {fileID: 21300000, guid: 5093c931ba481734bbb856f9a9fd0f01, type: 3}
+      texture: {fileID: 2800000, guid: 5093c931ba481734bbb856f9a9fd0f01, type: 3}
+    - key: ui_plasma
+      file: ui_plasma.png
+      source: Design\UnityDesignHandoff\Art\UI\plasma.png
+      sprite: {fileID: 21300000, guid: 5b4e0c8c109be614d9d6cc34e8d4df2a, type: 3}
+      texture: {fileID: 2800000, guid: 5b4e0c8c109be614d9d6cc34e8d4df2a, type: 3}
+    - key: ui_resource_gears
+      file: ui_resource_gears.png
+      source: Design\UnityDesignHandoff\Art\UI\resource_gears.png
+      sprite: {fileID: 21300000, guid: 9363d9cb928b25a408ec830cbf628f2f, type: 3}
+      texture: {fileID: 2800000, guid: 9363d9cb928b25a408ec830cbf628f2f, type: 3}
+    - key: ui_resource_money
+      file: ui_resource_money.png
+      source: Design\UnityDesignHandoff\Art\UI\resource_money.png
+      sprite: {fileID: 21300000, guid: 03cdead8ad093ba45905ad30ea4ad17c, type: 3}
+      texture: {fileID: 2800000, guid: 03cdead8ad093ba45905ad30ea4ad17c, type: 3}
+    - key: tent
+      file: tent.png
+      source: Design\UnityDesignHandoff\Art\Environment\tent.png
+      sprite: {fileID: 21300000, guid: fe68149d782498d4d972a3a7a25eb335, type: 3}
+      texture: {fileID: 2800000, guid: fe68149d782498d4d972a3a7a25eb335, type: 3}
+    - key: ammo_mortar
+      file: ammo_mortar.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 06c7c988373cdda4c8067aa66cc9e2dc, type: 3}
+      texture: {fileID: 2800000, guid: 06c7c988373cdda4c8067aa66cc9e2dc, type: 3}
+    - key: ammo_cannon
+      file: ammo_cannon.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: d82673e667654384b9c544a4c9290cbb, type: 3}
+      texture: {fileID: 2800000, guid: d82673e667654384b9c544a4c9290cbb, type: 3}
+    - key: crew_driver_drive
+      file: crew_driver_drive.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 59b1a6c7f53948843942f6911e4d82c2, type: 3}
+      texture: {fileID: 2800000, guid: 59b1a6c7f53948843942f6911e4d82c2, type: 3}
+    - key: crew_driver_fire
+      file: crew_driver_fire.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 56e76c0c797118e4183d0f3eca5e6f94, type: 3}
+      texture: {fileID: 2800000, guid: 56e76c0c797118e4183d0f3eca5e6f94, type: 3}
+    - key: crew_driver_idle
+      file: crew_driver_idle.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 5772d00f4c89281409701c32d3c2d2be, type: 3}
+      texture: {fileID: 2800000, guid: 5772d00f4c89281409701c32d3c2d2be, type: 3}
+    - key: crew_mg_drive
+      file: crew_mg_drive.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 9074668a5f9a62941b0f740fe2bab368, type: 3}
+      texture: {fileID: 2800000, guid: 9074668a5f9a62941b0f740fe2bab368, type: 3}
+    - key: crew_mg_fire
+      file: crew_mg_fire.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 12fa54b6cb62f494e88b165eb2f4069d, type: 3}
+      texture: {fileID: 2800000, guid: 12fa54b6cb62f494e88b165eb2f4069d, type: 3}
+    - key: crew_fat_idle
+      file: crew_fat_idle.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 7d9aa32bc46a4c944aea3a852a557271, type: 3}
+      texture: {fileID: 2800000, guid: 7d9aa32bc46a4c944aea3a852a557271, type: 3}
+    - key: crew_fat_ready
+      file: crew_fat_ready.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 9fbe9340c13e9db448fdd2508bdf0473, type: 3}
+      texture: {fileID: 2800000, guid: 9fbe9340c13e9db448fdd2508bdf0473, type: 3}
+    - key: crew_fat_walk
+      file: crew_fat_walk.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 4941214ab13f7b0468212ebbe0eaec1b, type: 3}
+      texture: {fileID: 2800000, guid: 4941214ab13f7b0468212ebbe0eaec1b, type: 3}
+    - key: crew_fat_attack
+      file: crew_fat_attack.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: be4444e2ff2a38e45ab9ecc7d614e1d9, type: 3}
+      texture: {fileID: 2800000, guid: be4444e2ff2a38e45ab9ecc7d614e1d9, type: 3}
+    - key: crew_fat_hurt
+      file: crew_fat_hurt.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 6a9461625195f27408269428ccee9442, type: 3}
+      texture: {fileID: 2800000, guid: 6a9461625195f27408269428ccee9442, type: 3}
+    - key: crew_fat_death
+      file: crew_fat_death.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 86ea990b355fd1b4792d42ce30039088, type: 3}
+      texture: {fileID: 2800000, guid: 86ea990b355fd1b4792d42ce30039088, type: 3}
+    - key: crew_dog_idle
+      file: crew_dog_idle.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: a42cf63f6a7fda440ae7cf0778a667a6, type: 3}
+      texture: {fileID: 2800000, guid: a42cf63f6a7fda440ae7cf0778a667a6, type: 3}
+    - key: crew_dog_walk
+      file: crew_dog_walk.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 3b3c75030868ce042b266dd4917cec4c, type: 3}
+      texture: {fileID: 2800000, guid: 3b3c75030868ce042b266dd4917cec4c, type: 3}
+    - key: crew_dog_attack
+      file: crew_dog_attack.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: d5ae702d91079bf429c4131ed36d96e1, type: 3}
+      texture: {fileID: 2800000, guid: d5ae702d91079bf429c4131ed36d96e1, type: 3}
+    - key: crew_dog_hurt
+      file: crew_dog_hurt.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 3a619e6e6a0758b448e56bb9d1a890f3, type: 3}
+      texture: {fileID: 2800000, guid: 3a619e6e6a0758b448e56bb9d1a890f3, type: 3}
+    - key: crew_dog_death
+      file: crew_dog_death.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 7730ba0ace939f042b52235cc530b9f8, type: 3}
+      texture: {fileID: 2800000, guid: 7730ba0ace939f042b52235cc530b9f8, type: 3}
+    - key: crew_dog_driver_drive
+      file: crew_dog_driver_drive.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 4564036f56eb6a849af6dd7353bd6e15, type: 3}
+      texture: {fileID: 2800000, guid: 4564036f56eb6a849af6dd7353bd6e15, type: 3}
+    - key: crew_dog_pilot_drive
+      file: crew_dog_pilot_drive.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 33267f9c0ee3ed44eaf01eb6dffc159b, type: 3}
+      texture: {fileID: 2800000, guid: 33267f9c0ee3ed44eaf01eb6dffc159b, type: 3}
+    - key: crew_dog_pilot_fire
+      file: crew_dog_pilot_fire.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 0ea5e7379b59758439606b1204f5e3b9, type: 3}
+      texture: {fileID: 2800000, guid: 0ea5e7379b59758439606b1204f5e3b9, type: 3}
+    - key: crew_dog_mg_drive
+      file: crew_dog_mg_drive.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 00d0ddafcc397a04e9dc72863b1a23bc, type: 3}
+      texture: {fileID: 2800000, guid: 00d0ddafcc397a04e9dc72863b1a23bc, type: 3}
+    - key: crew_dog_mg_fire
+      file: crew_dog_mg_fire.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 999c6183ab848c84fb9a3df0cdafebac, type: 3}
+      texture: {fileID: 2800000, guid: 999c6183ab848c84fb9a3df0cdafebac, type: 3}
+    - key: crew_cat_ready
+      file: crew_cat_ready.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 99a1023b53611424c907b6c63942efcf, type: 3}
+      texture: {fileID: 2800000, guid: 99a1023b53611424c907b6c63942efcf, type: 3}
+    - key: crew_cat_walk
+      file: crew_cat_walk.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 9ee1f40a814f41243a2ddd3ff10b4fe7, type: 3}
+      texture: {fileID: 2800000, guid: 9ee1f40a814f41243a2ddd3ff10b4fe7, type: 3}
+    - key: crew_cat_attack
+      file: crew_cat_attack.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: d6c0a31a935fa40458088f432831a1b3, type: 3}
+      texture: {fileID: 2800000, guid: d6c0a31a935fa40458088f432831a1b3, type: 3}
+    - key: crew_cat_hurt
+      file: crew_cat_hurt.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 1614af30d8a168b4f9bcda3f1c5135d5, type: 3}
+      texture: {fileID: 2800000, guid: 1614af30d8a168b4f9bcda3f1c5135d5, type: 3}
+    - key: crew_cat_death
+      file: crew_cat_death.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 070c8792f12750341aff8d8aa75e11d6, type: 3}
+      texture: {fileID: 2800000, guid: 070c8792f12750341aff8d8aa75e11d6, type: 3}
+    - key: crew_jeep_ready
+      file: crew_jeep_ready.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 39edb21da1788f54b863d49485d55a89, type: 3}
+      texture: {fileID: 2800000, guid: 39edb21da1788f54b863d49485d55a89, type: 3}
+    - key: crew_jeep_walk
+      file: crew_jeep_walk.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 4990de863ca8598478f0e6f72f44803a, type: 3}
+      texture: {fileID: 2800000, guid: 4990de863ca8598478f0e6f72f44803a, type: 3}
+    - key: crew_jeep_attack
+      file: crew_jeep_attack.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: c1c7ae5090171504ea87191a9d58f478, type: 3}
+      texture: {fileID: 2800000, guid: c1c7ae5090171504ea87191a9d58f478, type: 3}
+    - key: crew_jeep_hurt
+      file: crew_jeep_hurt.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 12a3d0487ed218144a6e8ece650353f5, type: 3}
+      texture: {fileID: 2800000, guid: 12a3d0487ed218144a6e8ece650353f5, type: 3}
+    - key: crew_jeep_death
+      file: crew_jeep_death.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 3b72cfe7ef299fb4d9a7e79100d1c621, type: 3}
+      texture: {fileID: 2800000, guid: 3b72cfe7ef299fb4d9a7e79100d1c621, type: 3}
+    - key: crew_pilot_ready
+      file: crew_pilot_ready.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 3553a0699f796f340889babdefa6db52, type: 3}
+      texture: {fileID: 2800000, guid: 3553a0699f796f340889babdefa6db52, type: 3}
+    - key: crew_pilot_walk
+      file: crew_pilot_walk.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: a44b8946a5c31be418a256fd1b210a20, type: 3}
+      texture: {fileID: 2800000, guid: a44b8946a5c31be418a256fd1b210a20, type: 3}
+    - key: crew_pilot_attack
+      file: crew_pilot_attack.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: f3fbcde0934e27748ae312d355824f29, type: 3}
+      texture: {fileID: 2800000, guid: f3fbcde0934e27748ae312d355824f29, type: 3}
+    - key: crew_pilot_hurt
+      file: crew_pilot_hurt.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 1e466788b6952a74b97d18238a85d448, type: 3}
+      texture: {fileID: 2800000, guid: 1e466788b6952a74b97d18238a85d448, type: 3}
+    - key: crew_pilot_death
+      file: crew_pilot_death.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 6bb565475e0712b499202c27cd9202a7, type: 3}
+      texture: {fileID: 2800000, guid: 6bb565475e0712b499202c27cd9202a7, type: 3}
+    - key: arcade_vfx_Explosion
+      file: arcade_vfx_Explosion.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 28dd5483ed237f64db020b815441647b, type: 3}
+      texture: {fileID: 2800000, guid: 28dd5483ed237f64db020b815441647b, type: 3}
+    - key: arcade_vfx_Smoke
+      file: arcade_vfx_Smoke.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 9233a3c903e603b43aecb75eb0962015, type: 3}
+      texture: {fileID: 2800000, guid: 9233a3c903e603b43aecb75eb0962015, type: 3}
+    - key: arcade_vfx_Hit
+      file: arcade_vfx_Hit.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: a07dcebffdb427b40b7a2894d860fe42, type: 3}
+      texture: {fileID: 2800000, guid: a07dcebffdb427b40b7a2894d860fe42, type: 3}
+    - key: arcade_vfx_Muzzle
+      file: arcade_vfx_Muzzle.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 3b43e3cc142ca3345870ad1c266a410c, type: 3}
+      texture: {fileID: 2800000, guid: 3b43e3cc142ca3345870ad1c266a410c, type: 3}
+    - key: arcade_vfx_Spark
+      file: arcade_vfx_Spark.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: d4c6990ad21a4ac41943e05d3ff25f8f, type: 3}
+      texture: {fileID: 2800000, guid: d4c6990ad21a4ac41943e05d3ff25f8f, type: 3}
+    - key: arcade_vfx_Glow
+      file: arcade_vfx_Glow.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 2d1b5f7d51f94f14b9767b729d1b7b8d, type: 3}
+      texture: {fileID: 2800000, guid: 2d1b5f7d51f94f14b9767b729d1b7b8d, type: 3}
+    - key: arcade_vfx_Shockwave
+      file: arcade_vfx_Shockwave.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 077b9d10de96e424fa2448788fac0955, type: 3}
+      texture: {fileID: 2800000, guid: 077b9d10de96e424fa2448788fac0955, type: 3}
+    - key: arcade_vfx_Beam
+      file: arcade_vfx_Beam.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 85f5dce675532b242a37d901c5ced9a0, type: 3}
+      texture: {fileID: 2800000, guid: 85f5dce675532b242a37d901c5ced9a0, type: 3}
+    - key: arcade_vfx_FireBoltHead
+      file: arcade_vfx_FireBoltHead.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: b88e571dcf6ad4049a5c84b3b0bab9df, type: 3}
+      texture: {fileID: 2800000, guid: b88e571dcf6ad4049a5c84b3b0bab9df, type: 3}
+    - key: arcade_vfx_Dust
+      file: arcade_vfx_Dust.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: b896927ac803d4f4aa1a8830ac7d9a07, type: 3}
+      texture: {fileID: 2800000, guid: b896927ac803d4f4aa1a8830ac7d9a07, type: 3}
+    - key: arcade_vfx_BeamTrail
+      file: arcade_vfx_BeamTrail.png
+      source: Art/Equipment-test.html#tank-game-assets
+      sprite: {fileID: 21300000, guid: 962a4514d3a37ad47bd15431f346a6f4, type: 3}
+      texture: {fileID: 2800000, guid: 962a4514d3a37ad47bd15431f346a6f4, type: 3}
+    - key: ground_fire
+      file: ground_fire.png
+      source: Art/Asset/vfx/ground_fire_vfx/assets/fire_strip_8f.png
+      sprite: {fileID: 21300000, guid: 9d1066bc7372ee34aab0a3b46e143b9c, type: 3}
+      texture: {fileID: 2800000, guid: 9d1066bc7372ee34aab0a3b46e143b9c, type: 3}
+    profiles:
+    - id: base
+      name: "Tank ti\xEAu chu\u1EA9n"
+      hp: 360
+      speed: 1
+      parts:
+      - key: tank_base_01_track_chassis
+        name: 01_track_chassis
+        position:
+        - 240
+        - 1035
+        size:
+        - 819
+        - 235
+        pivot:
+        - 652
+        - 1156
+        order: 0
+      - key: tank_base_02_wheel_01
+        name: 02_wheel_01
+        position:
+        - 331
+        - 1080
+        size:
+        - 161
+        - 158
+        pivot:
+        - 410.5
+        - 1159
+        order: 1
+      - key: tank_base_03_wheel_02
+        name: 03_wheel_02
+        position:
+        - 456
+        - 1080
+        size:
+        - 163
+        - 157
+        pivot:
+        - 537
+        - 1158.5
+        order: 2
+      - key: tank_base_04_wheel_03
+        name: 04_wheel_03
+        position:
+        - 676
+        - 1079
+        size:
+        - 162
+        - 158
+        pivot:
+        - 757
+        - 1158
+        order: 3
+      - key: tank_base_05_wheel_04
+        name: 05_wheel_04
+        position:
+        - 807
+        - 1080
+        size:
+        - 167
+        - 157
+        pivot:
+        - 890
+        - 1158.5
+        order: 4
+      - key: tank_base_06_main_cannon_barrel
+        name: 06_main_cannon_barrel
+        position:
+        - 1102
+        - 405
+        size:
+        - 246
+        - 188
+        pivot:
+        - 1125
+        - 496
+        order: 5
+      - key: tank_base_07_body_static
+        name: 07_body_static
+        position:
+        - 193
+        - 67
+        size:
+        - 957
+        - 978
+        pivot:
+        - 645
+        - 1040
+        order: 6
+      - key: tank_base_11_front_hull_frame
+        name: 11_front_hull_frame
+        position:
+        - 182
+        - 147
+        size:
+        - 919
+        - 928
+        pivot:
+        - 645
+        - 1040
+        order: 7
+      - key: tank_base_08_roof_machine_gun
+        name: 08_roof_machine_gun
+        position:
+        - 714
+        - 72
+        size:
+        - 449
+        - 180
+        pivot:
+        - 910
+        - 231
+        order: 8
+      - key: tank_base_09_mortar_barrel
+        name: 09_mortar_barrel
+        position:
+        - 93
+        - 235
+        size:
+        - 145
+        - 360
+        pivot:
+        - 213.14
+        - 561.9
+        order: 9
+      - key: tank_base_10_mortar_front_support
+        name: 10_mortar_front_support
+        position:
+        - 96
+        - 352
+        size:
+        - 156
+        - 257
+        pivot:
+        - 213.14
+        - 561.9
+        order: 10
+      seats:
+      - id: mg
+        x: 670
+        y: 244
+        scale: 0.52
+      - id: cannon
+        x: 735
+        y: 614
+        scale: 0.53
+      - id: mortar
+        x: 386
+        y: 661
+        scale: 0.49
+      - id: driver
+        x: 494
+        y: 974
+        scale: 0.52
+      - id: front
+        x: 835
+        y: 1023
+        scale: 0.49
+      guns:
+      - id: cannon
+        pivot:
+        - 1125
+        - 496
+        tip:
+        - 1348
+        - 496
+      - id: mg
+        pivot:
+        - 910
+        - 231
+        tip:
+        - 1160
+        - 156
+      - id: mortar
+        pivot:
+        - 166
+        - 235
+        tip:
+        - 166
+        - 235
+    - id: speed
+      name: "Tank \u0111\u1ECF t\u1ED1c \u0111\u1ED9"
+      hp: 300
+      speed: 1.25
+      parts:
+      - key: tank_speed_01_track_chassis
+        name: 01_track_chassis
+        position:
+        - -35.110157
+        - 1012.6035
+        size:
+        - 1280.1516
+        - 245.39648
+        pivot:
+        - 652
+        - 1116.2153
+        order: 0
+      - key: tank_speed_02_wheel_01
+        name: 02_wheel_01
+        position:
+        - 183.02005
+        - 1011.2402
+        size:
+        - 241.30655
+        - 209.95033
+        pivot:
+        - 303.6733
+        - 1116.2153
+        order: 1
+      - key: tank_speed_03_wheel_02
+        name: 03_wheel_02
+        position:
+        - 388.88043
+        - 1011.2402
+        size:
+        - 242.66986
+        - 209.95033
+        pivot:
+        - 510.21536
+        - 1116.2153
+        order: 2
+      - key: tank_speed_04_wheel_03
+        name: 04_wheel_03
+        position:
+        - 602.9207
+        - 1011.2402
+        size:
+        - 241.30655
+        - 209.95033
+        pivot:
+        - 723.574
+        - 1116.2153
+        order: 3
+      - key: tank_speed_05_wheel_04
+        name: 05_wheel_04
+        position:
+        - 807.4178
+        - 1011.2402
+        size:
+        - 241.30655
+        - 209.95033
+        pivot:
+        - 928.07104
+        - 1116.2153
+        order: 4
+      - key: tank_speed_06_main_cannon_barrel
+        name: 06_main_cannon_barrel
+        position:
+        - 1305.0273
+        - 434.55847
+        size:
+        - 280.84265
+        - 220.85684
+        pivot:
+        - 1326.8403
+        - 544.9869
+        order: 5
+      - key: tank_speed_07_body_static
+        name: 07_body_static
+        position:
+        - 5.789258
+        - 32.380894
+        size:
+        - 1278.7883
+        - 967.9528
+        pivot:
+        - 652
+        - 1018.05676
+        order: 6
+      - key: tank_speed_11_front_hull_frame
+        name: 11_front_hull_frame
+        position:
+        - -249.15042
+        - 125.08623
+        size:
+        - 1694.599
+        - 1010.2155
+        pivot:
+        - 652
+        - 1018.05676
+        order: 7
+      - key: tank_speed_08_roof_machine_gun
+        name: 08_roof_machine_gun
+        position:
+        - 743.34204
+        - 33.744205
+        size:
+        - 568.50183
+        - 218.1302
+        pivot:
+        - 964.19885
+        - 224.60814
+        order: 8
+      - key: tank_speed_09_mortar_barrel
+        name: 09_mortar_barrel
+        position:
+        - 127.12418
+        - 294.13715
+        size:
+        - 167.68759
+        - 374.9113
+        pivot:
+        - 213.01295
+        - 630.8757
+        order: 9
+      - key: tank_speed_10_mortar_front_support
+        name: 10_mortar_front_support
+        position:
+        - 125.76087
+        - 404.56555
+        size:
+        - 186.77399
+        - 279.47934
+        pivot:
+        - 213.01295
+        - 630.8757
+        order: 10
+      seats:
+      - id: mg
+        x: 665.6331
+        y: 249.14778
+        scale: 0.52
+      - id: cannon
+        x: 801.96454
+        y: 598.1561
+        scale: 0.53
+      - id: mortar
+        x: 372.52066
+        y: 647.2354
+        scale: 0.49
+      - id: driver
+        x: 447.50293
+        y: 908.99164
+        scale: 0.52
+      - id: front
+        x: 992.8284
+        y: 971.7041
+        scale: 0.49
+      guns:
+      - id: cannon
+        pivot:
+        - 1326.8403
+        - 544.9869
+        tip:
+        - 1558.6036
+        - 544.9869
+      - id: mg
+        pivot:
+        - 964.19885
+        - 224.60814
+        tip:
+        - 1284.5776
+        - 174.16553
+      - id: mortar
+        pivot:
+        - 213.01295
+        - 630.8757
+        tip:
+        - 208.92302
+        - 336.39987
+    - id: heavy
+      name: "Tank xanh b\u1ECDc th\xE9p"
+      hp: 480
+      speed: 0.85
+      parts:
+      - key: tank_heavy_01_track_chassis
+        name: 01_track_chassis
+        position:
+        - 65.99455
+        - 1027.5209
+        size:
+        - 1115.6171
+        - 230.47913
+        pivot:
+        - 652
+        - 1117.0154
+        order: 0
+      - key: tank_heavy_02_wheel_01
+        name: 02_wheel_01
+        position:
+        - 225.36842
+        - 1021.3911
+        size:
+        - 214.54175
+        - 191.24864
+        pivot:
+        - 332.63928
+        - 1117.0154
+        order: 1
+      - key: tank_heavy_03_wheel_02
+        name: 03_wheel_02
+        position:
+        - 399.45374
+        - 1021.3911
+        size:
+        - 215.7677
+        - 191.24864
+        pivot:
+        - 507.33755
+        - 1117.0154
+        order: 2
+      - key: tank_heavy_04_wheel_03
+        name: 04_wheel_03
+        position:
+        - 640.96643
+        - 1021.3911
+        size:
+        - 215.7677
+        - 191.24864
+        pivot:
+        - 748.2373
+        - 1117.0154
+        order: 3
+      - key: tank_heavy_05_wheel_04
+        name: 05_wheel_04
+        position:
+        - 817.5036
+        - 1021.3911
+        size:
+        - 215.7677
+        - 191.24864
+        pivot:
+        - 925.38745
+        - 1117.0154
+        order: 4
+      - key: tank_heavy_06_main_cannon_barrel
+        name: 06_main_cannon_barrel
+        position:
+        - 1260.0726
+        - 289.49728
+        size:
+        - 247.64247
+        - 230.47913
+        pivot:
+        - 1278.4619
+        - 404.73685
+        order: 5
+      - key: tank_heavy_07_body_static
+        name: 07_body_static
+        position:
+        - 62.316696
+        - -117.51906
+        size:
+        - 1010.1851
+        - 1073.9347
+        pivot:
+        - 652
+        - 1016.4873
+        order: 6
+      - key: tank_heavy_11_front_hull_frame
+        name: 11_front_hull_frame
+        position:
+        - -52.922867
+        - -40.28403
+        size:
+        - 1467.4656
+        - 1162.2032
+        pivot:
+        - 652
+        - 1016.4873
+        order: 7
+      - key: tank_heavy_08_roof_machine_gun
+        name: 08_roof_machine_gun
+        position:
+        - 768.4655
+        - -118.74501
+        size:
+        - 527.1597
+        - 198.60435
+        pivot:
+        - 968.29584
+        - 60.244102
+        order: 8
+      - key: tank_heavy_09_mortar_barrel
+        name: 09_mortar_barrel
+        position:
+        - -52.922867
+        - 100.70055
+        size:
+        - 167.95554
+        - 424.1797
+        pivot:
+        - 31.667877
+        - 486.87567
+        order: 9
+      - key: tank_heavy_10_mortar_front_support
+        name: 10_mortar_front_support
+        position:
+        - -48.019054
+        - 229.42558
+        size:
+        - 202.28221
+        - 313.84393
+        pivot:
+        - 31.667877
+        - 486.87567
+        order: 10
+      seats:
+      - id: mg
+        x: 676.51904
+        y: 82.31125
+        scale: 0.52
+      - id: cannon
+        x: 786.8548
+        y: 517.5245
+        scale: 0.53
+      - id: mortar
+        x: 333.25226
+        y: 544.4955
+        scale: 0.49
+      - id: driver
+        x: 455.84756
+        y: 891.4401
+        scale: 0.52
+      - id: front
+        x: 952.35846
+        y: 929.44464
+        scale: 0.49
+      guns:
+      - id: cannon
+        pivot:
+        - 1278.4619
+        - 404.73685
+        tip:
+        - 1475.8403
+        - 404.73685
+      - id: mg
+        pivot:
+        - 968.29584
+        - 60.244102
+        tip:
+        - 1269.8802
+        - 2.6243193
+      - id: mortar
+        pivot:
+        - 31.667877
+        - 486.87567
+        tip:
+        - 31.667877
+        - 143.60889
+    enemies:
+    - id: car
+      parts:
+      - key: car_01_body_static
+        name: 01_body_static
+        position:
+        - 71
+        - 45
+        size:
+        - 1340
+        - 842
+        pivot:
+        - 748
+        - 800
+        order: 0
+      - key: car_02_wheel_rear
+        name: 02_wheel_rear
+        position:
+        - 156
+        - 617
+        size:
+        - 401
+        - 399
+        pivot:
+        - 355
+        - 822
+        order: 0
+      - key: car_03_wheel_front
+        name: 03_wheel_front
+        position:
+        - 877
+        - 617
+        size:
+        - 399
+        - 399
+        pivot:
+        - 1079
+        - 822
+        order: 0
+    - id: plane
+      parts:
+      - key: plane_01_propeller_blades
+        name: 01_propeller_blades
+        position:
+        - 1256
+        - 137
+        size:
+        - 129
+        - 824
+        pivot:
+        - 1326
+        - 576
+        order: 0
+      - key: plane_02_wheel_rear
+        name: 02_wheel_rear
+        position:
+        - 181
+        - 722
+        size:
+        - 127
+        - 127
+        pivot:
+        - 244
+        - 785
+        order: 0
+      - key: plane_03_wheel_main
+        name: 03_wheel_main
+        position:
+        - 707
+        - 809
+        size:
+        - 230
+        - 229
+        pivot:
+        - 822
+        - 923
+        order: 0
+      - key: plane_04_body_static
+        name: 04_body_static
+        position:
+        - 52
+        - 32
+        size:
+        - 1388
+        - 872
+        pivot:
+        - 763
+        - 780
+        order: 0
+    backgrounds:
+    - id: industrial_bg
+      keys:
+      - industrial_bg_00_sky_static
+      - industrial_bg_01_far_factories
+      - industrial_bg_02_mid_industry
+      - industrial_bg_03_road
+      - industrial_bg_04_street_buildings
+      - industrial_bg_05_rubble_weeds
+    - id: parallax_bg
+      keys:
+      - parallax_bg_00_sky_static
+      - parallax_bg_01_far_city
+      - parallax_bg_02_viaduct
+      - parallax_bg_03_road
+      - parallax_bg_04_street_buildings
+      - parallax_bg_05_foreground_debris
+      - parallax_bg_06_overhead_cables
+    clips:
+    - id: driver_drive
+      key: crew_driver_drive
+      cols: 4
+      rows: 3
+      frames: 12
+      duration: 1
+      worldScale: 0.5
+      cell:
+      - 240
+      - 360
+      pivot:
+      - 110
+      - 252
+    - id: driver_fire
+      key: crew_driver_fire
+      cols: 4
+      rows: 3
+      frames: 12
+      duration: 0.7
+      worldScale: 0.5
+      cell:
+      - 240
+      - 360
+      pivot:
+      - 110
+      - 252
+    - id: driver_idle
+      key: crew_driver_idle
+      cols: 4
+      rows: 3
+      frames: 12
+      duration: 1.6
+      worldScale: 0.5
+      cell:
+      - 240
+      - 360
+      pivot:
+      - 110
+      - 342
+    - id: mg_drive
+      key: crew_mg_drive
+      cols: 4
+      rows: 3
+      frames: 12
+      duration: 1
+      worldScale: 0.5
+      cell:
+      - 240
+      - 360
+      pivot:
+      - 110
+      - 252
+    - id: mg_fire
+      key: crew_mg_fire
+      cols: 4
+      rows: 3
+      frames: 12
+      duration: 0.7
+      worldScale: 0.5
+      cell:
+      - 240
+      - 360
+      pivot:
+      - 110
+      - 252
+    - id: fat_idle
+      key: crew_fat_idle
+      cols: 4
+      rows: 3
+      frames: 12
+      duration: 1.6
+      worldScale: 0.5
+      cell:
+      - 240
+      - 360
+      pivot:
+      - 110
+      - 342
+    - id: fat_ready
+      key: crew_fat_ready
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 1.6
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: fat_walk
+      key: crew_fat_walk
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 1.25
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: fat_attack
+      key: crew_fat_attack
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 1.25
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: fat_hurt
+      key: crew_fat_hurt
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 0.48
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: fat_death
+      key: crew_fat_death
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 1.4
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: dog_idle
+      key: crew_dog_idle
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 1.4
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: dog_walk
+      key: crew_dog_walk
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 1.1
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: dog_attack
+      key: crew_dog_attack
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 0.95
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: dog_hurt
+      key: crew_dog_hurt
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 0.44
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: dog_death
+      key: crew_dog_death
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 1.3
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: dog_driver_drive
+      key: crew_dog_driver_drive
+      cols: 4
+      rows: 3
+      frames: 12
+      duration: 1
+      worldScale: 0.5
+      cell:
+      - 240
+      - 360
+      pivot:
+      - 110
+      - 252
+    - id: dog_pilot_drive
+      key: crew_dog_pilot_drive
+      cols: 4
+      rows: 3
+      frames: 12
+      duration: 1
+      worldScale: 0.5
+      cell:
+      - 240
+      - 360
+      pivot:
+      - 110
+      - 252
+    - id: dog_pilot_fire
+      key: crew_dog_pilot_fire
+      cols: 4
+      rows: 3
+      frames: 12
+      duration: 0.7
+      worldScale: 0.5
+      cell:
+      - 240
+      - 360
+      pivot:
+      - 110
+      - 252
+    - id: dog_mg_drive
+      key: crew_dog_mg_drive
+      cols: 4
+      rows: 3
+      frames: 12
+      duration: 1
+      worldScale: 0.5
+      cell:
+      - 240
+      - 360
+      pivot:
+      - 110
+      - 252
+    - id: dog_mg_fire
+      key: crew_dog_mg_fire
+      cols: 4
+      rows: 3
+      frames: 12
+      duration: 0.7
+      worldScale: 0.5
+      cell:
+      - 240
+      - 360
+      pivot:
+      - 110
+      - 252
+    - id: cat_ready
+      key: crew_cat_ready
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 1.2
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: cat_walk
+      key: crew_cat_walk
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 0.8
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: cat_attack
+      key: crew_cat_attack
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 1.05
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: cat_hurt
+      key: crew_cat_hurt
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 0.44
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: cat_death
+      key: crew_cat_death
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 1.3
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: jeep_ready
+      key: crew_jeep_ready
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 1.2
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: jeep_walk
+      key: crew_jeep_walk
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 0.8
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: jeep_attack
+      key: crew_jeep_attack
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 1.05
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: jeep_hurt
+      key: crew_jeep_hurt
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 0.44
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: jeep_death
+      key: crew_jeep_death
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 1.3
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: pilot_ready
+      key: crew_pilot_ready
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 1.2
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: pilot_walk
+      key: crew_pilot_walk
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 0.8
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: pilot_attack
+      key: crew_pilot_attack
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 1.05
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: pilot_hurt
+      key: crew_pilot_hurt
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 0.44
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: pilot_death
+      key: crew_pilot_death
+      cols: 6
+      rows: 3
+      frames: 18
+      duration: 1.3
+      worldScale: 0.4
+      cell:
+      - 320
+      - 304
+      pivot:
+      - 136
+      - 288
+    - id: Explosion
+      key: arcade_vfx_Explosion
+      cols: 4
+      rows: 3
+      frames: 12
+      duration: 0.48
+      worldScale: 1
+      cell:
+      - 128
+      - 128
+      pivot:
+      - 64
+      - 64
+    - id: Smoke
+      key: arcade_vfx_Smoke
+      cols: 4
+      rows: 2
+      frames: 8
+      duration: 0.6666667
+      worldScale: 1
+      cell:
+      - 128
+      - 128
+      pivot:
+      - 64
+      - 64
+    - id: Hit
+      key: arcade_vfx_Hit
+      cols: 4
+      rows: 1
+      frames: 4
+      duration: 0.13333334
+      worldScale: 1
+      cell:
+      - 128
+      - 128
+      pivot:
+      - 64
+      - 64
+    - id: Muzzle
+      key: arcade_vfx_Muzzle
+      cols: 2
+      rows: 1
+      frames: 2
+      duration: 0.06666667
+      worldScale: 1
+      cell:
+      - 128
+      - 128
+      pivot:
+      - 64
+      - 64
+    - id: Spark
+      key: arcade_vfx_Spark
+      cols: 1
+      rows: 1
+      frames: 1
+      duration: 1
+      worldScale: 1
+      cell:
+      - 128
+      - 128
+      pivot:
+      - 64
+      - 64
+    - id: Glow
+      key: arcade_vfx_Glow
+      cols: 1
+      rows: 1
+      frames: 1
+      duration: 1
+      worldScale: 1
+      cell:
+      - 128
+      - 128
+      pivot:
+      - 64
+      - 64
+    - id: Shockwave
+      key: arcade_vfx_Shockwave
+      cols: 3
+      rows: 1
+      frames: 3
+      duration: 0.25
+      worldScale: 1
+      cell:
+      - 128
+      - 128
+      pivot:
+      - 64
+      - 64
+    - id: Beam
+      key: arcade_vfx_Beam
+      cols: 1
+      rows: 1
+      frames: 1
+      duration: 1
+      worldScale: 1
+      cell:
+      - 128
+      - 128
+      pivot:
+      - 64
+      - 64
+    - id: FireBoltHead
+      key: arcade_vfx_FireBoltHead
+      cols: 3
+      rows: 1
+      frames: 3
+      duration: 0.1
+      worldScale: 1
+      cell:
+      - 128
+      - 128
+      pivot:
+      - 64
+      - 64
+    - id: Dust
+      key: arcade_vfx_Dust
+      cols: 1
+      rows: 1
+      frames: 1
+      duration: 1
+      worldScale: 1
+      cell:
+      - 128
+      - 128
+      pivot:
+      - 64
+      - 64
+    - id: BeamTrail
+      key: arcade_vfx_BeamTrail
+      cols: 1
+      rows: 1
+      frames: 1
+      duration: 1
+      worldScale: 1
+      cell:
+      - 128
+      - 128
+      pivot:
+      - 64
+      - 64
+    - id: GroundFire
+      key: ground_fire
+      cols: 2
+      rows: 4
+      frames: 8
+      duration: 0.66667
+      worldScale: 1
+      cell:
+      - 736
+      - 256
+      pivot:
+      - 368
+      - 224

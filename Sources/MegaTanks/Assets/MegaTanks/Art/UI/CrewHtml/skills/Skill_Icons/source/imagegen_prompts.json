@@ -1,0 +1,129 @@
+{
+  "tool": "built-in image_gen",
+  "shared_style": "Use case: stylized-concept\nAsset type: ONE square skill icon for a cute comic military-cat mobile game, full-bleed opaque colored background.\nInput image 1 is the user's ART STYLE reference. Match its bold flat 2D comic skill icons: very thick clean near-black contour lines, simple vivid cel colors with only one shadow tone, huge readable central symbol, dynamic perspective, graphic speed rays, small white sparkle accents, strong contrast. This is punchy illustrated game-icon art, not a portrait or a 3D render. No realistic rendering, metallic phototexture, painterly fur, gradients across the main objects or pixel art.\nComposition: exactly ONE skill image filling ONE square, NOT an icon sheet, collage, grid, card or framed tile. Main symbol occupies about 80% of the square with a clear silhouette readable at 64 pixels. Background fills every corner edge to edge; no white/gray margins, decorative frame, rounded corner, text, words, numbers, badge label, watermark or logo. Keep 1 main action and at most 1 small secondary indicator. Tiny plus/crosshair/lightning symbols are allowed where requested. Cats are represented by orange feline paws, helmet/ears or simple cute cat silhouettes, not bears, dogs or humans. Beautiful crisp thick ink, playful exaggerated energy, like the supplied reference.",
+  "icons": [
+    {
+      "id": "melee_shovel_damage",
+      "role": "melee",
+      "name_vi": "Đập xẻng",
+      "meaning": "Tăng sát thương cận chiến",
+      "palette": "Red and magenta radial impact rays, bright yellow-white burst",
+      "subject": "A huge worn blue-gray STEEL SHOVEL BLADE slamming diagonally down toward the lower-right into a jagged yellow-white impact star, gripped by one ORANGE CAT PAW in a brown fingerless glove. Thick dark ink makes the shovel and paw readable. This represents a powerful shovel melee hit. No full character."
+    },
+    {
+      "id": "melee_combo",
+      "role": "melee",
+      "name_vi": "Liên kích",
+      "meaning": "Đánh cận chiến nhanh, liên tiếp",
+      "palette": "Crimson and violet diagonal speed rays with hot pink and white energy",
+      "subject": "Two chunky orange CAT FISTS in fingerless gloves punching rapidly along a forward diagonal, one large foreground fist and one smaller follow-up fist, connected visually by bold white/pink swoosh strokes. This represents quick consecutive melee strikes. Keep the two paw silhouettes clear and simple, no character face."
+    },
+    {
+      "id": "melee_resistance",
+      "role": "melee",
+      "name_vi": "Vững vàng",
+      "meaning": "Chống chịu của mèo cận chiến",
+      "palette": "Deep violet/blue radial rays, gold and cyan defensive accents",
+      "subject": "A sturdy GOLD SHIELD with a bold CAT PAW emblem blocks one red comic impact arrow/shock at its outer rim; bright cyan protective edge and two little white stars. One chunky orange gloved cat paw braces the shield from behind. This represents melee character toughness and damage resistance, not tank armor."
+    },
+    {
+      "id": "driver_tank_speed",
+      "role": "driver",
+      "name_vi": "Tăng tốc",
+      "meaning": "Tốc độ di chuyển của tank",
+      "palette": "Vivid green/lime diagonal speed stripes, golden-orange tank highlights",
+      "subject": "A cute compact GREEN TRACKED TANK dashing toward the right in dynamic three-quarter side view, two thick white speed swooshes from the tracks and one small bright yellow lightning bolt. Large tank body, obvious rubber TRACKS, no wheels, no text. This represents tank movement speed."
+    },
+    {
+      "id": "driver_tank_armor",
+      "role": "driver",
+      "name_vi": "Giáp xe",
+      "meaning": "Chống chịu của tank",
+      "palette": "Emerald green radial rays, gold armor and cyan shield glow",
+      "subject": "A chunky compact GREEN TRACKED TANK protected inside one large translucent CYAN SHIELD outline; a big gold front armor plate catches a white/yellow impact spark. Keep the tank silhouette and tracks visible, emphasize armored vehicle protection, no character holding a hand shield."
+    },
+    {
+      "id": "driver_team_buff",
+      "role": "driver",
+      "name_vi": "Cổ vũ đồng đội",
+      "meaning": "Buff hỗ trợ đồng đội",
+      "palette": "Green/lime radial rays with warm gold aura and white sparkles",
+      "subject": "THREE simplified cute CAT HEAD silhouettes grouped together, one larger central cat wearing tanker goggles and two smaller cat allies behind, under a single big glowing golden UPWARD CHEVRON/aura. Faces extremely simple friendly comic shapes. This represents a team buff and rallying allies, not healing or money."
+    },
+    {
+      "id": "cannon_accuracy",
+      "role": "cannon",
+      "name_vi": "Ngắm chuẩn",
+      "meaning": "Độ chính xác của pháo tank",
+      "palette": "Scarlet/orange diagonal rays, cyan reticle and golden shell",
+      "subject": "A short thick GREEN TANK CANNON BARREL aiming a SINGLE large brass artillery shell precisely through a bold CYAN CROSSHAIR/BULLSEYE on the right. Oversized cannon muzzle, shell and reticle are the only main shapes. Direct straight shot, no arcing mortar trajectory and no rifle."
+    },
+    {
+      "id": "cannon_fire_rate",
+      "role": "cannon",
+      "name_vi": "Pháo bắn nhanh",
+      "meaning": "Tốc độ bắn của pháo tank",
+      "palette": "Red/magenta speed rays, bright yellow-orange muzzle flare and cyan lightning",
+      "subject": "One short thick GREEN TANK CANNON MUZZLE in the lower-left fires TWO chunky brass artillery shells quickly in a straight diagonal burst toward the upper-right, with one small yellow lightning bolt as the speed cue. Both shells are large artillery shells, not many tiny machinegun bullets. Bold simple shapes."
+    },
+    {
+      "id": "cannon_damage",
+      "role": "cannon",
+      "name_vi": "Đạn pháo uy lực",
+      "meaning": "Sát thương của pháo tank",
+      "palette": "Hot red/orange impact rays with yellow-white explosion and violet shadow",
+      "subject": "ONE huge brass pointed TANK ARTILLERY SHELL with a dark steel nose smashing forward into a massive jagged yellow-white COMIC IMPACT BURST, orange flame shapes wrapping its rear. Large shell dominates the square. This represents heavy direct cannon damage, not an ammo count or mortar finned bomb."
+    },
+    {
+      "id": "mortar_accuracy",
+      "role": "mortar",
+      "name_vi": "Tọa độ chuẩn",
+      "meaning": "Độ chính xác của mortar",
+      "palette": "Deep violet/royal blue radial rays, cyan aiming arc and orange shell",
+      "subject": "A SHORT GREEN MORTAR TUBE angled up from the lower-left, a single CHUNKY FIN-TAILED MORTAR BOMB following a clear high CYAN CURVED ARC that ends at one small crosshair on the right. Keep mortar bomb rounded with tail fins, clearly different from a straight cannon shell. Large simple symbolic composition."
+    },
+    {
+      "id": "mortar_ammo",
+      "role": "mortar",
+      "name_vi": "Túi đạn cối",
+      "meaning": "Tăng số đạn mortar",
+      "palette": "Violet/indigo radial stripes, golden-olive shells and lime plus sign",
+      "subject": "THREE chunky olive/golden MORTAR BOMBS bundled together in a triangular cluster, rounded noses and short obvious TAIL FINS, with one large bright lime PLUS SYMBOL in the upper-right. Bombs dominate, no launcher, no ammo belt or tiny rifle cartridges. This represents more mortar ammunition."
+    },
+    {
+      "id": "mortar_damage",
+      "role": "mortar",
+      "name_vi": "Cối bùng nổ",
+      "meaning": "Sát thương mortar",
+      "palette": "Violet and deep blue burst rays with bright orange-yellow-white explosion",
+      "subject": "One chunky FIN-TAILED MORTAR BOMB diving steeply downward from the upper-left into a broad bright orange/yellow COMIC EXPLOSION on the ground, with two chunky outward shock shapes. Rounded bomb and tail fins readable. Explosive area impact, clearly different from a horizontal cannon-shell impact."
+    },
+    {
+      "id": "mg_ammo",
+      "role": "mg",
+      "name_vi": "Băng đạn dài",
+      "meaning": "Tăng số đạn MG",
+      "palette": "Golden yellow/orange rays, brass cartridges and a lime plus sign",
+      "subject": "A thick curved LINKED MACHINE-GUN AMMO BELT of many SMALL BRASS BULLETS with dark tips sweeps across the square, one big bright green PLUS SYMBOL near its upper-right. Readable rounded linked cartridges with thick ink. No large artillery shells, mortar bombs, coin or money symbol."
+    },
+    {
+      "id": "mg_fire_rate",
+      "role": "mg",
+      "name_vi": "MG liên thanh",
+      "meaning": "Tốc độ bắn MG",
+      "palette": "Cyan/royal blue speed rays with gold muzzle flash and magenta speed accents",
+      "subject": "A DARK STEEL MACHINE-GUN MUZZLE with a PERFORATED BARREL SHROUD at the lower-left fires THREE SMALL GOLD BULLET STREAKS rapidly toward the upper-right; one small yellow lightning bolt signals fast fire. Crisp repeated bullet shapes, long machinegun barrel, no oversized cannon bore or mortar shell."
+    },
+    {
+      "id": "mg_damage",
+      "role": "mg",
+      "name_vi": "Đạn xuyên phá",
+      "meaning": "Sát thương MG",
+      "palette": "Cyan/violet impact rays with gold bullet and yellow-white piercing burst",
+      "subject": "ONE small pointed BRASS MACHINE-GUN BULLET in extreme dynamic close-up punches through a dark gray STEEL ARMOR PLATE, with a star-shaped yellow-white crack/impact and sharp orange speed swoosh. Bullet is a slender brass cartridge projectile, not a large artillery shell or finned mortar bomb. Represent stronger MG damage."
+    }
+  ],
+  "style_anchor": "melee_shovel_damage.png",
+  "additional_style_instruction": "Image 2 is the approved shovel skill STYLE ANCHOR. Match its exact very bold outlines, flat comic shape language, central-symbol size and white sparkle accents. Use the subject and BACKGROUND PALETTE specified for each skill, not the shovel subject or red palette unless requested.",
+  "reference_order": "First icon: style-reference only. Remaining icons: style-reference + approved shovel icon."
+}

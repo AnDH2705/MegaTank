@@ -72,17 +72,17 @@ namespace MegaTanks
             background.sizeDelta=canvasMax-canvasMin;
             lastSafe=safe;lastSize=new Vector2(Screen.width,Screen.height);
         }
-        public void ChangeStage(int delta){int count=game.Frontend?.stages?.Length??1;stageIndex=Mathf.Clamp(stageIndex+delta,0,Mathf.Max(0,count-1));RefreshStage();}
+        public void ChangeStage(int delta){if(HtmlBattleScreen.Available){stageIndex=Mathf.Clamp(stageIndex+delta,0,HtmlBattleScreen.ReadConfig().stages.Length-1);RefreshStage();return;}int count=game.Frontend?.stages?.Length??1;stageIndex=Mathf.Clamp(stageIndex+delta,0,Mathf.Max(0,count-1));RefreshStage();}
         void RefreshStage()
         {
-            var v=View(UIScreen.Home);var stages=game.Frontend?.stages;
+            var v=View(UIScreen.Home);if(HtmlBattleScreen.Available){var config=HtmlBattleScreen.ReadConfig();int count=config.stages.Length;stageIndex=Mathf.Clamp(stageIndex,0,count-1);Text(v,"Stage Name Plate/Selected Stage","Stage "+(stageIndex+1));Text(v,"Stage Swipe Area/Stage Count","STAGE "+(stageIndex+1)+" / "+count);Text(v,"Stage Swipe Area/Route Name",config.stages[stageIndex].title);v.Get<Button>("Previous Stage").interactable=stageIndex>0;v.Get<Button>("Next Stage").interactable=stageIndex<count-1;Active(v,"Previous Stage",count>1);Active(v,"Next Stage",count>1);v.Get<Image>("Stage Swipe Area").sprite=skin.homeStageSelector;return;}var stages=game.Frontend?.stages;
             string title=stages!=null&&stages.Length>0?stages[stageIndex].stageName:"Stage 1";
             Text(v,"Stage Name Plate/Selected Stage",title);Text(v,"Stage Swipe Area/Stage Count","ROUND 1 / "+(stages!=null&&stages.Length>0?stages[stageIndex].rounds:game.Stage.Definition.rounds));Text(v,"Stage Swipe Area/Route Name",title);
             v.Get<Button>("Previous Stage").interactable=stageIndex>0;v.Get<Button>("Next Stage").interactable=stageIndex<(stages?.Length??1)-1;
             Active(v,"Previous Stage",(stages?.Length??1)>1);Active(v,"Next Stage",(stages?.Length??1)>1);
             v.Get<Image>("Stage Swipe Area").sprite=(stages?.Length??1)>1?skin.homeStageSelector:skin.homeButtonBase;
         }
-        public void Play(){ClosePopup();if(game.Frontend?.stages?.Length>0)game.SelectStage(game.Frontend.stages[stageIndex]);game.StartBattle();screenKey="";Refresh();UpdateHud();}
+        public void Play(){if(HtmlBattleScreen.Available){ClosePopup();HtmlBattleScreen.Begin(game,stageIndex);return;}ClosePopup();if(game.Frontend?.stages?.Length>0)game.SelectStage(game.Frontend.stages[stageIndex]);game.StartBattle();screenKey="";Refresh();UpdateHud();}
         public void OpenEquipment(){activeSlot=null;filter=null;selected=null;OpenPopup("Equipment");}
         public void OpenPopup(string value)
         {
@@ -166,3 +166,4 @@ namespace MegaTanks
         void OnDestroy(){if(game!=null&&game.Progression!=null){game.Progression.Changed-=RefreshProgressionViews;game.Wallet.Changed-=RefreshUpgradeControls;}if(game!=null&&game.Wallet!=null)game.Wallet.Changed-=RefreshCurrencies;if(portraitTank!=null)Destroy(portraitTank);if(portraitCamera!=null)Destroy(portraitCamera.gameObject);if(portrait!=null){portrait.Release();Destroy(portrait);}}
     }
 }
+

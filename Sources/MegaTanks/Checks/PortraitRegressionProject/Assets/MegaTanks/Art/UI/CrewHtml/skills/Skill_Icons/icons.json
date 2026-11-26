@@ -1,0 +1,236 @@
+{
+  "source_tool": "built-in image_gen",
+  "style": "bold 2D comic skill icons",
+  "display_language": "en",
+  "size_px": [
+    512,
+    512
+  ],
+  "icons": [
+    {
+      "id": "melee_shovel_damage",
+      "role": "melee",
+      "name_en": "Shovel Slam",
+      "display_name": "Shovel Slam",
+      "name_vi": "Đập xẻng",
+      "purpose_vi": "Tăng sát thương cận chiến",
+      "file": "melee_shovel_damage.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "background": "opaque, full bleed",
+      "sha256": "551be6f0a613f97023b692ed3eed029401fb0237fddbd4fc3584bfd3bf8330f3"
+    },
+    {
+      "id": "melee_combo",
+      "role": "melee",
+      "name_en": "Rapid Strikes",
+      "display_name": "Rapid Strikes",
+      "name_vi": "Liên kích",
+      "purpose_vi": "Đánh cận chiến nhanh, liên tiếp",
+      "file": "melee_combo.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "background": "opaque, full bleed",
+      "sha256": "c12d12ca22beee566aee299c23c671dc71773be73c21478bb8110dcd8f10f2a2"
+    },
+    {
+      "id": "melee_resistance",
+      "role": "melee",
+      "name_en": "Iron Hide",
+      "display_name": "Iron Hide",
+      "name_vi": "Vững vàng",
+      "purpose_vi": "Chống chịu của mèo cận chiến",
+      "file": "melee_resistance.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "background": "opaque, full bleed",
+      "sha256": "5841909c1b82b8fb690b348810753692cd2f22cf5cd67f6cdda3eed5947b5250"
+    },
+    {
+      "id": "driver_tank_speed",
+      "role": "driver",
+      "name_en": "Full Throttle",
+      "display_name": "Full Throttle",
+      "name_vi": "Tăng tốc",
+      "purpose_vi": "Tốc độ di chuyển của tank",
+      "file": "driver_tank_speed.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "background": "opaque, full bleed",
+      "sha256": "e115343cac9bc472a5d505641de50671ffe50a2ff90dfd65221b843c751a8ef7"
+    },
+    {
+      "id": "driver_tank_armor",
+      "role": "driver",
+      "name_en": "Reinforced Armor",
+      "display_name": "Reinforced Armor",
+      "name_vi": "Giáp xe",
+      "purpose_vi": "Chống chịu của tank",
+      "file": "driver_tank_armor.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "background": "opaque, full bleed",
+      "sha256": "b6bd6aca9f52447666861250327625ece1ef14baa5ed507219b29ec46c21727e"
+    },
+    {
+      "id": "driver_team_buff",
+      "role": "driver",
+      "name_en": "Crew Rally",
+      "display_name": "Crew Rally",
+      "name_vi": "Cổ vũ đồng đội",
+      "purpose_vi": "Buff hỗ trợ đồng đội",
+      "file": "driver_team_buff.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "background": "opaque, full bleed",
+      "sha256": "49549cb585453f91c967c152f7d49d923c1547bc7bee97915b3a70e236f3848e"
+    },
+    {
+      "id": "cannon_accuracy",
+      "role": "cannon",
+      "name_en": "Steady Aim",
+      "display_name": "Steady Aim",
+      "name_vi": "Ngắm chuẩn",
+      "purpose_vi": "Độ chính xác của pháo tank",
+      "file": "cannon_accuracy.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "background": "opaque, full bleed",
+      "sha256": "2359064238377034171a46a053372cbdcb33259889261a456ea13afd4cc7bec2"
+    },
+    {
+      "id": "cannon_fire_rate",
+      "role": "cannon",
+      "name_en": "Quick Reload",
+      "display_name": "Quick Reload",
+      "name_vi": "Pháo bắn nhanh",
+      "purpose_vi": "Tốc độ bắn của pháo tank",
+      "file": "cannon_fire_rate.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "background": "opaque, full bleed",
+      "sha256": "4af7a37dabb44ce72448ef121122d20f80fb90ce3efc5697d28cfafdfce83b6d"
+    },
+    {
+      "id": "cannon_damage",
+      "role": "cannon",
+      "name_en": "Heavy Shells",
+      "display_name": "Heavy Shells",
+      "name_vi": "Đạn pháo uy lực",
+      "purpose_vi": "Sát thương của pháo tank",
+      "file": "cannon_damage.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "background": "opaque, full bleed",
+      "sha256": "2a8efa675ff434b81a89ebe7b28b8317c491a73db8fcbc0daf3cb6c61fb475bc"
+    },
+    {
+      "id": "mortar_accuracy",
+      "role": "mortar",
+      "name_en": "Pinpoint Strike",
+      "display_name": "Pinpoint Strike",
+      "name_vi": "Tọa độ chuẩn",
+      "purpose_vi": "Độ chính xác của mortar",
+      "file": "mortar_accuracy.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "background": "opaque, full bleed",
+      "sha256": "f26bc34f1d53d5cc9d36b25062ae0848b969c2a543e9d4db8bf301b4f00c935e"
+    },
+    {
+      "id": "mortar_ammo",
+      "role": "mortar",
+      "name_en": "Extra Rounds",
+      "display_name": "Extra Rounds",
+      "name_vi": "Túi đạn cối",
+      "purpose_vi": "Tăng số đạn mortar",
+      "file": "mortar_ammo.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "background": "opaque, full bleed",
+      "sha256": "304b13b3a5b94dd8540b83e81c8cf3f1369318d4a090af048ea40cf792c3c1ec"
+    },
+    {
+      "id": "mortar_damage",
+      "role": "mortar",
+      "name_en": "Explosive Payload",
+      "display_name": "Explosive Payload",
+      "name_vi": "Cối bùng nổ",
+      "purpose_vi": "Sát thương mortar",
+      "file": "mortar_damage.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "background": "opaque, full bleed",
+      "sha256": "bb1161796641110c835ad3df7265ad643bf00ea7bceab7693c742d7ca4426ee2"
+    },
+    {
+      "id": "mg_ammo",
+      "role": "mg",
+      "name_en": "Extended Belt",
+      "display_name": "Extended Belt",
+      "name_vi": "Băng đạn dài",
+      "purpose_vi": "Tăng số đạn MG",
+      "file": "mg_ammo.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "background": "opaque, full bleed",
+      "sha256": "b3f9238fc3ee5b56f5449727dde00418bcc92d48c8bca121d64749f22e1ff246"
+    },
+    {
+      "id": "mg_fire_rate",
+      "role": "mg",
+      "name_en": "Bullet Storm",
+      "display_name": "Bullet Storm",
+      "name_vi": "MG liên thanh",
+      "purpose_vi": "Tốc độ bắn MG",
+      "file": "mg_fire_rate.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "background": "opaque, full bleed",
+      "sha256": "ecc1a966b1918c8bf09408d59ab18debbacf42470cdb6714e38afe71503a8257"
+    },
+    {
+      "id": "mg_damage",
+      "role": "mg",
+      "name_en": "Stopping Power",
+      "display_name": "Stopping Power",
+      "name_vi": "Đạn xuyên phá",
+      "purpose_vi": "Sát thương MG",
+      "file": "mg_damage.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "background": "opaque, full bleed",
+      "sha256": "bd66649fe293ee498eeab61d6ceb8e41317357bdc0250813c27def103ca25fd1"
+    }
+  ]
+}

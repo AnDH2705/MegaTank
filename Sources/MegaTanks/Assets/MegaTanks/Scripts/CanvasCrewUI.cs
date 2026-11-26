@@ -12,6 +12,7 @@ namespace MegaTanks
         public int CrewInventoryVisibleCount{get;private set;}
         void DrawCrew()
         {
+            var nativeCrew=View(UIScreen.Crew).GetComponent<CrewHtmlScreen>();if(nativeCrew!=null){nativeCrew.Show(game);CrewInventoryVisibleCount=nativeCrew.VisibleCount;return;}
             var v=View(UIScreen.Crew);var roster=game.Frontend?.crew;var assigned=game.Crew;
             int targetStation=crewStation>=0?crewStation:crewSelected!=null?(int)crewSelected.role:-1;
             v.Get<RawImage>("Tank Preview/Tank Avatar").texture=portrait;
@@ -84,3 +85,4 @@ namespace MegaTanks
         }
     }
 }
+

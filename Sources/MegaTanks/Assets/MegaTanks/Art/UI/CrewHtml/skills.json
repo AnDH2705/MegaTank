@@ -1,0 +1,110 @@
+{
+  "display_language": "en",
+  "skills": [
+    {
+      "id": "melee_shovel_damage",
+      "role": "melee",
+      "name": "Shovel Slam",
+      "purpose": "Tăng sát thương cận chiến",
+      "icon_file": "../Skill_Icons/melee_shovel_damage.png"
+    },
+    {
+      "id": "melee_combo",
+      "role": "melee",
+      "name": "Rapid Strikes",
+      "purpose": "Đánh cận chiến nhanh, liên tiếp",
+      "icon_file": "../Skill_Icons/melee_combo.png"
+    },
+    {
+      "id": "melee_resistance",
+      "role": "melee",
+      "name": "Iron Hide",
+      "purpose": "Chống chịu của mèo cận chiến",
+      "icon_file": "../Skill_Icons/melee_resistance.png"
+    },
+    {
+      "id": "driver_tank_speed",
+      "role": "driver",
+      "name": "Full Throttle",
+      "purpose": "Tốc độ di chuyển của tank",
+      "icon_file": "../Skill_Icons/driver_tank_speed.png"
+    },
+    {
+      "id": "driver_tank_armor",
+      "role": "driver",
+      "name": "Reinforced Armor",
+      "purpose": "Chống chịu của tank",
+      "icon_file": "../Skill_Icons/driver_tank_armor.png"
+    },
+    {
+      "id": "driver_team_buff",
+      "role": "driver",
+      "name": "Crew Rally",
+      "purpose": "Buff hỗ trợ đồng đội",
+      "icon_file": "../Skill_Icons/driver_team_buff.png"
+    },
+    {
+      "id": "cannon_accuracy",
+      "role": "cannon",
+      "name": "Steady Aim",
+      "purpose": "Độ chính xác của pháo tank",
+      "icon_file": "layers/icon_skill_1.png"
+    },
+    {
+      "id": "cannon_fire_rate",
+      "role": "cannon",
+      "name": "Quick Reload",
+      "purpose": "Tốc độ bắn của pháo tank",
+      "icon_file": "layers/icon_skill_2.png"
+    },
+    {
+      "id": "cannon_damage",
+      "role": "cannon",
+      "name": "Heavy Shells",
+      "purpose": "Sát thương của pháo tank",
+      "icon_file": "layers/icon_skill_3.png"
+    },
+    {
+      "id": "mortar_accuracy",
+      "role": "mortar",
+      "name": "Pinpoint Strike",
+      "purpose": "Độ chính xác của mortar",
+      "icon_file": "../Skill_Icons/mortar_accuracy.png"
+    },
+    {
+      "id": "mortar_ammo",
+      "role": "mortar",
+      "name": "Extra Rounds",
+      "purpose": "Tăng số đạn mortar",
+      "icon_file": "../Skill_Icons/mortar_ammo.png"
+    },
+    {
+      "id": "mortar_damage",
+      "role": "mortar",
+      "name": "Explosive Payload",
+      "purpose": "Sát thương mortar",
+      "icon_file": "../Skill_Icons/mortar_damage.png"
+    },
+    {
+      "id": "mg_ammo",
+      "role": "mg",
+      "name": "Extended Belt",
+      "purpose": "Tăng số đạn MG",
+      "icon_file": "../Skill_Icons/mg_ammo.png"
+    },
+    {
+      "id": "mg_fire_rate",
+      "role": "mg",
+      "name": "Bullet Storm",
+      "purpose": "Tốc độ bắn MG",
+      "icon_file": "../Skill_Icons/mg_fire_rate.png"
+    },
+    {
+      "id": "mg_damage",
+      "role": "mg",
+      "name": "Stopping Power",
+      "purpose": "Sát thương MG",
+      "icon_file": "../Skill_Icons/mg_damage.png"
+    }
+  ]
+}

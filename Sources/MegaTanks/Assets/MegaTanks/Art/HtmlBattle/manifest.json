@@ -1,0 +1,2361 @@
+{
+  "enemies": [
+    {
+      "id": "car",
+      "parts": [
+        {
+          "size": [
+            1340,
+            842
+          ],
+          "key": "car_01_body_static",
+          "order": 0,
+          "pivot": [
+            748,
+            800
+          ],
+          "name": "01_body_static",
+          "position": [
+            71,
+            45
+          ]
+        },
+        {
+          "size": [
+            401,
+            399
+          ],
+          "key": "car_02_wheel_rear",
+          "order": 0,
+          "pivot": [
+            355,
+            822
+          ],
+          "name": "02_wheel_rear",
+          "position": [
+            156,
+            617
+          ]
+        },
+        {
+          "size": [
+            399,
+            399
+          ],
+          "key": "car_03_wheel_front",
+          "order": 0,
+          "pivot": [
+            1079,
+            822
+          ],
+          "name": "03_wheel_front",
+          "position": [
+            877,
+            617
+          ]
+        }
+      ]
+    },
+    {
+      "id": "plane",
+      "parts": [
+        {
+          "size": [
+            129,
+            824
+          ],
+          "key": "plane_01_propeller_blades",
+          "order": 0,
+          "pivot": [
+            1326,
+            576
+          ],
+          "name": "01_propeller_blades",
+          "position": [
+            1256,
+            137
+          ]
+        },
+        {
+          "size": [
+            127,
+            127
+          ],
+          "key": "plane_02_wheel_rear",
+          "order": 0,
+          "pivot": [
+            244,
+            785
+          ],
+          "name": "02_wheel_rear",
+          "position": [
+            181,
+            722
+          ]
+        },
+        {
+          "size": [
+            230,
+            229
+          ],
+          "key": "plane_03_wheel_main",
+          "order": 0,
+          "pivot": [
+            822,
+            923
+          ],
+          "name": "03_wheel_main",
+          "position": [
+            707,
+            809
+          ]
+        },
+        {
+          "size": [
+            1388,
+            872
+          ],
+          "key": "plane_04_body_static",
+          "order": 0,
+          "pivot": [
+            763,
+            780
+          ],
+          "name": "04_body_static",
+          "position": [
+            52,
+            32
+          ]
+        }
+      ]
+    }
+  ],
+  "profiles": [
+    {
+      "speed": 1,
+      "seats": [
+        {
+          "scale": 0.52,
+          "id": "mg",
+          "y": 244,
+          "x": 670
+        },
+        {
+          "scale": 0.53,
+          "id": "cannon",
+          "y": 614,
+          "x": 735
+        },
+        {
+          "scale": 0.49,
+          "id": "mortar",
+          "y": 661,
+          "x": 386
+        },
+        {
+          "scale": 0.52,
+          "id": "driver",
+          "y": 974,
+          "x": 494
+        },
+        {
+          "scale": 0.49,
+          "id": "front",
+          "y": 1023,
+          "x": 835
+        }
+      ],
+      "guns": [
+        {
+          "pivot": [
+            1125,
+            496
+          ],
+          "id": "cannon",
+          "tip": [
+            1348,
+            496
+          ]
+        },
+        {
+          "pivot": [
+            910,
+            231
+          ],
+          "id": "mg",
+          "tip": [
+            1160,
+            156
+          ]
+        },
+        {
+          "pivot": [
+            166,
+            235
+          ],
+          "id": "mortar",
+          "tip": [
+            166,
+            235
+          ]
+        }
+      ],
+      "parts": [
+        {
+          "size": [
+            819,
+            235
+          ],
+          "key": "tank_base_01_track_chassis",
+          "order": 0,
+          "pivot": [
+            652,
+            1156
+          ],
+          "name": "01_track_chassis",
+          "position": [
+            240,
+            1035
+          ]
+        },
+        {
+          "size": [
+            161,
+            158
+          ],
+          "key": "tank_base_02_wheel_01",
+          "order": 1,
+          "pivot": [
+            410.5,
+            1159
+          ],
+          "name": "02_wheel_01",
+          "position": [
+            331,
+            1080
+          ]
+        },
+        {
+          "size": [
+            163,
+            157
+          ],
+          "key": "tank_base_03_wheel_02",
+          "order": 2,
+          "pivot": [
+            537,
+            1158.5
+          ],
+          "name": "03_wheel_02",
+          "position": [
+            456,
+            1080
+          ]
+        },
+        {
+          "size": [
+            162,
+            158
+          ],
+          "key": "tank_base_04_wheel_03",
+          "order": 3,
+          "pivot": [
+            757,
+            1158
+          ],
+          "name": "04_wheel_03",
+          "position": [
+            676,
+            1079
+          ]
+        },
+        {
+          "size": [
+            167,
+            157
+          ],
+          "key": "tank_base_05_wheel_04",
+          "order": 4,
+          "pivot": [
+            890,
+            1158.5
+          ],
+          "name": "05_wheel_04",
+          "position": [
+            807,
+            1080
+          ]
+        },
+        {
+          "size": [
+            246,
+            188
+          ],
+          "key": "tank_base_06_main_cannon_barrel",
+          "order": 5,
+          "pivot": [
+            1125,
+            496
+          ],
+          "name": "06_main_cannon_barrel",
+          "position": [
+            1102,
+            405
+          ]
+        },
+        {
+          "size": [
+            957,
+            978
+          ],
+          "key": "tank_base_07_body_static",
+          "order": 6,
+          "pivot": [
+            645,
+            1040
+          ],
+          "name": "07_body_static",
+          "position": [
+            193,
+            67
+          ]
+        },
+        {
+          "size": [
+            919,
+            928
+          ],
+          "key": "tank_base_11_front_hull_frame",
+          "order": 7,
+          "pivot": [
+            645,
+            1040
+          ],
+          "name": "11_front_hull_frame",
+          "position": [
+            182,
+            147
+          ]
+        },
+        {
+          "size": [
+            449,
+            180
+          ],
+          "key": "tank_base_08_roof_machine_gun",
+          "order": 8,
+          "pivot": [
+            910,
+            231
+          ],
+          "name": "08_roof_machine_gun",
+          "position": [
+            714,
+            72
+          ]
+        },
+        {
+          "size": [
+            145,
+            360
+          ],
+          "key": "tank_base_09_mortar_barrel",
+          "order": 9,
+          "pivot": [
+            213.14,
+            561.9
+          ],
+          "name": "09_mortar_barrel",
+          "position": [
+            93,
+            235
+          ]
+        },
+        {
+          "size": [
+            156,
+            257
+          ],
+          "key": "tank_base_10_mortar_front_support",
+          "order": 10,
+          "pivot": [
+            213.14,
+            561.9
+          ],
+          "name": "10_mortar_front_support",
+          "position": [
+            96,
+            352
+          ]
+        }
+      ],
+      "hp": 360,
+      "id": "base",
+      "name": "Tank tiêu chuẩn"
+    },
+    {
+      "speed": 1.25,
+      "seats": [
+        {
+          "scale": 0.52,
+          "id": "mg",
+          "y": 249.14778645833337,
+          "x": 665.6331380208334
+        },
+        {
+          "scale": 0.53,
+          "id": "cannon",
+          "y": 598.1561197916667,
+          "x": 801.9645182291666
+        },
+        {
+          "scale": 0.49,
+          "id": "mortar",
+          "y": 647.2354166666667,
+          "x": 372.5206705729167
+        },
+        {
+          "scale": 0.52,
+          "id": "driver",
+          "y": 908.9916666666667,
+          "x": 447.5029296875
+        },
+        {
+          "scale": 0.49,
+          "id": "front",
+          "y": 971.7041015625,
+          "x": 992.8284505208333
+        }
+      ],
+      "guns": [
+        {
+          "pivot": [
+            1326.84033203125,
+            544.9868815104167
+          ],
+          "id": "cannon",
+          "tip": [
+            1558.6036783854165,
+            544.9868815104167
+          ]
+        },
+        {
+          "pivot": [
+            964.1988606770833,
+            224.6081380208334
+          ],
+          "id": "mg",
+          "tip": [
+            1284.5776041666668,
+            174.16552734375
+          ]
+        },
+        {
+          "pivot": [
+            213.01295572916666,
+            630.8756510416666
+          ],
+          "id": "mortar",
+          "tip": [
+            208.92301432291669,
+            336.3998697916667
+          ]
+        }
+      ],
+      "parts": [
+        {
+          "size": [
+            1280.15166015625,
+            245.396484375
+          ],
+          "key": "tank_speed_01_track_chassis",
+          "order": 0,
+          "pivot": [
+            652,
+            1116.2153645833332
+          ],
+          "name": "01_track_chassis",
+          "position": [
+            -35.11015624999993,
+            1012.603515625
+          ]
+        },
+        {
+          "size": [
+            241.30654296875,
+            209.95032552083333
+          ],
+          "key": "tank_speed_02_wheel_01",
+          "order": 1,
+          "pivot": [
+            303.67332356770834,
+            1116.2153645833332
+          ],
+          "name": "02_wheel_01",
+          "position": [
+            183.02005208333333,
+            1011.2402018229167
+          ]
+        },
+        {
+          "size": [
+            242.66985677083332,
+            209.95032552083333
+          ],
+          "key": "tank_speed_03_wheel_02",
+          "order": 2,
+          "pivot": [
+            510.2153645833333,
+            1116.2153645833332
+          ],
+          "name": "03_wheel_02",
+          "position": [
+            388.88043619791665,
+            1011.2402018229167
+          ]
+        },
+        {
+          "size": [
+            241.30654296875,
+            209.95032552083333
+          ],
+          "key": "tank_speed_04_wheel_03",
+          "order": 3,
+          "pivot": [
+            723.573974609375,
+            1116.2153645833332
+          ],
+          "name": "04_wheel_03",
+          "position": [
+            602.920703125,
+            1011.2402018229167
+          ]
+        },
+        {
+          "size": [
+            241.30654296875,
+            209.95032552083333
+          ],
+          "key": "tank_speed_05_wheel_04",
+          "order": 4,
+          "pivot": [
+            928.071044921875,
+            1116.2153645833332
+          ],
+          "name": "05_wheel_04",
+          "position": [
+            807.4177734375,
+            1011.2402018229167
+          ]
+        },
+        {
+          "size": [
+            280.84264322916664,
+            220.8568359375
+          ],
+          "key": "tank_speed_06_main_cannon_barrel",
+          "order": 5,
+          "pivot": [
+            1326.84033203125,
+            544.9868815104167
+          ],
+          "name": "06_main_cannon_barrel",
+          "position": [
+            1305.0273111979168,
+            434.5584635416667
+          ]
+        },
+        {
+          "size": [
+            1278.7883463541666,
+            967.9527994791666
+          ],
+          "key": "tank_speed_07_body_static",
+          "order": 6,
+          "pivot": [
+            652,
+            1018.0567708333333
+          ],
+          "name": "07_body_static",
+          "position": [
+            5.789257812500068,
+            32.38089192708344
+          ]
+        },
+        {
+          "size": [
+            1694.5990559895833,
+            1010.21552734375
+          ],
+          "key": "tank_speed_11_front_hull_frame",
+          "order": 7,
+          "pivot": [
+            652,
+            1018.0567708333333
+          ],
+          "name": "11_front_hull_frame",
+          "position": [
+            -249.15042317708333,
+            125.08623046875005
+          ]
+        },
+        {
+          "size": [
+            568.50185546875,
+            218.13020833333331
+          ],
+          "key": "tank_speed_08_roof_machine_gun",
+          "order": 8,
+          "pivot": [
+            964.1988606770833,
+            224.6081380208334
+          ],
+          "name": "08_roof_machine_gun",
+          "position": [
+            743.3420247395834,
+            33.74420572916665
+          ]
+        },
+        {
+          "size": [
+            167.68759765625,
+            374.9112955729167
+          ],
+          "key": "tank_speed_09_mortar_barrel",
+          "order": 9,
+          "pivot": [
+            213.01295572916666,
+            630.8756510416666
+          ],
+          "name": "09_mortar_barrel",
+          "position": [
+            127.12418619791663,
+            294.13714192708335
+          ]
+        },
+        {
+          "size": [
+            186.77399088541665,
+            279.4793294270833
+          ],
+          "key": "tank_speed_10_mortar_front_support",
+          "order": 10,
+          "pivot": [
+            213.01295572916666,
+            630.8756510416666
+          ],
+          "name": "10_mortar_front_support",
+          "position": [
+            125.7608723958333,
+            404.5655598958333
+          ]
+        }
+      ],
+      "hp": 300,
+      "id": "speed",
+      "name": "Tank đỏ tốc độ"
+    },
+    {
+      "speed": 0.85,
+      "seats": [
+        {
+          "scale": 0.52,
+          "id": "mg",
+          "y": 82.31125226860263,
+          "x": 676.519056261343
+        },
+        {
+          "scale": 0.53,
+          "id": "cannon",
+          "y": 517.524500907441,
+          "x": 786.8548094373866
+        },
+        {
+          "scale": 0.49,
+          "id": "mortar",
+          "y": 544.4954627949184,
+          "x": 333.2522686025408
+        },
+        {
+          "scale": 0.52,
+          "id": "driver",
+          "y": 891.4401088929219,
+          "x": 455.8475499092559
+        },
+        {
+          "scale": 0.49,
+          "id": "front",
+          "y": 929.4446460980037,
+          "x": 952.3584392014519
+        }
+      ],
+      "guns": [
+        {
+          "pivot": [
+            1278.4618874773141,
+            404.7368421052631
+          ],
+          "id": "cannon",
+          "tip": [
+            1475.8402903811252,
+            404.7368421052631
+          ]
+        },
+        {
+          "pivot": [
+            968.2958257713249,
+            60.24410163339371
+          ],
+          "id": "mg",
+          "tip": [
+            1269.8802177858438,
+            2.624319419237736
+          ]
+        },
+        {
+          "pivot": [
+            31.667876588021727,
+            486.87568058076226
+          ],
+          "id": "mortar",
+          "tip": [
+            31.667876588021727,
+            143.60889292195998
+          ]
+        }
+      ],
+      "parts": [
+        {
+          "size": [
+            1115.6170598911071,
+            230.47912885662433
+          ],
+          "key": "tank_heavy_01_track_chassis",
+          "order": 0,
+          "pivot": [
+            652,
+            1117.0154264972778
+          ],
+          "name": "01_track_chassis",
+          "position": [
+            65.994555353902,
+            1027.5208711433756
+          ]
+        },
+        {
+          "size": [
+            214.54174228675137,
+            191.2486388384755
+          ],
+          "key": "tank_heavy_02_wheel_01",
+          "order": 1,
+          "pivot": [
+            332.63929219600726,
+            1117.0154264972778
+          ],
+          "name": "02_wheel_01",
+          "position": [
+            225.36842105263156,
+            1021.3911070780399
+          ]
+        },
+        {
+          "size": [
+            215.76769509981852,
+            191.2486388384755
+          ],
+          "key": "tank_heavy_03_wheel_02",
+          "order": 2,
+          "pivot": [
+            507.3375680580762,
+            1117.0154264972778
+          ],
+          "name": "03_wheel_02",
+          "position": [
+            399.45372050816695,
+            1021.3911070780399
+          ]
+        },
+        {
+          "size": [
+            215.76769509981852,
+            191.2486388384755
+          ],
+          "key": "tank_heavy_04_wheel_03",
+          "order": 3,
+          "pivot": [
+            748.2372958257713,
+            1117.0154264972778
+          ],
+          "name": "04_wheel_03",
+          "position": [
+            640.9664246823957,
+            1021.3911070780399
+          ]
+        },
+        {
+          "size": [
+            215.76769509981852,
+            191.2486388384755
+          ],
+          "key": "tank_heavy_05_wheel_04",
+          "order": 4,
+          "pivot": [
+            925.3874773139746,
+            1117.0154264972778
+          ],
+          "name": "05_wheel_04",
+          "position": [
+            817.5036297640654,
+            1021.3911070780399
+          ]
+        },
+        {
+          "size": [
+            247.64246823956444,
+            230.47912885662433
+          ],
+          "key": "tank_heavy_06_main_cannon_barrel",
+          "order": 5,
+          "pivot": [
+            1278.4618874773141,
+            404.7368421052631
+          ],
+          "name": "06_main_cannon_barrel",
+          "position": [
+            1260.0725952813068,
+            289.49727767695094
+          ]
+        },
+        {
+          "size": [
+            1010.1851179673322,
+            1073.934664246824
+          ],
+          "key": "tank_heavy_07_body_static",
+          "order": 6,
+          "pivot": [
+            652,
+            1016.4872958257713
+          ],
+          "name": "07_body_static",
+          "position": [
+            62.316696914700515,
+            -117.51905626134294
+          ]
+        },
+        {
+          "size": [
+            1467.4655172413793,
+            1162.2032667876588
+          ],
+          "key": "tank_heavy_11_front_hull_frame",
+          "order": 7,
+          "pivot": [
+            652,
+            1016.4872958257713
+          ],
+          "name": "11_front_hull_frame",
+          "position": [
+            -52.92286751361166,
+            -40.28402903811252
+          ]
+        },
+        {
+          "size": [
+            527.1597096188748,
+            198.60435571687842
+          ],
+          "key": "tank_heavy_08_roof_machine_gun",
+          "order": 8,
+          "pivot": [
+            968.2958257713249,
+            60.24410163339371
+          ],
+          "name": "08_roof_machine_gun",
+          "position": [
+            768.4655172413793,
+            -118.74500907441029
+          ]
+        },
+        {
+          "size": [
+            167.95553539019963,
+            424.17967332123413
+          ],
+          "key": "tank_heavy_09_mortar_barrel",
+          "order": 9,
+          "pivot": [
+            31.667876588021727,
+            486.87568058076226
+          ],
+          "name": "09_mortar_barrel",
+          "position": [
+            -52.92286751361166,
+            100.70054446460972
+          ]
+        },
+        {
+          "size": [
+            202.28221415607985,
+            313.84392014519057
+          ],
+          "key": "tank_heavy_10_mortar_front_support",
+          "order": 10,
+          "pivot": [
+            31.667876588021727,
+            486.87568058076226
+          ],
+          "name": "10_mortar_front_support",
+          "position": [
+            -48.01905626134305,
+            229.4255898366605
+          ]
+        }
+      ],
+      "hp": 480,
+      "id": "heavy",
+      "name": "Tank xanh bọc thép"
+    }
+  ],
+  "clips": [
+    {
+      "cell": [
+        240,
+        360
+      ],
+      "frames": 12,
+      "id": "driver_drive",
+      "worldScale": 0.5,
+      "cols": 4,
+      "rows": 3,
+      "pivot": [
+        110,
+        252
+      ],
+      "key": "crew_driver_drive",
+      "duration": 1
+    },
+    {
+      "cell": [
+        240,
+        360
+      ],
+      "frames": 12,
+      "id": "driver_fire",
+      "worldScale": 0.5,
+      "cols": 4,
+      "rows": 3,
+      "pivot": [
+        110,
+        252
+      ],
+      "key": "crew_driver_fire",
+      "duration": 0.7
+    },
+    {
+      "cell": [
+        240,
+        360
+      ],
+      "frames": 12,
+      "id": "driver_idle",
+      "worldScale": 0.5,
+      "cols": 4,
+      "rows": 3,
+      "pivot": [
+        110,
+        342
+      ],
+      "key": "crew_driver_idle",
+      "duration": 1.6
+    },
+    {
+      "cell": [
+        240,
+        360
+      ],
+      "frames": 12,
+      "id": "mg_drive",
+      "worldScale": 0.5,
+      "cols": 4,
+      "rows": 3,
+      "pivot": [
+        110,
+        252
+      ],
+      "key": "crew_mg_drive",
+      "duration": 1
+    },
+    {
+      "cell": [
+        240,
+        360
+      ],
+      "frames": 12,
+      "id": "mg_fire",
+      "worldScale": 0.5,
+      "cols": 4,
+      "rows": 3,
+      "pivot": [
+        110,
+        252
+      ],
+      "key": "crew_mg_fire",
+      "duration": 0.7
+    },
+    {
+      "cell": [
+        240,
+        360
+      ],
+      "frames": 12,
+      "id": "fat_idle",
+      "worldScale": 0.5,
+      "cols": 4,
+      "rows": 3,
+      "pivot": [
+        110,
+        342
+      ],
+      "key": "crew_fat_idle",
+      "duration": 1.6
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "fat_ready",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_fat_ready",
+      "duration": 1.6
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "fat_walk",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_fat_walk",
+      "duration": 1.25
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "fat_attack",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_fat_attack",
+      "duration": 1.25
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "fat_hurt",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_fat_hurt",
+      "duration": 0.48
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "fat_death",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_fat_death",
+      "duration": 1.4
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "dog_idle",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_dog_idle",
+      "duration": 1.4
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "dog_walk",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_dog_walk",
+      "duration": 1.1
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "dog_attack",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_dog_attack",
+      "duration": 0.95
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "dog_hurt",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_dog_hurt",
+      "duration": 0.44
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "dog_death",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_dog_death",
+      "duration": 1.3
+    },
+    {
+      "cell": [
+        240,
+        360
+      ],
+      "frames": 12,
+      "id": "dog_driver_drive",
+      "worldScale": 0.5,
+      "cols": 4,
+      "rows": 3,
+      "pivot": [
+        110,
+        252
+      ],
+      "key": "crew_dog_driver_drive",
+      "duration": 1
+    },
+    {
+      "cell": [
+        240,
+        360
+      ],
+      "frames": 12,
+      "id": "dog_pilot_drive",
+      "worldScale": 0.5,
+      "cols": 4,
+      "rows": 3,
+      "pivot": [
+        110,
+        252
+      ],
+      "key": "crew_dog_pilot_drive",
+      "duration": 1
+    },
+    {
+      "cell": [
+        240,
+        360
+      ],
+      "frames": 12,
+      "id": "dog_pilot_fire",
+      "worldScale": 0.5,
+      "cols": 4,
+      "rows": 3,
+      "pivot": [
+        110,
+        252
+      ],
+      "key": "crew_dog_pilot_fire",
+      "duration": 0.7
+    },
+    {
+      "cell": [
+        240,
+        360
+      ],
+      "frames": 12,
+      "id": "dog_mg_drive",
+      "worldScale": 0.5,
+      "cols": 4,
+      "rows": 3,
+      "pivot": [
+        110,
+        252
+      ],
+      "key": "crew_dog_mg_drive",
+      "duration": 1
+    },
+    {
+      "cell": [
+        240,
+        360
+      ],
+      "frames": 12,
+      "id": "dog_mg_fire",
+      "worldScale": 0.5,
+      "cols": 4,
+      "rows": 3,
+      "pivot": [
+        110,
+        252
+      ],
+      "key": "crew_dog_mg_fire",
+      "duration": 0.7
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "cat_ready",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_cat_ready",
+      "duration": 1.2
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "cat_walk",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_cat_walk",
+      "duration": 0.8
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "cat_attack",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_cat_attack",
+      "duration": 1.05
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "cat_hurt",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_cat_hurt",
+      "duration": 0.44
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "cat_death",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_cat_death",
+      "duration": 1.3
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "jeep_ready",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_jeep_ready",
+      "duration": 1.2
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "jeep_walk",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_jeep_walk",
+      "duration": 0.8
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "jeep_attack",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_jeep_attack",
+      "duration": 1.05
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "jeep_hurt",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_jeep_hurt",
+      "duration": 0.44
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "jeep_death",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_jeep_death",
+      "duration": 1.3
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "pilot_ready",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_pilot_ready",
+      "duration": 1.2
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "pilot_walk",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_pilot_walk",
+      "duration": 0.8
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "pilot_attack",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_pilot_attack",
+      "duration": 1.05
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "pilot_hurt",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_pilot_hurt",
+      "duration": 0.44
+    },
+    {
+      "cell": [
+        320,
+        304
+      ],
+      "frames": 18,
+      "id": "pilot_death",
+      "worldScale": 0.4,
+      "cols": 6,
+      "rows": 3,
+      "pivot": [
+        136,
+        288
+      ],
+      "key": "crew_pilot_death",
+      "duration": 1.3
+    },
+    {
+      "cell": [
+        128,
+        128
+      ],
+      "frames": 12,
+      "id": "Explosion",
+      "worldScale": 1,
+      "cols": 4,
+      "rows": 3,
+      "pivot": [
+        64,
+        64
+      ],
+      "key": "arcade_vfx_Explosion",
+      "duration": 0.48
+    },
+    {
+      "cell": [
+        128,
+        128
+      ],
+      "frames": 8,
+      "id": "Smoke",
+      "worldScale": 1,
+      "cols": 4,
+      "rows": 2,
+      "pivot": [
+        64,
+        64
+      ],
+      "key": "arcade_vfx_Smoke",
+      "duration": 0.6666666666666666
+    },
+    {
+      "cell": [
+        128,
+        128
+      ],
+      "frames": 4,
+      "id": "Hit",
+      "worldScale": 1,
+      "cols": 4,
+      "rows": 1,
+      "pivot": [
+        64,
+        64
+      ],
+      "key": "arcade_vfx_Hit",
+      "duration": 0.13333333333333333
+    },
+    {
+      "cell": [
+        128,
+        128
+      ],
+      "frames": 2,
+      "id": "Muzzle",
+      "worldScale": 1,
+      "cols": 2,
+      "rows": 1,
+      "pivot": [
+        64,
+        64
+      ],
+      "key": "arcade_vfx_Muzzle",
+      "duration": 0.06666666666666667
+    },
+    {
+      "cell": [
+        128,
+        128
+      ],
+      "frames": 1,
+      "id": "Spark",
+      "worldScale": 1,
+      "cols": 1,
+      "rows": 1,
+      "pivot": [
+        64,
+        64
+      ],
+      "key": "arcade_vfx_Spark",
+      "duration": 1
+    },
+    {
+      "cell": [
+        128,
+        128
+      ],
+      "frames": 1,
+      "id": "Glow",
+      "worldScale": 1,
+      "cols": 1,
+      "rows": 1,
+      "pivot": [
+        64,
+        64
+      ],
+      "key": "arcade_vfx_Glow",
+      "duration": 1
+    },
+    {
+      "cell": [
+        128,
+        128
+      ],
+      "frames": 3,
+      "id": "Shockwave",
+      "worldScale": 1,
+      "cols": 3,
+      "rows": 1,
+      "pivot": [
+        64,
+        64
+      ],
+      "key": "arcade_vfx_Shockwave",
+      "duration": 0.25
+    },
+    {
+      "cell": [
+        128,
+        128
+      ],
+      "frames": 1,
+      "id": "Beam",
+      "worldScale": 1,
+      "cols": 1,
+      "rows": 1,
+      "pivot": [
+        64,
+        64
+      ],
+      "key": "arcade_vfx_Beam",
+      "duration": 1
+    },
+    {
+      "cell": [
+        128,
+        128
+      ],
+      "frames": 3,
+      "id": "FireBoltHead",
+      "worldScale": 1,
+      "cols": 3,
+      "rows": 1,
+      "pivot": [
+        64,
+        64
+      ],
+      "key": "arcade_vfx_FireBoltHead",
+      "duration": 0.1
+    },
+    {
+      "cell": [
+        128,
+        128
+      ],
+      "frames": 1,
+      "id": "Dust",
+      "worldScale": 1,
+      "cols": 1,
+      "rows": 1,
+      "pivot": [
+        64,
+        64
+      ],
+      "key": "arcade_vfx_Dust",
+      "duration": 1
+    },
+    {
+      "cell": [
+        128,
+        128
+      ],
+      "frames": 1,
+      "id": "BeamTrail",
+      "worldScale": 1,
+      "cols": 1,
+      "rows": 1,
+      "pivot": [
+        64,
+        64
+      ],
+      "key": "arcade_vfx_BeamTrail",
+      "duration": 1
+    },
+    {
+      "duration": 0.66667,
+      "cell": [
+        736,
+        256
+      ],
+      "rows": 4,
+      "pivot": [
+        368,
+        224
+      ],
+      "id": "GroundFire",
+      "cols": 2,
+      "frames": 8,
+      "key": "ground_fire",
+      "worldScale": 1
+    }
+  ],
+  "backgrounds": [
+    {
+      "id": "industrial_bg",
+      "keys": [
+        "industrial_bg_00_sky_static",
+        "industrial_bg_01_far_factories",
+        "industrial_bg_02_mid_industry",
+        "industrial_bg_03_road",
+        "industrial_bg_04_street_buildings",
+        "industrial_bg_05_rubble_weeds"
+      ]
+    },
+    {
+      "id": "parallax_bg",
+      "keys": [
+        "parallax_bg_00_sky_static",
+        "parallax_bg_01_far_city",
+        "parallax_bg_02_viaduct",
+        "parallax_bg_03_road",
+        "parallax_bg_04_street_buildings",
+        "parallax_bg_05_foreground_debris",
+        "parallax_bg_06_overhead_cables"
+      ]
+    }
+  ],
+  "images": [
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\base\\01_track_chassis.png",
+      "file": "tank_base_01_track_chassis.png",
+      "key": "tank_base_01_track_chassis"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\base\\02_wheel_01.png",
+      "file": "tank_base_02_wheel_01.png",
+      "key": "tank_base_02_wheel_01"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\base\\03_wheel_02.png",
+      "file": "tank_base_03_wheel_02.png",
+      "key": "tank_base_03_wheel_02"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\base\\04_wheel_03.png",
+      "file": "tank_base_04_wheel_03.png",
+      "key": "tank_base_04_wheel_03"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\base\\05_wheel_04.png",
+      "file": "tank_base_05_wheel_04.png",
+      "key": "tank_base_05_wheel_04"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\base\\06_main_cannon_barrel.png",
+      "file": "tank_base_06_main_cannon_barrel.png",
+      "key": "tank_base_06_main_cannon_barrel"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\base\\07_body_static.png",
+      "file": "tank_base_07_body_static.png",
+      "key": "tank_base_07_body_static"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\base\\11_front_hull_frame.png",
+      "file": "tank_base_11_front_hull_frame.png",
+      "key": "tank_base_11_front_hull_frame"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\base\\08_roof_machine_gun.png",
+      "file": "tank_base_08_roof_machine_gun.png",
+      "key": "tank_base_08_roof_machine_gun"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\base\\09_mortar_barrel.png",
+      "file": "tank_base_09_mortar_barrel.png",
+      "key": "tank_base_09_mortar_barrel"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\base\\10_mortar_front_support.png",
+      "file": "tank_base_10_mortar_front_support.png",
+      "key": "tank_base_10_mortar_front_support"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\speed\\01_track_chassis.png",
+      "file": "tank_speed_01_track_chassis.png",
+      "key": "tank_speed_01_track_chassis"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\speed\\02_wheel_01.png",
+      "file": "tank_speed_02_wheel_01.png",
+      "key": "tank_speed_02_wheel_01"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\speed\\03_wheel_02.png",
+      "file": "tank_speed_03_wheel_02.png",
+      "key": "tank_speed_03_wheel_02"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\speed\\04_wheel_03.png",
+      "file": "tank_speed_04_wheel_03.png",
+      "key": "tank_speed_04_wheel_03"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\speed\\05_wheel_04.png",
+      "file": "tank_speed_05_wheel_04.png",
+      "key": "tank_speed_05_wheel_04"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\speed\\06_main_cannon_barrel.png",
+      "file": "tank_speed_06_main_cannon_barrel.png",
+      "key": "tank_speed_06_main_cannon_barrel"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\speed\\07_body_static.png",
+      "file": "tank_speed_07_body_static.png",
+      "key": "tank_speed_07_body_static"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\speed\\11_front_hull_frame.png",
+      "file": "tank_speed_11_front_hull_frame.png",
+      "key": "tank_speed_11_front_hull_frame"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\speed\\08_roof_machine_gun.png",
+      "file": "tank_speed_08_roof_machine_gun.png",
+      "key": "tank_speed_08_roof_machine_gun"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\speed\\09_mortar_barrel.png",
+      "file": "tank_speed_09_mortar_barrel.png",
+      "key": "tank_speed_09_mortar_barrel"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\speed\\10_mortar_front_support.png",
+      "file": "tank_speed_10_mortar_front_support.png",
+      "key": "tank_speed_10_mortar_front_support"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\heavy\\01_track_chassis.png",
+      "file": "tank_heavy_01_track_chassis.png",
+      "key": "tank_heavy_01_track_chassis"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\heavy\\02_wheel_01.png",
+      "file": "tank_heavy_02_wheel_01.png",
+      "key": "tank_heavy_02_wheel_01"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\heavy\\03_wheel_02.png",
+      "file": "tank_heavy_03_wheel_02.png",
+      "key": "tank_heavy_03_wheel_02"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\heavy\\04_wheel_03.png",
+      "file": "tank_heavy_04_wheel_03.png",
+      "key": "tank_heavy_04_wheel_03"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\heavy\\05_wheel_04.png",
+      "file": "tank_heavy_05_wheel_04.png",
+      "key": "tank_heavy_05_wheel_04"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\heavy\\06_main_cannon_barrel.png",
+      "file": "tank_heavy_06_main_cannon_barrel.png",
+      "key": "tank_heavy_06_main_cannon_barrel"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\heavy\\07_body_static.png",
+      "file": "tank_heavy_07_body_static.png",
+      "key": "tank_heavy_07_body_static"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\heavy\\11_front_hull_frame.png",
+      "file": "tank_heavy_11_front_hull_frame.png",
+      "key": "tank_heavy_11_front_hull_frame"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\heavy\\08_roof_machine_gun.png",
+      "file": "tank_heavy_08_roof_machine_gun.png",
+      "key": "tank_heavy_08_roof_machine_gun"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\heavy\\09_mortar_barrel.png",
+      "file": "tank_heavy_09_mortar_barrel.png",
+      "key": "tank_heavy_09_mortar_barrel"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\TankParts\\heavy\\10_mortar_front_support.png",
+      "file": "tank_heavy_10_mortar_front_support.png",
+      "key": "tank_heavy_10_mortar_front_support"
+    },
+    {
+      "source": "Art\\Asset\\Enemies\\Enemies_vehicles_Contrast_v2\\car\\parts\\01_body_static.png",
+      "file": "car_01_body_static.png",
+      "key": "car_01_body_static"
+    },
+    {
+      "source": "Art\\Asset\\Enemies\\Enemies_vehicles_Contrast_v2\\car\\parts\\02_wheel_rear.png",
+      "file": "car_02_wheel_rear.png",
+      "key": "car_02_wheel_rear"
+    },
+    {
+      "source": "Art\\Asset\\Enemies\\Enemies_vehicles_Contrast_v2\\car\\parts\\03_wheel_front.png",
+      "file": "car_03_wheel_front.png",
+      "key": "car_03_wheel_front"
+    },
+    {
+      "source": "Art\\Asset\\Enemies\\Enemies_vehicles_Contrast_v2\\plane\\parts\\01_propeller_blades.png",
+      "file": "plane_01_propeller_blades.png",
+      "key": "plane_01_propeller_blades"
+    },
+    {
+      "source": "Art\\Asset\\Enemies\\Enemies_vehicles_Contrast_v2\\plane\\parts\\02_wheel_rear.png",
+      "file": "plane_02_wheel_rear.png",
+      "key": "plane_02_wheel_rear"
+    },
+    {
+      "source": "Art\\Asset\\Enemies\\Enemies_vehicles_Contrast_v2\\plane\\parts\\03_wheel_main.png",
+      "file": "plane_03_wheel_main.png",
+      "key": "plane_03_wheel_main"
+    },
+    {
+      "source": "Art\\Asset\\Enemies\\Enemies_vehicles_Contrast_v2\\plane\\parts\\04_body_static.png",
+      "file": "plane_04_body_static.png",
+      "key": "plane_04_body_static"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\Backgrounds\\industrial_bg\\00_sky_static.png",
+      "file": "industrial_bg_00_sky_static.png",
+      "key": "industrial_bg_00_sky_static"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\Backgrounds\\industrial_bg\\01_far_factories.png",
+      "file": "industrial_bg_01_far_factories.png",
+      "key": "industrial_bg_01_far_factories"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\Backgrounds\\industrial_bg\\02_mid_industry.png",
+      "file": "industrial_bg_02_mid_industry.png",
+      "key": "industrial_bg_02_mid_industry"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\Backgrounds\\industrial_bg\\03_road.png",
+      "file": "industrial_bg_03_road.png",
+      "key": "industrial_bg_03_road"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\Backgrounds\\industrial_bg\\04_street_buildings.png",
+      "file": "industrial_bg_04_street_buildings.png",
+      "key": "industrial_bg_04_street_buildings"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\Backgrounds\\industrial_bg\\05_rubble_weeds.png",
+      "file": "industrial_bg_05_rubble_weeds.png",
+      "key": "industrial_bg_05_rubble_weeds"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\Backgrounds\\parallax_bg\\00_sky_static.png",
+      "file": "parallax_bg_00_sky_static.png",
+      "key": "parallax_bg_00_sky_static"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\Backgrounds\\parallax_bg\\01_far_city.png",
+      "file": "parallax_bg_01_far_city.png",
+      "key": "parallax_bg_01_far_city"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\Backgrounds\\parallax_bg\\02_viaduct.png",
+      "file": "parallax_bg_02_viaduct.png",
+      "key": "parallax_bg_02_viaduct"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\Backgrounds\\parallax_bg\\03_road.png",
+      "file": "parallax_bg_03_road.png",
+      "key": "parallax_bg_03_road"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\Backgrounds\\parallax_bg\\04_street_buildings.png",
+      "file": "parallax_bg_04_street_buildings.png",
+      "key": "parallax_bg_04_street_buildings"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\Backgrounds\\parallax_bg\\05_foreground_debris.png",
+      "file": "parallax_bg_05_foreground_debris.png",
+      "key": "parallax_bg_05_foreground_debris"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\Backgrounds\\parallax_bg\\06_overhead_cables.png",
+      "file": "parallax_bg_06_overhead_cables.png",
+      "key": "parallax_bg_06_overhead_cables"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\UI\\ad_badge.png",
+      "file": "ui_ad_badge.png",
+      "key": "ui_ad_badge"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\UI\\button.png",
+      "file": "ui_button.png",
+      "key": "ui_button"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\UI\\cannon.png",
+      "file": "ui_cannon.png",
+      "key": "ui_cannon"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\UI\\card_rare.png",
+      "file": "ui_card_rare.png",
+      "key": "ui_card_rare"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\UI\\card.png",
+      "file": "ui_card.png",
+      "key": "ui_card"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\UI\\explosive.png",
+      "file": "ui_explosive.png",
+      "key": "ui_explosive"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\UI\\gears.png",
+      "file": "ui_gears.png",
+      "key": "ui_gears"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\UI\\heal.png",
+      "file": "ui_heal.png",
+      "key": "ui_heal"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\UI\\mg.png",
+      "file": "ui_mg.png",
+      "key": "ui_mg"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\UI\\mortar.png",
+      "file": "ui_mortar.png",
+      "key": "ui_mortar"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\UI\\panel.png",
+      "file": "ui_panel.png",
+      "key": "ui_panel"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\UI\\piercing.png",
+      "file": "ui_piercing.png",
+      "key": "ui_piercing"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\UI\\plasma.png",
+      "file": "ui_plasma.png",
+      "key": "ui_plasma"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\UI\\resource_gears.png",
+      "file": "ui_resource_gears.png",
+      "key": "ui_resource_gears"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\UI\\resource_money.png",
+      "file": "ui_resource_money.png",
+      "key": "ui_resource_money"
+    },
+    {
+      "source": "Design\\UnityDesignHandoff\\Art\\Environment\\tent.png",
+      "file": "tent.png",
+      "key": "tent"
+    },
+    {
+      "key": "ammo_mortar",
+      "file": "ammo_mortar.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "ammo_cannon",
+      "file": "ammo_cannon.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_driver_drive",
+      "file": "crew_driver_drive.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_driver_fire",
+      "file": "crew_driver_fire.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_driver_idle",
+      "file": "crew_driver_idle.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_mg_drive",
+      "file": "crew_mg_drive.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_mg_fire",
+      "file": "crew_mg_fire.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_fat_idle",
+      "file": "crew_fat_idle.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_fat_ready",
+      "file": "crew_fat_ready.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_fat_walk",
+      "file": "crew_fat_walk.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_fat_attack",
+      "file": "crew_fat_attack.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_fat_hurt",
+      "file": "crew_fat_hurt.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_fat_death",
+      "file": "crew_fat_death.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_dog_idle",
+      "file": "crew_dog_idle.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_dog_walk",
+      "file": "crew_dog_walk.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_dog_attack",
+      "file": "crew_dog_attack.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_dog_hurt",
+      "file": "crew_dog_hurt.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_dog_death",
+      "file": "crew_dog_death.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_dog_driver_drive",
+      "file": "crew_dog_driver_drive.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_dog_pilot_drive",
+      "file": "crew_dog_pilot_drive.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_dog_pilot_fire",
+      "file": "crew_dog_pilot_fire.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_dog_mg_drive",
+      "file": "crew_dog_mg_drive.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_dog_mg_fire",
+      "file": "crew_dog_mg_fire.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_cat_ready",
+      "file": "crew_cat_ready.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_cat_walk",
+      "file": "crew_cat_walk.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_cat_attack",
+      "file": "crew_cat_attack.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_cat_hurt",
+      "file": "crew_cat_hurt.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_cat_death",
+      "file": "crew_cat_death.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_jeep_ready",
+      "file": "crew_jeep_ready.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_jeep_walk",
+      "file": "crew_jeep_walk.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_jeep_attack",
+      "file": "crew_jeep_attack.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_jeep_hurt",
+      "file": "crew_jeep_hurt.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_jeep_death",
+      "file": "crew_jeep_death.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_pilot_ready",
+      "file": "crew_pilot_ready.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_pilot_walk",
+      "file": "crew_pilot_walk.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_pilot_attack",
+      "file": "crew_pilot_attack.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_pilot_hurt",
+      "file": "crew_pilot_hurt.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "crew_pilot_death",
+      "file": "crew_pilot_death.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "arcade_vfx_Explosion",
+      "file": "arcade_vfx_Explosion.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "arcade_vfx_Smoke",
+      "file": "arcade_vfx_Smoke.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "arcade_vfx_Hit",
+      "file": "arcade_vfx_Hit.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "arcade_vfx_Muzzle",
+      "file": "arcade_vfx_Muzzle.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "arcade_vfx_Spark",
+      "file": "arcade_vfx_Spark.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "arcade_vfx_Glow",
+      "file": "arcade_vfx_Glow.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "arcade_vfx_Shockwave",
+      "file": "arcade_vfx_Shockwave.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "arcade_vfx_Beam",
+      "file": "arcade_vfx_Beam.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "arcade_vfx_FireBoltHead",
+      "file": "arcade_vfx_FireBoltHead.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "arcade_vfx_Dust",
+      "file": "arcade_vfx_Dust.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "key": "arcade_vfx_BeamTrail",
+      "file": "arcade_vfx_BeamTrail.png",
+      "source": "Art/Equipment-test.html#tank-game-assets"
+    },
+    {
+      "source": "Art/Asset/vfx/ground_fire_vfx/assets/fire_strip_8f.png",
+      "file": "ground_fire.png",
+      "key": "ground_fire"
+    }
+  ]
+}
