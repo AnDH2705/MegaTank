@@ -28,9 +28,10 @@ namespace MegaTanks
         public static Collider2D PlayerTarget(BattleGame game,Collider2D attacker)
         {
             var hull=game.HullHitbox.GetComponent<Collider2D>();Collider2D target=VerticallyReachable(attacker,hull)?hull:null;
-            if(game.Commando!=null&&game.Commando.Active)
+            foreach (var unit in game.AlliedCrew)
             {
-                var crew=game.Commando.GetComponent<Collider2D>();
+                if (!unit.Active) continue;
+                var crew=unit.GetComponent<Collider2D>();
                 if(VerticallyReachable(attacker,crew)&&(target==null||DistanceSquared(attacker,crew)<DistanceSquared(attacker,target)))target=crew;
             }
             return target;

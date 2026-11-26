@@ -39,7 +39,9 @@ namespace MegaTanks
         public TankStance Stance { get; private set; } = TankStance.Aggressive;
         Vector2 tankVelocity;
         Vector3 tankStartPosition;
-        public Vector2 TankVelocity => Running && Stance == TankStance.Aggressive ? tankVelocity : Vector2.zero;
+        public Vector2 TankVelocity => Stage?.Mode == StageMode.ApproachingEvent || Stage?.Mode == StageMode.Advancing
+            || (Running && Stance == TankStance.Aggressive) ? tankVelocity : Vector2.zero;
+        internal float TankTravelThisFrame { get; private set; }
         public bool AllWeaponsInRange => FindTarget(MachineGun.transform.position, EnemyKind.Flyer, MachineGun.MaxRange) != null
             && FindTarget(MainGun.transform.position, EnemyKind.Ground, MainGun.MaxRange) != null
             && FindMortarTarget(Artwork.Mortar.Muzzle.position, Mortar.Stats.range, Mortar.Stats.halfDamageRadius) != null;
@@ -51,6 +53,9 @@ namespace MegaTanks
         public EnemyDataManager EnemyDatabase => enemyDataManager;
         public int BattleDifficulty { get; private set; }
         readonly Dictionary<string,EnemyDefinition> battleEnemyStats=new Dictionary<string,EnemyDefinition>();
+        readonly List<EnemyDefinition> groundWaveEnemies = new List<EnemyDefinition>();
+        readonly List<EnemyDefinition> flyingWaveEnemies = new List<EnemyDefinition>();
+        EnemyDefinition waveCarrier;
         public TankHitbox HullHitbox { get; private set; }
         public Vector2 TankAimPoint => HullHitbox.AimPoint;
         [SerializeField, Min(1), Tooltip("Horizontal distance from the tank anchor to the front of each wave.")] float enemySpawnDistance = 90;
@@ -106,6 +111,8 @@ namespace MegaTanks
         public PlayerEquipment Equipment { get; private set; }
         public PlayerCrew Crew { get; private set; }
         public CommandoUnit Commando { get; private set; }
+        public IReadOnlyList<CommandoUnit> AlliedCrew => alliedCrew;
+        readonly List<CommandoUnit> alliedCrew = new List<CommandoUnit>();
         public PlayerWallet Wallet { get; private set; }
         public PlayerProgression Progression { get; private set; }
         public StageCompletionRewards StageRewards { get; private set; }
@@ -116,7 +123,7 @@ namespace MegaTanks
         readonly List<FlashEffect> effects = new List<FlashEffect>();
         Transform scenery;
         Camera battleCamera;
-        bool deployed, paused, keepHomeBackdrop;
+        bool deployed, paused;
         float lastVibration=-1;
         int best;
 
@@ -142,12 +149,61 @@ namespace MegaTanks
             Progression = new PlayerProgression(frontendCatalog, Wallet);
             PlaytestResources.ApplyOnce(frontendCatalog, Wallet, Progression);
             Crew.Changed+=RefreshTankLoadoutStats;
-            Commando=new GameObject("Crew Commando").AddComponent<CommandoUnit>();
-            Commando.transform.SetParent(transform,false);Commando.Configure(this);
+            Commando = CreateCrewUnit(CrewRole.Commando);
+            CreateCrewUnit(CrewRole.Gunner);
+            CreateCrewUnit(CrewRole.SubGunner);
+            CreateCrewUnit(CrewRole.WeaponSpecialist);
+            CreateCrewUnit(CrewRole.Driver);
             RefreshTankLoadoutStats();
             StageRewards = new StageCompletionRewards(Wallet);
             UI = CanvasGameUI.Create(this);
         }
+
+        CommandoUnit CreateCrewUnit(CrewRole role)
+        {
+            var unit = new GameObject("Crew " + role).AddComponent<CommandoUnit>();
+            unit.transform.SetParent(transform, false);
+            unit.Configure(this, role);
+            alliedCrew.Add(unit);
+            return unit;
+        }
+
+        internal CrewDefinition CommandoStatsSource()
+        {
+            var equipped = Crew.Get(CrewRole.Commando);
+            if (equipped != null) return equipped;
+            var members = Frontend?.crew?.members;
+            return members == null ? null : System.Array.Find(members, member => member != null && member.role == CrewRole.Commando);
+        }
+
+        internal bool CanDeployCrew(CrewRole role)
+        {
+            switch (role)
+            {
+                case CrewRole.Gunner: return MainGun.Ammo <= 0;
+                case CrewRole.SubGunner: return MachineGun.Ammo <= 0;
+                case CrewRole.WeaponSpecialist: return Mortar.Ammo <= 0;
+                case CrewRole.Driver: return StoppedInBossWeaponRange();
+                default: return true;
+            }
+        }
+
+        bool StoppedInBossWeaponRange()
+        {
+            if (Stage.Current?.type != StageNodeType.Boss || TankVelocity.sqrMagnitude > .0001f) return false;
+            foreach (var enemy in enemies)
+            {
+                if (enemy == null || !enemy.Alive || enemy.Boss == null || !enemy.gameObject.activeInHierarchy) continue;
+                Vector2 target = enemy.transform.position;
+                return InWeaponRange(target, MainGun.transform.position, MainGun.MaxRange)
+                    && InWeaponRange(target, MachineGun.transform.position, MachineGun.MaxRange)
+                    && InWeaponRange(target, Artwork.Mortar.Muzzle.position, Mortar.Stats.range);
+            }
+            return false;
+        }
+
+        static bool InWeaponRange(Vector2 target, Vector2 origin, float range)
+            => range > 0 && (target - origin).sqrMagnitude <= range * range;
 
         public TankStats CalculateTankStats(ArmorDefinition armor,ArmorDefinition secondArmor=null)
         {
@@ -205,6 +261,7 @@ namespace MegaTanks
             FitCamera();
             Backgrounds = gameObject.AddComponent<BattleBackgroundController>();
             Backgrounds.Configure(backgroundCatalog, battleCamera);
+            Backgrounds.SelectStagePreset(stageDefinition);
             Backgrounds.SelectRandom();
         }
 
@@ -287,8 +344,7 @@ namespace MegaTanks
         {
             Vfx.Clear();
             RunId++;
-            Commando?.ResetForRun();
-            keepHomeBackdrop = !deployed;
+            foreach (var unit in alliedCrew) unit.ResetForRun();
             Time.timeScale = 1;
             foreach (EnemyEntity enemy in enemies) if (enemy != null) Destroy(enemy.gameObject);
             enemies.Clear();
@@ -325,10 +381,15 @@ namespace MegaTanks
 
         public EnemyEntity SpawnEnemy(string definitionId, Vector2 position)
         {
-            var entity = new GameObject(definitionId).AddComponent<EnemyEntity>();
-            entity.transform.position = position;
             if(!battleEnemyStats.TryGetValue(definitionId,out var stats))stats=enemyDataManager.Get(definitionId).AtDifficulty(BattleDifficulty);
-            entity.Initialize(stats, Wave, BattleDifficulty);
+            return SpawnEnemy(stats, position, BattleDifficulty);
+        }
+
+        internal EnemyEntity SpawnEnemy(EnemyDefinition stats, Vector2 position, int difficulty, CommandoArtwork existingCommando = null)
+        {
+            var entity = new GameObject(stats.id).AddComponent<EnemyEntity>();
+            entity.transform.position = position;
+            entity.Initialize(stats, Wave, difficulty, existingCommando);
             if(entity.Alive)enemies.Add(entity);else Destroy(entity.gameObject);
             return entity;
         }
@@ -354,17 +415,66 @@ namespace MegaTanks
                 SpawnBoss();
                 return;
             }
-            int ground = Mathf.Min(3 + Wave, 12);
-            int flyers = Mathf.Min(1 + Wave, 8);
-            float spawnX = Artwork.transform.position.x + EnemySpawnDirection*enemySpawnDistance;
+            int growth = Wave / 3;
+            int ground = groundWaveEnemies.Count > 0 || waveCarrier != null ? Mathf.Min(3 + growth, 5) : 0;
+            int flyers = flyingWaveEnemies.Count > 0 ? Mathf.Min(2 + growth, 5) : 0;
+            float spawnX = Artwork.transform.position.x + EnemySpawnDirection * enemySpawnDistance;
             CameraPan.SetEnemySpawn(spawnX);
-            float groundSpacing = Mathf.Max(1.7f, enemyDataManager.Get(EnemyKind.Ground).ScaledArtworkWidth + .3f);
-            float flyerSpacing = Mathf.Max(2, enemyDataManager.Get(EnemyKind.Flyer).ScaledArtworkWidth + .4f);
+
+            int carrierSlot = waveCarrier != null && groundWaveEnemies.Count > 0 ? Random.Range(1, ground - 1) : -1;
+            float groundOffset = 0;
+            float previousWidth = 0;
             for (int i = 0; i < ground; i++)
-                SpawnEnemy(EnemyKind.Ground, new Vector2(spawnX + EnemySpawnDirection*i * groundSpacing, -4.25f + i % 2 * .25f));
+            {
+                var unit = i == carrierSlot || groundWaveEnemies.Count == 0 ? waveCarrier : PickWaveEnemy(groundWaveEnemies);
+                float width = unit.ScaledArtworkWidth;
+                if (i > 0)
+                    groundOffset += Mathf.Max(1.7f, (previousWidth + width) * .5f + .3f);
+                SpawnEnemy(unit, new Vector2(spawnX + EnemySpawnDirection * groundOffset, -4.25f + i % 2 * .25f), BattleDifficulty);
+                previousWidth = width;
+            }
+
+            float flyerOffset = 0;
+            previousWidth = 0;
             for (int i = 0; i < flyers; i++)
-                SpawnEnemy(EnemyKind.Flyer, new Vector2(spawnX + EnemySpawnDirection*i * flyerSpacing, flyingEnemyHeight + i % 2 * flyingEnemyLaneSpacing));
-            if(enemies.Count==0)Stage.OnWaveCleared();
+            {
+                var unit = PickWaveEnemy(flyingWaveEnemies);
+                float width = unit.ScaledArtworkWidth;
+                if (i > 0)
+                    flyerOffset += Mathf.Max(2, (previousWidth + width) * .5f + .4f);
+                SpawnEnemy(unit, new Vector2(spawnX + EnemySpawnDirection * flyerOffset,
+                    flyingEnemyHeight + i % 2 * flyingEnemyLaneSpacing), BattleDifficulty);
+                previousWidth = width;
+            }
+            if (enemies.Count == 0) Stage.OnWaveCleared();
+        }
+
+        static EnemyDefinition PickWaveEnemy(List<EnemyDefinition> roster) =>
+            roster[roster.Count == 1 ? 0 : Random.Range(0, roster.Count)];
+
+        void PrepareWaveRoster()
+        {
+            groundWaveEnemies.Clear();
+            flyingWaveEnemies.Clear();
+            waveCarrier = null;
+            foreach (var profile in Stage.Definition.spawnableEnemies ?? System.Array.Empty<EnemyStatsProfile>())
+            {
+                if (profile == null || string.IsNullOrEmpty(profile.stats?.id)) continue;
+                string id = profile.stats.id;
+                if (!battleEnemyStats.TryGetValue(id, out var stats))
+                {
+                    stats = profile.stats.AtDifficulty(BattleDifficulty);
+                    battleEnemyStats.Add(id, stats);
+                }
+                if (stats.kind == EnemyKind.Flyer)
+                {
+                    if (!flyingWaveEnemies.Contains(stats)) flyingWaveEnemies.Add(stats);
+                }
+                else if (id == TrojanScrapCat.EnemyId)
+                    waveCarrier = stats;
+                else if (!groundWaveEnemies.Contains(stats))
+                    groundWaveEnemies.Add(stats);
+            }
         }
 
         public EnemyEntity SpawnBoss()
@@ -405,19 +515,19 @@ namespace MegaTanks
         public void ReturnHome()
         {
             deployed = false; paused = false; Time.timeScale = 1;
-            Commando?.ResetForRun();
+            foreach (var unit in alliedCrew) unit.ResetForRun();
             ClearEncounterTransient(); Rewards.ResetRun(); Stage.EndRun();
             foreach(var enemy in enemies) if(enemy!=null) Destroy(enemy.gameObject);
             enemies.Clear();
             tankVelocity = Vector2.zero;
             Artwork.transform.position=tankStartPosition;Artwork.ResetVisual();
             CameraPan.ResetToSpawn(tankStartPosition.x,tankStartPosition.x+EnemySpawnDirection*enemySpawnDistance);FitCamera();
-            Backgrounds.SelectRandom();
         }
         public void SelectStage(StageDefinition definition)
         {
             if (deployed || definition == null) return;
             stageDefinition = definition; Stage.Configure(this, definition, cardCatalog);
+            Backgrounds.SelectStagePreset(definition);
         }
 
         public void BeginStageWave()
@@ -425,11 +535,12 @@ namespace MegaTanks
             ClearEncounterTransient();
             if(Stage.EncounterWave==1)
             {
+                Rewards.BeginBattle();
                 BattleDifficulty=Stage.Difficulty;
                 battleEnemyStats.Clear();
                 foreach(var definition in enemyDataManager.Definitions)battleEnemyStats.Add(definition.id,definition.AtDifficulty(BattleDifficulty));
+                PrepareWaveRoster();
             }
-            if (Stage.EncounterWave == 1 && !(Wave==0 && keepHomeBackdrop)) Backgrounds.SelectRandom();
             SpawnWave();
         }
 
@@ -437,6 +548,7 @@ namespace MegaTanks
         {
             switch (card.effect)
             {
+                case CardEffect.Scraps: Rewards.AddScraps(card.scraps); break;
                 case CardEffect.CannonDamage: MainGun.IncreaseDamage(card.fraction); break;
                 case CardEffect.MachineGunDamage: MachineGun.IncreaseDamage(card.fraction); break;
                 case CardEffect.Resupply: MachineGun.Resupply(card.fraction); MainGun.Resupply(card.fraction); Mortar.Resupply(card.fraction); break;
@@ -463,6 +575,16 @@ namespace MegaTanks
             return preferred != null ? preferred : fallback;
         }
 
+        internal bool HasGroundThreat(Vector2 position, float range)
+        {
+            if (range <= 0) return false;
+            foreach (var enemy in enemies)
+                if (enemy != null && enemy.Alive && enemy.Kind == EnemyKind.Ground && enemy.gameObject.activeInHierarchy
+                    && ((Vector2)enemy.transform.position - position).sqrMagnitude <= range * range)
+                    return true;
+            return false;
+        }
+
         public EnemyEntity FindMeleeTarget(Collider2D attacker,Vector2 activationOrigin,float activationRange)
         {
             EnemyEntity target=null;float distance=float.PositiveInfinity;
@@ -481,7 +603,7 @@ namespace MegaTanks
             {
                 EnemiesDefeated++;
                 Score += enemy.Data.score;
-                Rewards.AddScraps(enemy.ScrapsReward);
+                Rewards.AddBattleScraps(enemy.ScrapsReward);
             }
             if (enemies.Count == 0)
             {
@@ -562,7 +684,7 @@ namespace MegaTanks
 
         public void SetPaused(bool value)
         {
-            if (!deployed || Hull <= 0 || Rewards.IsOpen || Stage.Mode != StageMode.Combat) return;
+            if (!deployed || Hull <= 0 || Rewards.IsOpen || (Stage.Mode != StageMode.Combat && Stage.Mode != StageMode.WaveBreak)) return;
             paused = value;
             Time.timeScale = value ? 0 : 1;
         }
@@ -599,14 +721,111 @@ namespace MegaTanks
                 AdvanceNeededForWeapon(Artwork.Mortar.Muzzle.position, Mortar.Stats.range));
             if (float.IsInfinity(distance) || Time.deltaTime <= 0) return;
             float step = Mathf.Min(distance, Mathf.Max(0, TankAdvanceSpeed) * Time.deltaTime);
-            Artwork.transform.position += Vector3.right * (EnemySpawnDirection*step);
-            CameraPan.FollowTank(EnemySpawnDirection*step);
-            tankVelocity = Vector2.right * (EnemySpawnDirection*step / Time.deltaTime);
+            MoveTankForward(step, Time.deltaTime);
+        }
+
+        const float CampViewportClearance = .25f;
+        const float CampStopClearance = .35f;
+        SpriteRenderer campTent, campSign, campSignIcon;
+        float campApproachStartX, campStopX;
+
+        void ShowCamp()
+        {
+            if (campTent == null)
+            {
+                campTent = CreateCampSprite("Field Camp Tent", scenery, Resources.Load<Sprite>("Events/CampTent"), -10);
+                campTent.transform.localScale = Vector3.one * .7f;
+                campSign = CreateCampSprite("Camp Road Sign", campTent.transform, Resources.Load<Sprite>("Events/CampRoadSign"), 100);
+                campSign.transform.localScale = Vector3.one * (2.65f / (campSign.sprite.bounds.size.x * campTent.transform.lossyScale.x));
+                campSignIcon = CreateCampSprite("Camp Sign Icon", campSign.transform, null, 101);
+            }
+
+            campApproachStartX = Artwork.transform.position.x;
+            float tankFront = campApproachStartX;
+            foreach (var renderer in Artwork.GetComponentsInChildren<SpriteRenderer>())
+                if (renderer.enabled && renderer.sprite != null && renderer.color.a > 0)
+                    tankFront = Mathf.Max(tankFront, renderer.bounds.max.x);
+            float viewportRight = battleCamera.ViewportToWorldPoint(new Vector3(1, .5f, 0)).x;
+            float tentLeft = Mathf.Max(viewportRight + CampViewportClearance, tankFront + CampStopClearance);
+            campStopX = campApproachStartX + tentLeft - tankFront - CampStopClearance;
+            Vector3 tentSize = campTent.sprite.bounds.size * campTent.transform.lossyScale.x;
+            float tentX = tentLeft + tentSize.x * .5f;
+            campTent.transform.position = new Vector3(tentX, GroundHeight + tentSize.y * .4f - .2f, 0);
+            PositionCampSign(tentX);
+            FadeCamp(0);
+            campTent.gameObject.SetActive(true);
+        }
+
+        static SpriteRenderer CreateCampSprite(string name, Transform parent, Sprite sprite, int order)
+        {
+            var renderer = new GameObject(name).AddComponent<SpriteRenderer>();
+            renderer.transform.SetParent(parent, false);
+            renderer.sprite = sprite;
+            renderer.sortingOrder = order;
+            return renderer;
+        }
+
+        void PositionCampSign(float tentX)
+        {
+            var skin = UI.RouteSkin;
+            campSignIcon.sprite = Stage.CampType switch
+            {
+                TentType.Repair => skin.repair,
+                TentType.Resupply => skin.supply,
+                TentType.Vendor => skin.IconFor(StageNodeType.Shop),
+                _ => skin.backArrow
+            };
+            campSignIcon.transform.localRotation = Quaternion.Euler(0, 0, Stage.CampType == TentType.Upgrade ? -90f : 0f);
+            Vector2 iconSize = campSignIcon.sprite.bounds.size;
+            float iconScale = .62f / (Mathf.Max(iconSize.x, iconSize.y) * campSign.transform.lossyScale.x);
+            campSignIcon.transform.localScale = Vector3.one * iconScale;
+            Vector2 signSize = campSign.sprite.bounds.size;
+            campSignIcon.transform.localPosition = new Vector3(-.14f * signSize.x, .155f * signSize.y, 0);
+            float signHeight = signSize.y * campSign.transform.lossyScale.y;
+            campSign.transform.position = new Vector3(tentX - 5.4f, GroundHeight + signHeight * .44f - .2f, 0);
+        }
+
+        internal bool ApproachCamp(float seconds)
+        {
+            if (campTent == null || !campTent.gameObject.activeSelf) ShowCamp();
+            // A tank configured with zero combat speed must still reach the event.
+            float speed = TankAdvanceSpeed > 0 ? 3f * TankAdvanceSpeed : 1f;
+            float distance = Mathf.Max(0, campStopX - Artwork.transform.position.x);
+            float timeToStop = distance / speed;
+            bool arrived = seconds >= timeToStop;
+            MoveTankForward(arrived ? distance : speed * seconds, Mathf.Min(seconds, timeToStop));
+            float progress = arrived ? 1f : Mathf.InverseLerp(campApproachStartX, campStopX, Artwork.transform.position.x);
+            FadeCamp(Mathf.Clamp01(progress * 5f));
+            return arrived;
+        }
+
+        internal void FadeCamp(float opacity)
+        {
+            if (campTent == null || campTent.color.a == opacity) return;
+            campTent.color = campSign.color = campSignIcon.color = new Color(1, 1, 1, opacity);
+        }
+
+        internal void HideCamp()
+        {
+            if (campTent != null) campTent.gameObject.SetActive(false);
+        }
+
+        internal void AdvanceBetweenBattles(float seconds) => MoveTankForward(Mathf.Max(0, TankAdvanceSpeed) * seconds, seconds);
+
+        void MoveTankForward(float distance, float seconds)
+        {
+            float step = EnemySpawnDirection * distance;
+            Artwork.transform.position += Vector3.right * step;
+            TankTravelThisFrame += step;
+            CameraPan.FollowTank(step);
+            tankVelocity = seconds > 0 ? Vector2.right * (step / seconds) : Vector2.zero;
         }
 
         void Update()
         {
-            AdvanceTank();
+            TankTravelThisFrame = 0;
+            if (Stage.Mode == StageMode.ApproachingEvent || Stage.Mode == StageMode.Advancing) Stage.Advance(Time.deltaTime);
+            else AdvanceTank();
             FitCamera();
             if (!paused && !Rewards.IsOpen)
                 for (int i = damageNumbers.Count - 1; i >= 0; i--)

@@ -29,14 +29,16 @@ namespace MegaTanks
             var list=(descending?sorted.Reverse():sorted).ToArray();InventoryVisibleCount=list.Length;
             foreach(var item in list)
             {
-                var cell=Instantiate(layout.inventoryItem,content,false);cell.name="Item "+item.name;cell.gameObject.SetActive(true);
+                var cell=Instantiate(layout.equipmentInventoryItem!=null?layout.equipmentInventoryItem:layout.inventoryItem,content,false);cell.name="Item "+item.name;cell.gameObject.SetActive(true);
                 Click(cell,"$root",()=>{selected=item;DrawEquipment();});
                 var icon=cell.Get<Image>("Icon");icon.sprite=item.icon;icon.gameObject.SetActive(item.icon!=null);
                 ProgressionCell(cell,item);Text(cell,"Item Name",name(item));Active(cell,"Equipped Indicator",game.Equipment.IsEquipped(item));
                 cell.Get<Outline>("$root").enabled=selected==item;
+                var frame=cell.transform.Find("Selection");if(frame!=null)frame.gameObject.SetActive(selected==item);
             }
             Active(v,"Empty Inventory",list.Length==0);Text(v,"Empty Inventory","No "+(filter.HasValue?TypeName(filter.Value).ToLowerInvariant():"equipment")+" items available yet.");
             DrawItemDetail(name);DrawProgression(v,selected,false);
+            var art=v.GetComponent<LoadoutArtPresentation>();if(art!=null)art.DrawEquipment(v,selected,game.Progression);
         }
         void Slot(string title,EquipmentType type,int index,string label=null)
         {
@@ -49,6 +51,7 @@ namespace MegaTanks
             bool filled=item!=null&&item.icon!=null;
             Active(v,key+"/Equipped Item Icon",filled);if(filled)v.Get<Image>(key+"/Equipped Item Icon").sprite=item.icon;
             Active(v,key+"/Empty Slot Icon",!filled);Text(v,key+"/Slot Description",(label??title)+"\n"+(item!=null?item.displayName:"Empty"));
+            var art=v.GetComponent<LoadoutArtPresentation>();if(art!=null)art.StyleEquipmentSlot(v,key,active);
         }
         public void ChangeTank()
         {

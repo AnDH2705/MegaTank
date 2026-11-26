@@ -70,5 +70,8 @@ MonoBehaviour:
       value: 0
       gain: 0
     activationRange:
-      value: 7.5
+      value: 8
       gain: 0
+    healthRegeneration:
+      value: 5
+      gain: 0.25

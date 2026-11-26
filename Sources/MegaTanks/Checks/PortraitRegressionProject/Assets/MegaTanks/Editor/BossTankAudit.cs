@@ -71,15 +71,12 @@ namespace MegaTanks.Editor
                     game.StartBattle(); StageProgressionAudit.DisableWeapons(game); game.SetStance(TankStance.Defensive);
                     int regularEnemies = game.EnemyCount;
                     Require(game.SpawnBoss() == null && game.EnemyCount == regularEnemies, "Direct boss spawning must be rejected outside the special Boss map node.");
-                    // Traverse the actual route to its final node, keeping intermediate encounters deterministic.
+                    // Advance through the actual stage, keeping intermediate battles deterministic.
                     while (game.Stage.Current.EncounterType != StageNodeType.Boss)
                     {
                         Require(UnityEngine.Object.FindObjectsOfType<BossTank>().Length == 0, "Boss appeared before final node.");
-                        StageProgressionAudit.ClearWave(game); game.Stage.OnRewardChosen();
-                        var next = game.Stage.Route.Get(game.Stage.Current.next[0]);
-                        if (next.type != StageNodeType.Boss) next.type = StageNodeType.Battle;
-                        game.Rewards.ResetRun();
-                        Require(game.Stage.SelectNode(next.id), "Cannot traverse route.");
+                        StageProgressionAudit.ClearWave(game);
+                        StageProgressionAudit.EnterNextBattle(game);
                     }
                     var enemies = UnityEngine.Object.FindObjectsOfType<EnemyEntity>().Where(e => e.Alive).ToArray();
                     Require(enemies.Length == 1 && enemies[0].Boss != null, "Boss node must spawn one boss tank.");
@@ -190,11 +187,8 @@ namespace MegaTanks.Editor
             game.SetStance(TankStance.Defensive);
             while (game.Stage.Current.EncounterType != StageNodeType.Boss)
             {
-                StageProgressionAudit.ClearWave(game); game.Stage.OnRewardChosen();
-                var next = game.Stage.Route.Get(game.Stage.Current.next[0]);
-                if (next.type != StageNodeType.Boss) next.type = StageNodeType.Battle;
-                game.Rewards.ResetRun();
-                Require(game.Stage.SelectNode(next.id), "Cannot enter configured stage boss.");
+                StageProgressionAudit.ClearWave(game);
+                StageProgressionAudit.EnterNextBattle(game);
             }
             return game.SpawnBoss(); // Returns the existing boss without duplicating it.
         }

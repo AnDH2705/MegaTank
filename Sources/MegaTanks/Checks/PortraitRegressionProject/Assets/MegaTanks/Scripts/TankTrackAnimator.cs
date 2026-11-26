@@ -29,10 +29,10 @@ namespace MegaTanks
         void Update()
         {
             var game = BattleGame.Instance;
-            float speed = EnemyOwner != null ? -EnemyOwner.Velocity.x : game != null ? game.TankVelocity.x : 0;
-            if (animation == null || data == null || game == null || !game.Running || Mathf.Abs(speed) < .00001f) return;
-            float travel = speed * Time.deltaTime / Mathf.Max(.001f, Mathf.Abs(transform.lossyScale.x));
-            distance = Mathf.Repeat(distance + travel, data.Length);
+            if (animation == null || data == null || game == null || (EnemyOwner != null && !game.Running)) return;
+            float travel = EnemyOwner != null ? -EnemyOwner.Velocity.x * Time.deltaTime : game.TankTravelThisFrame;
+            if (travel == 0) return;
+            distance = Mathf.Repeat(distance + travel / Mathf.Max(.001f, Mathf.Abs(transform.lossyScale.x)), data.Length);
             // Spine owns the path constraint, bone poses, animation state and mesh generation.
             // Drive its original running loop by terrain travel rather than wall-clock time.
             animation.AnimationState.GetCurrent(0).TrackTime = distance / data.Length * data.sourceDuration;

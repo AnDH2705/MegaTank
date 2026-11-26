@@ -5,38 +5,43 @@ using UnityEngine;
 
 namespace MegaTanks
 {
-    public enum StageMode { Inactive, Combat, WaveBreak, Reward, Map, Reveal, Service, Victory, Shop }
+    public enum StageMode { Inactive, Combat, WaveBreak, Reward, Map, Reveal, Service, Victory, Shop, ApproachingEvent, Event, Advancing }
+    public enum TentType { Upgrade, Repair, Resupply, Vendor }
     public sealed class StageProgression : MonoBehaviour
     {
         StageDefinition definition;
         CardCatalog catalog;
         BattleGame game;
 
-        float waveBreak;
+        const float AdvanceSeconds = 1f;
+        const int BattlesPerShop = 5;
+        float waveBreak, advanceRemaining;
         public StageDefinition Definition => definition;
         public StageRoute Route { get; private set; }
         public StageNode Current { get; private set; }
         public int CurrentRoundNumber => (Current?.round ?? 0) + 1;
         public int Difficulty => definition.stageDifficulty + CurrentRoundNumber;
         public StageMode Mode { get; private set; }
+        public TentType CampType { get; private set; }
         public int EncounterWave { get; private set; }
         public int EncounterWaves => Current != null && Current.EncounterType == StageNodeType.HardBattle ? 3 : 1;
         public CardDefinition FreeServiceCard { get; private set; }
         public CardDefinition PaidServiceCard { get; private set; }
         public bool FreeClaimed { get; private set; }
         public bool PaidPurchased { get; private set; }
-        public bool HasOverlay => Mode == StageMode.Map || Mode == StageMode.Reveal || Mode == StageMode.Service || Mode == StageMode.Victory || Mode == StageMode.WaveBreak || Mode == StageMode.Shop;
+        public bool HasOverlay => Mode == StageMode.Map || Mode == StageMode.Reveal || Mode == StageMode.Service || Mode == StageMode.Victory || Mode == StageMode.Shop || Mode == StageMode.Event;
         public void Configure(BattleGame battle, StageDefinition data, CardCatalog cards)
         {
             game = battle; definition = data; catalog = cards;
 
         }
-        public void EndRun() { game.StageRewards?.EndRun(); Mode = StageMode.Inactive; Current = null; }
+        public void EndRun() { game.StageRewards?.EndRun(); game.HideCamp(); Mode = StageMode.Inactive; Current = null; }
         public void BeginRun()
         {
             game.StageRewards.BeginRun(definition);
+            game.HideCamp();
             int seed = definition.randomizeSeed ? UnityEngine.Random.Range(0, int.MaxValue) : definition.seed;
-            Route = StageRoute.Generate(definition, seed);
+            Route = StageRoute.GenerateBattleSequence(definition, seed);
             Current = null; FreeServiceCard = PaidServiceCard = null;
             Enter(Route.rounds[0][0]);
         }
@@ -118,15 +123,58 @@ namespace MegaTanks
             }
             else
             {
-                Mode = StageMode.Reward;
-                game.Rewards.OpenBattleReward(game.Wave);
+                bool beforeBoss = Route.rounds[Current.round + 1][0].type == StageNodeType.Boss;
+                CampType = beforeBoss || CurrentRoundNumber % BattlesPerShop == 0
+                    ? TentType.Vendor : (TentType)UnityEngine.Random.Range(0, (int)TentType.Vendor);
+                Mode = StageMode.ApproachingEvent;
             }
         }
+        void EnterCamp()
+        {
+            switch (CampType)
+            {
+                case TentType.Upgrade:
+                    Mode = StageMode.Reward;
+                    game.Rewards.OpenBattleReward(game.Wave);
+                    break;
+                case TentType.Vendor:
+                    Mode = StageMode.Shop;
+                    game.Rewards.OpenRouteShop();
+                    break;
+                default:
+                    Mode = StageMode.Event;
+                    game.Rewards.OpenServiceReward(game.Wave, CampType == TentType.Repair ? CardEffect.Repair : CardEffect.Resupply);
+                    break;
+            }
+        }
+
         public void OnRewardChosen()
         {
-            if (Mode != StageMode.Reward && Mode != StageMode.Shop) return;
-            Current.completed = true; Mode = StageMode.Map;
-            game.ClearEncounterTransient();
+            if (Mode != StageMode.Reward && Mode != StageMode.Shop && Mode != StageMode.Event) return;
+            Current.completed = true;
+            advanceRemaining = AdvanceSeconds;
+            Mode = StageMode.Advancing;
+        }
+
+        internal void Advance(float deltaTime)
+        {
+            if (deltaTime <= 0) return;
+            if (Mode == StageMode.ApproachingEvent)
+            {
+                if (game.ApproachCamp(deltaTime)) EnterCamp();
+                return;
+            }
+            if (Mode != StageMode.Advancing) return;
+
+            float elapsed = Mathf.Min(advanceRemaining, deltaTime);
+            advanceRemaining -= elapsed;
+            game.AdvanceBetweenBattles(elapsed);
+            game.FadeCamp(advanceRemaining / AdvanceSeconds);
+            if (advanceRemaining <= 0)
+            {
+                game.HideCamp();
+                Enter(Route.rounds[Current.round + 1][0]);
+            }
         }
         public bool ClaimFreeService()
         {

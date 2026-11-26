@@ -16,6 +16,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 1739948587163343259, guid: bcd6c8d21d2f1bb4b8f954ae00edf34a, type: 3}
   - {fileID: 1044248449838714769, guid: 3b507aaf765a67b48ae65ee7a1d7b791, type: 3}
+  - {fileID: 4251595565385478542, guid: b2fa2674db874fd0bf482d9d558cae49, type: 3}
   enemies:
   - armor: 0
     evasion: 0

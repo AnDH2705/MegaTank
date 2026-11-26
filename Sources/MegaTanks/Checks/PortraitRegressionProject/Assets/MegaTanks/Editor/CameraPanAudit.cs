@@ -116,11 +116,12 @@ namespace MegaTanks.Editor
                         Require(game.TankCamera.transform.position.y==cameraRest.y&&game.TankCamera.transform.position.z==cameraRest.z,"Following must preserve camera height and depth.");
                         Require(Mathf.Abs(pan.MaxX-initialMax-advanced)<.001f&&Mathf.Abs(pan.MinX-game.Artwork.transform.position.x)<.001f,"Drag limits must follow tank movement.");
                         held=pan.X;tankX=game.Artwork.transform.position.x;
-                        game.SetStance(TankStance.Defensive);StageProgressionAudit.ClearWave(game);Drag(-500);Require(pan.X==held,"Reward screen must block panning.");
-                        game.Rewards.ChooseReward(0);StageProgressionAudit.EnterType(game,StageNodeType.Battle);Next();break;
+                        game.SetStance(TankStance.Defensive);StageProgressionAudit.ClearWave(game,resolveCamp:false);Drag(-500);Require(pan.X==held,"Camp approach must block panning.");
+                        StageProgressionAudit.EnterNextBattle(game);Next();break;
                     case 7:
-                        Require(Mathf.Abs(pan.MaxX-game.Artwork.transform.position.x-game.EnemySpawnDistance)<.001f&&pan.MaxX>initialMax&&pan.MinX==tankX,"New wave must update enemy spawn bound while retaining initial player framing.");
-                        Require(pan.X==held,"Wave changes must preserve manual camera position.");
+                        Require(Mathf.Abs(pan.MaxX-game.Artwork.transform.position.x-game.EnemySpawnDistance)<.001f&&pan.MaxX>initialMax
+                            &&Mathf.Abs(pan.MinX-game.Artwork.transform.position.x)<.001f,"New wave must update the spawn bounds relative to the advanced tank.");
+                        Require(Mathf.Abs(pan.X-held-(game.Artwork.transform.position.x-tankX))<.001f,"The camera must preserve its manual offset through camp travel.");
                         game.StartBattle();StageProgressionAudit.DisableWeapons(game);
                         Require(pan.X==pan.StartX&&pan.MaxX==initialMax,"Restart restores left-edge tank framing and spawn bounds.");
                         game.ReturnHome();held=pan.X;pan.PanByPixels(-100);Require(pan.X==held,"Home must block panning.");

@@ -10,6 +10,7 @@ namespace MegaTanks
         public ScreenEntry[] screens;
         [Header("Repeated element prefabs")]
         public UIView inventoryItem, routeNode, routeConnection, routeTank, damageNumber;
+        public UIView crewInventoryItem, equipmentInventoryItem;
         [Header("Procedural route layout (canvas units)")]
         [Min(1)] public float roundSpacing=230;
         [Min(0)] public float routeHorizontalPadding=120, routeVerticalPadding=140;

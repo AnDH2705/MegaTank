@@ -14,6 +14,8 @@ namespace MegaTanks
     public sealed class CardRewardSystem : MonoBehaviour
     {
         CardCatalog catalog;
+        int battleScraps;
+        Sprite scavengeArtwork;
         CardOffer[] offers = new CardOffer[0];
         public CardOffer[] Offers => offers;
         public IntermissionMode Mode { get; private set; }
@@ -23,14 +25,50 @@ namespace MegaTanks
 
 
         public void Configure(CardCatalog data) { catalog = data; catalog.Validate(); }
-        public void ResetRun() { Mode = IntermissionMode.None; Scraps = 0; CompletedWave = 0; offers = new CardOffer[0]; }
+        public void ResetRun() { Mode = IntermissionMode.None; Scraps = battleScraps = 0; CompletedWave = 0; offers = new CardOffer[0]; }
         public void AddScraps(int value) { Scraps = (int)Math.Min(int.MaxValue, (long)Scraps + Mathf.Max(0, value)); }
+        internal void BeginBattle() => battleScraps = 0;
+        internal void AddBattleScraps(int value)
+        {
+            AddScraps(value);
+            battleScraps = (int)Math.Min(int.MaxValue, (long)battleScraps + Mathf.Max(0, value));
+        }
         public bool TrySpendScraps(int value)
         {
             if (value < 0 || Scraps < value) return false;
             Scraps -= value; return true;
         }
-        public void OpenBattleReward(int wave) { OpenForWave(wave, true); }
+        public void OpenBattleReward(int wave)
+        {
+            if (IsOpen || wave < 1) return;
+            var excluded = catalog.cards.Where(card => card.effect == CardEffect.Repair || card.effect == CardEffect.Resupply
+                || card.effect == CardEffect.Scraps).Select(card => card.id).ToArray();
+            OpenReward(wave, catalog.RollUniqueCards(3, excluded));
+        }
+        internal void OpenServiceReward(int wave, CardEffect effect)
+        {
+            if (IsOpen || wave < 1) return;
+            if (scavengeArtwork == null) scavengeArtwork = Resources.Load<Sprite>("Art/Cards/ScavengeBattlefieldFramed");
+            int minimum = (int)((battleScraps * 75L + 99) / 100);
+            int maximum = (int)Math.Min(int.MaxValue, battleScraps * 110L / 100);
+            var scavenge = new CardDefinition
+            {
+                id = "scavenge-battlefield",
+                title = "Scavenge battlefield",
+                rarity = CardRarity.Rare,
+                effect = CardEffect.Scraps,
+                scraps = minimum + UnityEngine.Random.Range(0, maximum - minimum + 1),
+                art = scavengeArtwork
+            };
+            var service = catalog.cards.First(card => card.effect == effect && card.rarity == CardRarity.Normal);
+            OpenReward(wave, new[] { service, scavenge });
+        }
+        void OpenReward(int wave, CardDefinition[] cards)
+        {
+            CompletedWave = wave;
+            offers = Array.ConvertAll(cards, card => new CardOffer { card = card });
+            Mode = IntermissionMode.Reward;
+        }
         public void OpenRouteShop()
         {
             if (IsOpen) return;

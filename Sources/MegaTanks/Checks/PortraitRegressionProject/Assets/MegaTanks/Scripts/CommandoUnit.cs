@@ -16,9 +16,17 @@ namespace MegaTanks
         public CommandoArtwork Artwork=>artwork;
         TankStats defense;
         GunStats weapon;
-        float cooldown,activationRange,deathTime;
+        float cooldown,activationRange;
+        float healthRegeneration, regenerationTime;
         bool initialized,defeated;
+        enum CrewMotion { Aboard, JumpOut, Fighting, Returning, JumpIn }
+        CrewMotion motion;
+        Vector3 jumpStart;
+        float jumpTime;
+        const float JumpDuration = .55f;
+        public CrewRole Role { get; private set; }
         public bool Active=>visual!=null&&visual.activeSelf&&hitbox.enabled;
+        public bool IsUnconscious { get; private set; }
         public float Health { get; private set; }
         public float MaxHealth=>defense?.maxHull??0;
         public GunStats Weapon=>weapon;
@@ -26,10 +34,10 @@ namespace MegaTanks
         public int ShotsFired { get; private set; }
         public int MeleeAttacks { get; private set; }
         public Vector2 AimPoint=>transform.position;
-        public void Configure(BattleGame owner)
+        public void Configure(BattleGame owner, CrewRole role = CrewRole.Commando)
         {
-            game=owner;
-            visual=new GameObject("Commando portrait and integrated weapon");visual.transform.SetParent(transform,false);
+            game=owner;Role=role;
+            visual=new GameObject("Crew artwork");visual.transform.SetParent(transform,false);
             portrait=visual.AddComponent<SpriteRenderer>();portrait.sortingOrder=35;
             hitbox=gameObject.AddComponent<BoxCollider2D>();hitbox.size=new Vector2(.65f,.9f);hitbox.isTrigger=true;
             ResetForRun();
@@ -38,6 +46,10 @@ namespace MegaTanks
         public void ResetForRun()
         {
             initialized=defeated=false;Health=0;cooldown=0;ShotsFired=MeleeAttacks=0;
+            defense = null; weapon = null;
+            IsUnconscious = false;
+            regenerationTime = 0;
+            motion = CrewMotion.Aboard;
             if(visual!=null)Stow();
         }
         void Update()=>Tick(Time.deltaTime);
@@ -45,40 +57,53 @@ namespace MegaTanks
         {
             if(game==null)return;
             if(!game.Deployed||game.Hull<=0){Stow();return;}
-            if(!game.Running){Velocity=Vector2.zero;return;}
+            if(!game.Running)
+            {
+                Velocity=Vector2.zero;
+                if (initialized && !defeated && !game.Paused && game.EnemyCount == 0)
+                {
+                    bool alreadyAboard = motion == CrewMotion.Aboard && !Active;
+                    if (motion != CrewMotion.Aboard || Active) Stow();
+                    motion = CrewMotion.Aboard;
+                    if (alreadyAboard && game.Stage.Mode == StageMode.WaveBreak)
+                        TickAboard(deltaTime);
+                    else FollowSeat(0);
+                }
+                return;
+            }
             if(!initialized)
             {
-                initialized=true;member=game.Crew.Get(CrewRole.Commando);
-                if(member==null){defeated=true;return;}
-                var state=game.Progression.Get(member);int level=state.Level;defense=member.CommandoHull(level,state.Stars);weapon=member.CommandoWeapon(level,state.Stars);
-                activationRange=member.stats.activationRange.AtLevel(level,state.Stars);Health=defense.maxHull;
-                defeated=Health<=0;
+                InitializeCrew();
             }
-            if(defeated)
+            if (defeated) return;
+            if (IsUnconscious)
             {
-                if(visual.activeSelf){artwork?.Advance(deltaTime);deathTime-=deltaTime;if(deathTime<=0)Stow();}
+                TickAboard(deltaTime);
+                return;
+            }
+            if (Role != CrewRole.Commando)
+            {
+                TickSupportingCrew(deltaTime);
                 return;
             }
             var nearby=activationRange>0?game.FindTarget(game.TankAimPoint,EnemyKind.Ground,activationRange):null;
-            if(nearby==null){Stow();return;}
+            if(nearby==null)
+            {
+                if (Active)
+                {
+                    Stow();
+                    FollowSeat(0);
+                }
+                else TickAboard(deltaTime);
+                return;
+            }
             if(!Active)
             {
-                float front=game.HullHitbox.GetComponent<Collider2D>().bounds.max.x;
-                transform.position=new Vector3(front+.6f,BattleGame.GroundHeight+.55f,0);
-                if(artwork!=null&&artworkPrefab!=member.commandoPrefab){artwork.gameObject.SetActive(false);Destroy(artwork.gameObject);artwork=null;}
-                visual.transform.localScale=Vector3.one;
-                if(artwork==null&&member.commandoPrefab!=null){artwork=Instantiate(member.commandoPrefab,visual.transform,false);artworkPrefab=member.commandoPrefab;}
-                portrait.enabled=artwork==null;
-                if(artwork!=null)artwork.ResetVisual();
-                else
-                {
-                    portrait.sprite=member.portrait;portrait.color=Color.white;
-                    if(portrait.sprite!=null)visual.transform.localScale=Vector3.one*(.85f/Mathf.Max(portrait.sprite.bounds.size.x,portrait.sprite.bounds.size.y));
-                }
-                visual.SetActive(true);hitbox.enabled=true;
-                if(healthBar==null)healthBar=Instantiate(game.EnemyDatabase.healthBarPrefab,transform,false);
-                healthBar.ConfigureCommando(.9f,new Color(.34f,.91f,1),game.TankCamera);
-                healthBar.SetHealth(MaxHealth>0?Health/MaxHealth:0);healthBar.gameObject.SetActive(true);
+                regenerationTime = 0;
+                transform.position = ExitPoint();
+                ShowVisual();
+                artwork?.ResetVisual();
+                SetTargetable(true);
             }
             cooldown=Mathf.Max(0,cooldown-deltaTime);
             if(weapon.range<=0){TickMelee(deltaTime);return;}
@@ -104,6 +129,215 @@ namespace MegaTanks
             shell.Initialize(AimPoint,launch,weapon.projectileSpeed,weapon.damage,new Color(.4f,1,.6f),false,weapon.range,0,ProjectileTeam.Player,inheritCannonArt:false,combatStats:weapon);
             cooldown=weapon.EffectiveReloadTime;ShotsFired++;
         }
+
+        void InitializeCrew()
+        {
+            initialized = true;
+            member = game.Crew.Get(Role);
+            var source = Role == CrewRole.Commando ? member : game.CommandoStatsSource();
+            if (member == null || source == null) { defeated = true; return; }
+
+            var state = game.Progression.Get(source);
+            defense = source.CommandoHull(state.Level, state.Stars);
+            weapon = source.CommandoWeapon(state.Level, state.Stars);
+            activationRange = source.stats.activationRange.AtLevel(state.Level, state.Stars);
+            healthRegeneration = source.stats.healthRegeneration.AtLevel(state.Level, state.Stars);
+            if (Role != CrewRole.Commando)
+            {
+                defense.maxHull *= .5f;
+                healthRegeneration *= .5f;
+                defense.evasion *= .5f;
+                defense.armor *= .5f;
+                defense.criticalChanceReduction *= .5f;
+                defense.criticalDamageReduction *= .5f;
+                weapon.damage *= .5f;
+                weapon.damageBonus *= .5f;
+                weapon.accuracy *= .5f;
+                weapon.reloadSpeed *= .5f;
+                weapon.criticalChance *= .5f;
+                weapon.criticalDamage *= .5f;
+                weapon.armorPenetration *= .5f;
+                weapon.range *= .5f;
+                weapon.reloadTime *= .5f;
+                weapon.projectileSpeed *= .5f;
+            }
+            Health = defense.maxHull;
+            defeated = Health <= 0;
+        }
+
+        void ShowVisual()
+        {
+            if (visual.activeSelf) return;
+            if (artwork != null && artworkPrefab != member.commandoPrefab)
+            {
+                artwork.gameObject.SetActive(false);
+                Destroy(artwork.gameObject);
+                artwork = null;
+            }
+            visual.transform.localScale = Vector3.one;
+            if (artwork == null && member.commandoPrefab != null)
+            {
+                artwork = Instantiate(member.commandoPrefab, visual.transform, false);
+                artworkPrefab = member.commandoPrefab;
+            }
+            portrait.enabled = artwork == null;
+            if (artwork == null)
+            {
+                portrait.sprite = member.portrait;
+                if (portrait.sprite != null)
+                    visual.transform.localScale = Vector3.one * (.85f / Mathf.Max(portrait.sprite.bounds.size.x, portrait.sprite.bounds.size.y));
+            }
+            visual.SetActive(true);
+            artwork?.ResetVisual();
+        }
+
+        void SetTargetable(bool targetable)
+        {
+            hitbox.enabled = targetable;
+            SetHealthBarVisible(targetable);
+        }
+
+        void SetHealthBarVisible(bool visible)
+        {
+            if (visible && healthBar == null)
+            {
+                healthBar = Instantiate(game.EnemyDatabase.healthBarPrefab, transform, false);
+                healthBar.ConfigureCommando(.9f, new Color(.34f, .91f, 1), game.TankCamera);
+            }
+            if (healthBar == null) return;
+            if (visible) healthBar.SetHealth(Health / MaxHealth);
+            if (healthBar.gameObject.activeSelf != visible) healthBar.gameObject.SetActive(visible);
+        }
+
+        Vector3 SeatPoint()
+        {
+            var hull = game.HullHitbox.GetComponent<Collider2D>().bounds;
+            Vector2 seat;
+            switch (Role)
+            {
+                case CrewRole.Gunner: seat = new Vector2(.60f, .49f); break;
+                case CrewRole.SubGunner: seat = new Vector2(.53f, .90f); break;
+                case CrewRole.WeaponSpecialist: seat = new Vector2(.22f, .44f); break;
+                case CrewRole.Driver: seat = new Vector2(.34f, .16f); break;
+                default: seat = new Vector2(.85f, .26f); break;
+            }
+            return new Vector3(Mathf.Lerp(hull.min.x, hull.max.x, seat.x), Mathf.Lerp(hull.min.y, hull.max.y, seat.y), 0);
+        }
+
+        Vector3 ExitPoint()
+        {
+            float front = game.HullHitbox.GetComponent<Collider2D>().bounds.max.x;
+            float spacing = Role == CrewRole.Commando ? .6f : .9f + .19f * (int)Role;
+            return new Vector3(front + spacing, BattleGame.GroundHeight + .55f, 0);
+        }
+
+        void FollowSeat(float deltaTime)
+        {
+            transform.position = SeatPoint();
+            ShowVisual();
+            artwork?.Face(1);
+            if (!IsUnconscious) artwork?.Sit();
+            artwork?.Advance(deltaTime);
+            SetHealthBarVisible(healthRegeneration > 0 && Health < MaxHealth);
+        }
+
+        void TickAboard(float deltaTime)
+        {
+            if (Health < MaxHealth && healthRegeneration > 0)
+            {
+                regenerationTime += deltaTime;
+                int seconds = Mathf.FloorToInt(regenerationTime);
+                regenerationTime -= seconds;
+                Health = Mathf.Min(MaxHealth, Health + healthRegeneration * seconds);
+                if (Health >= MaxHealth)
+                {
+                    regenerationTime = 0;
+                    if (IsUnconscious)
+                    {
+                        IsUnconscious = false;
+                        artwork?.ResetVisual();
+                    }
+                }
+            }
+            FollowSeat(deltaTime);
+        }
+
+        void BeginJump(CrewMotion direction)
+        {
+            motion = direction;
+            jumpStart = transform.position;
+            jumpTime = 0;
+            Velocity = Vector2.zero;
+            artwork?.CancelAttack();
+            artwork?.Locomotion(true);
+            SetTargetable(false);
+        }
+
+        void TickSupportingCrew(float deltaTime)
+        {
+            bool engage = game.HasGroundThreat(game.TankAimPoint, activationRange) && game.CanDeployCrew(Role);
+            if (motion == CrewMotion.Aboard)
+            {
+                if (engage)
+                {
+                    FollowSeat(0);
+                    regenerationTime = 0;
+                    BeginJump(CrewMotion.JumpOut);
+                }
+                else TickAboard(deltaTime);
+                return;
+            }
+
+            if (motion == CrewMotion.JumpOut || motion == CrewMotion.JumpIn)
+            {
+                bool boarding = motion == CrewMotion.JumpIn;
+                var destination = boarding ? SeatPoint() : ExitPoint();
+                jumpTime += deltaTime;
+                float progress = Mathf.Clamp01(jumpTime / JumpDuration);
+                transform.position = Vector3.Lerp(jumpStart, destination, progress)
+                    + Vector3.up * (2f * progress * (1f - progress));
+                artwork?.Face(destination.x - jumpStart.x);
+                artwork?.Advance(deltaTime);
+                if (progress >= 1f)
+                {
+                    if (boarding)
+                    {
+                        motion = CrewMotion.Aboard;
+                        FollowSeat(0);
+                    }
+                    else if (engage)
+                    {
+                        motion = CrewMotion.Fighting;
+                        SetTargetable(true);
+                    }
+                    else BeginJump(CrewMotion.JumpIn);
+                }
+                return;
+            }
+
+            if (engage)
+            {
+                motion = CrewMotion.Fighting;
+                cooldown = Mathf.Max(0, cooldown - deltaTime);
+                TickMelee(deltaTime);
+                return;
+            }
+
+            if (motion == CrewMotion.Fighting)
+            {
+                artwork?.ResetVisual();
+                motion = CrewMotion.Returning;
+            }
+            var exit = ExitPoint();
+            float previous = transform.position.x;
+            transform.position = Vector3.MoveTowards(transform.position, exit, defense.advanceSpeed * deltaTime);
+            Velocity = deltaTime > 0 ? Vector2.right * ((transform.position.x - previous) / deltaTime) : Vector2.zero;
+            artwork?.Face(exit.x - previous);
+            artwork?.Locomotion(Velocity.sqrMagnitude > .00001f);
+            artwork?.Advance(deltaTime);
+            if (transform.position == exit) BeginJump(CrewMotion.JumpIn);
+        }
+
         void TickMelee(float deltaTime)
         {
             var target=game.FindMeleeTarget(hitbox,game.TankAimPoint,activationRange);
@@ -130,10 +364,13 @@ namespace MegaTanks
             if(healthBar!=null)healthBar.SetHealth(MaxHealth>0?Health/MaxHealth:0);
             if(Health<=0)
             {
-                if(healthBar!=null)healthBar.gameObject.SetActive(false);
-                defeated=true;hitbox.enabled=false;Velocity=Vector2.zero;
-                deathTime=artwork!=null?artwork.Die():0;
-                if(deathTime<=0)Stow();
+                SetTargetable(false);
+                Velocity = Vector2.zero;
+                motion = CrewMotion.Aboard;
+                IsUnconscious = true;
+                regenerationTime = 0;
+                FollowSeat(0);
+                artwork?.Die();
             }
             return result;
         }

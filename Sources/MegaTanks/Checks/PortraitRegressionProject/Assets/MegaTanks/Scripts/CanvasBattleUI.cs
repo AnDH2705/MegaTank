@@ -8,6 +8,7 @@ namespace MegaTanks
     public sealed partial class CanvasGameUI
     {
         readonly List<UIView> damagePool=new List<UIView>();
+        UIView campCards;
         readonly UIScreen[] encounterScreens={UIScreen.Pause,UIScreen.Defeat,UIScreen.Victory,UIScreen.Rewards,UIScreen.Shop,UIScreen.Service,UIScreen.Reveal,UIScreen.WaveBreak,UIScreen.Route};
         void BindHud()
         {
@@ -18,7 +19,13 @@ namespace MegaTanks
         {
             var v=View(UIScreen.BattleHUD);
             Text(v,"Round","ROUND "+((game.Stage.Current?.round??0)+1)+" / "+game.Stage.Definition.rounds+"    "+game.EnemyCount+" HOSTILES");
-            Text(v,"Encounter",game.Stage.Current==null?"":StageNodeIcons.Name(game.Stage.Current.EncounterType).ToUpperInvariant()+" / WAVE "+game.Stage.EncounterWave+" OF "+game.Stage.EncounterWaves);
+            string tent = game.Stage.CampType.ToString().ToUpperInvariant() + " TENT";
+            string encounter = game.Stage.Mode == StageMode.ApproachingEvent ? "APPROACHING " + tent
+                : game.Rewards.IsOpen ? tent
+                : game.Stage.Mode == StageMode.Advancing ? "ADVANCING"
+                : game.Stage.Current == null ? "" : StageNodeIcons.Name(game.Stage.Current.EncounterType).ToUpperInvariant()
+                    + " / WAVE " + game.Stage.EncounterWave + " OF " + game.Stage.EncounterWaves;
+            Text(v,"Encounter",encounter);
             Text(v,"Score",game.Score.ToString("000000")+" PTS");
             Counter("mg",game.MachineGun.Ammo,game.MachineGun.ReserveCapacity);Counter("cannon",game.MainGun.Ammo,game.MainGun.ReserveCapacity);Counter("mortar",game.Mortar.Ammo,game.Mortar.Stats.reserveCapacity);
             Text(v,"scraps Value",game.Rewards.Scraps.ToString("N0"));
@@ -47,7 +54,9 @@ namespace MegaTanks
             View(UIScreen.Home).gameObject.SetActive(!game.Deployed);View(UIScreen.BattleHUD).gameObject.SetActive(game.Deployed);
             layout.damageLayer.gameObject.SetActive(game.Deployed&&game.Stage.Mode==StageMode.Combat&&!game.Rewards.IsOpen);
             string key=game.Deployed?game.Stage.Mode+"/"+game.StageRewards.LastReceipt?.paid+"/"+game.Paused+"/"+(game.Hull<=0)+"/"+game.Rewards.Mode+"/"+game.Rewards.Scraps+"/"+game.Stage.Current?.id+"/"+game.Stage.FreeClaimed+"/"+game.Stage.PaidPurchased+"/"+string.Join(",",game.Rewards.Offers.Select(o=>o.purchased.ToString())):"Home";
-            if(key==screenKey)return;screenKey=key;foreach(var s in encounterScreens)View(s).gameObject.SetActive(false);if(!game.Deployed)return;
+            if(key==screenKey)return;screenKey=key;foreach(var s in encounterScreens)View(s).gameObject.SetActive(false);
+            if(campCards!=null)campCards.gameObject.SetActive(false);
+            if(!game.Deployed)return;
             if(game.Rewards.IsOpen){DrawRewards();return;}
             if(game.Hull<=0){Result(UIScreen.Defeat,DefeatSummary());return;}
             if(game.Paused)
@@ -59,7 +68,6 @@ namespace MegaTanks
                 case StageMode.Map:DrawMap();break;
                 case StageMode.Service:DrawService();break;
                 case StageMode.Reveal:var v=Show(UIScreen.Reveal);Text(v,"Reveal Type",StageNodeIcons.Name(game.Stage.Current.EncounterType).ToUpperInvariant());Click(v,"Enter Node",()=>game.Stage.ContinueReveal());break;
-                case StageMode.WaveBreak:Text(Show(UIScreen.WaveBreak),"Wave Break","Wave "+(game.Stage.EncounterWave+1)+" of "+game.Stage.EncounterWaves);break;
                 case StageMode.Victory:Result(UIScreen.Victory,game.Stage.Definition.stageName+" cleared.\n"+game.Score+" POINTS / "+game.Wave+" WAVES");break;
             }
         }
@@ -72,14 +80,29 @@ namespace MegaTanks
         }
         void DrawRewards()
         {
-            bool shop=game.Rewards.Mode==IntermissionMode.Shop;var v=Show(shop?UIScreen.Shop:UIScreen.Rewards);
-            Text(v,"Reward Caption",shop?game.Rewards.Scraps+" SCRAPS":"Take one card, then choose your next route.");
+            bool shop=game.Rewards.Mode==IntermissionMode.Shop;
+            bool service=game.Stage.Mode==StageMode.Event;
+            var v=service?ShowCampCards():Show(shop?UIScreen.Shop:UIScreen.Rewards);
+            Text(v,"Screen Title",shop?"VENDOR TENT":service?game.Stage.CampType.ToString().ToUpperInvariant()+" TENT":"UPGRADE TENT");
+            if(!service)Text(v,"Reward Caption",shop?game.Rewards.Scraps+" SCRAPS":"Choose one card to continue.");
             var offers=game.Rewards.Offers;
             for(int i=0;i<offers.Length;i++)
             {
                 int index=i;var offer=offers[i];BindCard(v,"Card "+i,offer.card,offer.purchased?"PURCHASED":shop?"BUY / "+offer.card.price+" SCRAPS":"TAKE CARD",()=>{if(shop)game.Rewards.Buy(index);else game.Rewards.ChooseReward(index);},!offer.purchased&&(!shop||game.Rewards.Scraps>=offer.card.price));
             }
             if(shop)Click(v,"Leave Shop",()=>game.Rewards.LeaveShop());
+        }
+        UIView ShowCampCards()
+        {
+            if(campCards==null)
+            {
+                var prefab=Resources.Load<GameObject>("Events/CampEvent");
+                if(prefab==null)throw new InvalidOperationException("The field camp needs its event panel.");
+                campCards=Instantiate(prefab,View(UIScreen.Rewards).transform.parent,false).GetComponent<UIView>();
+                campCards.name="Camp Event";
+            }
+            campCards.gameObject.SetActive(true);
+            return campCards;
         }
         void BindCard(UIView v,string key,CardDefinition card,string action,Action click,bool enabled)
         {

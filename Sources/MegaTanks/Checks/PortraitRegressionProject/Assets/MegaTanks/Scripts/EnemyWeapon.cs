@@ -11,7 +11,7 @@ namespace MegaTanks
         int remainingShots;
         public int ShotsFired { get; private set; }
         public int MeleeAttacks { get; private set; }
-        public bool IsMelee=>owner!=null&&owner.CommandoOwner!=null&&stats.range<=0;
+        public bool IsMelee => owner != null && (owner.Data.melee || (owner.CommandoOwner != null && stats.range <= 0));
         public int Ammo { get; private set; }
         public int MaxAmmo => Mathf.Max(0,stats.reserveCapacity);
         public void Resupply(float fraction) { Ammo=Mathf.Min(MaxAmmo,Ammo+Mathf.CeilToInt(MaxAmmo*Mathf.Max(0,fraction))); }

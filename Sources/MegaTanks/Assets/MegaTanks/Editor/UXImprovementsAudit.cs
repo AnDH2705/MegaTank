@@ -15,7 +15,6 @@ namespace MegaTanks.Editor
         const BindingFlags Flags=BindingFlags.Instance|BindingFlags.NonPublic;
         static double since;static int phase;static bool errors;
         static string directory="Checks/UXImprovements";
-        static int nextId;static StageNode previousNode;
         static void Require(bool condition,string message){if(!condition)throw new Exception(message);}
         static void Set(object o,string property,object value)=>o.GetType().GetField("<"+property+">k__BackingField",Flags).SetValue(o,value);
         static object Call(CanvasGameUI ui,string method,params object[] args)=>typeof(CanvasGameUI).GetMethod(method,Flags).Invoke(ui,args);
@@ -71,7 +70,7 @@ namespace MegaTanks.Editor
             try
             {
                 var game=BattleGame.Instance;var ui=game.UI;var layout=ui.GetComponent<UICanvasLayout>();
-                var home=layout.View(UIScreen.Home);var route=layout.View(UIScreen.Route);
+                var home=layout.View(UIScreen.Home);
                 switch(phase++)
                 {
                     case 0:
@@ -109,15 +108,10 @@ namespace MegaTanks.Editor
                         offers[2].card=catalog.cards.First(c=>c.effect==CardEffect.CannonDamage&&c.rarity==CardRarity.Normal);
                         Refresh(ui);var rewards=layout.View(UIScreen.Rewards);foreach(int i in new[]{0,1,2})FitText(rewards.Get<Text>("Card "+i+"/Effect"));Shot("RewardPreviews");break;
                     case 4:
-                        Require(game.Rewards.ChooseReward(0),"Choose reward");Refresh(ui);previousNode=game.Stage.Current;nextId=previousNode.next[0];
-                        var node=game.Stage.Route.Get(nextId);node.type=StageNodeType.HardBattle;Call(ui,"DrawMap");
-                        Require(!route.Get<Button>("Enter Route Node").interactable,"Enter must be disabled before inspection");
-                        Press(route.Get<ScrollRect>("Route Scroll").content.Cast<Transform>().First(t=>t.name=="Node "+nextId&&t.gameObject.activeSelf).GetComponent<UIView>(),"$root");
-                        Require(game.Stage.Current==previousNode&&game.Stage.Mode==StageMode.Map,"Inspection must not commit the route");
-                        Require(route.Get<Text>("Route Inspection").text.Contains("3 waves"),"Hard battle preview must explain reward timing");FitText(route.Get<Text>("Route Inspection"));FitText(route.Get<Text>("Route Resources"));Shot("RouteInspection");break;
+                        Require(game.Stage.Mode==StageMode.Reward,"The upgrade tent must hold combat until a card is chosen.");break;
                     case 5:
-                        Press(route,"Enter Route Node");Require(game.Stage.Current.id==nextId&&game.Stage.Mode==StageMode.Combat&&game.Stage.EncounterWaves==3,"Enter must commit once");
-                        Require(!game.Stage.SelectNode(nextId),"Repeated entry must be rejected");StageProgressionAudit.DisableWeapons(game);
+                        StageProgressionAudit.EnterType(game,StageNodeType.HardBattle);
+                        Require(game.Stage.CurrentRoundNumber==2&&game.Stage.Mode==StageMode.Combat&&game.Stage.EncounterWaves==3,"Camp departure must advance into the next battle.");
                         Set(game,"Hull",0f);Refresh(ui);var defeat=layout.View(UIScreen.Defeat);
                         Require(defeat.Get<Text>("Result Detail").text.Contains("ENEMIES DEFEATED")&&defeat.Get<Text>("Result Detail").text.Contains("LOADOUT"),"Defeat report must show actual run and loadout");FitText(defeat.Get<Text>("Result Detail"));Shot("DefeatReport");break;
                     case 6:
@@ -129,15 +123,16 @@ namespace MegaTanks.Editor
                     case 7:
                         game.Rewards.AddScraps(10000);Require(game.Rewards.Buy(0),"Shop purchase");Refresh(ui);
                         Require(layout.View(UIScreen.Shop).Get<Text>("Card 0/Effect").text.EndsWith("APPLIED"),"Purchased cards must show applied rather than another prospective gain");
-                        game.Rewards.LeaveShop();StageProgressionAudit.ClearWave(game);game.Rewards.ChooseReward(0);
-                        StageProgressionAudit.EnterType(game,StageNodeType.Supply);Refresh(ui);
-                        var service=layout.View(UIScreen.Service);FitText(service.Get<Text>("Card 0/Effect"));FitText(service.Get<Text>("Card 1/Effect"));Shot("ServicePreviews");break;
+                        game.Rewards.LeaveShop();StageProgressionAudit.ClearWave(game,resolveCamp:false);
+                        StageProgressionAudit.OpenCampRewards(game,TentType.Resupply);Refresh(ui);
+                        var service=ui.GetComponentsInChildren<UIView>().First(view=>view.name=="Camp Event");
+                        FitText(service.Get<Text>("Card 0/Effect"));FitText(service.Get<Text>("Card 1/Effect"));Shot("ServicePreviews");break;
                     case 8:
                         ui.OpenPopup("Settings");Shot("Settings");ui.ClosePopup();
-                        game.Stage.LeaveService();Set(game.Stage,"Mode",StageMode.Combat);game.SetPaused(true);Refresh(ui);Shot("Pause");game.SetPaused(false);
+                        StageProgressionAudit.EnterNextBattle(game);game.SetPaused(true);Refresh(ui);Shot("Pause");game.SetPaused(false);
                         Set(game.Stage,"Mode",StageMode.Victory);Refresh(ui);Shot("Victory");
-                        Require(!errors,"No Unity errors during UX audit");Debug.Log("UX_IMPROVEMENTS_PASS: Home, comparisons, capped previews, warnings, route inspection/commit, defeat and reset.");
-                        File.WriteAllText(directory+"/result.txt","PASS: Home navigation; comparison tradeoffs; ammo ceil/caps; repair caps; no-benefit states; low/empty alerts; reward text fit; route inspection/commit; defeat report; Garage and restart.\n");
+                        Require(!errors,"No Unity errors during UX audit");Debug.Log("UX_IMPROVEMENTS_PASS: Home, comparisons, capped previews, warnings, tent choices, defeat and reset.");
+                        File.WriteAllText(directory+"/result.txt","PASS: Home navigation, comparisons, ammo and repair caps, low/empty alerts, card text fit, tent choices, defeat report, Garage and restart.\n");
                         EditorApplication.update-=Tick;Application.logMessageReceived-=Log;EditorApplication.playModeStateChanged-=Entered;
                         EditorApplication.playModeStateChanged+=Stopped;EditorApplication.isPlaying=false;break;
                 }

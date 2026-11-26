@@ -49,6 +49,15 @@ namespace MegaTanks
             SelectionCount++;
             ApplyPreset(UnityEngine.Random.Range(0, catalog.presets.Length));
         }
+        public void SelectStagePreset(StageDefinition stage)
+        {
+            int index = string.IsNullOrEmpty(stage.backgroundId)
+                ? -1 : Array.FindIndex(catalog.presets, preset => preset.id == stage.backgroundId);
+            if (index < 0) index = stage.stageNumber % 2 == 0 && catalog.presets.Length > 1 ? 1 : 0;
+            if (index == CurrentIndex) return;
+            SelectionCount++;
+            ApplyPreset(index);
+        }
         public void ApplyPreset(int index)
         {
             if (index < 0 || index >= catalog.presets.Length) throw new ArgumentOutOfRangeException(nameof(index));

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace MegaTanks
 {
     public enum CardRarity { Normal, Rare, Epic, Legendary }
-    public enum CardEffect { CannonDamage, MachineGunDamage, MaxHull, Resupply, Repair }
+    public enum CardEffect { CannonDamage, MachineGunDamage, MaxHull, Resupply, Repair, Scraps }
 
     [Serializable]
     public sealed class CardDefinition
@@ -16,7 +16,9 @@ namespace MegaTanks
         [Min(0)] public float fraction;
         [Min(0)] public int price;
         public Sprite art;
-        public string EffectText => effect == CardEffect.Resupply ? "Restore " + Percent + " of all ammo reserves"
+        public int scraps;
+        public string EffectText => effect == CardEffect.Scraps ? "+" + scraps.ToString("N0") + " scraps"
+            : effect == CardEffect.Resupply ? "Restore " + Percent + " of all ammo reserves"
             : effect == CardEffect.Repair ? "Restore " + Percent + " of maximum HP"
             : effect == CardEffect.MaxHull ? "+" + Percent + " maximum tank HP"
             : "+" + Percent + (effect == CardEffect.CannonDamage ? " cannon damage" : " MG damage");

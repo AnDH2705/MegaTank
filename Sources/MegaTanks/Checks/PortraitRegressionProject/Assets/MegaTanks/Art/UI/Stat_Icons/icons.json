@@ -1,0 +1,142 @@
+{
+  "source_tool": "built-in image_gen",
+  "style": "bold outlined flat cartoon stat stickers",
+  "size_px": [
+    512,
+    512
+  ],
+  "icons": [
+    {
+      "id": "atk",
+      "display_name": "ATK",
+      "meaning_vi": "Sức tấn công",
+      "file": "atk.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "background": "transparent",
+      "content_rect_source": {
+        "left": 119,
+        "top": 75,
+        "width": 1059,
+        "height": 1126
+      },
+      "sha256": "ef44c99efe551ac03c8dba2d2f200962a2dcfd485676193453f04841aafedb29"
+    },
+    {
+      "id": "accuracy",
+      "display_name": "Accuracy",
+      "meaning_vi": "Độ chính xác",
+      "file": "accuracy.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "background": "transparent",
+      "content_rect_source": {
+        "left": 62,
+        "top": 69,
+        "width": 1126,
+        "height": 1141
+      },
+      "sha256": "2a471d865eb6edd2f24103199f75980d83ca01a2184a5af6dd54e8d013d41f60"
+    },
+    {
+      "id": "move_speed",
+      "display_name": "Move Speed",
+      "meaning_vi": "Tốc độ di chuyển",
+      "file": "move_speed.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "background": "transparent",
+      "content_rect_source": {
+        "left": 87,
+        "top": 184,
+        "width": 1094,
+        "height": 919
+      },
+      "sha256": "eccf69d9ad098c4fc287347d405d4f22fffe9a4c3ddc5b690c75e7f43c74fef1"
+    },
+    {
+      "id": "hp",
+      "display_name": "HP",
+      "meaning_vi": "Máu tối đa",
+      "file": "hp.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "background": "transparent",
+      "content_rect_source": {
+        "left": 99,
+        "top": 138,
+        "width": 1051,
+        "height": 1023
+      },
+      "sha256": "6c3db3af45d98710fe13bf67485cff5dbf75740d821f58c8429aa5a041fa7432"
+    },
+    {
+      "id": "crit_rate",
+      "display_name": "Crit Rate",
+      "meaning_vi": "Tỉ lệ chí mạng",
+      "file": "crit_rate.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "background": "transparent",
+      "content_rect_source": {
+        "left": 125,
+        "top": 85,
+        "width": 1000,
+        "height": 1112
+      },
+      "sha256": "f21312be08ac167f966d3931c844e9d1eff527d262517d89476517b95b71276d"
+    },
+    {
+      "id": "defense",
+      "display_name": "Defense",
+      "meaning_vi": "Phòng thủ",
+      "file": "defense.png",
+      "size_px": [
+        512,
+        512
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "background": "transparent",
+      "content_rect_source": {
+        "left": 153,
+        "top": 101,
+        "width": 948,
+        "height": 1096
+      },
+      "sha256": "5bbbef7718012fe150541168e218db19242991c4a2c3d20ccb14afbb2955b7cc"
+    }
+  ]
+}

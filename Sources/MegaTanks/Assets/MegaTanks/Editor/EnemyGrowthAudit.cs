@@ -94,13 +94,13 @@ namespace MegaTanks.Editor
                 game.StartBattle();Silence(game);RequireWave(game,14,61,9);
                 Require(database.Get(EnemyKind.Flyer).baseHealth==26&&database.Get(EnemyKind.Flyer).weapon.damage==2,"Calculation must not mutate prefab base stats.");
                 Clear(game);Require(game.Rewards.ChooseReward(0),"First battle must still award a card.");
-                var node=game.Stage.Route.Get(game.Stage.Current.next[0]);node.type=StageNodeType.HardBattle;Require(game.Stage.SelectNode(node.id),"Hard battle round must be reachable.");Silence(game);
+                StageProgressionAudit.EnterType(game,StageNodeType.HardBattle);Silence(game);
                 RequireWave(game,15,63,9);
                 database.Get(EnemyKind.Flyer).baseHealth=900;database.Get(EnemyKind.Flyer).weapon.damage=200;
                 Clear(game);Require(game.Stage.Mode==StageMode.WaveBreak,"Hard battles need the next wave.");AdvanceWave(game);RequireWave(game,15,63,9);
                 Clear(game);AdvanceWave(game);RequireWave(game,15,63,9);Require(game.Stage.EncounterWave==3,"All three hard-battle waves must retain the same round difficulty.");
                 Clear(game);Require(game.Rewards.ChooseReward(0),"Hard battle must still offer its reward.");
-                node=game.Stage.Route.Get(game.Stage.Current.next[0]);node.type=StageNodeType.Battle;Require(game.Stage.SelectNode(node.id),"Next battle round must be reachable.");Silence(game);RequireWave(game,16,940,208);
+                StageProgressionAudit.EnterNextBattle(game);Silence(game);RequireWave(game,16,940,208);
                 Require(!errors,"No runtime errors permitted.");Debug.Log("ENEMY_GROWTH_OK: numeric Grow coverage, zero creation defaults, floor-after-sum, uncapped percentages, custom stage difficulty, 1-based rounds, live HP/weapons/speed/scraps, stable hard-battle snapshots, next-round recalculation, prefab bases unchanged.");Finish(0);
             }
             catch(Exception e){Debug.LogException(e);Finish(1);}

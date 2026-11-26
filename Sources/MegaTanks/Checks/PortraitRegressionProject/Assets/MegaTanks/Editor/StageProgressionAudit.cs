@@ -1,21 +1,25 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MegaTanks.Editor
 {
     public static class StageProgressionAudit
     {
+        static readonly MethodInfo AdvanceMethod = typeof(StageProgression).GetMethod("Advance", BindingFlags.Instance | BindingFlags.NonPublic);
+        static readonly PropertyInfo CampTypeProperty = typeof(StageProgression).GetProperty(nameof(StageProgression.CampType));
         static StageRewardSaveScope rewardSaves;
-        static int stage;
-        static double since;
-        static bool errors;
-        static int waveBefore, mgBefore;
-        static void Require(bool value, string message) { if (!value) throw new Exception(message); }
-        static void Next() { stage++; since = EditorApplication.timeSinceStartup; }
+        static double deadline;
+        static bool errors, captureCamp;
+        static int shops, battleStartScraps;
+        static float battleCameraOffset, departureX, departureTime;
+
+        public static void CaptureCamp() { captureCamp = true; Run(); }
+
         public static void Run()
         {
             rewardSaves = new StageRewardSaveScope();
@@ -25,154 +29,218 @@ namespace MegaTanks.Editor
             EditorApplication.playModeStateChanged += state =>
             {
                 if (state != PlayModeStateChange.EnteredPlayMode) return;
-                stage = 0; errors = false; since = EditorApplication.timeSinceStartup;
-                Application.logMessageReceived += (_, __, type) => { if (type == LogType.Error || type == LogType.Exception) errors = true; };
-                EditorApplication.update += Check;
+                try
+                {
+                    Application.logMessageReceived += (_, __, type) => { if (type == LogType.Error || type == LogType.Exception) errors = true; };
+                    var game = BattleGame.Instance;
+                    var definition = UnityEngine.Object.Instantiate(game.Stage.Definition);
+                    definition.rounds = 7;
+                    definition.hardBattleWeight = 0;
+                    definition.waveBreakSeconds = .1f;
+                    definition.backgroundId = "RuinedCity";
+                    game.SelectStage(definition);
+                    Require(game.Backgrounds.CurrentPreset.id == definition.backgroundId, "Selecting the stage must apply its background on Home.");
+                    game.StartBattle();
+                    game.SetStance(TankStance.Defensive);
+                    DisableWeapons(game);
+                    game.Stage.Route.rounds[1][0].type = StageNodeType.HardBattle;
+                    Require(game.Stage.Route.rounds.All(round => round.Count == 1)
+                        && game.Stage.CurrentRoundNumber == 1 && game.Wave == 1, "The stage must begin as a single battle sequence.");
+                    deadline = EditorApplication.timeSinceStartup + 90;
+                    EditorApplication.update += Check;
+                }
+                catch (Exception exception) { Debug.LogException(exception); Finish(1); }
             };
             EditorApplication.isPlaying = true;
         }
+
         public static void DisableWeapons(BattleGame game) { game.MachineGun.enabled = game.MainGun.enabled = game.Mortar.enabled = false; }
-        public static void ClearWave(BattleGame game)
+
+        public static void ClearWave(BattleGame game, bool resolveCamp = true)
         {
-            foreach (var enemy in UnityEngine.Object.FindObjectsOfType<EnemyEntity>()) if (enemy.Alive) enemy.Damage(1000000);
+            EnemyEntity[] targets;
+            do
+            {
+                targets = UnityEngine.Object.FindObjectsOfType<EnemyEntity>().Where(enemy => enemy.Alive).ToArray();
+                foreach (var enemy in targets) enemy.Damage(enemy.Health);
+            } while (game.EnemyCount > 0 && targets.Length > 0);
+            if (resolveCamp) OpenCampRewards(game);
         }
-        public static void EnterNextBattle(BattleGame game) { EnterType(game, StageNodeType.Battle); }
+
+        public static void OpenCampRewards(BattleGame game, TentType type = TentType.Upgrade)
+        {
+            if (game.Stage.Mode != StageMode.ApproachingEvent) return;
+            if (game.Stage.CampType != TentType.Vendor) CampTypeProperty.SetValue(game.Stage, type);
+            AdvanceStage(game, float.MaxValue);
+        }
+
+        public static void EnterNextBattle(BattleGame game) => EnterType(game, StageNodeType.Battle);
+
         public static void EnterType(BattleGame game, StageNodeType type)
         {
-            var node = game.Stage.Route.Get(game.Stage.Current.next[0]);
-            if (node.type != StageNodeType.Boss) node.type = type;
-            Require(game.Stage.SelectNode(node.id), "Only the connected next node should be selectable.");
+            var next = game.Stage.Route.Get(game.Stage.Current.next[0]);
+            if (next.type != StageNodeType.Boss) next.type = type;
+            OpenCampRewards(game);
+            if (game.Rewards.Mode == IntermissionMode.Reward) game.Rewards.ChooseReward(0);
+            if (game.Rewards.Mode == IntermissionMode.Shop) game.Rewards.LeaveShop();
+            Require(game.Stage.Mode == StageMode.Advancing, "The resolved camp must start travel.");
+            AdvanceStage(game, 1f);
+            Require(game.Stage.Current == next, "Travel must reach the next battle.");
             DisableWeapons(game);
         }
-        static void CheckMaps(StageDefinition definition)
-        {
-            for (int seed = 0; seed < 1000; seed++)
-            {
-                var map = StageRoute.Generate(definition, seed);
-                Require(map.rounds.Count == definition.rounds && map.rounds[0].Count == 1 && map.rounds[0][0].type == StageNodeType.Battle
-                    && map.rounds.Last().Count == 1 && map.rounds.Last()[0].type == StageNodeType.Boss, "Stage endpoints must be a single battle and boss.");
-                var reachable = new HashSet<int> { map.rounds[0][0].id };
-                for (int column = 0; column < map.rounds.Count - 1; column++)
-                {
-                    var from = map.rounds[column]; var to = map.rounds[column + 1];
-                    if (column > 0) Require(from.Count >= 2 && from.Count <= 4 && from.All(node => node.type != StageNodeType.Boss), "Intermediate rounds need 2-4 non-boss nodes.");
-                    foreach (var node in from)
-                    {
-                        Require(reachable.Contains(node.id) && node.next.Count > 0 && node.next.Distinct().Count() == node.next.Count, "Every node must be reachable and have unique outgoing paths.");
-                        float nearest = to.Min(end => Mathf.Abs(end.height - node.height));
-                        Require(node.next.Any(id => Mathf.Abs(Mathf.Abs(map.Get(id).height - node.height) - nearest) < .00001f), "Every node must connect to a nearest next-round node.");
-                        foreach (int id in node.next)
-                        {
-                            var end = map.Get(id);
-                            Require(end.round == column + 1, "Connections must advance exactly one round."); reachable.Add(id);
-                            foreach (var other in from)
-                                foreach (int otherId in other.next)
-                                    Require((node.lane - other.lane) * (end.lane - map.Get(otherId).lane) >= 0, "Connections between columns must never cross.");
-                        }
-                    }
-                    Require(to.All(node => reachable.Contains(node.id)), "No next-round node may be unreachable.");
-                }
-                Require(map.rounds[map.rounds.Count - 2].All(node => node.next.Contains(map.rounds.Last()[0].id)), "Every penultimate node must lead to the boss.");
-            }
-            var first = StageRoute.Generate(definition, 10427); var second = StageRoute.Generate(definition, 10427);
-            Require(string.Join(";", first.rounds.SelectMany(round => round).Select(node => node.id + ":" + node.type + ":" + node.height + ":" + string.Join(",", node.next)))
-                == string.Join(";", second.rounds.SelectMany(round => round).Select(node => node.id + ":" + node.type + ":" + node.height + ":" + string.Join(",", node.next))), "A fixed map seed must reproduce the same route.");
-        }
-        static void Empty(AutoTurret gun) { while (gun.TryConsumeRound()) { } }
+
+        static void AdvanceStage(BattleGame game, float seconds) => AdvanceMethod.Invoke(game.Stage, new object[] { seconds });
+        static void Require(bool value, string message) { if (!value) throw new Exception(message); }
+
+        static float CameraOffset(BattleGame game) => game.TankCamera.transform.position.x - game.Artwork.transform.position.x;
+
         static void Check()
         {
             try
             {
-                var game = BattleGame.Instance; var progress = game.Stage;
-                double elapsed = EditorApplication.timeSinceStartup - since;
-                if (stage == 0)
+                var game = BattleGame.Instance;
+                var stage = game.Stage;
+                Require(EditorApplication.timeSinceStartup < deadline, "Stage audit timed out at battle " + stage.CurrentRoundNumber + " in " + stage.Mode);
+                Require(game.Backgrounds.CurrentPreset.id == stage.Definition.backgroundId, "The stage background must persist through battles, waves and tents.");
+                Require(stage.Mode != StageMode.Map, "The battle sequence must advance without a node map.");
+                if (stage.Mode == StageMode.Combat)
                 {
-                    CheckMaps(progress.Definition);
-                    var lengthCheck=UnityEngine.Object.Instantiate(progress.Definition);
-                    try
+                    if (departureTime > 0)
                     {
-                        foreach(int count in new[]{3,5,7,10,15})
-                        {
-                            lengthCheck.rounds=count;CheckMaps(lengthCheck);
-                        }
-                        Require(progress.Definition.rounds==5,"Stage 1 must be configured for five rounds.");
+                        Require(Time.time - departureTime >= .99f && Mathf.Abs(game.Artwork.transform.position.x - departureX - game.TankAdvanceSpeed) < .01f,
+                            "A resolved camp must be followed by one second of travel at normal speed.");
+                        Require(Mathf.Abs(CameraOffset(game) - battleCameraOffset) < .001f, "The next battle must preserve the pan offset.");
+                        departureTime = 0;
                     }
-                    finally {UnityEngine.Object.DestroyImmediate(lengthCheck);}
-                    game.StartBattle(); DisableWeapons(game);
-                    Require(progress.Route.rounds.Count == progress.Definition.rounds && progress.Current.round == 0 && game.Wave == 1 && progress.Mode == StageMode.Combat, "Round one must begin with a battle.");
-                    Require(!progress.SelectNode(progress.Route.rounds.Last()[0].id), "The player cannot skip directly to the boss.");
-                    game.DamageHull(40); ClearWave(game);
-                    Require(progress.Mode == StageMode.Reward && game.Rewards.Offers.Length == 3 && !game.Running, "Battle victory must pause for three reward choices.");
-                    game.Rewards.Offers[0].card = AssetDatabase.LoadAssetAtPath<CardCatalog>(CardDataImporter.CatalogPath).cards.First(card => card.id == "1");
-                    game.Rewards.ChooseReward(0);
-                    Require(progress.Mode == StageMode.Map && game.Wave == 1 && !game.Rewards.ChooseReward(0), "A reward must open the map once without spawning another wave.");
-                    waveBefore = game.Wave; game.SetStance(TankStance.Aggressive); Next();
-                }
-                else if (stage == 1 && elapsed > .2)
-                {
-                    Require(game.Wave == waveBefore && game.TankVelocity == Vector2.zero && !game.Running, "The route map must freeze combat and wait for a node selection.");
-                    EnterType(game, StageNodeType.Supply);
-                    Require(progress.Mode == StageMode.Service && game.Wave == waveBefore, "Supply nodes must not spawn enemies.");
-                    Require(progress.FreeServiceCard.effect == CardEffect.Resupply && progress.FreeServiceCard.rarity == CardRarity.Normal
-                        && progress.PaidServiceCard.effect == CardEffect.Resupply && progress.FreeServiceCard.id != progress.PaidServiceCard.id, "Supply offers must be distinct cards of the right effect, with Normal free.");
-                    Empty(game.MachineGun); Empty(game.MainGun);
-                    int capacity = game.Mortar.Stats.reserveCapacity; game.Mortar.Stats.reserveCapacity = 0; game.Mortar.ResetWeapon(); game.Mortar.Stats.reserveCapacity = capacity;
-                    Require(progress.ClaimFreeService() && !progress.ClaimFreeService(), "The free service card can be claimed only once.");
-                    Require(game.MachineGun.Ammo == Mathf.CeilToInt(game.MachineGun.ReserveCapacity * .33f)
-                        && game.MainGun.Ammo == Mathf.CeilToInt(game.MainGun.ReserveCapacity * .33f)
-                        && game.Mortar.Ammo == Mathf.CeilToInt(capacity * .33f), "Free resupply must restore all weapons correctly.");
-                    Require(!progress.BuyService(), "A service purchase must fail when scraps are insufficient.");
-                    game.Rewards.AddScraps(1000); int scraps = game.Rewards.Scraps, price = progress.PaidServiceCard.price;
-                    Require(progress.BuyService() && game.Rewards.Scraps == scraps - price && !progress.BuyService(), "Paid service must charge its catalog price exactly once.");
-                    Require(progress.LeaveService() && !progress.LeaveService(), "A service node can be completed only once.");
-                    EnterType(game, StageNodeType.Repair);
-                    Require(progress.FreeServiceCard.effect == CardEffect.Repair && progress.PaidServiceCard.effect == CardEffect.Repair, "Repair nodes need repair cards.");
-                    float hp = game.Hull; mgBefore = game.MachineGun.Ammo;
-                    Require(progress.ClaimFreeService() && game.Hull > hp && game.MachineGun.Ammo == mgBefore, "Repair must restore hull without refilling ammunition.");
-                    game.Rewards.AddScraps(1000); Require(progress.BuyService() && game.Hull == game.MaxHull, "Paid repairs must cap at maximum hull.");
-                    progress.LeaveService();
-                    var hidden = progress.Route.Get(progress.Current.next[0]); hidden.type = StageNodeType.Random;
-                    Require(!hidden.revealedType.HasValue, "Unknown nodes must stay hidden before entry.");
-                    progress.SelectNode(hidden.id);
-                    Require(progress.Mode == StageMode.Reveal && hidden.revealedType.HasValue && hidden.EncounterType != StageNodeType.Boss && hidden.EncounterType != StageNodeType.Random, "Unknown entry must reveal a non-boss encounter.");
-                    hidden.revealedType = StageNodeType.HardBattle; progress.ContinueReveal(); DisableWeapons(game);
-                    progress.Definition.waveBreakSeconds = .1f;
-                    Require(progress.EncounterWave == 1 && progress.EncounterWaves == 3, "Hard battles must contain three waves.");
-                    ClearWave(game);
-                    Require(progress.Mode == StageMode.WaveBreak && !game.Rewards.IsOpen, "Hard wave one must continue without giving a card or map choice."); Next();
-                }
-                else if (stage == 2 && elapsed > .2)
-                {
-                    Require(progress.Mode == StageMode.Combat && progress.EncounterWave == 2, "Hard wave two must spawn automatically.");
-                    ClearWave(game); Require(progress.Mode == StageMode.WaveBreak && !game.Rewards.IsOpen, "Hard wave two must also continue without a reward."); Next();
-                }
-                else if (stage == 3 && elapsed > .2)
-                {
-                    Require(progress.Mode == StageMode.Combat && progress.EncounterWave == 3, "Hard wave three must spawn automatically.");
-                    ClearWave(game); Require(progress.Mode == StageMode.Reward && game.Rewards.Offers.Length == 3, "The final hard wave must award one card selection.");
-                    game.Rewards.ChooseReward(0);
-                    while (progress.Current.round < progress.Route.rounds.Count - 2)
+                    if (stage.EncounterWave == 1) battleStartScraps = game.Rewards.Scraps;
+                    if (stage.CurrentRoundNumber == 3) game.CameraPan.PanByPixels(-game.TankCamera.pixelWidth * .5f);
+                    battleCameraOffset = CameraOffset(game);
+                    game.DamageHull(1);
+                    game.MachineGun.TryConsumeRound();
+                    ClearWave(game, resolveCamp: false);
+                    if (stage.EncounterWave < stage.EncounterWaves)
                     {
-                        EnterNextBattle(game); ClearWave(game);
-                        Require(game.Rewards.Mode == IntermissionMode.Reward && game.Rewards.Offers.Length == 3
-                            && game.Rewards.Offers.Select(offer => offer.card.id).Distinct().Count() == 3, "Every battle node, including wave five, must offer three unique cards instead of an automatic shop.");
-                        game.Rewards.ChooseReward(0);
+                        Require(stage.Mode == StageMode.WaveBreak && !game.Rewards.IsOpen, "Intermediate hard waves must skip camp.");
+                        return;
                     }
-                    var boss = progress.Route.rounds.Last()[0];
-                    Require(progress.Current.next.Contains(boss.id) && progress.SelectNode(boss.id) && progress.EncounterWaves == 1, "The final round must enter a single placeholder boss wave.");
-                    DisableWeapons(game); ClearWave(game);
-                    Require(progress.Mode == StageMode.Victory && progress.Current.completed && !game.Running && !game.Rewards.IsOpen, "Boss victory must show the dedicated victory screen.");
-                    game.StartBattle(); DisableWeapons(game);
-                    Require(progress.Current.round == 0 && progress.Mode == StageMode.Combat && game.Wave == 1 && game.Rewards.Scraps == 0
-                        && game.Hull == game.MaxHull && game.MachineGun.Ammo == game.MachineGun.ReserveCapacity, "Restart must reset the route and run resources.");
-                    Require(!errors, "Runtime errors occurred.");
-                    Debug.Log("MEGATANKS_STAGE_OK: 1000 connected noncrossing maps, nearest links/reachability, configured stage length, unique battle rewards, supply/repair pricing and one-time claims, hidden reveal, three-wave hard battle, boss victory and restart.");
+                    if (stage.Current.EncounterType == StageNodeType.Boss) return;
+
+                    Require(stage.Mode == StageMode.ApproachingEvent && !game.Rewards.IsOpen, "A cleared encounter must approach a tent before opening its event.");
+                    int round = stage.CurrentRoundNumber;
+                    bool vendor = round == 5 || round == 6;
+                    Require((stage.CampType == TentType.Vendor) == vendor, "Vendor stops must occur after five battles and immediately before the boss.");
+                    if (!vendor) CampTypeProperty.SetValue(stage, (TentType)((round - 1) % 3));
+                    CheckApproach(game);
+                }
+                else if (stage.Mode == StageMode.Event || stage.Mode == StageMode.Reward || stage.Mode == StageMode.Shop)
+                {
+                    Require(Mathf.Abs(CameraOffset(game) - battleCameraOffset) < .001f, "Camp arrival must preserve the battle framing.");
+                    CheckOffers(game);
+                }
+                else if (stage.Mode == StageMode.Victory)
+                {
+                    Require(game.StageRewards.LastReceipt != null && game.Wave == 9 && shops == 2
+                        && !game.Rewards.IsOpen && GameObject.Find("Field Camp Tent") == null && !errors,
+                        "The final boss must lead directly to victory with the stage receipt.");
+                    if (captureCamp)
+                    {
+                        var layout = UnityEngine.Object.FindObjectOfType<UICanvasLayout>();
+                        if (!layout.View(UIScreen.Victory).gameObject.activeInHierarchy) return;
+                        ItemProgressionAudit.Capture(game, "StageVictory");
+                    }
+                    Debug.Log("MEGATANKS_STAGE_OK: automatic tents, panning, service cards, vendor schedule, hard waves, and direct victory.");
                     Finish(0);
                 }
-                if (elapsed > 30) throw new Exception("Stage progression audit timed out.");
             }
             catch (Exception exception) { Debug.LogException(exception); Finish(1); }
         }
-        static void Finish(int code) { rewardSaves?.Dispose(); EditorApplication.update -= Check; EditorSettings.enterPlayModeOptionsEnabled = false; EditorApplication.Exit(code); }
+
+        static void CheckApproach(BattleGame game)
+        {
+            float edge = game.TankCamera.ViewportToWorldPoint(new Vector3(1, .5f, 0)).x;
+            float start = game.Artwork.transform.position.x;
+            AdvanceStage(game, .1f);
+            var tent = GameObject.Find("Field Camp Tent");
+            Require(tent != null && tent.GetComponent<SpriteRenderer>().bounds.min.x > edge, "The tent must spawn beyond the battle viewport.");
+            Require(game.Stage.Mode == StageMode.ApproachingEvent
+                && Mathf.Abs(game.Artwork.transform.position.x - start - .3f * game.TankAdvanceSpeed) < .001f,
+                "The tank must drive to the tent at triple speed with event choices closed.");
+            Require(Mathf.Abs(CameraOffset(game) - battleCameraOffset) < .001f, "The approach must preserve the battle framing.");
+            AdvanceStage(game, float.MaxValue);
+            float front = game.Artwork.GetComponentsInChildren<SpriteRenderer>()
+                .Where(renderer => renderer.enabled && renderer.sprite != null && renderer.color.a > 0).Max(renderer => renderer.bounds.max.x);
+            float gap = tent.GetComponent<SpriteRenderer>().bounds.min.x - front;
+            Require(gap > 0 && gap < .75f, "The tank must stop just short of the tent.");
+            var icon = tent.transform.Find("Camp Road Sign/Camp Sign Icon").GetComponent<SpriteRenderer>();
+            var skin = game.UI.RouteSkin;
+            var expected = game.Stage.CampType switch
+            {
+                TentType.Repair => skin.repair,
+                TentType.Resupply => skin.supply,
+                TentType.Vendor => skin.shop,
+                _ => skin.backArrow
+            };
+            Require(icon.sprite == expected && icon.transform.position.x < tent.transform.position.x,
+                "The matching sign must stand before the tent.");
+        }
+
+        static void CheckOffers(BattleGame game)
+        {
+            var offers = game.Rewards.Offers;
+            var layout = UnityEngine.Object.FindObjectOfType<UICanvasLayout>();
+            if (game.Stage.Mode == StageMode.Shop)
+            {
+                var shop = layout.View(UIScreen.Shop);
+                if (!shop.gameObject.activeSelf) return;
+                Require(offers.Length == 8 && offers.Select(offer => offer.card.id).Distinct().Count() == 8, "A vendor must open the eight-card shop.");
+                if (captureCamp && shops == 0) ItemProgressionAudit.Capture(game, "StageVendor");
+                shops++;
+                ItemProgressionAudit.Press(shop.Get<Button>("Leave Shop"));
+            }
+            else if (game.Stage.Mode == StageMode.Event)
+            {
+                var panel = game.UI.GetComponentsInChildren<UIView>().FirstOrDefault(view => view.name == "Camp Event");
+                if (panel == null) return;
+                bool repair = game.Stage.CampType == TentType.Repair;
+                int balance = game.Rewards.Scraps;
+                int drops = balance - battleStartScraps;
+                Require(offers.Length == 2 && offers[0].card.rarity == CardRarity.Normal
+                    && offers[0].card.effect == (repair ? CardEffect.Repair : CardEffect.Resupply), "A service tent must offer its common service card.");
+                var scavenge = offers[1].card;
+                Require(scavenge.rarity == CardRarity.Rare && scavenge.effect == CardEffect.Scraps && scavenge.art != null
+                    && scavenge.scraps * 100L >= drops * 75L && scavenge.scraps * 100L <= drops * 110L,
+                    "Scavenge must award 75–110% of encounter drops and show the framed rare card.");
+                Require(panel.Get<Image>("Card 1/Artwork").sprite == scavenge.art, "The displayed Scavenge artwork must come from its card.");
+                if (captureCamp) ItemProgressionAudit.Capture(game, repair ? "StageRepair" : "StageResupply");
+                int ammo = game.MachineGun.Ammo;
+                float hull = game.Hull;
+                ItemProgressionAudit.Press(panel.Get<Button>(repair ? "Card 0/Action" : "Card 1/Action"));
+                Require(game.MachineGun.Ammo == ammo
+                    && (repair ? game.Hull > hull && game.Rewards.Scraps == balance : game.Hull == hull && game.Rewards.Scraps == balance + scavenge.scraps),
+                    "Only the chosen service or scrap reward may apply.");
+            }
+            else
+            {
+                var rewards = layout.View(UIScreen.Rewards);
+                if (!rewards.gameObject.activeSelf) return;
+                Require(offers.Length == 3 && offers.Select(offer => offer.card.id).Distinct().Count() == 3
+                    && offers.All(offer => offer.card.effect != CardEffect.Repair && offer.card.effect != CardEffect.Resupply
+                        && offer.card.effect != CardEffect.Scraps), "Upgrade tents must offer three distinct upgrades.");
+                if (captureCamp && game.Stage.CurrentRoundNumber == 1) ItemProgressionAudit.Capture(game, "StageUpgrade");
+                ItemProgressionAudit.Press(rewards.Get<Button>("Card 1/Action"));
+            }
+            Require(game.Stage.Mode == StageMode.Advancing && !game.Rewards.IsOpen && !game.Rewards.ChooseReward(0),
+                "A camp resolution must close the choices and start travel exactly once.");
+            departureTime = Time.time;
+            departureX = game.Artwork.transform.position.x;
+        }
+
+        static void Finish(int code)
+        {
+            EditorApplication.update -= Check;
+            rewardSaves?.Dispose();
+            EditorSettings.enterPlayModeOptionsEnabled = false;
+            EditorApplication.Exit(code);
+        }
     }
 }

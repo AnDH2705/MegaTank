@@ -6,6 +6,7 @@ namespace MegaTanks
     {
         [SerializeField] SkeletonAnimation animation;
         [SerializeField] string attackAnimation="shovel_attack";
+        [SerializeField] string moveAnimation="walk";
         System.Action pendingImpact;
         Spine.TrackEntry attackEntry;
         public bool IsAttacking=>animation.AnimationState.GetCurrent(0) is Spine.TrackEntry entry&&entry.Animation.Name==attackAnimation&&!entry.IsComplete;
@@ -24,8 +25,15 @@ namespace MegaTanks
         {
             var current=animation.AnimationState.GetCurrent(0);
             if(current!=null&&current.Animation.Name==attackAnimation&&!current.IsComplete)return;
-            string next=moving?"walk":"idle";
+            string next=moving?moveAnimation:"idle";
             if(current==null||current.Animation.Name!=next)animation.AnimationState.SetAnimation(0,next,true);
+        }
+        public void Sit()
+        {
+            const string seated = "sit_drive";
+            var state = animation.AnimationState;
+            if (CurrentAnimation != seated && animation.Skeleton.Data.FindAnimation(seated) != null)
+                state.SetAnimation(0, seated, true);
         }
         public void CancelAttack(){pendingImpact=null;attackEntry=null;}
         void OnDisable()=>CancelAttack();

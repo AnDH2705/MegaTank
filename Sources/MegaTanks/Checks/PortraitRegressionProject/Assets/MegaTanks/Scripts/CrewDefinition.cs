@@ -21,6 +21,8 @@ namespace MegaTanks
         public CrewStat criticalChanceReduction=new CrewStat(), criticalDamageReduction=new CrewStat();
         public CrewStat weaponRange=new CrewStat(), baseReloadTime=new CrewStat(), projectileSpeed=new CrewStat();
         public CrewStat activationRange=new CrewStat();
+        [Tooltip("Player commando HP restored each second aboard the tank.")]
+        public CrewStat healthRegeneration=new CrewStat();
     }
     [CreateAssetMenu(menuName="MegaTanks/Crew/Crew Member")]
     public sealed class CrewDefinition : ScriptableObject

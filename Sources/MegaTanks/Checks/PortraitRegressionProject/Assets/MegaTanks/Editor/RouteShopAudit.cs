@@ -85,14 +85,13 @@ namespace MegaTanks.Editor
                 if (game == null || game.UI == null) return;
                 if (phase == 0)
                 {
-                    stage = Object.Instantiate(game.Stage.Definition); stage.rounds = 3; game.SelectStage(stage); game.StartBattle();
+                    stage = Object.Instantiate(game.Stage.Definition); stage.rounds = 3; stage.hardBattleWeight = 0; game.SelectStage(stage); game.StartBattle();
                     StageProgressionAudit.DisableWeapons(game); StageProgressionAudit.ClearWave(game);
                     Require(game.Rewards.Mode == IntermissionMode.Reward, "Opening victory still gives card reward.");
-                    game.Rewards.ChooseReward(0);
+                    StageProgressionAudit.EnterNextBattle(game);
+                    StageProgressionAudit.ClearWave(game);
                     game.Rewards.TrySpendScraps(game.Rewards.Scraps);
-                    int wave = game.Wave;
-                    Require(game.Stage.SelectNode(game.Stage.Current.next[0]), "Select connected shop.");
-                    Require(game.Stage.Mode == StageMode.Shop && game.Rewards.Mode == IntermissionMode.Shop && game.EnemyCount == 0 && game.Wave == wave && !game.Running, "Shop pauses combat without spawning a wave.");
+                    Require(game.Stage.Mode == StageMode.Shop && game.Rewards.Mode == IntermissionMode.Shop && game.EnemyCount == 0 && game.Wave == 2 && !game.Running, "The pre-boss vendor pauses combat without spawning a wave.");
                     phase++; return;
                 }
                 if (phase == 1)
@@ -109,13 +108,14 @@ namespace MegaTanks.Editor
                         Require(game.Rewards.Buy(i) && game.Rewards.Scraps == before - offers[i].card.price && !game.Rewards.Buy(i), "Purchases spend exact price once.");
                     }
                     game.Rewards.LeaveShop();
-                    Require(game.Stage.Mode == StageMode.Map && game.Stage.Current.completed && !game.Rewards.IsOpen, "Leaving completes shop and returns to route without a reward.");
+                    Require(game.Stage.Mode == StageMode.Advancing && game.Stage.Current.completed && !game.Rewards.IsOpen, "Leaving the shop starts travel.");
                     int balance = game.Rewards.Scraps; game.Rewards.LeaveShop();
                     Require(game.Rewards.Scraps == balance && !game.Stage.SelectNode(game.Stage.Current.id), "Cannot reenter or reset shop.");
-                    Require(game.Stage.SelectNode(game.Stage.Current.next.Single()) && game.Stage.Current.type == StageNodeType.Boss && game.Stage.Mode == StageMode.Combat, "Shop leads directly to boss.");
+                    StageProgressionAudit.EnterNextBattle(game);
+                    Require(game.Stage.Current.type == StageNodeType.Boss && game.Stage.Mode == StageMode.Combat, "Shop leads directly to boss.");
                     StageProgressionAudit.DisableWeapons(game); game.ReturnHome();
                     Require(!errors, "No runtime errors.");
-                    Debug.Log("ROUTE_SHOP_PLAY_PASS: visible prefab shop, fixed plus unique random stock, purchases, repeat protection, exit to map and boss.");
+                    Debug.Log("ROUTE_SHOP_PLAY_PASS: visible vendor shop, fixed and unique stock, purchases, repeat protection, and travel to the boss.");
                     Finish();
                 }
             }

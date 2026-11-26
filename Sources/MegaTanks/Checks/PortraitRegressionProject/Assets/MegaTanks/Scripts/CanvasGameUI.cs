@@ -76,6 +76,7 @@ namespace MegaTanks
         void RefreshStage()
         {
             var v=View(UIScreen.Home);var stages=game.Frontend?.stages;
+            if(stages!=null&&stages.Length>0)game.SelectStage(stages[stageIndex]);
             string title=stages!=null&&stages.Length>0?stages[stageIndex].stageName:"Stage 1";
             Text(v,"Stage Name Plate/Selected Stage",title);Text(v,"Stage Swipe Area/Stage Count","ROUND 1 / "+(stages!=null&&stages.Length>0?stages[stageIndex].rounds:game.Stage.Definition.rounds));Text(v,"Stage Swipe Area/Route Name",title);
             v.Get<Button>("Previous Stage").interactable=stageIndex>0;v.Get<Button>("Next Stage").interactable=stageIndex<(stages?.Length??1)-1;

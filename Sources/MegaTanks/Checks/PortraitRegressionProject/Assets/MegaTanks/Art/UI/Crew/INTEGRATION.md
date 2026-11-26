@@ -1,0 +1,11 @@
+# Crew and equipment artwork integration
+
+Both popups retain their UIView binding IDs. LoadoutArtworkSetup authors the 770 x 436 reference geometry into native Canvas prefabs and scales it to the existing 1920 x 1080 safe-area layout. The source PSD and reference PNG are not modified. Runtime presentation is handled by LoadoutArtPresentation; existing controllers retain all assignment, equip, cost and save behavior.
+
+Shared artwork: garage illustration, slanted panel slices and CrewPanelSkew, name ribbon, yellow/green/disabled buttons, role-label plates, portrait selection outlines, equipped ticks, fragment icon, and the supplied AntiqueOliCom bitmap atlas. Border values come from ui-sprites.json. Crew and equipment use separate repeated-card prefabs. Equipment keeps the live tank render texture and shows all six slots, including the heavy tank's second armor slot.
+
+Crew stat icons map to the actual selected crew contributions for ATK, HP, accuracy, defense, movement speed and critical rate. A dash denotes a stat outside the selected role. Skill order and names follow skills.json and the Skill_Icons README, including the three authoritative cannon layers. Icons describe existing modifiers; no skill unlock thresholds or balance values are invented. Ammo-related icons explain that capacity belongs to the weapon. The selected crew portrait opens detailed level gains. Upgrades still use Pet Food/Pet Tags for crew and Parts/Blueprints for equipment. Accessories remain level-only.
+
+Original detailed stat strings are kept on hidden bound Text objects. The visible scroll panel uses ASCII equivalents of arrows/bullets for the supplied font atlas. Preview outlines and equipped ticks are independent. Selecting a compatible crew station retains direct assignment, and selecting stations filters the roster. Garage slot filters, inventory sorting, comparisons, equip actions and tank switching remain intact.
+
+Validation: LoadoutArtworkAudit.Run uses actual EventSystem raycasts across both flows and restores the isolated test saves. GaragePortraitAudit.Run separately checks the original saved-Gatling to MG pixel visibility regression. Screenshots are captured under Checks/LoadoutArtwork in the validation project.

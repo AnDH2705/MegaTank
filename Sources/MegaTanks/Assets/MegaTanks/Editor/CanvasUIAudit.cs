@@ -174,10 +174,30 @@ namespace MegaTanks.Editor
                     case 16:Require(game.Paused&&!game.Running,"Pause stops combat.");Click("Battle Settings");Next();break;
                     case 17:Click("Close Popup");Click("Resume");Require(!game.Paused,"Resume preserves run.");
                         foreach(var enemy in UnityEngine.Object.FindObjectsOfType<EnemyEntity>())enemy.Damage(99999);Next();break;
-                    case 18:Require(game.Rewards.IsOpen,"Victory opens reward cards.");Shot("Rewards");Next();break;
-                    case 19:Click("Action");Next();break;
-                    case 20:Require(game.Stage.Mode==StageMode.Map,"Reward opens route map.");CheckRoute(game);Shot("Map");Next();break;
+                    case 18:
+                        StageProgressionAudit.OpenCampRewards(game);
+                        Require(game.Rewards.Mode==IntermissionMode.Reward,"The upgrade tent opens reward cards.");
+                        Next();break;
+                    case 19:Shot("Rewards");Click("Action");Next();break;
+                    case 20:
+                        if(routeOnly)
+                        {
+                            var legacy=StageRoute.Generate(game.Stage.Definition,game.Stage.Route.Seed);
+                            var current=legacy.rounds[0][0];current.entered=current.completed=true;
+                            typeof(StageProgression).GetProperty(nameof(StageProgression.Route)).SetValue(game.Stage,legacy);
+                            typeof(StageProgression).GetProperty(nameof(StageProgression.Current)).SetValue(game.Stage,current);
+                            typeof(StageProgression).GetProperty(nameof(StageProgression.Mode)).SetValue(game.Stage,StageMode.Map);
+                        }
+                        else Require(game.Stage.Mode==StageMode.Advancing||game.Stage.CurrentRoundNumber==2,"Choosing a card starts automatic travel.");
+                        Next();break;
                     case 21:
+                        if(!routeOnly)
+                        {
+                            if(game.Stage.Mode==StageMode.Advancing)break;
+                            Require(game.Stage.Mode==StageMode.Combat&&game.Stage.CurrentRoundNumber==2,"Travel ends at the second battle.");
+                            Next();break;
+                        }
+                        if(routeBackStep==0){CheckRoute(game);Shot("Map");}
                         if(routeBackStep==0){Click("Route Back");routeBackStep=1;since=EditorApplication.timeSinceStartup;break;}
                         if(routeBackStep==1)
                         {
@@ -198,7 +218,7 @@ namespace MegaTanks.Editor
                         Require(game.Artwork.MachineGun.name=="roof_gun"&&game.MachineGun.Artwork==game.Artwork.MachineGun,"Re-equipping the original MG must restore its artwork and turret binding.");
                         game.StartBattle();
                         Require(game.Artwork.transform.position==game.TankSpawnPosition&&game.Artwork.transform.localScale==Vector3.one*.75f,"Restart must restore the approved tank pose.");
-                        Require(!errors,"No runtime errors permitted.");Debug.Log("MEGATANKS_CANVAS_OK: real uGUI raycasts, Home/settings/equipment/filter/equip/Play, pause/resume, combat/reward/map/node, Home, persisted settings, armor inventory and no accessory instances.");Finish(0);break;
+                        Require(!errors,"No runtime errors permitted.");Debug.Log("MEGATANKS_CANVAS_OK: real uGUI raycasts, Home, equipment, combat, camp rewards, travel, and persisted settings.");Finish(0);break;
                 }
             }
             catch(Exception e){Debug.LogException(e);Finish(1);}

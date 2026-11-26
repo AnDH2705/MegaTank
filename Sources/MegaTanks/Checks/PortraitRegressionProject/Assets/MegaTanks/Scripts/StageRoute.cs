@@ -21,6 +21,25 @@ namespace MegaTanks
         public readonly List<List<StageNode>> rounds = new List<List<StageNode>>();
         public int Seed { get; private set; }
         public StageNode Get(int id) => rounds.SelectMany(round => round).First(node => node.id == id);
+        public static StageRoute GenerateBattleSequence(StageDefinition definition, int seed)
+        {
+            var random = new Random(seed);
+            var route = new StageRoute { Seed = seed };
+            int count = Math.Max(3, definition.rounds);
+            int regular = Math.Max(0, definition.battleWeight);
+            int hard = Math.Max(0, definition.hardBattleWeight);
+            for (int round = 0; round < count; round++)
+            {
+                var type = round == count - 1 ? StageNodeType.Boss
+                    : round > 0 && hard > 0 && random.NextDouble() * ((double)regular + hard) < hard
+                        ? StageNodeType.HardBattle : StageNodeType.Battle;
+                var encounter = new StageNode { id = round, round = round, height = .5f, type = type };
+                if (round + 1 < count) encounter.next.Add(round + 1);
+                route.rounds.Add(new List<StageNode> { encounter });
+            }
+            return route;
+        }
+
         public static StageRoute Generate(StageDefinition definition, int seed)
         {
             var random = new Random(seed);

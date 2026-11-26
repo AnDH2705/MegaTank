@@ -106,27 +106,33 @@ namespace MegaTanks.Editor
                 var game = BattleGame.Instance; double elapsed = EditorApplication.timeSinceStartup - since;
                 if (stage == 0)
                 {
+                    var definition = UnityEngine.Object.Instantiate(game.Stage.Definition);
+                    definition.backgroundId = "Industrial";
+                    definition.waveBreakSeconds = .1f;
+                    game.SelectStage(definition);
                     game.StartBattle(); game.SetStance(TankStance.Defensive); StageProgressionAudit.DisableWeapons(game); CheckGeometry(game);
-                    var savedRandom = UnityEngine.Random.state; UnityEngine.Random.InitState(421);
-                    bool[] seen = new bool[2];
-                    for (int i = 0; i < 16; i++) { game.Backgrounds.SelectRandom(); seen[game.Backgrounds.CurrentIndex] = true; }
-                    UnityEngine.Random.state = savedRandom;
-                    Require(seen.All(value => value), "Repeated random selection must make both presets available.");
-                    game.Backgrounds.ApplyPreset(0); Next();
+                    Next();
                 }
                 else if (stage == 1 && elapsed > .2) { Screenshot("BattleIndustrial"); Next(); }
-                else if (stage == 2 && elapsed > .3) { game.Backgrounds.ApplyPreset(1); Next(); }
+                else if (stage == 2 && elapsed > .3)
+                {
+                    game.ReturnHome();
+                    var definition = game.Stage.Definition;
+                    definition.backgroundId = "RuinedCity";
+                    game.SelectStage(definition);
+                    Require(game.Backgrounds.CurrentPreset.id == "RuinedCity", "Changing the stage must update the Home background.");
+                    game.StartBattle(); game.SetStance(TankStance.Defensive); StageProgressionAudit.DisableWeapons(game);
+                    Next();
+                }
                 else if (stage == 3 && elapsed > .2) { Screenshot("BattleRuinedCity"); Next(); }
                 else if (stage == 4 && elapsed > .3)
                 {
                     selections = game.Backgrounds.SelectionCount;
-                    StageProgressionAudit.ClearWave(game); game.Rewards.ChooseReward(0);
-                    Require(game.Backgrounds.SelectionCount == selections, "Reward/map screens must not reroll the background.");
-                    StageProgressionAudit.EnterType(game, StageNodeType.Supply);
-                    Require(game.Backgrounds.SelectionCount == selections, "Supply/repair services must not reroll the background.");
-                    game.Stage.LeaveService(); StageProgressionAudit.EnterType(game, StageNodeType.HardBattle);
-                    Require(game.Backgrounds.SelectionCount == ++selections, "A new hard battle must roll a background once.");
-                    retained = game.Backgrounds.CurrentIndex; game.Stage.Definition.waveBreakSeconds = .1f;
+                    StageProgressionAudit.ClearWave(game);
+                    Require(game.Backgrounds.SelectionCount == selections, "Tent visits must retain the stage background.");
+                    StageProgressionAudit.EnterType(game, StageNodeType.HardBattle);
+                    Require(game.Backgrounds.SelectionCount == selections, "A new battle must retain the stage background.");
+                    retained = game.Backgrounds.CurrentIndex;
                     StageProgressionAudit.ClearWave(game); Next();
                 }
                 else if (stage == 5 && elapsed > .2)
@@ -143,14 +149,14 @@ namespace MegaTanks.Editor
                     while (game.Stage.Mode != StageMode.Victory)
                     {
                         StageProgressionAudit.EnterNextBattle(game);
-                        Require(game.Backgrounds.SelectionCount == ++selections, "Every subsequent battle/boss encounter must roll once.");
+                        Require(game.Backgrounds.SelectionCount == selections, "Every remaining battle must retain the stage background.");
                         StageProgressionAudit.ClearWave(game);
                         if (game.Stage.Mode != StageMode.Victory) game.Rewards.ChooseReward(0);
                     }
                     game.StartBattle(); game.SetStance(TankStance.Defensive); StageProgressionAudit.DisableWeapons(game);
-                    Require(game.Backgrounds.SelectionCount == selections + 1, "Restart must select a background for the new first battle.");
+                    Require(game.Backgrounds.SelectionCount == selections, "Restart must retain the stage background.");
                     Require(!errors, "Runtime errors occurred.");
-                    Debug.Log("MEGATANKS_BACKGROUNDS_OK: 6/7-layer art, original canvas, independent cameras, parallax factors, gap-free mirror repeats, wide-screen sky, random battle/boss/restart selection and hard-wave retention.");
+                    Debug.Log("MEGATANKS_BACKGROUNDS_OK: parallax geometry, stage selection, and retained backgrounds through camps, battles, hard waves, and restart.");
                     Finish(0);
                 }
                 if (elapsed > 30) throw new Exception("Background audit timed out.");

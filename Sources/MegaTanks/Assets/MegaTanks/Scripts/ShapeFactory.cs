@@ -9,11 +9,22 @@ namespace MegaTanks
         static Sprite circle;
         static Texture2D circleTexture;
 
+        internal static Sprite SquareSprite
+        {
+            get
+            {
+                if (square == null)
+                {
+                    var texture = Texture2D.whiteTexture;
+                    square = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one * .5f, texture.width);
+                }
+                return square;
+            }
+        }
+
         public static SpriteRenderer Create(string name, Transform parent, Vector2 position,
             Vector2 size, Color color, bool round = false, int order = 0)
         {
-            if (square == null)
-                square = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, Texture2D.whiteTexture.width, Texture2D.whiteTexture.height), Vector2.one * .5f, Texture2D.whiteTexture.width);
             if (round && circle == null)
             {
                 const int resolution = 64;
@@ -35,7 +46,7 @@ namespace MegaTanks
             obj.transform.localPosition = position;
             obj.transform.localScale = new Vector3(size.x, size.y, 1);
             var renderer = obj.AddComponent<SpriteRenderer>();
-            renderer.sprite = round ? circle : square;
+            renderer.sprite = round ? circle : SquareSprite;
             renderer.color = color;
             renderer.sortingOrder = order;
             return renderer;

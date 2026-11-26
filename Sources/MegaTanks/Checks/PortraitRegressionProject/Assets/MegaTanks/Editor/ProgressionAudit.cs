@@ -14,7 +14,7 @@ namespace MegaTanks.Editor
         static int mgShots, cannonShots;
         static CardCatalog catalog;
         static float baseMgDamage, baseCannonDamage;
-        static int startingMgAmmo, startingCannonAmmo;
+        static int startingMgAmmo, startingCannonAmmo, expectedFirstBattleScraps;
         public static void Run()
         {
             EditorSceneManager.OpenScene(MegaTanksSetup.ScenePath);
@@ -47,6 +47,7 @@ namespace MegaTanks.Editor
                 scraps += enemy.ScrapsReward;
                 enemy.Damage(1000000);
             }
+            StageProgressionAudit.OpenCampRewards(game);
             return scraps;
         }
         static void Check()
@@ -83,15 +84,20 @@ namespace MegaTanks.Editor
                         Require(rejected, "Oversized unique offers must fail clearly instead of looping or duplicating.");
                     }
                     finally { UnityEngine.Random.state = randomState; }
+                    var testStage = UnityEngine.Object.Instantiate(game.Stage.Definition);
+                    testStage.InitializeStage(1);
+                    testStage.rounds = 7; testStage.hardBattleWeight = 0; game.SelectStage(testStage);
                     game.StartBattle(); game.Mortar.enabled = false;
                     startingMgAmmo = game.MachineGun.ReserveCapacity; startingCannonAmmo = game.MainGun.ReserveCapacity;
                     Require(game.MachineGun.Ammo == startingMgAmmo && game.MainGun.Ammo == startingCannonAmmo, "Run must start with configured reserves.");
                     baseMgDamage = game.MachineGun.DamagePerShot; baseCannonDamage = game.MainGun.DamagePerShot;
                     foreach (var enemy in UnityEngine.Object.FindObjectsOfType<EnemyEntity>()) { game.RemoveEnemy(enemy, false); enemy.gameObject.SetActive(false); UnityEngine.Object.Destroy(enemy.gameObject); }
-                    var flyer = game.SpawnEnemy("FlyingEnemy1", game.TankAimPoint + new Vector2(12, 3));
-                    var ground = game.SpawnEnemy("GroundEnemy1", game.TankAimPoint + new Vector2(14, -2));
+                    var flyer = game.SpawnEnemy("FlyingEnemy1", game.TankAimPoint + new Vector2(5, 3));
+                    var ground = game.SpawnEnemy("GroundEnemy1", game.TankAimPoint + new Vector2(6, 0));
                     flyer.Weapon.enabled = ground.Weapon.enabled = false;
-                    Require(flyer.ScrapsReward == 20 && ground.ScrapsReward == 30, "First-wave scraps must start at 20 and 30.");
+                    expectedFirstBattleScraps = game.EnemyDatabase.Get(EnemyKind.Flyer).AtDifficulty(game.BattleDifficulty).baseScraps
+                        + game.EnemyDatabase.Get(EnemyKind.Ground).AtDifficulty(game.BattleDifficulty).baseScraps;
+                    Require(flyer.ScrapsReward + ground.ScrapsReward == expectedFirstBattleScraps, "Enemy drops must use the current difficulty.");
                     game.MachineGun.ConfigureAmmunition(2); game.MainGun.ConfigureAmmunition(1);
                     Next();
                 }
@@ -131,37 +137,35 @@ namespace MegaTanks.Editor
                         "Repeated and mixed-rarity HP cards must add percentages of starting HP and preserve missing health.");
                     game.ApplyCardEffect(Card("16")); Require(game.Hull == game.MaxHull, "Repair must recover HP and cap at maximum.");
                     int expected = ClearWave(game);
-                    Require(game.Rewards.Scraps == expected && expected == 50 && game.Rewards.Mode == IntermissionMode.Reward && game.Rewards.Offers.Length == 3 && !game.Running, "Wave one must award scraps and pause for three free options.");
+                    Require(game.Rewards.Scraps == expected && expected == expectedFirstBattleScraps && game.Rewards.Mode == IntermissionMode.Reward && game.Rewards.Offers.Length == 3 && !game.Running, "Wave one must award scraps and pause for three free options.");
                     RequireUniqueOffers(game.Rewards);
                     game.MachineGun.TryConsumeRound(); game.MainGun.TryConsumeRound();
                     game.Rewards.Offers[0].card = Card("1");
-                    Require(game.Rewards.ChooseReward(0) && game.Stage.Mode == StageMode.Map && !game.Rewards.ChooseReward(0), "Exactly one free reward must open the route map.");
+                    Require(game.Rewards.ChooseReward(0) && game.Stage.Mode == StageMode.Advancing && !game.Rewards.ChooseReward(0), "Exactly one free reward starts travel.");
                     StageProgressionAudit.EnterNextBattle(game);
                     Require(game.MachineGun.Ammo == 119 && game.MainGun.Ammo == 19, "Advancing a wave must preserve ammo rather than refilling reserves.");
                     for (int wave = 2; wave <= 5; wave++)
                     {
                         Require(game.Wave == wave, "Wave order must remain sequential.");
                         foreach (var enemy in UnityEngine.Object.FindObjectsOfType<EnemyEntity>())
-                            if (enemy.Alive) Require(enemy.ScrapsReward == (enemy.Kind == EnemyKind.Flyer ? 20 + 2 * (wave - 1) : 30 + 3 * (wave - 1)), "Enemy scraps must scale with their own wave number.");
+                            if (enemy.Alive) Require(enemy.ScrapsReward == game.EnemyDatabase.Definitions.First(definition => definition.id == enemy.Data.id)
+                                .AtDifficulty(game.BattleDifficulty).baseScraps, "Enemy drops must use the current battle difficulty.");
                         expected += ClearWave(game);
                         Require(game.Rewards.Scraps == expected, "Kill rewards must be credited exactly once.");
                         RequireUniqueOffers(game.Rewards);
                         if (wave < 5)
                         {
-                            Require(game.Rewards.ChooseReward(0), "Battle nodes must offer a free reward.");
+                            Require(game.Rewards.ChooseReward(0), $"Battle {game.Stage.CurrentRoundNumber} of {game.Stage.Definition.rounds} must offer an upgrade. Found {game.Stage.Mode} with {game.EnemyCount} enemies.");
                             StageProgressionAudit.EnterNextBattle(game);
                         }
                     }
-                    Require(game.Rewards.Mode == IntermissionMode.Reward && game.Rewards.Offers.Length == 3 && !game.Running,
-                        "Wave five must retain three unique battle rewards; stage nodes replace the automatic shop.");
-                    int savedScraps = game.Rewards.Scraps;
-                    Require(game.Rewards.ChooseReward(0) && game.Stage.Mode == StageMode.Map && game.Rewards.Scraps == savedScraps,
-                        "Taking a reward must preserve scraps and return to the map.");
+                    Require(game.Rewards.Mode == IntermissionMode.Shop && game.Rewards.Offers.Length == 8 && !game.Running,
+                        "The fifth battle must open the scheduled vendor tent.");
                     game.StartBattle(); game.Mortar.enabled = false;
                     Require(game.Wave == 1 && game.Rewards.Scraps == 0 && game.MaxHull == 100 && game.Hull == 100 && game.MachineGun.Ammo == startingMgAmmo && game.MainGun.Ammo == startingCannonAmmo
                         && Mathf.Approximately(game.MachineGun.DamagePerShot, baseMgDamage) && Mathf.Approximately(game.MainGun.DamagePerShot, baseCannonDamage), "Restart must reset currency, upgrades, HP and ammo.");
                     Require(!errors, "Runtime errors occurred.");
-                    Debug.Log("MEGATANKS_PROGRESSION_OK: additive upgrades, reset, 6000 unique draws, stage battle rewards/map return, ammo, rarity odds, repair/resupply and scaled scraps.");
+                    Debug.Log("MEGATANKS_PROGRESSION_OK: additive upgrades, reset, 6000 unique draws, upgrade tents, vendor, ammo, and scaled scraps.");
                     Finish(0);
                 }
                 if (stage > 0 && elapsed > 30) throw new Exception("Progression audit timed out.");

@@ -15,20 +15,33 @@ namespace MegaTanks
         public BossTank Boss { get; private set; }
         public BossTank CommandoOwner { get; set; }
         public CommandoArtwork CommandoArtwork { get; private set; }
+        TrojanScrapCat carrier;
+        bool UsesCommandoMovement => CommandoOwner != null || Data.melee;
         Vector2 commandoVelocity;
         float corpseTime;
         public int ScrapsReward => Data.baseScraps;
         public float Health { get; private set; }
         public float Speed { get; private set; }
         public bool Alive => Health > 0;
-        public bool InWeaponRange => Boss != null ? Boss.AllWeaponsInRange : Vector2.Distance(transform.position, BattleGame.Instance.TankAimPoint) <= Data.weapon.range + .001f;
+        public bool InWeaponRange => Boss != null ? Boss.AllWeaponsInRange : Weapon != null &&
+            Vector2.Distance(transform.position, BattleGame.Instance.TankAimPoint) <= Data.weapon.range + .001f;
         public float ApproachDirection { get; private set; }
-        public Vector2 Velocity => CommandoOwner!=null ? (Alive&&BattleGame.Instance.Running?commandoVelocity:Vector2.zero) : Alive && BattleGame.Instance.Running && (StoppingX-transform.position.x)*ApproachDirection > .0001f ? Vector2.right * (ApproachDirection*Speed) : Vector2.zero;
+        public Vector2 Velocity
+        {
+            get
+            {
+                if (!Alive || !BattleGame.Instance.Running) return Vector2.zero;
+                if (UsesCommandoMovement) return commandoVelocity;
+                return (StoppingX - transform.position.x) * ApproachDirection > .0001f
+                    ? Vector2.right * (ApproachDirection * Speed) : Vector2.zero;
+            }
+        }
         public float AdvanceInsideRange { get; private set; }
         float stoppingX;
         public float StoppingX
         {
-            get => Boss != null ? transform.position.x + ApproachDirection * Boss.AdvanceDistanceNeeded : stoppingX;
+            get => Boss != null ? transform.position.x + ApproachDirection * Boss.AdvanceDistanceNeeded
+                : carrier != null ? BattleGame.Instance.TankAimPoint.x : stoppingX;
             private set => stoppingX = value;
         }
         float maxHealth;
@@ -44,6 +57,9 @@ namespace MegaTanks
         }
 
         public void Initialize(EnemyDefinition definition, int wave, int difficulty=0)
+            => Initialize(definition, wave, difficulty, null);
+
+        internal void Initialize(EnemyDefinition definition, int wave, int difficulty, CommandoArtwork existingCommando)
         {
             definition=definition.Copy();Data = definition;
             Kind = definition.kind;
@@ -67,7 +83,17 @@ namespace MegaTanks
             }
             else if(definition.commandoPrefab!=null)
             {
-                CommandoArtwork=Instantiate(definition.commandoPrefab,transform,false);CommandoArtwork.ResetVisual();CommandoArtwork.Face(ApproachDirection);
+                CommandoArtwork = existingCommando != null ? existingCommando : Instantiate(definition.commandoPrefab, transform, false);
+                if (existingCommando != null)
+                {
+                    CommandoArtwork.transform.SetParent(transform, false);
+                    var original = definition.commandoPrefab.transform;
+                    CommandoArtwork.transform.SetLocalPositionAndRotation(original.localPosition, original.localRotation);
+                    CommandoArtwork.transform.localScale = original.localScale;
+                }
+                CommandoArtwork.ResetVisual();
+                CommandoArtwork.Face(ApproachDirection);
+                if (existingCommando != null) CommandoArtwork.Advance(0);
                 var collider=gameObject.AddComponent<BoxCollider2D>();collider.size=new Vector2(.65f,.9f);collider.isTrigger=true;
                 healthY=.9f;artworkWidth=.9f;
             }
@@ -75,6 +101,8 @@ namespace MegaTanks
             {
                 Artwork = Instantiate(definition.artworkPrefab, transform);
                 Artwork.Attach(this, definition.ScaledArtworkWidth);
+                carrier = Artwork.GetComponent<TrojanScrapCat>();
+                carrier?.InitializeOccupants();
                 var bounds = Artwork.OwnerLocalBounds;
                 var collider = gameObject.AddComponent<BoxCollider2D>();
                 collider.offset = bounds.center; collider.size = bounds.size; collider.isTrigger = true;
@@ -101,7 +129,7 @@ namespace MegaTanks
             healthBar=Instantiate(healthPrefab,transform,false);
             if(CommandoArtwork!=null)healthBar.ConfigureCommando(healthY,new Color(.96f,.37f,.4f),BattleGame.Instance.TankCamera);
             else healthBar.Configure(healthY,artworkWidth,color,BattleGame.Instance.TankCamera);
-            if (Boss == null)
+            if (Boss == null && carrier == null)
             {
                 Weapon = gameObject.AddComponent<EnemyWeapon>();
                 Weapon.Configure(this, definition.weapon);
@@ -111,15 +139,16 @@ namespace MegaTanks
         void Update()=>Tick(Time.deltaTime);
         public void Tick(float deltaTime)
         {
-            if (!BattleGame.Instance.Running) return;
+            var game = BattleGame.Instance;
+            if (!game.Running) return;
             if(!Alive)
             {
                 if(CommandoArtwork!=null){CommandoArtwork.Advance(deltaTime);corpseTime-=deltaTime;if(corpseTime<=0)Destroy(gameObject);}
                 return;
             }
-            if(CommandoOwner!=null)
+            if(UsesCommandoMovement)
             {
-                var game=BattleGame.Instance;commandoVelocity=Vector2.zero;
+                commandoVelocity=Vector2.zero;
                 if(Weapon!=null&&Weapon.IsMelee)
                 {
                     var body=GetComponent<Collider2D>();var target=CommandoMelee.PlayerTarget(game,body);
@@ -147,6 +176,12 @@ namespace MegaTanks
                 position.x = Mathf.MoveTowards(position.x,StoppingX,Speed*deltaTime);
                 transform.position = position;
             }
+            if (carrier != null && carrier.InReleaseRange(GetComponent<Collider2D>(), game.HullHitbox.GetComponent<Collider2D>()))
+            {
+                Defeat(false);
+                return;
+            }
+            carrier?.AnimateOccupants(Velocity.sqrMagnitude > .00001f, deltaTime);
             if (Boss != null) Boss.SetHitFlash(Time.time < hitUntil);
             else if (Artwork != null) Artwork.SetHitFlash(Time.time < hitUntil);
             else if(CommandoArtwork!=null){if(!CommandoArtwork.IsAttacking)CommandoArtwork.Face(ApproachDirection);CommandoArtwork.Locomotion(Velocity.sqrMagnitude>.00001f);CommandoArtwork.Advance(deltaTime);}
@@ -172,19 +207,26 @@ namespace MegaTanks
             hitUntil = Time.time + .07f;
             healthBar.SetHealth(Health / maxHealth);
             if (Alive) return;
+            Defeat(true);
+        }
+
+        void Defeat(bool destroyed)
+        {
+            var game = BattleGame.Instance;
+            Health = 0;
+            carrier?.Release(this, game);
             GetComponent<Collider2D>().enabled = false;
             Boss?.RecallCommando();
             if(CommandoOwner!=null)CommandoOwner.OnCommandoDefeated(this);
-            BattleGame.Instance.RemoveEnemy(this, true);
+            game.RemoveEnemy(this, destroyed);
             if(CommandoArtwork!=null){healthBar.gameObject.SetActive(false);corpseTime=CommandoArtwork.Die();return;}
-            var game=BattleGame.Instance;
-            if(game.Vfx.Catalog!=null)
+            if(destroyed && game.Vfx.Catalog!=null)
             {
                 Vector2 origin=transform.position;
                 if(Kind==EnemyKind.Ground)origin.y=BattleGame.GroundHeight;
                 game.Vfx.Blast(origin,false,Kind==EnemyKind.Ground,Boss!=null?1.5f:1);
             }
-            else game.Flash(transform.position, color, .7f);
+            else if(destroyed) game.Flash(transform.position, color, .7f);
             Destroy(gameObject);
         }
     }

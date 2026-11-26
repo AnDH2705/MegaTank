@@ -133,6 +133,7 @@ namespace MegaTanks.Editor
                 {
                     Require(game.AllWeaponsInRange && game.TankVelocity == Vector2.zero, "Aggressive must stop at the cannon's range when it is limiting.");
                     target.Damage(10000);
+                    StageProgressionAudit.OpenCampRewards(game);
                     Require(game.Rewards.IsOpen, "Clearing the wave must still open card rewards.");
                     heldX = game.Artwork.transform.position.x; Next();
                 }
@@ -143,7 +144,7 @@ namespace MegaTanks.Editor
                     StageProgressionAudit.EnterNextBattle(game);
                     float spawnDistance = new SerializedObject(game).FindProperty("enemySpawnDistance").floatValue;
                     float nearestX = UnityEngine.Object.FindObjectsOfType<EnemyEntity>().Where(enemy => enemy.Alive).Min(enemy => enemy.transform.position.x);
-                    Require(game.Wave == 2 && Mathf.Abs(nearestX - heldX - game.EnemySpawnDirection*spawnDistance) < .001f, "The next wave must spawn relative to the advanced tank.");
+                    Require(game.Wave == 2 && Mathf.Abs(nearestX - game.Artwork.transform.position.x - game.EnemySpawnDirection*spawnDistance) < .001f, "The next wave must spawn relative to the advanced tank.");
                     game.StartBattle(); DisableWeapons(game);
                     Require(game.Stance == TankStance.Aggressive && game.Artwork.transform.position.x == initialX, "Restart must restore starting position and Aggressive stance.");
                     Clear(game); game.SetStance(TankStance.Aggressive); heldX = initialX; Next();

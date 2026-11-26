@@ -20,8 +20,8 @@ namespace MegaTanks
         }
         void RefreshUpgradeControls()
         {
-            DrawProgression(View(UIScreen.Equipment), selected, false);
-            DrawProgression(View(UIScreen.Crew), crewSelected, true);
+            if(popup=="Equipment")DrawEquipment();else DrawProgression(View(UIScreen.Equipment), selected, false);
+            if(popup=="Crew")DrawCrew();else DrawProgression(View(UIScreen.Crew), crewSelected, true);
         }
         void DrawProgression(UIView v, Object definition, bool crew)
         {
@@ -68,7 +68,7 @@ namespace MegaTanks
             if(member.role==CrewRole.Driver)return S("HP",s.hp,"")+" | "+S("EVA",s.evasion)+" | "+S("SPD",s.speed,"");
             string weapon=S("HIT",s.accuracy)+" | "+S("DMG BONUS",s.damageBonus)+" | "+S("RELOAD",s.reloadSpeed)+"\n"+S("CRIT",s.criticalChance)+" | "+S("CRIT DMG",s.criticalDamage);
             if(member.role!=CrewRole.Commando)return weapon;
-            return (s.weaponRange.AtLevel(level,stars)<=0?"MELEE • CLOSE COMBAT":"RANGED")+"\n"+S("HP",s.hp,"")+" | "+S("ARM",s.armor,"")+" | "+S("SPD",s.speed,"")+" | "+S("EVA",s.evasion)+"\n"+
+            return (s.weaponRange.AtLevel(level,stars)<=0?"MELEE • CLOSE COMBAT":"RANGED")+" | "+S("REGEN",s.healthRegeneration," HP/s")+"\n"+S("HP",s.hp,"")+" | "+S("ARM",s.armor,"")+" | "+S("SPD",s.speed,"")+" | "+S("EVA",s.evasion)+"\n"+
                 weapon+"\n"+S("DMG",s.damage,"")+" | "+S("PEN",s.armorPenetration)+" | "+S("ACTIVATION",s.activationRange,"")+"\n"+
                 S("RANGE",s.weaponRange,"")+" | "+S("RELOAD TIME",s.baseReloadTime,"s")+" | "+S("PROJECTILE SPD",s.projectileSpeed,"")+"\n"+
                 S("CRIT RESIST",s.criticalChanceReduction)+" | "+S("CRIT DMG RESIST",s.criticalDamageReduction);

@@ -14,6 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stages:
   - {fileID: 11400000, guid: d494555c928f4b4199e4bf6ec8f403ca, type: 2}
+  - {fileID: 11400000, guid: 70051bc8d2a141a29665bd58b25d395e, type: 2}
+  - {fileID: 11400000, guid: f3e30f002dc1472e85d35655330e7484, type: 2}
+  - {fileID: 11400000, guid: 06a3cc27caca4299b5d33ea2711abd1c, type: 2}
+  - {fileID: 11400000, guid: 3f7ebf2b237f410491f08b83017626f1, type: 2}
+  - {fileID: 11400000, guid: 1a94c6c6aab24ed1b0759e62760af063, type: 2}
+  - {fileID: 11400000, guid: 03a98d9aed204d92993d6d2d02d27615, type: 2}
+  - {fileID: 11400000, guid: 481c7d258790466e9de437c4f2204e04, type: 2}
+  - {fileID: 11400000, guid: 5cd0c3f120214a8e93f2e9f32585da36, type: 2}
+  - {fileID: 11400000, guid: b055702673df456b8d639c89e64f9b88, type: 2}
   tanks:
   - {fileID: 11400000, guid: 0488649f9cad33646b4cf7cefbe8a6f5, type: 2}
   - {fileID: 11400000, guid: b25137e5557e4e841bbe412840aa44d1, type: 2}

@@ -19,7 +19,7 @@ MonoBehaviour:
   specialty: Gunner
   description: Calm under pressure, Milo keeps the crew focused on the mission.
   portrait: {fileID: 21300000, guid: 4c55ff6cfc34ea34b8a5982cf07e6fc4, type: 3}
-  commandoPrefab: {fileID: 0}
+  commandoPrefab: {fileID: 6585329379900374424, guid: c425f25e874b4d0eb427845d9d947f58, type: 3}
   stats:
     accuracy:
       value: 10

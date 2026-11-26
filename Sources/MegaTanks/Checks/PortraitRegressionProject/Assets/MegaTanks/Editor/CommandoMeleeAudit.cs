@@ -56,10 +56,13 @@ namespace MegaTanks.Editor
                 if(phase==0)
                 {
                     playerMember=game.Frontend.crew.members.First(m=>m.role==CrewRole.Commando);playerMember.stats=new CrewStats();var stats=playerMember.stats;
-                    stats.hp.value=300;stats.speed.value=4;stats.activationRange.value=40;stats.damage.value=8;stats.damageBonus.value=25;
+                    stats.hp.value=300;stats.healthRegeneration.value=125;stats.speed.value=4;stats.activationRange.value=40;stats.damage.value=8;stats.damageBonus.value=25;
                     stats.accuracy.value=1000;stats.criticalChance.value=100;stats.criticalDamage.value=50;stats.armorPenetration.value=100;stats.baseReloadTime.value=.7f;
                     // Range and projectile speed remain zero: no ranged setup is required for melee.
                     Require(game.Crew.Equip(playerMember,(int)CrewRole.Commando),"Player commando equips");
+                    var gunner = game.Frontend.crew.members.First(m => m.role == CrewRole.Gunner);
+                    Require(game.Crew.Equip(gunner, (int)CrewRole.Gunner), "Player gunner equips");
+                    game.AlliedCrew.First(unit => unit.Role == CrewRole.Gunner).enabled = false;
                     var stage=Object.Instantiate(game.Stage.Definition);stage.boss=stage.boss.Copy();var template=Object.Instantiate(stage.boss.template);stage.boss.template=template;
                     template.crew=Array.ConvertAll(template.crew,s=>new BossCrewStation{station=s.station,member=s.member});
                     var slot=template.crew.First(s=>s.member!=null&&s.member.role==CrewRole.Commando);slot.member=Object.Instantiate(slot.member);slot.member.stats=new CrewStats();var foe=slot.member.stats;
@@ -122,11 +125,50 @@ namespace MegaTanks.Editor
                     Require(ally.ShotsFired==1,"Player positive range remains ranged");enemy.Weapon.Stats.range=12;enemy.Weapon.Stats.projectileSpeed=25;enemy.Weapon.Stats.reloadTime=1;enemy.Weapon.Tick(3);
                     Require(enemy.Weapon.ShotsFired==1&&Object.FindObjectsOfType<Projectile2D>().Length==2,"Enemy positive range remains ranged");
                     Near(ally.HealthBar.HealthFraction,1,"New player deployment resets HP bar to full");
-                    ally.ReceiveAttack(new DamageAttack(10000,new WeaponCombatStats{accuracy=1000,armorPenetration=100}));
-                    Require(!ally.HealthBar.gameObject.activeInHierarchy,"Player HP bar disappears on death");
+                    var accurate = new WeaponCombatStats { accuracy=1000,armorPenetration=100 };
+                    ally.ReceiveAttack(new DamageAttack(150,accurate));
+                    ally.Tick(2);
+                    Near(ally.Health,150,"Commando cannot heal while deployed");
+                    game.SetBossCommandoDeployed(enemy,false);
+                    boss.transform.position+=Vector3.right*80;
+                    ally.Tick(0);
+                    Require(!ally.Active,"Commando boards when the threat leaves range");
+                    Require(ally.HealthBar.gameObject.activeInHierarchy,"Wounded commando shows its HP bar aboard");
+                    Near(ally.HealthBar.HealthFraction,.5f,"Aboard HP bar shows the commando's remaining HP");
+                    ally.Tick(.75f);
+                    Near(ally.Health,150,"A partial second does not heal");
+                    game.SetPaused(true);
+                    ally.Tick(5);
+                    Near(ally.Health,150,"Pause freezes recovery");
+                    game.SetPaused(false);
+                    ally.Tick(.25f);
+                    Near(ally.Health,275,"One full second aboard restores the authored amount");
+                    Near(ally.HealthBar.HealthFraction,275f/300,"Commando's HP bar updates during regeneration");
+                    ally.Tick(1);
+                    Near(ally.Health,300,"Regeneration caps at max HP");
+                    Require(!ally.HealthBar.gameObject.activeInHierarchy,"Aboard HP bar hides at full health");
+                    boss.transform.position-=Vector3.right*80;
+                    game.SetBossCommandoDeployed(enemy,true);
+                    ally.Tick(.01f);
+                    Require(ally.Active,"Healed commando redeploys");
+                    ally.ReceiveAttack(new DamageAttack(10000,accurate));
+                    Require(ally.IsUnconscious&&!ally.Active&&ally.HealthBar.gameObject.activeInHierarchy,"Knocked-out commando remains untargetable with a visible HP bar");
+                    Near(ally.HealthBar.HealthFraction,0,"Unconscious commando shows zero HP initially");
+                    Require(game.HullHitbox.GetComponent<Collider2D>().bounds.Contains(ally.transform.position),"Knocked-out commando is aboard the tank");
+                    Require(ally.Artwork.CurrentAnimation=="death","Commando plays the collapse animation aboard");
+                    ally.Tick(2);
+                    Near(ally.Health,250,"Unconscious commando heals while a threat is nearby");
+                    Require(ally.IsUnconscious&&!ally.Active,"Partial recovery cannot redeploy the commando");
+                    ally.Tick(1);
+                    Near(ally.Health,300,"Unconscious recovery caps at max HP");
+                    Require(!ally.IsUnconscious,"Full HP ends unconsciousness");
+                    ally.Tick(.01f);
+                    Require(ally.Active&&ally.HealthBar.gameObject.activeInHierarchy,"Fully recovered commando can fight again");
+                    CheckSupportingCrewRecovery(game, accurate);
                     enemy.ReceiveAttack(new DamageAttack(10000,new WeaponCombatStats{accuracy=1000,armorPenetration=100}));
                     Require(!enemy.HealthBar.gameObject.activeInHierarchy,"Enemy HP bar disappears on death");
                     Debug.Log("COMMANDO_HP_BARS_PASS: both factions; visible above artwork on spawn; full and damaged fill; faction colors; stow/death visibility; preserved HP on enemy redeployment; player reset; editable shared prefab.");
+                    Debug.Log("COMMANDO_REGENERATION_PASS: onboard second ticks, no field healing, pause, knockout protection, and redeployment at full HP.");
                     game.ReturnHome();phase++;frame=Time.frameCount;
                 }
                 else
@@ -137,6 +179,48 @@ namespace MegaTanks.Editor
             }
             catch(Exception e){Debug.LogException(e);Finish(1);}
         }
+
+        static void CheckSupportingCrewRecovery(BattleGame game, WeaponCombatStats accurate)
+        {
+            var gunner = game.AlliedCrew.First(unit => unit.Role == CrewRole.Gunner);
+            while (game.MainGun.TryConsumeRound()) { }
+            gunner.Tick(0);
+            gunner.Tick(1);
+            Require(gunner.Active, "Gunner deploys with empty cannon and a nearby enemy");
+            Require(gunner.HealthBar.gameObject.activeInHierarchy, "Gunner shows its HP bar during combat");
+            Near(gunner.MaxHealth, 150, "Gunner uses half the commando's max HP");
+            gunner.ReceiveAttack(new DamageAttack(100, accurate));
+            gunner.Tick(1);
+            Near(gunner.Health, 50, "Gunner does not heal in melee");
+            gunner.ReceiveAttack(new DamageAttack(10000, accurate));
+            Require(gunner.IsUnconscious && !gunner.Active && gunner.HealthBar.gameObject.activeInHierarchy,
+                "Knocked-out gunner remains untargetable with a visible HP bar");
+            Require(game.HullHitbox.GetComponent<Collider2D>().bounds.Contains(gunner.transform.position),
+                "Knocked-out gunner returns to the tank");
+            gunner.Tick(.75f);
+            Near(gunner.Health, 0, "Gunner waits for a full second aboard");
+            gunner.Tick(.25f);
+            Near(gunner.Health, 62.5f, "Gunner heals at half the commando's rate");
+            Near(gunner.HealthBar.HealthFraction, 62.5f / 150, "Gunner's HP bar updates during regeneration");
+            gunner.Tick(1);
+            Require(gunner.IsUnconscious && !gunner.Active, "Nearby enemies and empty ammo cannot deploy an unconscious gunner");
+            gunner.Tick(1);
+            Near(gunner.Health, 150, "Gunner recovery caps at full HP");
+            Require(!gunner.IsUnconscious && !gunner.Active && !gunner.HealthBar.gameObject.activeInHierarchy,
+                "Full HP wakes the gunner aboard the tank and hides its HP bar");
+            game.MainGun.Resupply(1);
+            Require(game.MainGun.Ammo > 0, "Cannon resupplied");
+            gunner.Tick(1);
+            gunner.Tick(1);
+            Require(!gunner.Active, "Recovered gunner stays aboard with cannon ammo available");
+            while (game.MainGun.TryConsumeRound()) { }
+            gunner.Tick(0);
+            gunner.Tick(1);
+            Require(gunner.Active, "Recovered gunner jumps back into melee when the cannon is empty");
+            Require(gunner.HealthBar.gameObject.activeInHierarchy, "Gunner's HP bar returns on redeployment");
+            Debug.Log("SUPPORT_CREW_REGENERATION_PASS: half-rate onboard recovery, knockout, and ammo-gated redeployment.");
+        }
+
         static void Finish(int code)
         {
             EditorApplication.update-=Tick;Application.logMessageReceived-=Log;

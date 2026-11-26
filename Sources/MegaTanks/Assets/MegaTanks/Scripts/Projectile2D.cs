@@ -57,7 +57,8 @@ namespace MegaTanks
                 var game = BattleGame.Instance;
                 float distance = Vector2.Distance(position, game.HullHitbox.GetComponent<Collider2D>().ClosestPoint(position));
                 if (distance <= halfDamageRadius) game.ReceiveAttack(Attack, distance <= fullDamageRadius ? 1 : .5f);
-                game.Commando?.ReceiveBlast(position,Attack,fullDamageRadius,halfDamageRadius);
+                foreach (var unit in game.AlliedCrew)
+                    unit.ReceiveBlast(position, Attack, fullDamageRadius, halfDamageRadius);
                 if(game.Vfx.Catalog!=null)game.Vfx.Blast(position,true,position.y<=BattleGame.GroundHeight+.3f);
                 else game.Flash(position, color, Mathf.Max(.3f, halfDamageRadius));
             }

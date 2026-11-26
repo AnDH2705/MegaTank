@@ -1,0 +1,49 @@
+{
+  "source_tool": "built-in image_gen",
+  "style": "bold outlined flat cartoon stat stickers matched to supplied Stat_Icons",
+  "transparent_background": true,
+  "icons": [
+    {
+      "id": "penetration",
+      "file": "penetration.png",
+      "prompt": "Use case: stylized-concept. Asset type: one equipment-stat UI icon for the MegaTanks game. The three supplied images are STYLE REFERENCES ONLY; do not copy or modify them. Generate a new single icon for Armor penetration: a vivid orange pointed shell punching through a cyan steel shield, one clean jagged hole and a short yellow impact burst. Match their bold outlined flat cartoon sticker style exactly: very thick near-black rounded outlines, saturated cyan/orange/yellow/magenta palette, large clean flat color planes, only two-tone cel shading, one white glossy highlight, playful compact game HUD silhouette. One centered standalone subject occupying about 80% of a square canvas with consistent transparent padding on every side. True transparent RGBA background, no opaque backdrop, no white sticker border, no tile or frame, no words, no letters, no numerals, no labels, no gradients, no photorealism, no scenery. Readable at 32px; match the visual weight and clean edges of the reference icons. Intended output 512 by 512 pixels.",
+      "generated_source": "C:\\Users\\seagu\\.codex\\generated_images\\01a1da6f-210c-7f22-9876-dd0c4855dd71\\exec-33b4a634-d9d2-4fb2-8776-7d3387ee82e8.png"
+    },
+    {
+      "id": "crit_damage",
+      "file": "crit_damage.png",
+      "prompt": "Use case: stylized-concept. Asset type: one equipment-stat UI icon for the MegaTanks game. The three supplied images are STYLE REFERENCES ONLY; do not copy or modify them. Generate a new single icon for Critical damage: an intense magenta and purple spiked impact burst with a bright yellow lightning-shaped core and one small orange fist motif; distinguish it clearly from the existing purple dice critical-rate icon. Match their bold outlined flat cartoon sticker style exactly: very thick near-black rounded outlines, saturated cyan/orange/yellow/magenta palette, large clean flat color planes, only two-tone cel shading, one white glossy highlight, playful compact game HUD silhouette. One centered standalone subject occupying about 80% of a square canvas with consistent transparent padding on every side. True transparent RGBA background, no opaque backdrop, no white sticker border, no tile or frame, no words, no letters, no numerals, no labels, no gradients, no photorealism, no scenery. Readable at 32px; match the visual weight and clean edges of the reference icons. Intended output 512 by 512 pixels.",
+      "generated_source": "C:\\Users\\seagu\\.codex\\generated_images\\01a1da6f-210c-7f22-9876-dd0c4855dd71\\exec-d633d4e0-0ae9-43f5-bbc4-4afc6299327f.png"
+    },
+    {
+      "id": "range",
+      "file": "range.png",
+      "prompt": "Use case: stylized-concept. Asset type: one equipment-stat UI icon for the MegaTanks game. The three supplied images are STYLE REFERENCES ONLY; do not copy or modify them. Generate a new single icon for Weapon range: a bright cyan arrow pointing diagonally to a distant yellow targeting reticle, three short magenta distance tick marks, a strong simple silhouette. Match their bold outlined flat cartoon sticker style exactly: very thick near-black rounded outlines, saturated cyan/orange/yellow/magenta palette, large clean flat color planes, only two-tone cel shading, one white glossy highlight, playful compact game HUD silhouette. One centered standalone subject occupying about 80% of a square canvas with consistent transparent padding on every side. True transparent RGBA background, no opaque backdrop, no white sticker border, no tile or frame, no words, no letters, no numerals, no labels, no gradients, no photorealism, no scenery. Readable at 32px; match the visual weight and clean edges of the reference icons. Intended output 512 by 512 pixels.",
+      "generated_source": "C:\\Users\\seagu\\.codex\\generated_images\\01a1da6f-210c-7f22-9876-dd0c4855dd71\\exec-51dba4b8-212c-4100-b9d2-cc621d82df08.png"
+    },
+    {
+      "id": "ammo",
+      "file": "ammo.png",
+      "prompt": "Use case: stylized-concept. Asset type: one equipment-stat UI icon for the MegaTanks game. The three supplied images are STYLE REFERENCES ONLY; do not copy or modify them. Generate a new single icon for Ammo reserve: three chunky golden artillery cartridges standing together in a short red ammunition holder, cyan metal accents, clearly countable rounds. Match their bold outlined flat cartoon sticker style exactly: very thick near-black rounded outlines, saturated cyan/orange/yellow/magenta palette, large clean flat color planes, only two-tone cel shading, one white glossy highlight, playful compact game HUD silhouette. One centered standalone subject occupying about 80% of a square canvas with consistent transparent padding on every side. True transparent RGBA background, no opaque backdrop, no white sticker border, no tile or frame, no words, no letters, no numerals, no labels, no gradients, no photorealism, no scenery. Readable at 32px; match the visual weight and clean edges of the reference icons. Intended output 512 by 512 pixels.",
+      "generated_source": "C:\\Users\\seagu\\.codex\\generated_images\\01a1da6f-210c-7f22-9876-dd0c4855dd71\\exec-61ca666d-4fa2-4ebd-a2ad-6a5b03cc2ab2.png"
+    },
+    {
+      "id": "reload_time",
+      "file": "reload_time.png",
+      "prompt": "Use case: stylized-concept. Asset type: one equipment-stat UI icon for the MegaTanks game. The three supplied images are STYLE REFERENCES ONLY; do not copy or modify them. Generate a new single icon for Reload time in seconds: a chunky cyan stopwatch with orange top button, bright yellow clock face and a thick red curved reload arrow wrapping around its lower edge. Match their bold outlined flat cartoon sticker style exactly: very thick near-black rounded outlines, saturated cyan/orange/yellow/magenta palette, large clean flat color planes, only two-tone cel shading, one white glossy highlight, playful compact game HUD silhouette. One centered standalone subject occupying about 80% of a square canvas with consistent transparent padding on every side. True transparent RGBA background, no opaque backdrop, no white sticker border, no tile or frame, no words, no letters, no numerals, no labels, no gradients, no photorealism, no scenery. Readable at 32px; match the visual weight and clean edges of the reference icons. Intended output 512 by 512 pixels.",
+      "generated_source": "C:\\Users\\seagu\\.codex\\generated_images\\01a1da6f-210c-7f22-9876-dd0c4855dd71\\exec-53e7214e-b284-422b-b19f-3cfdc2b4988a.png"
+    },
+    {
+      "id": "reload_speed",
+      "file": "reload_speed.png",
+      "prompt": "Use case: stylized-concept. Asset type: one equipment-stat UI icon for the MegaTanks game. The three supplied images are STYLE REFERENCES ONLY; do not copy or modify them. Generate a new single icon for Reload speed percentage: a golden ammunition cartridge encircled by two thick cyan reload arrows, a vivid magenta lightning bolt and short yellow speed streaks; distinguish it clearly from the stopwatch reload-time icon. Match their bold outlined flat cartoon sticker style exactly: very thick near-black rounded outlines, saturated cyan/orange/yellow/magenta palette, large clean flat color planes, only two-tone cel shading, one white glossy highlight, playful compact game HUD silhouette. One centered standalone subject occupying about 80% of a square canvas with consistent transparent padding on every side. True transparent RGBA background, no opaque backdrop, no white sticker border, no tile or frame, no words, no letters, no numerals, no labels, no gradients, no photorealism, no scenery. Readable at 32px; match the visual weight and clean edges of the reference icons. Intended output 512 by 512 pixels.",
+      "generated_source": "C:\\Users\\seagu\\.codex\\generated_images\\01a1da6f-210c-7f22-9876-dd0c4855dd71\\exec-5a4ce871-0a94-434f-8748-cef760610642.png"
+    },
+    {
+      "id": "evasion",
+      "file": "evasion.png",
+      "prompt": "Use case: stylized-concept. Asset type: one equipment-stat UI icon for the MegaTanks game. The three supplied images are STYLE REFERENCES ONLY; do not copy or modify them. Generate a new single icon for Evasion: a lime green paw-shaped shield dodging a small orange bullet passing to its right, cyan swoosh, a simple separated projectile silhouette. Match their bold outlined flat cartoon sticker style exactly: very thick near-black rounded outlines, saturated cyan/orange/yellow/magenta palette, large clean flat color planes, only two-tone cel shading, one white glossy highlight, playful compact game HUD silhouette. One centered standalone subject occupying about 80% of a square canvas with consistent transparent padding on every side. True transparent RGBA background, no opaque backdrop, no white sticker border, no tile or frame, no words, no letters, no numerals, no labels, no gradients, no photorealism, no scenery. Readable at 32px; match the visual weight and clean edges of the reference icons. Intended output 512 by 512 pixels.",
+      "generated_source": "C:\\Users\\seagu\\.codex\\generated_images\\01a1da6f-210c-7f22-9876-dd0c4855dd71\\exec-322bb135-fa34-42d2-a86a-8ebf2569fafd.png"
+    }
+  ]
+}

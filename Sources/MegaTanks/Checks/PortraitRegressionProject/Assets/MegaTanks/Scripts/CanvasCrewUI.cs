@@ -15,6 +15,8 @@ namespace MegaTanks
             var v=View(UIScreen.Crew);var roster=game.Frontend?.crew;var assigned=game.Crew;
             int targetStation=crewStation>=0?crewStation:crewSelected!=null?(int)crewSelected.role:-1;
             v.Get<RawImage>("Tank Preview/Tank Avatar").texture=portrait;
+            var art=v.GetComponent<LoadoutArtPresentation>();
+            if(art!=null){v.Get<Button>("Change Tank").interactable=!game.Deployed;Click(v,"Change Tank",()=>{if(!game.Deployed)OpenEquipment();});}
             Text(v,"Crew Summary",assigned.AssignedCount+" / "+assigned.SlotCount+" STATIONS FILLED");
             Text(v,"Crew Instructions",crewStation>=0?"Role filter active. Click a highlighted station to assign; Filter shows all crew.":"Select crew, then click its highlighted station. Select a station to filter.");
             for(int i=0;i<assigned.SlotCount;i++)
@@ -41,10 +43,11 @@ namespace MegaTanks
             if(crewDescending)Array.Reverse(list);CrewInventoryVisibleCount=list.Length;
             foreach(var member in list)
             {
-                var cell=Instantiate(layout.inventoryItem,content,false);cell.gameObject.SetActive(true);cell.name="Crew "+member.id;
+                var cell=Instantiate(layout.crewInventoryItem!=null?layout.crewInventoryItem:layout.inventoryItem,content,false);cell.gameObject.SetActive(true);cell.name="Crew "+member.id;
                 Click(cell,"$root",()=>{crewSelected=member;DrawCrew();});
                 var icon=cell.Get<Image>("Icon");icon.sprite=member.portrait;icon.gameObject.SetActive(member.portrait!=null);
                 ProgressionCell(cell,member);Text(cell,"Item Name",member.displayName);Active(cell,"Equipped Indicator",assigned.IsEquipped(member));cell.Get<Outline>("$root").enabled=crewSelected==member;
+                var frame=cell.transform.Find("Selection");if(frame!=null)frame.gameObject.SetActive(crewSelected==member);
             }
             Active(v,"Empty Inventory",list.Length==0);
             Text(v,"Empty Inventory",crewStation>=0?"No "+assigned.StationName(crewStation).ToLowerInvariant()+" crew match this filter.":"No crew match this filter.");
@@ -59,6 +62,7 @@ namespace MegaTanks
             Text(v,"Assign Crew/Label",current==targetStation&&crewSelected!=null?"ASSIGNED":crewSelected!=null&&!assigned.CanEquip(crewSelected,targetStation)?"ROLE MISMATCH":"ASSIGN");
             Click(v,"Assign Crew",()=>{if(!game.Deployed&&assigned.Equip(crewSelected,targetStation))DrawCrew();});
             v.Get<Button>("Unequip Crew").interactable=!game.Deployed&&current>=0;Click(v,"Unequip Crew",()=>{int from=assigned.FindSlot(crewSelected);if(!game.Deployed&&assigned.Unequip(from))DrawCrew();});
+            if(art!=null)art.DrawCrew(v,crewSelected,game.Progression,assigned,crewStation);
         }
         void HighlightCrewStation(Outline outline,bool selectedStation,bool matching)
         {

@@ -69,6 +69,7 @@ namespace MegaTanks
         public Color color = new Color(1,.63f,.25f);
         public EnemyVehicleArtwork artworkPrefab;
         public CommandoArtwork commandoPrefab;
+        public bool melee;
         [Min(.1f)] public float artworkWidth = 2.2f;
         [Min(.1f)] public float scale = 1.25f;
         public float ScaledArtworkWidth => artworkWidth*Mathf.Max(.1f,scale);
@@ -108,10 +109,15 @@ namespace MegaTanks
             get
             {
                 if(enemyPrefabs!=null)foreach(var prefab in enemyPrefabs)if(prefab!=null)yield return prefab.stats;
-                foreach(var enemy in enemies)if(enemy!=null&&(enemyPrefabs==null||!enemyPrefabs.Any(p=>p!=null&&p.stats.kind==enemy.kind)))yield return enemy;
+                foreach (var enemy in enemies)
+                    if (enemy != null && (enemyPrefabs == null || !enemyPrefabs.Any(p => p != null && IsDefaultKind(p.stats, enemy.kind))))
+                        yield return enemy;
             }
         }
-        public EnemyDefinition Get(EnemyKind kind){foreach(var enemy in Definitions)if(enemy.kind==kind)return enemy;throw new InvalidOperationException("No enemy definition for "+kind);}
+        static bool IsDefaultKind(EnemyDefinition enemy, EnemyKind kind) =>
+            enemy.kind == kind && enemy.id != TrojanScrapCat.EnemyId;
+
+        public EnemyDefinition Get(EnemyKind kind){foreach(var enemy in Definitions)if(IsDefaultKind(enemy,kind))return enemy;throw new InvalidOperationException("No enemy definition for "+kind);}
         public EnemyDefinition Get(string id){foreach(var enemy in Definitions)if(enemy.id==id)return enemy;throw new InvalidOperationException("No enemy definition named "+id);}
     }
 }

@@ -74,7 +74,12 @@ namespace MegaTanks.Editor
             }
         }
         static void Log(string message,string stack,LogType type){if(type==LogType.Error||type==LogType.Exception)errors=true;}
-        static void Press(UIView v,string key)=>Click(v.Get<Button>(key));
+        static void Press(UIView v,string key)
+        {
+            var button=v.Get<Button>(key);
+            if(!button.gameObject.activeInHierarchy&&key.StartsWith("Slot "))button=v.Get<Button>("Tank Preview/Tank "+key);
+            Click(button);
+        }
         static void Click(Button button)
         {
             Require(button.interactable,button.name+" must be interactable.");Canvas.ForceUpdateCanvases();var r=(RectTransform)button.transform;

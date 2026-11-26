@@ -79,19 +79,21 @@ namespace MegaTanks
 
         void Update()
         {
-            if (BattleGame.Instance == null || !BattleGame.Instance.Running) return;
+            var game = BattleGame.Instance;
+            if (game == null) return;
+            float travel = EnemyOwner != null ? -EnemyOwner.Velocity.x * Time.deltaTime : game.TankTravelThisFrame;
+            if (!game.Running && (EnemyOwner != null || travel == 0)) return;
             if (!initialized) ResetVisual();
             body.localPosition = bodyRest + Vector3.up * (Mathf.Sin(Time.time * 17) * .007f);
             foreach (var wheel in wheels)
             {
                 float radius = wheel.sprite.bounds.size.y * Mathf.Abs(wheel.transform.lossyScale.y) * .5f;
-                float speed = EnemyOwner != null ? -EnemyOwner.Velocity.x : BattleGame.Instance.TankVelocity.x;
-                wheel.transform.Rotate(0, 0, -speed / Mathf.Max(.01f, radius) * Mathf.Rad2Deg * Time.deltaTime);
+                wheel.transform.Rotate(0, 0, -travel / Mathf.Max(.01f, radius) * Mathf.Rad2Deg);
             }
             smokeTimer -= Time.deltaTime;
             if (smokeTimer <= 0 && exhaustPuffs.Length > 0)
             {
-                exhaustPuffs[nextPuff].Play();
+                exhaustPuffs[nextPuff].Play(continueOutsideCombat: EnemyOwner == null);
                 nextPuff = (nextPuff + 1) % exhaustPuffs.Length;
                 smokeTimer = .3f;
             }

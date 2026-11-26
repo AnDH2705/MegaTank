@@ -15,6 +15,7 @@ namespace MegaTanks
 
         string CardPreview(CardDefinition card)
         {
+            if(card.effect==CardEffect.Scraps)return card.EffectText;
             if(card.effect==CardEffect.Resupply)
             {
                 int mg=RestoredAmmo(game.MachineGun.Ammo,game.MachineGun.ReserveCapacity,card.fraction);

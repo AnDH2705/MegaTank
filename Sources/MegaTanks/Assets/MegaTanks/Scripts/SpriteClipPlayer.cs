@@ -9,6 +9,7 @@ namespace MegaTanks
         SpriteRenderer sprite;
         float age;
         bool playing;
+        bool continueOutsideCombat;
         public bool Playing => playing;
         public int FrameCount => frames == null ? 0 : frames.Length;
 
@@ -22,11 +23,14 @@ namespace MegaTanks
             sprite.enabled = false;
         }
 
-        public void Play()
+        public void Play() => Play(false);
+
+        internal void Play(bool continueOutsideCombat)
         {
             if (sprite == null) sprite = GetComponent<SpriteRenderer>();
             if (frames == null || frames.Length == 0) return;
             age = 0;
+            this.continueOutsideCombat = continueOutsideCombat;
             playing = true;
             sprite.sprite = frames[0];
             sprite.enabled = true;
@@ -41,7 +45,7 @@ namespace MegaTanks
 
         void Update()
         {
-            if (!playing || BattleGame.Instance == null || !BattleGame.Instance.Running) return;
+            if (!playing || BattleGame.Instance == null || (!continueOutsideCombat && !BattleGame.Instance.Running)) return;
             age += Time.deltaTime;
             int frame = Mathf.FloorToInt(age / secondsPerFrame);
             if (frame >= frames.Length) Stop();

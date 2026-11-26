@@ -93,16 +93,14 @@ namespace MegaTanks.Editor
                 switch(phase++)
                 {
                     case 0:
-                        testStage=Object.Instantiate(game.Stage.Definition);testStage.InitializeStage(1);testStage.rounds=3;testStage.randomizeSeed=false;
+                        testStage=Object.Instantiate(game.Stage.Definition);testStage.InitializeStage(1);testStage.rounds=3;testStage.hardBattleWeight=0;testStage.randomizeSeed=false;
                         game.SelectStage(testStage);game.StartBattle();StageProgressionAudit.DisableWeapons(game);
                         Balances(game.Wallet,0,0,0,"Starting a stage does not award anything.");break;
                     case 1:
                         StageProgressionAudit.ClearWave(game);Require(game.Stage.Mode==StageMode.Reward,"Opening battle still uses run reward cards.");
                         Balances(game.Wallet,0,0,0,"Intermediate waves do not pay stage rewards.");game.Rewards.ChooseReward(0);break;
                     case 2:
-                        Require(game.Stage.SelectNode(game.Stage.Current.next[0])&&game.Stage.Mode==StageMode.Shop,"Enter guaranteed pre-boss shop.");game.Rewards.LeaveShop();
-                        Require(game.Stage.Mode==StageMode.Map&&game.Stage.SelectNode(game.Stage.Current.next[0]),"Enter the connected final boss.");
-                        StageProgressionAudit.DisableWeapons(game);break;
+                        TravelToBoss(game);break;
                     case 3:
                         StageProgressionAudit.ClearWave(game);Require(game.Stage.Mode==StageMode.Victory,"Final boss death enters victory.");
                         Balances(game.Wallet,600,600,100,"Actual first boss clear pays automatically.");
@@ -115,8 +113,7 @@ namespace MegaTanks.Editor
                     case 5:
                         StageProgressionAudit.ClearWave(game);game.Rewards.ChooseReward(0);break;
                     case 6:
-                        Require(game.Stage.SelectNode(game.Stage.Current.next[0])&&game.Stage.Mode==StageMode.Shop,"Replay visits pre-boss shop.");game.Rewards.LeaveShop();
-                        Require(game.Stage.SelectNode(game.Stage.Current.next[0]),"Replay reaches the boss through the route.");StageProgressionAudit.DisableWeapons(game);break;
+                        TravelToBoss(game);break;
                     case 7:
                         StageProgressionAudit.ClearWave(game);Require(game.Stage.Mode==StageMode.Victory&&!game.StageRewards.LastReceipt.firstClear,"Replay is recognized.");
                         Balances(game.Wallet,700,700,100,"Replay only adds its repeat reward.");break;
@@ -135,6 +132,15 @@ namespace MegaTanks.Editor
             }
             catch(Exception e){Debug.LogException(e);Finish(1);}
         }
+        static void TravelToBoss(BattleGame game)
+        {
+            if (game.Stage.Mode == StageMode.Advancing) StageProgressionAudit.EnterNextBattle(game);
+            StageProgressionAudit.ClearWave(game);
+            Require(game.Stage.Mode == StageMode.Shop, "The last regular battle opens the pre-boss vendor tent.");
+            StageProgressionAudit.EnterNextBattle(game);
+            Require(game.Stage.Current.EncounterType == StageNodeType.Boss && game.Running, "Leaving the vendor advances to the boss.");
+        }
+
         static void Finish(int code)
         {
             EditorApplication.update-=Tick;EditorApplication.playModeStateChanged-=State;Application.logMessageReceived-=Log;

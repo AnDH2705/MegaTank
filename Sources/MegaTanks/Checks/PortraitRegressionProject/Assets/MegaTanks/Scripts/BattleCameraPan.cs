@@ -11,7 +11,8 @@ namespace MegaTanks
         public float StartX { get; private set; }
         bool resetPending;
         float playerSpawnX,enemySpawnX;
-        public bool CanPan => game!=null && game.Running && (game.UI==null || game.UI.Popup=="");
+        public bool CanPan => game!=null && (game.Running || (game.Stage.Mode==StageMode.WaveBreak && !game.Paused))
+            && (game.UI==null || game.UI.Popup=="");
         public void Configure(BattleGame battle,float playerSpawn,float enemySpawn)
         { game=battle;view=GetComponent<Camera>();ResetToSpawn(playerSpawn,enemySpawn); }
         public void ResetToSpawn(float playerSpawn,float enemySpawn)
