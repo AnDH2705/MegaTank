@@ -127,6 +127,9 @@ namespace MegaTanks
             Settings.ApplyCrew(CrewRole.SubGunner,MachineGunStats);
             Settings.ApplyCrew(CrewRole.Gunner,CannonStats);
             Settings.ApplyCrew(CrewRole.WeaponSpecialist,MortarStats);
+            Settings.ApplyAccessories(MachineGunStats);
+            Settings.ApplyAccessories(CannonStats);
+            Settings.ApplyAccessories(MortarStats);
             MachineGunAmmo = MachineGunStats.reserveCapacity; CannonAmmo = CannonStats.reserveCapacity; MortarAmmo = MortarStats.reserveCapacity;
             return new Bounds(transform.InverseTransformPoint(bounds.center), bounds.size);
         }

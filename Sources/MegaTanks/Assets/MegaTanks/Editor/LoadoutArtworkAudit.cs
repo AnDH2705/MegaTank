@@ -29,14 +29,14 @@ namespace MegaTanks.Editor
             try
             {
                 var rows=EquipmentStatIcons.Parse(weapon,"BASE 0 | BONUS 20%\nHIT 100% | PEN 50%\nCRIT 10% | CRIT DMG 50%\nRANGE 10 | AMMO 50\nBASE RELOAD TIME 4s | SPEED 100%\nBATTLE RELOAD 2s | NORMAL");
-                Require(rows.Count==1&&rows[0].label=="BASE DAMAGE"&&ProgressionRules.Damage(0,2,0)>ProgressionRules.Damage(0,1,0),"Weapon visibility follows level gain, not current stat value.");
+                Require(rows.Count==12&&rows.Any(r=>r.label=="ACCURACY")&&rows.Any(r=>r.label=="AMMO")&&rows.Any(r=>r.label=="BASE DAMAGE"),"Weapons include fixed stats alongside growing damage, even at zero current value.");
                 const string armorStats="ARMOR BONUSES: HP +100 | ARMOR +10\nSPEED +1 | EVASION +5%\nTANK TOTALS (equipped → selected)\nHP 100 → 200 (+100) | ARM 0 → 10 (+10)";
-                armor.hpPerLevel=0;Require(armor.HitPoints(2,0)==armor.HitPoints(1,0)&&EquipmentStatIcons.Parse(armor,armorStats).Count==0,"Zero-gain armor hides all stats and orphan headings.");
-                armor.hpPerLevel=10;rows=EquipmentStatIcons.Parse(armor,armorStats);Require(rows.Count(r=>r.icon!=null)==2&&rows.Where(r=>r.icon!=null).All(r=>r.icon=="hp"),"Armor only keeps level-affected HP contributions and tank totals.");
+                armor.hpPerLevel=0;Require(armor.HitPoints(2,0)==armor.HitPoints(1,0)&&EquipmentStatIcons.Parse(armor,armorStats).Count(r=>r.icon!=null)==6,"Zero-gain armor retains its bonuses and tank comparisons.");
+                armor.hpPerLevel=10;rows=EquipmentStatIcons.Parse(armor,armorStats);Require(rows.Count(r=>r.icon!=null)==6&&rows.Any(r=>r.icon=="defense")&&rows.Any(r=>r.icon=="move_speed")&&rows.Any(r=>r.icon=="evasion"),"Armor retains fixed defense, speed, and evasion alongside growing HP.");
                 foreach(var type in new[]{AccessoryBonusType.ReloadSpeed,AccessoryBonusType.Accuracy,AccessoryBonusType.Evasion})
                 {
                     accessory.bonusType=type;string name=accessory.StatLabel.ToUpperInvariant();string source=name+" +10% (Lv. 1)\n+0.5 percentage points per level\nMG 1s → 0.9s | CANNON 4s → 3.9s";
-                    accessory.bonusPerLevel=0;Require(accessory.Bonus(2)==accessory.Bonus(1)&&EquipmentStatIcons.Parse(accessory,source).Count==0,"Zero-gain accessories hide current bonuses and derived effects.");
+                    accessory.bonusPerLevel=0;Require(accessory.Bonus(2)==accessory.Bonus(1)&&EquipmentStatIcons.Parse(accessory,source).Count(r=>r.icon!=null)==3,"Zero-gain accessories retain current bonuses and derived effects.");
                     accessory.bonusPerLevel=.5f;rows=EquipmentStatIcons.Parse(accessory,source);Require(rows.Any(r=>r.icon!=null)&&rows.All(r=>r.label!="PER LEVEL"),"Growing accessories retain affected stats without a separate gain row.");
                 }
                 Debug.Log("EQUIPMENT_GAIN_VISIBILITY_PASS");
@@ -107,7 +107,15 @@ namespace MegaTanks.Editor
             switch(step)
             {
                 case 0:Press(v,"Tank Preview/Tank Slot "+role);Require(game.UI.CrewInventoryVisibleCount==game.Frontend.crew.members.Count(c=>game.Crew.CanEquip(c,role)),"Crew station filters by role.");break;
-                case 1:Select(v,"Crew ",member.id);Require(v.Get<Outline>("Tank Preview/Tank Slot "+role).enabled,"Matching station highlights.");break;
+                case 1:
+                    Select(v,"Crew ",member.id);Require(v.Get<Outline>("Tank Preview/Tank Slot "+role).enabled,"Matching station highlights.");
+                    if(member.role==CrewRole.Gunner&&member.stats.accuracy.gain==0)
+                    {
+                        var state=game.Progression.Get(member);
+                        Require(art.statValues[2].gameObject.activeInHierarchy&&art.statValues[2].text==member.stats.accuracy.AtLevel(state.Level,state.Stars).ToString("0.##")+"%","Crew accuracy remains visible when its level gain is zero.");
+                        Require(v.Get<Text>("Detail Description").text.Contains("HIT "+member.stats.accuracy.AtLevel(state.Level,state.Stars).ToString("0.##")+"%"),"Crew detailed stats retain fixed role stats.");
+                    }
+                    break;
                 case 2:Press(art.statButtons[0]);Require(art.info.activeSelf&&!string.IsNullOrWhiteSpace(art.infoText.text),"Stat buttons open live info.");break;
                 case 3:Press(art.infoClose);Require(!art.info.activeSelf,"Info Back closes the panel.");break;
                 case 4:Press(art.skillButtons[2]);Require(art.info.activeSelf&&!string.IsNullOrWhiteSpace(art.infoText.text),"Role skill buttons open actual modifier information.");break;

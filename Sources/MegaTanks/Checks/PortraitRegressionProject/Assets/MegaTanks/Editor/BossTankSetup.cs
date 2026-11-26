@@ -30,7 +30,7 @@ namespace MegaTanks.Editor
                 profile.tank = Copy<TankDefinition>("Assets/MegaTanks/Data/Tanks/PlayerTank.asset", "BossHull");
                 profile.tank.stats.maxHull = 300; EditorUtility.SetDirty(profile.tank);
                 profile.artworkPrefab = AssetDatabase.LoadAssetAtPath<TankArtwork>("Assets/MegaTanks/Prefabs/TankCutaway.prefab");
-                var loadout = ScriptableObject.CreateInstance<WeaponLoadout>();
+                var loadout = new BossEquipmentSlots();
                 loadout.machineGun = Copy<GunDefinition>("Assets/MegaTanks/Data/Weapons/MachineGun.asset", "BossMachineGun");
                 loadout.cannon = Copy<GunDefinition>("Assets/MegaTanks/Data/Weapons/Cannon.asset", "BossCannon");
                 loadout.mortar = Copy<MortarDefinition>("Assets/MegaTanks/Data/Weapons/Mortar.asset", "BossMortar");
@@ -39,7 +39,7 @@ namespace MegaTanks.Editor
                 loadout.cannon.id = "boss-cannon"; loadout.cannon.stats.damage = 12;
                 loadout.mortar.id = "boss-mortar"; loadout.mortar.stats.damage = 20;
                 foreach (var weapon in new WeaponDefinition[] { loadout.machineGun, loadout.cannon, loadout.mortar }) EditorUtility.SetDirty(weapon);
-                AssetDatabase.CreateAsset(loadout, Folder + "/BossEquipment.asset"); profile.equipment = loadout;
+                profile.equipment = loadout;
                 profile.armor = Copy<ArmorDefinition>("Assets/MegaTanks/Data/Armor/BasicArmor.asset", "BossArmor");
                 profile.armor.id = "boss-armor"; EditorUtility.SetDirty(profile.armor);
                 var catalog = AssetDatabase.LoadAssetAtPath<CrewCatalog>(CrewSetup.CatalogPath);
@@ -53,6 +53,7 @@ namespace MegaTanks.Editor
                 }
                 AssetDatabase.CreateAsset(profile, ProfilePath);
             }
+            SharedBossSlotsSetup.Configure(profile);
             // Existing stages keep their chosen templates and progression on repeat installation.
             foreach (string guid in AssetDatabase.FindAssets("t:StageDefinition"))
             {

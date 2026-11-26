@@ -14,12 +14,40 @@ namespace MegaTanks
         public static CurrencyRewards operator +(CurrencyRewards a,CurrencyRewards b) =>
             new CurrencyRewards(checked(a.parts+b.parts),checked(a.petFood+b.petFood),checked(a.gems+b.gems));
     }
+    public readonly struct PlayerAccountProgress
+    {
+        public int Level { get; }
+        public long ExperienceIntoLevel { get; }
+        public long ExperienceRequired => 100L + 25L * (Level - 1);
+
+        public PlayerAccountProgress(long totalExperience)
+        {
+            int low = 1, high = int.MaxValue;
+            while (low < high)
+            {
+                int middle = low + (high - low + 1) / 2;
+                if (ExperienceBeforeLevel(middle) <= totalExperience) low = middle;
+                else high = middle - 1;
+            }
+            Level = low;
+            ExperienceIntoLevel = Math.Max(0, totalExperience) - (long)ExperienceBeforeLevel(Level);
+        }
+
+        // Sum the costs of all preceding levels. Decimal keeps the search exact even above long.MaxValue.
+        static decimal ExperienceBeforeLevel(int level)
+        {
+            long preceding = level - 1L;
+            return 100m * preceding + 25m * preceding * (preceding - 1) / 2;
+        }
+    }
+
     [Serializable]
     public sealed class StageRewardReceipt
     {
         public string id;
         public int stageNumber;
         public bool firstClear, paid;
+        public long accountExperience;
         public CurrencyRewards repeat, bonus;
         public CurrencyRewards Total => repeat + bonus;
     }
@@ -29,7 +57,8 @@ namespace MegaTanks
         public const string DefaultSaveKey="MegaTanks.StageCompletionRewards";
         [Serializable] sealed class SaveData
         {
-            public int version=1;
+            public int version=2;
+            public long totalAccountExperience;
             public List<int> clearedStages=new List<int>();
             public List<StageRewardReceipt> pending=new List<StageRewardReceipt>();
         }
@@ -37,9 +66,12 @@ namespace MegaTanks
         readonly List<StageRewardReceipt> pending=new List<StageRewardReceipt>();
         readonly PlayerWallet wallet;readonly string saveKey;
         int currentStage;
+        long firstAccountExperience;
         CurrencyRewards repeat,bonus;
         bool active,collecting;
         public StageRewardReceipt LastReceipt { get; private set; }
+        public long TotalAccountExperience { get; private set; }
+        public PlayerAccountProgress AccountProgress => new PlayerAccountProgress(TotalAccountExperience);
         public bool HasCleared(int stageNumber)=>cleared.Contains(stageNumber);
         public int PendingCount=>pending.Count;
         public StageCompletionRewards(PlayerWallet wallet,string preferenceKey=DefaultSaveKey)
@@ -48,6 +80,7 @@ namespace MegaTanks
             if(string.IsNullOrWhiteSpace(preferenceKey))throw new ArgumentException("A save key is required.");
             saveKey=preferenceKey;SaveData data=null;
             try{data=JsonUtility.FromJson<SaveData>(PlayerPrefs.GetString(saveKey,"{}"));}catch(ArgumentException){}
+            TotalAccountExperience = Math.Max(0, data?.totalAccountExperience ?? 0);
             foreach(int number in data?.clearedStages??new List<int>())if(number>0)cleared.Add(number);
             var ids=new HashSet<string>();
             foreach(var receipt in data?.pending??new List<StageRewardReceipt>())
@@ -60,15 +93,18 @@ namespace MegaTanks
             if(stage==null)throw new ArgumentNullException(nameof(stage));
             currentStage=Math.Max(1,stage.stageNumber);
             repeat=stage.RepeatCompletionRewards;bonus=stage.FirstCompletionRewards;
+            firstAccountExperience = stage.FirstCompletionAccountExperience;
             LastReceipt=null;active=true;
         }
         public StageRewardReceipt CompleteRun()
         {
             if(!active||LastReceipt!=null)return LastReceipt;
             bool first=cleared.Add(currentStage);
-            LastReceipt=new StageRewardReceipt{id=Guid.NewGuid().ToString("N"),stageNumber=currentStage,firstClear=first,repeat=repeat,bonus=first?bonus:default};
+            long earnedExperience = first ? Math.Min(firstAccountExperience, long.MaxValue - TotalAccountExperience) : 0;
+            TotalAccountExperience += earnedExperience;
+            LastReceipt=new StageRewardReceipt{id=Guid.NewGuid().ToString("N"),stageNumber=currentStage,firstClear=first,repeat=repeat,bonus=first?bonus:default,accountExperience=earnedExperience};
             pending.Add(LastReceipt);
-            // Save the entitlement before trying to credit it. A full wallet or restart cannot lose it.
+            // Save XP, the clear flag and the currency entitlement together before attempting wallet payment.
             SavePending();PlayerPrefs.Save();CollectPending();return LastReceipt;
         }
         public void EndRun(){active=false;}
@@ -84,7 +120,7 @@ namespace MegaTanks
             }
             finally{collecting=false;}
         }
-        void SavePending()=>PlayerPrefs.SetString(saveKey,JsonUtility.ToJson(new SaveData{clearedStages=cleared.OrderBy(n=>n).ToList(),pending=pending.ToList()}));
+        void SavePending()=>PlayerPrefs.SetString(saveKey,JsonUtility.ToJson(new SaveData{totalAccountExperience=TotalAccountExperience,clearedStages=cleared.OrderBy(n=>n).ToList(),pending=pending.ToList()}));
         public void Dispose()=>wallet.Changed-=CollectPending;
     }
 }

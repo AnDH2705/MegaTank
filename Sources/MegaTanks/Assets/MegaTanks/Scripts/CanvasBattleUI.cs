@@ -56,7 +56,11 @@ namespace MegaTanks
             string key=game.Deployed?game.Stage.Mode+"/"+game.StageRewards.LastReceipt?.paid+"/"+game.Paused+"/"+(game.Hull<=0)+"/"+game.Rewards.Mode+"/"+game.Rewards.Scraps+"/"+game.Stage.Current?.id+"/"+game.Stage.FreeClaimed+"/"+game.Stage.PaidPurchased+"/"+string.Join(",",game.Rewards.Offers.Select(o=>o.purchased.ToString())):"Home";
             if(key==screenKey)return;screenKey=key;foreach(var s in encounterScreens)View(s).gameObject.SetActive(false);
             if(campCards!=null)campCards.gameObject.SetActive(false);
-            if(!game.Deployed)return;
+            if (!game.Deployed)
+            {
+                RefreshHomeAccount();
+                return;
+            }
             if(game.Rewards.IsOpen){DrawRewards();return;}
             if(game.Hull<=0){Result(UIScreen.Defeat,DefeatSummary());return;}
             if(game.Paused)

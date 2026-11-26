@@ -88,8 +88,8 @@ namespace MegaTanks.Editor
                     wheel = tank.Artwork.GetComponentsInChildren<SpriteRenderer>().First(r => r.name.Contains("_wheel_")).transform;
                     wheelStart = wheel.localRotation;
                     var profile = game.BossProfile;
-                    Require(profile.tank != game.TankProfile && profile.equipment != game.StartingLoadout && profile.equipment.cannon != game.StartingLoadout.cannon, "Boss assets must be independent.");
-                    Require(profile.crew.Length == 5 && profile.crew.All(s => s.member != null && !game.Frontend.crew.members.Contains(s.member)), "Boss must have its own five crew members.");
+                    Require(profile.tank != game.TankProfile && game.Frontend.inventory.Contains(profile.equipment.cannon), "Boss hull is independent and weapon definitions are shared with the player.");
+                    Require(profile.crew.Length == 5 && profile.crew.All(s => s.member != null && game.Frontend.crew.members.Contains(s.member)), "Boss crew slots must link to the player crew catalog.");
                     Require(Mathf.Approximately(boss.Health, game.BossSettings.CalculateTankStats().maxHull) && Mathf.Approximately(tank.CannonStats.damage, game.BossSettings.WeaponDamage(profile.equipment.cannon.stats.damage, game.BossSettings.cannon)), "Boss stats must use the stage's equipment and crew progression.");
                     profileBefore = JsonUtility.ToJson(profile); gunBefore = JsonUtility.ToJson(profile.equipment.cannon);
                     Require(!ReferenceEquals(tank.CannonStats, profile.equipment.cannon.stats), "Runtime weapon stats must be copied.");
@@ -213,7 +213,7 @@ namespace MegaTanks.Editor
             var alternate = UnityEngine.Object.Instantiate(low); alternate.boss = low.boss.Copy();
             var template = UnityEngine.Object.Instantiate(low.boss.template);
             var hull = UnityEngine.Object.Instantiate(template.tank); hull.stats = template.tank.stats.Copy(); hull.stats.maxHull += 123;
-            var loadout = UnityEngine.Object.Instantiate(template.equipment);
+            var loadout = new BossEquipmentSlots { machineGun=template.equipment.machineGun, cannon=template.equipment.cannon, mortar=template.equipment.mortar };
             var cannon = UnityEngine.Object.Instantiate(loadout.cannon); cannon.stats = loadout.cannon.stats.Copy(); cannon.stats.damage += 7;
             loadout.cannon = cannon; template.equipment = loadout; template.tank = hull; template.id = "AlternateBossAudit";
             alternate.boss.template = template;
@@ -254,7 +254,7 @@ namespace MegaTanks.Editor
             finally
             {
                 LeaveTestStage(game); game.SelectStage(original);
-                foreach (var asset in new UnityEngine.Object[] { low, high, alternate, template, hull, loadout, cannon }) UnityEngine.Object.DestroyImmediate(asset);
+                foreach (var asset in new UnityEngine.Object[] { low, high, alternate, template, hull, cannon }) UnityEngine.Object.DestroyImmediate(asset);
             }
         }
         static void TestLimitingWeapon(BattleGame game)

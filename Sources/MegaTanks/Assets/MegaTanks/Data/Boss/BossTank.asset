@@ -13,22 +13,28 @@ MonoBehaviour:
   m_Name: BossTank
   m_EditorClassIdentifier: 
   id: BossTank
+  sharedSlotVersion: 1
   tank: {fileID: 11400000, guid: 82d410392589a5945baf83a39b45bf4d, type: 2}
   artworkPrefab: {fileID: 83713285497036217, guid: 722be6232e4b1244598ce47959408a8d, type: 3}
-  equipment: {fileID: 11400000, guid: 606972d6db81f5b49b73fe148712210d, type: 2}
-  armor: {fileID: 11400000, guid: 00f8c7abcfb551b498200884ae0737da, type: 2}
+  equipment:
+    machineGun: {fileID: 11400000, guid: e0b6f0ae42462a9489a9c5391903a5ed, type: 2}
+    cannon: {fileID: 11400000, guid: 04dd40d1d9121a448be946904a021c8b, type: 2}
+    mortar: {fileID: 11400000, guid: 2edf608ec9b350441a30b24ce7011d34, type: 2}
+  armor: {fileID: 11400000, guid: 426f3f0cc579b9446a6aa8fee1975868, type: 2}
   secondArmor: {fileID: 0}
+  accessory: {fileID: 0}
+  secondAccessory: {fileID: 0}
   crew:
   - station: Gunner
-    member: {fileID: 11400000, guid: ce2e06573105be34dbf6e30be273ba5a, type: 2}
+    member: {fileID: 11400000, guid: cddf7bf2005c3ff4990377cc828c2559, type: 2}
   - station: Driver
-    member: {fileID: 11400000, guid: f696673bf12a9e7449007ca64d943943, type: 2}
+    member: {fileID: 11400000, guid: fd2eebe21e6865940a7a6c66e0936452, type: 2}
   - station: Sub gunner
-    member: {fileID: 11400000, guid: cef30b4a7b841ba45899007500a23ee6, type: 2}
+    member: {fileID: 11400000, guid: 5c05d5d29f13c5b47a90e3251774ff4b, type: 2}
   - station: Weapon specialist
-    member: {fileID: 11400000, guid: b51e49d599bb9964eb3c356433eeae81, type: 2}
+    member: {fileID: 11400000, guid: 35ef72e115b8b24449d3a1f44950e498, type: 2}
   - station: Commando
-    member: {fileID: 11400000, guid: 248a74383d184b64092bd42a7ce4d3c5, type: 2}
+    member: {fileID: 11400000, guid: 9cae16f1a1a02084ea8ac6d5c5fb0522, type: 2}
   score: 1000
   scraps: 150
   healthBarColor: {r: 0.85, g: 0.2, b: 0.2, a: 1}

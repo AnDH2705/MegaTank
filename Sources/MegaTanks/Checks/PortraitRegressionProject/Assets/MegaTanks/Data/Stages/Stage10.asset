@@ -15,6 +15,7 @@ MonoBehaviour:
   stageName: Stage 10
   stageNumber: 10
   stageDifficulty: 90
+  backgroundId: 
   spawnableEnemies:
   - {fileID: 1739948587163343259, guid: bcd6c8d21d2f1bb4b8f954ae00edf34a, type: 3}
   - {fileID: 1044248449838714769, guid: 3b507aaf765a67b48ae65ee7a1d7b791, type: 3}
@@ -34,6 +35,12 @@ MonoBehaviour:
       level: 1
       stars: 0
     secondArmor:
+      level: 1
+      stars: 0
+    accessory:
+      level: 1
+      stars: 0
+    secondAccessory:
       level: 1
       stars: 0
     crew:

@@ -41,11 +41,10 @@ namespace MegaTanks.Editor
                 profile.id = "HeavyBossTank";
                 profile.tank = Copy<TankDefinition>(heavy, "HeavyBossHull", hull => { hull.id = "boss.heavy.hull"; hull.displayName = "Heavy Boss Hull"; });
                 profile.artworkPrefab = heavy.artworkPrefab;
-                profile.equipment = Copy<WeaponLoadout>(source.equipment, "HeavyBossEquipment");
+                profile.equipment = new BossEquipmentSlots();
                 profile.equipment.machineGun = Copy<GunDefinition>(source.equipment.machineGun, "HeavyBossMachineGun", gun => { gun.id = "boss.heavy.machine-gun"; gun.displayName = "Heavy Boss MG"; });
                 profile.equipment.cannon = Copy<GunDefinition>(source.equipment.cannon, "HeavyBossCannon", gun => { gun.id = "boss.heavy.cannon"; gun.displayName = "Heavy Boss Cannon"; });
                 profile.equipment.mortar = Copy<MortarDefinition>(source.equipment.mortar, "HeavyBossMortar", gun => { gun.id = "boss.heavy.mortar"; gun.displayName = "Heavy Boss Mortar"; });
-                EditorUtility.SetDirty(profile.equipment);
                 profile.armor = Copy<ArmorDefinition>(source.armor, "HeavyBossArmor", armor => { armor.id = "boss.heavy.armor"; armor.displayName = "Heavy Boss Armor"; });
                 profile.secondArmor = Copy<ArmorDefinition>(source.armor, "HeavyBossSecondArmor", armor => { armor.id = "boss.heavy.second-armor"; armor.displayName = "Heavy Boss Second Armor"; });
                 profile.crew = new BossCrewStation[source.crew.Length];
@@ -59,6 +58,7 @@ namespace MegaTanks.Editor
                 profile.score = source.score; profile.scraps = source.scraps; profile.healthBarColor = source.healthBarColor;
                 AssetDatabase.CreateAsset(profile, TemplatePath);
             }
+            SharedBossSlotsSetup.Configure(AssetDatabase.LoadAssetAtPath<BossTankProfile>(TemplatePath));
             AssetDatabase.SaveAssets();
             Debug.Log("HEAVY_BOSS_TEMPLATE_OK: heavy hull/artwork, independent weapons, two armor definitions and five crew; select it on a Stage Definition.");
         }

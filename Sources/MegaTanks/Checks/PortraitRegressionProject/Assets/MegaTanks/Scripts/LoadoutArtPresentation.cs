@@ -54,7 +54,7 @@ namespace MegaTanks
             statsCaption.text=contentHeight>statsScroll.viewport.rect.height?"STATS & COMPARISON - SCROLL":"STATS & COMPARISON";
             // The affected stat rows already contain the relevant values/comparisons.
             summary.text="";summary.gameObject.SetActive(false);
-            if(selected!=null&&equipmentStats!=null&&equipmentStats.VisibleStatCount==0)statsCaption.text="NO STATS CHANGE WITH LEVEL";
+            if(selected!=null&&equipmentStats!=null&&equipmentStats.VisibleStatCount==0)statsCaption.text="NO STATS AVAILABLE";
             for(int i=0;i<slotKeys.Length;i++)slotLabels[i].text=view.Get<Text>(slotKeys[i]+"/Slot Description").text.Split('\n')[0].ToUpperInvariant();
             var tank=view.Get<Text>("Tank Selection/Label");tank.text=tank.text.Replace("  ›","");
             var tankStats=view.Get<Text>("Tank Stats");tankStats.text=Ascii(tankStats.text);

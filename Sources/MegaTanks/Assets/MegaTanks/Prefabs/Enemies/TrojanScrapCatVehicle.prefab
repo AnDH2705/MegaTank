@@ -1121,14 +1121,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    armor: 0
+    armor: 3
     evasion: 0
     criticalChanceReduction: 0
     criticalDamageReduction: 0
     id: TrojanScrapCat
     kind: 0
-    baseHealth: 62
-    baseHealthGrow: 2.5
+    baseHealth: 100
+    baseHealthGrow: 5
     armorGrow: 0
     evasionGrow: 0
     criticalChanceReductionGrow: 0

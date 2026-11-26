@@ -163,8 +163,8 @@ namespace MegaTanks.Editor
             var tent = GameObject.Find("Field Camp Tent");
             Require(tent != null && tent.GetComponent<SpriteRenderer>().bounds.min.x > edge, "The tent must spawn beyond the battle viewport.");
             Require(game.Stage.Mode == StageMode.ApproachingEvent
-                && Mathf.Abs(game.Artwork.transform.position.x - start - .3f * game.TankAdvanceSpeed) < .001f,
-                "The tank must drive to the tent at triple speed with event choices closed.");
+                && Mathf.Abs(game.Artwork.transform.position.x - start - .2f * game.TankAdvanceSpeed) < .001f,
+                "The tank must drive to the tent at twice its normal advance speed with event choices closed.");
             Require(Mathf.Abs(CameraOffset(game) - battleCameraOffset) < .001f, "The approach must preserve the battle framing.");
             AdvanceStage(game, float.MaxValue);
             float front = game.Artwork.GetComponentsInChildren<SpriteRenderer>()

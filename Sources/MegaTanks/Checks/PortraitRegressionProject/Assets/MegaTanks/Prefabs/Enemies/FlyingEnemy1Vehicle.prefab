@@ -287,8 +287,8 @@ MonoBehaviour:
     criticalDamageReduction: 0
     id: FlyingEnemy1
     kind: 1
-    baseHealth: 26
-    baseHealthGrow: 1.3
+    baseHealth: 30
+    baseHealthGrow: 1.5
     armorGrow: 0
     evasionGrow: 1
     criticalChanceReductionGrow: 0
@@ -299,10 +299,12 @@ MonoBehaviour:
     advanceInsideRangeGrow: {x: 0, y: 0}
     score: 75
     scoreGrow: 0
-    baseScraps: 20
+    baseScraps: 10
     baseScrapsGrow: 1
     color: {r: 1, g: 0.63, b: 0.25, a: 1}
     artworkPrefab: {fileID: 8160580182256755550}
+    commandoPrefab: {fileID: 0}
+    melee: 0
     artworkWidth: 2.4
     scale: 1
     weapon:
@@ -314,14 +316,14 @@ MonoBehaviour:
       criticalDamage: 0
       damageType: 0
       type: 0
-      damage: 2
-      damageGrow: 0.1
+      damage: 5
+      damageGrow: 0.25
       damageBonusGrow: 0
       accuracyGrow: 1
       armorPenetrationGrow: 0.25
       criticalChanceGrow: 0
       criticalDamageGrow: 0
-      reserveCapacity: 30
+      reserveCapacity: 9
       reserveCapacityGrow: 0
       range: 7.5
       rangeGrow: 0
@@ -329,7 +331,7 @@ MonoBehaviour:
       salvoSizeGrow: 0
       shotDelay: 0.1
       shotDelayGrow: 0
-      reloadTime: 1.8
+      reloadTime: 2
       reloadTimeGrow: 0
       reloadSpeedGrow: 0
       projectileSpeed: 22

@@ -59,28 +59,10 @@ namespace MegaTanks
                     rows.Add(new Row(null,text,null));
                 }
             }
-            return LevelAffectedRows(selected,rows);
+            return DisplayRows(rows);
         }
-        static List<Row> LevelAffectedRows(EquipmentDefinition selected,List<Row> rows)
+        static List<Row> DisplayRows(List<Row> rows)
         {
-            bool Changes(Row row)
-            {
-                if(row.icon==null||row.label=="PER LEVEL")return false;
-                // Weapons use the shared +1 damage-per-level rule. All their other
-                // authored stats are fixed, even if crew/accessories modify them.
-                if(selected is WeaponDefinition)return row.label=="BASE DAMAGE"||row.label=="DAMAGE";
-                if(selected is ArmorDefinition armor)return armor.hpPerLevel>0&&row.icon=="hp";
-                if(selected is AccessoryDefinition accessory&&accessory.bonusPerLevel>0)
-                {
-                    switch(accessory.bonusType)
-                    {
-                        case AccessoryBonusType.Accuracy:return row.icon=="accuracy";
-                        case AccessoryBonusType.Evasion:return row.icon=="evasion";
-                        default:return row.icon=="reload_speed"||row.icon=="reload_time";
-                    }
-                }
-                return false;
-            }
             var result=new List<Row>();Row? section=null;
             foreach(var row in rows)
             {
@@ -90,7 +72,7 @@ namespace MegaTanks
                     section=row.label.StartsWith("EQUIPPED ",StringComparison.Ordinal)||row.label.StartsWith("TANK TOTALS",StringComparison.Ordinal)||row.label=="ARMOR BONUSES"?(Row?)row:null;
                     continue;
                 }
-                if(!Changes(row))continue;
+                if(row.label=="PER LEVEL")continue;
                 if(section.HasValue){result.Add(section.Value);section=null;}
                 result.Add(row);
             }

@@ -24,6 +24,9 @@ namespace MegaTanks
         Vector3 jumpStart;
         float jumpTime;
         const float JumpDuration = .55f;
+        const float SeatedSpriteSize = 1.15f;
+        const int CrewSortingOrder = 35;
+        const int LowerDeckCrewSortingOrder = 43;
         public CrewRole Role { get; private set; }
         public bool Active=>visual!=null&&visual.activeSelf&&hitbox.enabled;
         public bool IsUnconscious { get; private set; }
@@ -38,7 +41,9 @@ namespace MegaTanks
         {
             game=owner;Role=role;
             visual=new GameObject("Crew artwork");visual.transform.SetParent(transform,false);
-            portrait=visual.AddComponent<SpriteRenderer>();portrait.sortingOrder=35;
+            var portraitObject = new GameObject("Crew sprite");
+            portraitObject.transform.SetParent(visual.transform, false);
+            portrait=portraitObject.AddComponent<SpriteRenderer>();
             hitbox=gameObject.AddComponent<BoxCollider2D>();hitbox.size=new Vector2(.65f,.9f);hitbox.isTrigger=true;
             ResetForRun();
         }
@@ -109,6 +114,7 @@ namespace MegaTanks
                 regenerationTime = 0;
                 transform.position = ExitPoint();
                 ShowVisual();
+                SetStationArtwork(false);
                 artwork?.SetPhysicsReference(null);
                 artwork?.ResetVisual();
                 SetTargetable(true);
@@ -182,21 +188,41 @@ namespace MegaTanks
                 Destroy(artwork.gameObject);
                 artwork = null;
             }
-            visual.transform.localScale = Vector3.one;
             if (artwork == null && member.commandoPrefab != null)
             {
                 artwork = Instantiate(member.commandoPrefab, visual.transform, false);
                 artworkPrefab = member.commandoPrefab;
             }
-            portrait.enabled = artwork == null;
-            if (artwork == null)
-            {
-                portrait.sprite = member.portrait;
-                if (portrait.sprite != null)
-                    visual.transform.localScale = Vector3.one * (.85f / Mathf.Max(portrait.sprite.bounds.size.x, portrait.sprite.bounds.size.y));
-            }
+            artwork?.SetCombatMaterial(member.combatMaterial);
+            SetStationArtwork(false);
             visual.SetActive(true);
             artwork?.ResetVisual();
+        }
+
+        void SetStationArtwork(bool aboard)
+        {
+            bool useEquippedSprite = aboard && !IsUnconscious && member.equippedSprite != null;
+            artwork?.SetVisible(!useEquippedSprite);
+            portrait.enabled = useEquippedSprite || artwork == null;
+            if (!portrait.enabled) return;
+
+            portrait.sprite = useEquippedSprite ? member.equippedSprite : member.portrait;
+            portrait.flipX = false;
+            Vector2 size = portrait.sprite != null ? portrait.sprite.bounds.size : Vector2.one;
+            portrait.transform.localScale = Vector3.one
+                * ((useEquippedSprite ? SeatedSpriteSize : .85f) / Mathf.Max(size.x, size.y));
+            Vector3 seatOffset = Vector3.zero;
+            if (useEquippedSprite)
+            {
+                switch (Role)
+                {
+                    case CrewRole.Driver: seatOffset = new Vector3(0, -.46f, 0); break;
+                    case CrewRole.Commando: seatOffset = new Vector3(-.13f, -.83f, 0); break;
+                }
+            }
+            portrait.transform.localPosition = seatOffset;
+            // Draw lower-deck crew above the interior fittings and beneath the hull frame.
+            portrait.sortingOrder = seatOffset == Vector3.zero ? CrewSortingOrder : LowerDeckCrewSortingOrder;
         }
 
         void SetTargetable(bool targetable)
@@ -242,6 +268,7 @@ namespace MegaTanks
         {
             transform.position = SeatPoint();
             ShowVisual();
+            SetStationArtwork(true);
             // Seated animation physics follow motion relative to the hull.
             artwork?.SetPhysicsReference(game.HullHitbox.transform);
             artwork?.Face(1);
@@ -277,6 +304,7 @@ namespace MegaTanks
             jumpStart = transform.position;
             jumpTime = 0;
             Velocity = Vector2.zero;
+            SetStationArtwork(false);
             artwork?.SetPhysicsReference(null);
             artwork?.CancelAttack();
             artwork?.Locomotion(true);

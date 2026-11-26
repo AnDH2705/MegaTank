@@ -35,6 +35,7 @@ namespace MegaTanks.Editor
             }
             var repeat=stage.RepeatCompletionRewards;var first=stage.FirstCompletionRewards;
             EditorGUILayout.HelpBox("Every completion: "+repeat.parts+" Parts, "+repeat.petFood+" Pet Food. First completion adds: "+first.parts+" Parts, "+first.petFood+" Pet Food, "+first.gems+" Gems. Keep Stage Number unique and stable to preserve first-clear history.",MessageType.Info);
+            EditorGUILayout.HelpBox($"First completion also awards {stage.FirstCompletionAccountExperience:N0} account XP.", MessageType.Info);
             if(GUILayout.Button("Use Default Stage Difficulty"))
             {
                 Undo.RecordObject(stage,"Default stage difficulty");stage.stageDifficulty=StageDefinition.DefaultDifficulty(stage.stageNumber);EditorUtility.SetDirty(stage);

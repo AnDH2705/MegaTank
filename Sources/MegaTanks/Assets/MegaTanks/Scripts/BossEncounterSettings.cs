@@ -29,6 +29,8 @@ namespace MegaTanks
         public BossItemProgression mortar = new BossItemProgression();
         public BossItemProgression armor = new BossItemProgression();
         public BossItemProgression secondArmor = new BossItemProgression();
+        public BossItemProgression accessory = new BossItemProgression();
+        public BossItemProgression secondAccessory = new BossItemProgression();
         public BossCrewProgression[] crew =
         {
             new BossCrewProgression { station = "Gunner" }, new BossCrewProgression { station = "Driver" },
@@ -43,6 +45,8 @@ namespace MegaTanks
             copy.mortar = mortar?.Copy() ?? new BossItemProgression();
             copy.armor = armor?.Copy() ?? new BossItemProgression();
             copy.secondArmor = secondArmor?.Copy() ?? new BossItemProgression();
+            copy.accessory = accessory?.Copy() ?? new BossItemProgression();
+            copy.secondAccessory = secondAccessory?.Copy() ?? new BossItemProgression();
             copy.crew = Array.ConvertAll(crew ?? Array.Empty<BossCrewProgression>(), slot => slot == null ? null : (BossCrewProgression)slot.Copy());
             return copy;
         }
@@ -53,6 +57,19 @@ namespace MegaTanks
             return new BossItemProgression();
         }
         public float CrewDamage=>0; // Compatibility: no shared damage pool.
+        public float AccessoryBonus(AccessoryBonusType type)
+        {
+            float total=0;
+            if(template.accessory!=null&&template.accessory.bonusType==type)total+=template.accessory.Bonus(accessory?.level??1);
+            if(template.tank.AccessorySlots>1&&template.secondAccessory!=null&&template.secondAccessory.bonusType==type)
+                total+=template.secondAccessory.Bonus(secondAccessory?.level??1);
+            return total;
+        }
+        public void ApplyAccessories(WeaponCombatStats weapon)
+        {
+            weapon.accuracy+=AccessoryBonus(AccessoryBonusType.Accuracy);
+            weapon.reloadSpeed+=AccessoryBonus(AccessoryBonusType.ReloadSpeed);
+        }
         public CrewDefinition CrewMember(CrewRole role)
         {
             foreach(var slot in template.crew??Array.Empty<BossCrewStation>())
@@ -82,6 +99,7 @@ namespace MegaTanks
                 template.secondArmor.ApplyTo(result, template.secondArmor.HitPoints(second.level, second.stars));
             }
             ApplyCrew(CrewRole.Driver,hull:result);
+            result.evasion+=AccessoryBonus(AccessoryBonusType.Evasion);
             return result;
         }
         public void Validate()
@@ -89,6 +107,10 @@ namespace MegaTanks
             if (template == null || template.tank == null || template.artworkPrefab == null || template.equipment == null)
                 throw new InvalidOperationException("Assign a complete Boss Template on the Stage Definition (hull, artwork and equipment).");
             template.equipment.Validate();
+            if(template.tank.ArmorSlots>1&&template.armor!=null&&template.armor==template.secondArmor)
+                throw new InvalidOperationException("Use different armor items in the two boss armor slots, like the player loadout.");
+            if(template.tank.AccessorySlots>1&&template.accessory!=null&&template.accessory==template.secondAccessory)
+                throw new InvalidOperationException("Use different items in the two boss accessory slots, like the player loadout.");
         }
         public EnemyDefinition CreateEnemy()
         {

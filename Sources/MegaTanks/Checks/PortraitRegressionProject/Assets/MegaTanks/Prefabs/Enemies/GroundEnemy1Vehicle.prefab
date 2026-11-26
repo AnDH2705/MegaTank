@@ -358,8 +358,8 @@ MonoBehaviour:
     criticalDamageReduction: 0
     id: GroundEnemy1
     kind: 0
-    baseHealth: 70
-    baseHealthGrow: 3.5
+    baseHealth: 80
+    baseHealthGrow: 4
     armorGrow: 0
     evasionGrow: 1
     criticalChanceReductionGrow: 0
@@ -386,23 +386,23 @@ MonoBehaviour:
       criticalChance: 0
       criticalDamage: 0
       damageType: 0
-      type: 1
-      damage: 8
-      damageGrow: 0.4
+      type: 0
+      damage: 10
+      damageGrow: 0.5
       damageBonusGrow: 0
       accuracyGrow: 1
       armorPenetrationGrow: 0.5
       criticalChanceGrow: 0
       criticalDamageGrow: 0
-      reserveCapacity: 10
+      reserveCapacity: 30
       reserveCapacityGrow: 0
       range: 10
       rangeGrow: 0
-      salvoSize: 1
+      salvoSize: 3
       salvoSizeGrow: 0
       shotDelay: 0.1
       shotDelayGrow: 0
-      reloadTime: 4
+      reloadTime: 2
       reloadTimeGrow: 0
       reloadSpeedGrow: 0
       projectileSpeed: 18

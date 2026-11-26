@@ -34,9 +34,11 @@ namespace MegaTanks
         [HideInInspector] public string specialty;
         [TextArea] public string description;
         public Sprite portrait;
-        [Tooltip("Transparent full-body sprite used at the equipped tank station. Portrait remains the roster/detail artwork.")]
+        [Tooltip("Transparent full-body sprite used at the tank station in the equip screen and battle.")]
         public Sprite equippedSprite;
         public CommandoArtwork commandoPrefab;
+        [Tooltip("Optional material using the same atlas layout as the combat prefab.")]
+        public Material combatMaterial;
         public CrewStats stats=new CrewStats();
         public string RoleName=>RoleLabel(role);
         public static string RoleLabel(CrewRole role)=>role==CrewRole.SubGunner?"Sub gunner":role==CrewRole.WeaponSpecialist?"Weapon specialist":role.ToString();

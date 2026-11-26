@@ -26,6 +26,7 @@ namespace MegaTanks
         [Min(0)] public int firstClearPartsBase = 500;
         [Min(0)] public int firstClearPetFoodBase = 500;
         [Min(0)] public int firstClearResourcesPerStage = 50;
+        public long FirstCompletionAccountExperience => 100L + 10L * (Mathf.Max(1, stageNumber) - 1);
         public CurrencyRewards RepeatCompletionRewards => new CurrencyRewards(RewardValue(100,10),RewardValue(100,10));
         public CurrencyRewards FirstCompletionRewards => new CurrencyRewards(RewardValue(firstClearPartsBase,firstClearResourcesPerStage),RewardValue(firstClearPetFoodBase,firstClearResourcesPerStage),Mathf.Max(0,firstClearGems));
         int RewardValue(int initial,int step) => checked(Mathf.Max(0,initial) + (Mathf.Max(1,stageNumber)-1)*Mathf.Max(0,step));

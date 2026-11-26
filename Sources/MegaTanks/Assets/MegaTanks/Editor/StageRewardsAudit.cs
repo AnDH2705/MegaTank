@@ -21,19 +21,38 @@ namespace MegaTanks.Editor
             {
                 var wallet=new PlayerWallet(wkey);rewards=new StageCompletionRewards(wallet,key);
                 Require(rewards.CompleteRun()==null,"No reward without an active run.");
+                Require(rewards.AccountProgress.Level == 1 && rewards.AccountProgress.ExperienceRequired == 100,
+                    "A new account needs 100 XP for Level 2.");
+                var beforeThreshold = new PlayerAccountProgress(99);
+                var nextThreshold = new PlayerAccountProgress(225);
+                Require(beforeThreshold.Level == 1 && beforeThreshold.ExperienceIntoLevel == 99 &&
+                    nextThreshold.Level == 3 && nextThreshold.ExperienceIntoLevel == 0 && nextThreshold.ExperienceRequired == 150,
+                    "Level thresholds use the current level and roll over at the exact cost.");
+                var maxProgress = new PlayerAccountProgress(long.MaxValue);
+                Require(maxProgress.ExperienceIntoLevel >= 0 && maxProgress.ExperienceIntoLevel < maxProgress.ExperienceRequired,
+                    "Large XP totals must still resolve to a valid level.");
                 stage.InitializeStage(1);rewards.BeginRun(stage);var first=rewards.CompleteRun();
                 Balances(wallet,600,600,100,"Stage 1 first clear includes both payouts.");
                 Require(first.firstClear&&first.paid&&first.repeat.parts==100&&first.bonus.parts==500,"First receipt breakdown.");
+                Require(first.accountExperience == 100 && rewards.AccountProgress.Level == 2 &&
+                    rewards.AccountProgress.ExperienceIntoLevel == 0 && rewards.AccountProgress.ExperienceRequired == 125,
+                    "Stage 1 grants 100 XP and immediately reaches Level 2.");
                 Require(ReferenceEquals(first,rewards.CompleteRun()),"Repeated callbacks return the original receipt.");
                 Balances(wallet,600,600,100,"Repeated callbacks never duplicate credits.");
                 rewards.BeginRun(stage);var repeat=rewards.CompleteRun();Require(!repeat.firstClear&&repeat.bonus.gems==0,"Replay has no first bonus.");
                 Balances(wallet,700,700,100,"Repeat clear payout.");
                 rewards.Dispose();rewards=new StageCompletionRewards(new PlayerWallet(wkey),key);wallet=new PlayerWallet(wkey);
-                Require(rewards.HasCleared(1),"First-completion history persists.");
+                Require(rewards.HasCleared(1) && rewards.TotalAccountExperience == 100 && repeat.accountExperience == 0,
+                    "First-clear history and XP survive reload and replay.");
                 rewards.Dispose();rewards=new StageCompletionRewards(wallet,key);
-                stage.InitializeStage(2);rewards.BeginRun(stage);rewards.CompleteRun();
+                stage.InitializeStage(2);rewards.BeginRun(stage);
+                Require(rewards.CompleteRun().accountExperience == 110 && rewards.TotalAccountExperience == 210,
+                    "Stage 2 grants 110 XP on its first clear.");
                 Balances(wallet,1360,1360,200,"Stage 2 uses 110 repeat plus 550 bonus.");
-                stage.InitializeStage(10);rewards.BeginRun(stage);rewards.CompleteRun();
+                stage.InitializeStage(10);rewards.BeginRun(stage);
+                Require(rewards.CompleteRun().accountExperience == 190 && rewards.AccountProgress.Level == 4 &&
+                    rewards.AccountProgress.ExperienceIntoLevel == 25 && rewards.AccountProgress.ExperienceRequired == 175,
+                    "Stage 10 grants 190 XP and carries excess XP through multiple levels.");
                 Balances(wallet,2500,2500,300,"Stage 10 uses 190 repeat plus 950 bonus.");
                 stage.stageName="Renamed stage";rewards.BeginRun(stage);rewards.CompleteRun();
                 Balances(wallet,2690,2690,300,"Renaming cannot reset eligibility.");
@@ -48,13 +67,21 @@ namespace MegaTanks.Editor
                 Require(!deferred.paid&&rewards.PendingCount==1&&rewards.HasCleared(1),"Full wallet preserves one earned first reward.");
                 Balances(wallet,int.MaxValue,0,0,"A blocked reward never partially credits.");
                 rewards.Dispose();wallet=new PlayerWallet(wkey);rewards=new StageCompletionRewards(wallet,key);
-                Require(rewards.PendingCount==1,"Pending payout survives restart.");
+                Require(rewards.PendingCount==1 && rewards.TotalAccountExperience == 100,
+                    "XP is saved even while currency waits for wallet space.");
                 Require(wallet.TrySpend(CurrencyType.Parts,600),"Make space for deferred payout.");
                 Balances(wallet,int.MaxValue,600,100,"Pending payout automatically credits once after spending.");
-                Require(rewards.PendingCount==0,"Paid entitlement is removed.");
+                Require(rewards.PendingCount==0 && rewards.TotalAccountExperience == 100,
+                    "Paying a deferred currency entitlement leaves already credited XP intact.");
                 rewards.CollectPending();Balances(wallet,int.MaxValue,600,100,"Repeated collection cannot duplicate credits.");
                 rewards.Dispose();PlayerPrefs.SetString(key,"invalid json");
                 rewards=new StageCompletionRewards(new PlayerWallet(wkey),key);Require(!rewards.HasCleared(1)&&rewards.PendingCount==0,"Malformed history recovers safely.");
+                rewards.Dispose();
+                PlayerPrefs.SetString(key, "{\"version\":1,\"clearedStages\":[1],\"pending\":[]}");
+                rewards = new StageCompletionRewards(new PlayerWallet(wkey), key);
+                rewards.BeginRun(stage);
+                Require(rewards.CompleteRun().accountExperience == 0 && rewards.TotalAccountExperience == 0,
+                    "Legacy clear history keeps its first-clear status.");
                 Debug.Log("STAGE_REWARDS_MODEL_PASS");
             }
             finally{rewards?.Dispose();Object.DestroyImmediate(stage);PlayerPrefs.DeleteKey(wkey);PlayerPrefs.DeleteKey(key);PlayerPrefs.Save();}
@@ -93,6 +120,10 @@ namespace MegaTanks.Editor
                 switch(phase++)
                 {
                     case 0:
+                        var initialHome=game.UI.GetComponent<UICanvasLayout>().View(UIScreen.Home);
+                        Require(initialHome.Get<Text>("Stage Name Plate/Selected Stage").text.Contains("ACCOUNT LV. 1")&&initialHome.Get<Text>("Stage Name Plate/Selected Stage").text.Contains("0 / 100 XP"),"Home banner displays saved account level and XP instead of stage title.");
+                        game.UI.ChangeStage(1);
+                        Require(initialHome.Get<Text>("Stage Name Plate/Selected Stage").text.Contains("ACCOUNT LV. 1"),"Changing the selected stage preserves the account banner.");game.UI.ChangeStage(-1);
                         testStage=Object.Instantiate(game.Stage.Definition);testStage.InitializeStage(1);testStage.rounds=3;testStage.hardBattleWeight=0;testStage.randomizeSeed=false;
                         game.SelectStage(testStage);game.StartBattle();StageProgressionAudit.DisableWeapons(game);
                         Balances(game.Wallet,0,0,0,"Starting a stage does not award anything.");break;
@@ -108,6 +139,8 @@ namespace MegaTanks.Editor
                     case 4:
                         Require(victory.gameObject.activeInHierarchy&&victory.Get<Text>("Total Rewards/Parts/Amount").text=="+600","Victory displays the credited total.");
                         Require(victory.Get<Text>("First Completion Rewards/Gems/Amount").text=="+100","Victory shows the first-clear Gems.");
+                        Require(victory.Get<Text>("First Completion Title").text.Contains("+100 ACCOUNT XP") &&
+                            victory.Get<Text>("Result Detail").text.Contains("0/125 XP"), "Victory shows XP and level progress.");
                         ItemProgressionAudit.Capture(game,"StageRewards-First");
                         ItemProgressionAudit.Press(victory.Get<Button>("Play Again"));StageProgressionAudit.DisableWeapons(game);break;
                     case 5:
@@ -122,11 +155,19 @@ namespace MegaTanks.Editor
                         ItemProgressionAudit.Capture(game,"StageRewards-Repeat");ItemProgressionAudit.Press(victory.Get<Button>("Result Home"));break;
                     case 9:
                         CurrencyAudit.CheckCounters(game);Balances(new PlayerWallet(),700,700,100,"Wallet credit persists after Home.");
+                        var home = game.UI.GetComponent<UICanvasLayout>().View(UIScreen.Home);
+                        Require(home.Get<Text>("Stage Name Plate/Selected Stage").text.Contains("ACCOUNT LV. 2")&&home.Get<Text>("Stage Name Plate/Selected Stage").text.Contains("0 / 125 XP"),
+                            "Home banner updates account level and XP after victory.");
+                        Require(!home.Get<Text>("Stage Swipe Area/Stage Count").text.Contains("LV"),"Stage selector keeps round information separate from the account banner.");
+                        var accountBanner=home.Get<Text>("Stage Name Plate/Selected Stage");Canvas.ForceUpdateCanvases();
+                        Require(accountBanner.preferredHeight<=accountBanner.rectTransform.rect.height,"Account level and XP both fit inside the banner.");
+                        ItemProgressionAudit.Capture(game,"Account-Level-Home");
                         using(var loaded=new StageCompletionRewards(new PlayerWallet()))Require(loaded.HasCleared(1),"Actual first-clear flag survives reload.");
                         testStage.InitializeStage(2);game.SelectStage(testStage);game.StartBattle();StageProgressionAudit.DisableWeapons(game);game.DamageHull(game.MaxHull+1);
                         Require(!game.StageRewards.HasCleared(2),"Defeat does not claim first rewards.");Balances(game.Wallet,700,700,100,"Defeat pays nothing.");
                         game.ReturnHome();testStage.InitializeStage(3);game.SelectStage(testStage);game.StartBattle();game.ReturnHome();
                         Require(!game.StageRewards.HasCleared(3),"Returning Home mid-run pays nothing.");
+                        Require(game.StageRewards.TotalAccountExperience == 100, "Only the first boss clear awarded XP.");
                         Require(!errors,"No runtime errors.");Debug.Log("STAGE_REWARDS_PLAY_PASS");Finish(0);break;
                 }
             }

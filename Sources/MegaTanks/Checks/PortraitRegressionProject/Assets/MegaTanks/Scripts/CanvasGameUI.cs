@@ -78,11 +78,23 @@ namespace MegaTanks
             var v=View(UIScreen.Home);var stages=game.Frontend?.stages;
             if(stages!=null&&stages.Length>0)game.SelectStage(stages[stageIndex]);
             string title=stages!=null&&stages.Length>0?stages[stageIndex].stageName:"Stage 1";
-            Text(v,"Stage Name Plate/Selected Stage",title);Text(v,"Stage Swipe Area/Stage Count","ROUND 1 / "+(stages!=null&&stages.Length>0?stages[stageIndex].rounds:game.Stage.Definition.rounds));Text(v,"Stage Swipe Area/Route Name",title);
+            Text(v,"Stage Swipe Area/Route Name",title);
+            RefreshHomeAccount();
             v.Get<Button>("Previous Stage").interactable=stageIndex>0;v.Get<Button>("Next Stage").interactable=stageIndex<(stages?.Length??1)-1;
             Active(v,"Previous Stage",(stages?.Length??1)>1);Active(v,"Next Stage",(stages?.Length??1)>1);
             v.Get<Image>("Stage Swipe Area").sprite=(stages?.Length??1)>1?skin.homeStageSelector:skin.homeButtonBase;
         }
+        void RefreshHomeAccount()
+        {
+            var stages = game.Frontend?.stages;
+            int rounds = stages != null && stages.Length > 0 ? stages[stageIndex].rounds : game.Stage.Definition.rounds;
+            var home=View(UIScreen.Home);var account=game.StageRewards.AccountProgress;
+            var banner=home.Get<Text>("Stage Name Plate/Selected Stage");banner.supportRichText=true;
+            banner.fontSize=28;banner.lineSpacing=1;banner.resizeTextForBestFit=false;banner.alignment=TextAnchor.MiddleCenter;
+            banner.text=$"ACCOUNT LV. {account.Level}\n<size=22>{account.ExperienceIntoLevel:N0} / {account.ExperienceRequired:N0} XP</size>";
+            Text(home, "Stage Swipe Area/Stage Count", $"ROUND 1/{rounds}");
+        }
+
         public void Play(){ClosePopup();if(game.Frontend?.stages?.Length>0)game.SelectStage(game.Frontend.stages[stageIndex]);game.StartBattle();screenKey="";Refresh();UpdateHud();}
         public void OpenEquipment(){activeSlot=null;filter=null;selected=null;OpenPopup("Equipment");}
         public void OpenPopup(string value)

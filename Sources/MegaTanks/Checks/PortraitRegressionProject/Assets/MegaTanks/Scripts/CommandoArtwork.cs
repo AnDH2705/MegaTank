@@ -9,10 +9,25 @@ namespace MegaTanks
         [SerializeField] string moveAnimation="walk";
         System.Action pendingImpact;
         Spine.TrackEntry attackEntry;
+        MeshRenderer meshRenderer;
         public bool IsAttacking=>animation.AnimationState.GetCurrent(0) is Spine.TrackEntry entry&&entry.Animation.Name==attackAnimation&&!entry.IsComplete;
         public SkeletonAnimation Animation=>animation;
         public string CurrentAnimation=>animation.AnimationState.GetCurrent(0)?.Animation.Name;
         public void Configure(SkeletonAnimation visual,string attack="shovel_attack"){animation=visual;attackAnimation=attack;ResetVisual();}
+        internal void SetCombatMaterial(Material material)
+        {
+            var overrides = animation.CustomMaterialOverride;
+            overrides.Clear();
+            if (material != null)
+                overrides[animation.skeletonDataAsset.atlasAssets[0].PrimaryMaterial] = material;
+        }
+
+        internal void SetVisible(bool visible)
+        {
+            if (meshRenderer == null) meshRenderer = animation.GetComponent<MeshRenderer>();
+            meshRenderer.enabled = visible;
+        }
+
         public void ResetVisual()
         {
             CancelAttack();

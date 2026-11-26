@@ -789,7 +789,7 @@ namespace MegaTanks
         {
             if (campTent == null || !campTent.gameObject.activeSelf) ShowCamp();
             // A tank configured with zero combat speed must still reach the event.
-            float speed = TankAdvanceSpeed > 0 ? 3f * TankAdvanceSpeed : 1f;
+            float speed = TankAdvanceSpeed > 0 ? 2f * TankAdvanceSpeed : 1f;
             float distance = Mathf.Max(0, campStopX - Artwork.transform.position.x);
             float timeToStop = distance / speed;
             bool arrived = seconds >= timeToStop;
