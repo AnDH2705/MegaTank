@@ -83,20 +83,23 @@ namespace MegaTanks.Editor
         }
         static void Inventory(UIView v,Transform panel,bool crew)
         {
-            var inv=v.Get<ScrollRect>("Inventory");Move(inv,panel,550,57,213,337);inv.horizontal=false;
+            var inv=v.Get<ScrollRect>("Inventory");Move(inv,panel,558,57,204,337);inv.horizontal=false;
             foreach(var image in inv.GetComponentsInChildren<Image>(true))if(!image.transform.IsChildOf(inv.content))image.color=Color.clear;
-            var grid=inv.content.GetComponent<GridLayoutGroup>();grid.constraint=GridLayoutGroup.Constraint.FixedColumnCount;grid.constraintCount=3;grid.cellSize=new Vector2(67,crew?70:78);grid.spacing=new Vector2(1,crew?4:5);grid.padding=new RectOffset(2,2,2,2);
+            var grid=inv.content.GetComponent<GridLayoutGroup>();grid.constraint=GridLayoutGroup.Constraint.FixedColumnCount;grid.constraintCount=3;grid.cellSize=new Vector2(64,crew?70:78);grid.spacing=new Vector2(3,crew?4:5);grid.padding=new RectOffset(3,3,3,3);
+            var viewport=inv.viewport;
+            if(viewport!=inv.transform){viewport.anchorMin=Vector2.zero;viewport.anchorMax=Vector2.one;viewport.offsetMin=viewport.offsetMax=Vector2.zero;}
+            var clip=viewport.GetComponent<RectMask2D>()??viewport.gameObject.AddComponent<RectMask2D>();clip.enabled=true;
             inv.content.anchorMin=new Vector2(0,1);inv.content.anchorMax=Vector2.one;inv.content.pivot=new Vector2(.5f,1);inv.content.anchoredPosition=Vector2.zero;inv.content.sizeDelta=new Vector2(0,0);
             var fitter=inv.content.GetComponent<ContentSizeFitter>()??inv.content.gameObject.AddComponent<ContentSizeFitter>();fitter.verticalFit=ContentSizeFitter.FitMode.PreferredSize;fitter.horizontalFit=ContentSizeFitter.FitMode.Unconstrained;
             foreach(Transform child in inv.content)child.gameObject.SetActive(false);
             var empty=v.Get<Text>("Empty Inventory");Move(empty,panel,560,190,190,80);Type(empty,12,Color.white);
-            if(crew){Button(v,panel,"Inventory Filter","layers/button_disabled",540,402,131,25,9,true);Button(v,panel,"Sort Direction","layers/button_disabled",678,402,79,25,9,true);}
+            if(crew){Button(v,panel,"Inventory Filter","layers/button_disabled",558,402,124,25,9,true);Button(v,panel,"Sort Direction","layers/button_disabled",686,402,76,25,9,true);}
             else
             {
-                Button(v,panel,"Inventory Filter","layers/button_disabled",540,400,91,27,9,true);Button(v,panel,"Inventory Sort","layers/button_disabled",635,400,80,27,9,true);Button(v,panel,"Sort Direction","layers/button_disabled",719,400,43,27,9,true);
-                var filter=v.Get<RectTransform>("Filter List");Move(filter,panel,548,219,210,174);foreach(Transform child in filter)child.gameObject.SetActive(false);
+                Button(v,panel,"Inventory Filter","layers/button_disabled",558,400,89,27,9,true);Button(v,panel,"Inventory Sort","layers/button_disabled",651,400,64,27,9,true);Button(v,panel,"Sort Direction","layers/button_disabled",719,400,43,27,9,true);
+                var filter=v.Get<RectTransform>("Filter List");Move(filter,panel,558,219,204,174);foreach(Transform child in filter)child.gameObject.SetActive(false);
                 var bg=filter.GetComponent<Image>();if(bg!=null){bg.sprite=S("slices/panel_detail");bg.type=UnityEngine.UI.Image.Type.Sliced;bg.color=Color.white;}
-                string[] options={"All","Cannon","MachineGun","Mortar","Armor","Accessory"};for(int i=0;i<options.Length;i++)Button(v,filter,"Filter List/Filter "+options[i],"layers/button_disabled",5,4+28*i,200,26,11,true);filter.gameObject.SetActive(false);
+                string[] options={"All","Cannon","MachineGun","Mortar","Armor","Accessory"};for(int i=0;i<options.Length;i++)Button(v,filter,"Filter List/Filter "+options[i],"layers/button_disabled",5,4+28*i,194,26,11,true);filter.gameObject.SetActive(false);
             }
         }
         static void Build(bool crew)
@@ -150,7 +153,7 @@ namespace MegaTanks.Editor
             for(int i=0;i<6;i++)
             {
                 string key=art.slotKeys[i];var b=v.Get<Button>(key);Move(b,p,points[i,0],points[i,1],63,63);foreach(Transform child in b.transform)child.gameObject.SetActive(false);b.image.color=Color.clear;
-                Image(b.transform,"Slot Frame","layers/portrait_empty",0,0,63,63);
+                Image(b.transform,"Slot Frame","layers/portrait_empty",0,0,63,63).color=Color.clear;
                 var icon=v.Get<Image>(key+"/Equipped Item Icon");Move(icon,b.transform,5,5,53,43);icon.preserveAspect=true;icon.color=Color.white;icon.transform.SetAsLastSibling();
                 var empty=v.Get<Image>(key+"/Empty Slot Icon");Move(empty,b.transform,15,8,33,33);empty.preserveAspect=true;empty.transform.SetAsLastSibling();
                 Image(b.transform,"Selection","decor/selection_outline",-2,-2,67,67).gameObject.SetActive(false);var plate=Image(b.transform,"Role Plate","slices/slot_label_normal",0,50,63,14,true);art.slotLabels[i]=Label(plate.transform,"Name","",0,0,63,14,8);
@@ -165,7 +168,7 @@ namespace MegaTanks.Editor
             for(int i=0;i<5;i++)
             {
                 string key="Tank Preview/Tank Slot "+i;var b=v.Get<Button>(key);Move(b,preview,points[i,0],points[i,1],65,65);foreach(Transform child in b.transform)child.gameObject.SetActive(false);b.image.color=Color.clear;
-                Image(b.transform,"Slot Frame","layers/portrait_normal",0,0,65,65);var portrait=v.Get<Image>(key+"/Portrait");Move(portrait,b.transform,4,4,57,57);portrait.preserveAspect=false;portrait.transform.SetAsLastSibling();
+                Image(b.transform,"Slot Frame","layers/portrait_normal",0,0,65,65).color=Color.clear;var portrait=v.Get<Image>(key+"/Portrait");Move(portrait,b.transform,4,4,57,57);portrait.preserveAspect=false;portrait.transform.SetAsLastSibling();
                 var empty=v.Get<Text>(key+"/Empty");Move(empty,b.transform,4,4,57,57);Type(empty,25,Color.white);empty.text="+";empty.transform.SetAsLastSibling();
                 Image(b.transform,"Selection","decor/selection_outline",-2,-2,69,69).gameObject.SetActive(false);var plate=Image(b.transform,"Role Plate","slices/slot_label_normal",0,56,65,14,true);art.slotLabels[i]=Label(plate.transform,"Name",names[i],0,0,65,14,11);
                 var stars=v.Get<UIStarStrip>(key+"/Stars");Move(stars,b.transform,7,51,51,5);stars.transform.SetAsLastSibling();
@@ -199,6 +202,7 @@ namespace MegaTanks.Editor
                 {
                     foreach(var text in popup.GetComponentsInChildren<Text>(true))if(text.font==font)text.resizeTextForBestFit=false;
                     var view=popup.GetComponent<UIView>();view.Get<Text>("Detail Name").alignment=TextAnchor.MiddleLeft;
+                    TransparentTankSlots(view);FitInventory(view);if(view.GetComponent<LoadoutArtPresentation>().crew)FitCrewStations(view);
                     var presentation=popup.GetComponent<LoadoutArtPresentation>();if(!presentation.crew)Place(presentation.summary.rectTransform,338,308,202,25);
                     PrefabUtility.SaveAsPrefabAsset(popup,UI+name+".prefab");
                 }
@@ -207,8 +211,141 @@ namespace MegaTanks.Editor
             var root=PrefabUtility.LoadPrefabContents(UI+"MegaTanksCanvas.prefab");
             try{var layout=root.GetComponent<UICanvasLayout>();layout.crewInventoryItem=AssetDatabase.LoadAssetAtPath<UIView>(UI+"CrewRosterItem.prefab");layout.equipmentInventoryItem=AssetDatabase.LoadAssetAtPath<UIView>(UI+"EquipmentRosterItem.prefab");PrefabUtility.SaveAsPrefabAsset(root,UI+"MegaTanksCanvas.prefab");}
             finally{PrefabUtility.UnloadPrefabContents(root);}
-            AssetDatabase.SaveAssets();Debug.Log("LOADOUT_ARTWORK_APPLIED");
+            SquareInventoryCards();AssetDatabase.SaveAssets();Debug.Log("LOADOUT_ARTWORK_APPLIED");
         }
         public static void ApplyAndCheck(){Apply();LoadoutArtworkAudit.Run();}
+        static void FitCrewStations(UIView view)
+        {
+            // Feet rest on the roof, middle deck, and lower hull floor rather than portrait cards.
+            float[,] positions={{205,158,53,72},{112,248,54,66},{173,79,49,66},{111,156,53,74},{207,246,53,68}};
+            for(int i=0;i<5;i++)
+            {
+                string key="Tank Preview/Tank Slot "+i;var button=view.Get<Button>(key);float w=positions[i,2],h=positions[i,3];
+                Place((RectTransform)button.transform,positions[i,0],positions[i,1],w,h);
+                var sprite=view.Get<Image>(key+"/Portrait");Place(sprite.rectTransform,1,0,w-2,h-8);sprite.preserveAspect=true;
+                Place(view.Get<Text>(key+"/Empty").rectTransform,0,0,w,h-8);
+                Place(button.transform.Find("Slot Frame").GetComponent<RectTransform>(),0,0,w,h);
+                Place(button.transform.Find("Selection").GetComponent<RectTransform>(),-1,-1,w+2,h+2);
+                var plate=button.transform.Find("Role Plate");Place(plate.GetComponent<RectTransform>(),0,h-9,w,9);
+                var label=plate.Find("Name").GetComponent<Text>();Place(label.rectTransform,0,0,w,9);label.fontSize=6;
+                Place((RectTransform)view.Get<UIStarStrip>(key+"/Stars").transform,5,h-15,w-10,5);
+            }
+        }
+        [MenuItem("MegaTanks/UI/Apply Equipped Crew Sprites")]
+        public static void ApplyCrewStationSprites()
+        {
+            AssetDatabase.Refresh();
+            foreach(string name in new[]{"Milo","Pip","Ember","Mochi","Olive"})
+            {
+                string path=Art+"Equipped/"+name+"-equipped.png";var importer=(TextureImporter)AssetImporter.GetAtPath(path);
+                importer.textureType=TextureImporterType.Sprite;importer.spriteImportMode=SpriteImportMode.Multiple;importer.alphaIsTransparency=true;importer.mipmapEnabled=false;importer.maxTextureSize=512;importer.textureCompression=TextureImporterCompression.Uncompressed;
+                // Trim only the imported sprite rectangle; preserve the original generated PNG and alpha.
+                var texture=new Texture2D(2,2);texture.LoadImage(File.ReadAllBytes(path));var pixels=texture.GetPixels32();int left=texture.width,right=0,bottom=texture.height,top=0;
+                for(int y=0;y<texture.height;y++)for(int x=0;x<texture.width;x++)if(pixels[y*texture.width+x].a>16){left=Math.Min(left,x);right=Math.Max(right,x);bottom=Math.Min(bottom,y);top=Math.Max(top,y);}
+                left=Math.Max(0,left-3);bottom=Math.Max(0,bottom-3);right=Math.Min(texture.width-1,right+3);top=Math.Min(texture.height-1,top+3);
+                importer.spritesheet=new[]{new SpriteMetaData{name=name+" Equipped",rect=new Rect(left,bottom,right-left+1,top-bottom+1),alignment=(int)SpriteAlignment.BottomCenter,pivot=new Vector2(.5f,0)}};Object.DestroyImmediate(texture);
+                var settings=new TextureImporterSettings();importer.ReadTextureSettings(settings);settings.spriteMeshType=SpriteMeshType.FullRect;importer.SetTextureSettings(settings);importer.SaveAndReimport();
+                var crew=AssetDatabase.LoadAssetAtPath<CrewDefinition>("Assets/MegaTanks/Data/Crew/"+name+".asset");crew.equippedSprite=AssetDatabase.LoadAllAssetsAtPath(path).OfType<Sprite>().Single();EditorUtility.SetDirty(crew);
+            }
+            string prefab=UI+"Crew.prefab";var root=PrefabUtility.LoadPrefabContents(prefab);
+            try{FitCrewStations(root.GetComponent<UIView>());PrefabUtility.SaveAsPrefabAsset(root,prefab);}
+            finally{PrefabUtility.UnloadPrefabContents(root);}
+            AssetDatabase.SaveAssets();Debug.Log("CREW_STATION_SPRITES_APPLIED");
+        }
+        public static void ApplyCrewStationSpritesAndCheck(){ApplyCrewStationSprites();LoadoutArtworkAudit.Run();}
+        static void FitInventory(UIView view)
+        {
+            var art=view.GetComponent<LoadoutArtPresentation>();var panel=view.transform.Find("Artwork Layout");
+            var background=panel.Find("Inventory Panel").GetComponent<Image>();
+            var skew=background.GetComponent<CrewPanelSkew>();if(skew!=null)Object.DestroyImmediate(skew);
+            Place(background.rectTransform,550,0,220,436);background.sprite=null;background.color=new Color(.25f,.28f,.35f,1);
+            Place(panel.Find("Roster Heading").GetComponent<RectTransform>(),558,16,204,27);
+            Inventory(view,panel,art.crew);
+        }
+        static void SquareInventoryCards()
+        {
+            foreach(bool crew in new[]{true,false})
+            {
+                string path=UI+(crew?"CrewRosterItem":"EquipmentRosterItem")+".prefab";var root=PrefabUtility.LoadPrefabContents(path);
+                try
+                {
+                    var view=root.GetComponent<UIView>();float height=crew?70:78;
+                    Place((RectTransform)root.transform,0,0,64,height);
+                    var bg=view.Get<Image>("$root");bg.sprite=null;bg.color=new Color(.13f,.16f,.22f,1);
+                    Place(view.Get<Image>("Icon").rectTransform,4,4,56,crew?56:43);
+                    var name=view.Get<Text>("Item Name");Place(name.rectTransform,3,47,58,22);name.horizontalOverflow=HorizontalWrapMode.Wrap;name.fontSize=7;
+                    Place(view.Get<Text>("Progression Level").rectTransform,4,crew?52:2,40,11);
+                    Place((RectTransform)view.Get<UIStarStrip>("Stars").transform,6,crew?63:69,52,6);
+                    Place(view.Get<Image>("Equipped Indicator").rectTransform,45,crew?45:30,15,15);
+                    var selected=root.transform.Find("Selection").GetComponent<Image>();Place(selected.rectTransform,1,1,62,height-2);selected.sprite=null;selected.color=Color.clear;
+                    AddBorder(selected,new Color(.25f,1,.05f,1),1.5f);
+                    PrefabUtility.SaveAsPrefabAsset(root,path);
+                }
+                finally{PrefabUtility.UnloadPrefabContents(root);}
+            }
+        }
+        [MenuItem("MegaTanks/UI/Fit Loadout Inventories")]
+        public static void ApplyInventoryLayout()
+        {
+            MakeFont();SquareInventoryCards();
+            foreach(string name in new[]{"Crew","Equipment"})
+            {
+                string path=UI+name+".prefab";var root=PrefabUtility.LoadPrefabContents(path);
+                try{FitInventory(root.GetComponent<UIView>());PrefabUtility.SaveAsPrefabAsset(root,path);}
+                finally{PrefabUtility.UnloadPrefabContents(root);}
+            }
+            AssetDatabase.SaveAssets();Debug.Log("LOADOUT_INVENTORIES_FITTED");
+        }
+        public static void ApplyInventoryLayoutAndCheck(){ApplyInventoryLayout();LoadoutArtworkAudit.Run();}
+        static void AddBorder(Image frame,Color color,float thickness)
+        {
+            foreach(string edge in new[]{"Top","Bottom","Left","Right"})
+            {
+                var existing=frame.transform.Find("Border "+edge);
+                var border=existing!=null?existing.GetComponent<Image>():Image(frame.transform,"Border "+edge,"",0,0,1,1);
+                border.sprite=null;border.color=color;border.raycastTarget=false;
+                var rect=border.rectTransform;rect.pivot=new Vector2(.5f,.5f);
+                bool horizontal=edge=="Top"||edge=="Bottom";
+                rect.anchorMin=horizontal?new Vector2(0,edge=="Top"?1:0):new Vector2(edge=="Left"?0:1,0);
+                rect.anchorMax=horizontal?new Vector2(1,edge=="Top"?1:0):new Vector2(edge=="Left"?0:1,1);
+                rect.sizeDelta=horizontal?new Vector2(0,thickness):new Vector2(thickness,0);rect.anchoredPosition=Vector2.zero;
+            }
+        }
+        static void TransparentTankSlots(UIView view)
+        {
+            var art=view.GetComponent<LoadoutArtPresentation>();
+            string[] keys=art.crew?Enumerable.Range(0,5).Select(i=>"Tank Preview/Tank Slot "+i).ToArray():art.slotKeys;
+            foreach(string key in keys)
+            {
+                var button=view.Get<Button>(key);
+                // The invisible button retains the full clickable slot rectangle.
+                button.image.color=Color.clear;button.image.raycastTarget=true;
+                var frame=button.transform.Find("Slot Frame").GetComponent<Image>();frame.color=Color.clear;
+                // Keep the tank visible through the slot, with a neutral rim beneath selection highlights.
+                foreach(string edge in new[]{"Top","Bottom","Left","Right"})
+                {
+                    var existing=frame.transform.Find("Border "+edge);
+                    var border=existing!=null?existing.GetComponent<Image>():Image(frame.transform,"Border "+edge,"",0,0,1,1);
+                    border.sprite=null;border.color=new Color(.78f,.84f,.82f,.95f);border.raycastTarget=false;
+                    var rect=border.rectTransform;rect.pivot=new Vector2(.5f,.5f);
+                    bool horizontal=edge=="Top"||edge=="Bottom";
+                    rect.anchorMin=horizontal?new Vector2(0,edge=="Top"?1:0):new Vector2(edge=="Left"?0:1,0);
+                    rect.anchorMax=horizontal?new Vector2(1,edge=="Top"?1:0):new Vector2(edge=="Left"?0:1,1);
+                    rect.sizeDelta=horizontal?new Vector2(0,1):new Vector2(1,0);rect.anchoredPosition=Vector2.zero;
+                }
+            }
+        }
+        [MenuItem("MegaTanks/UI/Make Tank Slot Backgrounds Transparent")]
+        public static void ApplyTankSlotTransparency()
+        {
+            foreach(string name in new[]{"Crew","Equipment"})
+            {
+                string path=UI+name+".prefab";var root=PrefabUtility.LoadPrefabContents(path);
+                try{TransparentTankSlots(root.GetComponent<UIView>());PrefabUtility.SaveAsPrefabAsset(root,path);}
+                finally{PrefabUtility.UnloadPrefabContents(root);}
+            }
+            AssetDatabase.SaveAssets();Debug.Log("TANK_SLOT_BACKGROUNDS_TRANSPARENT");
+        }
+        public static void ApplyTankSlotTransparencyAndCheck(){ApplyTankSlotTransparency();LoadoutArtworkAudit.Run();}
     }
 }

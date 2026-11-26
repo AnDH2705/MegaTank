@@ -14,6 +14,7 @@ namespace MegaTanks
         readonly List<GameObject> pool=new List<GameObject>();
         public int VisibleStatCount{get;private set;}
         public int MissingIconCount{get;private set;}
+        public float ContentHeight{get;private set;}
         public struct Row
         {
             public string icon,label,value;
@@ -58,7 +59,42 @@ namespace MegaTanks
                     rows.Add(new Row(null,text,null));
                 }
             }
-            return rows;
+            return LevelAffectedRows(selected,rows);
+        }
+        static List<Row> LevelAffectedRows(EquipmentDefinition selected,List<Row> rows)
+        {
+            bool Changes(Row row)
+            {
+                if(row.icon==null||row.label=="PER LEVEL")return false;
+                // Weapons use the shared +1 damage-per-level rule. All their other
+                // authored stats are fixed, even if crew/accessories modify them.
+                if(selected is WeaponDefinition)return row.label=="BASE DAMAGE"||row.label=="DAMAGE";
+                if(selected is ArmorDefinition armor)return armor.hpPerLevel>0&&row.icon=="hp";
+                if(selected is AccessoryDefinition accessory&&accessory.bonusPerLevel>0)
+                {
+                    switch(accessory.bonusType)
+                    {
+                        case AccessoryBonusType.Accuracy:return row.icon=="accuracy";
+                        case AccessoryBonusType.Evasion:return row.icon=="evasion";
+                        default:return row.icon=="reload_speed"||row.icon=="reload_time";
+                    }
+                }
+                return false;
+            }
+            var result=new List<Row>();Row? section=null;
+            foreach(var row in rows)
+            {
+                if(row.icon==null)
+                {
+                    // Keep comparison/group headings only when the group has a visible stat.
+                    section=row.label.StartsWith("EQUIPPED ",StringComparison.Ordinal)||row.label.StartsWith("TANK TOTALS",StringComparison.Ordinal)||row.label=="ARMOR BONUSES"?(Row?)row:null;
+                    continue;
+                }
+                if(!Changes(row))continue;
+                if(section.HasValue){result.Add(section.Value);section=null;}
+                result.Add(row);
+            }
+            return result;
         }
         static string Id(string prefix,EquipmentDefinition selected)
         {
@@ -99,6 +135,13 @@ namespace MegaTanks
             var icon=new GameObject("Icon",typeof(RectTransform),typeof(CanvasRenderer),typeof(Image)).GetComponent<Image>();icon.transform.SetParent(root.transform,false);icon.preserveAspect=true;icon.raycastTarget=false;
             Text(root.transform,"Label",7);Text(root.transform,"Value",9);return root;
         }
+        public static string ComparisonValue(string value)
+        {
+            string text=LoadoutArtPresentation.Ascii(value??"");int arrow=text.IndexOf(" > ",StringComparison.Ordinal);
+            if(arrow<0)return text;
+            int start=arrow+3,end=text.IndexOf(" (",start,StringComparison.Ordinal);if(end<0)end=text.Length;
+            return text.Substring(0,start)+"<color=#60FF60>"+text.Substring(start,end-start)+"</color>"+text.Substring(end);
+        }
         public float Draw(EquipmentDefinition selected,string source)
         {
             var rows=Parse(selected,source);VisibleStatCount=MissingIconCount=0;float y=0,width=((RectTransform)transform).rect.width;
@@ -107,7 +150,7 @@ namespace MegaTanks
             {
                 if(i==pool.Count)pool.Add(CreateRow());var root=pool[i];root.SetActive(true);var row=rows[i];root.name=row.icon!=null?"Stat "+row.label:"Section "+row.label;
                 var icon=root.transform.Find("Icon").GetComponent<Image>();var label=root.transform.Find("Label").GetComponent<Text>();var value=root.transform.Find("Value").GetComponent<Text>();
-                label.text=LoadoutArtPresentation.Ascii(row.label);value.text=LoadoutArtPresentation.Ascii(row.value??"");bool stat=row.icon!=null;icon.gameObject.SetActive(stat);value.gameObject.SetActive(stat);
+                label.text=LoadoutArtPresentation.Ascii(row.label);value.supportRichText=true;value.text=ComparisonValue(row.value);bool stat=row.icon!=null;icon.gameObject.SetActive(stat);value.gameObject.SetActive(stat);
                 float height;
                 if(stat)
                 {
@@ -118,7 +161,7 @@ namespace MegaTanks
                 Place((RectTransform)root.transform,0,y,width,height);y+=height+3;
             }
             for(int i=rows.Count;i<pool.Count;i++)pool[i].SetActive(false);
-            ((RectTransform)transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,Mathf.Max(153,y));return y;
+            ContentHeight=y;((RectTransform)transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,Mathf.Max(153,y));return y;
         }
     }
 }

@@ -34,6 +34,8 @@ namespace MegaTanks
         [HideInInspector] public string specialty;
         [TextArea] public string description;
         public Sprite portrait;
+        [Tooltip("Transparent full-body sprite used at the equipped tank station. Portrait remains the roster/detail artwork.")]
+        public Sprite equippedSprite;
         public CommandoArtwork commandoPrefab;
         public CrewStats stats=new CrewStats();
         public string RoleName=>RoleLabel(role);

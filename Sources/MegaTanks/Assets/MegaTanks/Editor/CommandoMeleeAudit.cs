@@ -213,12 +213,40 @@ namespace MegaTanks.Editor
             gunner.Tick(1);
             gunner.Tick(1);
             Require(!gunner.Active, "Recovered gunner stays aboard with cannon ammo available");
+            CheckMovingSeat(game, gunner);
             while (game.MainGun.TryConsumeRound()) { }
             gunner.Tick(0);
             gunner.Tick(1);
             Require(gunner.Active, "Recovered gunner jumps back into melee when the cannon is empty");
+            Require(gunner.Artwork.Animation.PhysicsMovementRelativeTo == null, "Deployed crew use world-space animation physics");
             Require(gunner.HealthBar.gameObject.activeInHierarchy, "Gunner's HP bar returns on redeployment");
             Debug.Log("SUPPORT_CREW_REGENERATION_PASS: half-rate onboard recovery, knockout, and ammo-gated redeployment.");
+        }
+
+        static void CheckMovingSeat(BattleGame game, CommandoUnit gunner)
+        {
+            var tank = game.Artwork.transform;
+            var hull = game.HullHitbox.transform;
+            var start = tank.position;
+            var localSeat = hull.InverseTransformPoint(gunner.transform.position);
+            Require(gunner.Artwork.Animation.PhysicsMovementRelativeTo == hull, "Seated crew use hull-relative animation physics");
+            try
+            {
+                // Multiple render frames can move the tank between physics updates.
+                for (int step = 1; step <= 3; step++)
+                {
+                    tank.position = start + new Vector3(.17f * step, .01f * step, 0);
+                    gunner.Tick(.1f);
+                    Require(Vector3.Distance(hull.InverseTransformPoint(gunner.transform.position), localSeat) < .001f,
+                        "The crew sprite must hold its seat offset as the tank moves between physics updates");
+                }
+            }
+            finally
+            {
+                tank.position = start;
+                gunner.Tick(0);
+                Physics2D.SyncTransforms();
+            }
         }
 
         static void Finish(int code)

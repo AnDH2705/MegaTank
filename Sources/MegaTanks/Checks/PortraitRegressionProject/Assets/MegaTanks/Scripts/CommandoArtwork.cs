@@ -21,6 +21,12 @@ namespace MegaTanks
             animation.AnimationState.SetAnimation(0,"idle",true);Advance(0);
         }
         public void Face(float direction){if(Mathf.Abs(direction)>.0001f)animation.Skeleton.ScaleX=direction<0?-1:1;}
+        internal void SetPhysicsReference(Transform reference)
+        {
+            if (animation.PhysicsMovementRelativeTo != reference)
+                animation.PhysicsMovementRelativeTo = reference;
+        }
+
         public void Locomotion(bool moving)
         {
             var current=animation.AnimationState.GetCurrent(0);

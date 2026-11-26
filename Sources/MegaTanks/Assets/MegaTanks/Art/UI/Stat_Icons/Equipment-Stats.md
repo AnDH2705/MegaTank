@@ -16,3 +16,5 @@ Generated with built-in image_gen using the original icons as style references:
 Damage and damage bonus share ATK; the damage-type row also uses the attack symbol. Reload base/battle time share the stopwatch, while reload-speed percentage has its own icon. Armor uses Defense, hull bonuses use HP, and speed uses Move Speed. Every stat retains a text label and units so icon recognition is optional.
 
 Generated originals are transparent 1254 x 1254 RGBA PNGs, imported into Unity at a maximum of 512 pixels. Existing source icons are preserved. New PNGs are also saved in the supplied Art/Asset/UI/Stat_Icons folder. Exact prompts and generated source paths are recorded in generated-equipment-icons.json.
+
+Equipment visibility follows the selected item level gains: weapons show damage; armor shows HP only when hpPerLevel is positive; accessories show their bonus and derived affected stats only when bonusPerLevel is positive. Separate PER LEVEL rows and the duplicate upgrade summary are hidden. Empty groups are removed, and items without level gains show a no-stats-change caption.

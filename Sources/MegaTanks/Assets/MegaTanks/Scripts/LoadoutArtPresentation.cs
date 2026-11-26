@@ -52,9 +52,9 @@ namespace MegaTanks
             if(equipmentStats!=null)contentHeight=equipmentStats.Draw(selected,statsSource.text);
             else{contentHeight=statsText.preferredHeight+8;statsText.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,Mathf.Max(statsScroll.viewport.rect.height,contentHeight));}
             statsCaption.text=contentHeight>statsScroll.viewport.rect.height?"STATS & COMPARISON - SCROLL":"STATS & COMPARISON";
-            string source=view.Get<Text>("Progression Summary").text;int split=source.IndexOf('\n');
-            summary.text=selected!=null?Ascii(split>=0?source.Substring(split+1):source).Replace("BASE DAMAGE","DMG").Replace("BONUS HP","HP").Replace("   |   Next level "," | LV+ ").Replace("   |   Next star ","\nSTAR+ "):"";
-            if(selected is AccessoryDefinition accessory){var state=progression.Get(selected);summary.text=accessory.StatLabel+" +"+accessory.Bonus(state.Level).ToString("0.##")+"%\nNEXT LV +"+accessory.Bonus(state.Level+1).ToString("0.##")+"%";}
+            // The affected stat rows already contain the relevant values/comparisons.
+            summary.text="";summary.gameObject.SetActive(false);
+            if(selected!=null&&equipmentStats!=null&&equipmentStats.VisibleStatCount==0)statsCaption.text="NO STATS CHANGE WITH LEVEL";
             for(int i=0;i<slotKeys.Length;i++)slotLabels[i].text=view.Get<Text>(slotKeys[i]+"/Slot Description").text.Split('\n')[0].ToUpperInvariant();
             var tank=view.Get<Text>("Tank Selection/Label");tank.text=tank.text.Replace("  ›","");
             var tankStats=view.Get<Text>("Tank Stats");tankStats.text=Ascii(tankStats.text);

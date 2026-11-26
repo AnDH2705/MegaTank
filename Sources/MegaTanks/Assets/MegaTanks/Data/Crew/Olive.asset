@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fb7123e62a298044b48e644c5b79c86, type: 3}
   m_Name: Olive
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
   id: olive
   baseDamage: 0
   displayName: Olive
@@ -19,6 +19,7 @@ MonoBehaviour:
   specialty: Commando
   description: Olive is happiest with a toolbox nearby and a problem to solve.
   portrait: {fileID: 21300000, guid: 7883826aa26d6f342b8f54e31d1cea09, type: 3}
+  equippedSprite: {fileID: 8995052769388935962, guid: 0915f20b023930040970bfc91661c407, type: 3}
   commandoPrefab: {fileID: 6585329379900374424, guid: cccfa1d8381c19e438d04e9aab85f804, type: 3}
   stats:
     accuracy:

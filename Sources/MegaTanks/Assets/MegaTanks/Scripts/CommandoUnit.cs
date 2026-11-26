@@ -53,6 +53,13 @@ namespace MegaTanks
             if(visual!=null)Stow();
         }
         void Update()=>Tick(Time.deltaTime);
+        void LateUpdate()
+        {
+            // Match the hull after the tank's suspension animation has updated.
+            if (motion == CrewMotion.Aboard && visual != null && visual.activeSelf && !Active)
+                transform.position = SeatPoint();
+        }
+
         public void Tick(float deltaTime)
         {
             if(game==null)return;
@@ -102,6 +109,7 @@ namespace MegaTanks
                 regenerationTime = 0;
                 transform.position = ExitPoint();
                 ShowVisual();
+                artwork?.SetPhysicsReference(null);
                 artwork?.ResetVisual();
                 SetTargetable(true);
             }
@@ -211,7 +219,6 @@ namespace MegaTanks
 
         Vector3 SeatPoint()
         {
-            var hull = game.HullHitbox.GetComponent<Collider2D>().bounds;
             Vector2 seat;
             switch (Role)
             {
@@ -221,12 +228,12 @@ namespace MegaTanks
                 case CrewRole.Driver: seat = new Vector2(.34f, .16f); break;
                 default: seat = new Vector2(.85f, .26f); break;
             }
-            return new Vector3(Mathf.Lerp(hull.min.x, hull.max.x, seat.x), Mathf.Lerp(hull.min.y, hull.max.y, seat.y), 0);
+            return game.HullHitbox.AnchorPoint(seat);
         }
 
         Vector3 ExitPoint()
         {
-            float front = game.HullHitbox.GetComponent<Collider2D>().bounds.max.x;
+            float front = game.HullHitbox.AnchorPoint(new Vector2(1f, .5f)).x;
             float spacing = Role == CrewRole.Commando ? .6f : .9f + .19f * (int)Role;
             return new Vector3(front + spacing, BattleGame.GroundHeight + .55f, 0);
         }
@@ -235,6 +242,8 @@ namespace MegaTanks
         {
             transform.position = SeatPoint();
             ShowVisual();
+            // Seated animation physics follow motion relative to the hull.
+            artwork?.SetPhysicsReference(game.HullHitbox.transform);
             artwork?.Face(1);
             if (!IsUnconscious) artwork?.Sit();
             artwork?.Advance(deltaTime);
@@ -268,6 +277,7 @@ namespace MegaTanks
             jumpStart = transform.position;
             jumpTime = 0;
             Velocity = Vector2.zero;
+            artwork?.SetPhysicsReference(null);
             artwork?.CancelAttack();
             artwork?.Locomotion(true);
             SetTargetable(false);

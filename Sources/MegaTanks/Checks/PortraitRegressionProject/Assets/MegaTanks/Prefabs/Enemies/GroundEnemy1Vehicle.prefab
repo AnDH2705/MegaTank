@@ -370,10 +370,12 @@ MonoBehaviour:
     advanceInsideRangeGrow: {x: 0, y: 0}
     score: 100
     scoreGrow: 0
-    baseScraps: 30
+    baseScraps: 20
     baseScrapsGrow: 0
     color: {r: 0.96, g: 0.37, b: 0.4, a: 1}
     artworkPrefab: {fileID: 8415482458435174311}
+    commandoPrefab: {fileID: 0}
+    melee: 0
     artworkWidth: 2.2
     scale: 1
     weapon:

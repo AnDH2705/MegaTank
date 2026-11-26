@@ -30,7 +30,7 @@ namespace MegaTanks
                 var image=v.Get<Image>(key+"/Portrait");image.sprite=occupied?member.portrait:null;image.gameObject.SetActive(occupied);
                 bool matching=assigned.CanEquip(crewSelected,i);
                 Active(v,key+"/Empty",!occupied);HighlightCrewStation(v.Get<Outline>(key),crewStation==i,matching);
-                var onTank=v.Get<Image>(marker+"/Portrait");onTank.sprite=occupied?member.portrait:null;onTank.gameObject.SetActive(occupied);
+                var onTank=v.Get<Image>(marker+"/Portrait");onTank.sprite=occupied?(art!=null&&member.equippedSprite!=null?member.equippedSprite:member.portrait):null;onTank.gameObject.SetActive(occupied);
                 Active(v,marker+"/Empty",!occupied);Text(v,marker+"/Station Number",(i+1).ToString());HighlightCrewStation(v.Get<Outline>(marker),crewStation==i,matching);
             }
             string roleFilter=crewStation==(int)CrewRole.WeaponSpecialist?"SPECIALIST":assigned.StationName(crewStation).ToUpperInvariant();

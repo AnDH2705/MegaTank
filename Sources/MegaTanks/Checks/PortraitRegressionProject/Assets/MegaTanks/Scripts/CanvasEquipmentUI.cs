@@ -83,7 +83,7 @@ namespace MegaTanks
             if(selected is GunDefinition gun){combat=gun.stats;damage=gun.stats.damage;range=gun.stats.range;reload=gun.stats.reloadTime;ammo=gun.stats.reserveCapacity;}
             if(selected is MortarDefinition mortar){combat=mortar.stats;damage=mortar.stats.damage;range=mortar.stats.range;reload=mortar.stats.reloadTime;ammo=mortar.stats.reserveCapacity;}
             if(combat!=null){damage=PreviewDamage(selected);combat=game.PreviewWeaponStats((WeaponDefinition)selected);}
-            if(combat!=null)detail="BASE "+damage.ToString("0.#")+" | BONUS "+combat.damageBonus.ToString("0.#")+"%\nHIT "+(combat.accuracy+game.AccuracyBonus).ToString("0.#")+"% | PEN "+combat.armorPenetration.ToString("0.#")+"%\nCRIT "+combat.criticalChance.ToString("0.#")+"% | CRIT DMG "+combat.criticalDamage.ToString("0.#")+"%\nRANGE "+range.ToString("0.#")+" | AMMO "+ammo+"\nBASE RELOAD TIME "+reload.ToString("0.##")+"s | SPEED "+(combat.reloadSpeed+game.ReloadSpeedBonus).ToString("0.##")+"%\nBATTLE RELOAD "+WeaponCombatStats.CalculateReloadTime(reload,combat.reloadSpeed+game.ReloadSpeedBonus).ToString("0.##")+"s | "+combat.damageType.ToString().ToUpperInvariant();
+            if(combat!=null)detail=WeaponLevelDetail(selected)+" | BONUS "+combat.damageBonus.ToString("0.#")+"%\nHIT "+(combat.accuracy+game.AccuracyBonus).ToString("0.#")+"% | PEN "+combat.armorPenetration.ToString("0.#")+"%\nCRIT "+combat.criticalChance.ToString("0.#")+"% | CRIT DMG "+combat.criticalDamage.ToString("0.#")+"%\nRANGE "+range.ToString("0.#")+" | AMMO "+ammo+"\nBASE RELOAD TIME "+reload.ToString("0.##")+"s | SPEED "+(combat.reloadSpeed+game.ReloadSpeedBonus).ToString("0.##")+"%\nBATTLE RELOAD "+WeaponCombatStats.CalculateReloadTime(reload,combat.reloadSpeed+game.ReloadSpeedBonus).ToString("0.##")+"s | "+combat.damageType.ToString().ToUpperInvariant();
             var current=game.Equipment.GetEquipped(selected.Type,accessoryIndex);
             if(combat!=null&&current!=null&&current!=selected)
             {
@@ -99,12 +99,18 @@ namespace MegaTanks
                     "\n"+CompareStat("RANGE",oldRange,range)+" | "+CompareStat("AMMO",oldAmmo,ammo)+
                     "\nHIT "+combat.accuracy.ToString("0.#")+"% · PEN "+combat.armorPenetration.ToString("0.#")+"%\nCRIT "+combat.criticalChance.ToString("0.#")+"% / +"+combat.criticalDamage.ToString("0.#")+"% · "+combat.damageType.ToString().ToUpperInvariant();
             }
+            if(combat!=null&&current!=null&&current!=selected)detail+="\n"+WeaponLevelDetail(selected);
             v.Get<Text>("Item Stats").fontSize=18;
             if(selected is ArmorDefinition plate) detail=ArmorDetail(plate);
             if(selected is AccessoryDefinition accessory)detail=AccessoryDetail(accessory);
             Text(v,"Item Stats",detail);var slot=activeSlot??selected.Type;bool compatible=selected.Type==slot;
             Text(v,"Equip Item/Label",compatible?"EQUIP":"INCOMPATIBLE");v.Get<Button>("Equip Item").interactable=compatible;
             Click(v,"Equip Item",()=>{if(game.Equipment.Equip(selected,slot,accessoryIndex))RefreshEquipmentArtwork();DrawEquipment();});
+        }
+        string WeaponLevelDetail(EquipmentDefinition weapon)
+        {
+            var state=game.Progression.Get(weapon);
+            return "BASE "+game.Progression.Damage(weapon).ToString("0.##")+" → "+ProgressionRules.Damage(PlayerProgression.BaseDamage(weapon),state.Level+1,state.Stars).ToString("0.##");
         }
         static string CompareStat(string label,float before,float after,string unit="")=>label+"  "+before.ToString("0.##")+unit+" → "+after.ToString("0.##")+unit+" ("+(after-before).ToString("+0.##;-0.##;0")+unit+")";
     }

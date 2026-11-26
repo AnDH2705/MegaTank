@@ -90,7 +90,8 @@ namespace MegaTanks
             else {if(secondary==armor)secondary=primary;primary=armor;}
             var next=game.CalculateTankStats(primary,secondary);
             current.evasion+=game.EvasionBonus;next.evasion+=game.EvasionBonus;
-            return "ARMOR BONUSES: HP +" + game.Progression.ArmorHP(armor).ToString("0.##") + " | ARMOR +" + armor.armor.ToString("0.##") +
+            var state=game.Progression.Get(armor);
+            return "ARMOR BONUSES: HP +" + armor.HitPoints(state.Level,state.Stars).ToString("0.##") + " → +" + armor.HitPoints(state.Level+1,state.Stars).ToString("0.##") + " | ARMOR +" + armor.armor.ToString("0.##") +
                 "\nSPEED +" + armor.speed.ToString("0.##") + " | EVASION +" + armor.evasion.ToString("0.##") + "%"+
                 "\nTANK TOTALS (equipped → selected)\n" + CompareStat("HP", current.maxHull, next.maxHull) + " | " +
                 CompareStat("ARM", current.armor, next.armor) + "\n" + CompareStat("SPD", current.advanceSpeed, next.advanceSpeed) + " | " + CompareStat("EVA", current.evasion, next.evasion, "%");
@@ -99,9 +100,9 @@ namespace MegaTanks
             game.Progression.Damage(weapon) : 0;
         string AccessoryDetail(AccessoryDefinition accessory)
         {
-            int level=game.Progression.Get(accessory).Level;
             int slot=activeSlot==EquipmentType.Accessory?accessoryIndex:0;
-            string header=accessory.StatLabel.ToUpperInvariant()+" +"+accessory.Bonus(level).ToString("0.##")+"% (Lv. "+level+")"+
+            int level=game.Progression.Get(accessory).Level;
+            string header=accessory.StatLabel.ToUpperInvariant()+" +"+accessory.Bonus(level).ToString("0.##")+"% → +"+accessory.Bonus(level+1).ToString("0.##")+"%"+
                 "\n+"+accessory.bonusPerLevel.ToString("0.##")+" percentage points per level";
             if(accessory.bonusType==AccessoryBonusType.Accuracy)
             {
@@ -120,7 +121,6 @@ namespace MegaTanks
             float after=game.Equipment.ReloadSpeedBonus(game.Progression,accessory,slot);
             string Times(string title,float seconds,float speed)=>title+" "+AccessoryDefinition.ReloadTime(seconds,speed+before).ToString("0.##")+"s → "+AccessoryDefinition.ReloadTime(seconds,speed+after).ToString("0.##")+"s";
             return header+
-                "\nBONUS RELOAD SPEED +"+before.ToString("0.##")+"% → +"+after.ToString("0.##")+"%"+
                 "\n"+Times("MG",game.Equipment.MachineGun.stats.reloadTime,game.PreviewWeaponStats(game.Equipment.MachineGun).reloadSpeed)+" | "+Times("CANNON",game.Equipment.Cannon.stats.reloadTime,game.PreviewWeaponStats(game.Equipment.Cannon).reloadSpeed)+
                 "\n"+Times("MORTAR",game.Equipment.Mortar.stats.reloadTime,game.PreviewWeaponStats(game.Equipment.Mortar).reloadSpeed);
         }

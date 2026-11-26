@@ -1194,13 +1194,13 @@ MonoBehaviour:
   shell: {fileID: 150714422047197812}
   dog:
     armor: 0
-    evasion: 0
+    evasion: 5
     criticalChanceReduction: 0
     criticalDamageReduction: 0
     id: TrojanMeleeDog
     kind: 0
-    baseHealth: 16
-    baseHealthGrow: 0.8
+    baseHealth: 40
+    baseHealthGrow: 2
     armorGrow: 0
     evasionGrow: 0
     criticalChanceReductionGrow: 0
