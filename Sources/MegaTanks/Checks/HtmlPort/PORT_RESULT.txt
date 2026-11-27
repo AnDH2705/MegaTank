@@ -1,0 +1,98 @@
+MEGATANK — KẾT QUẢ PORT VÀ KIỂM TRA UNITY
+Ngày 27/11/2026 | branch Thai-edit | Unity 2022.3.62f3
+Project: Sources/MegaTanks | scene: Assets/MegaTanks/Scenes/MainBattle.unity
+
+NGUỒN ĐỐI CHIẾU
+Art/Equipment-test.html, Design/UnityDesignHandoff/NOTE_*.txt,
+PORT_HTML_TO_UNITY.txt, Reference/data và Reference/source, Preview,
+README/manifest của từng bộ trong Art/.
+
+ĐÃ TÍCH HỢP
+- Main: tank và crew theo mức mở khóa, profile tank EXP, tài nguyên bind wallet
+  hiện có, stage 1–3 và luồng Play hiện tại. Giữ binding của Home prefab.
+- Crew: bố cục 770x436, font bitmap gốc, plate/outline/tick tách riêng, preview
+  không tự Equip, roster theo dữ liệu Unity hiện có; Level Up/Ascend dùng tiến độ
+  thật. Ghế khóa grayscale + LV, Equip bị chặn theo tank level. Chỉ số hiển thị
+  và chiến đấu dùng chung resolver; HP mỗi người tách khỏi HP tank.
+- Native world: PNG part/Spine gốc, parent/pivot/order, root flip, che người
+  trong khoang và khi nhảy, parallax layer riêng, VFX và socket đầu nòng.
+- Gameplay: wave/settle/đến trạm/chọn/rời trạm, biến thể riêng từng slot,
+  tiếp tế, hồi máu/gears, đổi xe và giữ dự trữ của súng thiếu, xe cũ ở lại.
+- Crew xuống cận chiến khi hết đạn/thiếu súng, chạy theo khi cần, quay lại xe,
+  currentHP riêng, chết không nhân đôi/hồi đầy nhân vật khi đổi phase.
+- Xe pháo, trực thăng MG và Troy; Troy reveal một lần, đúng ba chó đáp xuống,
+  wave đợi payload. Giữ địch cũ và hệ missile đã có trong project.
+- Boss, đội chó trên boss xuống đánh khi cần, loot/rương tự nhận, EXP tank
+  lưu riêng và nhận một lần theo run. Level tạm từ trạm reset ở stage mới.
+- HUD: counter frame alpha 80%, HP/chip/ammo, boss comic, timeline ba slot,
+  clip/tween theo source, pointer giữa, boss cuối. Thẻ nghiêng đúng chiều,
+  vào/hover/click/khóa, nền dim/blur. Transition màn dùng unscaled time.
+- Trạm/lều lấy đúng rect nguồn (upgrade 960x640, tent 1000x562.5), dấu y tế,
+  nòng xe pháo ngắm/giật và nòng MG trực thăng dùng cùng geometry với viên đạn.
+
+LỖI ĐÃ SỬA TRONG LƯỢT KIỂM TRA
+- IndexOutOfRange khi địch cũ khai hỏa: mảng socket rỗng sau serialize Unity.
+  Kiểm tra chiều dài vector; xe cũ dùng origin/fallback hợp lệ.
+- Invalid sorting group ID: cập nhật SortingGroup trước camera render thủ công.
+- MissingComponentException khi chuyển màn: xử lý null đặc thù của Unity.
+- Modal còn phủ màn sau chọn/resume; pause phải dừng cả mô phỏng và tween.
+- Melee tiến/lùi xuyên đội hình dù đã ở trong tầm; chuẩn hóa dừng/tiếp cận.
+- Hình thẻ gears trống; ánh xạ về PNG bánh răng gốc của cùng thiết kế.
+- Ghế Crew chưa thể hiện khóa, màu stat lệch, rương đè tiêu đề thắng.
+
+KIỂM TRA ĐÃ CHẠY
+- Unity compile thành công; git diff --check cho Assets không báo lỗi whitespace.
+- 14 ảnh 1920x1080: main, crew, gameplay, vfx, legacy, ammo, supply, medical, wreck,
+  upgrade, boss, trojan, melee, win. Ảnh trong thư mục này; không dùng làm sprite.
+- Capture không ghi nhận Error, Exception hoặc Assert ở cả 14 trạng thái.
+- Ba route simulation với geometry serialize thực của Unity; ép đi hết route,
+  chọn event, boss, loot/chest, guard thưởng. Natural combat cả ba route thắng
+  với config hiện tại; đây là quan sát kiểm tra, chưa phải duyệt balance.
+- Mọi loại địch khai hỏa, kể cả car/plane có mảng socket legacy rỗng.
+- Listener UI thật: thẻ áp dụng/đóng; pause giữ road/time; resume bỏ overlay;
+  hình hero của cả bốn loại thẻ không bị null. Hủy AD chặn callback thành công muộn.
+- Trạm áp dụng một lần, reset level tạm, biến thể theo slot, Troy đúng ba payload,
+  EXP lâu dài lưu/reload và không cộng lại cùng run.
+- Play trực tiếp Main → Crew → Main → Play, pause/resume, qua wave/trạm,
+  chọn Cannon và hồi HP; Console quan sát không có lỗi đỏ mới.
+
+CONFIG VÀ CÁCH KIỂM TRA LẠI
+Assets/MegaTanks/Resources/HtmlBattleConfig.json
+Assets/MegaTanks/Resources/HtmlBattleConfig.README.txt
+Menu MegaTanks > HTML Battle > Apply Original Art Port / Capture Original Port.
+Capture giữ/khôi phục save; ảnh/log nằm trong Checks/HtmlPort.
+
+THIẾU / GIỚI HẠN THỰC TẾ
+- Chưa tìm được PNG gốc hoặc mapping manifest cho hai logical asset trang trí
+  card: scene-city và scene-tent, được gọi trong
+  Art/Asset/UI/Choice_Cards/source/choice-cards.js (scenery).
+  Pack/inventory hiện không chỉ file tương ứng; phần phong cảnh xám nhỏ ở đáy
+  card chưa có. Không trích base64/cắt ảnh hoặc tự thay hình khác.
+- Rewarded AD chưa nối SDK thực: mặc định khóa thẻ AD. Hook nhận callback thật
+  là HtmlBattleScreen.RequestRewardedAd; không giả lập thưởng trong game.
+- Font comic dùng bản licensed có sẵn trong project theo handoff; Impact của
+  HTML là font đối chiếu, nên hình chữ card không đồng nhất từng pixel với Impact.
+- Roster/tiến độ dùng dữ liệu Unity hiện có, không chép danh sách/stat minh họa
+  trong HTML thành save thật. Balance còn cần chỉnh qua config.
+- Đã kiểm Unity Editor 16:9; chưa xuất và chạy build thiết bị, chưa soak test dài.
+  Chưa coi bản này là nghiệm thu hình ảnh khớp 100% khi còn scenery card thiếu.
+
+Không thực hiện commit hoặc push.
+
+CẬP NHẬT VFX TỪ MAIN — 27/11/2026
+- Đã fetch origin/main, nguồn đối chiếu 81be6666ba9c66bec4040b069ee6f96bad6325cd.
+  BattleVfx / BattleVfxEffect / catalog, prefab, material và shader trên Thai-edit
+  vốn đã giống main. Màn HTML chưa gọi chúng; nay nối qua HtmlBattleVfx.
+- Dùng nguyên MuzzleFlash, HitSpark, ExplosionSmall/Big, FireBolt và clip GroundFire
+  từ BattleVfx catalog; cả scale và lifetime đọc từ catalog/prefab hiện có.
+- FireBolt thay hình đạn thường như main. Missile giữ sprite riêng và smoke.
+  Particle/trail dùng clock màn chơi; trail dùng material/gradient/width gốc.
+- Thêm effect metadata cho socket/loại vũ khí/va chạm; không đổi damage hay reward.
+- Local pool giới hạn số effect theo catalog; dừng emission lúc đạn chạm và
+  giữ đuôi khói/trail đến khi tan hết rồi mới thu hồi. Lửa/khói neo theo road.
+- useMainBattleVfx=true trong HtmlBattleConfig.json; hướng dẫn chỉnh nằm trong
+  HtmlBattleConfig.README.txt, mục VFX TỪ MAIN. Vẫn giữ reference asset ổn định.
+- Đã qua kiểm tra: đạn tồn tại lâu hơn lifetime prefab, trail/particle còn theo đạn;
+  pause giữ time/particle/tail; hiệu ứng một lần; lửa trôi đúng road;
+  tail không mất ngay khi chạm, rồi drain/release hoàn toàn. 14 ảnh không lỗi đỏ.
+- Ảnh đối chiếu: Checks/HtmlPort/vfx.png. Shared main VFX assets/runtime không bị sửa.

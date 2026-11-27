@@ -37,8 +37,8 @@ namespace MegaTanks
             var s=member.stats;
             attack=s.damage.value>0?s.damage.AtLevel(p.Level,p.Stars):config.meleeDamage;
             hp=s.hp.value>0?s.hp.AtLevel(p.Level,p.Stars):config.meleeHP;
-            accuracy=s.accuracy.value>0?s.accuracy.AtLevel(p.Level,p.Stars):config.crewDefaultAccuracy;
-            defense=s.armor.AtLevel(p.Level,p.Stars);speed=s.speed.value>0?s.speed.AtLevel(p.Level,p.Stars):config.meleeSpeed;
+            accuracy=config.legacyCrewStatBonuses?Mathf.Clamp(config.crewDefaultAccuracy+s.accuracy.AtLevel(p.Level,p.Stars),0,100):s.accuracy.value>0?s.accuracy.AtLevel(p.Level,p.Stars):config.crewDefaultAccuracy;
+            defense=s.armor.AtLevel(p.Level,p.Stars);speed=config.legacyCrewStatBonuses?config.meleeSpeed+s.speed.AtLevel(p.Level,p.Stars):s.speed.value>0?s.speed.AtLevel(p.Level,p.Stars):config.meleeSpeed;
             crit=s.criticalChance.AtLevel(p.Level,p.Stars);
         }
     }

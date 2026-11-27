@@ -15,6 +15,9 @@ namespace MegaTanks
         public float piercingMultiplier,explosiveMultiplier,plasmaMultiplier,splashRadius,splashMultiplier;
         public bool rewardedAdsEnabled; public string[] encounterDeck;
         public bool grantNewSlotWeapon=true;public int[] newSlotAmmo={90,12,8};public float stationDefenseBonus=2,stationCritBonus=2;
+        public float crewLaneSpacing=46;public bool legacyCrewStatBonuses=true;
+        public bool useMainBattleVfx=true;
+        public float bossEntrySpeed=260,bossDuelSpeed=60,bossDuelCenter=960,bossContactFactor=.52f,playerGoalX=400,travelAcceleration=90,stationAcceleration=480,roadScrollFactor=1.2f;
         public HtmlWeaponConfig[] weapons;public HtmlEnemyConfig[] enemies;public HtmlStageConfig[] stages;
         public static HtmlBattleConfig Load()
         {

@@ -1,8 +1,24 @@
 PASS: original asset provenance; Lv1 station; stop/apply-once; temporary level reset; per-slot variants; AD guard; Troy x3/count; permanent EXP once/reload.
 PASS: stage 1 full route, 2 choices, boss, loot/chest and terminal reward guard.
-BALANCE OBSERVATION: stage 1 default combat simulation = won, wave 8, kills 20, tank HP 416.4. This is not a balance approval.
+BALANCE OBSERVATION: stage 1 default combat simulation = won, wave 8, kills 20, tank HP 414.4. This is not a balance approval.
 PASS: stage 2 full route, 2 choices, boss, loot/chest and terminal reward guard.
-BALANCE OBSERVATION: stage 2 default combat simulation = won, wave 8, kills 25, tank HP 404.4. This is not a balance approval.
+BALANCE OBSERVATION: stage 2 default combat simulation = won, wave 8, kills 25, tank HP 407.4. This is not a balance approval.
 PASS: stage 3 full route, 2 choices, boss, loot/chest and terminal reward guard.
-BALANCE OBSERVATION: stage 3 default combat simulation = won, wave 8, kills 40, tank HP 167.8. This is not a balance approval.
-Runtime capture: no exceptions in Main, Crew, Gameplay, four choices, upgrade and Boss.
+BALANCE OBSERVATION: stage 3 default combat simulation = won, wave 8, kills 40, tank HP 394.4. This is not a balance approval.
+PASS: real serialized Unity geometry attached to all three routes and firing from every enemy type, including legacy empty socket arrays.
+PASS: main VFX catalog, long-lived projectile follow, particle/trail pause, one-shot guard, road-anchored fire, detached tail drain and release.
+PASS: original illustrations on all four choice screens; actual card/pause listeners, choice closes, pause freezes road/time, resume hides overlay; cancelled AD rejects duplicate callbacks.
+Runtime capture: no Error, Exception or Assert across all 14 captured states.
+PASS: main VFX catalog, long-lived projectile follow, particle/trail pause, one-shot guard, road-anchored fire, detached tail drain and release.
+PASS: original illustrations on all four choice screens; actual card/pause listeners, choice closes, pause freezes road/time, resume hides overlay; cancelled AD rejects duplicate callbacks.
+Runtime capture: no Error, Exception or Assert across all 15 captured states.
+PASS: main VFX catalog, long-lived projectile follow, particle/trail pause, one-shot guard, road-anchored fire, detached tail drain and release.
+PASS: original green mortar; every enemy/boss disappears on death with explosion, no corpse fade, no duplicate kill/loot.
+PASS: HTML boss entry 260 px/s, both tanks approach at 60 px/s and meet at the configured center/contact spacing.
+PASS: original illustrations on all four choice screens; actual card/pause listeners, choice closes, pause freezes road/time, resume hides overlay; cancelled AD rejects duplicate callbacks.
+Runtime capture found errors; inspect runtime-errors.txt.
+PASS: main VFX catalog, long-lived projectile follow, particle/trail pause, one-shot guard, road-anchored fire, detached tail drain and release.
+PASS: original green mortar; every enemy/boss disappears on death with explosion, no corpse fade, no duplicate kill/loot.
+PASS: HTML boss entry 260 px/s, both tanks approach at 60 px/s and meet at the configured center/contact spacing.
+PASS: original illustrations on all four choice screens; actual card/pause listeners, choice closes, pause freezes road/time, resume hides overlay; cancelled AD rejects duplicate callbacks.
+Runtime capture: no Error, Exception or Assert across all 15 captured states.

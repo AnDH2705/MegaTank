@@ -10,9 +10,10 @@ namespace MegaTanks
     {
         public sealed class Actor
         {
-            public int id;public string kind,skin="base";public float x,y,width,hp,maxHP,speed,attack,age,wheel;
+            public int id;public string kind,skin="base";public float x,y,width,hp,maxHP,speed,attack,age,wheel,gunAngle;
             public bool dead,bossCrew,revealed;public Actor carrier;public float landing,landingDuration,landingStartX,landingStartY,landingEndX,releaseAge;public bool[] weapons={true,true,true};public float[] cooldown=new float[3];
             public UnitDefenseStats defenses=new UnitDefenseStats();
+            public int lane;public string crewRole;public Actor bossOwner;public readonly HashSet<string> deployedRoles=new HashSet<string>();
         }
         public sealed class Fighter
         {
@@ -24,7 +25,7 @@ namespace MegaTanks
             public bool homing,airOnly;public Vector2 velocity;public float turnRate,lockRange,smokeTimer;
             public DamageAttack attack;
         }
-        public sealed class Effect { public string clip;public float x,y,size,age,life;public bool road; }
+        public sealed class Effect { public string clip;public float x,y,size,age,life,angle;public bool road,heavy,groundFire;public Actor owner;public int weapon=-1; }
         public sealed class Corpse { public Actor actor;public float age; }
         public readonly HtmlBattleConfig config;public readonly HtmlStageConfig stage;public readonly int stageIndex;
         public readonly Actor player;public readonly List<Actor> enemies=new List<Actor>();
@@ -45,6 +46,9 @@ namespace MegaTanks
                 .OrderBy(e=>(Center(e)-origin).sqrMagnitude).FirstOrDefault();
         public int wave=1,spawned,kills,money,gears,encounterIndex;public float time,road,travelSpeed,landmarkX,shake;
         public bool bossSpawned,bossKilled,recovered,chestOpened;public Actor boss;
+        public string bossPhase="entry";
+        float bossEntryX,bossLeftTarget,bossRightTarget;
+        public bool BossContact=>boss!=null&&!boss.dead&&boss.x-player.x<=config.bossContactFactor*(boss.width+player.width)+1;
         public bool[] offeredWeapons={true,true,true};
         readonly Queue<string> queue=new Queue<string>();readonly System.Random rng;
         float spawnTimer=1.3f,waitTimer,stalled,dustTimer;int nextId;
@@ -68,7 +72,7 @@ namespace MegaTanks
             if(phase=="choice")return;
             if(phase=="approach"||phase=="depart")
             {
-                Travel(config.stationTravelSpeed,dt);landmarkX-=travelSpeed*dt;
+                float oldRoad=road;Travel(config.stationTravelSpeed,dt);landmarkX-=road-oldRoad;
                 foreach(var f in fighters.Where(f=>!f.aboard&&!f.dead&&!f.locked))Follow(f,dt);
                 if(phase=="approach"&&landmarkX<=config.encounterStopX){landmarkX=config.encounterStopX;travelSpeed=0;phase=encounter=="upgrade"?"upgrade":"choice";}
                 else if(phase=="depart"&&landmarkX<-600){if(initialUpgrade){initialUpgrade=false;phase="wave";}else NextWave();}return;
@@ -80,7 +84,8 @@ namespace MegaTanks
                 waitTimer-=dt;if(waitTimer<=0&&!fighters.Any(f=>!f.dead&&!f.locked&&!f.aboard&&f.motion!="following"))AfterWave();return;
             }
             float nearest=enemies.Where(e=>!e.dead&&e.kind!="plane"&&e.kind!="helicopter").Select(e=>e.x-player.x).DefaultIfEmpty(2000).Min();
-            bool close=nearest<600||fighters.Any(f=>!f.dead&&!f.locked&&!f.aboard&&(f.target!=null||f.motion=="return"||f.jump>0));Travel(bossSpawned||close?0:config.cruiseSpeed,dt);
+            bool close=nearest<600||fighters.Any(f=>!f.dead&&!f.locked&&!f.aboard&&(f.target!=null||f.motion=="return"||f.jump>0));Travel(bossSpawned||close?0:config.cruiseSpeed,dt,close);
+            if(boss!=null&&!boss.dead)StepBossDuel(dt);
             if(!bossSpawned)
             {
                 int waveEnd=Mathf.CeilToInt((float)wave*stage.total/config.wavesPerStage);
@@ -101,7 +106,7 @@ namespace MegaTanks
                     continue;
                 }
                 var gun=config.weapons[w];
-                var targets=enemies.Where(e=>!e.dead&&e.x-player.x>=gun.minRange&&e.x-player.x<=gun.maxRange&&e.x-e.width*.25f<1920&&(e.kind!="dog"||w==0));
+                var targets=enemies.Where(e=>!e.dead&&(e.kind!="boss"||bossPhase!="entry")&&e.x-player.x>=gun.minRange&&e.x-player.x<=gun.maxRange&&e.x-e.width*.25f<1920&&(e.kind!="dog"||w==0));
                 var target=(w==0?targets.OrderBy(e=>(e.kind=="plane"||e.kind=="helicopter")?0:1).ThenBy(e=>e.x):targets.OrderBy(e=>(e.kind=="plane"||e.kind=="helicopter")?1:0).ThenBy(e=>e.x)).FirstOrDefault();
                 if(target==null)continue;
                 Fire(player,target,w,false);ammo[w]--;player.cooldown[w]=gun.cooldown*(player.skin=="speed"?.82f:1)/Mathf.Max(.1f,1+weaponReloadBonus[w]/100);
@@ -110,50 +115,67 @@ namespace MegaTanks
             if(player.hp<=0){player.hp=0;phase="lost";travelSpeed=0;return;}
             if(bossKilled&&enemies.Count==0&&loot.Count==0){waitTimer+=dt;if(waitTimer>.8f)Win();return;}
             if(!bossSpawned&&spawned>=Mathf.CeilToInt((float)wave*stage.total/config.wavesPerStage)&&enemies.Count==0){phase="settle";waitTimer=.9f;bullets.Clear();return;}
-            if(boss!=null&&!boss.dead&&Mathf.Abs(boss.x-player.x)<590&&ammo[0]==0)
+            if(BossContact&&ammo[0]==0)
             {
                 stalled+=dt;if(stalled>15){player.hp=Mathf.Max(0,player.hp-dt*12);}
             }else stalled=0;
         }
-        void Travel(float speed,float dt)
+        void StepBossDuel(float dt)
         {
-            float multiplier=player.skin=="speed"?1.25f:player.skin=="heavy"?.8f:1;
-            travelSpeed=Mathf.MoveTowards(travelSpeed,(speed+driverSpeedBonus)*multiplier,(phase=="approach"||phase=="depart"?480:180)*dt);
-            if(speed==0)travelSpeed=0;road+=travelSpeed*dt;player.wheel+=travelSpeed*dt;
-            foreach(var corpse in corpses)corpse.actor.x-=travelSpeed*dt;
-            foreach(var effect in effects)if(effect.road)effect.x-=travelSpeed*dt;
+            if(bossPhase=="entry")
+            {
+                float previous=boss.x;boss.x=Mathf.MoveTowards(boss.x,bossEntryX,config.bossEntrySpeed*dt);boss.wheel+=Mathf.Abs(previous-boss.x);
+                if(Mathf.Abs(boss.x-bossEntryX)<.01f)bossPhase="approach";
+                return;
+            }
+            bool hold=fighters.Any(f=>!f.dead&&!f.locked&&!f.aboard&&(f.target!=null||f.motion=="return"||f.jump>0));
+            float playerStep=hold?0:Mathf.Min(config.bossDuelSpeed*dt,Mathf.Max(0,bossLeftTarget-player.x));
+            float bossStep=hold&&boss.bossCrew?0:Mathf.Min(config.bossDuelSpeed*dt,Mathf.Max(0,boss.x-bossRightTarget));
+            player.x+=playerStep;player.wheel+=playerStep;boss.x-=bossStep;boss.wheel+=bossStep;
+        }
+        void Travel(float speed,float dt,bool hardStop=true)
+        {
+            float multiplier=Geometry!=null?Geometry.Profile(player.skin).speed:player.skin=="speed"?1.25f:player.skin=="heavy"?.85f:1;
+            travelSpeed=Mathf.MoveTowards(travelSpeed,speed*multiplier,(phase=="approach"||phase=="depart"?config.stationAcceleration:config.travelAcceleration)*dt);
+            if(speed==0&&hardStop)travelSpeed=0;float roadStep=travelSpeed*dt*config.roadScrollFactor;road+=roadStep;if(!bossSpawned)player.wheel+=travelSpeed*dt;
+            if(!bossSpawned&&player.x<config.playerGoalX)player.x=Mathf.Min(config.playerGoalX,player.x+travelSpeed*dt*3);
+            foreach(var corpse in corpses)corpse.actor.x-=roadStep;
+            foreach(var effect in effects)if(effect.road)effect.x-=roadStep;
             dustTimer-=dt;if(travelSpeed>5&&dustTimer<=0){AddEffect("Dust",player.x-120,config.groundY-25,130,.65f,true);dustTimer=.15f;}
         }
         public Actor Spawn(string kind)
         {
             var def=config.enemies.FirstOrDefault(e=>e.id==kind);bool isBoss=kind=="boss";
             var a=new Actor{id=++nextId,kind=kind,x=isBoss?2230:2110+rng.Next(90),y=kind=="plane"||kind=="helicopter"?350+rng.Next(170):config.groundY,width=isBoss?config.playerWidth:def.width,
-                hp=isBoss?stage.bossHP:stageIndex>0?def.hardHP:def.hp,speed=isBoss?60:def.speed,attack=1.3f+(float)rng.NextDouble()};a.maxHP=a.hp;
-            if(isBoss){a.weapons=new[]{stage.bossWeapons.Contains("mg"),stage.bossWeapons.Contains("cannon"),false};boss=a;bossSpawned=true;phase="boss";}
+                hp=isBoss?stage.bossHP:stageIndex>0?def.hardHP:def.hp,speed=isBoss?config.bossDuelSpeed:def.speed,attack=1.3f+(float)rng.NextDouble()};a.maxHP=a.hp;
+            if(isBoss){a.weapons=new[]{stage.bossWeapons.Contains("mg"),stage.bossWeapons.Contains("cannon"),false};boss=a;bossSpawned=true;phase="boss";bossPhase="entry";bossEntryX=1920-player.x;bossLeftTarget=config.bossDuelCenter-config.bossContactFactor*player.width;bossRightTarget=config.bossDuelCenter+config.bossContactFactor*a.width;}
             enemies.Add(a);return a;
         }
         void UpdateEnemy(Actor e,float dt)
         {
-            e.age+=dt;e.attack-=dt;if(e.landing>0){e.landing=Mathf.Max(0,e.landing-dt);float t=1-e.landing/e.landingDuration;e.x=Mathf.Lerp(e.landingStartX,e.landingEndX,t);e.y=Mathf.Lerp(e.landingStartY,config.groundY,t)-Mathf.Sin(t*Mathf.PI)*100;return;}if(e.kind=="trojan"){if(e.x-player.x<config.trojanRevealRange)RevealTrojan(e);else e.x-=(e.speed+travelSpeed)*dt;return;}float stop=player.x+(e.kind=="boss"?550:e.kind=="dog"?90:(e.kind=="plane"||e.kind=="helicopter")?650:540);
-            float movement=e.x>stop?Mathf.Min(e.x-stop,(e.speed+travelSpeed)*dt):0;e.x-=movement;e.wheel+=movement;
+            e.age+=dt;e.attack-=dt;if(e.landing>0){e.landing=Mathf.Max(0,e.landing-dt);float t=1-e.landing/e.landingDuration;e.x=Mathf.Lerp(e.landingStartX,e.landingEndX,t);e.y=Mathf.Lerp(e.landingStartY,config.groundY+e.lane*config.crewLaneSpacing,t)-Mathf.Sin(t*Mathf.PI)*100;return;}if(e.kind=="trojan"){if(e.x-player.x<config.trojanRevealRange)RevealTrojan(e);else e.x-=(e.speed+travelSpeed)*dt;return;}float stop=player.x+(e.kind=="boss"?550:e.kind=="dog"?90:(e.kind=="plane"||e.kind=="helicopter")?650:540);
+            Fighter blocking=null;
+            if(e.kind=="dog")
+            {blocking=fighters.Where(f=>!f.aboard&&!f.dead&&!f.locked&&f.jump<=0).OrderBy(f=>Mathf.Abs(CrewLane(f.role)-e.lane)*90+Mathf.Abs(e.x-f.x)).FirstOrDefault();stop=(blocking!=null?blocking.x:player.x+(1150-652)*player.width/1351+15)+108;}
+            float movement=e.kind!="boss"&&e.x>stop?Mathf.Min(e.x-stop,(e.speed+travelSpeed)*dt):0;e.x-=movement;e.wheel+=movement;
             if((e.kind=="plane"||e.kind=="helicopter"))e.y+=Mathf.Sin(e.age*2)*dt*12;
             if(e.kind=="boss")
             {
+                if(bossPhase=="entry")return;
                 for(int w=0;w<2;w++)
                 {
                     e.cooldown[w]-=dt;float distance=e.x-player.x;var gun=config.weapons[w];
                     if(e.weapons[w]&&e.cooldown[w]<=0&&distance>=gun.minRange&&distance<=gun.maxRange){Fire(e,player,w,true);e.cooldown[w]=w==0?.28f:2.1f;}
                 }
-                if(e.x-player.x<=560&&!e.bossCrew)
+                if(BossContact&&!e.bossCrew)
                 {
-                    e.bossCrew=true;for(int i=0;i<(stageIndex==0?3:4);i++){var dog=Spawn("dog");dog.bossCrew=true;dog.x=e.x-80-i*30;dog.hp=dog.maxHP=stageIndex==0?180:220;dog.y=config.groundY+(i%2)*24;}
+                    DeployBossCrew(e);
                 }
             }
             else if(e.kind=="dog")
             {
-                var ally=fighters.Where(f=>!f.aboard&&!f.dead&&!f.locked).OrderBy(f=>Mathf.Abs(e.x-f.x)).FirstOrDefault();
-                if(ally!=null&&Mathf.Abs(ally.x-e.x)<100){if(e.attack<=0){HurtFighter(ally,e.bossCrew?6:config.enemies.First(d=>d.id=="dog").damage);e.attack=1.05f;if(ally.hp<=0)ally.dead=true;}return;}
-                if(e.x-player.x<120&&e.attack<=0){HitPlayer(e.bossCrew?6:config.enemies.First(d=>d.id=="dog").damage);e.attack=1.05f;}
+                if(blocking!=null&&Mathf.Abs(blocking.x-e.x)<=112){if(e.attack<=0){HurtFighter(blocking,e.bossCrew?6:config.enemies.First(d=>d.id=="dog").damage);e.attack=1.05f;}return;}
+                if(blocking==null&&e.x<=stop+3&&e.attack<=0){HitPlayer(e.bossCrew?6:config.enemies.First(d=>d.id=="dog").damage);e.attack=1.05f;}
             }
             else if(e.attack<=0&&e.x-player.x<config.enemies.First(d=>d.id==e.kind).range)
             {Fire(e,player,e.kind=="cannon_car"?1:0,true);e.attack=config.enemies.First(d=>d.id==e.kind).cooldown;}
@@ -164,11 +186,11 @@ namespace MegaTanks
             for(int i=0;i<fighters.Count;i++)
             {
                 var f=fighters[i];if(f.dead||f.locked)continue;f.attack-=dt;f.motionTime+=dt;
-                if(f.pendingHit>0){f.pendingHit-=dt;if(f.pendingHit<=0&&f.hitTarget!=null&&!f.hitTarget.dead&&Mathf.Abs(f.hitTarget.x-f.x)<f.hitTarget.width*.35f+config.meleeRange+35){if(rng.NextDouble()*100<f.accuracy)Damage(f.hitTarget,f.atk*(rng.NextDouble()*100<f.crit?2:1));} }
+                if(f.pendingHit>0){f.pendingHit-=dt;if(f.pendingHit<=0&&f.hitTarget!=null&&!f.hitTarget.dead&&Mathf.Abs(f.hitTarget.x-f.x)<f.hitTarget.width*.35f+config.meleeRange+Mathf.Abs(CrewLane(f.role))*16+48){if(rng.NextDouble()*100<f.accuracy)Damage(f.hitTarget,f.atk*(rng.NextDouble()*100<f.crit?2:1));} }
                 int wi=f.role=="mg"?0:f.role=="cannon"?1:f.role=="mortar"?2:-1;
                 bool missing=wi>=0&&(!player.weapons[wi]||ammo[wi]<=0);
-                var target=enemies.Where(e=>!e.dead&&e.landing<=0&&e.kind!="plane"&&e.kind!="helicopter"&&e.x-player.x<=config.weapons[0].maxRange).OrderBy(e=>e.kind=="dog"?0:1).ThenBy(e=>Mathf.Abs(e.x-f.x)).FirstOrDefault();
-                bool bossClose=boss!=null&&!boss.dead&&boss.x-player.x<580;
+                var target=enemies.Where(e=>!e.dead&&(e.kind!="boss"||BossContact)&&e.landing<=0&&e.kind!="plane"&&e.kind!="helicopter"&&e.x-player.x<=config.weapons[0].maxRange).OrderBy(e=>e.kind=="dog"?0:1).ThenBy(e=>Mathf.Abs(CrewLane(f.role)-e.lane)*75+Mathf.Abs(e.x-f.x)).FirstOrDefault();
+                bool bossClose=BossContact;
                 bool canOperate=wi>=0&&CanFire(wi)&&(!bossClose||boss.x-player.x>=config.weapons[wi].minRange&&boss.x-player.x<=config.weapons[wi].maxRange);
                 bool deploy=missing||f.role=="front"&&target!=null||bossClose&&(f.role=="driver"||wi>=0&&!canOperate);
                 if(deploy&&f.aboard)BeginJump(f,false);
@@ -176,26 +198,26 @@ namespace MegaTanks
                 if(f.jump>0){f.jump=Mathf.Max(0,f.jump-dt);float t=1-f.jump/f.jumpDuration;f.x=Mathf.Lerp(f.jumpStartX,f.jumpEndX,t);f.y=Mathf.Lerp(f.jumpStartY,f.jumpEndY,t)-Mathf.Sin(t*Mathf.PI)*90;if(f.jump<=0&&f.jumpIn){f.aboard=true;f.motion="aboard";}continue;}
                 if(target!=null)
                 {
-                    f.target=target;float goal=target.x-(target.kind=="dog"?0:target.width*.35f)-config.meleeRange;
-                    f.x=Mathf.MoveTowards(f.x,goal,f.moveSpeed*dt);f.y=config.groundY+(i%2)*24;
-                    f.motion=Mathf.Abs(f.x-goal)>8?"walk":"attack";
-                    if(Mathf.Abs(f.x-goal)<8&&f.attack<=0)
+                    f.target=target;float surface=target.x-(target.kind=="dog"?0:target.width*.35f),reach=config.meleeRange+Mathf.Abs(CrewLane(f.role))*16,dx=surface-f.x;
+                    bool walking=Mathf.Abs(dx)>reach+2;if(walking)f.x=Mathf.MoveTowards(f.x,surface-Mathf.Sign(dx)*reach,f.moveSpeed*dt);f.y=CrewGround(f);
+                    f.motion=walking?"walk":"attack";
+                    if(!walking&&f.attack<=0)
                     {f.pendingHit=Mathf.Min(.49f,config.meleeCooldown*.5f);f.hitTarget=target;f.attack=config.meleeCooldown;f.motionTime=0;}
                 }
                 else
                 {
                     f.target=null;f.motion=missing?"following":"return";
                     if(missing)Follow(f,dt);
-                    else {float goal=player.x+120;f.x=Mathf.MoveTowards(f.x,goal,f.moveSpeed*dt);if(Mathf.Abs(f.x-goal)<25)BeginJump(f,true);}
+                    else {float goal=player.x+(1150-652)*player.width/1351+30+CrewLane(f.role)*5;f.x=Mathf.MoveTowards(f.x,goal,f.moveSpeed*dt);if(Mathf.Abs(f.x-goal)<25)BeginJump(f,true);}
                 }
             }
         }
         void BeginJump(Fighter f,bool inward)
         {
-            var seat=Geometry?.Profile(player.skin).seats.FirstOrDefault(p=>p.id==f.role);float z=player.width/1351,sx=player.x+(seat==null?0:(seat.x-652)*z),sy=config.groundY+(seat==null?-150:(seat.y-1258)*z);
-            f.jumpIn=inward;f.jump=f.jumpDuration=inward?.5f:.7f;f.jumpStartX=inward?f.x:sx;f.jumpStartY=inward?f.y:sy;f.jumpEndX=inward?sx:player.x+130+fighters.IndexOf(f)*24;f.jumpEndY=inward?sy:config.groundY+(fighters.IndexOf(f)%2)*24;f.x=f.jumpStartX;f.y=f.jumpStartY;f.aboard=false;f.motion=inward?"jump_in":"jump_out";f.motionTime=0;
+            var seat=Geometry?.Profile(player.skin).seats.FirstOrDefault(p=>p.id==f.role);float z=player.width/1351,sx=player.x+(seat==null?0:(seat.x-652)*z),sy=config.groundY+(seat==null?-150:(seat.y+(f.role=="mg"||f.role=="cannon"||f.role=="driver"?seat.scale*100:0)-1258)*z);
+            f.jumpIn=inward;f.jump=f.jumpDuration=inward?.5f:seat!=null&&seat.y<800?.85f:.65f;f.jumpStartX=inward?f.x:sx;f.jumpStartY=inward?f.y:sy;f.jumpEndX=inward?sx:player.x+(1150-652)*z+30+CrewLane(f.role)*5;f.jumpEndY=inward?sy:CrewGround(f);f.x=f.jumpStartX;f.y=f.jumpStartY;f.aboard=false;f.motion=inward?"jump_in":"jump_out";f.motionTime=0;
         }
-        void Follow(Fighter f,float dt){float goal=player.x-95-fighters.IndexOf(f)*40;f.x=Mathf.MoveTowards(f.x,goal,f.moveSpeed*dt);f.y=config.groundY+(fighters.IndexOf(f)%2)*24;f.motion=Mathf.Abs(f.x-goal)<3?"following":"walk_follow";}
+        void Follow(Fighter f,float dt){float goal=player.x-95-fighters.IndexOf(f)*40;f.x=Mathf.MoveTowards(f.x,goal,f.moveSpeed*dt);f.y=CrewGround(f);f.motion=Mathf.Abs(f.x-goal)<3?"following":"walk_follow";}
         void Fire(Actor owner,Actor target,int w,bool enemy)
         {
             var gun=config.weapons[w];var center=Center(target);int face=enemy?-1:1;
@@ -203,7 +225,7 @@ namespace MegaTanks
             float damage=enemy?(owner.kind=="boss"?w==0?4:13:config.enemies.First(e=>e.id==owner.kind).damage):gun.damage*(1+weaponDamageBonus[w]/100)*VariantDamage(w);
             if(!enemy&&rng.NextDouble()*100<temporaryCrit)damage*=2;
             bullets.Add(new Bullet{weapon=gun.id,enemy=enemy,x=origin.x,y=origin.y,sx=origin.x,sy=origin.y,tx=center.x,ty=center.y,target=target,owner=owner,damage=damage,life=w==2?1.35f:Mathf.Max(.1f,Vector2.Distance(origin,center)/gun.projectileSpeed)});
-            AddEffect("Muzzle",origin.x,origin.y,w==1?110:65,.12f);
+            var flash=AddEffect("Muzzle",origin.x,origin.y,w==1?110:65,.12f);flash.owner=owner;flash.weapon=w;flash.angle=Mathf.Atan2(center.y-origin.y,center.x-origin.x);
             if(w==1)shake=2;
         }
         void UpdateBullets(float dt)
@@ -221,7 +243,7 @@ namespace MegaTanks
                 }
                 else if(b.target!=null&&!b.target.dead)
                 {
-                    Damage(b.target,b.damage);if(b.weapon=="cannon"&&!b.target.dead){b.target.x+=config.bossKnockback;shake=4;}
+                    Damage(b.target,b.damage,b.weapon=="cannon");if(b.weapon=="cannon"&&!b.target.dead){b.target.x+=config.bossKnockback;shake=4;}
                     if(weaponVariants[Array.FindIndex(config.weapons,w=>w.id==b.weapon)]=="mortar_blast")foreach(var e in enemies.Where(e=>e!=b.target&&!e.dead&&Vector2.Distance(Center(e),Center(b.target))<config.splashRadius).ToArray())Damage(e,b.damage*config.splashMultiplier);
                 }
                 bullets.Remove(b);
@@ -231,13 +253,13 @@ namespace MegaTanks
         void FireMissile(Actor target)
         {
             var origin=new Vector2(player.x-120,config.groundY-player.width*.83f);var direction=(Center(target)-origin).normalized;
-            float multiplier=ammoType=="piercing"?config.piercingMultiplier:ammoType=="explosive"?config.explosiveMultiplier:ammoType=="plasma"?config.plasmaMultiplier:1;
+            float multiplier=VariantDamage(2);
             bullets.Add(new Bullet{weapon="missile",homing=true,airOnly=MissileStats.preferredTarget==EnemyKind.Flyer,
                 x=origin.x,y=origin.y,sx=origin.x,sy=origin.y,target=target,owner=player,velocity=direction*MissileStats.projectileSpeed*100,
                 turnRate=MissileStats.missileTurnRate,lockRange=MissileStats.range*100,life=MissileStats.missileLifetime,
                 attack=new DamageAttack(MissileStats.damage*multiplier,MissileStats),
                 damage=new DamageAttack(MissileStats.damage,MissileStats).WeaponDamage*multiplier});
-            AddEffect("Muzzle",origin.x,origin.y,100,.12f);
+            var flash=AddEffect("Muzzle",origin.x,origin.y,100,.12f);flash.owner=player;flash.weapon=2;flash.angle=Mathf.Atan2(direction.y,direction.x);
         }
         void UpdateMissile(Bullet b,float dt)
         {
@@ -269,15 +291,15 @@ namespace MegaTanks
             }
             b.smokeTimer-=dt;if(b.smokeTimer<=0){AddEffect("Smoke",b.x,b.y,45,.35f);b.smokeTimer=.06f;}
         }
-        public void Damage(Actor target,float amount)
+        public void Damage(Actor target,float amount,bool heavy=false)
         {
-            if(target.dead)return;if(target.kind=="trojan"){RevealTrojan(target);return;}target.hp-=amount;AddEffect("Hit",target.x,Center(target).y,65,.15f);
+            if(target.dead)return;if(target.kind=="trojan"){RevealTrojan(target);return;}target.hp-=amount;AddEffect("Hit",target.x,Center(target).y,65,.15f).heavy=heavy;
             if(target.hp>0)return;target.hp=0;target.dead=true;
             if(target.kind=="boss"){bossKilled=true;Drop(target,true);shake=8;}
             else if(!target.bossCrew){if(target.carrier!=null){if(!enemies.Any(e=>e!=target&&!e.dead&&e.carrier==target.carrier))kills++;}else kills++;Drop(target,false);}
-            corpses.Add(new Corpse{actor=target});AddEffect("Explosion",target.x,Center(target).y,target.kind=="boss"?320:140,.5f,true);
+            AddEffect("Explosion",target.x,Center(target).y,target.kind=="boss"?320:140,.5f,true).groundFire=target.kind!="plane"&&target.kind!="helicopter"&&target.kind!="dog";
         }
-        public void AddEffect(string clip,float x,float y,float size,float life,bool onRoad=false){effects.Add(new Effect{clip=clip,x=x,y=y,size=size,life=life,road=onRoad});}
+        public Effect AddEffect(string clip,float x,float y,float size,float life,bool onRoad=false){var effect=new Effect{clip=clip,x=x,y=y,size=size,life=life,road=onRoad};effects.Add(effect);return effect;}
         void UpdateEffects(float dt){foreach(var e in effects)e.age+=dt;effects.RemoveAll(e=>e.age>e.life);foreach(var c in corpses){c.age+=dt;if(c.actor.revealed)c.actor.releaseAge=c.age;}corpses.RemoveAll(c=>c.age>10||c.actor.x<-500);}
         void AfterWave()
         {
@@ -322,4 +344,3 @@ namespace MegaTanks
         void Win(){if(chestOpened)return;chestOpened=true;if(collectedChests>0){collectedChests--;money+=config.chestMoney;gears+=config.chestGears;}phase="won";travelSpeed=0;}
     }
 }
-

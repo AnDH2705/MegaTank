@@ -8,7 +8,7 @@ namespace MegaTanks.Editor
     [InitializeOnLoad]
     public static class OriginalPortCapture
     {
-        static readonly string[] states={"main","crew","gameplay","ammo","supply","medical","wreck","upgrade","boss"};
+        static readonly string[] states={"main","crew","tank-level","gameplay","vfx","legacy","ammo","supply","medical","wreck","upgrade","boss","trojan","melee","win"};
         static int index,wait,lastFrame;static HtmlBattleScreen screen;static StageRewardSaveScope scope;
         static Dictionary<string,string> values;static HashSet<string> existing;static bool errors,oldOptionsEnabled;static EnterPlayModeOptions oldOptions;
         static OriginalPortCapture(){EditorApplication.update+=Pending;}
@@ -32,7 +32,7 @@ namespace MegaTanks.Editor
             EditorSettings.enterPlayModeOptionsEnabled=true;EditorSettings.enterPlayModeOptions=EnterPlayModeOptions.DisableDomainReload;
             EditorApplication.playModeStateChanged+=State;Application.logMessageReceived+=Log;EditorApplication.isPlaying=true;
         }
-        static void Log(string text,string stack,LogType type){if(type==LogType.Error||type==LogType.Exception){errors=true;File.AppendAllText("Checks/HtmlPort/runtime-errors.txt",text+"\n"+stack+"\n");}}
+        static void Log(string text,string stack,LogType type){if(type==LogType.Error||type==LogType.Exception||type==LogType.Assert){errors=true;File.AppendAllText("Checks/HtmlPort/runtime-errors.txt",text+"\n"+stack+"\n");}}
         static void State(PlayModeStateChange state)
         {
             if(state==PlayModeStateChange.EnteredPlayMode){wait=20;EditorApplication.update+=Tick;}
@@ -41,7 +41,7 @@ namespace MegaTanks.Editor
                 EditorApplication.update-=Tick;EditorApplication.playModeStateChanged-=State;Application.logMessageReceived-=Log;
                 scope?.Dispose();foreach(var pair in values){if(existing.Contains(pair.Key))PlayerPrefs.SetString(pair.Key,pair.Value);else PlayerPrefs.DeleteKey(pair.Key);}PlayerPrefs.Save();
                 EditorSettings.enterPlayModeOptionsEnabled=oldOptionsEnabled;EditorSettings.enterPlayModeOptions=oldOptions;
-                File.AppendAllText("Checks/HtmlPort/validation.txt",errors?"Runtime capture found errors; inspect runtime-errors.txt.\n":"Runtime capture: no exceptions in Main, Crew, Gameplay, four choices, upgrade and Boss.\n");
+                File.AppendAllText("Checks/HtmlPort/validation.txt",errors?"Runtime capture found errors; inspect runtime-errors.txt.\n":"Runtime capture: no Error, Exception or Assert across all "+states.Length+" captured states.\n");
             }
         }
         static void Tick()
@@ -49,13 +49,13 @@ namespace MegaTanks.Editor
             try
             {
                 if(Time.frameCount==lastFrame)return;lastFrame=Time.frameCount;if(--wait>0)return;var game=BattleGame.Instance;if(game==null){wait=5;return;}
-                if(index>=states.Length*2){EditorApplication.update-=Tick;EditorApplication.isPlaying=false;return;}
+                if(index>=states.Length*2){File.AppendAllText("Checks/HtmlPort/validation.txt",screen.ReviewInteractionChecks()+"\n");EditorApplication.update-=Tick;EditorApplication.isPlaying=false;return;}
                 string state=states[index/2];
                 if(index%2==0)
                 {
                     if(state=="crew")game.UI.OpenPopup("Crew");
                     else if(state!="main"){game.UI.ClosePopup();if(screen==null)screen=HtmlBattleScreen.Begin(game,0);screen.ReviewState(state);}
-                    wait=15;
+                    wait=state=="win"?65:state=="crew"||screen!=null&&screen.Simulation.phase=="choice"?45:15;
                 }
                 else {ScreenCapture.CaptureScreenshot("Checks/HtmlPort/"+state+".png");wait=8;}
                 index++;

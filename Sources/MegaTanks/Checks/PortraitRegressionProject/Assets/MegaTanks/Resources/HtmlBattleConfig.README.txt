@@ -1,0 +1,67 @@
+MEGATANK — CẤU HÌNH BẢN PORT HTML
+
+File chỉnh: Assets/MegaTanks/Resources/HtmlBattleConfig.json.
+Project: Sources/MegaTanks, Unity 2022.3.62f3. Scene: Assets/MegaTanks/Scenes/MainBattle.unity.
+Nhánh làm việc: Thai-edit. Các thông số là dữ liệu để tiếp tục cân bằng, chưa phải balance cuối.
+
+Mảng weapons / ammo / supply / startingAmmo / recoveredAmmo / newSlotAmmo có thứ tự:
+MG, Cannon, Mortar. Màn HTML giữ part súng gốc, không tự lấy hình giàn phóng từ loadout cũ.
+unlockLevels có thứ tự: MG, Cannon, Mortar, Driver, Melee.
+
+TIẾN ĐỘ LÂU DÀI
+tankXPBase, tankXPGrowth, maxTankLevel: đường EXP của tank.
+tankXPReward: EXP khi thắng stage; lưu đúng một lần theo runId.
+Save riêng: MegaTanks.TankProfile.v1. Không dùng chung cấp/sao của crew.
+
+TRẠM NÂNG CẤP TRONG STAGE
+initialUpgradeStation: bật trạm đầu màn nếu cấp profile chưa mở MG.
+upgradeEveryGroups: số nhóm wave giữa các trạm nâng cấp tự động.
+upgradeApplySeconds / upgradeDepartSeconds / upgradeAuraSeconds: nhận nâng cấp, đi tiếp, aura.
+grantNewSlotWeapon / newSlotAmmo: cấp súng base và đạn khi trạm mở slot mới.
+stationHPBonus / stationDamageBonus / stationDefenseBonus / stationCritBonus:
+buff tạm khi đã mở đủ slot. Không cộng vào EXP profile; reset khi bắt đầu stage mới.
+
+CREW
+meleeDamage, meleeHP, meleeSpeed, meleeCooldown, meleeRange: giá trị nền/fallback.
+crewDefaultAccuracy: độ chính xác nền.
+legacyCrewStatBonuses=true: dữ liệu accuracy/speed của CrewDefinition cũ được tính
+là bonus trên nền, thay vì biến bonus tốc độ tank thành tốc độ chạy 5 pixel/giây.
+Bảng Crew và combat dùng cùng ResolvedCrewStats.
+crewLaneSpacing=46: hàng đứng theo source HTML, không phải thay đổi scale từng người.
+MG=-2, Cannon=-1, Melee=0, Driver=1, Mortar=2.
+
+STAGE / CHIẾN ĐẤU
+bossEntrySpeed=260: boss tiến vào khung trước khi bắt đầu đấu.
+bossDuelSpeed=60: cả tank mình và boss tiến lại gần nhau, cùng tốc độ theo HTML.
+bossDuelCenter=960 / bossContactFactor=.52: vị trí áp sát của hai xe.
+playerGoalX=400: vị trí tank sau đoạn tiến vào; travelAcceleration=90.
+stationAcceleration=480, stationTravelSpeed=240; roadScrollFactor=1.2.
+cruiseSpeed=67; multiplier xe đọc từ profile HTML (base 1, speed 1.25, heavy .85).
+Quái hết HP biến mất ngay với VFX nổ, không giữ xác/fade; loot/kill vẫn một lần.
+stages: số lượng/phân bố địch, nhịp spawn, giới hạn đang sống, boss, đạn và tiếp tế.
+requireRecovery / recoveredAmmo: nhánh đổi xe tiếp tế của stage 3.
+weapons: tầm, damage, cooldown, vận tốc đạn, lượng đạn.
+enemies: HP, tốc độ, damage, cooldown, tầm của từng loại.
+trojanRevealRange: khoảng cách kích hoạt Troy. Payload luôn đúng ba chó, có guard revealOnce.
+medicalHP / medicalGears và các trường enemy/boss/chest reward: lượng tài nguyên.
+Biến thể súng lưu theo từng slot, không đổi ammoType chung cho cả tank.
+
+QUẢNG CÁO
+rewardedAdsEnabled mặc định false. Cần nối SDK vào HtmlBattleScreen.RequestRewardedAd.
+Chỉ callback thành công mới nhận thẻ; hủy và callback lặp không nhận thưởng.
+Không có giả lập xem quảng cáo thành công trong bản game.
+
+VFX TỪ MAIN
+useMainBattleVfx=true: dùng chung BattleVfx catalog và prefab của nhánh main
+cho muzzle, FireBolt/trail, hit, explosion và animation ground fire.
+Chỉnh size/giới hạn tại Assets/MegaTanks/Data/Resources/BattleVfx.asset;
+prefab/material ở Assets/MegaTankVFX/Generated/. Giữ nguyên asset/reference gốc.
+HtmlBattleVfx nối vào camera riêng của màn chơi, dùng clock trận để pause
+cả particle và trail; đạn chạm thì dừng phát và để phần đuôi tan hết.
+Lửa/khói bám mặt đường. Không đổi damage/đạn/loot khi đổi bộ VFX.
+Tắt useMainBattleVfx để đối chiếu bộ sprite VFX của bản HTML trước đó.
+
+KIỂM TRA TRONG UNITY
+MegaTanks > HTML Battle > Apply Original Art Port: nhập art gốc và kiểm tra model.
+MegaTanks > HTML Battle > Capture Original Port: chụp các trạng thái và kiểm tra callback UI.
+Ảnh/log: Checks/HtmlPort. Bộ chụp giữ và khôi phục save người chơi sau khi thoát Play.

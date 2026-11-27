@@ -86,18 +86,23 @@ namespace MegaTanks
         public void OpenEquipment(){activeSlot=null;filter=null;selected=null;OpenPopup("Equipment");}
         public void OpenPopup(string value)
         {
-            ClosePopup();popup=value;
+            if(designNavigating)return;designOpening=true;ClosePopup();designOpening=false;popup=value;
             UIScreen screen=value=="Equipment"?UIScreen.Equipment:value=="Settings"?UIScreen.Settings:value=="Crew"?UIScreen.Crew:UIScreen.Tech;
             var v=View(screen);v.gameObject.SetActive(true);
             Click(v,"Close Popup",ClosePopup);
             if(value=="Equipment")DrawEquipment();
             else if(value=="Crew"){crewStation=-1;crewSelected=null;crewFilter=0;DrawCrew();}
             else { Click(v,"Dismiss Backdrop",ClosePopup);if(value=="Settings")SyncSettings(); }
+            if(FullScreenPopup(value))StartCoroutine(DesignTransition(View(UIScreen.Home).gameObject,v.gameObject,false));
         }
         public void ClosePopup()
         {
+            if(!designOpening&&designNavigating)return;
+            if(!designOpening&&FullScreenPopup(popup))
+            {var old=View(popup=="Crew"?UIScreen.Crew:popup=="Equipment"?UIScreen.Equipment:UIScreen.Tech);popup="";StartCoroutine(DesignTransition(old.gameObject,View(UIScreen.Home).gameObject,true));return;}
             popup="";if(layout==null)return;
             foreach(var s in new[]{UIScreen.Equipment,UIScreen.Settings,UIScreen.Crew,UIScreen.Tech,UIScreen.LeaveRun})View(s).gameObject.SetActive(false);
+            ResetMainNavigation();
         }
         void ConfirmHome()
         {

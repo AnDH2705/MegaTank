@@ -42,14 +42,29 @@ namespace MegaTanks
             }
         }
         public static CrewRole Role(string role)=>role=="mg"?CrewRole.SubGunner:role=="cannon"?CrewRole.Gunner:role=="mortar"?CrewRole.WeaponSpecialist:role=="driver"?CrewRole.Driver:CrewRole.Commando;
+        public static int CrewLane(string role)=>role=="mg"?-2:role=="cannon"?-1:role=="driver"?1:role=="mortar"?2:0;
+        float CrewGround(Fighter f)=>config.groundY+CrewLane(f.role)*config.crewLaneSpacing;
+        void DeployBossCrew(Actor owner)
+        {
+            owner.bossCrew=true;var profile=Geometry?.Profile(owner.skin);float z=owner.width/1351;
+            foreach(string role in new[]{"front","driver","cannon","mg"})
+            {
+                int weapon=role=="mg"?0:role=="cannon"?1:-1;float distance=owner.x-player.x;
+                if(weapon>=0&&(!owner.weapons[weapon]||distance>=config.weapons[weapon].minRange&&distance<=config.weapons[weapon].maxRange))continue;
+                owner.deployedRoles.Add(role);var seat=profile?.seats.FirstOrDefault(s=>s.id==role);var dog=Spawn("dog");dog.bossCrew=true;dog.crewRole=role;dog.lane=CrewLane(role);dog.bossOwner=owner;
+                dog.hp=dog.maxHP=stageIndex==0?180:220;dog.x=dog.landingStartX=owner.x-(seat==null?0:seat.x-652)*z;
+                dog.y=dog.landingStartY=config.groundY+(seat==null?-130:seat.y+(role=="front"?0:seat.scale*100)-1258)*z;
+                dog.landingEndX=owner.x-(1150-652)*z-30-dog.lane*5;dog.landing=dog.landingDuration=seat!=null&&seat.y<800?.85f:.65f;
+            }
+        }
         void BeginStation(string type)
         {
             encounter=type;stationSerial++;landmarkX=config.stationSpawnX;landmarkConsumed=false;phase="approach";upgradeClock=0;
         }
         bool TickStation(float dt)
         {
-            foreach(var f in fighters)if(f.dead){f.deathAge+=dt;f.x-=travelSpeed*dt;}
-            foreach(var a in abandoned)a.x-=travelSpeed*dt;
+            foreach(var f in fighters)if(f.dead){f.deathAge+=dt;f.x-=travelSpeed*dt*config.roadScrollFactor;}
+            foreach(var a in abandoned)a.x-=travelSpeed*dt*config.roadScrollFactor;
             foreach(var item in loot.ToArray())
             {
                 item.age+=dt;
@@ -59,7 +74,7 @@ namespace MegaTanks
                     item.x=Mathf.Lerp(item.flyX,item.chest?player.x:item.gear?gearTargetX:coinTargetX,e);item.y=Mathf.Lerp(item.flyY,item.chest?config.groundY-player.width*.35f:counterTargetY,e)-90*Mathf.Sin(t*Mathf.PI);
                     if(t>=1){if(item.chest)collectedChests+=item.amount;else if(item.gear)gears+=item.amount;else money+=item.amount;loot.Remove(item);}continue;
                 }
-                item.x-=travelSpeed*dt;float u=Mathf.Clamp01(item.age/.62f);item.y=Mathf.Lerp(item.fromY,config.groundY-20,u)-110*Mathf.Sin(u*Mathf.PI);
+                item.x-=travelSpeed*dt*config.roadScrollFactor;float u=Mathf.Clamp01(item.age/.62f);item.y=Mathf.Lerp(item.fromY,config.groundY-20,u)-110*Mathf.Sin(u*Mathf.PI);
                 if(u<1)continue;item.phase=1;
                 bool near=Mathf.Abs(item.x-player.x)<player.width*.48f+65||fighters.Any(f=>!f.locked&&!f.dead&&!f.aboard&&Mathf.Abs(item.x-f.x)<130);
                 bool sweep=bossKilled&&!fighters.Any(f=>!f.dead&&!f.locked&&!f.aboard&&f.motion!="following");
@@ -95,7 +110,7 @@ namespace MegaTanks
             if(carrier.kind!="trojan"||carrier.revealed)return false;carrier.revealed=true;
             // Register all payloads before the carrier can leave the active set.
             for(int i=0;i<3;i++){var dog=Spawn("dog");dog.carrier=carrier;float z=carrier.width/1200;dog.x=dog.landingStartX=carrier.x+(520+i*130-800)*z;dog.y=dog.landingStartY=config.groundY-112*z;dog.landingEndX=carrier.x+(120+i*190-800)*z;dog.landing=dog.landingDuration=.45f+i*.12f;}
-            carrier.dead=true;corpses.Add(new Corpse{actor=carrier});return true;
+            carrier.dead=true;AddEffect("Explosion",carrier.x,Center(carrier).y,140,.5f,true);return true;
         }
         void Drop(Actor actor,bool bossDrop)
         {

@@ -25,12 +25,15 @@ namespace MegaTanks
         public void Initialize(HtmlBattleArt source)
         {
             art=source;
-            for(int i=0;i<3;i++){outer[i]=R(transform,"Outer "+i,0,82);I(outer[i],i==2?"boss_outer":"node_outer",i==2?-54:-40,i==2?-54:-40,i==2?108:80,i==2?108:80);}
+            // Ordinary nodes use the source SVG clip (0,26,580,118); boss remains outside it.
+            var outerClip=R(transform,"Outer Node Clip",0,26,580,118);outerClip.gameObject.AddComponent<RectMask2D>();
+            for(int i=0;i<3;i++){outer[i]=R(i==2?transform:outerClip,"Outer "+i,0,i==2?82:56);I(outer[i],i==2?"boss_outer":"node_outer",i==2?-54:-40,i==2?-54:-40,i==2?108:80,i==2?108:80);}
             I(transform,"rail_empty",60,68,520,28).type=Image.Type.Sliced;
             var progress=I(transform,"rail_progress",60,79,260,6);progress.color=new Color(1,.81f,.235f);progress.type=Image.Type.Sliced;
+            var innerClip=R(transform,"Inner Node Clip",0,26,580,118);innerClip.gameObject.AddComponent<RectMask2D>();
             for(int i=0;i<3;i++)
             {
-                inner[i]=R(transform,"Inner "+i,0,82);cores[i]=I(inner[i],i==2?"boss_inner":"node_inner",i==2?-46:-32,i==2?-46:-32,i==2?92:64,i==2?92:64);
+                inner[i]=R(i==2?transform:innerClip,"Inner "+i,0,i==2?82:56);cores[i]=I(inner[i],i==2?"boss_inner":"node_inner",i==2?-46:-32,i==2?-46:-32,i==2?92:64,i==2?92:64);
                 icons[i]=I(inner[i],"event_battle",i==2?-51:-38,i==2?-51:-38,i==2?102:76,i==2?102:76);
                 if(i<2){ticks[i]=T(inner[i],"Completed",8,13,34,34,28);ticks[i].text="✓";ticks[i].color=new Color(.44f,.91f,.64f);}
             }
@@ -68,10 +71,10 @@ namespace MegaTanks
                 float from=oldX[i];if(i<2&&cursor==oldCursor+1&&cursor<n-1)from=i==0?oldX[0]:oldX[1];
                 float x=clock<.32f?Mathf.Lerp(from,targets[i],t):targets[i];
                 if(clock>=.32f&&clock<.5f&&i==1&&cursor<n-2)x=Mathf.Lerp(580,targets[i],1-Mathf.Pow(1-Mathf.Clamp01((clock-.32f)/.18f),3));
-                visualX[i]=x;outer[i].anchoredPosition=inner[i].anchoredPosition=new Vector2(x*scale,-82*scale);
+                visualX[i]=x;outer[i].anchoredPosition=inner[i].anchoredPosition=new Vector2(x*scale,-(i==2?82:56)*scale);
                 bool complete=indices[i]<cursor;icons[i].sprite=art.Image("timeline_event_"+route[indices[i]].type)?.sprite;
                 icons[i].color=new Color(1,1,1,complete?.42f:1);cores[i].color=indices[i]==cursor?new Color(1,.855f,.376f):new Color(1,.96f,.875f);
-                if(i<2){ticks[i].gameObject.SetActive(complete);bool visible=x>0&&x<580;inner[i].gameObject.SetActive(visible);outer[i].gameObject.SetActive(visible);}
+                if(i<2)ticks[i].gameObject.SetActive(complete);
             }
             bossLabel.rectTransform.anchoredPosition=new Vector2((visualX[2]-70)*scale,-136*scale);
             var current=route[cursor];bool battle=current.first>0;

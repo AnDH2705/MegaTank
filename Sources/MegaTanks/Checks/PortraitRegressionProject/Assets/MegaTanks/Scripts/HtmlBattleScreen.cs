@@ -64,14 +64,7 @@ namespace MegaTanks
                 Simulation.weaponReloadBonus[i]=member.stats.reloadSpeed.AtLevel(state.Level,state.Stars);
             }
             var driver=game.Crew.Get(CrewRole.Driver);
-            if(game.Equipment.MissilePack!=null)
-            {
-                var definition=game.Equipment.MissilePack;var stats=(GunStats)game.PreviewWeaponStats(definition);
-                stats.damage=game.Progression.Damage(definition);stats.reloadSpeed+=game.ReloadSpeedBonus;stats.accuracy+=game.AccuracyBonus;
-                Simulation.EquipMissile(stats);
-                artwork["homing_missile"]=new HtmlArtImage{key="homing_missile",sprite=definition.stats.projectileSprite};
-                artwork["missile_pack"]=new HtmlArtImage{key="missile_pack",sprite=definition.icon};
-            }
+            // Keep the mounted gun parts from the HTML art; saved legacy loadouts never replace the mortar.
             if(driver!=null){var state=game.Progression.Get(driver);Simulation.player.hp=Simulation.player.maxHP=config.playerHP+driver.stats.hp.AtLevel(state.Level,state.Stars);Simulation.driverSpeedBonus=driver.stats.speed.AtLevel(state.Level,state.Stars);}
             Simulation.fighters.RemoveAll(f=>game.Crew.Get(f.role=="mg"?CrewRole.SubGunner:f.role=="cannon"?CrewRole.Gunner:f.role=="mortar"?CrewRole.WeaponSpecialist:f.role=="driver"?CrewRole.Driver:CrewRole.Commando)==null);
             Simulation.ConfigureCrew(game.Crew,game.Progression);Simulation.ConfigureProfile(new PlayerTankProfile(config).Level);modal.gameObject.SetActive(false);Render();
@@ -138,7 +131,6 @@ namespace MegaTanks
                 if(part.order>=7&&!crewDrawn){if(a.kind!="parked"&&!a.dead)DrawTankCrew(a,profile,z,enemy);crewDrawn=true;}
                 int wi=part.name.StartsWith("06_")?1:part.name.StartsWith("08_")?0:part.name.StartsWith("09_")||part.name.StartsWith("10_")?2:-1;
                 if(wi>=0&&!a.weapons[wi])continue;
-                if(!enemy&&a.kind=="player"&&wi==2&&Simulation.MissileStats!=null)continue;
                 float bob=a.kind=="player"&&Simulation.travelSpeed>1&&Simulation.phase!="approach"&&Simulation.phase!="depart"?Mathf.Sin(Simulation.time*10)*1.6f:0;
                 float x=a.x+face*(part.position[0]-652)*z,y=config.groundY+(part.position[1]-1258)*z+bob;
                 var image=DrawSprite(part.key,x,y,part.size[0]*z,part.size[1]*z,new Color(1,1,1,opacity),face);
@@ -157,12 +149,6 @@ namespace MegaTanks
                         image.rectTransform.pivot=new Vector2((part.pivot[0]-part.position[0])/part.size[0],1-(part.pivot[1]-part.position[1])/part.size[1]);image.rectTransform.anchoredPosition=new Vector2(px,-py);image.rectTransform.localRotation=Quaternion.Euler(0,0,-face*angle*Mathf.Rad2Deg);
                     }
                 }
-            }
-            if(!enemy&&a.kind=="player"&&a.weapons[2]&&Simulation.MissileStats!=null)
-            {
-                float x=a.x-190,y=config.groundY-a.width*.83f;var target=Simulation.MissileTarget(Center(a),Simulation.MissileStats.preferredTarget==EnemyKind.Flyer,Simulation.MissileStats.range*100);
-                float angle=target==null?0:-Mathf.Atan2(Center(target).y-y,Center(target).x-x)*Mathf.Rad2Deg;
-                var launcher=DrawSprite("missile_pack",x,y,175,88,Color.white,1,angle);launcher.rectTransform.pivot=new Vector2(.45f,.3f);
             }
             if(enemy&&!a.dead)HealthBar(a,config.groundY-a.width*.87f);
             if(a.kind=="boss"&&!a.dead)
@@ -187,7 +173,7 @@ namespace MegaTanks
         void UpdateModal()
         {
             var s=Simulation;string key=leaving?"leave":paused?"pause":s.phase=="choice"?"choice:"+s.encounterIndex:s.Terminal?s.phase:"";
-            if(key==modalKey)return;modalKey=key;if(key==""){modal.gameObject.SetActive(false);return;}ClearModal();
+            if(key==modalKey){if(key=="")modal.gameObject.SetActive(false);return;}modalKey=key;if(key==""){modal.gameObject.SetActive(false);return;}ClearModal();
             var dim=StaticImage(modal,"Backdrop","",0,0,1920,1080,new Color(0,0,0,.55f));dim.raycastTarget=true;
             if(s.phase=="choice"&&!paused&&!leaving)dim.color=new Color(.11f,.07f,.18f,.76f);
             if(leaving||paused||s.Terminal)
@@ -196,8 +182,8 @@ namespace MegaTanks
                 Label(modal,"Title",leaving?"VỀ MÀN CHÍNH?":paused?"TẠM DỪNG":s.phase=="won"?"HOÀN THÀNH STAGE":"THẤT BẠI",560,275,800,90,44,Color.white,TextAnchor.MiddleCenter);
                 if(s.phase=="won")BossChest();
                 else if(s.phase=="lost")Label(modal,"Summary","Đã hạ "+s.kills+" / "+s.stage.total+" quái\nWave "+s.wave+" / "+config.wavesPerStage,600,390,720,100,30,new Color(.2f,.2f,.25f),TextAnchor.MiddleCenter);
-                Button(modal,"Primary",leaving?"TIẾP TỤC CHƠI":paused?"TIẾP TỤC":s.phase=="won"&&stageIndex+1<config.stages.Length?"STAGE TIẾP THEO":"CHƠI LẠI",680,590,560,80,()=>{if(paused){paused=false;leaving=false;modalKey="";}else StartStage(s.phase=="won"&&stageIndex+1<config.stages.Length?stageIndex+1:stageIndex);});
-                Button(modal,"Home","MÀN CHÍNH",680,690,560,70,Exit);return;
+                Button(modal,"Primary",leaving?"TIẾP TỤC CHƠI":paused?"TIẾP TỤC":s.phase=="won"&&stageIndex+1<config.stages.Length?"STAGE TIẾP THEO":"CHƠI LẠI",680,s.phase=="won"?640:590,560,80,()=>{if(paused){paused=false;leaving=false;modalKey="";}else StartStage(s.phase=="won"&&stageIndex+1<config.stages.Length?stageIndex+1:stageIndex);});
+                Button(modal,"Home","MÀN CHÍNH",680,s.phase=="won"?735:690,560,70,Exit);return;
             }
             DrawEncounter();
         }
@@ -220,7 +206,8 @@ namespace MegaTanks
                 StaticImage(root,part.name,part.key,offsetX+part.position[0]*factor,offsetY+part.position[1]*factor,part.size[0]*factor,part.size[1]*factor);
             }
         }
-        public void Exit(){CreditLoot();Destroy(gameObject);}
+        bool exiting;
+        public void Exit(){if(exiting)return;exiting=true;paused=true;CreditLoot();game.UI.ReturnFromHtmlBattle(gameObject);}
     }
 }
 

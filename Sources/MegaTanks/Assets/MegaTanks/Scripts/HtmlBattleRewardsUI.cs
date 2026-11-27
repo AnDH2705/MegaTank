@@ -9,7 +9,7 @@ namespace MegaTanks
         RectTransform chestLid;float chestAge;
         void BossChest()
         {
-            chestAge=0;var root=Rect(modal,"Automatic Boss Chest",710,365,500,190);
+            chestAge=0;var root=Rect(modal,"Automatic Boss Chest",710,405,500,210);
             var glow=Rect(root,"Comic Burst",150,-15,200,150).gameObject.AddComponent<NativeComicBurst>();glow.color=new Color(1,.9f,.52f,.35f);
             StaticImage(root,"Chest Border","",194,46,112,65,new Color(.15f,.15f,.2f));
             StaticImage(root,"Chest Wood","",200,50,100,55,new Color(.67f,.35f,.17f));

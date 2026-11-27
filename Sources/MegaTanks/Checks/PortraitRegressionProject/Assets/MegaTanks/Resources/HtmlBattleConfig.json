@@ -221,9 +221,9 @@
         1
       ],
       "recoveredAmmo": [
-        220,
-        24,
-        2
+        360,
+        36,
+        4
       ],
       "requireRecovery": true,
       "cannonCars": 2,
@@ -258,5 +258,16 @@
     8
   ],
   "stationDefenseBonus": 2,
-  "stationCritBonus": 2
+  "stationCritBonus": 2,
+  "crewLaneSpacing": 46,
+  "legacyCrewStatBonuses": true,
+  "useMainBattleVfx": true,
+  "bossEntrySpeed": 260,
+  "bossDuelSpeed": 60,
+  "bossDuelCenter": 960,
+  "bossContactFactor": 0.52,
+  "playerGoalX": 400,
+  "travelAcceleration": 90,
+  "stationAcceleration": 480,
+  "roadScrollFactor": 1.2
 }

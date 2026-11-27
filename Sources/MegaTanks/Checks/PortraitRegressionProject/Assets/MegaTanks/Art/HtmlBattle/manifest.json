@@ -1796,9 +1796,9 @@
   ],
   "images": [
     {
-      "key": "tank_base_01_track_chassis",
-      "file": "tank_base_01_track_chassis.png",
-      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/01_track_chassis.png",
+      "key": "ammo_cannon",
+      "file": "ammo_cannon.png",
+      "source": "Art/Asset/UI/HP_Bar/ammo_cannon.png",
       "border": [
         0,
         0,
@@ -1807,9 +1807,9 @@
       ]
     },
     {
-      "key": "tank_base_02_wheel_01",
-      "file": "tank_base_02_wheel_01.png",
-      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/02_wheel_01.png",
+      "key": "ammo_mortar",
+      "file": "ammo_mortar.png",
+      "source": "Art/Asset/UI/HP_Bar/ammo_mortar.png",
       "border": [
         0,
         0,
@@ -1818,9 +1818,9 @@
       ]
     },
     {
-      "key": "tank_base_03_wheel_02",
-      "file": "tank_base_03_wheel_02.png",
-      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/03_wheel_02.png",
+      "key": "ammoicon_ammo_cannon",
+      "file": "ammoicon_ammo_cannon.png",
+      "source": "Art/Asset/UI/Ammo_Icons/24/ammo_cannon.png",
       "border": [
         0,
         0,
@@ -1829,9 +1829,9 @@
       ]
     },
     {
-      "key": "tank_base_04_wheel_03",
-      "file": "tank_base_04_wheel_03.png",
-      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/04_wheel_03.png",
+      "key": "ammoicon_ammo_mg",
+      "file": "ammoicon_ammo_mg.png",
+      "source": "Art/Asset/UI/Ammo_Icons/24/ammo_mg.png",
       "border": [
         0,
         0,
@@ -1840,9 +1840,9 @@
       ]
     },
     {
-      "key": "tank_base_05_wheel_04",
-      "file": "tank_base_05_wheel_04.png",
-      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/05_wheel_04.png",
+      "key": "ammoicon_ammo_mortar",
+      "file": "ammoicon_ammo_mortar.png",
+      "source": "Art/Asset/UI/Ammo_Icons/24/ammo_mortar.png",
       "border": [
         0,
         0,
@@ -1851,9 +1851,9 @@
       ]
     },
     {
-      "key": "tank_base_06_main_cannon_barrel",
-      "file": "tank_base_06_main_cannon_barrel.png",
-      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/06_main_cannon_barrel.png",
+      "key": "arcade_vfx_Beam",
+      "file": "arcade_vfx_Beam.png",
+      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Beam.png",
       "border": [
         0,
         0,
@@ -1862,9 +1862,9 @@
       ]
     },
     {
-      "key": "tank_base_07_body_static",
-      "file": "tank_base_07_body_static.png",
-      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/07_body_static.png",
+      "key": "arcade_vfx_BeamTrail",
+      "file": "arcade_vfx_BeamTrail.png",
+      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/BeamTrail.png",
       "border": [
         0,
         0,
@@ -1873,9 +1873,9 @@
       ]
     },
     {
-      "key": "tank_base_11_front_hull_frame",
-      "file": "tank_base_11_front_hull_frame.png",
-      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/11_front_hull_frame.png",
+      "key": "arcade_vfx_Dust",
+      "file": "arcade_vfx_Dust.png",
+      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Dust.png",
       "border": [
         0,
         0,
@@ -1884,9 +1884,9 @@
       ]
     },
     {
-      "key": "tank_base_08_roof_machine_gun",
-      "file": "tank_base_08_roof_machine_gun.png",
-      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/08_roof_machine_gun.png",
+      "key": "arcade_vfx_Explosion",
+      "file": "arcade_vfx_Explosion.png",
+      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Explosion.png",
       "border": [
         0,
         0,
@@ -1895,9 +1895,9 @@
       ]
     },
     {
-      "key": "tank_base_09_mortar_barrel",
-      "file": "tank_base_09_mortar_barrel.png",
-      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/09_mortar_barrel.png",
+      "key": "arcade_vfx_FireBoltHead",
+      "file": "arcade_vfx_FireBoltHead.png",
+      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/FireBoltHead.png",
       "border": [
         0,
         0,
@@ -1906,9 +1906,9 @@
       ]
     },
     {
-      "key": "tank_base_10_mortar_front_support",
-      "file": "tank_base_10_mortar_front_support.png",
-      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/10_mortar_front_support.png",
+      "key": "arcade_vfx_Glow",
+      "file": "arcade_vfx_Glow.png",
+      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Glow.png",
       "border": [
         0,
         0,
@@ -1917,9 +1917,9 @@
       ]
     },
     {
-      "key": "tank_speed_01_track_chassis",
-      "file": "tank_speed_01_track_chassis.png",
-      "source": "Art/Asset/Tanks/Tank_2_speed/parts/01_track_chassis.png",
+      "key": "arcade_vfx_Hit",
+      "file": "arcade_vfx_Hit.png",
+      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Hit.png",
       "border": [
         0,
         0,
@@ -1928,9 +1928,9 @@
       ]
     },
     {
-      "key": "tank_speed_02_wheel_01",
-      "file": "tank_speed_02_wheel_01.png",
-      "source": "Art/Asset/Tanks/Tank_2_speed/parts/02_wheel_01.png",
+      "key": "arcade_vfx_Muzzle",
+      "file": "arcade_vfx_Muzzle.png",
+      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Muzzle.png",
       "border": [
         0,
         0,
@@ -1939,9 +1939,9 @@
       ]
     },
     {
-      "key": "tank_speed_03_wheel_02",
-      "file": "tank_speed_03_wheel_02.png",
-      "source": "Art/Asset/Tanks/Tank_2_speed/parts/03_wheel_02.png",
+      "key": "arcade_vfx_Shockwave",
+      "file": "arcade_vfx_Shockwave.png",
+      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Shockwave.png",
       "border": [
         0,
         0,
@@ -1950,9 +1950,9 @@
       ]
     },
     {
-      "key": "tank_speed_04_wheel_03",
-      "file": "tank_speed_04_wheel_03.png",
-      "source": "Art/Asset/Tanks/Tank_2_speed/parts/04_wheel_03.png",
+      "key": "arcade_vfx_Smoke",
+      "file": "arcade_vfx_Smoke.png",
+      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Smoke.png",
       "border": [
         0,
         0,
@@ -1961,9 +1961,9 @@
       ]
     },
     {
-      "key": "tank_speed_05_wheel_04",
-      "file": "tank_speed_05_wheel_04.png",
-      "source": "Art/Asset/Tanks/Tank_2_speed/parts/05_wheel_04.png",
+      "key": "arcade_vfx_Spark",
+      "file": "arcade_vfx_Spark.png",
+      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Spark.png",
       "border": [
         0,
         0,
@@ -1972,9 +1972,9 @@
       ]
     },
     {
-      "key": "tank_speed_06_main_cannon_barrel",
-      "file": "tank_speed_06_main_cannon_barrel.png",
-      "source": "Art/Asset/Tanks/Tank_2_speed/parts/06_main_cannon_barrel.png",
+      "key": "aura_arrow_up",
+      "file": "aura_arrow_up.png",
+      "source": "Art/VFX/Tank_Level_Up/arrow_up.png",
       "border": [
         0,
         0,
@@ -1983,9 +1983,9 @@
       ]
     },
     {
-      "key": "tank_speed_07_body_static",
-      "file": "tank_speed_07_body_static.png",
-      "source": "Art/Asset/Tanks/Tank_2_speed/parts/07_body_static.png",
+      "key": "aura_glow",
+      "file": "aura_glow.png",
+      "source": "Art/VFX/Tank_Level_Up/glow.png",
       "border": [
         0,
         0,
@@ -1994,9 +1994,9 @@
       ]
     },
     {
-      "key": "tank_speed_11_front_hull_frame",
-      "file": "tank_speed_11_front_hull_frame.png",
-      "source": "Art/Asset/Tanks/Tank_2_speed/parts/11_front_hull_frame.png",
+      "key": "aura_ring",
+      "file": "aura_ring.png",
+      "source": "Art/VFX/Tank_Level_Up/ring.png",
       "border": [
         0,
         0,
@@ -2005,9 +2005,9 @@
       ]
     },
     {
-      "key": "tank_speed_08_roof_machine_gun",
-      "file": "tank_speed_08_roof_machine_gun.png",
-      "source": "Art/Asset/Tanks/Tank_2_speed/parts/08_roof_machine_gun.png",
+      "key": "aura_spark",
+      "file": "aura_spark.png",
+      "source": "Art/VFX/Tank_Level_Up/spark.png",
       "border": [
         0,
         0,
@@ -2016,9 +2016,9 @@
       ]
     },
     {
-      "key": "tank_speed_09_mortar_barrel",
-      "file": "tank_speed_09_mortar_barrel.png",
-      "source": "Art/Asset/Tanks/Tank_2_speed/parts/09_mortar_barrel.png",
+      "key": "cannon_car_ammo_crate",
+      "file": "cannon_car_ammo_crate.png",
+      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/05_ammo_crate.png",
       "border": [
         0,
         0,
@@ -2027,9 +2027,9 @@
       ]
     },
     {
-      "key": "tank_speed_10_mortar_front_support",
-      "file": "tank_speed_10_mortar_front_support.png",
-      "source": "Art/Asset/Tanks/Tank_2_speed/parts/10_mortar_front_support.png",
+      "key": "cannon_car_barrel",
+      "file": "cannon_car_barrel.png",
+      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/03_cannon_barrel.png",
       "border": [
         0,
         0,
@@ -2038,9 +2038,9 @@
       ]
     },
     {
-      "key": "tank_heavy_01_track_chassis",
-      "file": "tank_heavy_01_track_chassis.png",
-      "source": "Art/Asset/Tanks/Tank_3_HP/parts/01_track_chassis.png",
+      "key": "cannon_car_body_back",
+      "file": "cannon_car_body_back.png",
+      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/00_body_back.png",
       "border": [
         0,
         0,
@@ -2049,9 +2049,9 @@
       ]
     },
     {
-      "key": "tank_heavy_02_wheel_01",
-      "file": "tank_heavy_02_wheel_01.png",
-      "source": "Art/Asset/Tanks/Tank_3_HP/parts/02_wheel_01.png",
+      "key": "cannon_car_body_front",
+      "file": "cannon_car_body_front.png",
+      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/07_body_front.png",
       "border": [
         0,
         0,
@@ -2060,9 +2060,9 @@
       ]
     },
     {
-      "key": "tank_heavy_03_wheel_02",
-      "file": "tank_heavy_03_wheel_02.png",
-      "source": "Art/Asset/Tanks/Tank_3_HP/parts/03_wheel_02.png",
+      "key": "cannon_car_cradle",
+      "file": "cannon_car_cradle.png",
+      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/04_cannon_cradle.png",
       "border": [
         0,
         0,
@@ -2071,9 +2071,9 @@
       ]
     },
     {
-      "key": "tank_heavy_04_wheel_03",
-      "file": "tank_heavy_04_wheel_03.png",
-      "source": "Art/Asset/Tanks/Tank_3_HP/parts/04_wheel_03.png",
+      "key": "cannon_car_exhaust",
+      "file": "cannon_car_exhaust.png",
+      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/08_exhaust.png",
       "border": [
         0,
         0,
@@ -2082,9 +2082,9 @@
       ]
     },
     {
-      "key": "tank_heavy_05_wheel_04",
-      "file": "tank_heavy_05_wheel_04.png",
-      "source": "Art/Asset/Tanks/Tank_3_HP/parts/05_wheel_04.png",
+      "key": "cannon_car_seat",
+      "file": "cannon_car_seat.png",
+      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/01_driver_seat.png",
       "border": [
         0,
         0,
@@ -2093,9 +2093,9 @@
       ]
     },
     {
-      "key": "tank_heavy_06_main_cannon_barrel",
-      "file": "tank_heavy_06_main_cannon_barrel.png",
-      "source": "Art/Asset/Tanks/Tank_3_HP/parts/06_main_cannon_barrel.png",
+      "key": "cannon_car_suspension_0",
+      "file": "cannon_car_suspension_0.png",
+      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/02_suspension.png",
       "border": [
         0,
         0,
@@ -2104,9 +2104,9 @@
       ]
     },
     {
-      "key": "tank_heavy_07_body_static",
-      "file": "tank_heavy_07_body_static.png",
-      "source": "Art/Asset/Tanks/Tank_3_HP/parts/07_body_static.png",
+      "key": "cannon_car_suspension_1",
+      "file": "cannon_car_suspension_1.png",
+      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/02_suspension.png",
       "border": [
         0,
         0,
@@ -2115,9 +2115,9 @@
       ]
     },
     {
-      "key": "tank_heavy_11_front_hull_frame",
-      "file": "tank_heavy_11_front_hull_frame.png",
-      "source": "Art/Asset/Tanks/Tank_3_HP/parts/11_front_hull_frame.png",
+      "key": "cannon_car_wheel_0",
+      "file": "cannon_car_wheel_0.png",
+      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/06_wheel.png",
       "border": [
         0,
         0,
@@ -2126,31 +2126,9 @@
       ]
     },
     {
-      "key": "tank_heavy_08_roof_machine_gun",
-      "file": "tank_heavy_08_roof_machine_gun.png",
-      "source": "Art/Asset/Tanks/Tank_3_HP/parts/08_roof_machine_gun.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "tank_heavy_09_mortar_barrel",
-      "file": "tank_heavy_09_mortar_barrel.png",
-      "source": "Art/Asset/Tanks/Tank_3_HP/parts/09_mortar_barrel.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "tank_heavy_10_mortar_front_support",
-      "file": "tank_heavy_10_mortar_front_support.png",
-      "source": "Art/Asset/Tanks/Tank_3_HP/parts/10_mortar_front_support.png",
+      "key": "cannon_car_wheel_1",
+      "file": "cannon_car_wheel_1.png",
+      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/06_wheel.png",
       "border": [
         0,
         0,
@@ -2192,9 +2170,20 @@
       ]
     },
     {
-      "key": "plane_01_propeller_blades",
-      "file": "plane_01_propeller_blades.png",
-      "source": "Art/Asset/Enemies/Enemies_vehicles_Contrast_v2/plane/parts/01_propeller_blades.png",
+      "key": "card_action_plate",
+      "file": "card_action_plate.png",
+      "source": "Art/Asset/UI/Choice_Cards/parts/action_plate.png",
+      "border": [
+        6,
+        6,
+        6,
+        6
+      ]
+    },
+    {
+      "key": "card_base_ad",
+      "file": "card_base_ad.png",
+      "source": "Art/Asset/UI/Choice_Cards/bases/base_ad.png",
       "border": [
         0,
         0,
@@ -2203,9 +2192,9 @@
       ]
     },
     {
-      "key": "plane_02_wheel_rear",
-      "file": "plane_02_wheel_rear.png",
-      "source": "Art/Asset/Enemies/Enemies_vehicles_Contrast_v2/plane/parts/02_wheel_rear.png",
+      "key": "card_base_common",
+      "file": "card_base_common.png",
+      "source": "Art/Asset/UI/Choice_Cards/bases/base_common.png",
       "border": [
         0,
         0,
@@ -2214,9 +2203,9 @@
       ]
     },
     {
-      "key": "plane_03_wheel_main",
-      "file": "plane_03_wheel_main.png",
-      "source": "Art/Asset/Enemies/Enemies_vehicles_Contrast_v2/plane/parts/03_wheel_main.png",
+      "key": "card_base_epic",
+      "file": "card_base_epic.png",
+      "source": "Art/Asset/UI/Choice_Cards/bases/base_epic.png",
       "border": [
         0,
         0,
@@ -2225,9 +2214,449 @@
       ]
     },
     {
-      "key": "plane_04_body_static",
-      "file": "plane_04_body_static.png",
-      "source": "Art/Asset/Enemies/Enemies_vehicles_Contrast_v2/plane/parts/04_body_static.png",
+      "key": "card_base_legendary",
+      "file": "card_base_legendary.png",
+      "source": "Art/Asset/UI/Choice_Cards/bases/base_legendary.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "card_base_rare",
+      "file": "card_base_rare.png",
+      "source": "Art/Asset/UI/Choice_Cards/bases/base_rare.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "card_cannon_ap",
+      "file": "card_cannon_ap.png",
+      "source": "Art/Asset/UI/Choice_Cards/illustrations/cannon_ap.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "card_frame_ad",
+      "file": "card_frame_ad.png",
+      "source": "Art/Asset/UI/Choice_Cards/bases/frame_ad.png",
+      "border": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "key": "card_frame_common",
+      "file": "card_frame_common.png",
+      "source": "Art/Asset/UI/Choice_Cards/bases/frame_common.png",
+      "border": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "key": "card_frame_epic",
+      "file": "card_frame_epic.png",
+      "source": "Art/Asset/UI/Choice_Cards/bases/frame_epic.png",
+      "border": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "key": "card_frame_legendary",
+      "file": "card_frame_legendary.png",
+      "source": "Art/Asset/UI/Choice_Cards/bases/frame_legendary.png",
+      "border": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "key": "card_frame_rare",
+      "file": "card_frame_rare.png",
+      "source": "Art/Asset/UI/Choice_Cards/bases/frame_rare.png",
+      "border": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "key": "card_info_badge",
+      "file": "card_info_badge.png",
+      "source": "Art/Asset/UI/Choice_Cards/parts/info_badge.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "card_medical_kit",
+      "file": "card_medical_kit.png",
+      "source": "Art/Asset/UI/Choice_Cards/illustrations/medical_kit.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "card_mg_plasma",
+      "file": "card_mg_plasma.png",
+      "source": "Art/Asset/UI/Choice_Cards/illustrations/mg_plasma.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "card_mortar_blast",
+      "file": "card_mortar_blast.png",
+      "source": "Art/Asset/UI/Choice_Cards/illustrations/mortar_blast.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "card_supply_cannon",
+      "file": "card_supply_cannon.png",
+      "source": "Art/Asset/UI/Choice_Cards/illustrations/supply_cannon.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "card_supply_mg",
+      "file": "card_supply_mg.png",
+      "source": "Art/Asset/UI/Choice_Cards/illustrations/supply_mg.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "card_supply_mortar",
+      "file": "card_supply_mortar.png",
+      "source": "Art/Asset/UI/Choice_Cards/illustrations/supply_mortar.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "card_swirl_ad",
+      "file": "card_swirl_ad.png",
+      "source": "Art/Asset/UI/Choice_Cards/bases/swirl_ad.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "card_swirl_common",
+      "file": "card_swirl_common.png",
+      "source": "Art/Asset/UI/Choice_Cards/bases/swirl_common.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "card_swirl_epic",
+      "file": "card_swirl_epic.png",
+      "source": "Art/Asset/UI/Choice_Cards/bases/swirl_epic.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "card_swirl_legendary",
+      "file": "card_swirl_legendary.png",
+      "source": "Art/Asset/UI/Choice_Cards/bases/swirl_legendary.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "card_swirl_rare",
+      "file": "card_swirl_rare.png",
+      "source": "Art/Asset/UI/Choice_Cards/bases/swirl_rare.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "counter_coin",
+      "file": "counter_coin.png",
+      "source": "Art/Asset/UI/Resource_Counters/coin.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "counter_counter_frame",
+      "file": "counter_counter_frame.png",
+      "source": "Art/Asset/UI/Resource_Counters/counter_frame.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "counter_gear",
+      "file": "counter_gear.png",
+      "source": "Art/Asset/UI/Resource_Counters/gear.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "ground_fire",
+      "file": "ground_fire.png",
+      "source": "Art/Asset/vfx/ground_fire_vfx/assets/fire_strip_8f.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "helicopter_cabin_back",
+      "file": "helicopter_cabin_back.png",
+      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/00_cabin_back.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "helicopter_cabin_front",
+      "file": "helicopter_cabin_front.png",
+      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/06_cabin_front.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "helicopter_machine_gun",
+      "file": "helicopter_machine_gun.png",
+      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/07_machine_gun.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "helicopter_main_rotor",
+      "file": "helicopter_main_rotor.png",
+      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/09_main_rotor_blur.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "helicopter_mast",
+      "file": "helicopter_mast.png",
+      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/04_rotor_mast.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "helicopter_seat",
+      "file": "helicopter_seat.png",
+      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/05_pilot_seat.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "helicopter_skids",
+      "file": "helicopter_skids.png",
+      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/03_landing_skids.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "helicopter_tail_boom",
+      "file": "helicopter_tail_boom.png",
+      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/01_tail_boom.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "helicopter_tail_rotor",
+      "file": "helicopter_tail_rotor.png",
+      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/02_tail_rotor.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "hp_ammo_cannon",
+      "file": "hp_ammo_cannon.png",
+      "source": "Art/Asset/UI/HP_Bar/ammo_cannon.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "hp_ammo_mg",
+      "file": "hp_ammo_mg.png",
+      "source": "Art/Asset/UI/HP_Bar/ammo_mg.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "hp_ammo_mortar",
+      "file": "hp_ammo_mortar.png",
+      "source": "Art/Asset/UI/HP_Bar/ammo_mortar.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "hp_hp_fill",
+      "file": "hp_hp_fill.png",
+      "source": "Art/Asset/UI/HP_Bar/hp_fill.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "hp_hp_frame",
+      "file": "hp_hp_frame.png",
+      "source": "Art/Asset/UI/HP_Bar/hp_frame.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "hp_hp_label",
+      "file": "hp_hp_label.png",
+      "source": "Art/Asset/UI/HP_Bar/hp_label.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "hp_hp_panel",
+      "file": "hp_hp_panel.png",
+      "source": "Art/Asset/UI/HP_Bar/hp_panel.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "hp_hp_rail",
+      "file": "hp_hp_rail.png",
+      "source": "Art/Asset/UI/HP_Bar/hp_rail.png",
       "border": [
         0,
         0,
@@ -2379,9 +2808,9 @@
       ]
     },
     {
-      "key": "card_base_ad",
-      "file": "card_base_ad.png",
-      "source": "Art/Asset/UI/Choice_Cards/bases/base_ad.png",
+      "key": "plane_01_propeller_blades",
+      "file": "plane_01_propeller_blades.png",
+      "source": "Art/Asset/Enemies/Enemies_vehicles_Contrast_v2/plane/parts/01_propeller_blades.png",
       "border": [
         0,
         0,
@@ -2390,9 +2819,9 @@
       ]
     },
     {
-      "key": "card_base_common",
-      "file": "card_base_common.png",
-      "source": "Art/Asset/UI/Choice_Cards/bases/base_common.png",
+      "key": "plane_02_wheel_rear",
+      "file": "plane_02_wheel_rear.png",
+      "source": "Art/Asset/Enemies/Enemies_vehicles_Contrast_v2/plane/parts/02_wheel_rear.png",
       "border": [
         0,
         0,
@@ -2401,9 +2830,9 @@
       ]
     },
     {
-      "key": "card_base_epic",
-      "file": "card_base_epic.png",
-      "source": "Art/Asset/UI/Choice_Cards/bases/base_epic.png",
+      "key": "plane_03_wheel_main",
+      "file": "plane_03_wheel_main.png",
+      "source": "Art/Asset/Enemies/Enemies_vehicles_Contrast_v2/plane/parts/03_wheel_main.png",
       "border": [
         0,
         0,
@@ -2412,9 +2841,9 @@
       ]
     },
     {
-      "key": "card_base_legendary",
-      "file": "card_base_legendary.png",
-      "source": "Art/Asset/UI/Choice_Cards/bases/base_legendary.png",
+      "key": "plane_04_body_static",
+      "file": "plane_04_body_static.png",
+      "source": "Art/Asset/Enemies/Enemies_vehicles_Contrast_v2/plane/parts/04_body_static.png",
       "border": [
         0,
         0,
@@ -2423,9 +2852,9 @@
       ]
     },
     {
-      "key": "card_base_rare",
-      "file": "card_base_rare.png",
-      "source": "Art/Asset/UI/Choice_Cards/bases/base_rare.png",
+      "key": "profile_avatar_default",
+      "file": "profile_avatar_default.png",
+      "source": "Art/Asset/UI/Player_Profile/avatar_default.png",
       "border": [
         0,
         0,
@@ -2434,64 +2863,9 @@
       ]
     },
     {
-      "key": "card_frame_ad",
-      "file": "card_frame_ad.png",
-      "source": "Art/Asset/UI/Choice_Cards/bases/frame_ad.png",
-      "border": [
-        8,
-        8,
-        8,
-        8
-      ]
-    },
-    {
-      "key": "card_frame_common",
-      "file": "card_frame_common.png",
-      "source": "Art/Asset/UI/Choice_Cards/bases/frame_common.png",
-      "border": [
-        8,
-        8,
-        8,
-        8
-      ]
-    },
-    {
-      "key": "card_frame_epic",
-      "file": "card_frame_epic.png",
-      "source": "Art/Asset/UI/Choice_Cards/bases/frame_epic.png",
-      "border": [
-        8,
-        8,
-        8,
-        8
-      ]
-    },
-    {
-      "key": "card_frame_legendary",
-      "file": "card_frame_legendary.png",
-      "source": "Art/Asset/UI/Choice_Cards/bases/frame_legendary.png",
-      "border": [
-        8,
-        8,
-        8,
-        8
-      ]
-    },
-    {
-      "key": "card_frame_rare",
-      "file": "card_frame_rare.png",
-      "source": "Art/Asset/UI/Choice_Cards/bases/frame_rare.png",
-      "border": [
-        8,
-        8,
-        8,
-        8
-      ]
-    },
-    {
-      "key": "card_swirl_ad",
-      "file": "card_swirl_ad.png",
-      "source": "Art/Asset/UI/Choice_Cards/bases/swirl_ad.png",
+      "key": "profile_exp_fill",
+      "file": "profile_exp_fill.png",
+      "source": "Art/Asset/UI/Player_Profile/exp_fill.png",
       "border": [
         0,
         0,
@@ -2500,9 +2874,9 @@
       ]
     },
     {
-      "key": "card_swirl_common",
-      "file": "card_swirl_common.png",
-      "source": "Art/Asset/UI/Choice_Cards/bases/swirl_common.png",
+      "key": "profile_exp_rail",
+      "file": "profile_exp_rail.png",
+      "source": "Art/Asset/UI/Player_Profile/exp_rail.png",
       "border": [
         0,
         0,
@@ -2511,9 +2885,9 @@
       ]
     },
     {
-      "key": "card_swirl_epic",
-      "file": "card_swirl_epic.png",
-      "source": "Art/Asset/UI/Choice_Cards/bases/swirl_epic.png",
+      "key": "profile_profile_frame",
+      "file": "profile_profile_frame.png",
+      "source": "Art/Asset/UI/Player_Profile/profile_frame.png",
       "border": [
         0,
         0,
@@ -2522,9 +2896,9 @@
       ]
     },
     {
-      "key": "card_swirl_legendary",
-      "file": "card_swirl_legendary.png",
-      "source": "Art/Asset/UI/Choice_Cards/bases/swirl_legendary.png",
+      "key": "tank_base_01_track_chassis",
+      "file": "tank_base_01_track_chassis.png",
+      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/01_track_chassis.png",
       "border": [
         0,
         0,
@@ -2533,9 +2907,9 @@
       ]
     },
     {
-      "key": "card_swirl_rare",
-      "file": "card_swirl_rare.png",
-      "source": "Art/Asset/UI/Choice_Cards/bases/swirl_rare.png",
+      "key": "tank_base_02_wheel_01",
+      "file": "tank_base_02_wheel_01.png",
+      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/02_wheel_01.png",
       "border": [
         0,
         0,
@@ -2544,9 +2918,9 @@
       ]
     },
     {
-      "key": "card_cannon_ap",
-      "file": "card_cannon_ap.png",
-      "source": "Art/Asset/UI/Choice_Cards/icons/cannon_ap.png",
+      "key": "tank_base_03_wheel_02",
+      "file": "tank_base_03_wheel_02.png",
+      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/03_wheel_02.png",
       "border": [
         0,
         0,
@@ -2555,9 +2929,9 @@
       ]
     },
     {
-      "key": "card_medical_kit",
-      "file": "card_medical_kit.png",
-      "source": "Art/Asset/UI/Choice_Cards/icons/medical_kit.png",
+      "key": "tank_base_04_wheel_03",
+      "file": "tank_base_04_wheel_03.png",
+      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/04_wheel_03.png",
       "border": [
         0,
         0,
@@ -2566,9 +2940,9 @@
       ]
     },
     {
-      "key": "card_mg_plasma",
-      "file": "card_mg_plasma.png",
-      "source": "Art/Asset/UI/Choice_Cards/icons/mg_plasma.png",
+      "key": "tank_base_05_wheel_04",
+      "file": "tank_base_05_wheel_04.png",
+      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/05_wheel_04.png",
       "border": [
         0,
         0,
@@ -2577,9 +2951,9 @@
       ]
     },
     {
-      "key": "card_mortar_blast",
-      "file": "card_mortar_blast.png",
-      "source": "Art/Asset/UI/Choice_Cards/icons/mortar_blast.png",
+      "key": "tank_base_06_main_cannon_barrel",
+      "file": "tank_base_06_main_cannon_barrel.png",
+      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/06_main_cannon_barrel.png",
       "border": [
         0,
         0,
@@ -2588,9 +2962,9 @@
       ]
     },
     {
-      "key": "card_supply_cannon",
-      "file": "card_supply_cannon.png",
-      "source": "Art/Asset/UI/Choice_Cards/icons/supply_cannon.png",
+      "key": "tank_base_07_body_static",
+      "file": "tank_base_07_body_static.png",
+      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/07_body_static.png",
       "border": [
         0,
         0,
@@ -2599,9 +2973,9 @@
       ]
     },
     {
-      "key": "card_supply_mg",
-      "file": "card_supply_mg.png",
-      "source": "Art/Asset/UI/Choice_Cards/icons/supply_mg.png",
+      "key": "tank_base_08_roof_machine_gun",
+      "file": "tank_base_08_roof_machine_gun.png",
+      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/08_roof_machine_gun.png",
       "border": [
         0,
         0,
@@ -2610,9 +2984,9 @@
       ]
     },
     {
-      "key": "card_supply_mortar",
-      "file": "card_supply_mortar.png",
-      "source": "Art/Asset/UI/Choice_Cards/icons/supply_mortar.png",
+      "key": "tank_base_09_mortar_barrel",
+      "file": "tank_base_09_mortar_barrel.png",
+      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/09_mortar_barrel.png",
       "border": [
         0,
         0,
@@ -2621,9 +2995,9 @@
       ]
     },
     {
-      "key": "card_cannon_ap",
-      "file": "card_cannon_ap.png",
-      "source": "Art/Asset/UI/Choice_Cards/illustrations/cannon_ap.png",
+      "key": "tank_base_10_mortar_front_support",
+      "file": "tank_base_10_mortar_front_support.png",
+      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/10_mortar_front_support.png",
       "border": [
         0,
         0,
@@ -2632,9 +3006,9 @@
       ]
     },
     {
-      "key": "card_medical_kit",
-      "file": "card_medical_kit.png",
-      "source": "Art/Asset/UI/Choice_Cards/illustrations/medical_kit.png",
+      "key": "tank_base_11_front_hull_frame",
+      "file": "tank_base_11_front_hull_frame.png",
+      "source": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/11_front_hull_frame.png",
       "border": [
         0,
         0,
@@ -2643,9 +3017,9 @@
       ]
     },
     {
-      "key": "card_mg_plasma",
-      "file": "card_mg_plasma.png",
-      "source": "Art/Asset/UI/Choice_Cards/illustrations/mg_plasma.png",
+      "key": "tank_heavy_01_track_chassis",
+      "file": "tank_heavy_01_track_chassis.png",
+      "source": "Art/Asset/Tanks/Tank_3_HP/parts/01_track_chassis.png",
       "border": [
         0,
         0,
@@ -2654,9 +3028,9 @@
       ]
     },
     {
-      "key": "card_mortar_blast",
-      "file": "card_mortar_blast.png",
-      "source": "Art/Asset/UI/Choice_Cards/illustrations/mortar_blast.png",
+      "key": "tank_heavy_02_wheel_01",
+      "file": "tank_heavy_02_wheel_01.png",
+      "source": "Art/Asset/Tanks/Tank_3_HP/parts/02_wheel_01.png",
       "border": [
         0,
         0,
@@ -2665,9 +3039,9 @@
       ]
     },
     {
-      "key": "card_supply_cannon",
-      "file": "card_supply_cannon.png",
-      "source": "Art/Asset/UI/Choice_Cards/illustrations/supply_cannon.png",
+      "key": "tank_heavy_03_wheel_02",
+      "file": "tank_heavy_03_wheel_02.png",
+      "source": "Art/Asset/Tanks/Tank_3_HP/parts/03_wheel_02.png",
       "border": [
         0,
         0,
@@ -2676,9 +3050,9 @@
       ]
     },
     {
-      "key": "card_supply_mg",
-      "file": "card_supply_mg.png",
-      "source": "Art/Asset/UI/Choice_Cards/illustrations/supply_mg.png",
+      "key": "tank_heavy_04_wheel_03",
+      "file": "tank_heavy_04_wheel_03.png",
+      "source": "Art/Asset/Tanks/Tank_3_HP/parts/04_wheel_03.png",
       "border": [
         0,
         0,
@@ -2687,9 +3061,9 @@
       ]
     },
     {
-      "key": "card_supply_mortar",
-      "file": "card_supply_mortar.png",
-      "source": "Art/Asset/UI/Choice_Cards/illustrations/supply_mortar.png",
+      "key": "tank_heavy_05_wheel_04",
+      "file": "tank_heavy_05_wheel_04.png",
+      "source": "Art/Asset/Tanks/Tank_3_HP/parts/05_wheel_04.png",
       "border": [
         0,
         0,
@@ -2698,20 +3072,9 @@
       ]
     },
     {
-      "key": "card_action_plate",
-      "file": "card_action_plate.png",
-      "source": "Art/Asset/UI/Choice_Cards/parts/action_plate.png",
-      "border": [
-        6,
-        6,
-        6,
-        6
-      ]
-    },
-    {
-      "key": "card_info_badge",
-      "file": "card_info_badge.png",
-      "source": "Art/Asset/UI/Choice_Cards/parts/info_badge.png",
+      "key": "tank_heavy_06_main_cannon_barrel",
+      "file": "tank_heavy_06_main_cannon_barrel.png",
+      "source": "Art/Asset/Tanks/Tank_3_HP/parts/06_main_cannon_barrel.png",
       "border": [
         0,
         0,
@@ -2720,9 +3083,9 @@
       ]
     },
     {
-      "key": "ammoicon_ammo_cannon",
-      "file": "ammoicon_ammo_cannon.png",
-      "source": "Art/Asset/UI/Ammo_Icons/ammo_cannon.png",
+      "key": "tank_heavy_07_body_static",
+      "file": "tank_heavy_07_body_static.png",
+      "source": "Art/Asset/Tanks/Tank_3_HP/parts/07_body_static.png",
       "border": [
         0,
         0,
@@ -2731,9 +3094,9 @@
       ]
     },
     {
-      "key": "ammoicon_ammo_mg",
-      "file": "ammoicon_ammo_mg.png",
-      "source": "Art/Asset/UI/Ammo_Icons/ammo_mg.png",
+      "key": "tank_heavy_08_roof_machine_gun",
+      "file": "tank_heavy_08_roof_machine_gun.png",
+      "source": "Art/Asset/Tanks/Tank_3_HP/parts/08_roof_machine_gun.png",
       "border": [
         0,
         0,
@@ -2742,9 +3105,9 @@
       ]
     },
     {
-      "key": "ammoicon_ammo_mortar",
-      "file": "ammoicon_ammo_mortar.png",
-      "source": "Art/Asset/UI/Ammo_Icons/ammo_mortar.png",
+      "key": "tank_heavy_09_mortar_barrel",
+      "file": "tank_heavy_09_mortar_barrel.png",
+      "source": "Art/Asset/Tanks/Tank_3_HP/parts/09_mortar_barrel.png",
       "border": [
         0,
         0,
@@ -2753,9 +3116,9 @@
       ]
     },
     {
-      "key": "ammoicon_ammo_cannon",
-      "file": "ammoicon_ammo_cannon.png",
-      "source": "Art/Asset/UI/Ammo_Icons/24/ammo_cannon.png",
+      "key": "tank_heavy_10_mortar_front_support",
+      "file": "tank_heavy_10_mortar_front_support.png",
+      "source": "Art/Asset/Tanks/Tank_3_HP/parts/10_mortar_front_support.png",
       "border": [
         0,
         0,
@@ -2764,9 +3127,9 @@
       ]
     },
     {
-      "key": "ammoicon_ammo_mg",
-      "file": "ammoicon_ammo_mg.png",
-      "source": "Art/Asset/UI/Ammo_Icons/24/ammo_mg.png",
+      "key": "tank_heavy_11_front_hull_frame",
+      "file": "tank_heavy_11_front_hull_frame.png",
+      "source": "Art/Asset/Tanks/Tank_3_HP/parts/11_front_hull_frame.png",
       "border": [
         0,
         0,
@@ -2775,9 +3138,9 @@
       ]
     },
     {
-      "key": "ammoicon_ammo_mortar",
-      "file": "ammoicon_ammo_mortar.png",
-      "source": "Art/Asset/UI/Ammo_Icons/24/ammo_mortar.png",
+      "key": "tank_speed_01_track_chassis",
+      "file": "tank_speed_01_track_chassis.png",
+      "source": "Art/Asset/Tanks/Tank_2_speed/parts/01_track_chassis.png",
       "border": [
         0,
         0,
@@ -2786,9 +3149,9 @@
       ]
     },
     {
-      "key": "hp_ammo_cannon",
-      "file": "hp_ammo_cannon.png",
-      "source": "Art/Asset/UI/HP_Bar/ammo_cannon.png",
+      "key": "tank_speed_02_wheel_01",
+      "file": "tank_speed_02_wheel_01.png",
+      "source": "Art/Asset/Tanks/Tank_2_speed/parts/02_wheel_01.png",
       "border": [
         0,
         0,
@@ -2797,9 +3160,9 @@
       ]
     },
     {
-      "key": "hp_ammo_mg",
-      "file": "hp_ammo_mg.png",
-      "source": "Art/Asset/UI/HP_Bar/ammo_mg.png",
+      "key": "tank_speed_03_wheel_02",
+      "file": "tank_speed_03_wheel_02.png",
+      "source": "Art/Asset/Tanks/Tank_2_speed/parts/03_wheel_02.png",
       "border": [
         0,
         0,
@@ -2808,9 +3171,9 @@
       ]
     },
     {
-      "key": "hp_ammo_mortar",
-      "file": "hp_ammo_mortar.png",
-      "source": "Art/Asset/UI/HP_Bar/ammo_mortar.png",
+      "key": "tank_speed_04_wheel_03",
+      "file": "tank_speed_04_wheel_03.png",
+      "source": "Art/Asset/Tanks/Tank_2_speed/parts/04_wheel_03.png",
       "border": [
         0,
         0,
@@ -2819,9 +3182,9 @@
       ]
     },
     {
-      "key": "hp_hp_fill",
-      "file": "hp_hp_fill.png",
-      "source": "Art/Asset/UI/HP_Bar/hp_fill.png",
+      "key": "tank_speed_05_wheel_04",
+      "file": "tank_speed_05_wheel_04.png",
+      "source": "Art/Asset/Tanks/Tank_2_speed/parts/05_wheel_04.png",
       "border": [
         0,
         0,
@@ -2830,9 +3193,9 @@
       ]
     },
     {
-      "key": "hp_hp_frame",
-      "file": "hp_hp_frame.png",
-      "source": "Art/Asset/UI/HP_Bar/hp_frame.png",
+      "key": "tank_speed_06_main_cannon_barrel",
+      "file": "tank_speed_06_main_cannon_barrel.png",
+      "source": "Art/Asset/Tanks/Tank_2_speed/parts/06_main_cannon_barrel.png",
       "border": [
         0,
         0,
@@ -2841,9 +3204,9 @@
       ]
     },
     {
-      "key": "hp_hp_label",
-      "file": "hp_hp_label.png",
-      "source": "Art/Asset/UI/HP_Bar/hp_label.png",
+      "key": "tank_speed_07_body_static",
+      "file": "tank_speed_07_body_static.png",
+      "source": "Art/Asset/Tanks/Tank_2_speed/parts/07_body_static.png",
       "border": [
         0,
         0,
@@ -2852,9 +3215,9 @@
       ]
     },
     {
-      "key": "hp_hp_panel",
-      "file": "hp_hp_panel.png",
-      "source": "Art/Asset/UI/HP_Bar/hp_panel.png",
+      "key": "tank_speed_08_roof_machine_gun",
+      "file": "tank_speed_08_roof_machine_gun.png",
+      "source": "Art/Asset/Tanks/Tank_2_speed/parts/08_roof_machine_gun.png",
       "border": [
         0,
         0,
@@ -2863,9 +3226,75 @@
       ]
     },
     {
-      "key": "hp_hp_rail",
-      "file": "hp_hp_rail.png",
-      "source": "Art/Asset/UI/HP_Bar/hp_rail.png",
+      "key": "tank_speed_09_mortar_barrel",
+      "file": "tank_speed_09_mortar_barrel.png",
+      "source": "Art/Asset/Tanks/Tank_2_speed/parts/09_mortar_barrel.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "tank_speed_10_mortar_front_support",
+      "file": "tank_speed_10_mortar_front_support.png",
+      "source": "Art/Asset/Tanks/Tank_2_speed/parts/10_mortar_front_support.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "tank_speed_11_front_hull_frame",
+      "file": "tank_speed_11_front_hull_frame.png",
+      "source": "Art/Asset/Tanks/Tank_2_speed/parts/11_front_hull_frame.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "tent",
+      "file": "tent.png",
+      "source": "Art/Asset/BG/tent.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "timeline_boss_anchor",
+      "file": "timeline_boss_anchor.png",
+      "source": "Art/Asset/UI/Event_Timeline/sprites/boss_anchor.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "timeline_boss_inner",
+      "file": "timeline_boss_inner.png",
+      "source": "Art/Asset/UI/Event_Timeline/sprites/boss_inner.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "timeline_boss_outer",
+      "file": "timeline_boss_outer.png",
+      "source": "Art/Asset/UI/Event_Timeline/sprites/boss_outer.png",
       "border": [
         0,
         0,
@@ -2943,39 +3372,6 @@
       "key": "timeline_event_upgrade",
       "file": "timeline_event_upgrade.png",
       "source": "Art/Asset/UI/Event_Timeline/icons/event_upgrade.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "timeline_boss_anchor",
-      "file": "timeline_boss_anchor.png",
-      "source": "Art/Asset/UI/Event_Timeline/sprites/boss_anchor.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "timeline_boss_inner",
-      "file": "timeline_boss_inner.png",
-      "source": "Art/Asset/UI/Event_Timeline/sprites/boss_inner.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "timeline_boss_outer",
-      "file": "timeline_boss_outer.png",
-      "source": "Art/Asset/UI/Event_Timeline/sprites/boss_outer.png",
       "border": [
         0,
         0,
@@ -3072,9 +3468,9 @@
       ]
     },
     {
-      "key": "counter_coin",
-      "file": "counter_coin.png",
-      "source": "Art/Asset/UI/Resource_Counters/coin.png",
+      "key": "trojan_chassis",
+      "file": "trojan_chassis.png",
+      "source": "Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/03_chassis.png",
       "border": [
         0,
         0,
@@ -3083,515 +3479,9 @@
       ]
     },
     {
-      "key": "counter_counter_frame",
-      "file": "counter_counter_frame.png",
-      "source": "Art/Asset/UI/Resource_Counters/counter_frame.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "counter_gear",
-      "file": "counter_gear.png",
-      "source": "Art/Asset/UI/Resource_Counters/gear.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "profile_avatar_default",
-      "file": "profile_avatar_default.png",
-      "source": "Art/Asset/UI/Player_Profile/avatar_default.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "profile_exp_fill",
-      "file": "profile_exp_fill.png",
-      "source": "Art/Asset/UI/Player_Profile/exp_fill.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "profile_exp_rail",
-      "file": "profile_exp_rail.png",
-      "source": "Art/Asset/UI/Player_Profile/exp_rail.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "profile_profile_frame",
-      "file": "profile_profile_frame.png",
-      "source": "Art/Asset/UI/Player_Profile/profile_frame.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "tent",
-      "file": "tent.png",
-      "source": "Art/Asset/BG/tent.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "upgrade_station",
-      "file": "upgrade_station.png",
-      "source": "Art/Asset/BG/upgrade_station.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "aura_arrow_up",
-      "file": "aura_arrow_up.png",
-      "source": "Art/VFX/Tank_Level_Up/arrow_up.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "aura_glow",
-      "file": "aura_glow.png",
-      "source": "Art/VFX/Tank_Level_Up/glow.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "aura_ring",
-      "file": "aura_ring.png",
-      "source": "Art/VFX/Tank_Level_Up/ring.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "aura_spark",
-      "file": "aura_spark.png",
-      "source": "Art/VFX/Tank_Level_Up/spark.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "ammo_cannon",
-      "file": "ammo_cannon.png",
-      "source": "Art/Asset/UI/HP_Bar/ammo_cannon.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "ammo_mortar",
-      "file": "ammo_mortar.png",
-      "source": "Art/Asset/UI/HP_Bar/ammo_mortar.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "arcade_vfx_Beam",
-      "file": "arcade_vfx_Beam.png",
-      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Beam.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "arcade_vfx_BeamTrail",
-      "file": "arcade_vfx_BeamTrail.png",
-      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/BeamTrail.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "arcade_vfx_Dust",
-      "file": "arcade_vfx_Dust.png",
-      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Dust.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "arcade_vfx_Explosion",
-      "file": "arcade_vfx_Explosion.png",
-      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Explosion.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "arcade_vfx_FireBoltHead",
-      "file": "arcade_vfx_FireBoltHead.png",
-      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/FireBoltHead.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "arcade_vfx_Glow",
-      "file": "arcade_vfx_Glow.png",
-      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Glow.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "arcade_vfx_Hit",
-      "file": "arcade_vfx_Hit.png",
-      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Hit.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "arcade_vfx_Muzzle",
-      "file": "arcade_vfx_Muzzle.png",
-      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Muzzle.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "arcade_vfx_Shockwave",
-      "file": "arcade_vfx_Shockwave.png",
-      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Shockwave.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "arcade_vfx_Smoke",
-      "file": "arcade_vfx_Smoke.png",
-      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Smoke.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "arcade_vfx_Spark",
-      "file": "arcade_vfx_Spark.png",
-      "source": "Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Spark.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "ground_fire",
-      "file": "ground_fire.png",
-      "source": "Art/Asset/vfx/ground_fire_vfx/assets/fire_strip_8f.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "cannon_car_body_back",
-      "file": "cannon_car_body_back.png",
-      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/00_body_back.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "cannon_car_exhaust",
-      "file": "cannon_car_exhaust.png",
-      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/08_exhaust.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "cannon_car_ammo_crate",
-      "file": "cannon_car_ammo_crate.png",
-      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/05_ammo_crate.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "cannon_car_seat",
-      "file": "cannon_car_seat.png",
-      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/01_driver_seat.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "cannon_car_suspension_0",
-      "file": "cannon_car_suspension_0.png",
-      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/02_suspension.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "cannon_car_suspension_1",
-      "file": "cannon_car_suspension_1.png",
-      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/02_suspension.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "cannon_car_barrel",
-      "file": "cannon_car_barrel.png",
-      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/03_cannon_barrel.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "cannon_car_cradle",
-      "file": "cannon_car_cradle.png",
-      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/04_cannon_cradle.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "cannon_car_wheel_0",
-      "file": "cannon_car_wheel_0.png",
-      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/06_wheel.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "cannon_car_wheel_1",
-      "file": "cannon_car_wheel_1.png",
-      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/06_wheel.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "cannon_car_body_front",
-      "file": "cannon_car_body_front.png",
-      "source": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/07_body_front.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "helicopter_tail_boom",
-      "file": "helicopter_tail_boom.png",
-      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/01_tail_boom.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "helicopter_tail_rotor",
-      "file": "helicopter_tail_rotor.png",
-      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/02_tail_rotor.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "helicopter_cabin_back",
-      "file": "helicopter_cabin_back.png",
-      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/00_cabin_back.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "helicopter_skids",
-      "file": "helicopter_skids.png",
-      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/03_landing_skids.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "helicopter_seat",
-      "file": "helicopter_seat.png",
-      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/05_pilot_seat.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "helicopter_mast",
-      "file": "helicopter_mast.png",
-      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/04_rotor_mast.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "helicopter_cabin_front",
-      "file": "helicopter_cabin_front.png",
-      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/06_cabin_front.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "helicopter_machine_gun",
-      "file": "helicopter_machine_gun.png",
-      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/07_machine_gun.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "helicopter_main_rotor",
-      "file": "helicopter_main_rotor.png",
-      "source": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/09_main_rotor_blur.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "trojan_tail",
-      "file": "trojan_tail.png",
-      "source": "Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/04_cat_tail.png",
+      "key": "trojan_head",
+      "file": "trojan_head.png",
+      "source": "Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/05_cat_head.png",
       "border": [
         0,
         0,
@@ -3655,9 +3545,20 @@
       ]
     },
     {
-      "key": "trojan_chassis",
-      "file": "trojan_chassis.png",
-      "source": "Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/03_chassis.png",
+      "key": "trojan_outer_body",
+      "file": "trojan_outer_body.png",
+      "source": "Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/06_outer_body.png",
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "trojan_tail",
+      "file": "trojan_tail.png",
+      "source": "Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/04_cat_tail.png",
       "border": [
         0,
         0,
@@ -3710,20 +3611,9 @@
       ]
     },
     {
-      "key": "trojan_outer_body",
-      "file": "trojan_outer_body.png",
-      "source": "Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/06_outer_body.png",
-      "border": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "key": "trojan_head",
-      "file": "trojan_head.png",
-      "source": "Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/05_cat_head.png",
+      "key": "upgrade_station",
+      "file": "upgrade_station.png",
+      "source": "Art/Asset/BG/upgrade_station.png",
       "border": [
         0,
         0,

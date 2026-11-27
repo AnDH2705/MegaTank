@@ -7,7 +7,7 @@ namespace MegaTanks
 {
     public sealed class CrewHtmlScreen : MonoBehaviour
     {
-        [Serializable] public sealed class Station { public CrewRole role; public Button button; public Image portrait, outline, plate; public CrewBitmapText label; }
+        [Serializable] public sealed class Station { public CrewRole role; public Button button; public Image portrait, outline, plate; public CrewBitmapText label; [NonSerialized] public GameObject lockBadge; }
         [Serializable] public sealed class Candidate { public Button button; public Image portrait, selected, equipped; public CrewBitmapText name; }
         [Serializable] public sealed class Skill { public string role, name, purpose; public Sprite icon; }
         public Station[] stations;
@@ -73,12 +73,29 @@ namespace MegaTanks
             if(game.Crew.Equip(selected,(int)activeRole)) { Refresh(); Message("CREW EQUIPPED"); }
         }
         Sprite Portrait(CrewDefinition member)=>member==null?emptyPortrait:member.role==CrewRole.Commando?meleePortrait:normalPortrait;
+        static int UnlockIndex(CrewRole role)=>role==CrewRole.SubGunner?0:role==CrewRole.Gunner?1:role==CrewRole.WeaponSpecialist?2:role==CrewRole.Driver?3:4;
+        void StationLock(Station station,int required,bool locked)
+        {
+            station.portrait.material=locked?lockedMaterial:null;
+            if(locked&&station.lockBadge==null)
+            {
+                var badge=new GameObject("Tank Level Lock",typeof(RectTransform),typeof(CanvasRenderer),typeof(Image));badge.transform.SetParent(station.portrait.transform,false);station.lockBadge=badge;
+                var rect=(RectTransform)badge.transform;rect.anchorMin=new Vector2(0,1);rect.anchorMax=new Vector2(1,1);rect.pivot=new Vector2(.5f,1);rect.anchoredPosition=new Vector2(0,-3);rect.sizeDelta=new Vector2(-6,20);
+                var image=badge.GetComponent<Image>();image.color=new Color(.11f,.11f,.15f,.95f);image.raycastTarget=false;
+                var textObject=new GameObject("Unlock Level",typeof(RectTransform),typeof(CanvasRenderer),typeof(CrewBitmapText));textObject.transform.SetParent(rect,false);
+                var textRect=(RectTransform)textObject.transform;textRect.anchorMin=Vector2.zero;textRect.anchorMax=Vector2.one;textRect.offsetMin=textRect.offsetMax=Vector2.zero;
+                var text=textObject.GetComponent<CrewBitmapText>();text.atlas=nameLabel.atlas;text.metrics=nameLabel.metrics;text.fontSize=10;text.centered=true;text.color=new Color(1,.86f,.24f);text.raycastTarget=false;text.Value="LV."+required;
+            }
+            if(station.lockBadge!=null)station.lockBadge.SetActive(locked);
+        }
         public void Refresh()
         {
             if(game==null)return;
+            var config=HtmlBattleConfig.Load();int tankLevel=new PlayerTankProfile(config).Level;
             foreach(var s in stations)
             {
                 s.portrait.sprite=Portrait(game.Crew.Get(s.role));
+                int required=config.unlockLevels[UnlockIndex(s.role)];StationLock(s,required,tankLevel<required);
                 s.outline.gameObject.SetActive(s.role==activeRole);
                 s.plate.sprite=s.role==activeRole?selectedPlate:normalPlate;
                 s.label.color=s.role==activeRole?new Color(.06f,.07f,.09f):Color.white;
@@ -100,7 +117,7 @@ namespace MegaTanks
                 var s=selected.stats;
                 var resolved=new ResolvedCrewStats(selected,p,HtmlBattleConfig.Load());float[] values={resolved.attack,resolved.hp,resolved.accuracy,resolved.defense,resolved.speed,resolved.crit};
                 string[] suffix={"","","%","","","%"};
-                for(int i=0;i<stats.Length;i++)stats[i].Value=values[i].ToString("0.##")+suffix[i];
+                for(int i=0;i<stats.Length;i++){stats[i].Value=values[i].ToString("0.##")+suffix[i];stats[i].color=Color.black;}
             }
             else foreach(var s in stats)s.Value="--";
             var roleSkills=skills.Where(s=>s.role==RoleKey(activeRole)).ToArray();

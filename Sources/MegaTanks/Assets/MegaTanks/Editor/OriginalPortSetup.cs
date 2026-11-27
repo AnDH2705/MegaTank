@@ -101,7 +101,7 @@ namespace MegaTanks.Editor
             report.AppendLine("PASS: original asset provenance; Lv1 station; stop/apply-once; temporary level reset; per-slot variants; AD guard; Troy x3/count; permanent EXP once/reload.");
             for(int stage=0;stage<c.stages.Length;stage++)
             {
-                var full=new HtmlBattleSimulation(c,stage);full.ConfigureProfile(1);int choices=0;
+                var full=new HtmlBattleSimulation(c,stage);full.Geometry=Resources.Load<HtmlBattleArt>("HtmlBattleArt");full.ConfigureProfile(1);int choices=0;
                 for(int tick=0;tick<30000&&!full.Terminal;tick++)
                 {
                     if(full.phase=="choice"){string option=full.encounter=="wreck"?"swap":full.encounter=="ammo"?"cannon_ap":full.encounter=="medical"?(full.player.hp<full.player.maxHP?"heal":"gears"):"mg";if(!full.Choose(option))full.Choose("skip");choices++;}
@@ -111,10 +111,19 @@ namespace MegaTanks.Editor
                 Require(full.phase=="won"&&full.bossKilled&&full.chestOpened,"Full route/chest stage "+stage+" stalled at "+full.phase);
                 int coins=full.money,gears=full.gears;for(int repeat=0;repeat<20;repeat++)full.Tick(.05f);Require(coins==full.money&&gears==full.gears,"Terminal rewards duplicate");
                 report.AppendLine("PASS: stage "+(stage+1)+" full route, "+choices+" choices, boss, loot/chest and terminal reward guard.");
-                var natural=new HtmlBattleSimulation(c,stage);natural.ConfigureProfile(20);
+                var natural=new HtmlBattleSimulation(c,stage);natural.Geometry=full.Geometry;natural.ConfigureProfile(20);
                 for(int tick=0;tick<18000&&!natural.Terminal;tick++){if(natural.phase=="choice"){string choice=natural.encounter=="wreck"?"swap":natural.encounter=="medical"?(natural.player.hp<natural.player.maxHP?"heal":"gears"):natural.encounter=="supply"?"mg":"cannon_ap";if(!natural.Choose(choice))natural.Choose("skip");}natural.Tick(.05f);}
                 report.AppendLine("BALANCE OBSERVATION: stage "+(stage+1)+" default combat simulation = "+natural.phase+", wave "+natural.wave+", kills "+natural.kills+", tank HP "+natural.player.hp.ToString("0.0")+". This is not a balance approval.");
             }
+            var geometry=Resources.Load<HtmlBattleArt>("HtmlBattleArt");
+            foreach(var definition in c.enemies)
+            {
+                var shots=new HtmlBattleSimulation(c,0);shots.Geometry=geometry;shots.ConfigureProfile(20);shots.phase="wave";shots.player.hp=shots.player.maxHP=100000;
+                var enemy=shots.Spawn(definition.id);enemy.x=shots.player.x+400;enemy.attack=0;
+                for(int tick=0;tick<150;tick++)shots.Tick(.05f);
+                var muzzle=shots.ShotOrigin(enemy,definition.id=="cannon_car"?1:0,true);Require(!float.IsNaN(muzzle.x)&&!float.IsNaN(muzzle.y),"Finite muzzle "+definition.id);
+            }
+            report.AppendLine("PASS: real serialized Unity geometry attached to all three routes and firing from every enemy type, including legacy empty socket arrays.");
             Directory.CreateDirectory("Checks/HtmlPort");File.WriteAllText("Checks/HtmlPort/validation.txt",report.ToString());Debug.Log("HTML_PORT_AUDIT_OK: "+report);
         }
     }
