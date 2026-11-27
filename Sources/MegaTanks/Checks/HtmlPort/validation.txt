@@ -1,0 +1,8 @@
+PASS: original asset provenance; Lv1 station; stop/apply-once; temporary level reset; per-slot variants; AD guard; Troy x3/count; permanent EXP once/reload.
+PASS: stage 1 full route, 2 choices, boss, loot/chest and terminal reward guard.
+BALANCE OBSERVATION: stage 1 default combat simulation = won, wave 8, kills 20, tank HP 416.4. This is not a balance approval.
+PASS: stage 2 full route, 2 choices, boss, loot/chest and terminal reward guard.
+BALANCE OBSERVATION: stage 2 default combat simulation = won, wave 8, kills 25, tank HP 404.4. This is not a balance approval.
+PASS: stage 3 full route, 2 choices, boss, loot/chest and terminal reward guard.
+BALANCE OBSERVATION: stage 3 default combat simulation = won, wave 8, kills 40, tank HP 167.8. This is not a balance approval.
+Runtime capture: no exceptions in Main, Crew, Gameplay, four choices, upgrade and Boss.

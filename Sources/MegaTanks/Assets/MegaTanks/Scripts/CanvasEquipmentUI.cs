@@ -102,9 +102,11 @@ namespace MegaTanks
             if(selected is ArmorDefinition plate) detail=ArmorDetail(plate);
             if(selected is AccessoryDefinition accessory)detail=AccessoryDetail(accessory);
             Text(v,"Item Stats",detail);var slot=activeSlot??selected.Type;bool compatible=selected.Type==slot;
-            Text(v,"Equip Item/Label",compatible?"EQUIP":"INCOMPATIBLE");v.Get<Button>("Equip Item").interactable=compatible;
-            Click(v,"Equip Item",()=>{if(game.Equipment.Equip(selected,slot,accessoryIndex))RefreshEquipmentArtwork();DrawEquipment();});
+            int lockedSlot=selected.Type==EquipmentType.MachineGun?0:selected.Type==EquipmentType.Cannon?1:selected.Type==EquipmentType.Mortar?2:-1;bool unlocked=lockedSlot<0||new PlayerTankProfile(HtmlBattleConfig.Load()).Level>=HtmlBattleConfig.Load().unlockLevels[lockedSlot];compatible&=unlocked;
+            Text(v,"Equip Item/Label",!unlocked?"TANK LEVEL LOCKED":compatible?"EQUIP":"INCOMPATIBLE");v.Get<Button>("Equip Item").interactable=compatible;
+            Click(v,"Equip Item",()=>{if(unlocked&&game.Equipment.Equip(selected,slot,accessoryIndex))RefreshEquipmentArtwork();DrawEquipment();});
         }
         static string CompareStat(string label,float before,float after,string unit="")=>label+"  "+before.ToString("0.##")+unit+" → "+after.ToString("0.##")+unit+" ("+(after-before).ToString("+0.##;-0.##;0")+unit+")";
     }
 }
+

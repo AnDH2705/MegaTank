@@ -1,0 +1,908 @@
+{
+  "reference": [
+    1920,
+    1080
+  ],
+  "measuredViewport": [
+    1280,
+    800
+  ],
+  "main": {
+    "profile": {
+      "selector": ".tp-main",
+      "rectNormalized": [
+        0.013067503273487092,
+        0.018663194444444444,
+        0.2238405704498291,
+        0.09776475694444445
+      ],
+      "rect1920x1080": [
+        25.09,
+        20.156,
+        429.774,
+        105.586
+      ],
+      "font": "Arial, sans-serif",
+      "fontSizeDesignPx": 24,
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(39, 35, 50, 0.863)",
+      "opacity": "1",
+      "transform": "matrix(1, 0, -0.0699268, 1, 0, 0)"
+    },
+    "avatar": {
+      "selector": ".tp-avatar",
+      "rectNormalized": [
+        0.020040103793144227,
+        0.025868055555555554,
+        0.04699707329273224,
+        0.08355034722222222
+      ],
+      "rect1920x1080": [
+        38.477,
+        27.937,
+        90.234,
+        90.234
+      ],
+      "font": "Arial, sans-serif",
+      "fontSizeDesignPx": 24,
+      "color": "rgb(255, 255, 255)",
+      "background": "rgb(105, 197, 185)",
+      "opacity": "1",
+      "transform": "matrix(1, 0, 0.0699268, 1, 0, 0)"
+    },
+    "menu": {
+      "selector": ".gm-menu",
+      "rectNormalized": [
+        0.92901611328125,
+        0.039539930555555554,
+        0.05599365234375,
+        0.055989583333333336
+      ],
+      "rect1920x1080": [
+        1783.711,
+        42.703,
+        107.508,
+        60.469
+      ],
+      "font": "system-ui, sans-serif",
+      "fontSizeDesignPx": 24,
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "transform": "none"
+    },
+    "resources": {
+      "selector": ".gm-resources:not(.bt-resources)",
+      "rectNormalized": [
+        0.6320068359375,
+        0.0435546875,
+        0.28499755859375,
+        0.04798177083333333
+      ],
+      "rect1920x1080": [
+        1213.453,
+        47.039,
+        547.195,
+        51.82
+      ],
+      "font": "system-ui, sans-serif",
+      "fontSizeDesignPx": 24,
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "transform": "none"
+    },
+    "stageSelector": {
+      "selector": ".gm-stage",
+      "rectNormalized": [
+        0.015625,
+        0.8701388888888889,
+        0.19921875,
+        0.10208333333333333
+      ],
+      "rect1920x1080": [
+        30,
+        939.75,
+        382.5,
+        110.25
+      ],
+      "font": "system-ui, sans-serif",
+      "fontSizeDesignPx": 24,
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "transform": "none"
+    },
+    "play": {
+      "selector": "[data-start]",
+      "rectNormalized": [
+        0.88984375,
+        0.8940972222222222,
+        0.10546875,
+        0.08645833333333333
+      ],
+      "rect1920x1080": [
+        1708.5,
+        965.625,
+        202.5,
+        93.375
+      ],
+      "font": "system-ui, sans-serif",
+      "fontSizeDesignPx": 24,
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "transform": "none"
+    }
+  },
+  "battle": {
+    "pause": {
+      "selector": "[data-bt-pause]",
+      "rectNormalized": [
+        0.014990234375,
+        0.039539930555555554,
+        0.05599365234375,
+        0.055989583333333336
+      ],
+      "rect1920x1080": [
+        28.781,
+        42.703,
+        107.508,
+        60.469
+      ],
+      "font": "system-ui, sans-serif",
+      "fontSizeDesignPx": 38.4,
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "transform": "none"
+    },
+    "tankLevel": {
+      "selector": ".tp-battle",
+      "rectNormalized": [
+        0.0786990463733673,
+        0.03376736111111111,
+        0.15258727073669434,
+        0.06577690972222222
+      ],
+      "rect1920x1080": [
+        151.102,
+        36.469,
+        292.968,
+        71.039
+      ],
+      "font": "Arial, sans-serif",
+      "fontSizeDesignPx": 24,
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(39, 35, 50, 0.863)",
+      "opacity": "1",
+      "transform": "matrix(1, 0, -0.0699268, 1, 0, 0)"
+    },
+    "resources": {
+      "selector": ".gm-resources.bt-resources",
+      "rectNormalized": [
+        0.70001220703125,
+        0.0435546875,
+        0.28499755859375,
+        0.04798177083333333
+      ],
+      "rect1920x1080": [
+        1344.023,
+        47.039,
+        547.195,
+        51.82
+      ],
+      "font": "system-ui, sans-serif",
+      "fontSizeDesignPx": 24,
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "transform": "none"
+    },
+    "timeline": {
+      "selector": ".comic-event-hud",
+      "rectNormalized": [
+        0.35999755859375,
+        0.0037760416666666667,
+        0.27999267578125,
+        0.14309895833333333
+      ],
+      "rect1920x1080": [
+        691.195,
+        4.078,
+        537.586,
+        154.547
+      ],
+      "font": "system-ui, sans-serif",
+      "fontSizeDesignPx": 24,
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "transform": "none"
+    },
+    "hp": {
+      "selector": ".comic-player-hp",
+      "rectNormalized": [
+        0.0139892578125,
+        0.8874348958333333,
+        0.4449951171875,
+        0.08858506944444444
+      ],
+      "rect1920x1080": [
+        26.859,
+        958.43,
+        854.391,
+        95.672
+      ],
+      "font": "system-ui, sans-serif",
+      "fontSizeDesignPx": 24,
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "transform": "none"
+    },
+    "ammo": {
+      "selector": ".comic-ammo-hud",
+      "rectNormalized": [
+        0.47098388671875,
+        0.9095703125,
+        0.20826416015625,
+        0.05509982638888889
+      ],
+      "rect1920x1080": [
+        904.289,
+        982.336,
+        399.867,
+        59.508
+      ],
+      "font": "system-ui, sans-serif",
+      "fontSizeDesignPx": 24,
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "transform": "none"
+    },
+    "cannonAmmo": {
+      "selector": "[data-comic-ammo=\"cannon\"]",
+      "rectNormalized": [
+        0.47098388671875,
+        0.9095703125,
+        0.05728759765625,
+        0.05509982638888889
+      ],
+      "rect1920x1080": [
+        904.289,
+        982.336,
+        109.992,
+        59.508
+      ],
+      "font": "Arial, sans-serif",
+      "fontSizeDesignPx": 39.36,
+      "color": "rgb(255, 247, 230)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "transform": "none"
+    },
+    "mgAmmo": {
+      "selector": "[data-comic-ammo=\"mg\"]",
+      "rectNormalized": [
+        0.540771484375,
+        0.9095703125,
+        0.06868896484375,
+        0.05509982638888889
+      ],
+      "rect1920x1080": [
+        1038.281,
+        982.336,
+        131.883,
+        59.508
+      ],
+      "font": "Arial, sans-serif",
+      "fontSizeDesignPx": 39.36,
+      "color": "rgb(255, 247, 230)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "transform": "none"
+    },
+    "mortarAmmo": {
+      "selector": "[data-comic-ammo=\"mortar\"]",
+      "rectNormalized": [
+        0.62196044921875,
+        0.9095703125,
+        0.05728759765625,
+        0.05509982638888889
+      ],
+      "rect1920x1080": [
+        1194.164,
+        982.336,
+        109.992,
+        59.508
+      ],
+      "font": "Arial, sans-serif",
+      "fontSizeDesignPx": 39.36,
+      "color": "rgb(255, 247, 230)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "transform": "none"
+    }
+  },
+  "boss": {
+    "bar": {
+      "selector": "[data-bt-boss]",
+      "rectNormalized": [
+        0.25,
+        0.22999131944444445,
+        0.5,
+        0.06753472222222222
+      ],
+      "rect1920x1080": [
+        480,
+        248.391,
+        960,
+        72.938
+      ],
+      "font": "system-ui, sans-serif",
+      "fontSizeDesignPx": 24,
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "transform": "none"
+    }
+  },
+  "cards": {
+    "ammo": {
+      "heading": {
+        "selector": ".rg-heading",
+        "rectNormalized": [
+          0.05335132479667663,
+          0.12604166666666666,
+          0.9400146484375,
+          0.11299913194444444
+        ],
+        "rect1920x1080": [
+          102.435,
+          136.125,
+          1804.828,
+          122.039
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 24,
+        "color": "rgb(43, 41, 53)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "none"
+      },
+      "title": {
+        "selector": "[data-rogue-title]",
+        "rectNormalized": [
+          0.05335132479667663,
+          0.14735243055555555,
+          0.9400146484375,
+          0.059722222222222225
+        ],
+        "rect1920x1080": [
+          102.435,
+          159.141,
+          1804.828,
+          64.5
+        ],
+        "font": "Impact, \"Arial Black\", Arial, sans-serif",
+        "fontSizeDesignPx": 61.44,
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "none"
+      },
+      "options": {
+        "selector": ".rg-options",
+        "rectNormalized": [
+          0.19685717821121215,
+          0.2728081597222222,
+          0.65299072265625,
+          0.5387586805555555
+        ],
+        "rect1920x1080": [
+          377.966,
+          294.633,
+          1253.742,
+          581.859
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 24,
+        "color": "rgb(43, 41, 53)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "none"
+      },
+      "card1": {
+        "selector": ".rg-options .cc-card:nth-child(1)",
+        "rectNormalized": [
+          0.1889163613319397,
+          0.2728081597222222,
+          0.21420927047729493,
+          0.5387369791666666
+        ],
+        "rect1920x1080": [
+          362.719,
+          294.633,
+          411.282,
+          581.836
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 19.99995,
+        "color": "rgb(25, 23, 31)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "matrix(1, 0, -0.0524078, 1, 0, 0)"
+      },
+      "card2": {
+        "selector": ".rg-options .cc-card:nth-child(2)",
+        "rectNormalized": [
+          0.41623539924621583,
+          0.2728081597222222,
+          0.21422209739685058,
+          0.5387586805555555
+        ],
+        "rect1920x1080": [
+          799.172,
+          294.633,
+          411.306,
+          581.859
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 19.99995,
+        "color": "rgb(25, 23, 31)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "matrix(1, 0, -0.0524078, 1, 0, 0)"
+      },
+      "card3": {
+        "selector": ".rg-options .cc-card:nth-child(3)",
+        "rectNormalized": [
+          0.64356689453125,
+          0.2728081597222222,
+          0.21422214508056642,
+          0.5387586805555555
+        ],
+        "rect1920x1080": [
+          1235.648,
+          294.633,
+          411.307,
+          581.859
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 19.99995,
+        "color": "rgb(25, 23, 31)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "matrix(1, 0, -0.0524078, 1, 0, 0)"
+      },
+      "skip": {
+        "selector": "[data-rogue-skip]",
+        "rectNormalized": [
+          0.7979168891906738,
+          0.8453342013888889,
+          0.05273895263671875,
+          0.04108072916666667
+        ],
+        "rect1920x1080": [
+          1532,
+          912.961,
+          101.259,
+          44.367
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 17.279999999999998,
+        "color": "rgb(40, 32, 51)",
+        "background": "rgb(245, 238, 227)",
+        "opacity": "1",
+        "transform": "matrix(1, 0, -0.0699268, 1, 0, 0)"
+      }
+    },
+    "supply": {
+      "heading": {
+        "selector": ".rg-heading",
+        "rectNormalized": [
+          0.02999267578125,
+          0.12604166666666666,
+          0.9400146484375,
+          0.11299913194444444
+        ],
+        "rect1920x1080": [
+          57.586,
+          136.125,
+          1804.828,
+          122.039
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 24,
+        "color": "rgb(43, 41, 53)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "none"
+      },
+      "title": {
+        "selector": "[data-rogue-title]",
+        "rectNormalized": [
+          0.02999267578125,
+          0.14735243055555555,
+          0.9400146484375,
+          0.059722222222222225
+        ],
+        "rect1920x1080": [
+          57.586,
+          159.141,
+          1804.828,
+          64.5
+        ],
+        "font": "Impact, \"Arial Black\", Arial, sans-serif",
+        "fontSizeDesignPx": 61.44,
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "none"
+      },
+      "options": {
+        "selector": ".rg-options",
+        "rectNormalized": [
+          0.17349853515625,
+          0.2728081597222222,
+          0.65299072265625,
+          0.5387586805555555
+        ],
+        "rect1920x1080": [
+          333.117,
+          294.633,
+          1253.742,
+          581.859
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 24,
+        "color": "rgb(43, 41, 53)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "none"
+      },
+      "card1": {
+        "selector": ".rg-options .cc-card:nth-child(1)",
+        "rectNormalized": [
+          0.16555771827697754,
+          0.2728081597222222,
+          0.21420927047729493,
+          0.5387369791666666
+        ],
+        "rect1920x1080": [
+          317.871,
+          294.633,
+          411.282,
+          581.836
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 19.99995,
+        "color": "rgb(25, 23, 31)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "matrix(1, 0, -0.0524078, 1, 0, 0)"
+      },
+      "card2": {
+        "selector": ".rg-options .cc-card:nth-child(2)",
+        "rectNormalized": [
+          0.3928767442703247,
+          0.2728081597222222,
+          0.21422212123870848,
+          0.5387586805555555
+        ],
+        "rect1920x1080": [
+          754.323,
+          294.633,
+          411.306,
+          581.859
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 19.99995,
+        "color": "rgb(25, 23, 31)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "matrix(1, 0, -0.0524078, 1, 0, 0)"
+      },
+      "card3": {
+        "selector": ".rg-options .cc-card:nth-child(3)",
+        "rectNormalized": [
+          0.6202082633972168,
+          0.2728081597222222,
+          0.21422214508056642,
+          0.5387586805555555
+        ],
+        "rect1920x1080": [
+          1190.8,
+          294.633,
+          411.307,
+          581.859
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 19.99995,
+        "color": "rgb(25, 23, 31)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "matrix(1, 0, -0.0524078, 1, 0, 0)"
+      },
+      "skip": {
+        "selector": "[data-rogue-skip]",
+        "rectNormalized": [
+          0.7745582580566406,
+          0.8453342013888889,
+          0.05273895263671875,
+          0.04108072916666667
+        ],
+        "rect1920x1080": [
+          1487.152,
+          912.961,
+          101.259,
+          44.367
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 17.279999999999998,
+        "color": "rgb(40, 32, 51)",
+        "background": "rgb(245, 238, 227)",
+        "opacity": "1",
+        "transform": "matrix(1, 0, -0.0699268, 1, 0, 0)"
+      }
+    },
+    "medical": {
+      "heading": {
+        "selector": ".rg-heading",
+        "rectNormalized": [
+          0.02999267578125,
+          0.12582465277777777,
+          0.9400146484375,
+          0.11299913194444444
+        ],
+        "rect1920x1080": [
+          57.586,
+          135.891,
+          1804.828,
+          122.039
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 24,
+        "color": "rgb(43, 41, 53)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "none"
+      },
+      "title": {
+        "selector": "[data-rogue-title]",
+        "rectNormalized": [
+          0.02999267578125,
+          0.14713541666666666,
+          0.9400146484375,
+          0.059722222222222225
+        ],
+        "rect1920x1080": [
+          57.586,
+          158.906,
+          1804.828,
+          64.5
+        ],
+        "font": "Impact, \"Arial Black\", Arial, sans-serif",
+        "fontSizeDesignPx": 61.44,
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "none"
+      },
+      "options": {
+        "selector": ".rg-options",
+        "rectNormalized": [
+          0.28699951171875,
+          0.2725911458333333,
+          0.42598876953125,
+          0.5391927083333333
+        ],
+        "rect1920x1080": [
+          551.039,
+          294.398,
+          817.898,
+          582.328
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 24,
+        "color": "rgb(43, 41, 53)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "none"
+      },
+      "card1": {
+        "selector": ".rg-options .cc-card:nth-child(1)",
+        "rectNormalized": [
+          0.2790519714355469,
+          0.2725911458333333,
+          0.21439361572265625,
+          0.5391927083333333
+        ],
+        "rect1920x1080": [
+          535.78,
+          294.398,
+          411.636,
+          582.328
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 19.99995,
+        "color": "rgb(25, 23, 31)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "matrix(1, 0, -0.0524078, 1, 0, 0)"
+      },
+      "card2": {
+        "selector": ".rg-options .cc-card:nth-child(2)",
+        "rectNormalized": [
+          0.5065422058105469,
+          0.2725911458333333,
+          0.21439361572265625,
+          0.5391927083333333
+        ],
+        "rect1920x1080": [
+          972.561,
+          294.398,
+          411.636,
+          582.328
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 19.99995,
+        "color": "rgb(25, 23, 31)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "matrix(1, 0, -0.0524078, 1, 0, 0)"
+      },
+      "skip": {
+        "selector": "[data-rogue-skip]",
+        "rectNormalized": [
+          0.7745582580566406,
+          0.8455512152777778,
+          0.05273895263671875,
+          0.04108072916666667
+        ],
+        "rect1920x1080": [
+          1487.152,
+          913.195,
+          101.259,
+          44.367
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 17.279999999999998,
+        "color": "rgb(40, 32, 51)",
+        "background": "rgb(245, 238, 227)",
+        "opacity": "1",
+        "transform": "matrix(1, 0, -0.0699268, 1, 0, 0)"
+      }
+    },
+    "wreck": {
+      "heading": {
+        "selector": ".rg-heading",
+        "rectNormalized": [
+          0.02999267578125,
+          0.12582465277777777,
+          0.9400146484375,
+          0.11299913194444444
+        ],
+        "rect1920x1080": [
+          57.586,
+          135.891,
+          1804.828,
+          122.039
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 24,
+        "color": "rgb(43, 41, 53)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "none"
+      },
+      "title": {
+        "selector": "[data-rogue-title]",
+        "rectNormalized": [
+          0.02999267578125,
+          0.14713541666666666,
+          0.9400146484375,
+          0.059722222222222225
+        ],
+        "rect1920x1080": [
+          57.586,
+          158.906,
+          1804.828,
+          64.5
+        ],
+        "font": "Impact, \"Arial Black\", Arial, sans-serif",
+        "fontSizeDesignPx": 61.44,
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "none"
+      },
+      "options": {
+        "selector": ".rg-options",
+        "rectNormalized": [
+          0.28699951171875,
+          0.2725911458333333,
+          0.42598876953125,
+          0.5391927083333333
+        ],
+        "rect1920x1080": [
+          551.039,
+          294.398,
+          817.898,
+          582.328
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 24,
+        "color": "rgb(43, 41, 53)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "none"
+      },
+      "card1": {
+        "selector": ".rg-options .cc-card:nth-child(1)",
+        "rectNormalized": [
+          0.2790519714355469,
+          0.2725911458333333,
+          0.21439361572265625,
+          0.5391927083333333
+        ],
+        "rect1920x1080": [
+          535.78,
+          294.398,
+          411.636,
+          582.328
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 19.99995,
+        "color": "rgb(25, 23, 31)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "matrix(1, 0, -0.0524078, 1, 0, 0)"
+      },
+      "card2": {
+        "selector": ".rg-options .cc-card:nth-child(2)",
+        "rectNormalized": [
+          0.5065422058105469,
+          0.2725911458333333,
+          0.21439361572265625,
+          0.5391927083333333
+        ],
+        "rect1920x1080": [
+          972.561,
+          294.398,
+          411.636,
+          582.328
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 19.99995,
+        "color": "rgb(25, 23, 31)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "transform": "matrix(1, 0, -0.0524078, 1, 0, 0)"
+      },
+      "skip": {
+        "selector": "[data-rogue-skip]",
+        "rectNormalized": [
+          0.7745582580566406,
+          0.8455512152777778,
+          0.05273895263671875,
+          0.04108072916666667
+        ],
+        "rect1920x1080": [
+          1487.152,
+          913.195,
+          101.259,
+          44.367
+        ],
+        "font": "Arial, sans-serif",
+        "fontSizeDesignPx": 17.279999999999998,
+        "color": "rgb(40, 32, 51)",
+        "background": "rgb(245, 238, 227)",
+        "opacity": "1",
+        "transform": "matrix(1, 0, -0.0699268, 1, 0, 0)"
+      }
+    }
+  }
+}

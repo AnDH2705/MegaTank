@@ -1,0 +1,120 @@
+{
+  "backgrounds": {
+    "streetGray": {
+      "width": 1920,
+      "height": 1080,
+      "layers": [
+        {
+          "key": "parallax_streetGray_00_sky_static",
+          "name": "Trời mây đứng yên",
+          "file": "layers/00_sky_static.png",
+          "factor": 0,
+          "repeat": "none",
+          "front": false
+        },
+        {
+          "key": "parallax_streetGray_01_far_factories",
+          "name": "Nhà máy phía xa",
+          "file": "layers/01_far_factories.png",
+          "factor": 0.15,
+          "repeat": "mirror",
+          "front": false
+        },
+        {
+          "key": "parallax_streetGray_02_mid_industry",
+          "name": "Xưởng và đường ống trung cảnh",
+          "file": "layers/02_mid_industry.png",
+          "factor": 0.35,
+          "repeat": "mirror",
+          "front": false
+        },
+        {
+          "key": "parallax_streetGray_03_road",
+          "name": "Mặt đường",
+          "file": "layers/03_road.png",
+          "factor": 1,
+          "repeat": "mirror",
+          "front": false
+        },
+        {
+          "key": "parallax_streetGray_04_street_buildings",
+          "name": "Dãy phố và vật thể gắn tường",
+          "file": "layers/04_street_buildings.png",
+          "factor": 0.7,
+          "repeat": "mirror",
+          "front": false
+        },
+        {
+          "key": "parallax_streetGray_05_rubble_weeds",
+          "name": "Đá vụn và cỏ phía trước",
+          "file": "layers/05_rubble_weeds.png",
+          "factor": 1.1,
+          "repeat": "mirror",
+          "front": false
+        }
+      ]
+    },
+    "street": {
+      "width": 1920,
+      "height": 1080,
+      "layers": [
+        {
+          "key": "parallax_street_00_sky_static",
+          "name": "Bầu trời + mặt trời",
+          "file": "layers/00_sky_static.png",
+          "factor": 0,
+          "repeat": "none",
+          "front": false
+        },
+        {
+          "key": "parallax_street_01_far_city",
+          "name": "Thành phố xa",
+          "file": "layers/01_far_city.png",
+          "factor": 0.15,
+          "repeat": "mirror",
+          "front": false
+        },
+        {
+          "key": "parallax_street_02_viaduct",
+          "name": "Cầu cạn",
+          "file": "layers/02_viaduct.png",
+          "factor": 0.35,
+          "repeat": "mirror",
+          "front": false
+        },
+        {
+          "key": "parallax_street_03_road",
+          "name": "Mặt đường",
+          "file": "layers/03_road.png",
+          "factor": 1,
+          "repeat": "mirror",
+          "front": false
+        },
+        {
+          "key": "parallax_street_04_street_buildings",
+          "name": "Dãy nhà + vỉa hè",
+          "file": "layers/04_street_buildings.png",
+          "factor": 0.7,
+          "repeat": "mirror",
+          "front": false
+        },
+        {
+          "key": "parallax_street_05_foreground_debris",
+          "name": "Phế liệu sát camera",
+          "file": "layers/05_foreground_debris.png",
+          "factor": 1.25,
+          "repeat": "mirror",
+          "front": true
+        },
+        {
+          "key": "parallax_street_06_overhead_cables",
+          "name": "Dây cáp phía trên",
+          "file": "layers/06_overhead_cables.png",
+          "factor": 1.15,
+          "repeat": "mirror",
+          "front": true
+        }
+      ]
+    }
+  }
+}

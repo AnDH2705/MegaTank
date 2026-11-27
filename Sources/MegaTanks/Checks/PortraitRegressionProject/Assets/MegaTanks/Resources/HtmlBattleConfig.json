@@ -11,7 +11,12 @@
   "wavesPerStage": 8,
   "wavesPerEncounter": 2,
   "encounterStopX": 1080,
-  "encounterDeck": ["ammo", "wreck", "medical", "supply"],
+  "encounterDeck": [
+    "ammo",
+    "wreck",
+    "medical",
+    "supply"
+  ],
   "medicalHP": 90,
   "medicalGears": 30,
   "bossKnockback": 16,
@@ -33,18 +38,225 @@
   "enemyGears": 2,
   "rewardedAdsEnabled": false,
   "weapons": [
-    {"id":"mg", "minRange":0, "maxRange":750, "damage":5, "cooldown":0.16, "projectileSpeed":1450, "startingAmmo":220, "supply":90},
-    {"id":"cannon", "minRange":650, "maxRange":1200, "damage":38, "cooldown":0.95, "projectileSpeed":1100, "startingAmmo":24, "supply":12},
-    {"id":"mortar", "minRange":1050, "maxRange":1500, "damage":32, "cooldown":2.4, "projectileSpeed":900, "startingAmmo":16, "supply":8}
+    {
+      "id": "mg",
+      "minRange": 0,
+      "maxRange": 750,
+      "damage": 5,
+      "cooldown": 0.16,
+      "projectileSpeed": 1450,
+      "startingAmmo": 220,
+      "supply": 90
+    },
+    {
+      "id": "cannon",
+      "minRange": 650,
+      "maxRange": 1200,
+      "damage": 38,
+      "cooldown": 0.95,
+      "projectileSpeed": 1100,
+      "startingAmmo": 24,
+      "supply": 12
+    },
+    {
+      "id": "mortar",
+      "minRange": 1050,
+      "maxRange": 1500,
+      "damage": 32,
+      "cooldown": 2.4,
+      "projectileSpeed": 900,
+      "startingAmmo": 16,
+      "supply": 8
+    }
   ],
   "enemies": [
-    {"id":"car", "hp":55, "hardHP":78, "speed":155, "width":300, "damage":7, "cooldown":1.7, "range":900},
-    {"id":"plane", "hp":36, "hardHP":48, "speed":205, "width":330, "damage":5, "cooldown":1.25, "range":1000},
-    {"id":"dog", "hp":76, "hardHP":92, "speed":150, "width":140, "damage":3, "cooldown":1.05, "range":80}
+    {
+      "id": "car",
+      "hp": 55,
+      "hardHP": 78,
+      "speed": 155,
+      "width": 300,
+      "damage": 7,
+      "cooldown": 1.7,
+      "range": 900
+    },
+    {
+      "id": "plane",
+      "hp": 36,
+      "hardHP": 48,
+      "speed": 205,
+      "width": 330,
+      "damage": 5,
+      "cooldown": 1.25,
+      "range": 1000
+    },
+    {
+      "id": "dog",
+      "hp": 76,
+      "hardHP": 92,
+      "speed": 150,
+      "width": 140,
+      "damage": 3,
+      "cooldown": 1.05,
+      "range": 80
+    },
+    {
+      "id": "cannon_car",
+      "hp": 55,
+      "hardHP": 78,
+      "speed": 155,
+      "width": 400,
+      "damage": 7,
+      "cooldown": 1.7,
+      "range": 900
+    },
+    {
+      "id": "helicopter",
+      "hp": 55,
+      "hardHP": 78,
+      "speed": 155,
+      "width": 400,
+      "damage": 7,
+      "cooldown": 1.7,
+      "range": 900
+    },
+    {
+      "id": "trojan",
+      "hp": 55,
+      "hardHP": 78,
+      "speed": 155,
+      "width": 430,
+      "damage": 7,
+      "cooldown": 1.7,
+      "range": 900
+    }
   ],
   "stages": [
-    {"title":"THÀNH PHỐ BỎ HOANG", "background":"industrial_bg", "total":20, "planes":6, "dogs":6, "spawnInterval":1.55, "maxActive":3, "bossHP":520, "bossWeapons":["cannon"], "startingAmmo":[220,24,16], "supply":[90,12,8], "recoveredAmmo":[220,24,16], "requireRecovery":false},
-    {"title":"KHU CÔNG NGHIỆP", "background":"parallax_bg", "total":25, "planes":10, "dogs":8, "spawnInterval":1.4, "maxActive":4, "bossHP":820, "bossWeapons":["cannon","mg"], "startingAmmo":[220,24,16], "supply":[90,12,8], "recoveredAmmo":[220,24,16], "requireRecovery":false},
-    {"title":"VÙNG PHONG TỎA", "background":"parallax_bg", "total":40, "planes":16, "dogs":12, "spawnInterval":1.2, "maxActive":5, "bossHP":1200, "bossWeapons":["cannon","mg"], "startingAmmo":[80,6,2], "supply":[30,3,1], "recoveredAmmo":[220,24,2], "requireRecovery":true}
-  ]
+    {
+      "title": "THÀNH PHỐ BỎ HOANG",
+      "background": "industrial_bg",
+      "total": 20,
+      "planes": 6,
+      "dogs": 6,
+      "spawnInterval": 1.55,
+      "maxActive": 3,
+      "bossHP": 520,
+      "bossWeapons": [
+        "cannon"
+      ],
+      "startingAmmo": [
+        220,
+        24,
+        16
+      ],
+      "supply": [
+        90,
+        12,
+        8
+      ],
+      "recoveredAmmo": [
+        220,
+        24,
+        16
+      ],
+      "requireRecovery": false,
+      "cannonCars": 2,
+      "helicopters": 2,
+      "trojans": 1
+    },
+    {
+      "title": "KHU CÔNG NGHIỆP",
+      "background": "parallax_bg",
+      "total": 25,
+      "planes": 10,
+      "dogs": 8,
+      "spawnInterval": 1.4,
+      "maxActive": 4,
+      "bossHP": 820,
+      "bossWeapons": [
+        "cannon",
+        "mg"
+      ],
+      "startingAmmo": [
+        220,
+        24,
+        16
+      ],
+      "supply": [
+        90,
+        12,
+        8
+      ],
+      "recoveredAmmo": [
+        220,
+        24,
+        16
+      ],
+      "requireRecovery": false,
+      "cannonCars": 2,
+      "helicopters": 2,
+      "trojans": 1
+    },
+    {
+      "title": "VÙNG PHONG TỎA",
+      "background": "parallax_bg",
+      "total": 40,
+      "planes": 16,
+      "dogs": 12,
+      "spawnInterval": 1.2,
+      "maxActive": 5,
+      "bossHP": 1200,
+      "bossWeapons": [
+        "cannon",
+        "mg"
+      ],
+      "startingAmmo": [
+        80,
+        6,
+        2
+      ],
+      "supply": [
+        30,
+        3,
+        1
+      ],
+      "recoveredAmmo": [
+        220,
+        24,
+        2
+      ],
+      "requireRecovery": true,
+      "cannonCars": 2,
+      "helicopters": 2,
+      "trojans": 1
+    }
+  ],
+  "unlockLevels": [
+    5,
+    1,
+    15,
+    1,
+    10
+  ],
+  "tankXPBase": 100,
+  "tankXPGrowth": 1.2,
+  "maxTankLevel": 100,
+  "tankXPReward": 100,
+  "initialUpgradeStation": true,
+  "upgradeEveryGroups": 2,
+  "upgradeApplySeconds": 0.5,
+  "upgradeDepartSeconds": 2.1,
+  "upgradeAuraSeconds": 2.6,
+  "stationHPBonus": 0.12,
+  "stationDamageBonus": 10,
+  "crewDefaultAccuracy": 100,
+  "trojanRevealRange": 700,
+  "grantNewSlotWeapon": true,
+  "newSlotAmmo": [
+    90,
+    12,
+    8
+  ],
+  "stationDefenseBonus": 2,
+  "stationCritBonus": 2
 }

@@ -69,7 +69,7 @@ namespace MegaTanks
         }
         public void Equip()
         {
-            if(game==null||game.Deployed||selected==null)return;
+            if(game==null||game.Deployed||selected==null||new PlayerTankProfile(HtmlBattleConfig.Load()).Level<HtmlBattleConfig.Load().unlockLevels[activeRole==CrewRole.SubGunner?0:activeRole==CrewRole.Gunner?1:activeRole==CrewRole.WeaponSpecialist?2:activeRole==CrewRole.Driver?3:4])return;
             if(game.Crew.Equip(selected,(int)activeRole)) { Refresh(); Message("CREW EQUIPPED"); }
         }
         Sprite Portrait(CrewDefinition member)=>member==null?emptyPortrait:member.role==CrewRole.Commando?meleePortrait:normalPortrait;
@@ -98,8 +98,8 @@ namespace MegaTanks
             if(has)
             {
                 var s=selected.stats;
-                float[] values={activeRole==CrewRole.Commando?s.damage.AtLevel(p.Level,p.Stars):s.damageBonus.AtLevel(p.Level,p.Stars),s.hp.AtLevel(p.Level,p.Stars),s.accuracy.AtLevel(p.Level,p.Stars),s.armor.AtLevel(p.Level,p.Stars),s.speed.AtLevel(p.Level,p.Stars),s.criticalChance.AtLevel(p.Level,p.Stars)};
-                string[] suffix={activeRole==CrewRole.Commando?"":"%","","%","","","%"};
+                var resolved=new ResolvedCrewStats(selected,p,HtmlBattleConfig.Load());float[] values={resolved.attack,resolved.hp,resolved.accuracy,resolved.defense,resolved.speed,resolved.crit};
+                string[] suffix={"","","%","","","%"};
                 for(int i=0;i<stats.Length;i++)stats[i].Value=values[i].ToString("0.##")+suffix[i];
             }
             else foreach(var s in stats)s.Value="--";
@@ -110,8 +110,8 @@ namespace MegaTanks
                 if(exists){skillIcons[i].sprite=roleSkills[i].icon;skillIcons[i].material=p.Stars<new[]{1,2,4}[i]?lockedMaterial:null;skillNames[i].Value=roleSkills[i].name.Replace(" ","\n");}
             }
             bool assigned=has&&game.Crew.Get(activeRole)==selected;
-            equip.interactable=has&&!game.Deployed&&!assigned;
-            equipLabel.Value=assigned?"Equipped":"Equip";
+            bool unlocked=new PlayerTankProfile(HtmlBattleConfig.Load()).Level>=HtmlBattleConfig.Load().unlockLevels[(int)(activeRole==CrewRole.SubGunner?0:activeRole==CrewRole.Gunner?1:activeRole==CrewRole.WeaponSpecialist?2:activeRole==CrewRole.Driver?3:4)];equip.interactable=has&&!game.Deployed&&!assigned&&unlocked;
+            equipLabel.Value=!unlocked?"TANK LV. "+HtmlBattleConfig.Load().unlockLevels[activeRole==CrewRole.SubGunner?0:activeRole==CrewRole.Gunner?1:activeRole==CrewRole.WeaponSpecialist?2:activeRole==CrewRole.Driver?3:4]:assigned?"Equipped":"Equip";
             int cost=ProgressionRules.LevelCost(p.Level), fragments=ProgressionRules.StarCost(p.Stars);
             levelUp.interactable=has&&!game.Deployed&&game.Progression.CanLevelUp(selected);
             levelUpLabel.Value=cost>0?"LEVEL UP!":"MAX LEVEL";

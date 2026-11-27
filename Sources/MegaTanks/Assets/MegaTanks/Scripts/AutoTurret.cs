@@ -89,6 +89,7 @@ namespace MegaTanks
         public void TickWeapon()
         {
             BattleGame game = BattleGame.Instance;
+            if(game==null||stats==null||artwork==null)return;
             if (game.Running) cooldown = Mathf.Max(0, cooldown - Time.deltaTime);
             Target = game.FindTarget(transform.position, preferredTarget, range, stats.homingMissile);
             if (Target == null)
@@ -123,3 +124,4 @@ namespace MegaTanks
         }
     }
 }
+

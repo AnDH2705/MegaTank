@@ -16,599 +16,1764 @@ MonoBehaviour:
     images:
     - key: tank_base_01_track_chassis
       file: tank_base_01_track_chassis.png
-      source: Design\UnityDesignHandoff\Art\TankParts\base\01_track_chassis.png
+      source: Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/01_track_chassis.png
       sprite: {fileID: 21300000, guid: c6a8cf76bc73ece48a457e6e4853942b, type: 3}
       texture: {fileID: 2800000, guid: c6a8cf76bc73ece48a457e6e4853942b, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_base_02_wheel_01
       file: tank_base_02_wheel_01.png
-      source: Design\UnityDesignHandoff\Art\TankParts\base\02_wheel_01.png
+      source: Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/02_wheel_01.png
       sprite: {fileID: 21300000, guid: 3e2d2d66776087b47a700f8739cbd09a, type: 3}
       texture: {fileID: 2800000, guid: 3e2d2d66776087b47a700f8739cbd09a, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_base_03_wheel_02
       file: tank_base_03_wheel_02.png
-      source: Design\UnityDesignHandoff\Art\TankParts\base\03_wheel_02.png
+      source: Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/03_wheel_02.png
       sprite: {fileID: 21300000, guid: e78d278d96bbaba46902e7a2b792b4d1, type: 3}
       texture: {fileID: 2800000, guid: e78d278d96bbaba46902e7a2b792b4d1, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_base_04_wheel_03
       file: tank_base_04_wheel_03.png
-      source: Design\UnityDesignHandoff\Art\TankParts\base\04_wheel_03.png
+      source: Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/04_wheel_03.png
       sprite: {fileID: 21300000, guid: 8038cc8c91a025c4ebe6e64558b28cac, type: 3}
       texture: {fileID: 2800000, guid: 8038cc8c91a025c4ebe6e64558b28cac, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_base_05_wheel_04
       file: tank_base_05_wheel_04.png
-      source: Design\UnityDesignHandoff\Art\TankParts\base\05_wheel_04.png
+      source: Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/05_wheel_04.png
       sprite: {fileID: 21300000, guid: b0a6a610ed4ec2c49b401d158da1fc9e, type: 3}
       texture: {fileID: 2800000, guid: b0a6a610ed4ec2c49b401d158da1fc9e, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_base_06_main_cannon_barrel
       file: tank_base_06_main_cannon_barrel.png
-      source: Design\UnityDesignHandoff\Art\TankParts\base\06_main_cannon_barrel.png
+      source: Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/06_main_cannon_barrel.png
       sprite: {fileID: 21300000, guid: 7f0a20b3cb7bb7c4cb53d11f23b2585a, type: 3}
       texture: {fileID: 2800000, guid: 7f0a20b3cb7bb7c4cb53d11f23b2585a, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_base_07_body_static
       file: tank_base_07_body_static.png
-      source: Design\UnityDesignHandoff\Art\TankParts\base\07_body_static.png
+      source: Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/07_body_static.png
       sprite: {fileID: 21300000, guid: da5ef5dc5a28d414ab9c72a7261886e9, type: 3}
       texture: {fileID: 2800000, guid: da5ef5dc5a28d414ab9c72a7261886e9, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_base_11_front_hull_frame
       file: tank_base_11_front_hull_frame.png
-      source: Design\UnityDesignHandoff\Art\TankParts\base\11_front_hull_frame.png
+      source: Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/11_front_hull_frame.png
       sprite: {fileID: 21300000, guid: 4db558ef775906142b2eb6a359aac303, type: 3}
       texture: {fileID: 2800000, guid: 4db558ef775906142b2eb6a359aac303, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_base_08_roof_machine_gun
       file: tank_base_08_roof_machine_gun.png
-      source: Design\UnityDesignHandoff\Art\TankParts\base\08_roof_machine_gun.png
+      source: Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/08_roof_machine_gun.png
       sprite: {fileID: 21300000, guid: 3445047a948a5a24585c336b2a1f9913, type: 3}
       texture: {fileID: 2800000, guid: 3445047a948a5a24585c336b2a1f9913, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_base_09_mortar_barrel
       file: tank_base_09_mortar_barrel.png
-      source: Design\UnityDesignHandoff\Art\TankParts\base\09_mortar_barrel.png
+      source: Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/09_mortar_barrel.png
       sprite: {fileID: 21300000, guid: 78b3cee3d8ca31f46b9fdc6660c37f59, type: 3}
       texture: {fileID: 2800000, guid: 78b3cee3d8ca31f46b9fdc6660c37f59, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_base_10_mortar_front_support
       file: tank_base_10_mortar_front_support.png
-      source: Design\UnityDesignHandoff\Art\TankParts\base\10_mortar_front_support.png
+      source: Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4/parts/10_mortar_front_support.png
       sprite: {fileID: 21300000, guid: 882a61dbd70d79f42a4706a08b789e67, type: 3}
       texture: {fileID: 2800000, guid: 882a61dbd70d79f42a4706a08b789e67, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_speed_01_track_chassis
       file: tank_speed_01_track_chassis.png
-      source: Design\UnityDesignHandoff\Art\TankParts\speed\01_track_chassis.png
+      source: Art/Asset/Tanks/Tank_2_speed/parts/01_track_chassis.png
       sprite: {fileID: 21300000, guid: d68367ee56602a349a0974a3088033c8, type: 3}
       texture: {fileID: 2800000, guid: d68367ee56602a349a0974a3088033c8, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_speed_02_wheel_01
       file: tank_speed_02_wheel_01.png
-      source: Design\UnityDesignHandoff\Art\TankParts\speed\02_wheel_01.png
+      source: Art/Asset/Tanks/Tank_2_speed/parts/02_wheel_01.png
       sprite: {fileID: 21300000, guid: 1a87cba78748b3c4aba8f81931901ed1, type: 3}
       texture: {fileID: 2800000, guid: 1a87cba78748b3c4aba8f81931901ed1, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_speed_03_wheel_02
       file: tank_speed_03_wheel_02.png
-      source: Design\UnityDesignHandoff\Art\TankParts\speed\03_wheel_02.png
+      source: Art/Asset/Tanks/Tank_2_speed/parts/03_wheel_02.png
       sprite: {fileID: 21300000, guid: 17a885c5b456a494f890fab62fa837f0, type: 3}
       texture: {fileID: 2800000, guid: 17a885c5b456a494f890fab62fa837f0, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_speed_04_wheel_03
       file: tank_speed_04_wheel_03.png
-      source: Design\UnityDesignHandoff\Art\TankParts\speed\04_wheel_03.png
+      source: Art/Asset/Tanks/Tank_2_speed/parts/04_wheel_03.png
       sprite: {fileID: 21300000, guid: f9cad7c1966adfd4e97628a3b3ce6bac, type: 3}
       texture: {fileID: 2800000, guid: f9cad7c1966adfd4e97628a3b3ce6bac, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_speed_05_wheel_04
       file: tank_speed_05_wheel_04.png
-      source: Design\UnityDesignHandoff\Art\TankParts\speed\05_wheel_04.png
+      source: Art/Asset/Tanks/Tank_2_speed/parts/05_wheel_04.png
       sprite: {fileID: 21300000, guid: d148c38ddcf88a746b87510b71919919, type: 3}
       texture: {fileID: 2800000, guid: d148c38ddcf88a746b87510b71919919, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_speed_06_main_cannon_barrel
       file: tank_speed_06_main_cannon_barrel.png
-      source: Design\UnityDesignHandoff\Art\TankParts\speed\06_main_cannon_barrel.png
+      source: Art/Asset/Tanks/Tank_2_speed/parts/06_main_cannon_barrel.png
       sprite: {fileID: 21300000, guid: 4ef3d790f526e694c8dccdaa8a0473e8, type: 3}
       texture: {fileID: 2800000, guid: 4ef3d790f526e694c8dccdaa8a0473e8, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_speed_07_body_static
       file: tank_speed_07_body_static.png
-      source: Design\UnityDesignHandoff\Art\TankParts\speed\07_body_static.png
+      source: Art/Asset/Tanks/Tank_2_speed/parts/07_body_static.png
       sprite: {fileID: 21300000, guid: f06d7e9e0f31e944bb153ebd958db502, type: 3}
       texture: {fileID: 2800000, guid: f06d7e9e0f31e944bb153ebd958db502, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_speed_11_front_hull_frame
       file: tank_speed_11_front_hull_frame.png
-      source: Design\UnityDesignHandoff\Art\TankParts\speed\11_front_hull_frame.png
+      source: Art/Asset/Tanks/Tank_2_speed/parts/11_front_hull_frame.png
       sprite: {fileID: 21300000, guid: 1dce4ade73c4c8342875845917089c33, type: 3}
       texture: {fileID: 2800000, guid: 1dce4ade73c4c8342875845917089c33, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_speed_08_roof_machine_gun
       file: tank_speed_08_roof_machine_gun.png
-      source: Design\UnityDesignHandoff\Art\TankParts\speed\08_roof_machine_gun.png
+      source: Art/Asset/Tanks/Tank_2_speed/parts/08_roof_machine_gun.png
       sprite: {fileID: 21300000, guid: 18ebab7d43320264b9d97e76b4b957e6, type: 3}
       texture: {fileID: 2800000, guid: 18ebab7d43320264b9d97e76b4b957e6, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_speed_09_mortar_barrel
       file: tank_speed_09_mortar_barrel.png
-      source: Design\UnityDesignHandoff\Art\TankParts\speed\09_mortar_barrel.png
+      source: Art/Asset/Tanks/Tank_2_speed/parts/09_mortar_barrel.png
       sprite: {fileID: 21300000, guid: 6e70e1623d9c8bd4db1b4f07be92b809, type: 3}
       texture: {fileID: 2800000, guid: 6e70e1623d9c8bd4db1b4f07be92b809, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_speed_10_mortar_front_support
       file: tank_speed_10_mortar_front_support.png
-      source: Design\UnityDesignHandoff\Art\TankParts\speed\10_mortar_front_support.png
+      source: Art/Asset/Tanks/Tank_2_speed/parts/10_mortar_front_support.png
       sprite: {fileID: 21300000, guid: 487ea3422081f1541bb7bdc9e8ce1bd3, type: 3}
       texture: {fileID: 2800000, guid: 487ea3422081f1541bb7bdc9e8ce1bd3, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_heavy_01_track_chassis
       file: tank_heavy_01_track_chassis.png
-      source: Design\UnityDesignHandoff\Art\TankParts\heavy\01_track_chassis.png
+      source: Art/Asset/Tanks/Tank_3_HP/parts/01_track_chassis.png
       sprite: {fileID: 21300000, guid: 1e9d6ee5a004bd24ca1df3b401707b9c, type: 3}
       texture: {fileID: 2800000, guid: 1e9d6ee5a004bd24ca1df3b401707b9c, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_heavy_02_wheel_01
       file: tank_heavy_02_wheel_01.png
-      source: Design\UnityDesignHandoff\Art\TankParts\heavy\02_wheel_01.png
+      source: Art/Asset/Tanks/Tank_3_HP/parts/02_wheel_01.png
       sprite: {fileID: 21300000, guid: 782e28d298d0d224abf895c8136b774a, type: 3}
       texture: {fileID: 2800000, guid: 782e28d298d0d224abf895c8136b774a, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_heavy_03_wheel_02
       file: tank_heavy_03_wheel_02.png
-      source: Design\UnityDesignHandoff\Art\TankParts\heavy\03_wheel_02.png
+      source: Art/Asset/Tanks/Tank_3_HP/parts/03_wheel_02.png
       sprite: {fileID: 21300000, guid: e6a7ceb937e6f394a9cb4608215e516d, type: 3}
       texture: {fileID: 2800000, guid: e6a7ceb937e6f394a9cb4608215e516d, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_heavy_04_wheel_03
       file: tank_heavy_04_wheel_03.png
-      source: Design\UnityDesignHandoff\Art\TankParts\heavy\04_wheel_03.png
+      source: Art/Asset/Tanks/Tank_3_HP/parts/04_wheel_03.png
       sprite: {fileID: 21300000, guid: 532de6de3f2b1014a97f1454f3f30549, type: 3}
       texture: {fileID: 2800000, guid: 532de6de3f2b1014a97f1454f3f30549, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_heavy_05_wheel_04
       file: tank_heavy_05_wheel_04.png
-      source: Design\UnityDesignHandoff\Art\TankParts\heavy\05_wheel_04.png
+      source: Art/Asset/Tanks/Tank_3_HP/parts/05_wheel_04.png
       sprite: {fileID: 21300000, guid: 0af74adcf312fb74a82b902f7cafd28c, type: 3}
       texture: {fileID: 2800000, guid: 0af74adcf312fb74a82b902f7cafd28c, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_heavy_06_main_cannon_barrel
       file: tank_heavy_06_main_cannon_barrel.png
-      source: Design\UnityDesignHandoff\Art\TankParts\heavy\06_main_cannon_barrel.png
+      source: Art/Asset/Tanks/Tank_3_HP/parts/06_main_cannon_barrel.png
       sprite: {fileID: 21300000, guid: 51332ac34a8b32b418e9b9ec52b9bac3, type: 3}
       texture: {fileID: 2800000, guid: 51332ac34a8b32b418e9b9ec52b9bac3, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_heavy_07_body_static
       file: tank_heavy_07_body_static.png
-      source: Design\UnityDesignHandoff\Art\TankParts\heavy\07_body_static.png
+      source: Art/Asset/Tanks/Tank_3_HP/parts/07_body_static.png
       sprite: {fileID: 21300000, guid: c85c315735220924bac65282dd22268c, type: 3}
       texture: {fileID: 2800000, guid: c85c315735220924bac65282dd22268c, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_heavy_11_front_hull_frame
       file: tank_heavy_11_front_hull_frame.png
-      source: Design\UnityDesignHandoff\Art\TankParts\heavy\11_front_hull_frame.png
+      source: Art/Asset/Tanks/Tank_3_HP/parts/11_front_hull_frame.png
       sprite: {fileID: 21300000, guid: d3dae4970c2346b42b068e36c1728658, type: 3}
       texture: {fileID: 2800000, guid: d3dae4970c2346b42b068e36c1728658, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_heavy_08_roof_machine_gun
       file: tank_heavy_08_roof_machine_gun.png
-      source: Design\UnityDesignHandoff\Art\TankParts\heavy\08_roof_machine_gun.png
+      source: Art/Asset/Tanks/Tank_3_HP/parts/08_roof_machine_gun.png
       sprite: {fileID: 21300000, guid: 7ba16da79f9a6af4aa6c883fcb46900b, type: 3}
       texture: {fileID: 2800000, guid: 7ba16da79f9a6af4aa6c883fcb46900b, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_heavy_09_mortar_barrel
       file: tank_heavy_09_mortar_barrel.png
-      source: Design\UnityDesignHandoff\Art\TankParts\heavy\09_mortar_barrel.png
+      source: Art/Asset/Tanks/Tank_3_HP/parts/09_mortar_barrel.png
       sprite: {fileID: 21300000, guid: 8e2fe0300d93bfa4d975518b939db21f, type: 3}
       texture: {fileID: 2800000, guid: 8e2fe0300d93bfa4d975518b939db21f, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tank_heavy_10_mortar_front_support
       file: tank_heavy_10_mortar_front_support.png
-      source: Design\UnityDesignHandoff\Art\TankParts\heavy\10_mortar_front_support.png
+      source: Art/Asset/Tanks/Tank_3_HP/parts/10_mortar_front_support.png
       sprite: {fileID: 21300000, guid: 458f7131be6f2d241863a96ef9bee3a6, type: 3}
       texture: {fileID: 2800000, guid: 458f7131be6f2d241863a96ef9bee3a6, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: car_01_body_static
       file: car_01_body_static.png
-      source: Art\Asset\Enemies\Enemies_vehicles_Contrast_v2\car\parts\01_body_static.png
+      source: Art/Asset/Enemies/Enemies_vehicles_Contrast_v2/car/parts/01_body_static.png
       sprite: {fileID: 21300000, guid: fbb4ecd512c469f4b936378020ed81af, type: 3}
       texture: {fileID: 2800000, guid: fbb4ecd512c469f4b936378020ed81af, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: car_02_wheel_rear
       file: car_02_wheel_rear.png
-      source: Art\Asset\Enemies\Enemies_vehicles_Contrast_v2\car\parts\02_wheel_rear.png
+      source: Art/Asset/Enemies/Enemies_vehicles_Contrast_v2/car/parts/02_wheel_rear.png
       sprite: {fileID: 21300000, guid: b7bb87ce906caa24f9be544e11d87544, type: 3}
       texture: {fileID: 2800000, guid: b7bb87ce906caa24f9be544e11d87544, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: car_03_wheel_front
       file: car_03_wheel_front.png
-      source: Art\Asset\Enemies\Enemies_vehicles_Contrast_v2\car\parts\03_wheel_front.png
+      source: Art/Asset/Enemies/Enemies_vehicles_Contrast_v2/car/parts/03_wheel_front.png
       sprite: {fileID: 21300000, guid: 7b0c0e8261171a844bc7d0aa39358747, type: 3}
       texture: {fileID: 2800000, guid: 7b0c0e8261171a844bc7d0aa39358747, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: plane_01_propeller_blades
       file: plane_01_propeller_blades.png
-      source: Art\Asset\Enemies\Enemies_vehicles_Contrast_v2\plane\parts\01_propeller_blades.png
+      source: Art/Asset/Enemies/Enemies_vehicles_Contrast_v2/plane/parts/01_propeller_blades.png
       sprite: {fileID: 21300000, guid: c0ebebcf7d98f8c478f26d9e59701697, type: 3}
       texture: {fileID: 2800000, guid: c0ebebcf7d98f8c478f26d9e59701697, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: plane_02_wheel_rear
       file: plane_02_wheel_rear.png
-      source: Art\Asset\Enemies\Enemies_vehicles_Contrast_v2\plane\parts\02_wheel_rear.png
+      source: Art/Asset/Enemies/Enemies_vehicles_Contrast_v2/plane/parts/02_wheel_rear.png
       sprite: {fileID: 21300000, guid: dcc6bc39f6da1d0459b7320ef886d57a, type: 3}
       texture: {fileID: 2800000, guid: dcc6bc39f6da1d0459b7320ef886d57a, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: plane_03_wheel_main
       file: plane_03_wheel_main.png
-      source: Art\Asset\Enemies\Enemies_vehicles_Contrast_v2\plane\parts\03_wheel_main.png
+      source: Art/Asset/Enemies/Enemies_vehicles_Contrast_v2/plane/parts/03_wheel_main.png
       sprite: {fileID: 21300000, guid: ccd20ed6283be434d85d77c711f45d12, type: 3}
       texture: {fileID: 2800000, guid: ccd20ed6283be434d85d77c711f45d12, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: plane_04_body_static
       file: plane_04_body_static.png
-      source: Art\Asset\Enemies\Enemies_vehicles_Contrast_v2\plane\parts\04_body_static.png
+      source: Art/Asset/Enemies/Enemies_vehicles_Contrast_v2/plane/parts/04_body_static.png
       sprite: {fileID: 21300000, guid: 4d9db1747965937478407affd2887fc3, type: 3}
       texture: {fileID: 2800000, guid: 4d9db1747965937478407affd2887fc3, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: industrial_bg_00_sky_static
       file: industrial_bg_00_sky_static.png
-      source: Design\UnityDesignHandoff\Art\Backgrounds\industrial_bg\00_sky_static.png
+      source: Art/Asset/BG/industrial_bg/layers/00_sky_static.png
       sprite: {fileID: 21300000, guid: 3267bc5ba82ea244d8402c8a6e32ea2d, type: 3}
       texture: {fileID: 2800000, guid: 3267bc5ba82ea244d8402c8a6e32ea2d, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: industrial_bg_01_far_factories
       file: industrial_bg_01_far_factories.png
-      source: Design\UnityDesignHandoff\Art\Backgrounds\industrial_bg\01_far_factories.png
+      source: Art/Asset/BG/industrial_bg/layers/01_far_factories.png
       sprite: {fileID: 21300000, guid: 376055b9bc5acb6478f83600a33cf1d8, type: 3}
       texture: {fileID: 2800000, guid: 376055b9bc5acb6478f83600a33cf1d8, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: industrial_bg_02_mid_industry
       file: industrial_bg_02_mid_industry.png
-      source: Design\UnityDesignHandoff\Art\Backgrounds\industrial_bg\02_mid_industry.png
+      source: Art/Asset/BG/industrial_bg/layers/02_mid_industry.png
       sprite: {fileID: 21300000, guid: f70ce4f803979664bb187c53701dc880, type: 3}
       texture: {fileID: 2800000, guid: f70ce4f803979664bb187c53701dc880, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: industrial_bg_03_road
       file: industrial_bg_03_road.png
-      source: Design\UnityDesignHandoff\Art\Backgrounds\industrial_bg\03_road.png
+      source: Art/Asset/BG/industrial_bg/layers/03_road.png
       sprite: {fileID: 21300000, guid: 22dcf949ecc219747934b604a9283002, type: 3}
       texture: {fileID: 2800000, guid: 22dcf949ecc219747934b604a9283002, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: industrial_bg_04_street_buildings
       file: industrial_bg_04_street_buildings.png
-      source: Design\UnityDesignHandoff\Art\Backgrounds\industrial_bg\04_street_buildings.png
+      source: Art/Asset/BG/industrial_bg/layers/04_street_buildings.png
       sprite: {fileID: 21300000, guid: 1620e371b948dc34d8a768ee5c39dbce, type: 3}
       texture: {fileID: 2800000, guid: 1620e371b948dc34d8a768ee5c39dbce, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: industrial_bg_05_rubble_weeds
       file: industrial_bg_05_rubble_weeds.png
-      source: Design\UnityDesignHandoff\Art\Backgrounds\industrial_bg\05_rubble_weeds.png
+      source: Art/Asset/BG/industrial_bg/layers/05_rubble_weeds.png
       sprite: {fileID: 21300000, guid: e00677a9800f12f4088a367e1fda94dc, type: 3}
       texture: {fileID: 2800000, guid: e00677a9800f12f4088a367e1fda94dc, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: parallax_bg_00_sky_static
       file: parallax_bg_00_sky_static.png
-      source: Design\UnityDesignHandoff\Art\Backgrounds\parallax_bg\00_sky_static.png
+      source: Art/Asset/BG/parallax_bg/layers/00_sky_static.png
       sprite: {fileID: 21300000, guid: d98f89919bffbc24faa37186c115de4e, type: 3}
       texture: {fileID: 2800000, guid: d98f89919bffbc24faa37186c115de4e, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: parallax_bg_01_far_city
       file: parallax_bg_01_far_city.png
-      source: Design\UnityDesignHandoff\Art\Backgrounds\parallax_bg\01_far_city.png
+      source: Art/Asset/BG/parallax_bg/layers/01_far_city.png
       sprite: {fileID: 21300000, guid: f86aa352786f540468e68b9110d7d151, type: 3}
       texture: {fileID: 2800000, guid: f86aa352786f540468e68b9110d7d151, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: parallax_bg_02_viaduct
       file: parallax_bg_02_viaduct.png
-      source: Design\UnityDesignHandoff\Art\Backgrounds\parallax_bg\02_viaduct.png
+      source: Art/Asset/BG/parallax_bg/layers/02_viaduct.png
       sprite: {fileID: 21300000, guid: 691641b1048446c41986e84bdb8a05ae, type: 3}
       texture: {fileID: 2800000, guid: 691641b1048446c41986e84bdb8a05ae, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: parallax_bg_03_road
       file: parallax_bg_03_road.png
-      source: Design\UnityDesignHandoff\Art\Backgrounds\parallax_bg\03_road.png
+      source: Art/Asset/BG/parallax_bg/layers/03_road.png
       sprite: {fileID: 21300000, guid: cd2235a7f24f0c14389ff768fb75b7e9, type: 3}
       texture: {fileID: 2800000, guid: cd2235a7f24f0c14389ff768fb75b7e9, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: parallax_bg_04_street_buildings
       file: parallax_bg_04_street_buildings.png
-      source: Design\UnityDesignHandoff\Art\Backgrounds\parallax_bg\04_street_buildings.png
+      source: Art/Asset/BG/parallax_bg/layers/04_street_buildings.png
       sprite: {fileID: 21300000, guid: b3602989a57204f49b1c958aa121bb76, type: 3}
       texture: {fileID: 2800000, guid: b3602989a57204f49b1c958aa121bb76, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: parallax_bg_05_foreground_debris
       file: parallax_bg_05_foreground_debris.png
-      source: Design\UnityDesignHandoff\Art\Backgrounds\parallax_bg\05_foreground_debris.png
+      source: Art/Asset/BG/parallax_bg/layers/05_foreground_debris.png
       sprite: {fileID: 21300000, guid: 0f151da8690e9254485c8ed31d595a96, type: 3}
       texture: {fileID: 2800000, guid: 0f151da8690e9254485c8ed31d595a96, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: parallax_bg_06_overhead_cables
       file: parallax_bg_06_overhead_cables.png
-      source: Design\UnityDesignHandoff\Art\Backgrounds\parallax_bg\06_overhead_cables.png
+      source: Art/Asset/BG/parallax_bg/layers/06_overhead_cables.png
       sprite: {fileID: 21300000, guid: a4e7d1ca3b579cc4badd140f7820a189, type: 3}
       texture: {fileID: 2800000, guid: a4e7d1ca3b579cc4badd140f7820a189, type: 3}
-    - key: ui_ad_badge
-      file: ui_ad_badge.png
-      source: Design\UnityDesignHandoff\Art\UI\ad_badge.png
-      sprite: {fileID: 21300000, guid: 57e0019d54704bc4babf30bf4fc0d130, type: 3}
-      texture: {fileID: 2800000, guid: 57e0019d54704bc4babf30bf4fc0d130, type: 3}
-    - key: ui_button
-      file: ui_button.png
-      source: Design\UnityDesignHandoff\Art\UI\button.png
-      sprite: {fileID: 21300000, guid: f85022dbfaa36eb4dbef0a1b466e13bf, type: 3}
-      texture: {fileID: 2800000, guid: f85022dbfaa36eb4dbef0a1b466e13bf, type: 3}
-    - key: ui_cannon
-      file: ui_cannon.png
-      source: Design\UnityDesignHandoff\Art\UI\cannon.png
-      sprite: {fileID: 21300000, guid: c1ff626120cece543b08bfafe4a2717e, type: 3}
-      texture: {fileID: 2800000, guid: c1ff626120cece543b08bfafe4a2717e, type: 3}
-    - key: ui_card_rare
-      file: ui_card_rare.png
-      source: Design\UnityDesignHandoff\Art\UI\card_rare.png
-      sprite: {fileID: 21300000, guid: 47a11763bf33d3648bac31cedf918b62, type: 3}
-      texture: {fileID: 2800000, guid: 47a11763bf33d3648bac31cedf918b62, type: 3}
-    - key: ui_card
-      file: ui_card.png
-      source: Design\UnityDesignHandoff\Art\UI\card.png
-      sprite: {fileID: 21300000, guid: 211a8156c4bc0c04994bab59d96fdc03, type: 3}
-      texture: {fileID: 2800000, guid: 211a8156c4bc0c04994bab59d96fdc03, type: 3}
-    - key: ui_explosive
-      file: ui_explosive.png
-      source: Design\UnityDesignHandoff\Art\UI\explosive.png
-      sprite: {fileID: 21300000, guid: ebe40bb918b44f741829f6fb2de4d9b6, type: 3}
-      texture: {fileID: 2800000, guid: ebe40bb918b44f741829f6fb2de4d9b6, type: 3}
-    - key: ui_gears
-      file: ui_gears.png
-      source: Design\UnityDesignHandoff\Art\UI\gears.png
-      sprite: {fileID: 21300000, guid: 75ef2bada3dced14b96283366c4cc02c, type: 3}
-      texture: {fileID: 2800000, guid: 75ef2bada3dced14b96283366c4cc02c, type: 3}
-    - key: ui_heal
-      file: ui_heal.png
-      source: Design\UnityDesignHandoff\Art\UI\heal.png
-      sprite: {fileID: 21300000, guid: 79b46984af7e95a46ad8ceaa6c50def8, type: 3}
-      texture: {fileID: 2800000, guid: 79b46984af7e95a46ad8ceaa6c50def8, type: 3}
-    - key: ui_mg
-      file: ui_mg.png
-      source: Design\UnityDesignHandoff\Art\UI\mg.png
-      sprite: {fileID: 21300000, guid: 660c803ab88b5b9428322d0e28ff8aa6, type: 3}
-      texture: {fileID: 2800000, guid: 660c803ab88b5b9428322d0e28ff8aa6, type: 3}
-    - key: ui_mortar
-      file: ui_mortar.png
-      source: Design\UnityDesignHandoff\Art\UI\mortar.png
-      sprite: {fileID: 21300000, guid: cc3976a455d0e9c4a9e99505ddc3471c, type: 3}
-      texture: {fileID: 2800000, guid: cc3976a455d0e9c4a9e99505ddc3471c, type: 3}
-    - key: ui_panel
-      file: ui_panel.png
-      source: Design\UnityDesignHandoff\Art\UI\panel.png
-      sprite: {fileID: 21300000, guid: d46146d8cf62fce4bb626f5cf93d0bab, type: 3}
-      texture: {fileID: 2800000, guid: d46146d8cf62fce4bb626f5cf93d0bab, type: 3}
-    - key: ui_piercing
-      file: ui_piercing.png
-      source: Design\UnityDesignHandoff\Art\UI\piercing.png
-      sprite: {fileID: 21300000, guid: 5093c931ba481734bbb856f9a9fd0f01, type: 3}
-      texture: {fileID: 2800000, guid: 5093c931ba481734bbb856f9a9fd0f01, type: 3}
-    - key: ui_plasma
-      file: ui_plasma.png
-      source: Design\UnityDesignHandoff\Art\UI\plasma.png
-      sprite: {fileID: 21300000, guid: 5b4e0c8c109be614d9d6cc34e8d4df2a, type: 3}
-      texture: {fileID: 2800000, guid: 5b4e0c8c109be614d9d6cc34e8d4df2a, type: 3}
-    - key: ui_resource_gears
-      file: ui_resource_gears.png
-      source: Design\UnityDesignHandoff\Art\UI\resource_gears.png
-      sprite: {fileID: 21300000, guid: 9363d9cb928b25a408ec830cbf628f2f, type: 3}
-      texture: {fileID: 2800000, guid: 9363d9cb928b25a408ec830cbf628f2f, type: 3}
-    - key: ui_resource_money
-      file: ui_resource_money.png
-      source: Design\UnityDesignHandoff\Art\UI\resource_money.png
-      sprite: {fileID: 21300000, guid: 03cdead8ad093ba45905ad30ea4ad17c, type: 3}
-      texture: {fileID: 2800000, guid: 03cdead8ad093ba45905ad30ea4ad17c, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_base_ad
+      file: card_base_ad.png
+      source: Art/Asset/UI/Choice_Cards/bases/base_ad.png
+      sprite: {fileID: 21300000, guid: 3d96f3b80130986469a80355ad66abbd, type: 3}
+      texture: {fileID: 2800000, guid: 3d96f3b80130986469a80355ad66abbd, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_base_common
+      file: card_base_common.png
+      source: Art/Asset/UI/Choice_Cards/bases/base_common.png
+      sprite: {fileID: 21300000, guid: 0c3522f244971964886d9fa9a25f075a, type: 3}
+      texture: {fileID: 2800000, guid: 0c3522f244971964886d9fa9a25f075a, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_base_epic
+      file: card_base_epic.png
+      source: Art/Asset/UI/Choice_Cards/bases/base_epic.png
+      sprite: {fileID: 21300000, guid: f73e8efc33bdf084e81b84c2740cea0a, type: 3}
+      texture: {fileID: 2800000, guid: f73e8efc33bdf084e81b84c2740cea0a, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_base_legendary
+      file: card_base_legendary.png
+      source: Art/Asset/UI/Choice_Cards/bases/base_legendary.png
+      sprite: {fileID: 21300000, guid: a440be4493454424cbdb3fa256375c11, type: 3}
+      texture: {fileID: 2800000, guid: a440be4493454424cbdb3fa256375c11, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_base_rare
+      file: card_base_rare.png
+      source: Art/Asset/UI/Choice_Cards/bases/base_rare.png
+      sprite: {fileID: 21300000, guid: 23a87ce07bcefe84abe0deff5290abbd, type: 3}
+      texture: {fileID: 2800000, guid: 23a87ce07bcefe84abe0deff5290abbd, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_frame_ad
+      file: card_frame_ad.png
+      source: Art/Asset/UI/Choice_Cards/bases/frame_ad.png
+      sprite: {fileID: 21300000, guid: 7c6007f671b2b5f4aa6c5e13a39949cd, type: 3}
+      texture: {fileID: 2800000, guid: 7c6007f671b2b5f4aa6c5e13a39949cd, type: 3}
+      border:
+      - 8
+      - 8
+      - 8
+      - 8
+    - key: card_frame_common
+      file: card_frame_common.png
+      source: Art/Asset/UI/Choice_Cards/bases/frame_common.png
+      sprite: {fileID: 21300000, guid: e26c9acb6e395684fa7d76219007348e, type: 3}
+      texture: {fileID: 2800000, guid: e26c9acb6e395684fa7d76219007348e, type: 3}
+      border:
+      - 8
+      - 8
+      - 8
+      - 8
+    - key: card_frame_epic
+      file: card_frame_epic.png
+      source: Art/Asset/UI/Choice_Cards/bases/frame_epic.png
+      sprite: {fileID: 21300000, guid: 0dfdbf475dd779042a6dc4085368bb63, type: 3}
+      texture: {fileID: 2800000, guid: 0dfdbf475dd779042a6dc4085368bb63, type: 3}
+      border:
+      - 8
+      - 8
+      - 8
+      - 8
+    - key: card_frame_legendary
+      file: card_frame_legendary.png
+      source: Art/Asset/UI/Choice_Cards/bases/frame_legendary.png
+      sprite: {fileID: 21300000, guid: ee8a245d7c3de4f4caf0dcdb433edbc4, type: 3}
+      texture: {fileID: 2800000, guid: ee8a245d7c3de4f4caf0dcdb433edbc4, type: 3}
+      border:
+      - 8
+      - 8
+      - 8
+      - 8
+    - key: card_frame_rare
+      file: card_frame_rare.png
+      source: Art/Asset/UI/Choice_Cards/bases/frame_rare.png
+      sprite: {fileID: 21300000, guid: 01f798437d6897b4d852bc3eec5db4db, type: 3}
+      texture: {fileID: 2800000, guid: 01f798437d6897b4d852bc3eec5db4db, type: 3}
+      border:
+      - 8
+      - 8
+      - 8
+      - 8
+    - key: card_swirl_ad
+      file: card_swirl_ad.png
+      source: Art/Asset/UI/Choice_Cards/bases/swirl_ad.png
+      sprite: {fileID: 21300000, guid: e1a0863964179314fae968fa51e74a75, type: 3}
+      texture: {fileID: 2800000, guid: e1a0863964179314fae968fa51e74a75, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_swirl_common
+      file: card_swirl_common.png
+      source: Art/Asset/UI/Choice_Cards/bases/swirl_common.png
+      sprite: {fileID: 21300000, guid: 995aa910518f15f4496f774715f3cbf6, type: 3}
+      texture: {fileID: 2800000, guid: 995aa910518f15f4496f774715f3cbf6, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_swirl_epic
+      file: card_swirl_epic.png
+      source: Art/Asset/UI/Choice_Cards/bases/swirl_epic.png
+      sprite: {fileID: 21300000, guid: 9e9e2cfcb86c1e24384d5c177947def3, type: 3}
+      texture: {fileID: 2800000, guid: 9e9e2cfcb86c1e24384d5c177947def3, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_swirl_legendary
+      file: card_swirl_legendary.png
+      source: Art/Asset/UI/Choice_Cards/bases/swirl_legendary.png
+      sprite: {fileID: 21300000, guid: 5fdf59cf2e9e7bb4a80eeb5b0ea0d60d, type: 3}
+      texture: {fileID: 2800000, guid: 5fdf59cf2e9e7bb4a80eeb5b0ea0d60d, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_swirl_rare
+      file: card_swirl_rare.png
+      source: Art/Asset/UI/Choice_Cards/bases/swirl_rare.png
+      sprite: {fileID: 21300000, guid: ccb03d476836cc6438898f39c90572f5, type: 3}
+      texture: {fileID: 2800000, guid: ccb03d476836cc6438898f39c90572f5, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_cannon_ap
+      file: card_cannon_ap.png
+      source: Art/Asset/UI/Choice_Cards/icons/cannon_ap.png
+      sprite: {fileID: 21300000, guid: 22d63bcfb7ebc6947a91acfc2fe3e2cc, type: 3}
+      texture: {fileID: 2800000, guid: 22d63bcfb7ebc6947a91acfc2fe3e2cc, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_medical_kit
+      file: card_medical_kit.png
+      source: Art/Asset/UI/Choice_Cards/icons/medical_kit.png
+      sprite: {fileID: 21300000, guid: 412ad05f47a0d6947a95ffa9f428b0e8, type: 3}
+      texture: {fileID: 2800000, guid: 412ad05f47a0d6947a95ffa9f428b0e8, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_mg_plasma
+      file: card_mg_plasma.png
+      source: Art/Asset/UI/Choice_Cards/icons/mg_plasma.png
+      sprite: {fileID: 21300000, guid: 3bce147de0c1194468f8420e3fc7e7c7, type: 3}
+      texture: {fileID: 2800000, guid: 3bce147de0c1194468f8420e3fc7e7c7, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_mortar_blast
+      file: card_mortar_blast.png
+      source: Art/Asset/UI/Choice_Cards/icons/mortar_blast.png
+      sprite: {fileID: 21300000, guid: ca59eaafbecbe0c46aae8efabe8eb6cf, type: 3}
+      texture: {fileID: 2800000, guid: ca59eaafbecbe0c46aae8efabe8eb6cf, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_supply_cannon
+      file: card_supply_cannon.png
+      source: Art/Asset/UI/Choice_Cards/icons/supply_cannon.png
+      sprite: {fileID: 21300000, guid: f14761f831ffc9c47b2241dfe7bfba44, type: 3}
+      texture: {fileID: 2800000, guid: f14761f831ffc9c47b2241dfe7bfba44, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_supply_mg
+      file: card_supply_mg.png
+      source: Art/Asset/UI/Choice_Cards/icons/supply_mg.png
+      sprite: {fileID: 21300000, guid: adb4fb0f2c0b2dc44a22fb0df13d42fd, type: 3}
+      texture: {fileID: 2800000, guid: adb4fb0f2c0b2dc44a22fb0df13d42fd, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_supply_mortar
+      file: card_supply_mortar.png
+      source: Art/Asset/UI/Choice_Cards/icons/supply_mortar.png
+      sprite: {fileID: 21300000, guid: 8d962d584c9bbc54f8544b0d3c400d63, type: 3}
+      texture: {fileID: 2800000, guid: 8d962d584c9bbc54f8544b0d3c400d63, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_cannon_ap
+      file: card_cannon_ap.png
+      source: Art/Asset/UI/Choice_Cards/illustrations/cannon_ap.png
+      sprite: {fileID: 21300000, guid: 22d63bcfb7ebc6947a91acfc2fe3e2cc, type: 3}
+      texture: {fileID: 2800000, guid: 22d63bcfb7ebc6947a91acfc2fe3e2cc, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_medical_kit
+      file: card_medical_kit.png
+      source: Art/Asset/UI/Choice_Cards/illustrations/medical_kit.png
+      sprite: {fileID: 21300000, guid: 412ad05f47a0d6947a95ffa9f428b0e8, type: 3}
+      texture: {fileID: 2800000, guid: 412ad05f47a0d6947a95ffa9f428b0e8, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_mg_plasma
+      file: card_mg_plasma.png
+      source: Art/Asset/UI/Choice_Cards/illustrations/mg_plasma.png
+      sprite: {fileID: 21300000, guid: 3bce147de0c1194468f8420e3fc7e7c7, type: 3}
+      texture: {fileID: 2800000, guid: 3bce147de0c1194468f8420e3fc7e7c7, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_mortar_blast
+      file: card_mortar_blast.png
+      source: Art/Asset/UI/Choice_Cards/illustrations/mortar_blast.png
+      sprite: {fileID: 21300000, guid: ca59eaafbecbe0c46aae8efabe8eb6cf, type: 3}
+      texture: {fileID: 2800000, guid: ca59eaafbecbe0c46aae8efabe8eb6cf, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_supply_cannon
+      file: card_supply_cannon.png
+      source: Art/Asset/UI/Choice_Cards/illustrations/supply_cannon.png
+      sprite: {fileID: 21300000, guid: f14761f831ffc9c47b2241dfe7bfba44, type: 3}
+      texture: {fileID: 2800000, guid: f14761f831ffc9c47b2241dfe7bfba44, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_supply_mg
+      file: card_supply_mg.png
+      source: Art/Asset/UI/Choice_Cards/illustrations/supply_mg.png
+      sprite: {fileID: 21300000, guid: adb4fb0f2c0b2dc44a22fb0df13d42fd, type: 3}
+      texture: {fileID: 2800000, guid: adb4fb0f2c0b2dc44a22fb0df13d42fd, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_supply_mortar
+      file: card_supply_mortar.png
+      source: Art/Asset/UI/Choice_Cards/illustrations/supply_mortar.png
+      sprite: {fileID: 21300000, guid: 8d962d584c9bbc54f8544b0d3c400d63, type: 3}
+      texture: {fileID: 2800000, guid: 8d962d584c9bbc54f8544b0d3c400d63, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: card_action_plate
+      file: card_action_plate.png
+      source: Art/Asset/UI/Choice_Cards/parts/action_plate.png
+      sprite: {fileID: 21300000, guid: 44e9748d34113c94980041c1aee6bc1e, type: 3}
+      texture: {fileID: 2800000, guid: 44e9748d34113c94980041c1aee6bc1e, type: 3}
+      border:
+      - 6
+      - 6
+      - 6
+      - 6
+    - key: card_info_badge
+      file: card_info_badge.png
+      source: Art/Asset/UI/Choice_Cards/parts/info_badge.png
+      sprite: {fileID: 21300000, guid: 9e5b1d836714f4d4282c0e05d7474d56, type: 3}
+      texture: {fileID: 2800000, guid: 9e5b1d836714f4d4282c0e05d7474d56, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: ammoicon_ammo_cannon
+      file: ammoicon_ammo_cannon.png
+      source: Art/Asset/UI/Ammo_Icons/ammo_cannon.png
+      sprite: {fileID: 21300000, guid: 52fd6bcee4911b44f81382b903a1524a, type: 3}
+      texture: {fileID: 2800000, guid: 52fd6bcee4911b44f81382b903a1524a, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: ammoicon_ammo_mg
+      file: ammoicon_ammo_mg.png
+      source: Art/Asset/UI/Ammo_Icons/ammo_mg.png
+      sprite: {fileID: 21300000, guid: bdfe6c1b1d4efbb4998b3cf481a46536, type: 3}
+      texture: {fileID: 2800000, guid: bdfe6c1b1d4efbb4998b3cf481a46536, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: ammoicon_ammo_mortar
+      file: ammoicon_ammo_mortar.png
+      source: Art/Asset/UI/Ammo_Icons/ammo_mortar.png
+      sprite: {fileID: 21300000, guid: 55926a954feeec543b3b64faabba3ef4, type: 3}
+      texture: {fileID: 2800000, guid: 55926a954feeec543b3b64faabba3ef4, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: ammoicon_ammo_cannon
+      file: ammoicon_ammo_cannon.png
+      source: Art/Asset/UI/Ammo_Icons/24/ammo_cannon.png
+      sprite: {fileID: 21300000, guid: 52fd6bcee4911b44f81382b903a1524a, type: 3}
+      texture: {fileID: 2800000, guid: 52fd6bcee4911b44f81382b903a1524a, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: ammoicon_ammo_mg
+      file: ammoicon_ammo_mg.png
+      source: Art/Asset/UI/Ammo_Icons/24/ammo_mg.png
+      sprite: {fileID: 21300000, guid: bdfe6c1b1d4efbb4998b3cf481a46536, type: 3}
+      texture: {fileID: 2800000, guid: bdfe6c1b1d4efbb4998b3cf481a46536, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: ammoicon_ammo_mortar
+      file: ammoicon_ammo_mortar.png
+      source: Art/Asset/UI/Ammo_Icons/24/ammo_mortar.png
+      sprite: {fileID: 21300000, guid: 55926a954feeec543b3b64faabba3ef4, type: 3}
+      texture: {fileID: 2800000, guid: 55926a954feeec543b3b64faabba3ef4, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: hp_ammo_cannon
+      file: hp_ammo_cannon.png
+      source: Art/Asset/UI/HP_Bar/ammo_cannon.png
+      sprite: {fileID: 21300000, guid: c1e6875f5943d2e438d94f548e000bf0, type: 3}
+      texture: {fileID: 2800000, guid: c1e6875f5943d2e438d94f548e000bf0, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: hp_ammo_mg
+      file: hp_ammo_mg.png
+      source: Art/Asset/UI/HP_Bar/ammo_mg.png
+      sprite: {fileID: 21300000, guid: dc87059ad16c12a4fa50a242eb823de1, type: 3}
+      texture: {fileID: 2800000, guid: dc87059ad16c12a4fa50a242eb823de1, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: hp_ammo_mortar
+      file: hp_ammo_mortar.png
+      source: Art/Asset/UI/HP_Bar/ammo_mortar.png
+      sprite: {fileID: 21300000, guid: 5935b9099e0c17e46b278a131453abe1, type: 3}
+      texture: {fileID: 2800000, guid: 5935b9099e0c17e46b278a131453abe1, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: hp_hp_fill
+      file: hp_hp_fill.png
+      source: Art/Asset/UI/HP_Bar/hp_fill.png
+      sprite: {fileID: 21300000, guid: 8907117ceca19594299b2ade138109ff, type: 3}
+      texture: {fileID: 2800000, guid: 8907117ceca19594299b2ade138109ff, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: hp_hp_frame
+      file: hp_hp_frame.png
+      source: Art/Asset/UI/HP_Bar/hp_frame.png
+      sprite: {fileID: 21300000, guid: 5d03edff82e0c814594771ac09dc03ae, type: 3}
+      texture: {fileID: 2800000, guid: 5d03edff82e0c814594771ac09dc03ae, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: hp_hp_label
+      file: hp_hp_label.png
+      source: Art/Asset/UI/HP_Bar/hp_label.png
+      sprite: {fileID: 21300000, guid: 9df98fe130d9eea4e9b53957ee53ea74, type: 3}
+      texture: {fileID: 2800000, guid: 9df98fe130d9eea4e9b53957ee53ea74, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: hp_hp_panel
+      file: hp_hp_panel.png
+      source: Art/Asset/UI/HP_Bar/hp_panel.png
+      sprite: {fileID: 21300000, guid: 9e7098c3d2b3c4944a9476ea938636f5, type: 3}
+      texture: {fileID: 2800000, guid: 9e7098c3d2b3c4944a9476ea938636f5, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: hp_hp_rail
+      file: hp_hp_rail.png
+      source: Art/Asset/UI/HP_Bar/hp_rail.png
+      sprite: {fileID: 21300000, guid: 550ca0f5dbcad1d4baa955f23ac213a2, type: 3}
+      texture: {fileID: 2800000, guid: 550ca0f5dbcad1d4baa955f23ac213a2, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_event_ammo
+      file: timeline_event_ammo.png
+      source: Art/Asset/UI/Event_Timeline/icons/event_ammo.png
+      sprite: {fileID: 21300000, guid: 8dec9ad064127e644b9ec5fb2b83d312, type: 3}
+      texture: {fileID: 2800000, guid: 8dec9ad064127e644b9ec5fb2b83d312, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_event_battle
+      file: timeline_event_battle.png
+      source: Art/Asset/UI/Event_Timeline/icons/event_battle.png
+      sprite: {fileID: 21300000, guid: b3911d1894fbe8f4692efb4791e37965, type: 3}
+      texture: {fileID: 2800000, guid: b3911d1894fbe8f4692efb4791e37965, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_event_boss
+      file: timeline_event_boss.png
+      source: Art/Asset/UI/Event_Timeline/icons/event_boss.png
+      sprite: {fileID: 21300000, guid: 060c1f744e76eb944931ef0ce08bb099, type: 3}
+      texture: {fileID: 2800000, guid: 060c1f744e76eb944931ef0ce08bb099, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_event_hard_battle
+      file: timeline_event_hard_battle.png
+      source: Art/Asset/UI/Event_Timeline/icons/event_hard_battle.png
+      sprite: {fileID: 21300000, guid: 84118cddc119fe546ba49a72444d5d9e, type: 3}
+      texture: {fileID: 2800000, guid: 84118cddc119fe546ba49a72444d5d9e, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_event_hp
+      file: timeline_event_hp.png
+      source: Art/Asset/UI/Event_Timeline/icons/event_hp.png
+      sprite: {fileID: 21300000, guid: 14df328716e59144692eef1ff736812e, type: 3}
+      texture: {fileID: 2800000, guid: 14df328716e59144692eef1ff736812e, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_event_unknown
+      file: timeline_event_unknown.png
+      source: Art/Asset/UI/Event_Timeline/icons/event_unknown.png
+      sprite: {fileID: 21300000, guid: 0b7b6ca9fbf9bad40a49bbd7bd9c0e17, type: 3}
+      texture: {fileID: 2800000, guid: 0b7b6ca9fbf9bad40a49bbd7bd9c0e17, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_event_upgrade
+      file: timeline_event_upgrade.png
+      source: Art/Asset/UI/Event_Timeline/icons/event_upgrade.png
+      sprite: {fileID: 21300000, guid: 56e87e98eb7e43a4b85739f4746caac0, type: 3}
+      texture: {fileID: 2800000, guid: 56e87e98eb7e43a4b85739f4746caac0, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_boss_anchor
+      file: timeline_boss_anchor.png
+      source: Art/Asset/UI/Event_Timeline/sprites/boss_anchor.png
+      sprite: {fileID: 21300000, guid: f3af8a44a670b5c428391e8012036002, type: 3}
+      texture: {fileID: 2800000, guid: f3af8a44a670b5c428391e8012036002, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_boss_inner
+      file: timeline_boss_inner.png
+      source: Art/Asset/UI/Event_Timeline/sprites/boss_inner.png
+      sprite: {fileID: 21300000, guid: 65a80673e54d3984cba0f863ce53ed62, type: 3}
+      texture: {fileID: 2800000, guid: 65a80673e54d3984cba0f863ce53ed62, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_boss_outer
+      file: timeline_boss_outer.png
+      source: Art/Asset/UI/Event_Timeline/sprites/boss_outer.png
+      sprite: {fileID: 21300000, guid: 2ce1137db77d80e41a4d7f15df4952a8, type: 3}
+      texture: {fileID: 2800000, guid: 2ce1137db77d80e41a4d7f15df4952a8, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_node_current
+      file: timeline_node_current.png
+      source: Art/Asset/UI/Event_Timeline/sprites/node_current.png
+      sprite: {fileID: 21300000, guid: 2f4a2dd99fd44a54a962df2f82d7ac8c, type: 3}
+      texture: {fileID: 2800000, guid: 2f4a2dd99fd44a54a962df2f82d7ac8c, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_node_future
+      file: timeline_node_future.png
+      source: Art/Asset/UI/Event_Timeline/sprites/node_future.png
+      sprite: {fileID: 21300000, guid: 8d683cb4acaa4e049865f66b33b29f1c, type: 3}
+      texture: {fileID: 2800000, guid: 8d683cb4acaa4e049865f66b33b29f1c, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_node_inner
+      file: timeline_node_inner.png
+      source: Art/Asset/UI/Event_Timeline/sprites/node_inner.png
+      sprite: {fileID: 21300000, guid: e8165beb1da84eb4f8f56217ad183170, type: 3}
+      texture: {fileID: 2800000, guid: e8165beb1da84eb4f8f56217ad183170, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_node_outer
+      file: timeline_node_outer.png
+      source: Art/Asset/UI/Event_Timeline/sprites/node_outer.png
+      sprite: {fileID: 21300000, guid: 64e4550132e124948a412744445f1fa4, type: 3}
+      texture: {fileID: 2800000, guid: 64e4550132e124948a412744445f1fa4, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_pause_menu
+      file: timeline_pause_menu.png
+      source: Art/Asset/UI/Event_Timeline/sprites/pause_menu.png
+      sprite: {fileID: 21300000, guid: a567d8ff76493994b84ad3cc4b98e79d, type: 3}
+      texture: {fileID: 2800000, guid: a567d8ff76493994b84ad3cc4b98e79d, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_player_pointer
+      file: timeline_player_pointer.png
+      source: Art/Asset/UI/Event_Timeline/sprites/player_pointer.png
+      sprite: {fileID: 21300000, guid: 634d9e50e0ae6664d9c730a779881cad, type: 3}
+      texture: {fileID: 2800000, guid: 634d9e50e0ae6664d9c730a779881cad, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_rail_empty
+      file: timeline_rail_empty.png
+      source: Art/Asset/UI/Event_Timeline/sprites/rail_empty.png
+      sprite: {fileID: 21300000, guid: 8d8527bc165c91d4bb5e5edbe0729e19, type: 3}
+      texture: {fileID: 2800000, guid: 8d8527bc165c91d4bb5e5edbe0729e19, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: timeline_rail_progress
+      file: timeline_rail_progress.png
+      source: Art/Asset/UI/Event_Timeline/sprites/rail_progress.png
+      sprite: {fileID: 21300000, guid: 2e0b6dcb38b214a4f8361998ccdd620d, type: 3}
+      texture: {fileID: 2800000, guid: 2e0b6dcb38b214a4f8361998ccdd620d, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: counter_coin
+      file: counter_coin.png
+      source: Art/Asset/UI/Resource_Counters/coin.png
+      sprite: {fileID: 21300000, guid: da663d44ed8b73f4d8965bacdd867f2c, type: 3}
+      texture: {fileID: 2800000, guid: da663d44ed8b73f4d8965bacdd867f2c, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: counter_counter_frame
+      file: counter_counter_frame.png
+      source: Art/Asset/UI/Resource_Counters/counter_frame.png
+      sprite: {fileID: 21300000, guid: c8312da182dda5d45b1a4088767bbd5d, type: 3}
+      texture: {fileID: 2800000, guid: c8312da182dda5d45b1a4088767bbd5d, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: counter_gear
+      file: counter_gear.png
+      source: Art/Asset/UI/Resource_Counters/gear.png
+      sprite: {fileID: 21300000, guid: 16a8a29ed78d10249b540927649f4982, type: 3}
+      texture: {fileID: 2800000, guid: 16a8a29ed78d10249b540927649f4982, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: profile_avatar_default
+      file: profile_avatar_default.png
+      source: Art/Asset/UI/Player_Profile/avatar_default.png
+      sprite: {fileID: 21300000, guid: 0c070e0b0bc86da41be2fb2d6d84066a, type: 3}
+      texture: {fileID: 2800000, guid: 0c070e0b0bc86da41be2fb2d6d84066a, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: profile_exp_fill
+      file: profile_exp_fill.png
+      source: Art/Asset/UI/Player_Profile/exp_fill.png
+      sprite: {fileID: 21300000, guid: 459261c811400674482cc2818bc170a1, type: 3}
+      texture: {fileID: 2800000, guid: 459261c811400674482cc2818bc170a1, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: profile_exp_rail
+      file: profile_exp_rail.png
+      source: Art/Asset/UI/Player_Profile/exp_rail.png
+      sprite: {fileID: 21300000, guid: 006fc7cd92b5ea34f913b69af0f86d27, type: 3}
+      texture: {fileID: 2800000, guid: 006fc7cd92b5ea34f913b69af0f86d27, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: profile_profile_frame
+      file: profile_profile_frame.png
+      source: Art/Asset/UI/Player_Profile/profile_frame.png
+      sprite: {fileID: 21300000, guid: 53523852ffac90746b251d518c305db8, type: 3}
+      texture: {fileID: 2800000, guid: 53523852ffac90746b251d518c305db8, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: tent
       file: tent.png
-      source: Design\UnityDesignHandoff\Art\Environment\tent.png
+      source: Art/Asset/BG/tent.png
       sprite: {fileID: 21300000, guid: fe68149d782498d4d972a3a7a25eb335, type: 3}
       texture: {fileID: 2800000, guid: fe68149d782498d4d972a3a7a25eb335, type: 3}
-    - key: ammo_mortar
-      file: ammo_mortar.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 06c7c988373cdda4c8067aa66cc9e2dc, type: 3}
-      texture: {fileID: 2800000, guid: 06c7c988373cdda4c8067aa66cc9e2dc, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: upgrade_station
+      file: upgrade_station.png
+      source: Art/Asset/BG/upgrade_station.png
+      sprite: {fileID: 21300000, guid: b12c4e57a604b1d41aad07ff86c66f41, type: 3}
+      texture: {fileID: 2800000, guid: b12c4e57a604b1d41aad07ff86c66f41, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: aura_arrow_up
+      file: aura_arrow_up.png
+      source: Art/VFX/Tank_Level_Up/arrow_up.png
+      sprite: {fileID: 21300000, guid: ff5740c56cb9b7d478071e761e89a2be, type: 3}
+      texture: {fileID: 2800000, guid: ff5740c56cb9b7d478071e761e89a2be, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: aura_glow
+      file: aura_glow.png
+      source: Art/VFX/Tank_Level_Up/glow.png
+      sprite: {fileID: 21300000, guid: 6929f83a04824be4098104e183cbcf95, type: 3}
+      texture: {fileID: 2800000, guid: 6929f83a04824be4098104e183cbcf95, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: aura_ring
+      file: aura_ring.png
+      source: Art/VFX/Tank_Level_Up/ring.png
+      sprite: {fileID: 21300000, guid: a6f1d839fff6db640ae628024f5fc315, type: 3}
+      texture: {fileID: 2800000, guid: a6f1d839fff6db640ae628024f5fc315, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: aura_spark
+      file: aura_spark.png
+      source: Art/VFX/Tank_Level_Up/spark.png
+      sprite: {fileID: 21300000, guid: 080071f2fba5c7e41ab99fe2c5e600ad, type: 3}
+      texture: {fileID: 2800000, guid: 080071f2fba5c7e41ab99fe2c5e600ad, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: ammo_cannon
       file: ammo_cannon.png
-      source: Art/Equipment-test.html#tank-game-assets
+      source: Art/Asset/UI/HP_Bar/ammo_cannon.png
       sprite: {fileID: 21300000, guid: d82673e667654384b9c544a4c9290cbb, type: 3}
       texture: {fileID: 2800000, guid: d82673e667654384b9c544a4c9290cbb, type: 3}
-    - key: crew_driver_drive
-      file: crew_driver_drive.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 59b1a6c7f53948843942f6911e4d82c2, type: 3}
-      texture: {fileID: 2800000, guid: 59b1a6c7f53948843942f6911e4d82c2, type: 3}
-    - key: crew_driver_fire
-      file: crew_driver_fire.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 56e76c0c797118e4183d0f3eca5e6f94, type: 3}
-      texture: {fileID: 2800000, guid: 56e76c0c797118e4183d0f3eca5e6f94, type: 3}
-    - key: crew_driver_idle
-      file: crew_driver_idle.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 5772d00f4c89281409701c32d3c2d2be, type: 3}
-      texture: {fileID: 2800000, guid: 5772d00f4c89281409701c32d3c2d2be, type: 3}
-    - key: crew_mg_drive
-      file: crew_mg_drive.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 9074668a5f9a62941b0f740fe2bab368, type: 3}
-      texture: {fileID: 2800000, guid: 9074668a5f9a62941b0f740fe2bab368, type: 3}
-    - key: crew_mg_fire
-      file: crew_mg_fire.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 12fa54b6cb62f494e88b165eb2f4069d, type: 3}
-      texture: {fileID: 2800000, guid: 12fa54b6cb62f494e88b165eb2f4069d, type: 3}
-    - key: crew_fat_idle
-      file: crew_fat_idle.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 7d9aa32bc46a4c944aea3a852a557271, type: 3}
-      texture: {fileID: 2800000, guid: 7d9aa32bc46a4c944aea3a852a557271, type: 3}
-    - key: crew_fat_ready
-      file: crew_fat_ready.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 9fbe9340c13e9db448fdd2508bdf0473, type: 3}
-      texture: {fileID: 2800000, guid: 9fbe9340c13e9db448fdd2508bdf0473, type: 3}
-    - key: crew_fat_walk
-      file: crew_fat_walk.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 4941214ab13f7b0468212ebbe0eaec1b, type: 3}
-      texture: {fileID: 2800000, guid: 4941214ab13f7b0468212ebbe0eaec1b, type: 3}
-    - key: crew_fat_attack
-      file: crew_fat_attack.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: be4444e2ff2a38e45ab9ecc7d614e1d9, type: 3}
-      texture: {fileID: 2800000, guid: be4444e2ff2a38e45ab9ecc7d614e1d9, type: 3}
-    - key: crew_fat_hurt
-      file: crew_fat_hurt.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 6a9461625195f27408269428ccee9442, type: 3}
-      texture: {fileID: 2800000, guid: 6a9461625195f27408269428ccee9442, type: 3}
-    - key: crew_fat_death
-      file: crew_fat_death.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 86ea990b355fd1b4792d42ce30039088, type: 3}
-      texture: {fileID: 2800000, guid: 86ea990b355fd1b4792d42ce30039088, type: 3}
-    - key: crew_dog_idle
-      file: crew_dog_idle.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: a42cf63f6a7fda440ae7cf0778a667a6, type: 3}
-      texture: {fileID: 2800000, guid: a42cf63f6a7fda440ae7cf0778a667a6, type: 3}
-    - key: crew_dog_walk
-      file: crew_dog_walk.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 3b3c75030868ce042b266dd4917cec4c, type: 3}
-      texture: {fileID: 2800000, guid: 3b3c75030868ce042b266dd4917cec4c, type: 3}
-    - key: crew_dog_attack
-      file: crew_dog_attack.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: d5ae702d91079bf429c4131ed36d96e1, type: 3}
-      texture: {fileID: 2800000, guid: d5ae702d91079bf429c4131ed36d96e1, type: 3}
-    - key: crew_dog_hurt
-      file: crew_dog_hurt.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 3a619e6e6a0758b448e56bb9d1a890f3, type: 3}
-      texture: {fileID: 2800000, guid: 3a619e6e6a0758b448e56bb9d1a890f3, type: 3}
-    - key: crew_dog_death
-      file: crew_dog_death.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 7730ba0ace939f042b52235cc530b9f8, type: 3}
-      texture: {fileID: 2800000, guid: 7730ba0ace939f042b52235cc530b9f8, type: 3}
-    - key: crew_dog_driver_drive
-      file: crew_dog_driver_drive.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 4564036f56eb6a849af6dd7353bd6e15, type: 3}
-      texture: {fileID: 2800000, guid: 4564036f56eb6a849af6dd7353bd6e15, type: 3}
-    - key: crew_dog_pilot_drive
-      file: crew_dog_pilot_drive.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 33267f9c0ee3ed44eaf01eb6dffc159b, type: 3}
-      texture: {fileID: 2800000, guid: 33267f9c0ee3ed44eaf01eb6dffc159b, type: 3}
-    - key: crew_dog_pilot_fire
-      file: crew_dog_pilot_fire.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 0ea5e7379b59758439606b1204f5e3b9, type: 3}
-      texture: {fileID: 2800000, guid: 0ea5e7379b59758439606b1204f5e3b9, type: 3}
-    - key: crew_dog_mg_drive
-      file: crew_dog_mg_drive.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 00d0ddafcc397a04e9dc72863b1a23bc, type: 3}
-      texture: {fileID: 2800000, guid: 00d0ddafcc397a04e9dc72863b1a23bc, type: 3}
-    - key: crew_dog_mg_fire
-      file: crew_dog_mg_fire.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 999c6183ab848c84fb9a3df0cdafebac, type: 3}
-      texture: {fileID: 2800000, guid: 999c6183ab848c84fb9a3df0cdafebac, type: 3}
-    - key: crew_cat_ready
-      file: crew_cat_ready.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 99a1023b53611424c907b6c63942efcf, type: 3}
-      texture: {fileID: 2800000, guid: 99a1023b53611424c907b6c63942efcf, type: 3}
-    - key: crew_cat_walk
-      file: crew_cat_walk.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 9ee1f40a814f41243a2ddd3ff10b4fe7, type: 3}
-      texture: {fileID: 2800000, guid: 9ee1f40a814f41243a2ddd3ff10b4fe7, type: 3}
-    - key: crew_cat_attack
-      file: crew_cat_attack.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: d6c0a31a935fa40458088f432831a1b3, type: 3}
-      texture: {fileID: 2800000, guid: d6c0a31a935fa40458088f432831a1b3, type: 3}
-    - key: crew_cat_hurt
-      file: crew_cat_hurt.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 1614af30d8a168b4f9bcda3f1c5135d5, type: 3}
-      texture: {fileID: 2800000, guid: 1614af30d8a168b4f9bcda3f1c5135d5, type: 3}
-    - key: crew_cat_death
-      file: crew_cat_death.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 070c8792f12750341aff8d8aa75e11d6, type: 3}
-      texture: {fileID: 2800000, guid: 070c8792f12750341aff8d8aa75e11d6, type: 3}
-    - key: crew_jeep_ready
-      file: crew_jeep_ready.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 39edb21da1788f54b863d49485d55a89, type: 3}
-      texture: {fileID: 2800000, guid: 39edb21da1788f54b863d49485d55a89, type: 3}
-    - key: crew_jeep_walk
-      file: crew_jeep_walk.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 4990de863ca8598478f0e6f72f44803a, type: 3}
-      texture: {fileID: 2800000, guid: 4990de863ca8598478f0e6f72f44803a, type: 3}
-    - key: crew_jeep_attack
-      file: crew_jeep_attack.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: c1c7ae5090171504ea87191a9d58f478, type: 3}
-      texture: {fileID: 2800000, guid: c1c7ae5090171504ea87191a9d58f478, type: 3}
-    - key: crew_jeep_hurt
-      file: crew_jeep_hurt.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 12a3d0487ed218144a6e8ece650353f5, type: 3}
-      texture: {fileID: 2800000, guid: 12a3d0487ed218144a6e8ece650353f5, type: 3}
-    - key: crew_jeep_death
-      file: crew_jeep_death.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 3b72cfe7ef299fb4d9a7e79100d1c621, type: 3}
-      texture: {fileID: 2800000, guid: 3b72cfe7ef299fb4d9a7e79100d1c621, type: 3}
-    - key: crew_pilot_ready
-      file: crew_pilot_ready.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 3553a0699f796f340889babdefa6db52, type: 3}
-      texture: {fileID: 2800000, guid: 3553a0699f796f340889babdefa6db52, type: 3}
-    - key: crew_pilot_walk
-      file: crew_pilot_walk.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: a44b8946a5c31be418a256fd1b210a20, type: 3}
-      texture: {fileID: 2800000, guid: a44b8946a5c31be418a256fd1b210a20, type: 3}
-    - key: crew_pilot_attack
-      file: crew_pilot_attack.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: f3fbcde0934e27748ae312d355824f29, type: 3}
-      texture: {fileID: 2800000, guid: f3fbcde0934e27748ae312d355824f29, type: 3}
-    - key: crew_pilot_hurt
-      file: crew_pilot_hurt.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 1e466788b6952a74b97d18238a85d448, type: 3}
-      texture: {fileID: 2800000, guid: 1e466788b6952a74b97d18238a85d448, type: 3}
-    - key: crew_pilot_death
-      file: crew_pilot_death.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 6bb565475e0712b499202c27cd9202a7, type: 3}
-      texture: {fileID: 2800000, guid: 6bb565475e0712b499202c27cd9202a7, type: 3}
-    - key: arcade_vfx_Explosion
-      file: arcade_vfx_Explosion.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 28dd5483ed237f64db020b815441647b, type: 3}
-      texture: {fileID: 2800000, guid: 28dd5483ed237f64db020b815441647b, type: 3}
-    - key: arcade_vfx_Smoke
-      file: arcade_vfx_Smoke.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 9233a3c903e603b43aecb75eb0962015, type: 3}
-      texture: {fileID: 2800000, guid: 9233a3c903e603b43aecb75eb0962015, type: 3}
-    - key: arcade_vfx_Hit
-      file: arcade_vfx_Hit.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: a07dcebffdb427b40b7a2894d860fe42, type: 3}
-      texture: {fileID: 2800000, guid: a07dcebffdb427b40b7a2894d860fe42, type: 3}
-    - key: arcade_vfx_Muzzle
-      file: arcade_vfx_Muzzle.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 3b43e3cc142ca3345870ad1c266a410c, type: 3}
-      texture: {fileID: 2800000, guid: 3b43e3cc142ca3345870ad1c266a410c, type: 3}
-    - key: arcade_vfx_Spark
-      file: arcade_vfx_Spark.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: d4c6990ad21a4ac41943e05d3ff25f8f, type: 3}
-      texture: {fileID: 2800000, guid: d4c6990ad21a4ac41943e05d3ff25f8f, type: 3}
-    - key: arcade_vfx_Glow
-      file: arcade_vfx_Glow.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 2d1b5f7d51f94f14b9767b729d1b7b8d, type: 3}
-      texture: {fileID: 2800000, guid: 2d1b5f7d51f94f14b9767b729d1b7b8d, type: 3}
-    - key: arcade_vfx_Shockwave
-      file: arcade_vfx_Shockwave.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: 077b9d10de96e424fa2448788fac0955, type: 3}
-      texture: {fileID: 2800000, guid: 077b9d10de96e424fa2448788fac0955, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: ammo_mortar
+      file: ammo_mortar.png
+      source: Art/Asset/UI/HP_Bar/ammo_mortar.png
+      sprite: {fileID: 21300000, guid: 06c7c988373cdda4c8067aa66cc9e2dc, type: 3}
+      texture: {fileID: 2800000, guid: 06c7c988373cdda4c8067aa66cc9e2dc, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: arcade_vfx_Beam
       file: arcade_vfx_Beam.png
-      source: Art/Equipment-test.html#tank-game-assets
+      source: Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Beam.png
       sprite: {fileID: 21300000, guid: 85f5dce675532b242a37d901c5ced9a0, type: 3}
       texture: {fileID: 2800000, guid: 85f5dce675532b242a37d901c5ced9a0, type: 3}
-    - key: arcade_vfx_FireBoltHead
-      file: arcade_vfx_FireBoltHead.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: b88e571dcf6ad4049a5c84b3b0bab9df, type: 3}
-      texture: {fileID: 2800000, guid: b88e571dcf6ad4049a5c84b3b0bab9df, type: 3}
-    - key: arcade_vfx_Dust
-      file: arcade_vfx_Dust.png
-      source: Art/Equipment-test.html#tank-game-assets
-      sprite: {fileID: 21300000, guid: b896927ac803d4f4aa1a8830ac7d9a07, type: 3}
-      texture: {fileID: 2800000, guid: b896927ac803d4f4aa1a8830ac7d9a07, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: arcade_vfx_BeamTrail
       file: arcade_vfx_BeamTrail.png
-      source: Art/Equipment-test.html#tank-game-assets
+      source: Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/BeamTrail.png
       sprite: {fileID: 21300000, guid: 962a4514d3a37ad47bd15431f346a6f4, type: 3}
       texture: {fileID: 2800000, guid: 962a4514d3a37ad47bd15431f346a6f4, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: arcade_vfx_Dust
+      file: arcade_vfx_Dust.png
+      source: Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Dust.png
+      sprite: {fileID: 21300000, guid: b896927ac803d4f4aa1a8830ac7d9a07, type: 3}
+      texture: {fileID: 2800000, guid: b896927ac803d4f4aa1a8830ac7d9a07, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: arcade_vfx_Explosion
+      file: arcade_vfx_Explosion.png
+      source: Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Explosion.png
+      sprite: {fileID: 21300000, guid: 28dd5483ed237f64db020b815441647b, type: 3}
+      texture: {fileID: 2800000, guid: 28dd5483ed237f64db020b815441647b, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: arcade_vfx_FireBoltHead
+      file: arcade_vfx_FireBoltHead.png
+      source: Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/FireBoltHead.png
+      sprite: {fileID: 21300000, guid: b88e571dcf6ad4049a5c84b3b0bab9df, type: 3}
+      texture: {fileID: 2800000, guid: b88e571dcf6ad4049a5c84b3b0bab9df, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: arcade_vfx_Glow
+      file: arcade_vfx_Glow.png
+      source: Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Glow.png
+      sprite: {fileID: 21300000, guid: 2d1b5f7d51f94f14b9767b729d1b7b8d, type: 3}
+      texture: {fileID: 2800000, guid: 2d1b5f7d51f94f14b9767b729d1b7b8d, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: arcade_vfx_Hit
+      file: arcade_vfx_Hit.png
+      source: Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Hit.png
+      sprite: {fileID: 21300000, guid: a07dcebffdb427b40b7a2894d860fe42, type: 3}
+      texture: {fileID: 2800000, guid: a07dcebffdb427b40b7a2894d860fe42, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: arcade_vfx_Muzzle
+      file: arcade_vfx_Muzzle.png
+      source: Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Muzzle.png
+      sprite: {fileID: 21300000, guid: 3b43e3cc142ca3345870ad1c266a410c, type: 3}
+      texture: {fileID: 2800000, guid: 3b43e3cc142ca3345870ad1c266a410c, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: arcade_vfx_Shockwave
+      file: arcade_vfx_Shockwave.png
+      source: Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Shockwave.png
+      sprite: {fileID: 21300000, guid: 077b9d10de96e424fa2448788fac0955, type: 3}
+      texture: {fileID: 2800000, guid: 077b9d10de96e424fa2448788fac0955, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: arcade_vfx_Smoke
+      file: arcade_vfx_Smoke.png
+      source: Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Smoke.png
+      sprite: {fileID: 21300000, guid: 9233a3c903e603b43aecb75eb0962015, type: 3}
+      texture: {fileID: 2800000, guid: 9233a3c903e603b43aecb75eb0962015, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: arcade_vfx_Spark
+      file: arcade_vfx_Spark.png
+      source: Art/VFX/Reference_Arcade_v1/Assets/MegaTankVFX/Art/Atlases/Spark.png
+      sprite: {fileID: 21300000, guid: d4c6990ad21a4ac41943e05d3ff25f8f, type: 3}
+      texture: {fileID: 2800000, guid: d4c6990ad21a4ac41943e05d3ff25f8f, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     - key: ground_fire
       file: ground_fire.png
       source: Art/Asset/vfx/ground_fire_vfx/assets/fire_strip_8f.png
       sprite: {fileID: 21300000, guid: 9d1066bc7372ee34aab0a3b46e143b9c, type: 3}
       texture: {fileID: 2800000, guid: 9d1066bc7372ee34aab0a3b46e143b9c, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: cannon_car_body_back
+      file: cannon_car_body_back.png
+      source: Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/00_body_back.png
+      sprite: {fileID: 21300000, guid: e7b03926f1b6a614592770776f786a53, type: 3}
+      texture: {fileID: 2800000, guid: e7b03926f1b6a614592770776f786a53, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: cannon_car_exhaust
+      file: cannon_car_exhaust.png
+      source: Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/08_exhaust.png
+      sprite: {fileID: 21300000, guid: c0613394fc47c8440a165e839fc67645, type: 3}
+      texture: {fileID: 2800000, guid: c0613394fc47c8440a165e839fc67645, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: cannon_car_ammo_crate
+      file: cannon_car_ammo_crate.png
+      source: Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/05_ammo_crate.png
+      sprite: {fileID: 21300000, guid: 64a90b1489bfc59478c913754cfeaa99, type: 3}
+      texture: {fileID: 2800000, guid: 64a90b1489bfc59478c913754cfeaa99, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: cannon_car_seat
+      file: cannon_car_seat.png
+      source: Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/01_driver_seat.png
+      sprite: {fileID: 21300000, guid: 2919aff1ec328ab488afe7a4045fe056, type: 3}
+      texture: {fileID: 2800000, guid: 2919aff1ec328ab488afe7a4045fe056, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: cannon_car_suspension_0
+      file: cannon_car_suspension_0.png
+      source: Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/02_suspension.png
+      sprite: {fileID: 21300000, guid: bdfef8fd438ca0b4faaaf6a9a8642e69, type: 3}
+      texture: {fileID: 2800000, guid: bdfef8fd438ca0b4faaaf6a9a8642e69, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: cannon_car_suspension_1
+      file: cannon_car_suspension_1.png
+      source: Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/02_suspension.png
+      sprite: {fileID: 21300000, guid: 4b53b9560e0c59a418ad90dd288ce518, type: 3}
+      texture: {fileID: 2800000, guid: 4b53b9560e0c59a418ad90dd288ce518, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: cannon_car_barrel
+      file: cannon_car_barrel.png
+      source: Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/03_cannon_barrel.png
+      sprite: {fileID: 21300000, guid: 437b6161047ab914f84f6aa8374a2628, type: 3}
+      texture: {fileID: 2800000, guid: 437b6161047ab914f84f6aa8374a2628, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: cannon_car_cradle
+      file: cannon_car_cradle.png
+      source: Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/04_cannon_cradle.png
+      sprite: {fileID: 21300000, guid: f62fd624eccea834d88941050dd0b296, type: 3}
+      texture: {fileID: 2800000, guid: f62fd624eccea834d88941050dd0b296, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: cannon_car_wheel_0
+      file: cannon_car_wheel_0.png
+      source: Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/06_wheel.png
+      sprite: {fileID: 21300000, guid: 1f089d9e972c78e4e98887f01063c4bb, type: 3}
+      texture: {fileID: 2800000, guid: 1f089d9e972c78e4e98887f01063c4bb, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: cannon_car_wheel_1
+      file: cannon_car_wheel_1.png
+      source: Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/06_wheel.png
+      sprite: {fileID: 21300000, guid: 12814f9684e2f7b47b9cfbbe6380f233, type: 3}
+      texture: {fileID: 2800000, guid: 12814f9684e2f7b47b9cfbbe6380f233, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: cannon_car_body_front
+      file: cannon_car_body_front.png
+      source: Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/07_body_front.png
+      sprite: {fileID: 21300000, guid: fcc2bca803ecf98498405c13daf9bd7b, type: 3}
+      texture: {fileID: 2800000, guid: fcc2bca803ecf98498405c13daf9bd7b, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: helicopter_tail_boom
+      file: helicopter_tail_boom.png
+      source: Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/01_tail_boom.png
+      sprite: {fileID: 21300000, guid: 97a586dc71ffdad4fabc9cfa7e8418f6, type: 3}
+      texture: {fileID: 2800000, guid: 97a586dc71ffdad4fabc9cfa7e8418f6, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: helicopter_tail_rotor
+      file: helicopter_tail_rotor.png
+      source: Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/02_tail_rotor.png
+      sprite: {fileID: 21300000, guid: c12617d09a5326c4482029ecb33f62ca, type: 3}
+      texture: {fileID: 2800000, guid: c12617d09a5326c4482029ecb33f62ca, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: helicopter_cabin_back
+      file: helicopter_cabin_back.png
+      source: Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/00_cabin_back.png
+      sprite: {fileID: 21300000, guid: 1b3d78178f44a5e4286c3549e0c71a8d, type: 3}
+      texture: {fileID: 2800000, guid: 1b3d78178f44a5e4286c3549e0c71a8d, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: helicopter_skids
+      file: helicopter_skids.png
+      source: Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/03_landing_skids.png
+      sprite: {fileID: 21300000, guid: e0e37cb8f54c915489589441f60cc3ca, type: 3}
+      texture: {fileID: 2800000, guid: e0e37cb8f54c915489589441f60cc3ca, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: helicopter_seat
+      file: helicopter_seat.png
+      source: Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/05_pilot_seat.png
+      sprite: {fileID: 21300000, guid: 46059c32db06d4f489651857b109ebb5, type: 3}
+      texture: {fileID: 2800000, guid: 46059c32db06d4f489651857b109ebb5, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: helicopter_mast
+      file: helicopter_mast.png
+      source: Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/04_rotor_mast.png
+      sprite: {fileID: 21300000, guid: 4732d35358bec1e418c08acd0734f7a3, type: 3}
+      texture: {fileID: 2800000, guid: 4732d35358bec1e418c08acd0734f7a3, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: helicopter_cabin_front
+      file: helicopter_cabin_front.png
+      source: Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/06_cabin_front.png
+      sprite: {fileID: 21300000, guid: 42186ee4a0d02774cad6c9ddaa574a23, type: 3}
+      texture: {fileID: 2800000, guid: 42186ee4a0d02774cad6c9ddaa574a23, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: helicopter_machine_gun
+      file: helicopter_machine_gun.png
+      source: Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/07_machine_gun.png
+      sprite: {fileID: 21300000, guid: dde5f154da3c1b744989d4a3c7d9071b, type: 3}
+      texture: {fileID: 2800000, guid: dde5f154da3c1b744989d4a3c7d9071b, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: helicopter_main_rotor
+      file: helicopter_main_rotor.png
+      source: Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/09_main_rotor_blur.png
+      sprite: {fileID: 21300000, guid: fb55985bf652b7a41970c678f9a008bb, type: 3}
+      texture: {fileID: 2800000, guid: fb55985bf652b7a41970c678f9a008bb, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: trojan_tail
+      file: trojan_tail.png
+      source: Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/04_cat_tail.png
+      sprite: {fileID: 21300000, guid: ec4baac54f9e36a4fa815359f2bb00b1, type: 3}
+      texture: {fileID: 2800000, guid: ec4baac54f9e36a4fa815359f2bb00b1, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: trojan_inner_wall
+      file: trojan_inner_wall.png
+      source: Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/00_inner_wall.png
+      sprite: {fileID: 21300000, guid: 61a2cb9992018c546b8127478576a352, type: 3}
+      texture: {fileID: 2800000, guid: 61a2cb9992018c546b8127478576a352, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: trojan_leg_0
+      file: trojan_leg_0.png
+      source: Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/01_leg_strut.png
+      sprite: {fileID: 21300000, guid: a1793bc942795f04fa8d71433fdd0da1, type: 3}
+      texture: {fileID: 2800000, guid: a1793bc942795f04fa8d71433fdd0da1, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: trojan_leg_1
+      file: trojan_leg_1.png
+      source: Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/01_leg_strut.png
+      sprite: {fileID: 21300000, guid: 52217d1dcfeb1e6419855c6a3f8662dd, type: 3}
+      texture: {fileID: 2800000, guid: 52217d1dcfeb1e6419855c6a3f8662dd, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: trojan_leg_2
+      file: trojan_leg_2.png
+      source: Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/01_leg_strut.png
+      sprite: {fileID: 21300000, guid: 4493d49cfc6b9bf479dfeadf719e8a7a, type: 3}
+      texture: {fileID: 2800000, guid: 4493d49cfc6b9bf479dfeadf719e8a7a, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: trojan_leg_3
+      file: trojan_leg_3.png
+      source: Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/01_leg_strut.png
+      sprite: {fileID: 21300000, guid: 51ceeacb23892d64dad6c1b971120877, type: 3}
+      texture: {fileID: 2800000, guid: 51ceeacb23892d64dad6c1b971120877, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: trojan_chassis
+      file: trojan_chassis.png
+      source: Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/03_chassis.png
+      sprite: {fileID: 21300000, guid: 901cc70d5f89a6248b70878a3c9a98d6, type: 3}
+      texture: {fileID: 2800000, guid: 901cc70d5f89a6248b70878a3c9a98d6, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: trojan_wheel_0
+      file: trojan_wheel_0.png
+      source: Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/02_wheel.png
+      sprite: {fileID: 21300000, guid: 0152455ee4c6bc242ab5921d1843b67b, type: 3}
+      texture: {fileID: 2800000, guid: 0152455ee4c6bc242ab5921d1843b67b, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: trojan_wheel_1
+      file: trojan_wheel_1.png
+      source: Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/02_wheel.png
+      sprite: {fileID: 21300000, guid: ab05a65865588ff4fa6d6e6ff6367ffb, type: 3}
+      texture: {fileID: 2800000, guid: ab05a65865588ff4fa6d6e6ff6367ffb, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: trojan_wheel_2
+      file: trojan_wheel_2.png
+      source: Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/02_wheel.png
+      sprite: {fileID: 21300000, guid: 310463f95e298f6439028c9d520c8558, type: 3}
+      texture: {fileID: 2800000, guid: 310463f95e298f6439028c9d520c8558, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: trojan_wheel_3
+      file: trojan_wheel_3.png
+      source: Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/02_wheel.png
+      sprite: {fileID: 21300000, guid: f5b0d1687ea60b746bf09a5d30d8e345, type: 3}
+      texture: {fileID: 2800000, guid: f5b0d1687ea60b746bf09a5d30d8e345, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: trojan_outer_body
+      file: trojan_outer_body.png
+      source: Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/06_outer_body.png
+      sprite: {fileID: 21300000, guid: fbab6bdf152793849af62d5c2d445f58, type: 3}
+      texture: {fileID: 2800000, guid: fbab6bdf152793849af62d5c2d445f58, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
+    - key: trojan_head
+      file: trojan_head.png
+      source: Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/05_cat_head.png
+      sprite: {fileID: 21300000, guid: 0438a00e48d992442b0c0050e2dd3016, type: 3}
+      texture: {fileID: 2800000, guid: 0438a00e48d992442b0c0050e2dd3016, type: 3}
+      border:
+      - 0
+      - 0
+      - 0
+      - 0
     profiles:
     - id: base
       name: "Tank ti\xEAu chu\u1EA9n"
@@ -627,6 +1792,7 @@ MonoBehaviour:
         - 652
         - 1156
         order: 0
+        parent: 
       - key: tank_base_02_wheel_01
         name: 02_wheel_01
         position:
@@ -639,6 +1805,7 @@ MonoBehaviour:
         - 410.5
         - 1159
         order: 1
+        parent: 
       - key: tank_base_03_wheel_02
         name: 03_wheel_02
         position:
@@ -651,6 +1818,7 @@ MonoBehaviour:
         - 537
         - 1158.5
         order: 2
+        parent: 
       - key: tank_base_04_wheel_03
         name: 04_wheel_03
         position:
@@ -663,6 +1831,7 @@ MonoBehaviour:
         - 757
         - 1158
         order: 3
+        parent: 
       - key: tank_base_05_wheel_04
         name: 05_wheel_04
         position:
@@ -675,6 +1844,7 @@ MonoBehaviour:
         - 890
         - 1158.5
         order: 4
+        parent: 
       - key: tank_base_06_main_cannon_barrel
         name: 06_main_cannon_barrel
         position:
@@ -687,6 +1857,7 @@ MonoBehaviour:
         - 1125
         - 496
         order: 5
+        parent: 
       - key: tank_base_07_body_static
         name: 07_body_static
         position:
@@ -699,6 +1870,7 @@ MonoBehaviour:
         - 645
         - 1040
         order: 6
+        parent: 
       - key: tank_base_11_front_hull_frame
         name: 11_front_hull_frame
         position:
@@ -711,6 +1883,7 @@ MonoBehaviour:
         - 645
         - 1040
         order: 7
+        parent: 
       - key: tank_base_08_roof_machine_gun
         name: 08_roof_machine_gun
         position:
@@ -723,6 +1896,7 @@ MonoBehaviour:
         - 910
         - 231
         order: 8
+        parent: 
       - key: tank_base_09_mortar_barrel
         name: 09_mortar_barrel
         position:
@@ -735,6 +1909,7 @@ MonoBehaviour:
         - 213.14
         - 561.9
         order: 9
+        parent: 
       - key: tank_base_10_mortar_front_support
         name: 10_mortar_front_support
         position:
@@ -747,6 +1922,7 @@ MonoBehaviour:
         - 213.14
         - 561.9
         order: 10
+        parent: 
       seats:
       - id: mg
         x: 670
@@ -807,6 +1983,7 @@ MonoBehaviour:
         - 652
         - 1116.2153
         order: 0
+        parent: 
       - key: tank_speed_02_wheel_01
         name: 02_wheel_01
         position:
@@ -819,6 +1996,7 @@ MonoBehaviour:
         - 303.6733
         - 1116.2153
         order: 1
+        parent: 
       - key: tank_speed_03_wheel_02
         name: 03_wheel_02
         position:
@@ -831,6 +2009,7 @@ MonoBehaviour:
         - 510.21536
         - 1116.2153
         order: 2
+        parent: 
       - key: tank_speed_04_wheel_03
         name: 04_wheel_03
         position:
@@ -843,6 +2022,7 @@ MonoBehaviour:
         - 723.574
         - 1116.2153
         order: 3
+        parent: 
       - key: tank_speed_05_wheel_04
         name: 05_wheel_04
         position:
@@ -855,6 +2035,7 @@ MonoBehaviour:
         - 928.07104
         - 1116.2153
         order: 4
+        parent: 
       - key: tank_speed_06_main_cannon_barrel
         name: 06_main_cannon_barrel
         position:
@@ -867,6 +2048,7 @@ MonoBehaviour:
         - 1326.8403
         - 544.9869
         order: 5
+        parent: 
       - key: tank_speed_07_body_static
         name: 07_body_static
         position:
@@ -879,6 +2061,7 @@ MonoBehaviour:
         - 652
         - 1018.05676
         order: 6
+        parent: 
       - key: tank_speed_11_front_hull_frame
         name: 11_front_hull_frame
         position:
@@ -891,6 +2074,7 @@ MonoBehaviour:
         - 652
         - 1018.05676
         order: 7
+        parent: 
       - key: tank_speed_08_roof_machine_gun
         name: 08_roof_machine_gun
         position:
@@ -903,6 +2087,7 @@ MonoBehaviour:
         - 964.19885
         - 224.60814
         order: 8
+        parent: 
       - key: tank_speed_09_mortar_barrel
         name: 09_mortar_barrel
         position:
@@ -915,6 +2100,7 @@ MonoBehaviour:
         - 213.01295
         - 630.8757
         order: 9
+        parent: 
       - key: tank_speed_10_mortar_front_support
         name: 10_mortar_front_support
         position:
@@ -927,6 +2113,7 @@ MonoBehaviour:
         - 213.01295
         - 630.8757
         order: 10
+        parent: 
       seats:
       - id: mg
         x: 665.6331
@@ -987,6 +2174,7 @@ MonoBehaviour:
         - 652
         - 1117.0154
         order: 0
+        parent: 
       - key: tank_heavy_02_wheel_01
         name: 02_wheel_01
         position:
@@ -999,6 +2187,7 @@ MonoBehaviour:
         - 332.63928
         - 1117.0154
         order: 1
+        parent: 
       - key: tank_heavy_03_wheel_02
         name: 03_wheel_02
         position:
@@ -1011,6 +2200,7 @@ MonoBehaviour:
         - 507.33755
         - 1117.0154
         order: 2
+        parent: 
       - key: tank_heavy_04_wheel_03
         name: 04_wheel_03
         position:
@@ -1023,6 +2213,7 @@ MonoBehaviour:
         - 748.2373
         - 1117.0154
         order: 3
+        parent: 
       - key: tank_heavy_05_wheel_04
         name: 05_wheel_04
         position:
@@ -1035,6 +2226,7 @@ MonoBehaviour:
         - 925.38745
         - 1117.0154
         order: 4
+        parent: 
       - key: tank_heavy_06_main_cannon_barrel
         name: 06_main_cannon_barrel
         position:
@@ -1047,6 +2239,7 @@ MonoBehaviour:
         - 1278.4619
         - 404.73685
         order: 5
+        parent: 
       - key: tank_heavy_07_body_static
         name: 07_body_static
         position:
@@ -1059,6 +2252,7 @@ MonoBehaviour:
         - 652
         - 1016.4873
         order: 6
+        parent: 
       - key: tank_heavy_11_front_hull_frame
         name: 11_front_hull_frame
         position:
@@ -1071,6 +2265,7 @@ MonoBehaviour:
         - 652
         - 1016.4873
         order: 7
+        parent: 
       - key: tank_heavy_08_roof_machine_gun
         name: 08_roof_machine_gun
         position:
@@ -1083,6 +2278,7 @@ MonoBehaviour:
         - 968.29584
         - 60.244102
         order: 8
+        parent: 
       - key: tank_heavy_09_mortar_barrel
         name: 09_mortar_barrel
         position:
@@ -1095,6 +2291,7 @@ MonoBehaviour:
         - 31.667877
         - 486.87567
         order: 9
+        parent: 
       - key: tank_heavy_10_mortar_front_support
         name: 10_mortar_front_support
         position:
@@ -1107,6 +2304,7 @@ MonoBehaviour:
         - 31.667877
         - 486.87567
         order: 10
+        parent: 
       seats:
       - id: mg
         x: 676.51904
@@ -1165,6 +2363,7 @@ MonoBehaviour:
         - 748
         - 800
         order: 0
+        parent: 
       - key: car_02_wheel_rear
         name: 02_wheel_rear
         position:
@@ -1177,6 +2376,7 @@ MonoBehaviour:
         - 355
         - 822
         order: 0
+        parent: 
       - key: car_03_wheel_front
         name: 03_wheel_front
         position:
@@ -1189,6 +2389,10 @@ MonoBehaviour:
         - 1079
         - 822
         order: 0
+        parent: 
+      origin: []
+      canvas: []
+      muzzle: []
     - id: plane
       parts:
       - key: plane_01_propeller_blades
@@ -1203,6 +2407,7 @@ MonoBehaviour:
         - 1326
         - 576
         order: 0
+        parent: 
       - key: plane_02_wheel_rear
         name: 02_wheel_rear
         position:
@@ -1215,6 +2420,7 @@ MonoBehaviour:
         - 244
         - 785
         order: 0
+        parent: 
       - key: plane_03_wheel_main
         name: 03_wheel_main
         position:
@@ -1227,6 +2433,7 @@ MonoBehaviour:
         - 822
         - 923
         order: 0
+        parent: 
       - key: plane_04_body_static
         name: 04_body_static
         position:
@@ -1239,6 +2446,472 @@ MonoBehaviour:
         - 763
         - 780
         order: 0
+        parent: 
+      origin: []
+      canvas: []
+      muzzle: []
+    - id: cannon_car
+      parts:
+      - key: cannon_car_body_back
+        name: body_back
+        position:
+        - 340
+        - 500
+        size:
+        - 900
+        - 381.0484
+        pivot:
+        - 790
+        - 690.5242
+        order: 10
+        parent: hull
+      - key: cannon_car_exhaust
+        name: exhaust
+        position:
+        - 285
+        - 535
+        size:
+        - 100
+        - 81.68498
+        pivot:
+        - 335
+        - 575.84247
+        order: 12
+        parent: hull
+      - key: cannon_car_ammo_crate
+        name: ammo_crate
+        position:
+        - 350
+        - 600
+        size:
+        - 120
+        - 104.90323
+        pivot:
+        - 410
+        - 652.4516
+        order: 15
+        parent: hull
+      - key: cannon_car_seat
+        name: seat
+        position:
+        - 665
+        - 505
+        size:
+        - 230
+        - 186.12717
+        pivot:
+        - 780
+        - 598.0636
+        order: 18
+        parent: hull
+      - key: cannon_car_suspension_0
+        name: suspension_0
+        position:
+        - 399
+        - 680
+        size:
+        - 160
+        - 170.14084
+        pivot:
+        - 479
+        - 765.07043
+        order: 20
+        parent: hull
+      - key: cannon_car_suspension_1
+        name: suspension_1
+        position:
+        - 1000
+        - 680
+        size:
+        - 160
+        - 170.14084
+        pivot:
+        - 1080
+        - 765.07043
+        order: 20
+        parent: hull
+      - key: cannon_car_barrel
+        name: barrel
+        position:
+        - 790
+        - 134.73215
+        size:
+        - 400
+        - 170.53572
+        pivot:
+        - 870
+        - 220
+        order: 25
+        parent: gun
+      - key: cannon_car_cradle
+        name: cradle
+        position:
+        - 655
+        - 122
+        size:
+        - 280
+        - 217.21213
+        pivot:
+        - 795
+        - 230.60606
+        order: 30
+        parent: hull
+      - key: cannon_car_wheel_0
+        name: wheel_0
+        position:
+        - 329
+        - 662.68805
+        size:
+        - 300
+        - 302.6239
+        pivot:
+        - 479
+        - 814
+        order: 45
+        parent: root
+      - key: cannon_car_wheel_1
+        name: wheel_1
+        position:
+        - 930
+        - 662.68805
+        size:
+        - 300
+        - 302.6239
+        pivot:
+        - 1080
+        - 814
+        order: 45
+        parent: root
+      - key: cannon_car_body_front
+        name: body_front
+        position:
+        - 270
+        - 285
+        size:
+        - 1050
+        - 610.9091
+        pivot:
+        - 795
+        - 590.4545
+        order: 50
+        parent: hull
+      origin:
+      - 800
+      - 949
+      canvas:
+      - 1600
+      - 1000
+      muzzle:
+      - 1176
+      - 220
+    - id: helicopter
+      parts:
+      - key: helicopter_tail_boom
+        name: tail_boom
+        position:
+        - 130
+        - 330
+        size:
+        - 600
+        - 283.40427
+        pivot:
+        - 430
+        - 471.70212
+        order: 10
+        parent: hull
+      - key: helicopter_tail_rotor
+        name: tail_rotor
+        position:
+        - 158.42857
+        - 413.35715
+        size:
+        - 145
+        - 133.08928
+        pivot:
+        - 233
+        - 490
+        order: 15
+        parent: hull
+      - key: helicopter_cabin_back
+        name: cabin_back
+        position:
+        - 680
+        - 350
+        size:
+        - 620
+        - 427.3923
+        pivot:
+        - 990
+        - 563.69617
+        order: 20
+        parent: hull
+      - key: helicopter_skids
+        name: skids
+        position:
+        - 680
+        - 720
+        size:
+        - 620
+        - 229.25319
+        pivot:
+        - 990
+        - 834.6266
+        order: 25
+        parent: hull
+      - key: helicopter_seat
+        name: seat
+        position:
+        - 930
+        - 520
+        size:
+        - 230
+        - 212.80374
+        pivot:
+        - 1045
+        - 626.40186
+        order: 30
+        parent: hull
+      - key: helicopter_mast
+        name: mast
+        position:
+        - 985
+        - 220
+        size:
+        - 70
+        - 109.55
+        pivot:
+        - 1020
+        - 274.775
+        order: 35
+        parent: hull
+      - key: helicopter_cabin_front
+        name: cabin_front
+        position:
+        - 670
+        - 300
+        size:
+        - 650
+        - 494.47852
+        pivot:
+        - 995
+        - 547.23926
+        order: 50
+        parent: hull
+      - key: helicopter_machine_gun
+        name: machine_gun
+        position:
+        - 1051.5011
+        - 607.9684
+        size:
+        - 380
+        - 179.27765
+        pivot:
+        - 1145
+        - 650
+        order: 60
+        parent: gun
+      - key: helicopter_main_rotor
+        name: main_rotor
+        position:
+        - 460
+        - 153.6
+        size:
+        - 1120
+        - 184.8
+        pivot:
+        - 1020
+        - 246
+        order: 70
+        parent: hull
+      origin:
+      - 800
+      - 600
+      canvas:
+      - 1600
+      - 1000
+      muzzle:
+      - 1402.3363
+      - 720.3386
+    - id: trojan
+      parts:
+      - key: trojan_tail
+        name: tail
+        position:
+        - 950
+        - 210
+        size:
+        - 230
+        - 327.9208
+        pivot:
+        - 996
+        - 505.12872
+        order: 5
+        parent: shell_root
+      - key: trojan_inner_wall
+        name: inner_wall
+        position:
+        - 430
+        - 380
+        size:
+        - 610
+        - 379.07144
+        pivot:
+        - 735
+        - 569.5357
+        order: 10
+        parent: root
+      - key: trojan_leg_0
+        name: leg_0
+        position:
+        - 384.50278
+        - 804.84
+        size:
+        - 60.994476
+        - 96
+        pivot:
+        - 415
+        - 852.84
+        order: 20
+        parent: root
+      - key: trojan_leg_1
+        name: leg_1
+        position:
+        - 563.50275
+        - 804.84
+        size:
+        - 60.994476
+        - 96
+        pivot:
+        - 594
+        - 852.84
+        order: 20
+        parent: root
+      - key: trojan_leg_2
+        name: leg_2
+        position:
+        - 739.50275
+        - 804.84
+        size:
+        - 60.994476
+        - 96
+        pivot:
+        - 770
+        - 852.84
+        order: 20
+        parent: root
+      - key: trojan_leg_3
+        name: leg_3
+        position:
+        - 908.50275
+        - 804.84
+        size:
+        - 60.994476
+        - 96
+        pivot:
+        - 939
+        - 852.84
+        order: 20
+        parent: root
+      - key: trojan_chassis
+        name: chassis
+        position:
+        - 300
+        - 650
+        size:
+        - 760
+        - 232.90323
+        pivot:
+        - 680
+        - 766.4516
+        order: 30
+        parent: root
+      - key: trojan_wheel_0
+        name: wheel_0
+        position:
+        - 343
+        - 810.8313
+        size:
+        - 144
+        - 148.33736
+        pivot:
+        - 415
+        - 885
+        order: 35
+        parent: root
+      - key: trojan_wheel_1
+        name: wheel_1
+        position:
+        - 522
+        - 810.8313
+        size:
+        - 144
+        - 148.33736
+        pivot:
+        - 594
+        - 885
+        order: 35
+        parent: root
+      - key: trojan_wheel_2
+        name: wheel_2
+        position:
+        - 698
+        - 810.8313
+        size:
+        - 144
+        - 148.33736
+        pivot:
+        - 770
+        - 885
+        order: 35
+        parent: root
+      - key: trojan_wheel_3
+        name: wheel_3
+        position:
+        - 867
+        - 810.8313
+        size:
+        - 144
+        - 148.33736
+        pivot:
+        - 939
+        - 885
+        order: 35
+        parent: root
+      - key: trojan_outer_body
+        name: outer_body
+        position:
+        - 410
+        - 360
+        size:
+        - 640
+        - 407.51566
+        pivot:
+        - 730
+        - 384.45093
+        order: 50
+        parent: shell_root
+      - key: trojan_head
+        name: head
+        position:
+        - 120
+        - 200
+        size:
+        - 420
+        - 434.7
+        pivot:
+        - 477
+        - 547.76
+        order: 55
+        parent: shell_root
+      origin:
+      - 800
+      - 952
+      canvas:
+      - 1600
+      - 1000
+      muzzle:
+      - 1100
+      - 400
     backgrounds:
     - id: industrial_bg
       keys:
@@ -1258,474 +2931,6 @@ MonoBehaviour:
       - parallax_bg_05_foreground_debris
       - parallax_bg_06_overhead_cables
     clips:
-    - id: driver_drive
-      key: crew_driver_drive
-      cols: 4
-      rows: 3
-      frames: 12
-      duration: 1
-      worldScale: 0.5
-      cell:
-      - 240
-      - 360
-      pivot:
-      - 110
-      - 252
-    - id: driver_fire
-      key: crew_driver_fire
-      cols: 4
-      rows: 3
-      frames: 12
-      duration: 0.7
-      worldScale: 0.5
-      cell:
-      - 240
-      - 360
-      pivot:
-      - 110
-      - 252
-    - id: driver_idle
-      key: crew_driver_idle
-      cols: 4
-      rows: 3
-      frames: 12
-      duration: 1.6
-      worldScale: 0.5
-      cell:
-      - 240
-      - 360
-      pivot:
-      - 110
-      - 342
-    - id: mg_drive
-      key: crew_mg_drive
-      cols: 4
-      rows: 3
-      frames: 12
-      duration: 1
-      worldScale: 0.5
-      cell:
-      - 240
-      - 360
-      pivot:
-      - 110
-      - 252
-    - id: mg_fire
-      key: crew_mg_fire
-      cols: 4
-      rows: 3
-      frames: 12
-      duration: 0.7
-      worldScale: 0.5
-      cell:
-      - 240
-      - 360
-      pivot:
-      - 110
-      - 252
-    - id: fat_idle
-      key: crew_fat_idle
-      cols: 4
-      rows: 3
-      frames: 12
-      duration: 1.6
-      worldScale: 0.5
-      cell:
-      - 240
-      - 360
-      pivot:
-      - 110
-      - 342
-    - id: fat_ready
-      key: crew_fat_ready
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 1.6
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: fat_walk
-      key: crew_fat_walk
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 1.25
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: fat_attack
-      key: crew_fat_attack
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 1.25
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: fat_hurt
-      key: crew_fat_hurt
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 0.48
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: fat_death
-      key: crew_fat_death
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 1.4
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: dog_idle
-      key: crew_dog_idle
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 1.4
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: dog_walk
-      key: crew_dog_walk
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 1.1
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: dog_attack
-      key: crew_dog_attack
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 0.95
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: dog_hurt
-      key: crew_dog_hurt
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 0.44
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: dog_death
-      key: crew_dog_death
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 1.3
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: dog_driver_drive
-      key: crew_dog_driver_drive
-      cols: 4
-      rows: 3
-      frames: 12
-      duration: 1
-      worldScale: 0.5
-      cell:
-      - 240
-      - 360
-      pivot:
-      - 110
-      - 252
-    - id: dog_pilot_drive
-      key: crew_dog_pilot_drive
-      cols: 4
-      rows: 3
-      frames: 12
-      duration: 1
-      worldScale: 0.5
-      cell:
-      - 240
-      - 360
-      pivot:
-      - 110
-      - 252
-    - id: dog_pilot_fire
-      key: crew_dog_pilot_fire
-      cols: 4
-      rows: 3
-      frames: 12
-      duration: 0.7
-      worldScale: 0.5
-      cell:
-      - 240
-      - 360
-      pivot:
-      - 110
-      - 252
-    - id: dog_mg_drive
-      key: crew_dog_mg_drive
-      cols: 4
-      rows: 3
-      frames: 12
-      duration: 1
-      worldScale: 0.5
-      cell:
-      - 240
-      - 360
-      pivot:
-      - 110
-      - 252
-    - id: dog_mg_fire
-      key: crew_dog_mg_fire
-      cols: 4
-      rows: 3
-      frames: 12
-      duration: 0.7
-      worldScale: 0.5
-      cell:
-      - 240
-      - 360
-      pivot:
-      - 110
-      - 252
-    - id: cat_ready
-      key: crew_cat_ready
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 1.2
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: cat_walk
-      key: crew_cat_walk
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 0.8
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: cat_attack
-      key: crew_cat_attack
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 1.05
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: cat_hurt
-      key: crew_cat_hurt
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 0.44
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: cat_death
-      key: crew_cat_death
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 1.3
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: jeep_ready
-      key: crew_jeep_ready
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 1.2
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: jeep_walk
-      key: crew_jeep_walk
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 0.8
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: jeep_attack
-      key: crew_jeep_attack
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 1.05
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: jeep_hurt
-      key: crew_jeep_hurt
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 0.44
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: jeep_death
-      key: crew_jeep_death
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 1.3
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: pilot_ready
-      key: crew_pilot_ready
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 1.2
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: pilot_walk
-      key: crew_pilot_walk
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 0.8
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: pilot_attack
-      key: crew_pilot_attack
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 1.05
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: pilot_hurt
-      key: crew_pilot_hurt
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 0.44
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
-    - id: pilot_death
-      key: crew_pilot_death
-      cols: 6
-      rows: 3
-      frames: 18
-      duration: 1.3
-      worldScale: 0.4
-      cell:
-      - 320
-      - 304
-      pivot:
-      - 136
-      - 288
     - id: Explosion
       key: arcade_vfx_Explosion
       cols: 4
@@ -1882,3 +3087,14 @@ MonoBehaviour:
       pivot:
       - 368
       - 224
+  catDriver: {fileID: 11400000, guid: 42599b9c0eb800844943757a3cd60115, type: 2}
+  catMelee: {fileID: 11400000, guid: bfb4e0cfd2092a14e83d648d8429f024, type: 2}
+  dogMelee: {fileID: 11400000, guid: 66b60e3af4b317c4eb17a7f5c12085fe, type: 2}
+  dogDriver: {fileID: 11400000, guid: c494561b9e5b14947bcbbdbe8fa19459, type: 2}
+  dogPilot: {fileID: 11400000, guid: 01902a3b4e072584ea05d4fd4b510a4a, type: 2}
+  layout: {fileID: 4900000, guid: 350c24f395d45d542ac97f01c50a8f94, type: 3}
+  cards: {fileID: 4900000, guid: e8f9986e066eb9c4f87661ed8001bf3a, type: 3}
+  comicFontAtlas: {fileID: 2800000, guid: 4a62008d9f1a8ea4f87335e7a4c06cff, type: 3}
+  comicFontMetrics: {fileID: 4900000, guid: 5a6d9288dbd4cc84096e7f22fae0c046, type: 3}
+  worldBlurShader: {fileID: 4800000, guid: c584b9444f0ff1943b60094e49ecb155, type: 3}
+  worldClipShader: {fileID: 4800000, guid: 196a476e6e5bbff4094111e336b0a425, type: 3}

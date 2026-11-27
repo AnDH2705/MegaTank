@@ -28,7 +28,7 @@ Shader "MegaTanks/UI/Crew Grayscale"
             sampler2D _MainTex; fixed4 _Color, _TextureSampleAdd; float4 _ClipRect;
             v2f vert(appdata v) { v2f o;o.world=v.vertex;o.vertex=UnityObjectToClipPos(v.vertex);o.uv=v.uv;o.color=v.color*_Color;return o; }
             fixed4 frag(v2f i):SV_Target {
-                fixed4 c=(tex2D(_MainTex,i.uv)+_TextureSampleAdd)*i.color;c.rgb=dot(c.rgb,float3(.299,.587,.114));
+                fixed4 c=(tex2D(_MainTex,i.uv)+_TextureSampleAdd)*i.color;fixed luminance=dot(c.rgb,fixed3(.299,.587,.114));c=fixed4(luminance,luminance,luminance,c.a);
                 #ifdef UNITY_UI_CLIP_RECT
                 c.a*=UnityGet2DClipping(i.world.xy,_ClipRect);
                 #endif
@@ -41,3 +41,4 @@ Shader "MegaTanks/UI/Crew Grayscale"
         }
     }
 }
+
