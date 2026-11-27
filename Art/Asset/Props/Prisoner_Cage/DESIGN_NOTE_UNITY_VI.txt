@@ -1,0 +1,30 @@
+MEGATANK — PRISONER RESCUE EVENT (ẢNH MOCKUP)
+Ngày: 27/11/2026.
+
+Ảnh duyệt: preview_on_map.png. Đây là mockup hình ảnh, chưa lắp event vào HTML/Unity.
+
+Bố cục:
+- Dùng màn Gameplay: pause, tank level, timeline, coin/gear, HP và đạn.
+- Xe dừng bên trái, cũi ở bên phải trên cùng mặt đường; mèo đứng sau song sắt.
+- Scale nhân vật dùng cùng cỡ đầu/mũ với mèo ngồi trên xe. Cũi co theo mèo.
+- Timeline đặt icon RESCUE ở mốc hiện tại dưới mũi tên giữa; BOSS vẫn ở bên phải.
+- Nền map tối tím nhẹ; hai thẻ ở giữa, không có panel lớn bao ngoài.
+- Vẫn nhìn thấy xe và cũi khi bảng chọn đang mở.
+
+Hai thẻ đang đề xuất trong mockup:
+1. RESCUE CAT / NEW CREWMATE / nút RESCUE: giải cứu mèo.
+2. MOVE ON / KEEP MOVING / nút CONTINUE: bỏ qua cũi và đi tiếp.
+Nội dung NEW CREWMATE là đề xuất cho ảnh duyệt; vai trò mèo, chỗ trong đội,
+phần thưởng, điều kiện, chi phí và cách xử lý đội đầy chưa được chốt.
+Không lấy các số HP/đạn trong ảnh làm balance.
+
+Luồng đề xuất: Clear wave -> Travel -> Gặp cũi -> Stop -> Choice ->
+Rescue hoặc Skip -> Depart. Nhận kết quả một lần cho mỗi event.
+Nếu chọn Rescue, mở khóa/cửa rồi mèo ra ngoài; animation này chưa được tạo.
+
+Nguồn Art để lắp:
+- prisoner_cage.png: PNG cũi nguyên khối có alpha; cửa/khóa chưa tách part.
+- Art/Anim/default driver/spine_v3_guided/: nhân vật gốc.
+- Art/Asset/BG/: map gốc.
+- Art/Asset/UI/Choice_Cards/: base thẻ và cấu trúc UI hiện có.
+Không trích asset từ ảnh preview.
