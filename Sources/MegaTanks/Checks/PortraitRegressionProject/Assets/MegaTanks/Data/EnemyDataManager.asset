@@ -17,6 +17,7 @@ MonoBehaviour:
   - {fileID: 1739948587163343259, guid: bcd6c8d21d2f1bb4b8f954ae00edf34a, type: 3}
   - {fileID: 1044248449838714769, guid: 3b507aaf765a67b48ae65ee7a1d7b791, type: 3}
   - {fileID: 4251595565385478542, guid: b2fa2674db874fd0bf482d9d558cae49, type: 3}
+  - {fileID: 9160034688147613997, guid: 79fcb1717d159fc41b072b4591b5eb4c, type: 3}
   enemies:
   - armor: 0
     evasion: 0
@@ -40,6 +41,8 @@ MonoBehaviour:
     baseScrapsGrow: 0
     color: {r: 1, g: 0.63, b: 0.25, a: 1}
     artworkPrefab: {fileID: 8160580182256755550, guid: bcd6c8d21d2f1bb4b8f954ae00edf34a, type: 3}
+    commandoPrefab: {fileID: 0}
+    melee: 0
     artworkWidth: 2.4
     scale: 1
     weapon:
@@ -95,6 +98,8 @@ MonoBehaviour:
     baseScrapsGrow: 0
     color: {r: 0.96, g: 0.37, b: 0.4, a: 1}
     artworkPrefab: {fileID: 8415482458435174311, guid: 3b507aaf765a67b48ae65ee7a1d7b791, type: 3}
+    commandoPrefab: {fileID: 0}
+    melee: 0
     artworkWidth: 2.2
     scale: 1
     weapon:

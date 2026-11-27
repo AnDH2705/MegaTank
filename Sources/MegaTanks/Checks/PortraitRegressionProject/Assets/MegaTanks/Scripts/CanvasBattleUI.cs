@@ -14,6 +14,8 @@ namespace MegaTanks
         {
             var v=View(UIScreen.BattleHUD);v.Get<BattlefieldPanInput>("Battlefield Pan Surface").cameraPan=game.CameraPan;
             Click(v,"Pause",()=>game.SetPaused(!game.Paused));
+            var presentation=v.GetComponent<CombatHudPresentation>();
+            if(presentation!=null)presentation.Build(v,skin,routeSkin);
         }
         void UpdateHud()
         {
@@ -34,6 +36,8 @@ namespace MegaTanks
             Text(v,"Hull Anchor/Hull","HULL  "+Mathf.CeilToInt(game.Hull)+" / "+Mathf.CeilToInt(game.MaxHull));
             var bar=v.Get<Image>("Hull Anchor/Hull Bar");bar.fillAmount=game.MaxHull>0?Mathf.Clamp01(game.Hull/game.MaxHull):0;
             bar.color=bar.fillAmount<=.3f?layout.criticalHull:bar.fillAmount<=.6f?layout.hurtHull:layout.healthyHull;
+            var presentation=v.GetComponent<CombatHudPresentation>();
+            if(presentation!=null){presentation.Refresh(game);return;}
             float tankBottom=game.Artwork.transform.position.y-102f/180*game.Artwork.transform.lossyScale.y;
             var at=ScreenPoint(game.TankCamera.WorldToScreenPoint(new Vector3(game.Artwork.transform.position.x+layout.hullOffset.x,tankBottom+layout.hullOffset.y,0)));
             var anchor=v.Get<RectTransform>("Hull Anchor");anchor.anchoredPosition=new Vector2(at.x,-at.y);

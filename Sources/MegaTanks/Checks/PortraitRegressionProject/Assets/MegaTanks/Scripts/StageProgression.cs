@@ -23,6 +23,11 @@ namespace MegaTanks
         public int Difficulty => definition.stageDifficulty + CurrentRoundNumber;
         public StageMode Mode { get; private set; }
         public TentType CampType { get; private set; }
+        // Presentation only: alternating battle/camp stops, without changing encounter timing.
+        public float HudPosition => (Current?.round ?? 0) * 2f +
+            (Mode == StageMode.ApproachingEvent ? game.CampApproachProgress :
+             Mode == StageMode.Advancing ? 1f + Mathf.Clamp01(1f - advanceRemaining / AdvanceSeconds) :
+             Mode == StageMode.Reward || Mode == StageMode.Shop || Mode == StageMode.Event ? 1f : 0f);
         public int EncounterWave { get; private set; }
         public int EncounterWaves => Current != null && Current.EncounterType == StageNodeType.HardBattle ? 3 : 1;
         public CardDefinition FreeServiceCard { get; private set; }

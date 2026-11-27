@@ -735,6 +735,8 @@ namespace MegaTanks
         const float CampStopClearance = .35f;
         SpriteRenderer campTent, campSign, campSignIcon;
         float campApproachStartX, campStopX;
+        public float CampApproachProgress => campTent != null && campTent.gameObject.activeSelf
+            ? Mathf.InverseLerp(campApproachStartX, campStopX, Artwork.transform.position.x) : 0f;
 
         void ShowCamp()
         {

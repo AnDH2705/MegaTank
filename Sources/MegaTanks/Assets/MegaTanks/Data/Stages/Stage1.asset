@@ -19,6 +19,7 @@ MonoBehaviour:
   spawnableEnemies:
   - {fileID: 1739948587163343259, guid: bcd6c8d21d2f1bb4b8f954ae00edf34a, type: 3}
   - {fileID: 1044248449838714769, guid: 3b507aaf765a67b48ae65ee7a1d7b791, type: 3}
+  - {fileID: 9160034688147613997, guid: 79fcb1717d159fc41b072b4591b5eb4c, type: 3}
   boss:
     template: {fileID: 11400000, guid: 880d4f0610d20bb43954666ff0a4c977, type: 2}
     machineGun:

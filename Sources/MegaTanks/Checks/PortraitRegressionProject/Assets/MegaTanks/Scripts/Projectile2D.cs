@@ -53,6 +53,7 @@ namespace MegaTanks
             LockedTarget = target != null && target.Kind == missileTargetKind ? target : null;
             Initialize(origin, forward, stats.projectileSpeed, stats.damage, new Color(.8f,.8f,.75f), true,
                 float.PositiveInfinity, 0, ProjectileTeam.Player, stats.projectileSprite, stats.projectileWidth, false, stats);
+            shellVisual.localScale = Vector3.Scale(shellVisual.localScale, new Vector3(.7f, 1, 1));
             var motor = new GameObject("Missile exhaust socket").transform;
             motor.SetParent(shellVisual, false);
             motor.localPosition = Vector3.left * shellVisual.GetComponent<SpriteRenderer>().sprite.bounds.extents.x;

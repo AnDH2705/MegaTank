@@ -67,8 +67,8 @@ namespace MegaTanks.Editor
                 .OrderBy(enemy => enemy.transform.position.x * game.EnemySpawnDirection)
                 .ToArray();
             var carrier = ground.Single(enemy => enemy.Data.id == TrojanScrapCat.EnemyId);
-            string groundVehicleId = game.EnemyDatabase.Get(EnemyKind.Ground).id;
-            Require(ground.Length == 3 && ground.Where(enemy => enemy != carrier).All(enemy => enemy.Data.id == groundVehicleId),
+            var regularIds=game.Stage.Definition.spawnableEnemies.Where(p=>p!=null&&p.stats.kind==EnemyKind.Ground&&p.stats.id!=TrojanScrapCat.EnemyId).Select(p=>p.stats.id).ToArray();
+            Require(ground.Length == 3 && ground.Where(enemy => enemy != carrier).All(enemy => regularIds.Contains(enemy.Data.id)),
                 "The opening formation must mix one carrier with two regular ground vehicles.");
             Require(ground[0] != carrier && ground[ground.Length - 1] != carrier, "The carrier must spawn between ground vehicles.");
             foreach (var enemy in Object.FindObjectsOfType<EnemyEntity>())

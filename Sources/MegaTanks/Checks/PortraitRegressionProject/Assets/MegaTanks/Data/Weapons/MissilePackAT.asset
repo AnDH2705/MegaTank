@@ -26,9 +26,9 @@ MonoBehaviour:
     preferredTarget: 0
     damage: 24
     range: 12
-    salvoSize: 2
+    salvoSize: 1
     shotDelay: 0.3
-    reloadTime: 6
+    reloadTime: 12
     projectileSpeed: 12
     gravity: 0
     reserveCapacity: 60
@@ -37,5 +37,5 @@ MonoBehaviour:
     missileTurnRate: 240
     missileLifetime: 5
     projectileSprite: {fileID: 21300000, guid: 535f5c9473fed3047943169e3bfc158b, type: 3}
-    projectileWidth: 0.7
+    projectileWidth: 2
   artworkPrefab: {fileID: 151150309710371352, guid: 34344beb094b5cc46b43c99343488eb6, type: 3}
