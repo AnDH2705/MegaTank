@@ -84,11 +84,13 @@ namespace MegaTanks
         public void Resupply(float fraction) { Ammo = Mathf.Min(ReserveCapacity, Ammo + Mathf.CeilToInt(ReserveCapacity * Mathf.Max(0, fraction))); }
         public void IncreaseDamage(float fraction) { stats.damageBonus += 100*Mathf.Max(0,fraction); }
 
-        void Update()
+        void Update() => TickWeapon();
+
+        public void TickWeapon()
         {
             BattleGame game = BattleGame.Instance;
             if (game.Running) cooldown = Mathf.Max(0, cooldown - Time.deltaTime);
-            Target = game.FindTarget(transform.position, preferredTarget, range);
+            Target = game.FindTarget(transform.position, preferredTarget, range, stats.homingMissile);
             if (Target == null)
             {
                 artwork.ResetVisual();
@@ -96,7 +98,8 @@ namespace MegaTanks
             }
             if (!game.Running) return;
             // Compensate for gravity and enemy movement from the rotating artwork's actual muzzle.
-            for (int i = 0; i < 5; i++)
+            if (stats.homingMissile) artwork.Aim((Vector2)Target.transform.position - (Vector2)artwork.transform.position);
+            else for (int i = 0; i < 5; i++)
             {
                 Vector2 muzzle = (Vector2)artwork.Muzzle.position + artwork.FireDirection * .04f;
                 if (!Ballistics2D.TryIntercept(muzzle, Target.transform.position, Target.Velocity,
@@ -112,7 +115,8 @@ namespace MegaTanks
             Vector2 direction = artwork.FireDirection;
             Vector2 origin = (Vector2)artwork.Muzzle.position + direction * .04f;
             var shell = new GameObject(displayName + " shell").AddComponent<Projectile2D>();
-            shell.Initialize(origin, direction, projectileSpeed, stats.damage, shotColor, stats.heavyProjectile, range, projectileGravity,
+            if (stats.homingMissile) shell.InitializeMissile(origin, direction, stats, Target);
+            else shell.Initialize(origin, direction, projectileSpeed, stats.damage, shotColor, stats.heavyProjectile, range, projectileGravity,
                 ProjectileTeam.Player, stats.projectileSprite, stats.projectileWidth, false, stats);
             artwork.Fire(stats.heavyProjectile);
             ShotFired?.Invoke(Time.time);

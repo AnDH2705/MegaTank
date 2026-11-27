@@ -12,12 +12,18 @@ namespace MegaTanks
         {
             public int id;public string kind,skin="base";public float x,y,width,hp,maxHP,speed,attack,age,wheel;
             public bool dead,bossCrew;public bool[] weapons={true,true,true};public float[] cooldown=new float[3];
+            public UnitDefenseStats defenses=new UnitDefenseStats();
         }
         public sealed class Fighter
         {
             public string role,skin;public float x,y,hp,attack,jump;public bool aboard=true,dead;public Actor target;
         }
-        public sealed class Bullet { public string weapon;public bool enemy;public float x,y,sx,sy,tx,ty,age,life,damage;public Actor target,owner; }
+        public sealed class Bullet
+        {
+            public string weapon;public bool enemy;public float x,y,sx,sy,tx,ty,age,life,damage;public Actor target,owner;
+            public bool homing,airOnly;public Vector2 velocity;public float turnRate,lockRange,smokeTimer;
+            public DamageAttack attack;
+        }
         public sealed class Effect { public string clip;public float x,y,size,age,life;public bool road; }
         public sealed class Corpse { public Actor actor;public float age; }
         public readonly HtmlBattleConfig config;public readonly HtmlStageConfig stage;public readonly int stageIndex;
@@ -27,6 +33,16 @@ namespace MegaTanks
         public readonly int[] ammo;public string phase="wave",ammoType="standard",encounter="",offeredSkin="base";
         public float[] weaponDamageBonus=new float[3],weaponReloadBonus=new float[3];
         public float driverSpeedBonus;
+        public GunStats MissileStats { get; private set; }
+        int missileSalvo;
+        public void EquipMissile(GunStats stats)
+        {
+            MissileStats=stats!=null&&stats.homingMissile?stats.Copy():null;missileSalvo=0;
+            if(MissileStats!=null)ammo[2]=MissileStats.reserveCapacity;
+        }
+        public Actor MissileTarget(Vector2 origin,bool airOnly,float range)
+            =>enemies.Where(e=>!e.dead&&(e.kind=="plane")==airOnly&&Vector2.Distance(origin,Center(e))<=range)
+                .OrderBy(e=>(Center(e)-origin).sqrMagnitude).FirstOrDefault();
         public int wave=1,spawned,kills,money,gears,encounterIndex;public float time,road,travelSpeed,landmarkX,shake;
         public bool bossSpawned,bossKilled,recovered,chestOpened;public Actor boss;
         public bool[] offeredWeapons={true,true,true};
@@ -75,6 +91,15 @@ namespace MegaTanks
             for(int w=0;w<3;w++)
             {
                 player.cooldown[w]-=dt;if(!CanFire(w)||player.cooldown[w]>0)continue;
+                if(w==2&&MissileStats!=null)
+                {
+                    var lockTarget=MissileTarget(Center(player),MissileStats.preferredTarget==EnemyKind.Flyer,MissileStats.range*100);
+                    if(lockTarget==null)continue;
+                    FireMissile(lockTarget);ammo[w]--;
+                    if(missileSalvo<=0)missileSalvo=Mathf.Max(1,MissileStats.salvoSize);
+                    missileSalvo--;player.cooldown[w]=missileSalvo>0?MissileStats.shotDelay:MissileStats.EffectiveReloadTime;
+                    continue;
+                }
                 var gun=config.weapons[w];
                 var targets=enemies.Where(e=>!e.dead&&e.x-player.x>=gun.minRange&&e.x-player.x<=gun.maxRange&&e.x-e.width*.25f<1920&&(e.kind!="dog"||w==0));
                 var target=(w==0?targets.OrderBy(e=>e.kind=="plane"?0:1).ThenBy(e=>e.x):targets.OrderBy(e=>e.kind=="plane"?1:0).ThenBy(e=>e.x)).FirstOrDefault();
@@ -173,6 +198,7 @@ namespace MegaTanks
         {
             foreach(var b in bullets.ToArray())
             {
+                if(b.homing){UpdateMissile(b,dt);continue;}
                 b.age+=dt;float t=Mathf.Clamp01(b.age/b.life);b.x=Mathf.Lerp(b.sx,b.tx,t);b.y=Mathf.Lerp(b.sy,b.ty,t)-(b.weapon=="mortar"?Mathf.Sin(t*Mathf.PI)*380:0);
                 if(b.age<b.life)continue;
                 if(b.enemy)HitPlayer(b.damage);
@@ -190,6 +216,47 @@ namespace MegaTanks
             }
         }
         void HitPlayer(float damage){player.hp=Mathf.Max(0,player.hp-damage);shake=2;AddEffect("Hit",player.x+100,config.groundY-200,75,.16f);}
+        void FireMissile(Actor target)
+        {
+            var origin=new Vector2(player.x-120,config.groundY-player.width*.83f);var direction=(Center(target)-origin).normalized;
+            float multiplier=ammoType=="piercing"?config.piercingMultiplier:ammoType=="explosive"?config.explosiveMultiplier:ammoType=="plasma"?config.plasmaMultiplier:1;
+            bullets.Add(new Bullet{weapon="missile",homing=true,airOnly=MissileStats.preferredTarget==EnemyKind.Flyer,
+                x=origin.x,y=origin.y,sx=origin.x,sy=origin.y,target=target,owner=player,velocity=direction*MissileStats.projectileSpeed*100,
+                turnRate=MissileStats.missileTurnRate,lockRange=MissileStats.range*100,life=MissileStats.missileLifetime,
+                attack=new DamageAttack(MissileStats.damage*multiplier,MissileStats),
+                damage=new DamageAttack(MissileStats.damage,MissileStats).WeaponDamage*multiplier});
+            AddEffect("Muzzle",origin.x,origin.y,100,.12f);
+        }
+        void UpdateMissile(Bullet b,float dt)
+        {
+            b.age+=dt;if(b.age>=b.life){bullets.Remove(b);return;}
+            float remaining=dt;
+            while(remaining>0)
+            {
+                float step=Mathf.Min(remaining,1f/120);remaining-=step;var origin=new Vector2(b.x,b.y);
+                if(b.target==null||b.target.dead||(b.target.kind=="plane")!=b.airOnly)b.target=MissileTarget(origin,b.airOnly,b.lockRange);
+                if(b.target!=null)b.velocity=Projectile2D.Steer(b.velocity,Center(b.target)-origin,b.turnRate,step);
+                var end=origin+(b.velocity-Vector2.right*travelSpeed)*step;
+                float groundFraction=end.y>=config.groundY&&end.y>origin.y?Mathf.Clamp01((config.groundY-origin.y)/(end.y-origin.y)):1;
+                end=Vector2.Lerp(origin,end,groundFraction);var delta=end-origin;Actor hit=null;float nearest=float.PositiveInfinity;
+                foreach(var enemy in enemies.Where(e=>!e.dead&&(e.kind=="plane")==b.airOnly))
+                {
+                    float t=delta.sqrMagnitude>0?Mathf.Clamp01(Vector2.Dot(Center(enemy)-origin,delta)/delta.sqrMagnitude):0;
+                    float radius=enemy.width*(enemy.kind=="plane"?.18f:enemy.kind=="dog"?.15f:.22f)+7;
+                    if(Vector2.Distance(Center(enemy),origin+delta*t)<=radius&&t<nearest){hit=enemy;nearest=t;}
+                }
+                if(hit!=null)
+                {
+                    b.x=origin.x+delta.x*nearest;b.y=origin.y+delta.y*nearest;
+                    var result=CombatDamage.Calculate(b.attack,hit.defenses,(float)rng.NextDouble(),(float)rng.NextDouble());
+                    if(result.Hit)Damage(hit,result.Damage);
+                    AddEffect("Explosion",b.x,b.y,140,.5f);bullets.Remove(b);return;
+                }
+                b.x=end.x;b.y=end.y;
+                if(end.y>=config.groundY){AddEffect("Explosion",b.x,b.y,140,.5f);bullets.Remove(b);return;}
+            }
+            b.smokeTimer-=dt;if(b.smokeTimer<=0){AddEffect("Smoke",b.x,b.y,45,.35f);b.smokeTimer=.06f;}
+        }
         public void Damage(Actor target,float amount)
         {
             if(target.dead)return;target.hp-=amount;AddEffect("Hit",target.x,Center(target).y,65,.15f);

@@ -42,10 +42,11 @@ namespace MegaTanks
         public Vector2 TankVelocity => Running && Stance == TankStance.Aggressive ? tankVelocity : Vector2.zero;
         public bool AllWeaponsInRange => FindTarget(MachineGun.transform.position, EnemyKind.Flyer, MachineGun.MaxRange) != null
             && FindTarget(MainGun.transform.position, EnemyKind.Ground, MainGun.MaxRange) != null
-            && FindMortarTarget(Artwork.Mortar.Muzzle.position, Mortar.Stats.range, Mortar.Stats.halfDamageRadius) != null;
+            && (Mortar.IsMissile?FindTarget(Artwork.MissilePack.transform.position,Mortar.MissileDefinition.stats.preferredTarget,Mortar.Stats.range,true)!=null:
+                FindMortarTarget(Artwork.Mortar.Muzzle.position, Mortar.Stats.range, Mortar.Stats.halfDamageRadius) != null);
         // Enemy cannon art and legacy projectile helpers still share the equipped cannon's visual.
-        public Sprite CannonProjectileSprite => MainGun != null ? MainGun.Stats.projectileSprite : startingLoadout.cannon.stats.projectileSprite;
-        public float CannonProjectileWidth => MainGun != null ? MainGun.Stats.projectileWidth : startingLoadout.cannon.stats.projectileWidth;
+        public Sprite CannonProjectileSprite => MainGun != null && !MainGun.Stats.homingMissile ? MainGun.Stats.projectileSprite : startingLoadout.cannon.stats.projectileSprite;
+        public float CannonProjectileWidth => MainGun != null && !MainGun.Stats.homingMissile ? MainGun.Stats.projectileWidth : startingLoadout.cannon.stats.projectileWidth;
         [Header("Enemy approach")]
         [SerializeField] EnemyDataManager enemyDataManager;
         public EnemyDataManager EnemyDatabase => enemyDataManager;
@@ -176,6 +177,7 @@ namespace MegaTanks
             RefreshTankLoadoutStats();
             Artwork.EquipMachineGunVisual(Equipment.MachineGun);
             MachineGun.BindArtwork(Artwork.MachineGun);
+            Artwork.EquipMortarVisual(Equipment.MissilePack);
         }
 
         void BuildScene()
@@ -269,6 +271,11 @@ namespace MegaTanks
             MachineGun.Configure(Equipment!=null?Equipment.MachineGun:startingLoadout.machineGun,Progression,0,ReloadSpeedBonus,AccuracyBonus,Crew?.Get(CrewRole.SubGunner));
             MainGun.Configure(Equipment!=null?Equipment.Cannon:startingLoadout.cannon,Progression,0,ReloadSpeedBonus,AccuracyBonus,Crew?.Get(CrewRole.Gunner));
             Mortar.Configure(Artwork.Mortar,Equipment!=null?Equipment.Mortar:startingLoadout.mortar,Progression,0,ReloadSpeedBonus,AccuracyBonus,Crew?.Get(CrewRole.WeaponSpecialist));
+            if(Equipment?.MissilePack!=null)
+            {
+                Artwork.EquipMortarVisual(Equipment.MissilePack);
+                Mortar.ConfigureMissile(Artwork.MissilePack,Equipment.MissilePack,Progression,ReloadSpeedBonus,AccuracyBonus,Crew?.Get(CrewRole.WeaponSpecialist));
+            }
         }
 
         void FitCamera()
@@ -449,13 +456,13 @@ namespace MegaTanks
             }
         }
 
-        public EnemyEntity FindTarget(Vector2 position, EnemyKind priority, float range)
+        public EnemyEntity FindTarget(Vector2 position, EnemyKind priority, float range, bool strictKind = false)
         {
             EnemyEntity preferred = null, fallback = null;
             float preferredDistance = range * range, fallbackDistance = range * range;
             foreach (EnemyEntity enemy in enemies)
             {
-                if (enemy == null || !enemy.Alive) continue;
+                if (enemy == null || !enemy.Alive || !enemy.gameObject.activeInHierarchy || (strictKind && enemy.Kind != priority)) continue;
                 float distance = ((Vector2)enemy.transform.position - position).sqrMagnitude;
                 if (enemy.Kind == priority && distance <= preferredDistance) { preferred = enemy; preferredDistance = distance; }
                 if (distance <= fallbackDistance) { fallback = enemy; fallbackDistance = distance; }

@@ -77,6 +77,14 @@ namespace MegaTanks
                 Simulation.weaponReloadBonus[i]=member.stats.reloadSpeed.AtLevel(state.Level,state.Stars);
             }
             var driver=game.Crew.Get(CrewRole.Driver);
+            if(game.Equipment.MissilePack!=null)
+            {
+                var definition=game.Equipment.MissilePack;var stats=(GunStats)game.PreviewWeaponStats(definition);
+                stats.damage=game.Progression.Damage(definition);stats.reloadSpeed+=game.ReloadSpeedBonus;stats.accuracy+=game.AccuracyBonus;
+                Simulation.EquipMissile(stats);
+                artwork["homing_missile"]=new HtmlArtImage{key="homing_missile",sprite=definition.stats.projectileSprite};
+                artwork["missile_pack"]=new HtmlArtImage{key="missile_pack",sprite=definition.icon};
+            }
             if(driver!=null){var state=game.Progression.Get(driver);Simulation.player.hp=Simulation.player.maxHP=config.playerHP+driver.stats.hp.AtLevel(state.Level,state.Stars);Simulation.driverSpeedBonus=driver.stats.speed.AtLevel(state.Level,state.Stars);}
             Simulation.fighters.RemoveAll(f=>game.Crew.Get(f.role=="mg"?CrewRole.SubGunner:f.role=="cannon"?CrewRole.Gunner:f.role=="mortar"?CrewRole.WeaponSpecialist:f.role=="driver"?CrewRole.Driver:CrewRole.Commando)==null);
             modal.gameObject.SetActive(false);Render();
@@ -100,7 +108,13 @@ namespace MegaTanks
             progressLabel.text="QUÁI "+s.kills+" / "+s.stage.total+"\n"+(s.bossSpawned?"BOSS":s.phase=="approach"?"TỚI ĐIỂM DỪNG":s.phase=="depart"?"ĐI TIẾP":"WAVE "+s.wave+" / "+config.wavesPerStage);
             hpLabel.text="TANK                  "+Mathf.CeilToInt(s.player.hp);hpFill.rectTransform.sizeDelta=new Vector2(250*Mathf.Clamp01(s.player.hp/s.player.maxHP),13);
             moneyLabel.text=s.money.ToString("N0");gearsLabel.text=s.gears.ToString("N0");
-            for(int i=0;i<3;i++){ammoLabels[i].text=config.weapons[i].id.ToUpperInvariant()+"  "+s.ammo[i];ammoLabels[i].color=!s.player.weapons[i]?Color.gray:s.ammo[i]<=0?new Color(1,.4f,.3f):Color.white;}
+            for(int i=0;i<3;i++)
+            {
+                bool missile=i==2&&s.MissileStats!=null;
+                string title=missile?(s.MissileStats.preferredTarget==EnemyKind.Ground?"AT":"AA")+" MISSILES":config.weapons[i].id.ToUpperInvariant();
+                ammoLabels[i].fontSize=missile?20:24;ammoLabels[i].text=title+(missile?"\n":"  ")+s.ammo[i];
+                ammoLabels[i].color=!s.player.weapons[i]?Color.gray:s.ammo[i]<=0?new Color(1,.4f,.3f):Color.white;
+            }
             phaseLabel.text=s.ammoType.ToUpperInvariant();
         }
         Image DrawSprite(string key,float x,float y,float w,float h,Color? tint=null,float face=1,float angle=0)
@@ -142,6 +156,11 @@ namespace MegaTanks
             }
             foreach(var b in s.bullets)
             {
+                if(b.homing)
+                {
+                    var missile=DrawSprite("homing_missile",b.x,b.y,80,32,Color.white,1,-Mathf.Atan2(b.velocity.y,b.velocity.x)*Mathf.Rad2Deg);
+                    missile.rectTransform.pivot=Vector2.one*.5f;continue;
+                }
                 string key=b.weapon=="mg"?"":"ammo_"+b.weapon;float w=b.weapon=="mg"?28:b.weapon=="cannon"?78:92,h=b.weapon=="mg"?8:w*.45f;
                 float angle=-Mathf.Atan2(b.ty-b.sy,b.tx-b.sx)*Mathf.Rad2Deg;DrawSprite(key,b.x,b.y,w,h,b.weapon=="mg"?new Color(1,.85f,.3f):Color.white,1,angle);
             }
@@ -178,6 +197,7 @@ namespace MegaTanks
                 if(part.order>=7&&!crewDrawn){if(a.kind!="parked"&&!a.dead)DrawTankCrew(a,profile,z,enemy);crewDrawn=true;}
                 int wi=part.name.StartsWith("06_")?1:part.name.StartsWith("08_")?0:part.name.StartsWith("09_")||part.name.StartsWith("10_")?2:-1;
                 if(wi>=0&&!a.weapons[wi])continue;
+                if(!enemy&&a.kind=="player"&&wi==2&&Simulation.MissileStats!=null)continue;
                 float bob=a.kind=="player"&&Simulation.travelSpeed>1&&Simulation.phase!="approach"&&Simulation.phase!="depart"?Mathf.Sin(Simulation.time*10)*1.6f:0;
                 float x=a.x+face*(part.position[0]-652)*z,y=config.groundY+(part.position[1]-1258)*z+bob;
                 var image=DrawSprite(part.key,x,y,part.size[0]*z,part.size[1]*z,new Color(1,1,1,opacity),face);
@@ -196,6 +216,12 @@ namespace MegaTanks
                         image.rectTransform.pivot=new Vector2((part.pivot[0]-part.position[0])/part.size[0],1-(part.pivot[1]-part.position[1])/part.size[1]);image.rectTransform.anchoredPosition=new Vector2(px,-py);image.rectTransform.localRotation=Quaternion.Euler(0,0,-face*angle*Mathf.Rad2Deg);
                     }
                 }
+            }
+            if(!enemy&&a.kind=="player"&&a.weapons[2]&&Simulation.MissileStats!=null)
+            {
+                float x=a.x-190,y=config.groundY-a.width*.83f;var target=Simulation.MissileTarget(Center(a),Simulation.MissileStats.preferredTarget==EnemyKind.Flyer,Simulation.MissileStats.range*100);
+                float angle=target==null?0:-Mathf.Atan2(Center(target).y-y,Center(target).x-x)*Mathf.Rad2Deg;
+                var launcher=DrawSprite("missile_pack",x,y,175,88,Color.white,1,angle);launcher.rectTransform.pivot=new Vector2(.45f,.3f);
             }
             if(enemy&&!a.dead)HealthBar(a,config.groundY-a.width*.87f);
             if(a.kind=="boss"&&!a.dead)

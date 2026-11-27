@@ -91,6 +91,6 @@ namespace MegaTanks
         string DefeatSummary()=>"ROUND "+game.Stage.CurrentRoundNumber+" / "+game.Stage.Definition.rounds+
             "     ENEMIES DEFEATED "+game.EnemiesDefeated+"     SCORE "+game.Score+
             "\n\n"+RunResources()+"\n\nLOADOUT\nMG: "+game.Equipment.MachineGun.displayName+
-            " · CANNON: "+game.Equipment.Cannon.displayName+" · MORTAR: "+game.Equipment.Mortar.displayName;
+            " · CANNON: "+game.Equipment.Cannon.displayName+" · MORTAR: "+game.Equipment.MortarSlot.displayName;
     }
 }

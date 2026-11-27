@@ -23,8 +23,8 @@ MonoBehaviour:
     criticalChance: 0
     criticalDamage: 0
     damageType: 0
-    damage: 60
-    reloadTime: 6
+    damage: 80
+    reloadTime: 10
     range: 15
     launchAngle: 70
     gravity: 12
