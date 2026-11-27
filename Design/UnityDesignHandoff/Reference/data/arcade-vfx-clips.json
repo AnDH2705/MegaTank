@@ -1,0 +1,93 @@
+{
+  "source": "D:/Project/Tnak/MegaTank/Art/VFX/Reference_Arcade_v1",
+  "clips": {
+    "Explosion": {
+      "key": "arcade_vfx_Explosion",
+      "cols": 4,
+      "rows": 3,
+      "count": 12,
+      "fps": 25,
+      "blend": "Alpha"
+    },
+    "Smoke": {
+      "key": "arcade_vfx_Smoke",
+      "cols": 4,
+      "rows": 2,
+      "count": 8,
+      "fps": 12,
+      "blend": "Alpha"
+    },
+    "Hit": {
+      "key": "arcade_vfx_Hit",
+      "cols": 4,
+      "rows": 1,
+      "count": 4,
+      "fps": 30,
+      "blend": "Additive"
+    },
+    "Muzzle": {
+      "key": "arcade_vfx_Muzzle",
+      "cols": 2,
+      "rows": 1,
+      "count": 2,
+      "fps": 30,
+      "blend": "Additive"
+    },
+    "Spark": {
+      "key": "arcade_vfx_Spark",
+      "cols": 1,
+      "rows": 1,
+      "count": 1,
+      "fps": 1,
+      "blend": "Additive"
+    },
+    "Glow": {
+      "key": "arcade_vfx_Glow",
+      "cols": 1,
+      "rows": 1,
+      "count": 1,
+      "fps": 1,
+      "blend": "Additive"
+    },
+    "Shockwave": {
+      "key": "arcade_vfx_Shockwave",
+      "cols": 3,
+      "rows": 1,
+      "count": 3,
+      "fps": 12,
+      "blend": "Additive"
+    },
+    "Beam": {
+      "key": "arcade_vfx_Beam",
+      "cols": 1,
+      "rows": 1,
+      "count": 1,
+      "fps": 1,
+      "blend": "Additive"
+    },
+    "FireBoltHead": {
+      "key": "arcade_vfx_FireBoltHead",
+      "cols": 3,
+      "rows": 1,
+      "count": 3,
+      "fps": 30,
+      "blend": "Additive"
+    },
+    "Dust": {
+      "key": "arcade_vfx_Dust",
+      "cols": 1,
+      "rows": 1,
+      "count": 1,
+      "fps": 1,
+      "blend": "Alpha"
+    },
+    "BeamTrail": {
+      "key": "arcade_vfx_BeamTrail",
+      "cols": 1,
+      "rows": 1,
+      "count": 1,
+      "fps": 1,
+      "blend": "Additive"
+    }
+  }
+}

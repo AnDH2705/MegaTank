@@ -1,0 +1,53 @@
+{
+  "canvas": [
+    1920,
+    1080
+  ],
+  "groundY": 930,
+  "nativeTankCanvas": [
+    1351,
+    1277
+  ],
+  "nativeTankAnchor": [
+    652,
+    1258
+  ],
+  "examplePPU": 100,
+  "worldConversion": {
+    "x": "(htmlX - 960) / PPU",
+    "y": "(540 - htmlY) / PPU",
+    "local": "(dx / PPU, -dy / PPU)",
+    "angle": "Unity Z radians = -HTML radians",
+    "face": "flip whole actor once; player +X, enemy -X"
+  },
+  "tankScale": "actor.w / 1351; native local positions relative to [652,1258]",
+  "spritePivot": "[pivotOffsetX / textureWidth, 1 - pivotOffsetY / textureHeight] for TOP-LEFT pixel pivots; keep metadata already marked Unity-normalized as provided",
+  "drawOrder": [
+    "background non-front layers",
+    "roadside props",
+    "back particles",
+    "scrap wrecks",
+    "ground fire",
+    "corpses",
+    "enemy vehicles/boss tank",
+    "player tank",
+    "ground fighters sorted by Y",
+    "upgrade aura",
+    "loot",
+    "foreground parallax",
+    "front particles",
+    "projectiles",
+    "VFX"
+  ],
+  "timingSeconds": {
+    "cardAppear": 0.24,
+    "eventMarkerSlide": 0.32,
+    "eventMarkerBirth": 0.18,
+    "sceneEnter": 0.36,
+    "sceneLeave": 0.2,
+    "upgradeApply": 0.5,
+    "upgradeDepart": 2.1,
+    "upgradeAuraFadeEnd": 2.6
+  },
+  "balancesOmitted": true
+}

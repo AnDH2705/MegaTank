@@ -16,3 +16,5 @@ nên có thể gửi riêng để họ xem thử; việc lắp Unity dùng các 
 Nguồn art: imagegen tích hợp. Prompt và sketch tham chiếu lưu trong source.
 Chó tái sử dụng từ MegaTank/Art/Anim/dog enemy/spine_v3, không phải nhân vật
 mới. Các animation trong preview là minh họa, không phải prefab Unity đã chạy.
+
+Cập nhật 26/11/2026: đã đưa vào wave HTML chính. Xem Design/UnityDesignHandoff/NOTE_LATEST_UNITY.txt.

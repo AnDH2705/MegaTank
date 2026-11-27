@@ -1,0 +1,16 @@
+#tank-autobattle-flow .gm-resources .gm-resource.comic-resource{position:relative;isolation:isolate;display:flex;align-items:center;height:100%;min-height:0;padding:0 .7cqw 0 3.2cqw;background:none;border:0;border-radius:0;box-shadow:none;filter:none}
+#tank-autobattle-flow .gm-resources .gm-resource.comic-resource::before{content:"";position:absolute;z-index:-1;left:1.1cqw;right:0;top:0;bottom:0;background:none;border-style:solid;border-color:transparent;border-width:.6cqw 1.5cqw .72cqw .84cqw;border-image-source:url("asset://Art/Asset/UI/Resource_Counters/counter_frame.png");border-image-slice:20 50 24 28 fill;border-image-repeat:stretch;border-radius:0;box-shadow:none;opacity:.8}
+#tank-autobattle-flow .gm-resources .gm-resource.comic-resource .gm-resource-icon{position:absolute;left:-.1cqw;top:50%;width:3.7cqw;height:3.7cqw;min-width:0;min-height:0;max-width:none;aspect-ratio:1;object-fit:contain;transform:translateY(-50%);filter:none}
+#tank-autobattle-flow .gm-resources .gm-resource.comic-resource .gm-resource-copy{display:block;width:100%;min-width:0;text-align:right}
+#tank-autobattle-flow .gm-resources .gm-resource.comic-resource .gm-resource-copy strong{display:block;color:#fff8e8;font:900 italic clamp(12px,1.55cqw,28px)/1 Arial,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;-webkit-text-stroke:1.5px #17151d;paint-order:stroke fill;text-shadow:1px 2px #17151d}
+@media(max-width:760px){#tank-autobattle-flow .gm-resources .gm-resource.comic-resource{padding-left:3.4cqw;padding-right:.65cqw}#tank-autobattle-flow .gm-resources .gm-resource.comic-resource .gm-resource-icon{width:4cqw;height:4cqw}#tank-autobattle-flow .gm-resources .gm-resource.comic-resource .gm-resource-copy strong{font-size:clamp(10px,1.7cqw,16px);-webkit-text-stroke:1px #17151d;text-shadow:1px 1px #17151d}}
+/* One optical centerline for the top HUD; scene launch transforms remain on the original elements. */
+#tank-autobattle-flow{--comic-top-center:max(36px,3.8cqw)}
+#tank-autobattle-flow #tank-autobattle-main .gm-app .gm-chapter{left:1.5cqw;top:calc(var(--comic-top-center) - 41px * var(--gm-control-scale,.75))}
+#tank-autobattle-flow #tank-autobattle-main .gm-app .gm-menu{right:1.5cqw;top:calc(var(--comic-top-center) - max(10px,1.575cqw));width:max(34px,5.6cqw);height:max(20px,3.15cqw);min-width:0;min-height:0}
+#tank-autobattle-flow [data-main-view] .gm-resources:not(.bt-resources){top:calc(var(--comic-top-center) - 1.35cqw);right:calc(2.7cqw + max(34px,5.6cqw));width:28.5cqw;height:2.7cqw;min-height:0;gap:1.2cqw}
+#tank-autobattle-flow .bt-screen .bt-actions{left:1.5cqw;top:calc(var(--comic-top-center) - max(10px,1.575cqw));right:auto}
+#tank-autobattle-flow .bt-actions .bt-small[data-bt-pause]{width:max(34px,5.6cqw);height:max(20px,3.15cqw);min-width:0;min-height:0}
+#tank-autobattle-flow .comic-combat-hud .comic-event-hud{left:36%;top:calc(var(--comic-top-center) - 3.5875cqw);width:28%}
+#tank-autobattle-flow .gm-resources.bt-resources{top:calc(var(--comic-top-center) - 1.35cqw);left:auto;right:1.5cqw;width:28.5cqw;height:2.7cqw;min-height:0;gap:1.2cqw}
+@media(max-width:650px){#tank-autobattle-flow #tank-autobattle-main .gm-app .gm-chapter{top:calc(var(--comic-top-center) - 24px)}}

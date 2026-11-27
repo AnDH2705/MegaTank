@@ -1,0 +1,2 @@
+.tank-scene-snapshot{position:fixed;z-index:2147483000;overflow:hidden;pointer-events:none;contain:strict}
+#tank-autobattle-flow[data-scene-transition="running"]{pointer-events:none}

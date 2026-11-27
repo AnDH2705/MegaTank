@@ -1,0 +1,104 @@
+{
+  "style": "casual comic: thick outline, broad cel tones, bright color",
+  "alpha": "straight RGBA",
+  "icons": {
+    "battle": {
+      "file": "icons/event_battle.png",
+      "small": "icons/32/event_battle.png",
+      "label": "Battle",
+      "size": [
+        256,
+        256
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    "hard_battle": {
+      "file": "icons/event_hard_battle.png",
+      "small": "icons/32/event_hard_battle.png",
+      "label": "Hard battle",
+      "size": [
+        256,
+        256
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    "ammo": {
+      "file": "icons/event_ammo.png",
+      "small": "icons/32/event_ammo.png",
+      "label": "Ammo",
+      "size": [
+        256,
+        256
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    "unknown": {
+      "file": "icons/event_unknown.png",
+      "small": "icons/32/event_unknown.png",
+      "label": "Unknown",
+      "size": [
+        256,
+        256
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    "hp": {
+      "file": "icons/event_hp.png",
+      "small": "icons/32/event_hp.png",
+      "label": "HP",
+      "size": [
+        256,
+        256
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    "boss": {
+      "file": "icons/event_boss.png",
+      "small": "icons/32/event_boss.png",
+      "label": "Boss",
+      "size": [
+        256,
+        256
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    "upgrade": {
+      "file": "icons/event_upgrade.png",
+      "small": "icons/32/event_upgrade.png",
+      "label": "Upgrade",
+      "size": [
+        256,
+        256
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    }
+  },
+  "aliases": {
+    "unknow": "unknown",
+    "medical": "hp",
+    "heal": "hp",
+    "supply": "ammo"
+  },
+  "import": "Sprite (2D and UI), Single, Full Rect, alpha transparency, no mipmaps, bilinear"
+}

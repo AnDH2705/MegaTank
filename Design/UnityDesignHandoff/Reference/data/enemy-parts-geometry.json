@@ -1,0 +1,1476 @@
+{
+  "cannon_car": {
+    "version": 2,
+    "enemy_id": "dog_cannon_car",
+    "canvas_px": [
+      1600,
+      1000
+    ],
+    "origin_px": [
+      800,
+      949
+    ],
+    "coordinate_system": {
+      "positions": "canvas, origin top-left, +Y down",
+      "pivot_normalized": "Unity convention: bottom-left origin, +Y up"
+    },
+    "native_facing": "right",
+    "enemy_facing": "left",
+    "design": "Compact armored car, central driver cabin, low-profile roof cannon",
+    "source": {
+      "tool": "built-in image_gen",
+      "sheet": "source/generated_parts_sheet.png",
+      "sha256": "353127cc7153e044afe02884c485ad06d36a77c932cba6c459cc37e63773685a"
+    },
+    "parts": {
+      "07_body_front": {
+        "file": "parts/07_body_front.png",
+        "size_px": [
+          550,
+          320
+        ],
+        "source_rect": {
+          "left": 520,
+          "top": 20,
+          "width": 526,
+          "height": 296
+        },
+        "transparent_padding": 12,
+        "sha256": "959ba6f0308402c15e7b10cb05774056898ff5fc7184eaabd7d3d472d475924e"
+      },
+      "06_wheel": {
+        "file": "parts/06_wheel.png",
+        "size_px": [
+          343,
+          346
+        ],
+        "source_rect": {
+          "left": 610,
+          "top": 357,
+          "width": 319,
+          "height": 322
+        },
+        "transparent_padding": 12,
+        "sha256": "8df33a174c632d91224d2ac21d637721bd877320c9c3d9850fcf671e670aefa2"
+      },
+      "00_body_back": {
+        "file": "parts/00_body_back.png",
+        "size_px": [
+          496,
+          210
+        ],
+        "source_rect": {
+          "left": 21,
+          "top": 122,
+          "width": 472,
+          "height": 186
+        },
+        "transparent_padding": 12,
+        "sha256": "989d1f9d0bceed8a7ad55ef1c7093a0d1fa3175963a77105d78de2e832be382d"
+      },
+      "04_cannon_cradle": {
+        "file": "parts/04_cannon_cradle.png",
+        "size_px": [
+          330,
+          256
+        ],
+        "source_rect": {
+          "left": 1134,
+          "top": 70,
+          "width": 306,
+          "height": 232
+        },
+        "transparent_padding": 12,
+        "sha256": "70ae634b2dc4524670c62968999ca6ed6771d7c4932cd1c014ea4be85bbf42d2"
+      },
+      "05_ammo_crate": {
+        "file": "parts/05_ammo_crate.png",
+        "size_px": [
+          310,
+          271
+        ],
+        "source_rect": {
+          "left": 624,
+          "top": 726,
+          "width": 286,
+          "height": 247
+        },
+        "transparent_padding": 12,
+        "sha256": "f321347af9a21f29203c72158b73936c3b5292b10a0969d7703ccdaa5f84521f"
+      },
+      "01_driver_seat": {
+        "file": "parts/01_driver_seat.png",
+        "size_px": [
+          346,
+          280
+        ],
+        "source_rect": {
+          "left": 116,
+          "top": 727,
+          "width": 322,
+          "height": 256
+        },
+        "transparent_padding": 12,
+        "sha256": "159eeb211f8fea37fce921e5bb36e2ef709216865ddfef5b1072acc07b003fcd"
+      },
+      "03_cannon_barrel": {
+        "file": "parts/03_cannon_barrel.png",
+        "size_px": [
+          448,
+          191
+        ],
+        "source_rect": {
+          "left": 49,
+          "top": 446,
+          "width": 424,
+          "height": 167
+        },
+        "transparent_padding": 12,
+        "sha256": "ea82a6315b5ef7b18378eb215505b44a29b1bb8c6f62249f207741e05a2811f4"
+      },
+      "02_suspension": {
+        "file": "parts/02_suspension.png",
+        "size_px": [
+          284,
+          302
+        ],
+        "source_rect": {
+          "left": 1143,
+          "top": 374,
+          "width": 260,
+          "height": 278
+        },
+        "transparent_padding": 12,
+        "sha256": "b44442c45d0dab1a39d4814060a545797805a695cd205c0c70ba5ae9abccba4b"
+      },
+      "08_exhaust": {
+        "file": "parts/08_exhaust.png",
+        "size_px": [
+          273,
+          223
+        ],
+        "source_rect": {
+          "left": 1134,
+          "top": 748,
+          "width": 249,
+          "height": 199
+        },
+        "transparent_padding": 12,
+        "sha256": "b67630ae90be59c93b33753a8934ff95b8f6dd25ea35fef13a48363f3305b445"
+      }
+    },
+    "layers": [
+      {
+        "id": "body_back",
+        "part": "00_body_back",
+        "file": "parts/00_body_back.png",
+        "position_px": [
+          340,
+          500
+        ],
+        "size_px": [
+          900,
+          381.0483870967742
+        ],
+        "pivot_canvas_px": [
+          790,
+          690.5241935483871
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 10,
+        "parent": "hull"
+      },
+      {
+        "id": "exhaust",
+        "part": "08_exhaust",
+        "file": "parts/08_exhaust.png",
+        "position_px": [
+          285,
+          535
+        ],
+        "size_px": [
+          100,
+          81.68498168498168
+        ],
+        "pivot_canvas_px": [
+          335,
+          575.8424908424909
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 12,
+        "parent": "hull"
+      },
+      {
+        "id": "ammo_crate",
+        "part": "05_ammo_crate",
+        "file": "parts/05_ammo_crate.png",
+        "position_px": [
+          350,
+          600
+        ],
+        "size_px": [
+          120,
+          104.90322580645162
+        ],
+        "pivot_canvas_px": [
+          410,
+          652.4516129032259
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 15,
+        "parent": "hull"
+      },
+      {
+        "id": "seat",
+        "part": "01_driver_seat",
+        "file": "parts/01_driver_seat.png",
+        "position_px": [
+          665,
+          505
+        ],
+        "size_px": [
+          230,
+          186.1271676300578
+        ],
+        "pivot_canvas_px": [
+          780,
+          598.0635838150289
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 18,
+        "parent": "hull"
+      },
+      {
+        "id": "suspension_0",
+        "part": "02_suspension",
+        "file": "parts/02_suspension.png",
+        "position_px": [
+          399,
+          680
+        ],
+        "size_px": [
+          160,
+          170.14084507042253
+        ],
+        "pivot_canvas_px": [
+          479,
+          765.0704225352113
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 20,
+        "parent": "hull"
+      },
+      {
+        "id": "suspension_1",
+        "part": "02_suspension",
+        "file": "parts/02_suspension.png",
+        "position_px": [
+          1000,
+          680
+        ],
+        "size_px": [
+          160,
+          170.14084507042253
+        ],
+        "pivot_canvas_px": [
+          1080,
+          765.0704225352113
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 20,
+        "parent": "hull"
+      },
+      {
+        "id": "barrel",
+        "part": "03_cannon_barrel",
+        "file": "parts/03_cannon_barrel.png",
+        "position_px": [
+          790,
+          134.73214285714286
+        ],
+        "size_px": [
+          400,
+          170.53571428571428
+        ],
+        "pivot_canvas_px": [
+          870,
+          220
+        ],
+        "pivot_normalized": [
+          0.2,
+          0.5
+        ],
+        "z_order": 25,
+        "parent": "gun"
+      },
+      {
+        "id": "cradle",
+        "part": "04_cannon_cradle",
+        "file": "parts/04_cannon_cradle.png",
+        "position_px": [
+          655,
+          122
+        ],
+        "size_px": [
+          280,
+          217.21212121212122
+        ],
+        "pivot_canvas_px": [
+          795,
+          230.60606060606062
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 30,
+        "parent": "hull"
+      },
+      {
+        "id": "wheel_0",
+        "part": "06_wheel",
+        "file": "parts/06_wheel.png",
+        "position_px": [
+          329,
+          662.6880466472303
+        ],
+        "size_px": [
+          300,
+          302.62390670553935
+        ],
+        "pivot_canvas_px": [
+          479,
+          814
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 45,
+        "parent": "root"
+      },
+      {
+        "id": "wheel_1",
+        "part": "06_wheel",
+        "file": "parts/06_wheel.png",
+        "position_px": [
+          930,
+          662.6880466472303
+        ],
+        "size_px": [
+          300,
+          302.62390670553935
+        ],
+        "pivot_canvas_px": [
+          1080,
+          814
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 45,
+        "parent": "root"
+      },
+      {
+        "id": "body_front",
+        "part": "07_body_front",
+        "file": "parts/07_body_front.png",
+        "position_px": [
+          270,
+          285
+        ],
+        "size_px": [
+          1050,
+          610.9090909090909
+        ],
+        "pivot_canvas_px": [
+          795,
+          590.4545454545455
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 50,
+        "parent": "hull"
+      }
+    ],
+    "driver": {
+      "socket_px": [
+        780,
+        636
+      ],
+      "preview_scale": 1.15,
+      "draw_order": 40,
+      "source_project_path": "MegaTank/Art/Anim/dog jeep driver/spine_v1"
+    },
+    "gun": {
+      "pivot_px": [
+        870,
+        220
+      ],
+      "muzzle_px": [
+        1176,
+        220
+      ],
+      "recoil_axis": [
+        -1,
+        0
+      ],
+      "hidden_overlap": "Keep the left barrel root beneath the solid low-profile roof breech throughout recoil."
+    },
+    "balance_parameters_included": false,
+    "actorClips": {
+      "source": "MegaTank/Art/Anim/dog jeep driver/spine_v1",
+      "clips": {
+        "drive": {
+          "key": "crew_dog_driver_drive",
+          "animation": "sit_drive",
+          "skin": "jeep",
+          "frames": 12,
+          "cols": 4,
+          "rows": 3,
+          "cell": [
+            240,
+            360
+          ],
+          "pivot": [
+            110,
+            252
+          ],
+          "duration": 1,
+          "worldScale": 0.5,
+          "file": "preview-assets/driver_drive.png"
+        }
+      }
+    }
+  },
+  "helicopter": {
+    "version": 2,
+    "enemy_id": "dog_mg_helicopter",
+    "design": "Rounded helicopter, visible dog pilot, front-belly MG angled forward/down, landing skids, translucent elliptical main rotor disc",
+    "canvas_px": [
+      1600,
+      1000
+    ],
+    "origin_px": [
+      800,
+      600
+    ],
+    "native_facing": "right",
+    "enemy_facing": "left",
+    "coordinate_system": {
+      "positions": "canvas, origin top-left, +Y down",
+      "pivot_normalized": "Unity convention: bottom-left origin, +Y up"
+    },
+    "source": {
+      "tool": "built-in image_gen",
+      "sheet": "source/generated_parts_sheet.png",
+      "sha256": "7bf7d493c7948c6fcd8d0c92f949b42f69688f061edc74d0e275b6777bf31907"
+    },
+    "parts": {
+      "06_cabin_front": {
+        "file": "parts/06_cabin_front.png",
+        "size_px": [
+          489,
+          372
+        ],
+        "source_rect": {
+          "left": 533,
+          "top": 37,
+          "width": 465,
+          "height": 348
+        },
+        "transparent_padding": 12,
+        "sha256": "7333020406921665376c6920f923844c7dcaa0d29fae29f57e051803834a2bf4"
+      },
+      "00_cabin_back": {
+        "file": "parts/00_cabin_back.png",
+        "size_px": [
+          441,
+          304
+        ],
+        "source_rect": {
+          "left": 56,
+          "top": 97,
+          "width": 417,
+          "height": 280
+        },
+        "transparent_padding": 12,
+        "sha256": "bc868cce310a3121fd6a8968b1d6aad54c7a9dacd56d8f87021eefd871e247df"
+      },
+      "05_pilot_seat": {
+        "file": "parts/05_pilot_seat.png",
+        "size_px": [
+          321,
+          297
+        ],
+        "source_rect": {
+          "left": 1105,
+          "top": 709,
+          "width": 297,
+          "height": 273
+        },
+        "transparent_padding": 12,
+        "sha256": "fbad77b2c11716876a5f06ed8a13e93362e6f7819f6b0e4dd8b26d0f830a0287"
+      },
+      "03_landing_skids": {
+        "file": "parts/03_landing_skids.png",
+        "size_px": [
+          549,
+          203
+        ],
+        "source_rect": {
+          "left": 31,
+          "top": 799,
+          "width": 525,
+          "height": 179
+        },
+        "transparent_padding": 12,
+        "sha256": "38a052b66cee65a3d45732b46f8236e7b3124b8da2859ea92aad2c39861a4698"
+      },
+      "07_machine_gun": {
+        "file": "parts/07_machine_gun.png",
+        "size_px": [
+          443,
+          209
+        ],
+        "source_rect": {
+          "left": 1069,
+          "top": 446,
+          "width": 419,
+          "height": 185
+        },
+        "transparent_padding": 12,
+        "sha256": "8698a722244ceb80c6b77c7d244d985095629be7ba2b40f0f5d2a292bd9e9c06"
+      },
+      "01_tail_boom": {
+        "file": "parts/01_tail_boom.png",
+        "size_px": [
+          470,
+          222
+        ],
+        "source_rect": {
+          "left": 1046,
+          "top": 120,
+          "width": 446,
+          "height": 198
+        },
+        "transparent_padding": 12,
+        "sha256": "bca5844063946d71a95e54034812db368bd11677cf0d42f0f5825c41c0d6eb86"
+      },
+      "08_main_rotor": {
+        "file": "parts/08_main_rotor.png",
+        "size_px": [
+          578,
+          127
+        ],
+        "source_rect": {
+          "left": 20,
+          "top": 497,
+          "width": 554,
+          "height": 103
+        },
+        "transparent_padding": 12,
+        "sha256": "78348a5085198f8726d09d3b4eb803478c14e3c168dfac533db95e3be04731ef",
+        "role": "optional stopped/slow rotor; hidden during flight blur"
+      },
+      "04_rotor_mast": {
+        "file": "parts/04_rotor_mast.png",
+        "size_px": [
+          200,
+          313
+        ],
+        "source_rect": {
+          "left": 680,
+          "top": 706,
+          "width": 176,
+          "height": 289
+        },
+        "transparent_padding": 12,
+        "sha256": "514d42071df0f1e48d1051f69a4298e1357508b2c446a60acdb0538caf5f61d3"
+      },
+      "02_tail_rotor": {
+        "file": "parts/02_tail_rotor.png",
+        "size_px": [
+          280,
+          257
+        ],
+        "source_rect": {
+          "left": 651,
+          "top": 427,
+          "width": 256,
+          "height": 233
+        },
+        "transparent_padding": 12,
+        "sha256": "58a6ac14d816621db979ef0503f323bbab60b6c66797063fc81a1d2b0e228637"
+      },
+      "09_main_rotor_blur": {
+        "file": "parts/09_main_rotor_blur.png",
+        "size_px": [
+          947,
+          947
+        ],
+        "source_file": "source/generated_rotor_blur.png",
+        "source_rect": {
+          "left": 173,
+          "top": 165,
+          "width": 906,
+          "height": 915
+        },
+        "transparent_padding": {
+          "left": 20,
+          "right": 21,
+          "top": 16,
+          "bottom": 16
+        },
+        "sha256": "b179e1984b34cef5f7039bb2745e4ee88781b02567173462ed2402200b894fe4",
+        "role": "active fast-spin circular motion blur; project into an ellipse at render time"
+      }
+    },
+    "layers": [
+      {
+        "id": "tail_boom",
+        "part": "01_tail_boom",
+        "file": "parts/01_tail_boom.png",
+        "position_px": [
+          130,
+          330
+        ],
+        "size_px": [
+          600,
+          283.40425531914894
+        ],
+        "pivot_canvas_px": [
+          430,
+          471.70212765957444
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 10,
+        "parent": "hull"
+      },
+      {
+        "id": "tail_rotor",
+        "part": "02_tail_rotor",
+        "file": "parts/02_tail_rotor.png",
+        "position_px": [
+          158.42857142857144,
+          413.3571428571429
+        ],
+        "size_px": [
+          145,
+          133.08928571428572
+        ],
+        "pivot_canvas_px": [
+          233,
+          490
+        ],
+        "pivot_normalized": [
+          0.5142857142857142,
+          0.4241245136186771
+        ],
+        "z_order": 15,
+        "parent": "hull"
+      },
+      {
+        "id": "cabin_back",
+        "part": "00_cabin_back",
+        "file": "parts/00_cabin_back.png",
+        "position_px": [
+          680,
+          350
+        ],
+        "size_px": [
+          620,
+          427.39229024943313
+        ],
+        "pivot_canvas_px": [
+          990,
+          563.6961451247166
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 20,
+        "parent": "hull"
+      },
+      {
+        "id": "skids",
+        "part": "03_landing_skids",
+        "file": "parts/03_landing_skids.png",
+        "position_px": [
+          680,
+          720
+        ],
+        "size_px": [
+          620,
+          229.25318761384335
+        ],
+        "pivot_canvas_px": [
+          990,
+          834.6265938069216
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 25,
+        "parent": "hull"
+      },
+      {
+        "id": "seat",
+        "part": "05_pilot_seat",
+        "file": "parts/05_pilot_seat.png",
+        "position_px": [
+          930,
+          520
+        ],
+        "size_px": [
+          230,
+          212.80373831775702
+        ],
+        "pivot_canvas_px": [
+          1045,
+          626.4018691588785
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 30,
+        "parent": "hull"
+      },
+      {
+        "id": "mast",
+        "part": "04_rotor_mast",
+        "file": "parts/04_rotor_mast.png",
+        "position_px": [
+          985,
+          220
+        ],
+        "size_px": [
+          70,
+          109.55
+        ],
+        "pivot_canvas_px": [
+          1020,
+          274.775
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 35,
+        "parent": "hull"
+      },
+      {
+        "id": "cabin_front",
+        "part": "06_cabin_front",
+        "file": "parts/06_cabin_front.png",
+        "position_px": [
+          670,
+          300
+        ],
+        "size_px": [
+          650,
+          494.47852760736197
+        ],
+        "pivot_canvas_px": [
+          995,
+          547.239263803681
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 50,
+        "parent": "hull"
+      },
+      {
+        "id": "machine_gun",
+        "part": "07_machine_gun",
+        "file": "parts/07_machine_gun.png",
+        "position_px": [
+          1051.5011286681715,
+          607.9683972911964
+        ],
+        "size_px": [
+          380,
+          179.27765237020316
+        ],
+        "pivot_canvas_px": [
+          1145,
+          650
+        ],
+        "pivot_normalized": [
+          0.24604966139954854,
+          0.7655502392344498
+        ],
+        "z_order": 60,
+        "parent": "gun"
+      },
+      {
+        "id": "main_rotor",
+        "part": "09_main_rotor_blur",
+        "file": "parts/09_main_rotor_blur.png",
+        "position_px": [
+          460,
+          153.6
+        ],
+        "size_px": [
+          1120,
+          184.8
+        ],
+        "pivot_canvas_px": [
+          1020,
+          246
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 70,
+        "parent": "hull"
+      }
+    ],
+    "pilot": {
+      "socket_px": [
+        1030,
+        665
+      ],
+      "preview_scale": 1.2,
+      "draw_order": 40,
+      "source_project_path": "MegaTank/Art/Anim/dog pilot/spine_v1"
+    },
+    "gun": {
+      "pivot_px": [
+        1145,
+        650
+      ],
+      "muzzle_px": [
+        1402.3363431151242,
+        720.3386004514673
+      ],
+      "rest_axis": [
+        1,
+        0
+      ],
+      "aim": "forward and downward",
+      "demo_angle_radians": 0.32
+    },
+    "rotors": {
+      "main": {
+        "mode": "blur_disc",
+        "part": "09_main_rotor_blur",
+        "pivot_px": [
+          1020,
+          246
+        ],
+        "projection_ratio": 0.165,
+        "opacity": 0.42,
+        "animation": "rotate square circular texture inside a vertically squashed parent; ellipse dimensions and hub stay fixed",
+        "stopped_part": "08_main_rotor",
+        "source": "source/generated_rotor_blur.png"
+      },
+      "tail": {
+        "pivot_px": [
+          233,
+          490
+        ],
+        "animation": "rotate in image plane around hub"
+      }
+    },
+    "balance_parameters_included": false,
+    "actorClips": {
+      "source": "MegaTank/Art/Anim/dog pilot/spine_v1",
+      "clips": {
+        "fly": {
+          "key": "crew_dog_pilot_drive",
+          "animation": "sit_drive",
+          "skin": "pilot",
+          "frames": 12,
+          "cols": 4,
+          "rows": 3,
+          "cell": [
+            240,
+            360
+          ],
+          "pivot": [
+            110,
+            252
+          ],
+          "duration": 1,
+          "worldScale": 0.5,
+          "file": "preview-assets/pilot_fly.png"
+        },
+        "fire": {
+          "key": "crew_dog_pilot_fire",
+          "animation": "sit_fire",
+          "skin": "pilot",
+          "frames": 12,
+          "cols": 4,
+          "rows": 3,
+          "cell": [
+            240,
+            360
+          ],
+          "pivot": [
+            110,
+            252
+          ],
+          "duration": 0.7,
+          "worldScale": 0.5,
+          "file": "preview-assets/pilot_fire.png"
+        }
+      }
+    }
+  },
+  "trojan": {
+    "version": 1,
+    "enemy_id": "trojan_scrap_cat",
+    "canvas_px": [
+      1600,
+      1000
+    ],
+    "origin_px": [
+      800,
+      952
+    ],
+    "facing": "left",
+    "source": {
+      "tool": "built-in image_gen",
+      "sheet": "source/generated_parts_sheet.png",
+      "sha256": "86c4ed294e64ffd616e98a8011c96c00c267b884f10987f668325a4193569a84",
+      "reference": "source/user_sketch.png"
+    },
+    "parts": {
+      "06_outer_body": {
+        "file": "parts/06_outer_body.png",
+        "size_px": [
+          479,
+          305
+        ],
+        "source_rect": {
+          "left": 419,
+          "top": 122,
+          "width": 455,
+          "height": 281
+        },
+        "transparent_padding": 12,
+        "sha256": "802d6794ffa5efc1e5faca6fb8c69d083ef50d01f6733a1f34b071ae66ba01b8"
+      },
+      "05_cat_head": {
+        "file": "parts/05_cat_head.png",
+        "size_px": [
+          400,
+          414
+        ],
+        "source_rect": {
+          "left": 18,
+          "top": 32,
+          "width": 376,
+          "height": 390
+        },
+        "transparent_padding": 12,
+        "sha256": "d21205e0076fe86e924c51cd3e8f6e23a8c9c8362e653a1c911f0ea0b46a585d"
+      },
+      "07_belly_hatch": {
+        "file": "parts/07_belly_hatch.png",
+        "size_px": [
+          448,
+          284
+        ],
+        "source_rect": {
+          "left": 428,
+          "top": 906,
+          "width": 424,
+          "height": 260
+        },
+        "transparent_padding": 12,
+        "sha256": "1b706dbd2ccfb7b33123aad8f33e87c70aee9be922bb71216b9678bf45616164"
+      },
+      "00_inner_wall": {
+        "file": "parts/00_inner_wall.png",
+        "size_px": [
+          420,
+          261
+        ],
+        "source_rect": {
+          "left": 11,
+          "top": 545,
+          "width": 396,
+          "height": 237
+        },
+        "transparent_padding": 12,
+        "sha256": "41b74b7566e7fbfe347ad863337f5b24c48ca7db6ec6aebfd69c6bb5ae060945"
+      },
+      "02_wheel": {
+        "file": "parts/02_wheel.png",
+        "size_px": [
+          332,
+          342
+        ],
+        "source_rect": {
+          "left": 56,
+          "top": 894,
+          "width": 308,
+          "height": 318
+        },
+        "transparent_padding": 12,
+        "sha256": "e7621ed50b2a553b51a09302c616985ffa4ae5dad554babf09d56eee191c0fd0"
+      },
+      "04_cat_tail": {
+        "file": "parts/04_cat_tail.png",
+        "size_px": [
+          303,
+          432
+        ],
+        "source_rect": {
+          "left": 940,
+          "top": 34,
+          "width": 279,
+          "height": 408
+        },
+        "transparent_padding": 12,
+        "sha256": "b9fa578161b0e578298e125e24872944cd77a74988a2e3ffaf31f00df4eaba91"
+      },
+      "01_leg_strut": {
+        "file": "parts/01_leg_strut.png",
+        "size_px": [
+          230,
+          362
+        ],
+        "source_rect": {
+          "left": 962,
+          "top": 489,
+          "width": 206,
+          "height": 338
+        },
+        "transparent_padding": 12,
+        "sha256": "501b7a2f94da61b0e2c21ee5c3dbe6aaaecdeaccd963c88c70fddaae0365927b"
+      },
+      "08_scrap_fragment": {
+        "file": "parts/08_scrap_fragment.png",
+        "size_px": [
+          345,
+          247
+        ],
+        "source_rect": {
+          "left": 892,
+          "top": 926,
+          "width": 321,
+          "height": 223
+        },
+        "transparent_padding": 12,
+        "sha256": "f051b4276088ce994c9f9390970b7604d973b4e679277725e65bc46b0ab4fa93"
+      },
+      "03_chassis": {
+        "file": "parts/03_chassis.png",
+        "size_px": [
+          496,
+          152
+        ],
+        "source_rect": {
+          "left": 414,
+          "top": 615,
+          "width": 472,
+          "height": 128
+        },
+        "transparent_padding": 12,
+        "sha256": "5674ecaf513b7b5c9265c20beddc4633c9de189fd195d8a0bcf5c145b2df9409"
+      }
+    },
+    "layers": [
+      {
+        "id": "tail",
+        "part": "04_cat_tail",
+        "file": "parts/04_cat_tail.png",
+        "position_px": [
+          950,
+          210
+        ],
+        "size_px": [
+          230,
+          327.9207920792079
+        ],
+        "pivot_canvas_px": [
+          996,
+          505.1287128712871
+        ],
+        "pivot_normalized": [
+          0.2,
+          0.09999999999999998
+        ],
+        "z_order": 5,
+        "parent": "shell_root"
+      },
+      {
+        "id": "inner_wall",
+        "part": "00_inner_wall",
+        "file": "parts/00_inner_wall.png",
+        "position_px": [
+          430,
+          380
+        ],
+        "size_px": [
+          610,
+          379.07142857142856
+        ],
+        "pivot_canvas_px": [
+          735,
+          569.5357142857142
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 10,
+        "parent": "root"
+      },
+      {
+        "id": "leg_0",
+        "part": "01_leg_strut",
+        "file": "parts/01_leg_strut.png",
+        "position_px": [
+          384.50276243093924,
+          804.84
+        ],
+        "size_px": [
+          60.994475138121544,
+          96
+        ],
+        "pivot_canvas_px": [
+          415,
+          852.84
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 20,
+        "parent": "root"
+      },
+      {
+        "id": "leg_1",
+        "part": "01_leg_strut",
+        "file": "parts/01_leg_strut.png",
+        "position_px": [
+          563.5027624309392,
+          804.84
+        ],
+        "size_px": [
+          60.994475138121544,
+          96
+        ],
+        "pivot_canvas_px": [
+          594,
+          852.84
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 20,
+        "parent": "root"
+      },
+      {
+        "id": "leg_2",
+        "part": "01_leg_strut",
+        "file": "parts/01_leg_strut.png",
+        "position_px": [
+          739.5027624309392,
+          804.84
+        ],
+        "size_px": [
+          60.994475138121544,
+          96
+        ],
+        "pivot_canvas_px": [
+          770,
+          852.84
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 20,
+        "parent": "root"
+      },
+      {
+        "id": "leg_3",
+        "part": "01_leg_strut",
+        "file": "parts/01_leg_strut.png",
+        "position_px": [
+          908.5027624309392,
+          804.84
+        ],
+        "size_px": [
+          60.994475138121544,
+          96
+        ],
+        "pivot_canvas_px": [
+          939,
+          852.84
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 20,
+        "parent": "root"
+      },
+      {
+        "id": "chassis",
+        "part": "03_chassis",
+        "file": "parts/03_chassis.png",
+        "position_px": [
+          300,
+          650
+        ],
+        "size_px": [
+          760,
+          232.90322580645162
+        ],
+        "pivot_canvas_px": [
+          680,
+          766.4516129032259
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 30,
+        "parent": "root"
+      },
+      {
+        "id": "wheel_0",
+        "part": "02_wheel",
+        "file": "parts/02_wheel.png",
+        "position_px": [
+          343,
+          810.8313253012049
+        ],
+        "size_px": [
+          144,
+          148.33734939759037
+        ],
+        "pivot_canvas_px": [
+          415,
+          885
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 35,
+        "parent": "root"
+      },
+      {
+        "id": "wheel_1",
+        "part": "02_wheel",
+        "file": "parts/02_wheel.png",
+        "position_px": [
+          522,
+          810.8313253012049
+        ],
+        "size_px": [
+          144,
+          148.33734939759037
+        ],
+        "pivot_canvas_px": [
+          594,
+          885
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 35,
+        "parent": "root"
+      },
+      {
+        "id": "wheel_2",
+        "part": "02_wheel",
+        "file": "parts/02_wheel.png",
+        "position_px": [
+          698,
+          810.8313253012049
+        ],
+        "size_px": [
+          144,
+          148.33734939759037
+        ],
+        "pivot_canvas_px": [
+          770,
+          885
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 35,
+        "parent": "root"
+      },
+      {
+        "id": "wheel_3",
+        "part": "02_wheel",
+        "file": "parts/02_wheel.png",
+        "position_px": [
+          867,
+          810.8313253012049
+        ],
+        "size_px": [
+          144,
+          148.33734939759037
+        ],
+        "pivot_canvas_px": [
+          939,
+          885
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.5
+        ],
+        "z_order": 35,
+        "parent": "root"
+      },
+      {
+        "id": "outer_body",
+        "part": "06_outer_body",
+        "file": "parts/06_outer_body.png",
+        "position_px": [
+          410,
+          360
+        ],
+        "size_px": [
+          640,
+          407.51565762004174
+        ],
+        "pivot_canvas_px": [
+          730,
+          384.4509394572025
+        ],
+        "pivot_normalized": [
+          0.5,
+          0.94
+        ],
+        "z_order": 50,
+        "parent": "shell_root"
+      },
+      {
+        "id": "head",
+        "part": "05_cat_head",
+        "file": "parts/05_cat_head.png",
+        "position_px": [
+          120,
+          200
+        ],
+        "size_px": [
+          420,
+          434.7
+        ],
+        "pivot_canvas_px": [
+          477,
+          547.76
+        ],
+        "pivot_normalized": [
+          0.85,
+          0.19999999999999996
+        ],
+        "z_order": 55,
+        "parent": "shell_root"
+      }
+    ],
+    "shell_root": {
+      "pivot_px": [
+        710,
+        570
+      ],
+      "members": [
+        "tail",
+        "outer_body",
+        "head"
+      ]
+    },
+    "dog_sockets": [
+      {
+        "id": "dog_A",
+        "position_px": [
+          520,
+          840
+        ],
+        "depth": 0
+      },
+      {
+        "id": "dog_B",
+        "position_px": [
+          650,
+          840
+        ],
+        "depth": 1
+      },
+      {
+        "id": "dog_C",
+        "position_px": [
+          780,
+          840
+        ],
+        "depth": 2
+      }
+    ],
+    "feet_aperture_px": [
+      410,
+      775,
+      620,
+      70
+    ],
+    "landing_points": [
+      {
+        "id": "land_A",
+        "position_px": [
+          120,
+          920
+        ]
+      },
+      {
+        "id": "land_B",
+        "position_px": [
+          310,
+          955
+        ]
+      },
+      {
+        "id": "land_C",
+        "position_px": [
+          500,
+          990
+        ]
+      }
+    ],
+    "dog_source_project_path": "MegaTank/Art/Anim/dog enemy/spine_v3",
+    "balance_parameters_included": false
+  }
+}

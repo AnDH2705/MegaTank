@@ -1,0 +1,35 @@
+{
+  "alpha": "straight RGBA",
+  "size": [
+    512,
+    512
+  ],
+  "imageType": "Simple",
+  "preserveAspect": true,
+  "icons": [
+    {
+      "id": "cannon_damage",
+      "file": "cannon_damage.png",
+      "stat": "damage",
+      "target": "weaponSlot:cannon"
+    },
+    {
+      "id": "mg_damage",
+      "file": "mg_damage.png",
+      "stat": "damage",
+      "target": "weaponSlot:mg"
+    },
+    {
+      "id": "tank_hp",
+      "file": "tank_hp.png",
+      "stat": "maxHP",
+      "target": "tank"
+    },
+    {
+      "id": "crit_chance_up",
+      "file": "crit_chance_up.png",
+      "stat": "critChance",
+      "target": "card-defined"
+    }
+  ]
+}

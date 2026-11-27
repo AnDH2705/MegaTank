@@ -12,7 +12,7 @@ Lều dùng ảnh tent.png của project, đặt phía sau nhân vật. Trạm y
 chữ thập. Tank bỏ lại phải trống người, không bắn và không quay bánh.
 
 CÁC LỰA CHỌN
-Lều quân dụng: chọn một loại đạn; một lựa chọn hiếm có nhãn AD.
+Lều quân dụng: chọn biến thể súng theo slot (ví dụ Cannon băng, MG plasma); một lựa chọn hiếm có nhãn AD.
 Lều tiếp tế: lấy đạn cho một khẩu đang có trên xe.
 Trạm y tế: sửa máu tank hoặc lấy bánh răng.
 Tank bỏ lại: chọn đổi xe hoặc giữ xe hiện tại. Hình xem trước phải khớp
@@ -57,3 +57,17 @@ Lửa pháo phụt tại đầu nòng rồi tắt, không bay theo viên đạn.
 bộ VFX đã xuất trong Art/VFX/Reference_Arcade_v1. Pháo và nổ có rung cam.
 Boss giữ các luật cận chiến/ra vào xe hiện có. Thắng boss tự mở rương;
 không có ô rương tích lũy ở góc. Tiền và bánh răng cộng đúng một lần.
+
+CHỈNH HUD / MODEL CHỌN SÚNG — 2026-11-26
+- Icon/số đạn nhỏ hơn, canh top với phần khung HP (phía dưới tab HP nhô cao).
+  Cả HP và ammo dùng một nhóm layout; ammo đi sát bên HP, không rải đến mép phải.
+- Đã bỏ tên "Đạn nổ mạnh" / "Đạn tiêu chuẩn" / loại đạn khỏi thanh HP.
+- "Chọn loại đạn" trong mô tả cũ thực chất là CHỌN BIẾN THỂ SÚNG, ví dụ Cannon băng,
+  MG plasma. Đây là lựa chọn gắn với súng/slot tương ứng, không phải đổi loại đạn
+  hoặc buff nguyên tố chung cho mọi súng trên tank.
+- Model Unity nên lưu weaponSlot + weaponVariantId cho từng súng. Counter HUD tiếp
+  tục thể hiện số lượng đạn còn lại; không dùng tên biến thể như nhãn loại đạn chung.
+- Bộ art biến thể súng đã có ở Art/Asset/UI/Choice_Cards/illustrations/.
+- HTML đã đổi lựa chọn và damage/projectile sang từng weapon slot. Visual súng trên
+  thân xe vẫn dùng part base; đọc NOTE_LATEST_UNITY.txt cho trạng thái mới và luồng
+  Tank Level, trạm nâng cấp tự động, HP từng mèo, ba enemy bổ sung.

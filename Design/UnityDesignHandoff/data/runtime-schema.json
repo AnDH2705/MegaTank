@@ -1,0 +1,46 @@
+{
+  "CharacterDefinition": {
+    "id": "stable crewId",
+    "name": "string",
+    "allowedRoles": "role[]",
+    "baseStats": {
+      "atk": "number",
+      "hp": "number; max character HP",
+      "accuracy": "ratio",
+      "defense": "number",
+      "move_speed": "world speed",
+      "crit_rate": "ratio"
+    },
+    "progression": "level/stars/skills resolver; designer config"
+  },
+  "CrewCombatState": {
+    "crewId": "CharacterDefinition reference",
+    "slotId": "role",
+    "currentHP": "runtime number",
+    "maxHP": "resolved stat",
+    "phase": "aboard|jump_out|combat|return|jump_in|following|regroup|dead|locked|empty"
+  },
+  "PlayerProfile": {
+    "avatarId": "portrait asset ID",
+    "tankTotalXP": "persistent number"
+  },
+  "TankRunState": {
+    "baseTankLevel": "snapshot of permanent level",
+    "temporaryTankLevel": "stage-only level",
+    "effectiveTankLevel": "max(base,temporary)",
+    "runStats": "stage-only buffs",
+    "weaponSlots": "map slot -> installed WeaponDefinition",
+    "crewAssignment": "map role -> crewId"
+  },
+  "UpgradeStationState": {
+    "id": "stable station instance ID",
+    "upgradeApplied": "bool; once guard",
+    "phase": "Approach|UpgradeStop|ApplyOnce|Depart"
+  },
+  "WeaponVariantIds": {
+    "cannon_ap": "cannon",
+    "mortar_blast": "mortar",
+    "mg_plasma": "mg"
+  },
+  "balanceValuesIncluded": false
+}

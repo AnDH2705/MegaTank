@@ -4,4 +4,6 @@ Xem previews/dog-mg-helicopter-demo.gif hoặc dog-mg-helicopter-on-map.gif. M�
 
 Gồm 10 PNG cơ khí/VFX rotor, dùng 9 layer khi bay; atlas chó phi công/VFX dùng lại, sơ đồ lắp và note Unity. Cánh chính đã đổi thành đĩa elip mờ; 09_main_rotor_blur.png là texture tròn mới, 08_main_rotor.png chỉ để tùy chọn cánh đứng/chậm. Đưa AI coder AI_CODER_PROMPT.txt, DESIGN_DOC_UNITY_VI.txt, ROTOR_BLUR_SETUP_VI.txt, metadata/ và parts/. Rig phi công gốc có sẵn trong Art/Anim/dog pilot/spine_v1.
 
-Art trực thăng và đĩa blur tạo bằng built-in image_gen; prompt lưu ở source/imagegen_prompt.txt và source/imagegen_rotor_blur_prompt.txt. File HTML preview tự chứa ảnh base64, không cần đưa nội dung đó vào context của AI coder. Bộ này chưa lắp vào game HTML chính hoặc Unity.
+Art trực thăng và đĩa blur tạo bằng built-in image_gen; prompt lưu ở source/imagegen_prompt.txt và source/imagegen_rotor_blur_prompt.txt. File HTML preview tự chứa ảnh base64, không cần đưa nội dung đó vào context của AI coder. Bộ này đã lắp vào Art/Equipment-test.html; chưa lắp trong Unity.
+
+Cập nhật 26/11/2026: đã đưa vào wave HTML chính. Xem Design/UnityDesignHandoff/NOTE_LATEST_UNITY.txt.

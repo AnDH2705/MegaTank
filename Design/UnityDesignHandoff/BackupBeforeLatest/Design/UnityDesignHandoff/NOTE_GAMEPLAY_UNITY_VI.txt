@@ -1,0 +1,76 @@
+MEGATANK — NOTE BÀN GIAO DESIGN CHO UNITY
+
+HTML Equipment-test.html là bản tham chiếu hình ảnh và luồng chơi.
+Không chốt thông số balance ở gói này; người làm Unity cân lại sau.
+
+LUỒNG GIỮA CÁC ĐỢT QUÁI
+Dọn sạch wave và đợi đội mèo ổn định đội hình. Xe đi tiếp trên map, gặp lều
+hoặc tank bỏ lại, dừng xe rồi mới mở lựa chọn. Chọn xong đi qua điểm dừng
+rồi mới vào đợt tiếp hoặc gặp boss. Không sinh quái trong đoạn tới/rời trạm.
+Đoạn tới/rời trạm xe chạy ổn định; không phóng đại độ nhún thân theo tốc độ.
+Lều dùng ảnh tent.png của project, đặt phía sau nhân vật. Trạm y tế có dấu
+chữ thập. Tank bỏ lại phải trống người, không bắn và không quay bánh.
+
+CÁC LỰA CHỌN
+Lều quân dụng: chọn biến thể súng theo slot (ví dụ Cannon băng, MG plasma); một lựa chọn hiếm có nhãn AD.
+Lều tiếp tế: lấy đạn cho một khẩu đang có trên xe.
+Trạm y tế: sửa máu tank hoặc lấy bánh răng.
+Tank bỏ lại: chọn đổi xe hoặc giữ xe hiện tại. Hình xem trước phải khớp
+đúng xe và các khẩu đang được lắp. Khi đổi, xe cũ được để lại trên đường.
+Nhãn AD trong HTML là mô phỏng; Unity cần nối rewarded ad thật.
+
+XE VÀ ĐỘI MÈO
+Xe có thể giống tank gốc nhưng chỉ còn pháo + MG, pháo + mortar, hoặc chỉ
+có pháo. Mèo ở khẩu bị thiếu nhảy xuống chạy theo sau xe. Cả đội vẫn đủ
+người; không xóa mèo hoặc nhân đôi mèo khi đổi xe.
+Mèo chạy theo không giữ xe đứng yên. Gặp địch mặt đất thì hỗ trợ cận chiến;
+hết địch quay lại đội hình. Đổi sang xe có vị trí tương ứng thì mèo lên lại.
+Đạn dự trữ của khẩu bị thiếu vẫn giữ lại, nhưng khẩu đó không được bắn
+và lựa chọn tiếp tế của nó bị khóa.
+Khẩu nào hết đạn thì mèo ở đó cũng nhảy xuống hỗ trợ mèo melee. Hết địch
+thì chạy theo đội hình; được tiếp đạn thì quay lại xe và tiếp tục vận hành súng.
+Xe đỏ và xe xanh phóng đồng đều phần xe để cả đội mèo giữ kích thước như
+xe gốc; không thu nhỏ mèo cho vừa khoang. Xem Preview/speed-scale-fixed.png
+và Preview/heavy-scale-fixed.png.
+
+STAGE 3
+Đông quái hơn, đạn khan hiếm. Điểm đầu chặng cho gặp xe tiếp tế.
+Thiết kế chủ đích: giữ xe cũ sẽ cạn đạn và thua; đổi xe mới có thể vượt qua.
+Xe nhặt có thể không có mortar, nhưng có đầy đạn pháo và MG. Mèo mortar
+xuống chạy theo. Nhánh thắng phải khả thi mà không cần lựa chọn AD.
+Menu có stage 3 và sau khi thắng stage 2 chuyển tiếp sang stage 3.
+
+HÌNH ẢNH VÀ VFX
+BG dùng lại các layer PNG riêng trong hai bộ nền đã có: trời đứng yên,
+cảnh xa trôi chậm, nhà và mặt đường nhanh hơn, tiền cảnh gần trôi nhanh nhất.
+Giữ nguyên canvas trong suốt và xếp đúng thứ tự; không ghép phẳng rồi cuộn.
+Lặp nền bằng tile lật ngang xen kẽ để tránh hở biên. Thi thể, lửa và đồ rơi
+đi theo mặt đường. Dừng xe tại trạm/cận chiến thì các lớp nền cùng dừng.
+Art/TankParts: PNG part để lắp xe. Art/TankLoadouts: hình xe trống theo
+cấu hình vũ khí, dùng đối chiếu; không thay part động bằng một ảnh gộp.
+Art/Environment/tent.png: ảnh lều gốc, có alpha; giữ nền trong suốt.
+Art/UI: icon và khung panel/card/button ở PNG + SVG, chữ UI để text động.
+Preview: ảnh chụp HTML để đối chiếu bố cục và đội hình.
+Nhân vật và bộ Spine/anim dùng lại trong Art/Anim của project.
+Bụi xe lớn hơn, cao ngang bánh và phủ trước bánh. Đạn MG lớn, rõ hơn.
+Lửa pháo phụt tại đầu nòng rồi tắt, không bay theo viên đạn. Mortar dùng
+bộ VFX đã xuất trong Art/VFX/Reference_Arcade_v1. Pháo và nổ có rung cam.
+Boss giữ các luật cận chiến/ra vào xe hiện có. Thắng boss tự mở rương;
+không có ô rương tích lũy ở góc. Tiền và bánh răng cộng đúng một lần.
+
+CHỈNH HUD / MODEL CHỌN SÚNG — 2026-11-26
+- Icon/số đạn nhỏ hơn, canh top với phần khung HP (phía dưới tab HP nhô cao).
+  Cả HP và ammo dùng một nhóm layout; ammo đi sát bên HP, không rải đến mép phải.
+- Đã bỏ tên "Đạn nổ mạnh" / "Đạn tiêu chuẩn" / loại đạn khỏi thanh HP.
+- "Chọn loại đạn" trong mô tả cũ thực chất là CHỌN BIẾN THỂ SÚNG, ví dụ Cannon băng,
+  MG plasma. Đây là lựa chọn gắn với súng/slot tương ứng, không phải đổi loại đạn
+  hoặc buff nguyên tố chung cho mọi súng trên tank.
+- Model Unity nên lưu weaponSlot + weaponVariantId cho từng súng. Counter HUD tiếp
+  tục thể hiện số lượng đạn còn lại; không dùng tên biến thể như nhãn loại đạn chung.
+- Hiện chưa có art riêng cho các biến thể súng. Dùng art súng/icon cơ bản hiện tại
+  làm placeholder; thay visual theo weaponVariantId khi bộ art bổ sung xong.
+- Prototype ammoType/TYPES chung trong engine HTML là logic demo cũ, không phải
+  model chốt để port sang Unity. Khi triển khai hệ thống lựa chọn, thay bằng biến thể
+  riêng từng súng theo quyết định trên. Bản chỉnh này chỉ sửa HUD và handoff,
+  chưa triển khai lại hiệu ứng chiến đấu của từng biến thể.
+- Không kèm bảng balance hoặc tự đặt quy tắc đổi lượng đạn khi đổi biến thể.

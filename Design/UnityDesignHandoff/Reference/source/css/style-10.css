@@ -1,0 +1,63 @@
+
+#tank-autobattle-main{color-scheme:light}
+#tank-autobattle-main [hidden]{display:none!important}
+#tank-autobattle-main .gm-app{--gm-face:#444a5e;--gm-ink:#fff;--gm-foot:#262331;--gm-paper:#363b4c;position:relative;isolation:isolate;width:100%;aspect-ratio:21/9;min-height:430px;overflow:hidden;background:#e4baa4;color:var(--gm-ink);font:400 16px/1.3 system-ui,sans-serif}
+#tank-autobattle-main .gm-app *{box-sizing:border-box}
+#tank-autobattle-main button{font:800 16px/1.2 system-ui,sans-serif;color:inherit}
+#tank-autobattle-main .gm-street-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;z-index:-2;pointer-events:none}
+#tank-autobattle-main .gm-tank{position:absolute;left:190px;bottom:62px;transform:translateX(-50%);width:28%;max-width:310px;z-index:1;pointer-events:none}
+#tank-autobattle-main .gm-tank img{display:block;width:100%;height:auto;object-fit:contain}
+#tank-autobattle-main .gm-tank-shadow{position:absolute;left:46%;bottom:-2px;transform:translateX(-50%);width:66%;height:9px;border-radius:50%;background:rgba(42,26,18,.42);filter:blur(3px);z-index:-1}
+#tank-autobattle-main .gm-chapter{position:absolute;left:16px;top:14px;width:264px;height:82px;display:grid;place-items:center;z-index:3;padding:10px 20px}
+#tank-autobattle-main .gm-chapter img{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#tank-autobattle-main .gm-chapter span{position:relative;text-align:center;font-size:23px;line-height:1.05;font-weight:900;letter-spacing:-.04em;color:#fff;-webkit-text-stroke:3px #111;paint-order:stroke fill}
+#tank-autobattle-main .gm-image-button{position:absolute;display:block;padding:0;border:0;background:transparent;z-index:3}
+#tank-autobattle-main .gm-image-button>img{display:block;width:100%;height:100%;pointer-events:none}
+#tank-autobattle-main .gm-menu{right:6px;top:12px;width:84px;height:47px}
+#tank-autobattle-main .gm-rail{position:absolute;right:0;top:109px;width:96px;display:grid;grid-template-rows:repeat(3,54px);gap:26px;z-index:3}
+#tank-autobattle-main .gm-rail-hit{position:relative;min-width:44px;min-height:54px;padding:0;border:0;background:transparent}
+#tank-autobattle-main .gm-button-face{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#tank-autobattle-main .gm-button-icon{position:absolute;left:50%;transform:translateX(-50%);object-fit:contain;pointer-events:none}
+#tank-autobattle-main .gm-equipment-icon{width:74px;height:auto;bottom:23px}
+#tank-autobattle-main .gm-crew-icon{width:80px;height:auto;bottom:24px}
+#tank-autobattle-main .gm-tech-icon{width:67px;height:auto;bottom:21px}
+#tank-autobattle-main .gm-start{right:6px;bottom:14px;width:180px;height:83px}
+#tank-autobattle-main .gm-start span{position:absolute;inset:0;display:grid;place-items:center;padding-bottom:4px;font-size:30px;font-weight:900;letter-spacing:-.03em;color:#fff;-webkit-text-stroke:3px #111;paint-order:stroke fill}
+#tank-autobattle-main .gm-image-button:hover,#tank-autobattle-main .gm-rail-hit:hover{filter:brightness(1.09)}
+#tank-autobattle-main .gm-image-button:active,#tank-autobattle-main .gm-rail-hit:active{transform:translateY(2px)}
+#tank-autobattle-main .gm-start:disabled{filter:grayscale(1);opacity:.7}
+#tank-autobattle-main .gm-stage{position:absolute;left:20px;bottom:20px;width:340px;height:98px;display:grid;grid-template-columns:22% minmax(0,1fr) 22%;align-items:stretch;z-index:2}
+#tank-autobattle-main .gm-stage-art{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#tank-autobattle-main .gm-stage-copy{position:relative;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:0 5px 4px;color:#fff;-webkit-text-stroke:3px #111;paint-order:stroke fill}
+#tank-autobattle-main .gm-stage-copy>span{font-size:17px;line-height:1.2;font-weight:900;letter-spacing:-.04em}
+#tank-autobattle-main .gm-stage-copy strong{font-size:18px;line-height:1.25;font-weight:900;letter-spacing:-.035em}
+#tank-autobattle-main .gm-stage-copy[data-locked="true"]>span{font-size:11px;letter-spacing:0;-webkit-text-stroke:2px #111}
+#tank-autobattle-main .gm-stage-step{position:relative;min-width:44px;min-height:44px;border:0;background:transparent;padding:0}
+#tank-autobattle-main .gm-stage-step:hover{background:rgba(255,255,255,.12)}
+#tank-autobattle-main .gm-scene{position:absolute;inset:0;background:var(--gm-paper);z-index:8;display:flex;flex-direction:column}
+#tank-autobattle-main .gm-scene>header{display:flex;align-items:center;gap:20px;padding:16px 20px;border-bottom:1px solid #747c91;font-weight:800}
+#tank-autobattle-main .gm-back{min-height:44px;padding:8px 15px;background:var(--gm-face);border:2px solid var(--gm-foot);border-radius:5px;box-shadow:0 3px 0 var(--gm-foot)}
+#tank-autobattle-main .gm-scene-content{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:20px}
+#tank-autobattle-main .gm-scene-content img{width:160px;height:140px;max-width:100%;object-fit:contain}
+#tank-autobattle-main .gm-scene-content h3{margin:16px 0 6px;font-weight:800;font-size:24px}
+#tank-autobattle-main .gm-scene-content p{margin:0;font-size:16px}
+#tank-autobattle-main .gm-modal{position:absolute;inset:0;background:rgba(20,20,29,.72);display:grid;place-items:center;z-index:10;padding:20px}
+#tank-autobattle-main .gm-settings{width:330px;max-width:100%;background:var(--gm-paper);border:2px solid #8c839c;border-radius:7px;padding:19px;box-shadow:0 6px 0 var(--gm-foot)}
+#tank-autobattle-main .gm-settings-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}
+#tank-autobattle-main .gm-settings h3{margin:0;font-size:22px;font-weight:800}
+#tank-autobattle-main .gm-close{width:44px;height:44px;border:2px solid var(--gm-foot);border-radius:5px;background:var(--gm-face);font-size:24px}
+#tank-autobattle-main .gm-settings label{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:44px;margin:10px 0}
+#tank-autobattle-main .gm-settings input{width:22px;height:22px;accent-color:#f6ce00}
+#tank-autobattle-main .gm-continue{width:100%;min-height:44px;background:#f6ce00;color:#171720;border:2px solid var(--gm-foot);border-radius:5px;box-shadow:0 3px 0 var(--gm-foot);margin-top:16px;padding:10px}
+@media(max-width:650px){
+ #tank-autobattle-main .gm-app{aspect-ratio:auto;min-height:620px}
+ #tank-autobattle-main .gm-chapter{left:12px;top:14px;max-width:calc(100% - 106px);height:75px;padding:10px 15px}
+ #tank-autobattle-main .gm-chapter span{font-size:20px}
+ #tank-autobattle-main .gm-menu{right:6px;top:14px;width:80px;height:45px}
+ #tank-autobattle-main .gm-rail{top:154px;width:94px;grid-template-rows:repeat(3,54px);gap:26px}
+ #tank-autobattle-main .gm-start{bottom:118px;width:145px;height:67px}
+ #tank-autobattle-main .gm-start span{font-size:27px}
+ #tank-autobattle-main .gm-stage{left:14px;bottom:14px;max-width:calc(100% - 28px);height:98px}
+ #tank-autobattle-main .gm-stage-copy strong{font-size:16px}
+ #tank-autobattle-main .gm-tank{left:30%;bottom:68px;width:45%;max-width:230px}
+}

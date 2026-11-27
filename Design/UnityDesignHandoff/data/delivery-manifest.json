@@ -1,0 +1,819 @@
+{
+  "date": "2026-11-26",
+  "unityEditorValidated": false,
+  "files": [
+    {
+      "path": "Art/Asset/BG/source/upgrade_station.png",
+      "bytes": 2563231,
+      "sha256": "0b777cbcd5b73cf551d246e0bec0351791137705001a3f28c15953d8f4e67b71"
+    },
+    {
+      "path": "Art/Asset/BG/upgrade_station.png",
+      "bytes": 2540379,
+      "sha256": "dc8fb181f8074b59979474fa5478ea749b50a5ac9f743aedd7a1b4d76dcae449"
+    },
+    {
+      "path": "Art/Asset/Enemies/Dog_Cannon_Car_v2/README_IMPORT_VI.txt",
+      "bytes": 906,
+      "sha256": "a452bb1ad79696957d6c4a96810d6237d8f103f4ff24a61048b182e9d08be9a5"
+    },
+    {
+      "path": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/README_IMPORT_VI.txt",
+      "bytes": 1167,
+      "sha256": "9bee9173c52e0fd07289361afc71ec67969894a9eedd4da1057fa1c72c3a7917"
+    },
+    {
+      "path": "Art/Asset/Enemies/Trojan_Scrap_Cat_v1/README_IMPORT_VI.txt",
+      "bytes": 1277,
+      "sha256": "30c79326f535efd7cf0eade946064249a004f22eaa1b8291bda0b8b829d40785"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/base_ad.png",
+      "bytes": 214218,
+      "sha256": "1a0f09efa6128e1dd1331d5a0784d183ac32ad6015515d3a5a869bb8101c1cf3"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/base_common.png",
+      "bytes": 125317,
+      "sha256": "75c694a8b65c9847f5ff13edc4f904730e361b4cd723c59ec6c6598e34618c08"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/base_epic.png",
+      "bytes": 139452,
+      "sha256": "ad1cd41789b52e9c252cb65688111798e59c7d6e360458e7ec627fc4aa4cf639"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/base_legendary.png",
+      "bytes": 135340,
+      "sha256": "c15fd30cdb05a837d4883fb54599c98d14632117dc435adcf45e060d9b1f7a53"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/base_rare.png",
+      "bytes": 143640,
+      "sha256": "a667bfb6aef65cecbe0f0d55c08eaee81d6d6c6e604ae9dc94720f8427eff803"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/frame_ad.png",
+      "bytes": 2355,
+      "sha256": "2859b73cc243d1be1e81acaa83e18bf2e32929c12bd39d817a6c7027f4c50717"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/frame_ad.svg",
+      "bytes": 473,
+      "sha256": "eed252c22ced5f34668fe3a43cb3a6111c016525c9490edb24d3e16d2b01f33c"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/frame_common.png",
+      "bytes": 796,
+      "sha256": "ffe718a9fcef62b2958707d99b2f29f6ef3fb4f022c023a75a47d97d0fdd90e0"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/frame_common.svg",
+      "bytes": 470,
+      "sha256": "0d4dc035820ac3bfe30ccf87361d9a69944f573cb3061515661bb8371c9ec7be"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/frame_epic.png",
+      "bytes": 801,
+      "sha256": "9ea98ce53060d0e03bae35e3fcb55ff90ca4cdec10f636d4d95524a6a96199b7"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/frame_epic.svg",
+      "bytes": 470,
+      "sha256": "441b70a09b42f7eb8bf89c41c79b11c100443227b7f023a6cb66277c6c8d9662"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/frame_legendary.png",
+      "bytes": 798,
+      "sha256": "eb5d795e4d66500b6b64682b9b6aa19e21d62e1e04a59cf691c24b6f40c18abf"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/frame_legendary.svg",
+      "bytes": 470,
+      "sha256": "119b2dfbcde188dfeb3658ab458a884ef2b9ea837022ebd166243557ee1f5e5a"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/frame_rare.png",
+      "bytes": 799,
+      "sha256": "ab20a9ce744316ca87639f6cb901bd6145903776defd568c192c02c86879a9c4"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/frame_rare.svg",
+      "bytes": 470,
+      "sha256": "67a70a5f15102e8d1c7fbd7b2304292162f5bdc08af769e3d53663801b1109a1"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/swirl_ad.png",
+      "bytes": 67112,
+      "sha256": "4d5aea29a898ed9a5d9d90341cd1ae133e82682c960f6ef42cb1fc138dbdc71d"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/swirl_ad.svg",
+      "bytes": 1910,
+      "sha256": "14b9824d2f9c2d03e38dd0dfcb57efd314b0a23983a4d787d511227ef6140ff5"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/swirl_common.png",
+      "bytes": 18212,
+      "sha256": "4e9b7163cbdb46c0e8d6166458c6c845fab69d5553222d7f4f5a521a6470498c"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/swirl_common.svg",
+      "bytes": 1463,
+      "sha256": "11ca73f83a1c560a15367b7f6df842eca80bc346dd3192d625a1fc39df7039d0"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/swirl_epic.png",
+      "bytes": 18138,
+      "sha256": "f7ae5c8a9c5cb382c6661c4f2ff454480eb8784dfbe0c95d92dd04420221fda9"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/swirl_epic.svg",
+      "bytes": 1463,
+      "sha256": "a4862c9487813e26dddb9dee0e3b6bf4cc7d008523ce257dabed43e520317cb1"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/swirl_legendary.png",
+      "bytes": 17433,
+      "sha256": "17b328833b56938bff79e86178d586b0a165a0b92c4838cba8536abe86ee5bf6"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/swirl_legendary.svg",
+      "bytes": 1463,
+      "sha256": "40f57e056c36ad704637c8b6761a2450c15889cd1caa768649f79213f352d25a"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/swirl_rare.png",
+      "bytes": 17512,
+      "sha256": "499a6213dc9e0594864baee8e6070c7877762838df5dd44606f2ff1f3da39ae9"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/bases/swirl_rare.svg",
+      "bytes": 1463,
+      "sha256": "ee98aeb3a51eaf3e270cdde1d74bc9a092d169cd5f8b4c7c1f870fa3a0a1e9eb"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/card-catalog.json",
+      "bytes": 4077,
+      "sha256": "7044bee6e51fcde45a4a29994ddb93046f88483299cfa4a3974c1e3148a3ba3a"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/HUONG_DAN_UNITY.txt",
+      "bytes": 1273,
+      "sha256": "f3a9580e182972de53efb7e34556dc061063f81b2e91e35cb503e103ff1d261d"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/icons/cannon_ap.png",
+      "bytes": 32176,
+      "sha256": "50944a73f5838a58574735257c3516332f0e3d2e23a0091c894e50addacbe44d"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/icons/medical_kit.png",
+      "bytes": 98759,
+      "sha256": "eca0eaa6ba453c331a4b74cef6a7aedcc4ec01c66fbd7e87e1e18301c0d84deb"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/icons/mg_plasma.png",
+      "bytes": 41217,
+      "sha256": "7b5da51f207823d1e99dc626dc85cf7b0cf249e30df10a8c9d6f098c0d1f0c0f"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/icons/mortar_blast.png",
+      "bytes": 65506,
+      "sha256": "9b4fcb8c029c54f7275d94591d2982044a6f11c237646be129011a7e5bfc99a8"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/icons/supply_cannon.png",
+      "bytes": 121204,
+      "sha256": "c88326744d8ad98c121c2ba47646e2ee1317ed79068ac00a93a4bff6804e877d"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/icons/supply_mg.png",
+      "bytes": 99076,
+      "sha256": "6c9e2dabcc167e401d2ef00115c6dbe47b5618fe8d7f2a48a3ebd4fe949a34a7"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/icons/supply_mortar.png",
+      "bytes": 120168,
+      "sha256": "f70b170afc2fa2cdd2eefdc3ed21bb71162374d404b6417fddc6881ef91c3606"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/illustrations/cannon_ap.png",
+      "bytes": 129412,
+      "sha256": "4d29b728429224df94d5d10c1067b06df8f5c6ea2bef65acf6c016d65171092a"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/illustrations/medical_kit.png",
+      "bytes": 253734,
+      "sha256": "55b0f8d012235643700852abd7f915eeb9b4359cf37493a194f013110989e0ed"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/illustrations/mg_plasma.png",
+      "bytes": 179410,
+      "sha256": "6e5464c67c595a1175cfcb814505d9aefaa5253a3791fe0817f33d4fb48bf60f"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/illustrations/mortar_blast.png",
+      "bytes": 273040,
+      "sha256": "f3caa4ba41e13c0df6483a149843b332ea920e93ad6691687cf0a48610837086"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/illustrations/supply_cannon.png",
+      "bytes": 320003,
+      "sha256": "eb302cd02cea465a7258ffbce07f48057250e1e42ced2f148c08fa708641999c"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/illustrations/supply_mg.png",
+      "bytes": 341516,
+      "sha256": "a0d35e334d803187b953576b80c5bb054cbd64ba1ae4eabcf5025ea94b282a96"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/illustrations/supply_mortar.png",
+      "bytes": 318279,
+      "sha256": "655443c32675d78decdcd05951a2d94ed1f82c7ccae362aa64ca6e03d3452d8d"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/parts/action_plate.png",
+      "bytes": 457,
+      "sha256": "1a548294011b0214ff82188c1c5d29e17adcbef4ebf855fecbabf5366aee906f"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/parts/action_plate.svg",
+      "bytes": 198,
+      "sha256": "8734ea3fb3462d9542655f222d9f8d4857047dec9822234a972c180a63a989b4"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/parts/info_badge.png",
+      "bytes": 2636,
+      "sha256": "8812b476c4fde09182186c19948bb3f919f53f1eaff6bb6ad22c8573e31fb226"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/parts/info_badge.svg",
+      "bytes": 349,
+      "sha256": "cf687a7458b89e2b9be564fae9cfcc8e0d6ed73448392594d9d831a6396b68b2"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/source/choice-cards.css",
+      "bytes": 7726,
+      "sha256": "32ddf3f00bb1beb15afcb135c4a4c7ef778283e8e74ca5d1c1e8dc8368053003"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/source/choice-cards.js",
+      "bytes": 9256,
+      "sha256": "d14ef19293f3a2ee98d2265b95040bc1d4ebea73e7d82c66bd1a0f2ce1f9c031"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/source/illustrations/cannon_ap.png",
+      "bytes": 1014669,
+      "sha256": "fabff3293a6b464dec2495c7e5dc719389694223cfe08287d68b48eaf709d795"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/source/illustrations/medical_kit.png",
+      "bytes": 1328000,
+      "sha256": "0277a641bd2c751481e020df40169d5b7b7bbfb658edf8c097f9fdfbc708997d"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/source/illustrations/mg_plasma.png",
+      "bytes": 971237,
+      "sha256": "e15ee4662fa0915f15990612ebd15fc46e7c2bebfba18d183acb796295fdd219"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/source/illustrations/mortar_blast.png",
+      "bytes": 1418279,
+      "sha256": "323228010cb168831d7f2a0166ee8990576e63e1e16a3e1fc35b8713ddda8f1f"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/source/illustrations/supply_cannon.png",
+      "bytes": 1607775,
+      "sha256": "d70109c8192e0514cf314093c44f4fbfb306254533cf542aa05a9b88354f7eed"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/source/illustrations/supply_mg.png",
+      "bytes": 1547948,
+      "sha256": "ef38cdbc4e83ac742458d75d9cb6f938d7471c97da45043cbce75e027d0e7a4e"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/source/illustrations/supply_mortar.png",
+      "bytes": 1647435,
+      "sha256": "c0c01d1d04cae5ba2a1bb5bfc96ea441db3d9175abf6d2221c611a8385074cdf"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/source/imagegen_prompts.txt",
+      "bytes": 6305,
+      "sha256": "714f5e35428d32a13c630141bb1787ed243e1009d445f71ea99ec57f2e1bb345"
+    },
+    {
+      "path": "Art/Asset/UI/Choice_Cards/ui-sprites.json",
+      "bytes": 2166,
+      "sha256": "264b22d16655a4cf6cdd51c2eaf6bd811ffb10a7bd28704ac897b3c63528f6c5"
+    },
+    {
+      "path": "Art/Asset/UI/Crew/DESIGN_UNITY_VI.txt",
+      "bytes": 6923,
+      "sha256": "e11333504a716490f37d48b612f94fe11b0a29ea350183a6b8e897959e6c2891"
+    },
+    {
+      "path": "Art/Asset/UI/Event_Timeline/event-timeline.js",
+      "bytes": 7988,
+      "sha256": "ba770aa9c04226c6be0474962f591d68bcd5aeef173e6451b95ad81f638fa74f"
+    },
+    {
+      "path": "Art/Asset/UI/Event_Timeline/icons.json",
+      "bytes": 1940,
+      "sha256": "a3e7764f96b3efe448ee30f132d8eb4c1439bd4d934f8d803bcbdcc0cf4b53c8"
+    },
+    {
+      "path": "Art/Asset/UI/Event_Timeline/icons/32/event_upgrade.png",
+      "bytes": 2474,
+      "sha256": "35a71bba33356d06e9c36f94518a8797ca0f06a0567b1c365822149383ce68b4"
+    },
+    {
+      "path": "Art/Asset/UI/Event_Timeline/icons/event_upgrade.png",
+      "bytes": 62806,
+      "sha256": "8ae4da17b110bf60ba7725c80917889050c09b67985306c374b5093f9d6f8709"
+    },
+    {
+      "path": "Art/Asset/UI/Event_Timeline/source/combat-hud.js",
+      "bytes": 5110,
+      "sha256": "f5891a2bb84ee2587d040c96e9fc895e0bf609276630f54c9f4e28b83d5d2529"
+    },
+    {
+      "path": "Art/Asset/UI/Player_Profile/avatar_default.png",
+      "bytes": 129897,
+      "sha256": "875e491ae11948a14fce64c9c5480358e743a75c785444e3daa6b24d157329a7"
+    },
+    {
+      "path": "Art/Asset/UI/Player_Profile/exp_fill.png",
+      "bytes": 279,
+      "sha256": "256cccae073c7d4494793a039ab66088d7e02efcceb2acd38e7bfbf12e948efc"
+    },
+    {
+      "path": "Art/Asset/UI/Player_Profile/exp_fill.svg",
+      "bytes": 116,
+      "sha256": "695750c8c186354bd5e6a57defb8d321034a05f45d2d2755fe81ae6cf71aa03c"
+    },
+    {
+      "path": "Art/Asset/UI/Player_Profile/exp_rail.png",
+      "bytes": 288,
+      "sha256": "12c4f0bc382bd12b5271fc3bfe620d4651d4da4d7bd3ce423122d2c926cc6629"
+    },
+    {
+      "path": "Art/Asset/UI/Player_Profile/exp_rail.svg",
+      "bytes": 162,
+      "sha256": "92b8b904f02e2c5cc99a1170811d1d136081d3f0c17fe54f5461b3a755141442"
+    },
+    {
+      "path": "Art/Asset/UI/Player_Profile/profile_frame.png",
+      "bytes": 1432,
+      "sha256": "c503db7834d9d41e9dab5a64f19a94570edbd6441ea6395f1003caa5a0b4104b"
+    },
+    {
+      "path": "Art/Asset/UI/Player_Profile/profile_frame.svg",
+      "bytes": 183,
+      "sha256": "f66724d83b28c608ad06b3c55223bb293cc621e7593fb82b9958e060274cf58f"
+    },
+    {
+      "path": "Art/Asset/UI/Player_Profile/ui-sprites.json",
+      "bytes": 525,
+      "sha256": "392bf2912c4bdfb784b40322ccbe2d72623451837d168c2e1672089cd57d58a0"
+    },
+    {
+      "path": "Art/Asset/UI/Resource_Counters/32/coin.png",
+      "bytes": 2495,
+      "sha256": "9afc8f8a726c88eaadfdfff4e4b3db276068521eb5710d18d71dc8efd51250d4"
+    },
+    {
+      "path": "Art/Asset/UI/Resource_Counters/32/gear.png",
+      "bytes": 2474,
+      "sha256": "35a71bba33356d06e9c36f94518a8797ca0f06a0567b1c365822149383ce68b4"
+    },
+    {
+      "path": "Art/Asset/UI/Resource_Counters/coin.png",
+      "bytes": 79811,
+      "sha256": "3be264b8323331a77254ed514b87bba23aa5ed430d1dbb61927ea4fe3fa127e0"
+    },
+    {
+      "path": "Art/Asset/UI/Resource_Counters/counter_frame.png",
+      "bytes": 1568,
+      "sha256": "55b9414d15318418191f598c3490737b596a786f78307940051345ab29b98e3b"
+    },
+    {
+      "path": "Art/Asset/UI/Resource_Counters/gear.png",
+      "bytes": 62806,
+      "sha256": "8ae4da17b110bf60ba7725c80917889050c09b67985306c374b5093f9d6f8709"
+    },
+    {
+      "path": "Art/Asset/UI/Resource_Counters/HUONG_DAN_UNITY.txt",
+      "bytes": 540,
+      "sha256": "ddb1c18e38c68b2a347d9d7877e3f7e43c0334d6f11ef00c55e5554607c67ad9"
+    },
+    {
+      "path": "Art/Asset/UI/Resource_Counters/preview.png",
+      "bytes": 55259,
+      "sha256": "5cce6a7643f538022ba9247e89e6c61e6928b5feb9808c684df23e7e5298c9bc"
+    },
+    {
+      "path": "Art/Asset/UI/Resource_Counters/source/counter_frame.svg",
+      "bytes": 242,
+      "sha256": "a2eebfe2199da4e6aa884ddb792cc271b329d523e8c96b73ccd058363fdc695e"
+    },
+    {
+      "path": "Art/Asset/UI/Resource_Counters/source/resource-counter.css",
+      "bytes": 5322,
+      "sha256": "61e9e0a1f93185e1162ff4256e53bbd3055dd3b95dbbcc608a4764a96ee2300e"
+    },
+    {
+      "path": "Art/Asset/UI/Resource_Counters/sprites.json",
+      "bytes": 836,
+      "sha256": "4d84bb48366a3dc66573be7e07cef1c1bb51c79c56465b7f78461fc72691654a"
+    },
+    {
+      "path": "Art/Asset/UI/Stat_Upgrades/cannon_damage.png",
+      "bytes": 274624,
+      "sha256": "4aa68f252df1ffb1dd6d6460508ee0eecd3c12e467ae0f2b360c8be3afb2e739"
+    },
+    {
+      "path": "Art/Asset/UI/Stat_Upgrades/crit_chance_up.png",
+      "bytes": 212098,
+      "sha256": "7e824be81b3f759af0778b6433c916bb29de68424e0adfa3c8cc72888da7cf0b"
+    },
+    {
+      "path": "Art/Asset/UI/Stat_Upgrades/icons.json",
+      "bytes": 643,
+      "sha256": "d8fa7fb1c2e6fd9b97c62a0c92c4503edb76a58156ece9c626ce41644fc750e0"
+    },
+    {
+      "path": "Art/Asset/UI/Stat_Upgrades/mg_damage.png",
+      "bytes": 302855,
+      "sha256": "9f96decfe737e3189a7436e98cc1fdc4497307fe79df74e6c287d4cfdfb9fa25"
+    },
+    {
+      "path": "Art/Asset/UI/Stat_Upgrades/source/cannon_damage.png",
+      "bytes": 1223546,
+      "sha256": "c65e088a0a5ed6c978a865bb244664b35fc28f69d27ff7b93f7d370d7cfa1873"
+    },
+    {
+      "path": "Art/Asset/UI/Stat_Upgrades/source/crit_chance_up.png",
+      "bytes": 1029046,
+      "sha256": "3c5b12d6a8d3cf0036af7da4ef43746042d9bce5ee264c12d45d1227f79d5614"
+    },
+    {
+      "path": "Art/Asset/UI/Stat_Upgrades/source/imagegen_prompts.json",
+      "bytes": 5710,
+      "sha256": "99550e3a2563fbfe5aa904a618a31f88598e553b57148390fa193f3d89df0303"
+    },
+    {
+      "path": "Art/Asset/UI/Stat_Upgrades/source/mg_damage.png",
+      "bytes": 1220422,
+      "sha256": "3c52294b4e0b62eac20ddba3c93e0bd46a0be9172141a5a46260ff0304f7cf84"
+    },
+    {
+      "path": "Art/Asset/UI/Stat_Upgrades/source/tank_hp.png",
+      "bytes": 1547682,
+      "sha256": "12398b2497770c88ca245faff3e5e4e290a2486730db82ee5c35e134ceece079"
+    },
+    {
+      "path": "Art/Asset/UI/Stat_Upgrades/tank_hp.png",
+      "bytes": 367302,
+      "sha256": "36c2fc0f5720614201243a3dc74371024f6be5ad91c80be0155f63cad58499ae"
+    },
+    {
+      "path": "Art/Equipment-test.html",
+      "bytes": 40023062,
+      "sha256": "18229e29badf3ee7e5269aceb670c50473c7940709634a8027df6ecc336670bf"
+    },
+    {
+      "path": "Art/VFX/Tank_Level_Up/arrow_up.png",
+      "bytes": 507,
+      "sha256": "bd8c3bb9172a1f66556eef7429078276233fdb859105b5145bb0f49a5324fa60"
+    },
+    {
+      "path": "Art/VFX/Tank_Level_Up/arrow_up.svg",
+      "bytes": 123,
+      "sha256": "d273522a835d7b29b783c2dbab268f7d89e7786c6e68eb48aed44063d38adc31"
+    },
+    {
+      "path": "Art/VFX/Tank_Level_Up/glow.png",
+      "bytes": 15584,
+      "sha256": "86e3301bb6a02193b32e1e6540d529e8066457902fdf96538ee0d1a35f72afb3"
+    },
+    {
+      "path": "Art/VFX/Tank_Level_Up/glow.svg",
+      "bytes": 330,
+      "sha256": "3019a474a11e12eb7f495db7685bce39ef363836875a8b64bb3f1913336e5dc2"
+    },
+    {
+      "path": "Art/VFX/Tank_Level_Up/README_UNITY.txt",
+      "bytes": 510,
+      "sha256": "cd2a4d27f2e330f74e2ae74424ab9ec7bfd5688cca827bb9cca8ea479d0af9d4"
+    },
+    {
+      "path": "Art/VFX/Tank_Level_Up/ring.png",
+      "bytes": 2997,
+      "sha256": "05abbe4187b253528d4d4df3caecfd088c40d709711cedbd26f7e38e9396417f"
+    },
+    {
+      "path": "Art/VFX/Tank_Level_Up/ring.svg",
+      "bytes": 159,
+      "sha256": "151a3f181df8d0e10b6ab06ef482b875c9c2cc733d3d867b97cb4471430e96b0"
+    },
+    {
+      "path": "Art/VFX/Tank_Level_Up/spark.png",
+      "bytes": 629,
+      "sha256": "478360407dde3e27bfa900864a8aae6367ffce3017f2720cf23bcd5504494d39"
+    },
+    {
+      "path": "Art/VFX/Tank_Level_Up/spark.svg",
+      "bytes": 135,
+      "sha256": "0c46a08f9af7bf44bd3f95c5f9c63957e33ba3d3b573cba02d040208efe10c5c"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/AI_START_HERE.txt",
+      "bytes": 1406,
+      "sha256": "7e98f286f9b7f99e1349f9b149c09e0f626997099a3313668f843dc165f269dc"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/data/runtime-schema.json",
+      "bytes": 1358,
+      "sha256": "09c74b2470d794f8d48a123915370f2410f7ae07f7faa10a8a4ca8c20ead5675"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/NOTE_CREW_UI.txt",
+      "bytes": 1170,
+      "sha256": "8b05676b8bb92236cd3db624f1c36acd93eb648cad511044641b1be9f1f20662"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/NOTE_EVENT_TIMELINE_HUD.txt",
+      "bytes": 3391,
+      "sha256": "528416491fc7dad045a8a3f838147b8b3fdea8bc7103cb205dba666365b97932"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/NOTE_GAMEPLAY_UNITY_VI.txt",
+      "bytes": 5580,
+      "sha256": "1b34bb5d2bb86d4ddaa044e094784cce43d6f0295ad916f2eb866fc8e56f0d0a"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/NOTE_LATEST_UNITY.txt",
+      "bytes": 12722,
+      "sha256": "2eb5a1a27e45ab51d1698e0f41143ebe33ba07e7c5c26a31a813fe2192b2cd96"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/NOTE_RESOURCE_COUNTERS.txt",
+      "bytes": 299,
+      "sha256": "d4bef0f65a064245a9ca8e23cf2906b241a0fd71922c9c3cef59a89f2d9ae655"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/PORT_HTML_TO_UNITY.txt",
+      "bytes": 16594,
+      "sha256": "4da68071f090c9ad32d0f35c1afe9fb7bb2faf53d6335f98fe3f3453cd5efdc2"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Preview/choice-bases.png",
+      "bytes": 404663,
+      "sha256": "61f28bf27d39a8471a6f86f492e952e819090c6c29e6c170f5cb42eeab55f5c3"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Preview/choice-cards.png",
+      "bytes": 1199838,
+      "sha256": "84a1ccce094b5fa2addab3cb66203f3accb7217ab5fad166dcef3403fce3b952"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Preview/choice-scenes.png",
+      "bytes": 1380447,
+      "sha256": "956a36f4cf163f3682e6e31d7bbe6c3a735f218b973982cb95eda6d2288bea51"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Preview/combat-enemies.png",
+      "bytes": 1263634,
+      "sha256": "31b050e82567b6a47b41aff3a722f2b44d75471b3f5095321aded26b752c4150"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Preview/crew-stats.png",
+      "bytes": 992519,
+      "sha256": "d8da53067096f1f8d601cb4365b35b5c457faf150826bb54b30774cd174b68f2"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Preview/main-profile.png",
+      "bytes": 1186516,
+      "sha256": "58f3b70a754f22a1e1efc0c1f53b54c653a65a6a5914410a68a9b89fd9b87aa3"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Preview/stat-upgrades.png",
+      "bytes": 404256,
+      "sha256": "bc6d6e6adf49b7575c8fcbf84db33b108e7171c7cd97925ff659ad56c19bf8d1"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Preview/trojan-reveal.png",
+      "bytes": 1279708,
+      "sha256": "f22f468cd391c09c2dd12496399741a179281b6d0502ce54fd2ede2c97814aa1"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Preview/upgrade-station.png",
+      "bytes": 1291246,
+      "sha256": "165d1af0e7412949980b6293b08cae9d088546c5e3f3cb659bae6cd79e5a2ef5"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/README_START_HERE.txt",
+      "bytes": 1026,
+      "sha256": "c53fc1eed19be66260fe964657316c9ab3473d0fdf84d8b4152ffc5de76e277f"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/data/arcade-vfx-clips.json",
+      "bytes": 1754,
+      "sha256": "94d458b12bc79955e78e0ca6208ea9e2af2fb5a21050875fd016554ed1860d2a"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/data/art-source-inventory.json",
+      "bytes": 5732,
+      "sha256": "304fb7f2faeaea7089307be85a068dfe925ddf8f2248c829efacd7e1970ee1a8"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/data/coordinate-contract.json",
+      "bytes": 1275,
+      "sha256": "14e55dfbed8f886ac85f1148bb0fbf306769ab4c89816ae55ad130b567e4185d"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/data/crew-clips-and-stations.json",
+      "bytes": 13291,
+      "sha256": "723fefc3cdf0a14169f84f4311f01cef3614e8f8ce34c4331b147bc66a4abeba"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/data/enemy-parts-geometry.json",
+      "bytes": 32631,
+      "sha256": "e9bcf642af6b33f838ec3a564e704681f4907db51022bef68e2538dc3c7888a1"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/data/export-report.json",
+      "bytes": 264,
+      "sha256": "5494cc256f078900da067b2f3204256f69e7995d8e7aaa9c3f363ef2b4226e13"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/data/parallax-layers.json",
+      "bytes": 3409,
+      "sha256": "d92e1e0aa99dbf8d1fcd7ffe0ad54b83622237e9a1320e935dfba3833af6a0eb"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/data/sprite-asset-map.json",
+      "bytes": 38877,
+      "sha256": "da99b6f0107c5cf197d3a801ae5f264797199fa3b9257fa59672624fd2588b45"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/data/tank-parts.json",
+      "bytes": 2650,
+      "sha256": "d17e26cc6f6ad78dda1368985d231250b247979ad7aabe1ffd345493710fe1e5"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/data/tank-skins-geometry.json",
+      "bytes": 38768,
+      "sha256": "d078785bbf39fe702127a4ccc5cf957814f1b7361f6e1da128075c02184c72b7"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/data/ui-layout-reference.json",
+      "bytes": 22966,
+      "sha256": "c62619f1ffe707108704d5663743dc668c4df9e811cc981e96d4ccd231bd640c"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/data/vehicle-parts.json",
+      "bytes": 11446,
+      "sha256": "03eb2dc7e50c4544479600d36610a027c7324b7a5381ac0cbc798f6d26add799"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/boss-health-component.html",
+      "bytes": 431,
+      "sha256": "2dbadc4af5d0390f5147443e98f3f6060bdb60cfc414abc6f8526a82a60ab81e"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/CrewHealthBar.reference.js",
+      "bytes": 778,
+      "sha256": "8b02d89b4c40c56d4fa8ddac707000887fb9cbf97abad59771b3f334d22fe669"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/css/comic-resource-counter-style.css",
+      "bytes": 3264,
+      "sha256": "f77a768b98efb004fac1c1d819ae86b16a149bafddefcaeb994999f9080eb4fc"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/css/crew-ui-style.css",
+      "bytes": 2773,
+      "sha256": "7b51af327cf1c5132ea1e6c1d1d307b39ec5c60e29145f4c16efb6f8cbb515d0"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/css/player-profile-style.css",
+      "bytes": 548,
+      "sha256": "a2fa00a33c4cb9e74f762734f28b39b697cb89f5bf64227abfc32a6e752e8bcc"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/css/style-00.css",
+      "bytes": 35439,
+      "sha256": "1b9eed75010005d1f1a9239e2d8cf367691aea4c61aa649a47fca11cff241cff"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/css/style-09.css",
+      "bytes": 8690,
+      "sha256": "2f0fcd4a41a3dd4d5481d972036f2605c4331e33fca522ad268e96587010c3b7"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/css/style-10.css",
+      "bytes": 7097,
+      "sha256": "8f4863f979ec924b16a5c5fd3ac000900b8fda1dcfd5910002b8b64beef3c783"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/css/style-11.css",
+      "bytes": 10192,
+      "sha256": "53b78c8c11adf61de22007f82318e1434f557921388740052795bbb74136ecb3"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/css/style-12.css",
+      "bytes": 9484,
+      "sha256": "632f1061897a8cdf6d3bc822666d4f96b73cb96df059fb1b453426200c1e2979"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/css/tank-boss-health-style.css",
+      "bytes": 1967,
+      "sha256": "34151a07137c6a21c670ba9acf7f1ba44d140981d0db07284c0de9b0f675f639"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/css/tank-chest-reward-style.css",
+      "bytes": 3753,
+      "sha256": "135acebb9564efa2b2d005809b730a2bea743600179eba69a7757a4f5c96bd5b"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/css/tank-choice-cards-style.css",
+      "bytes": 7924,
+      "sha256": "2f43b85dfd20f57183bcb89de18daf03d7ba43bf2d7aa72ec782a085d9dd131f"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/css/tank-comic-hud-style.css",
+      "bytes": 3078,
+      "sha256": "1ccf9bfd77d9e5d1ed0061372e7145b6c1a51a5a077a846558385825afdd9309"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/css/tank-level-style.css",
+      "bytes": 792,
+      "sha256": "2225991fe9a616748e69b909b8d47ae18131e0b7bd93f64f4df707c550578149"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/css/tank-resource-style.css",
+      "bytes": 2491,
+      "sha256": "135dee2602fa024d8f37f3916b0d957a2f7ddabbb53bdd3a4eedd9563803c15b"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/css/tank-rogue-style.css",
+      "bytes": 6633,
+      "sha256": "0e75de996c95933538617d2e0eff6cad811037d55225bbbdc75ff1865316b4e8"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/css/tank-scene-transition-style.css",
+      "bytes": 183,
+      "sha256": "8fa37d7edb1c5acab27caaae9d46458d4c6c2a85a42b86bc84088a1ec11ff979"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/EnemyView.reference.js",
+      "bytes": 3617,
+      "sha256": "87603fc32433ab392fab33ed45a5244eb0090cbd6558fbd36c98af9e6f270f4c"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/TankArcadeVFX.reference.js",
+      "bytes": 9877,
+      "sha256": "cc2ce9c107f0e4edb1cb4e21018b3e5c48a7e375717fe51ac24854f77292df8c"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/TankBattleRenderer.reference.js",
+      "bytes": 8374,
+      "sha256": "64acff23d7257e83d24140b8f688fd5c0fc39530f173ad9132efa8a5006f6988"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/TankComicHUD.reference.js",
+      "bytes": 5196,
+      "sha256": "8b5a8a07291589e9271cad6749a2bee6764b2910d0c543a93c0e7a3b96c643f8"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/TankCrew.reference.js",
+      "bytes": 4890,
+      "sha256": "d9f9b8ea8d8719b31962af2048aa1d90bf008d7457f71d7597b38e73421803d4"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/TankEventTimeline.reference.js",
+      "bytes": 8074,
+      "sha256": "51241815295c3f40beff668de906d29e6d57358f22ec9da5a53d1e5ef7c50d2e"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/TankGeometry.reference.js",
+      "bytes": 1268,
+      "sha256": "d2a18d924b3dd33c09b29dc0e4b5427ff5894d0d489703fa8b43039f6f1c2159"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/TankParallax.reference.js",
+      "bytes": 1107,
+      "sha256": "dfef1483d405775ffea9516e1a162b89f0c9cf49464dff2e4a816b90cfb8d5f7"
+    },
+    {
+      "path": "Design/UnityDesignHandoff/Reference/source/UpgradeAura.reference.js",
+      "bytes": 1136,
+      "sha256": "1c7eea773345c394161b6063547d1f1fec7cc9d04e035a622b4e355dac82edea"
+    }
+  ],
+  "gitBranch": "Thai-edit",
+  "deliveryRequestDate": "2026-11-27",
+  "assetSourcePolicy": "Original Art assets only; no HTML imagery extracted"
+}

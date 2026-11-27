@@ -1,0 +1,7 @@
+RESOURCE COUNTERS — BẢN MỚI
+Coin vàng / gear bạc. Khung tối, đầu vát, không có viền trắng.
+Frame dùng Image Sliced; Border theo sprites.json (L/T/R/B: 28/20/50/24).
+Trong Sprite Editor thứ tự L/B/R/T là 28/24/50/20. Chỉ Image frame alpha 0.8.
+Icon Simple+Preserve Aspect và text số alpha 1.0, số canh phải.
+Bind một resource wallet dùng chung cho Main/Battle; không tạo bản sao tài nguyên trong HUD.
+Cùng đường tâm top row với profile/menu/timeline; xem ảnh Main mới trong handoff.

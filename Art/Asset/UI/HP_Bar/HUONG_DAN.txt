@@ -1,0 +1,38 @@
+HP BAR COMIC — MEGATANK
+
+Bố cục theo sketch: nhãn HP nhô bên trái, dải máu mảnh nằm trên hàng nút/đạn;
+khung dài đầu phải vát chéo. Viền trắng, nét đen, bóng lệch; máu màu bẹt.
+Vẽ bằng SVG native để giữ cạnh sắc và tách part chính xác. Có PNG alpha2×.
+
+FILE / LAYER ORDER
+1. hp_panel.png: nền rỗng + bóng lệch; Image Sliced.
+2. hp_rail.png: rãnh máu tối.
+3. hp_fill.png: ảnh trắng tint được, dùng hai instance cho máu hiện tại và damage-chip.
+4. Nội dung nút hành trình và số đạn là UI riêng, không nằm trong PNG khung.
+5. hp_frame.png: chỉ viền, phần giữa trong suốt; Image Sliced.
+6. hp_label.png: ô HP vàng + chữ comic; Simple, anchor góc trái trên.
+
+ui-sprites.json ghi kích thước, vị trí và Border theo thứ tự LEFT, TOP, RIGHT, BOTTOM,
+đơn vị pixel trên PNG2×. Canvas bố cục là1000×112. PNG chính2000×224.
+Các part nhỏ giữ đúng hệ tọa độ ghi trong positions; nhân2 nếu dựng canvas pixel2×.
+Giữ chiều cao thiết kế, kéo ngang panel/frame bằng9-slice để không méo đầu vát.
+Source SVG editable trong source/; source/hp_hud_example.svg chỉ là mockup ghép.
+
+UNITY
+Import Sprite (2D and UI), Single, Mesh Type Full Rect, alpha transparency,
+mipmap off, Bilinear. Đặt border trong Sprite Editor theo ui-sprites.json.
+Với Canvas Reference Pixels Per Unit100, có thể dùng Sprite PPU200 cho PNG2×.
+Panel/frame dùng Image.Type Sliced; label dùng Simple.
+hp_fill dùng Image.Type Filled, Horizontal, Origin Left; fillAmount=currentHP/maxHP,
+clamp0..1, tránh chia0 khi maxHP<=0. Không đổi logic máu/tank/maxHP đang có.
+Rail và fill được neo từ vị trí[20,39] trong canvas1000×112, cỡ960×18.
+Instance damage-chip ở dưới current-fill, tint vàng nhạt; sau lúc bị đánh giữ ngắn
+rồi hạ về fillAmount hiện tại. Khi hồi máu đồng bộ cả hai để không giữ vệt máu cũ.
+Màu xanh/vàng/đỏ và ngưỡng trong preview chỉ để duyệt hình, dev tự gắn quy tắc game.
+
+PREVIEW
+preview.png có bản máu còn nhiều và máu thấp kèm chip vàng.
+preview.html có slider và nút bị đánh/hồi đầy để xem chuyển động.
+Icon và số đạn trong mockup là ví dụ, không phải bảng balance; dùng lại bộ Ammo_Icons.
+Nút hành trình và các số không nằm trong asset HP để dev thay nội dung bình thường.
+Chưa ghi đè HUD trong Equipment-test.html. Không có ZIP, chưa commit Git.

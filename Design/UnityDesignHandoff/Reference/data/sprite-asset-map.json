@@ -1,0 +1,1052 @@
+{
+  "sourceHTML": "Art/Equipment-test.html",
+  "sourceSHA256": "18229e29badf3ee7e5269aceb670c50473c7940709634a8027df6ecc336670bf",
+  "sprites": {
+    "street": {
+      "file": null,
+      "sha256": "681f298684deab3855f30af62521518923051c9a2148bcf2aa0798301789a443",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank": {
+      "file": null,
+      "sha256": "5900138e905a255024fa542c257d681584c722c0b3fff109b07052689213dcd3",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "equipment": {
+      "file": null,
+      "sha256": "2a70c1c72895444ddfd190ff8ca77740cab5b4814c2ded39821dc54718d745c0",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew": {
+      "file": null,
+      "sha256": "d69dd1c489a2cc921be6fa3bd665e8f034cfa2e0a96936db3d8f963df39f372b",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tech": {
+      "file": null,
+      "sha256": "27c50692b663284732304f5ebe9db70e1a2d4b5898adca723deb6483e7e1ebf5",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "gray": {
+      "file": null,
+      "sha256": "ca92f23215bd3a94bf21a416b578fd1646915e365c03acdf7a3d75b917f8209c",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "yellow": {
+      "file": null,
+      "sha256": "eee5f704ad2b304efd5eaea312a891a725705ec0947334f9b55fbceda5d0fa7f",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "menu": {
+      "file": "Art/Asset/UI/Event_Timeline/sprites/pause_menu.png",
+      "sha256": "9c041e70befca8162fd81a6f35e36c59e6d00b4cf536c73d77bd4c021cb023d3",
+      "mime": "image/webp",
+      "status": "original_Art_file"
+    },
+    "stage": {
+      "file": null,
+      "sha256": "4bb72478712b61c513726de219f6941dd722ad17a36ff88f6f4eafdcf78d31c1",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "garage": {
+      "file": null,
+      "sha256": "d34a53fd53c8492562c5e133b27dc5cbccd04f43fb116f1a28955e70d6250508",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "01_track_chassis": {
+      "file": null,
+      "sha256": "9a23d2a3c2da604a44be19e31fb7d2f2e60b5e6ae3053494522d73942b49ef88",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "02_wheel_01": {
+      "file": null,
+      "sha256": "d3c9d9c1a1f59502c49388de0c998d9a9bac7154328e4e8959d9b03ce0bba08b",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "03_wheel_02": {
+      "file": null,
+      "sha256": "e1f41f4a7c4a4dbeb479d74ae6625c479879f3f2467676a338710252257f782a",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "04_wheel_03": {
+      "file": null,
+      "sha256": "a3a15e8e5dc99c339490e4b90db6acfc6b3c0c1e849c696c22e8f97e0eac034b",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "05_wheel_04": {
+      "file": null,
+      "sha256": "3146330a19c760bfb2041b9fe020daeeabf4b16c794ff40653a709ce083f0c63",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "06_main_cannon_barrel": {
+      "file": null,
+      "sha256": "53141e16b6405f6f24a4bdea05de1fef941d8f68139c27de15ddfa313db712ae",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "07_body_static": {
+      "file": null,
+      "sha256": "5b55c7d76415a7586db13cceb939b8e4d21096301d2634a7487c5efa27c93695",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "11_front_hull_frame": {
+      "file": null,
+      "sha256": "c378987c44e96331e9bbbb5e772de2264f15605d1117380546e259c013d59648",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "08_roof_machine_gun": {
+      "file": null,
+      "sha256": "fb6fee6ffaaaec6b9b1dc26f268f1ad62fcbe54c58e244b80cb339a630f1092d",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "09_mortar_barrel": {
+      "file": null,
+      "sha256": "b658ba02b8289c870c12be962c707358f7e8f555a999cc9e673cd4e38fb02521",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "10_mortar_front_support": {
+      "file": null,
+      "sha256": "d281445c9e47c3a6fa5019165d7a1ad84a8e630fc20e705b463988ba0495210a",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "streetGray": {
+      "file": null,
+      "sha256": "3a6a4f487b1e20d498d8ce5b4b3f149d626b20559635f40eb3797cef3a4984f8",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "ammo_mortar": {
+      "file": null,
+      "sha256": "d69ed6c75135d2e19cd111780cf0bdcc2fac497bbd36c66cb0f45df97d2dadfa",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "ammo_cannon": {
+      "file": null,
+      "sha256": "3b2bc83af010893d82fd875184a57f51718019a88f9a014d2edd3d3349d4c3dc",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "car_01_body_static": {
+      "file": null,
+      "sha256": "6af94ae48e53cffb3c9bfb141a588e952a9d9aace9d69e7f60a25a542fa8522d",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "car_02_wheel_rear": {
+      "file": null,
+      "sha256": "8fdbb994d448abdcb42f829481768f98723ea305c7318855e480cd36a3c19fb6",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "car_03_wheel_front": {
+      "file": null,
+      "sha256": "88c4fa6d3893c199b7361aeab650328eb09163da37da915b92c2d34f0e9c7a64",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "plane_01_propeller_blades": {
+      "file": null,
+      "sha256": "69c96b00f877509d08cd93dcb5ec4aee64fbbb18ac63d7ee51d7035e4b997792",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "plane_02_wheel_rear": {
+      "file": null,
+      "sha256": "4811b1102d4eaf2dc688fb295dc0bd513dd68e37c155d58c1bda84be5a4b04b4",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "plane_03_wheel_main": {
+      "file": null,
+      "sha256": "c5997424c7115331c5b72cd9b94c458af8764509476ab7d3f34913788a3e3e37",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "plane_04_body_static": {
+      "file": null,
+      "sha256": "f9c3250a6e358dc2a1f2329d0175b569b3ebff09e5c6b582e73146a6a7e784ba",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "vfx_explosion": {
+      "file": null,
+      "sha256": "679a65dbfcdfe1dcbb1dbec5e9e191de4fb323e0cbacba61251fb0aca9a6d6d0",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "vfx_ground_fire": {
+      "file": null,
+      "sha256": "644210bcd6600c4f1491c189561f73f6d4a792f6dfbc5b09deb0af81d708b7da",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "vfx_all_projectile_vfx_4x4": {
+      "file": null,
+      "sha256": "9ed0ff60d919b80a546e14e6d069871a7a96515ac767c6c1cbce288d41fe1f6a",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_driver_drive": {
+      "file": null,
+      "sha256": "26900e3c4375a5884efe53efbf37d3dc8111a3322ea0425a444154f2061c2556",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_driver_fire": {
+      "file": null,
+      "sha256": "e8b16243fa5e3f74cddabbfcea495d0d203dcabadbcef74317321607622e3ab7",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_driver_idle": {
+      "file": null,
+      "sha256": "ef0fc5df17db789a5960258cdd0376520559e7f2efdce1e59f64d6eb1a9bd939",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_mg_drive": {
+      "file": null,
+      "sha256": "a69a1ea51ae115741081531c151401c917e0c90d3196be4f058c9af598f0c026",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_mg_fire": {
+      "file": null,
+      "sha256": "80aedb289c23406c00fb6d3a4e93e6074e6525b6ba0300c12942a0d08b5352c7",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_fat_idle": {
+      "file": null,
+      "sha256": "746b8ee27ad6406eb171729f6d0ec50115ed8d92e01907fa7a5ce4f915e10161",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_fat_ready": {
+      "file": null,
+      "sha256": "905be0dd828fa4a040916d1585b2b773eed2e4d84f07d42457ab79b232a2ddd9",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_fat_walk": {
+      "file": null,
+      "sha256": "9e9e1ab66584716f5190e036575d3d9a99890d988099ed01f2d9dd655c453939",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_fat_attack": {
+      "file": null,
+      "sha256": "85243f1eebbe4af51cc9ab1b55d45763e916c0232cd20f45546abfb90c964a36",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_fat_hurt": {
+      "file": null,
+      "sha256": "5ee6b1727baf0b1557931673ec2c9c05603a3744005a3eab3685558cac26198a",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_fat_death": {
+      "file": null,
+      "sha256": "dfdb1aaae8527e85dabb9b7f18eca27f778abeee6619ebdf958052948fcf5fd8",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_dog_idle": {
+      "file": null,
+      "sha256": "400ea6c5faa8ead7631a7df1701a50e70966bfdd7fceb32b5b9774d454c522f8",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_dog_walk": {
+      "file": null,
+      "sha256": "54e7c44d817d6e568ebf4d4b11e6bf3b32fb8e83e36d9e66af4e303a467e61aa",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_dog_attack": {
+      "file": null,
+      "sha256": "e8b4404b8204627e9bc5add01bd959a68070d1f04badd78ce8867ff26148b52a",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_dog_hurt": {
+      "file": null,
+      "sha256": "7bad3cfd2172f7ca51b54e815e63fa0d9fcbaabff10342e99a6cdaf74598ef8f",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_dog_death": {
+      "file": null,
+      "sha256": "7ab2a584a5676fb21e69f58b5d5b63a71e329eb4886d951bd4a7bc23b1025e46",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_dog_driver_drive": {
+      "file": null,
+      "sha256": "fb7ec29b0f5d3906ab04e634f117539ce8c0e762c76c00a226e9a15c0ce9fc86",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_dog_pilot_drive": {
+      "file": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/preview-assets/pilot_fly.png",
+      "sha256": "db897a45f037dc9454bde8182bbe96cc2fd7acb2cea61d9b863ec16d15a4aca9",
+      "mime": "image/webp",
+      "status": "original_Art_file"
+    },
+    "crew_dog_pilot_fire": {
+      "file": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/preview-assets/pilot_fire.png",
+      "sha256": "90446b2a37ac7e00812ebb29dc70545cd4f6b80887b2f8b41418374a594bf2cd",
+      "mime": "image/webp",
+      "status": "original_Art_file"
+    },
+    "crew_dog_mg_drive": {
+      "file": null,
+      "sha256": "71f9f01bca469505f585bbfbd6889ccca2272ab362e8f0240ec2dfe6de0fda98",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_dog_mg_fire": {
+      "file": null,
+      "sha256": "65e5374db9eae1a110c774379585d94c03b07390ef7f3723024742a975168197",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_cat_ready": {
+      "file": null,
+      "sha256": "15ef61bbcda36875c31c82b9ef3704195800a4dd0f45da9a473fad87a88958fe",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_cat_walk": {
+      "file": null,
+      "sha256": "fd80e93ee3b38949870037b533e61c913cf18edb4da5be0b533624ca9a493dec",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_cat_attack": {
+      "file": null,
+      "sha256": "dd6df8d34da743b76958da8ea2b8c9ce25af0b9e4f56d85954e13adb95e8c6fd",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_cat_hurt": {
+      "file": null,
+      "sha256": "a1b8ef1e1a719924a3b2d6171b450a4b4dcae2d3679148bb1523521b46b3e87e",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_cat_death": {
+      "file": null,
+      "sha256": "70d13996f8b210d378691bba701dece83238c0b018b1f9b519c5db9bef6d1b56",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_jeep_ready": {
+      "file": null,
+      "sha256": "9084f6cbc0daf5361034da43eef2b5b76c63704f5e6e2aa339a1b77b5fa04f43",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_jeep_walk": {
+      "file": null,
+      "sha256": "173fc78fa821836ae9a17a27dd9439ce4d9c0def64ac1630e7f624354f20d317",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_jeep_attack": {
+      "file": null,
+      "sha256": "665f42d0dfad1dc925f9c25da3bbbd65deed2fe795f342e943211743646dc6ad",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_jeep_hurt": {
+      "file": null,
+      "sha256": "2f15c1e610436428a825ac28aa0b806bb9f556109b3f1490f0f71d60c5f86e68",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_jeep_death": {
+      "file": null,
+      "sha256": "3426a0d22f4c06df903892268fb9d12e2b6bfec06c800020006dea56937c0e60",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_pilot_ready": {
+      "file": null,
+      "sha256": "99f49b832e40cfe5c3b1920e1ac0efd46897db8a5485dbe0849e519a31377152",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_pilot_walk": {
+      "file": null,
+      "sha256": "f4fedae599480bec193636f1c581eaf3a89686bc1cc3b2b4d97f61e8a3f16b96",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_pilot_attack": {
+      "file": null,
+      "sha256": "20d388ca65193f5d6ff1b78ee280fbf81c02f6162f558989db4a8c86df07b0e0",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_pilot_hurt": {
+      "file": null,
+      "sha256": "7980e4aec7542c1fd6010d58aec4d78908b73a5f41e8fa1f8549ad5e65a7f205",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "crew_pilot_death": {
+      "file": null,
+      "sha256": "b4e90d8e741bb9d32680e1cd0bc84e683070222fec62d939575e2a6e37988be2",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "arcade_vfx_Explosion": {
+      "file": null,
+      "sha256": "7fed968759e5f481a70a6881592bb89595e57ad1b8e7bc7f057d9c32aef1df4b",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "arcade_vfx_Smoke": {
+      "file": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/preview-assets/vfx_Smoke.png",
+      "sha256": "abc28b4fbd6ff79d7aea1acd9d8c8cd91d121bc4a64f54e1299720a6a4ec2b05",
+      "mime": "image/webp",
+      "status": "original_Art_file"
+    },
+    "arcade_vfx_Hit": {
+      "file": null,
+      "sha256": "907efd9d55f6b32ba9b1060935f8291b384de4cefd4b348a004ccc216d6ab2ec",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "arcade_vfx_Muzzle": {
+      "file": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/preview-assets/vfx_Muzzle.png",
+      "sha256": "f061af34472b215acc70f8e11b4c4b91eeaba32a04f0ea61fd32c8d772c3c6b8",
+      "mime": "image/webp",
+      "status": "original_Art_file"
+    },
+    "arcade_vfx_Spark": {
+      "file": null,
+      "sha256": "14a5052e6c010baf6cf8c4888715b6dfe8590b5496cd6fc35b010c6ade5ba125",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "arcade_vfx_Glow": {
+      "file": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/preview-assets/vfx_Glow.png",
+      "sha256": "17f862987d0dbd3614141c56c3c33c2c1cc0cd9379b20f1b7036316ae3e0b1c8",
+      "mime": "image/webp",
+      "status": "original_Art_file"
+    },
+    "arcade_vfx_Shockwave": {
+      "file": null,
+      "sha256": "dd710963f5167fa0be4b3733bef417a83dd2105247ae52ec9da7de6d0e588010",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "arcade_vfx_Beam": {
+      "file": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/preview-assets/vfx_Beam.png",
+      "sha256": "c0ff8066f3c419c1e65de03220050fca078b4d64d86ca52a2e3127856dae4601",
+      "mime": "image/webp",
+      "status": "original_Art_file"
+    },
+    "arcade_vfx_FireBoltHead": {
+      "file": null,
+      "sha256": "07f24f637ca2c8d22460265789a5af4def91949e5c81c6f0020df5da60f3b84a",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "arcade_vfx_Dust": {
+      "file": null,
+      "sha256": "a94fb16b86d618c095e2e8d311c4a87a0c53c7e7142ad8ddfb38f9fd14b04deb",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "arcade_vfx_BeamTrail": {
+      "file": null,
+      "sha256": "b4414710c945e7b3467daaef7d2667ba593d655bf618bd65e52dbf6c682b4f20",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_speed_01_track_chassis": {
+      "file": null,
+      "sha256": "424ba55c9a8359d33da1299296967df3603f8205dff00e209fecd31da8396288",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_speed_02_wheel_01": {
+      "file": null,
+      "sha256": "08647c243c2644870f1ea849dc3b5a494cc4280d1bbf53013ecf195479442375",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_speed_03_wheel_02": {
+      "file": null,
+      "sha256": "ea410d5bc116ee864bf59929f99e15d6cb5269e2a48c5d89a6c492d78beb8997",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_speed_04_wheel_03": {
+      "file": null,
+      "sha256": "798a04c43afb2b88ee5a2927d86b7cc7c6a2307b37af965f67b40d38d930abd8",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_speed_05_wheel_04": {
+      "file": null,
+      "sha256": "f16b579fb7d0205a57e627fe2e8d482046adeaa9ff8e53e385f8fae1d572dcf8",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_speed_06_main_cannon_barrel": {
+      "file": null,
+      "sha256": "6fa343db52ffeef78b31caa79d35ca3b2ab07f9eaa24ceb4b50fc0b71eb4f5bb",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_speed_07_body_static": {
+      "file": null,
+      "sha256": "4c39c59e3c2ec7baf6c6c491e3bb6114c3caf34bd7dfece029a5a3d048636dc8",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_speed_11_front_hull_frame": {
+      "file": null,
+      "sha256": "7a5e0c3301f034ed7686ab3e2810a2567ca71851567def5bbb65bf36c65b4d7b",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_speed_08_roof_machine_gun": {
+      "file": null,
+      "sha256": "998e4cbc5e84225ba004eddb08f1fda16de097dcd408b78bf4e1998c8a9e13f1",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_speed_09_mortar_barrel": {
+      "file": null,
+      "sha256": "b7366aca461f4ddba190c02c7a44be31126d060a11b153ef17320a83e54c7539",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_speed_10_mortar_front_support": {
+      "file": null,
+      "sha256": "b1b6ef5b3a5725d4b8bf35e435678c2827e24d04a43c880a36afff6655a6c923",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_preview_speed": {
+      "file": null,
+      "sha256": "3c01e65ef20f3f9d261a8b6317fcedf20a7115973b3920331a90f0699f94970c",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_heavy_01_track_chassis": {
+      "file": null,
+      "sha256": "04e54c0adbc5e878813659b5cbfcee3d69a4ef2851ad6e136e85fe264b82bf0a",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_heavy_02_wheel_01": {
+      "file": null,
+      "sha256": "537a94578af0cd2cdb78f53a1a63b6d07321f9b43c2f1290621421e3b11ab3ae",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_heavy_03_wheel_02": {
+      "file": null,
+      "sha256": "710cc6368da4af45e4399de9db6313d03fd5397eefe9d59ab37e77db0c78e389",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_heavy_04_wheel_03": {
+      "file": null,
+      "sha256": "0a8ddf6986c3f7ddeadfcabf79dd6166926e71d6cd97a96a53bb77bc69f76265",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_heavy_05_wheel_04": {
+      "file": null,
+      "sha256": "a1cfe9f2078c33c5690bba0691a3a50b24e23781c1800e5aea00eee88db4f887",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_heavy_06_main_cannon_barrel": {
+      "file": null,
+      "sha256": "8fdc7cb77734e830f9e000965f818bb0c9861236a907fe5ad41364c4fcab32ad",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_heavy_07_body_static": {
+      "file": null,
+      "sha256": "42eb3ccfe6c013e2f482daff42e0cdc2c2e08de0068a2b62f0dc7411a65d3ad7",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_heavy_11_front_hull_frame": {
+      "file": null,
+      "sha256": "6c4f3302060df6c9da92abc4a5548fc1abfb7573060ed6d388cb1f4a68693977",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_heavy_08_roof_machine_gun": {
+      "file": null,
+      "sha256": "dcf8697a000e81ea8ec98b3e280cc91882657b860690d6464e2547b11ee83b56",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_heavy_09_mortar_barrel": {
+      "file": null,
+      "sha256": "fe87f57647bc35100e0c9d50da1d35b1358498ed3239191d13030c1eaeb26728",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_heavy_10_mortar_front_support": {
+      "file": null,
+      "sha256": "8e317ffecaaf59a9250373beba6fdff08bd3241746dcce7a4efd03a90a2ec0b7",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_preview_heavy": {
+      "file": null,
+      "sha256": "fb720fe82d6f500d733d612c06715a49eb6da108e65d2669f2cf3420e3383830",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_preview_base-cannon-mg": {
+      "file": null,
+      "sha256": "2d961660dbaa62f22c30b7e525abb91987449ffb7d4b778def805011ab098954",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_preview_base-cannon-mortar": {
+      "file": null,
+      "sha256": "bbdd692c2788eaa513699e25734b6a7299c686eecf719918be4e207dbbb5bee9",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "tank_preview_base-cannon": {
+      "file": null,
+      "sha256": "875b4d289a3bd0074860cc21fa3e1af0c3b324ccf698c50aa799917f3230b97b",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "roadside_tent": {
+      "file": null,
+      "sha256": "8bf146d2d063b5a9f2579cf66c5329ca4d19fbd232f1566bdabdac8fbfbb219b",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "parallax_streetGray_00_sky_static": {
+      "file": null,
+      "sha256": "ae0bb93d0b769c2c2c26894cc4411548fd2bf6dcba7355b00570e3a656ba408e",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "parallax_streetGray_01_far_factories": {
+      "file": null,
+      "sha256": "55763ae366a868a8cebc87785a9bbfd38249ad3d66782bb4fa04cf9f9f7a2669",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "parallax_streetGray_02_mid_industry": {
+      "file": null,
+      "sha256": "cc5caaf9a9095c008d17732e3c22426864af44d35dd475865cc9804825b21939",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "parallax_streetGray_03_road": {
+      "file": null,
+      "sha256": "c16676ee966d756f2c9ec7d2f8b932ef950f20bf97a5e740ac87fb02bfaa3b5a",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "parallax_streetGray_04_street_buildings": {
+      "file": null,
+      "sha256": "90255e205609cc593a897d369dedb6abe15dbf30592b961be24105c0d9ee9c59",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "parallax_streetGray_05_rubble_weeds": {
+      "file": null,
+      "sha256": "6d66df7989d5aa4fa0ed7c318140ea43853f3307568dd594f6ceaa107e94cf8c",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "parallax_street_00_sky_static": {
+      "file": null,
+      "sha256": "d1043efcaca6ad7d35c8874fd628607aa889c518730615c8e36c8abd9ce9cbc2",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "parallax_street_01_far_city": {
+      "file": null,
+      "sha256": "e2d214a91215903868ddef85937c3a4bc2fd4c3dbade77e7720250c6eeb7a047",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "parallax_street_02_viaduct": {
+      "file": null,
+      "sha256": "57dcd0d39cb5c14af12fe2f0dac61f06c9b0c4b4e43352017f2e02fe0e100721",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "parallax_street_03_road": {
+      "file": null,
+      "sha256": "3ca2c013edd61c429c4dc37e1b7d73a4f666de209074ad74e5977f26d53ed442",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "parallax_street_04_street_buildings": {
+      "file": null,
+      "sha256": "694e481dd2c45321772bd2f55d90e21cda1891be4d9cb840b80a27dcac337e0e",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "parallax_street_05_foreground_debris": {
+      "file": null,
+      "sha256": "441b377c53611a929d8acddbb1e99cf21f72aa91a54e5a8bfdb21abf84e4b721",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "parallax_street_06_overhead_cables": {
+      "file": null,
+      "sha256": "6e0e50ede497acbc62e9f72c3710a8c7570111823a2010576b30c9bd8593191d",
+      "mime": "image/webp",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "enemy_cannon_car_00_body_back": {
+      "file": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/00_body_back.png",
+      "sha256": "989d1f9d0bceed8a7ad55ef1c7093a0d1fa3175963a77105d78de2e832be382d",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        496,
+        210
+      ]
+    },
+    "enemy_cannon_car_08_exhaust": {
+      "file": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/08_exhaust.png",
+      "sha256": "b67630ae90be59c93b33753a8934ff95b8f6dd25ea35fef13a48363f3305b445",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        273,
+        223
+      ]
+    },
+    "enemy_cannon_car_05_ammo_crate": {
+      "file": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/05_ammo_crate.png",
+      "sha256": "f321347af9a21f29203c72158b73936c3b5292b10a0969d7703ccdaa5f84521f",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        310,
+        271
+      ]
+    },
+    "enemy_cannon_car_01_driver_seat": {
+      "file": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/01_driver_seat.png",
+      "sha256": "159eeb211f8fea37fce921e5bb36e2ef709216865ddfef5b1072acc07b003fcd",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        346,
+        280
+      ]
+    },
+    "enemy_cannon_car_02_suspension": {
+      "file": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/02_suspension.png",
+      "sha256": "b44442c45d0dab1a39d4814060a545797805a695cd205c0c70ba5ae9abccba4b",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        284,
+        302
+      ]
+    },
+    "enemy_cannon_car_03_cannon_barrel": {
+      "file": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/03_cannon_barrel.png",
+      "sha256": "ea82a6315b5ef7b18378eb215505b44a29b1bb8c6f62249f207741e05a2811f4",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        448,
+        191
+      ]
+    },
+    "enemy_cannon_car_04_cannon_cradle": {
+      "file": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/04_cannon_cradle.png",
+      "sha256": "70ae634b2dc4524670c62968999ca6ed6771d7c4932cd1c014ea4be85bbf42d2",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        330,
+        256
+      ]
+    },
+    "enemy_cannon_car_06_wheel": {
+      "file": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/06_wheel.png",
+      "sha256": "8df33a174c632d91224d2ac21d637721bd877320c9c3d9850fcf671e670aefa2",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        343,
+        346
+      ]
+    },
+    "enemy_cannon_car_07_body_front": {
+      "file": "Art/Asset/Enemies/Dog_Cannon_Car_v2/parts/07_body_front.png",
+      "sha256": "959ba6f0308402c15e7b10cb05774056898ff5fc7184eaabd7d3d472d475924e",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        550,
+        320
+      ]
+    },
+    "enemy_cannon_car_driver_drive": {
+      "file": "Art/Asset/Enemies/Dog_Cannon_Car_v2/preview-assets/driver_drive.png",
+      "sha256": "9f5cab7014bbae29de50bd512665062ff8b2a5130b28e1871ca3e32b80cf68bf",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        960,
+        1080
+      ]
+    },
+    "enemy_helicopter_01_tail_boom": {
+      "file": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/01_tail_boom.png",
+      "sha256": "bca5844063946d71a95e54034812db368bd11677cf0d42f0f5825c41c0d6eb86",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        470,
+        222
+      ]
+    },
+    "enemy_helicopter_02_tail_rotor": {
+      "file": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/02_tail_rotor.png",
+      "sha256": "58a6ac14d816621db979ef0503f323bbab60b6c66797063fc81a1d2b0e228637",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        280,
+        257
+      ]
+    },
+    "enemy_helicopter_00_cabin_back": {
+      "file": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/00_cabin_back.png",
+      "sha256": "bc868cce310a3121fd6a8968b1d6aad54c7a9dacd56d8f87021eefd871e247df",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        441,
+        304
+      ]
+    },
+    "enemy_helicopter_03_landing_skids": {
+      "file": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/03_landing_skids.png",
+      "sha256": "38a052b66cee65a3d45732b46f8236e7b3124b8da2859ea92aad2c39861a4698",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        549,
+        203
+      ]
+    },
+    "enemy_helicopter_05_pilot_seat": {
+      "file": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/05_pilot_seat.png",
+      "sha256": "fbad77b2c11716876a5f06ed8a13e93362e6f7819f6b0e4dd8b26d0f830a0287",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        321,
+        297
+      ]
+    },
+    "enemy_helicopter_04_rotor_mast": {
+      "file": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/04_rotor_mast.png",
+      "sha256": "514d42071df0f1e48d1051f69a4298e1357508b2c446a60acdb0538caf5f61d3",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        200,
+        313
+      ]
+    },
+    "enemy_helicopter_06_cabin_front": {
+      "file": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/06_cabin_front.png",
+      "sha256": "7333020406921665376c6920f923844c7dcaa0d29fae29f57e051803834a2bf4",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        489,
+        372
+      ]
+    },
+    "enemy_helicopter_07_machine_gun": {
+      "file": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/07_machine_gun.png",
+      "sha256": "8698a722244ceb80c6b77c7d244d985095629be7ba2b40f0f5d2a292bd9e9c06",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        443,
+        209
+      ]
+    },
+    "enemy_helicopter_09_main_rotor_blur": {
+      "file": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/parts/09_main_rotor_blur.png",
+      "sha256": "b179e1984b34cef5f7039bb2745e4ee88781b02567173462ed2402200b894fe4",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        947,
+        947
+      ]
+    },
+    "enemy_helicopter_pilot_fly": {
+      "file": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/preview-assets/pilot_fly.png",
+      "sha256": "db897a45f037dc9454bde8182bbe96cc2fd7acb2cea61d9b863ec16d15a4aca9",
+      "mime": "image/png",
+      "status": "original_Art_file"
+    },
+    "enemy_helicopter_pilot_fire": {
+      "file": "Art/Asset/Enemies/Dog_MG_Helicopter_v1/preview-assets/pilot_fire.png",
+      "sha256": "90446b2a37ac7e00812ebb29dc70545cd4f6b80887b2f8b41418374a594bf2cd",
+      "mime": "image/png",
+      "status": "original_Art_file"
+    },
+    "enemy_trojan_04_cat_tail": {
+      "file": "Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/04_cat_tail.png",
+      "sha256": "b9fa578161b0e578298e125e24872944cd77a74988a2e3ffaf31f00df4eaba91",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        303,
+        432
+      ]
+    },
+    "enemy_trojan_00_inner_wall": {
+      "file": "Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/00_inner_wall.png",
+      "sha256": "41b74b7566e7fbfe347ad863337f5b24c48ca7db6ec6aebfd69c6bb5ae060945",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        420,
+        261
+      ]
+    },
+    "enemy_trojan_01_leg_strut": {
+      "file": "Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/01_leg_strut.png",
+      "sha256": "501b7a2f94da61b0e2c21ee5c3dbe6aaaecdeaccd963c88c70fddaae0365927b",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        230,
+        362
+      ]
+    },
+    "enemy_trojan_03_chassis": {
+      "file": "Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/03_chassis.png",
+      "sha256": "5674ecaf513b7b5c9265c20beddc4633c9de189fd195d8a0bcf5c145b2df9409",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        496,
+        152
+      ]
+    },
+    "enemy_trojan_02_wheel": {
+      "file": "Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/02_wheel.png",
+      "sha256": "e7621ed50b2a553b51a09302c616985ffa4ae5dad554babf09d56eee191c0fd0",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        332,
+        342
+      ]
+    },
+    "enemy_trojan_06_outer_body": {
+      "file": "Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/06_outer_body.png",
+      "sha256": "802d6794ffa5efc1e5faca6fb8c69d083ef50d01f6733a1f34b071ae66ba01b8",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        479,
+        305
+      ]
+    },
+    "enemy_trojan_05_cat_head": {
+      "file": "Art/Asset/Enemies/Trojan_Scrap_Cat_v1/parts/05_cat_head.png",
+      "sha256": "d21205e0076fe86e924c51cd3e8f6e23a8c9c8362e653a1c911f0ea0b46a585d",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        400,
+        414
+      ]
+    },
+    "player_profile_avatar": {
+      "file": "Art/Asset/UI/Player_Profile/avatar_default.png",
+      "sha256": "875e491ae11948a14fce64c9c5480358e743a75c785444e3daa6b24d157329a7",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        256,
+        256
+      ]
+    },
+    "roadside_upgrade_station": {
+      "file": "Art/Asset/BG/upgrade_station.png",
+      "sha256": "dc8fb181f8074b59979474fa5478ea749b50a5ac9f743aedd7a1b4d76dcae449",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        1400,
+        933
+      ]
+    },
+    "css_0": {
+      "file": null,
+      "sha256": "891b1e15b4ec667c0c14f05c3a5f415c3eee32fb15e2204d20cdc0e7a2168e7e",
+      "mime": "image/svg+xml,%3Csv",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    },
+    "css_1": {
+      "file": "Art/Asset/UI/Resource_Counters/counter_frame.png",
+      "sha256": "55b9414d15318418191f598c3490737b596a786f78307940051345ab29b98e3b",
+      "mime": "image/png",
+      "status": "original_Art_file",
+      "size": [
+        400,
+        88
+      ]
+    },
+    "css_2": {
+      "file": null,
+      "sha256": "f65e8b210ff4db2f2f1a58be2b1f5265a5ed4eaf63b5863986e7ecac721486df",
+      "mime": "image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%22-6%20-6%20172%20112%22%3E%0A%20%3Cpath%20d%3D%22M18%2039%205%2024Q25%2032%2031%2012Q40%2028%2053%204Q59%2025%2079%209Q86%2028%20105%204Q103%2027%20126%2015Q124%2036%20151%2025Q133%2042%20158%2049Q137%2054%20150%2076Q128%2064%20126%2092Q110%2076%2094%2099Q87%2080%2067%2094Q65%2075%2043%2092Q45%2072%2018%2079Q29%2061%204%2059Q25%2056%2018%2039Z%22%20fill%3D%22%23fff%22%20stroke%3D%22%23111116%22%20stroke-width%3D%226%22%20stroke-linejoin%3D%22miter%22%2F%3E%0A%3C%2Fsvg%3",
+      "status": "resolve_using_Art_manifest_no_extraction"
+    }
+  }
+}

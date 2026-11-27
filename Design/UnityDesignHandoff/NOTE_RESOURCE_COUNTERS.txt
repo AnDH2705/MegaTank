@@ -1,0 +1,4 @@
+RESOURCE COUNTERS — CẬP NHẬT 26/11/2026
+Đọc NOTE_LATEST_UNITY.txt và Art/Asset/UI/Resource_Counters/HUONG_DAN_UNITY.txt.
+Coin vàng, gear bạc; frame tối không viền trắng; frame-only alpha 80%.
+Đã dùng ở Main/Battle trong Art/Equipment-test.html. Số bind wallet hiện có.

@@ -1,0 +1,47 @@
+{
+  "icons": {
+    "money": {
+      "file": "coin.png",
+      "small": "32/coin.png",
+      "pixels": [
+        256,
+        256
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    "gears": {
+      "file": "gear.png",
+      "small": "32/gear.png",
+      "pixels": [
+        256,
+        256
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    }
+  },
+  "frame": {
+    "file": "counter_frame.png",
+    "pixels": [
+      400,
+      88
+    ],
+    "borderLTRB": [
+      28,
+      20,
+      50,
+      24
+    ],
+    "imageType": "Sliced",
+    "source": "source/counter_frame.svg"
+  },
+  "textBaked": false,
+  "alpha": "straight RGBA",
+  "import": "Sprite (2D and UI), Single, Full Rect, alpha transparency, no mipmaps, bilinear",
+  "previewCounts": "Example display values only; real HUD binds existing wallet."
+}

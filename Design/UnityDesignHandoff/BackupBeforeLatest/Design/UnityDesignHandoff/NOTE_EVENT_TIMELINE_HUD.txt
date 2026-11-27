@@ -1,0 +1,43 @@
+UNITY HANDOFF — EVENT TIMELINE + COMBAT HUD
+
+Đọc trước: Art/Asset/UI/Event_Timeline/HUONG_DAN_UNITY.txt
+Demo đang chạy: Art/Equipment-test.html (bấm PLAY).
+Ảnh chốt bố cục: Art/Asset/UI/Event_Timeline/layout-preview.png
+Ảnh boss: Art/Asset/UI/Event_Timeline/layout-boss.png
+6 icon: Art/Asset/UI/Event_Timeline/icons/
+Mapping: Art/Asset/UI/Event_Timeline/icons.json, ui-layout.json
+HP parts9-slice: Art/Asset/UI/HP_Bar/
+Ammo counter icons: Art/Asset/UI/Ammo_Icons/
+
+Các quyết định người dùng đã chốt:
+1. Thanh có3 slot. Mũi tên progress luôn ở giữa.
+2. Rail dày, thân ray và vòng icon liên thông nhau.
+3. Boss luôn thấy ở đầu phải trong hành trình; mốc mới chui ra từ sau boss.
+4. Qua event: icon cũ trôi trái; icon kế tiếp thế vào giữa; không có mốc thứ4.
+5. Battle giữ1 icon qua nhiều wave. Dưới icon ghi WAVE + số wave trong battle.
+   Clear toàn bộ battle mới sang event sau. Không đổi icon giữa mỗi wave.
+6. Bắt đầu trận boss cuối: boss trượt vào giữa dưới mũi tên.
+7. HUD: pause trái trên cùng sprite Main; timeline giữa trên; tài nguyên phải trên;
+   HP trái dưới; Cannon/MG/Mortar gom sát bên phải HP. Đã bỏ "Tiếp tục hành trình".
+
+AI code Unity nên đọc full handoff ở đường dẫn đầu file. Giữ hệ thống combat/wave,
+HP/ammo/resource đang có; chỉ thêm model/view adapter và UI. Không lấy thông số
+minh họa trong HTML làm balance. Source JS/CSS và SVG có trong Event_Timeline.
+HTML đã lắp; Unity chưa triển khai ở Sources/MegaTanks. Không có ZIP, chưa commit Git.
+
+CHỈNH HUD / MODEL CHỌN SÚNG — 2026-11-26
+- Icon/số đạn nhỏ hơn, canh top với phần khung HP (phía dưới tab HP nhô cao).
+  Cả HP và ammo dùng một nhóm layout; ammo đi sát bên HP, không rải đến mép phải.
+- Đã bỏ tên "Đạn nổ mạnh" / "Đạn tiêu chuẩn" / loại đạn khỏi thanh HP.
+- "Chọn loại đạn" trong mô tả cũ thực chất là CHỌN BIẾN THỂ SÚNG, ví dụ Cannon băng,
+  MG plasma. Đây là lựa chọn gắn với súng/slot tương ứng, không phải đổi loại đạn
+  hoặc buff nguyên tố chung cho mọi súng trên tank.
+- Model Unity nên lưu weaponSlot + weaponVariantId cho từng súng. Counter HUD tiếp
+  tục thể hiện số lượng đạn còn lại; không dùng tên biến thể như nhãn loại đạn chung.
+- Hiện chưa có art riêng cho các biến thể súng. Dùng art súng/icon cơ bản hiện tại
+  làm placeholder; thay visual theo weaponVariantId khi bộ art bổ sung xong.
+- Prototype ammoType/TYPES chung trong engine HTML là logic demo cũ, không phải
+  model chốt để port sang Unity. Khi triển khai hệ thống lựa chọn, thay bằng biến thể
+  riêng từng súng theo quyết định trên. Bản chỉnh này chỉ sửa HUD và handoff,
+  chưa triển khai lại hiệu ứng chiến đấu của từng biến thể.
+- Không kèm bảng balance hoặc tự đặt quy tắc đổi lượng đạn khi đổi biến thể.

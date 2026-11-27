@@ -1,0 +1,110 @@
+
+#tank-autobattle-flow{container-type:inline-size}
+#tank-autobattle-main{--gm-control-scale:.75}
+#tank-autobattle-main .gm-chapter{width:calc(264px * var(--gm-control-scale));height:calc(82px * var(--gm-control-scale));padding:calc(10px * var(--gm-control-scale)) calc(20px * var(--gm-control-scale))}
+#tank-autobattle-main .gm-chapter span{font-size:calc(23px * var(--gm-control-scale));-webkit-text-stroke:2.4px #111}
+#tank-autobattle-main .gm-menu{width:calc(84px * var(--gm-control-scale));height:44px;min-height:44px}
+#tank-autobattle-main .gm-menu>img{object-fit:contain;object-position:center}
+#tank-autobattle-main .gm-rail{width:calc(96px * var(--gm-control-scale));grid-template-rows:repeat(3,44px);gap:calc(26px * var(--gm-control-scale))}
+#tank-autobattle-main .gm-rail-hit{min-height:44px}
+#tank-autobattle-main .gm-button-face{object-fit:contain;object-position:center}
+#tank-autobattle-main .gm-equipment-icon{width:calc(74px * var(--gm-control-scale));bottom:calc(23px * var(--gm-control-scale))}
+#tank-autobattle-main .gm-crew-icon{width:calc(80px * var(--gm-control-scale));bottom:calc(24px * var(--gm-control-scale))}
+#tank-autobattle-main .gm-tech-icon{width:calc(67px * var(--gm-control-scale));bottom:calc(21px * var(--gm-control-scale))}
+#tank-autobattle-main .gm-start{width:calc(180px * var(--gm-control-scale));height:calc(83px * var(--gm-control-scale));min-height:44px}
+#tank-autobattle-main .gm-start span{font-size:calc(30px * var(--gm-control-scale));padding-bottom:3px;-webkit-text-stroke:2.4px #111}
+#tank-autobattle-main .gm-stage{width:calc(340px * var(--gm-control-scale));height:calc(98px * var(--gm-control-scale))}
+#tank-autobattle-main .gm-stage-copy{gap:2px;padding:0 4px 3px;-webkit-text-stroke:2.2px #111}
+#tank-autobattle-main .gm-stage-copy>span{font-size:calc(17px * var(--gm-control-scale))}
+#tank-autobattle-main .gm-stage-copy strong{font-size:calc(18px * var(--gm-control-scale))}
+#tank-autobattle-main .gm-stage-copy[data-locked="true"]>span{font-size:11px}
+#tank-autobattle-flow .eq-screen{--eq-ground-x:50%;--eq-ground-y:69%;--eq-tank-width:27.083333%;display:block;aspect-ratio:1920/1080;min-height:0;grid-template-rows:none}
+#tank-autobattle-flow .eq-background{height:100%;object-fit:cover;object-position:center top}
+#tank-autobattle-flow .eq-header{position:absolute;left:0;right:0;top:0;height:14%;z-index:3}
+#tank-autobattle-flow .eq-title{left:1.5%;top:14.285714%;width:25%;height:71.428571%}
+#tank-autobattle-flow .eq-title h2{font-size:clamp(23px,2.8cqw,54px);padding-bottom:.3cqw}
+#tank-autobattle-flow .eq-close{right:1%;top:13.2%;width:6%;height:54%;min-height:44px}
+#tank-autobattle-flow .eq-close i,#tank-autobattle-flow .eq-close svg{width:3cqw;height:3cqw;min-width:25px;min-height:25px}
+#tank-autobattle-flow .eq-workspace{position:absolute;inset:0;width:100%;height:100%}
+#tank-autobattle-flow .eq-tank{left:var(--eq-ground-x);top:var(--eq-ground-y);width:var(--eq-tank-width);max-width:none;transform:translate(-48.260548%,-98.512138%)}
+#tank-autobattle-flow .eq-tank-shadow{left:20%;right:23%;bottom:1.1%;height:1.7%;filter:blur(.25cqw)}
+#tank-autobattle-flow .eq-wires{display:block}
+#tank-autobattle-flow .eq-wires circle{r:5px}
+#tank-autobattle-flow .eq-slots{top:18%;bottom:38%;width:22%;height:auto;gap:0}
+#tank-autobattle-flow .eq-slots-left{left:6%}
+#tank-autobattle-flow .eq-slots-right{right:6%}
+#tank-autobattle-flow .eq-slot{height:23%;min-height:0;flex-shrink:0;padding:.5cqw 1.6cqw;gap:1cqw}
+#tank-autobattle-flow .eq-slot-icon,#tank-autobattle-flow .eq-empty-icon{width:5.3cqw;height:4.4cqw}
+#tank-autobattle-flow .eq-empty-icon{font-size:3cqw}
+#tank-autobattle-flow .eq-mortar-icon{padding:0 1.3cqw}
+#tank-autobattle-flow .eq-slot-copy{gap:.25cqw}
+#tank-autobattle-flow .eq-slot-copy strong{font-size:clamp(11px,1.5cqw,29px)}
+#tank-autobattle-flow .eq-slot-copy small{font-size:clamp(11px,1.18cqw,23px)}
+#tank-autobattle-flow .eq-panel{position:absolute;left:1.5%;right:1.5%;top:73%;bottom:2%;height:auto;min-height:0;margin:0;padding:.8cqw;gap:.55cqw;border-width:clamp(3px,.3cqw,6px);border-radius:.8cqw}
+#tank-autobattle-flow .eq-toolbar{grid-template-columns:minmax(140px,23cqw) 7cqw minmax(180px,1fr);gap:1cqw;flex-shrink:0}
+#tank-autobattle-flow .eq-order{grid-column:auto;width:27cqw}
+#tank-autobattle-flow .eq-screen select,#tank-autobattle-flow .eq-sort{height:3.3cqw;min-height:34px;padding:.45cqw 1cqw;font-size:clamp(11px,1.25cqw,24px);border-radius:.5cqw}
+#tank-autobattle-flow .eq-panel-body{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);min-height:0;gap:1.2cqw}
+#tank-autobattle-flow .eq-inventory{padding:.35cqw;min-height:0}
+#tank-autobattle-flow .eq-items{grid-template-columns:repeat(3,minmax(0,7.7cqw));height:100%;gap:.9cqw;align-content:stretch}
+#tank-autobattle-flow .eq-item{height:100%;min-height:0;padding:.4cqw .5cqw;gap:.3cqw;border-radius:.6cqw}
+#tank-autobattle-flow .eq-item img{height:4cqw;min-height:0}
+#tank-autobattle-flow .eq-item[data-item="mortar"] img{padding:0 1.6cqw}
+#tank-autobattle-flow .eq-item strong{font-size:clamp(11px,1.1cqw,21px)}
+#tank-autobattle-flow .eq-equipped-mark{width:2cqw;height:2cqw;min-width:18px;min-height:18px;font-size:clamp(14px,1.5cqw,28px)}
+#tank-autobattle-flow .eq-inspect{grid-template-columns:5.8cqw minmax(0,1fr) 10.8cqw;grid-template-rows:1fr;gap:.8cqw;min-height:0;border-top:0;border-left:2px solid #696d83;padding:0 0 0 1cqw;align-items:center}
+#tank-autobattle-flow .eq-inspect-art{width:5.8cqw;height:6.5cqw;grid-row:1;max-height:100%}
+#tank-autobattle-flow .eq-inspect-copy>small,#tank-autobattle-flow .eq-equipped-state{font-size:clamp(11px,1cqw,19px)}
+#tank-autobattle-flow .eq-inspect-copy h3{font-size:clamp(18px,1.8cqw,35px);margin:.2cqw 0 .3cqw}
+#tank-autobattle-flow .eq-inspect-copy p{font-size:clamp(11px,1.05cqw,20px);margin:0 0 .2cqw}
+#tank-autobattle-flow .eq-equip{grid-column:3;grid-row:1;width:100%;min-height:44px;height:4cqw}
+#tank-autobattle-flow .eq-equip span{font-size:clamp(12px,1.4cqw,27px)}
+@media(min-width:721px) and (max-width:950px){
+ #tank-autobattle-flow .eq-item{padding:2px;gap:2px;border-width:2px}
+ #tank-autobattle-flow .eq-item img{height:2.7cqw}
+ #tank-autobattle-flow .eq-item strong{font-size:11px;line-height:1.1}
+ #tank-autobattle-flow .eq-inspect{grid-template-columns:minmax(0,1fr) 94px;gap:8px}
+ #tank-autobattle-flow .eq-inspect-art,#tank-autobattle-flow .eq-inspect-copy>small,#tank-autobattle-flow .eq-inspect-copy p{display:none}
+ #tank-autobattle-flow .eq-inspect-copy h3{font-size:16px}
+ #tank-autobattle-flow .eq-equip{grid-column:2}
+}
+@media(pointer:coarse){
+ #tank-autobattle-flow .eq-screen select,#tank-autobattle-flow .eq-sort{min-height:44px}
+ #tank-autobattle-flow .eq-slot{min-height:44px}
+}
+@media(max-width:720px){
+ #tank-autobattle-flow .eq-screen{aspect-ratio:auto;min-height:0;padding-bottom:1px}
+ #tank-autobattle-flow .eq-background,#tank-autobattle-flow .eq-shade{height:56.25cqw}
+ #tank-autobattle-flow .eq-header{height:56.25cqw}
+ #tank-autobattle-flow .eq-title{left:10px;top:8px;width:190px;height:46px}
+ #tank-autobattle-flow .eq-title h2{font-size:23px}
+ #tank-autobattle-flow .eq-close{right:8px;top:8px;width:56px;height:44px}
+ #tank-autobattle-flow .eq-workspace{position:relative;inset:auto;width:100%;height:calc(56.25cqw + 236px)}
+ #tank-autobattle-flow .eq-tank{top:38.8125cqw}
+ #tank-autobattle-flow .eq-wires{display:none}
+ #tank-autobattle-flow .eq-slots{top:calc(56.25cqw + 8px);bottom:8px;width:calc(50% - 16px);gap:12px}
+ #tank-autobattle-flow .eq-slots-left{left:10px}
+ #tank-autobattle-flow .eq-slots-right{right:10px}
+ #tank-autobattle-flow .eq-slot{height:62px;min-height:62px;padding:4px 10px;gap:5px}
+ #tank-autobattle-flow .eq-slot-icon,#tank-autobattle-flow .eq-empty-icon{width:35px;height:40px}
+ #tank-autobattle-flow .eq-empty-icon{font-size:26px}
+ #tank-autobattle-flow .eq-mortar-icon{padding:0 10px}
+ #tank-autobattle-flow .eq-slot-copy strong,#tank-autobattle-flow .eq-slot-copy small{font-size:11px}
+ #tank-autobattle-flow .eq-panel{position:relative;left:auto;right:auto;top:auto;bottom:auto;margin:2px 9px 14px;padding:12px 10px;gap:12px;border-radius:8px}
+ #tank-autobattle-flow .eq-toolbar{grid-template-columns:minmax(0,1fr) 66px;gap:8px}
+ #tank-autobattle-flow .eq-order{grid-column:1/-1;width:100%}
+ #tank-autobattle-flow .eq-screen select,#tank-autobattle-flow .eq-sort{height:44px;min-height:44px;font-size:13px;padding:8px 10px}
+ #tank-autobattle-flow .eq-panel-body{grid-template-columns:minmax(0,1fr);gap:14px}
+ #tank-autobattle-flow .eq-inventory{padding:6px}
+ #tank-autobattle-flow .eq-items{grid-template-columns:repeat(3,minmax(0,1fr));height:101px;gap:8px}
+ #tank-autobattle-flow .eq-item{padding:6px;gap:4px;border-radius:6px}
+ #tank-autobattle-flow .eq-item img{height:58px}
+ #tank-autobattle-flow .eq-item[data-item="mortar"] img{padding:0 18px}
+ #tank-autobattle-flow .eq-equipped-mark{width:22px;height:22px;font-size:17px}
+ #tank-autobattle-flow .eq-inspect{grid-template-columns:54px minmax(0,1fr);grid-template-rows:1fr 44px;gap:8px 12px;min-height:140px;border-left:0;border-top:2px solid #696d83;padding:12px 0 0}
+ #tank-autobattle-flow .eq-inspect-art{width:54px;height:64px;grid-row:1/3}
+ #tank-autobattle-flow .eq-inspect-copy h3{margin:2px 0 4px;font-size:23px}
+ #tank-autobattle-flow .eq-inspect-copy p{margin:0 0 5px;font-size:12px}
+ #tank-autobattle-flow .eq-equip{grid-column:2;grid-row:2;width:148px;height:44px}
+ #tank-autobattle-flow .eq-equip span{font-size:16px}
+}

@@ -1,0 +1,1820 @@
+{
+  "profiles": {
+    "base": {
+      "id": "base",
+      "name": "Tank tiêu chuẩn",
+      "prefix": "",
+      "layers": [
+        {
+          "name": "01_track_chassis",
+          "position_px": [
+            240,
+            1035
+          ],
+          "size_px": [
+            819,
+            235
+          ],
+          "z_order": 0,
+          "pivot_canvas_px": [
+            652,
+            1156
+          ]
+        },
+        {
+          "name": "02_wheel_01",
+          "position_px": [
+            331,
+            1080
+          ],
+          "size_px": [
+            161,
+            158
+          ],
+          "z_order": 1,
+          "pivot_canvas_px": [
+            410.5,
+            1159
+          ]
+        },
+        {
+          "name": "03_wheel_02",
+          "position_px": [
+            456,
+            1080
+          ],
+          "size_px": [
+            163,
+            157
+          ],
+          "z_order": 2,
+          "pivot_canvas_px": [
+            537,
+            1158.5
+          ]
+        },
+        {
+          "name": "04_wheel_03",
+          "position_px": [
+            676,
+            1079
+          ],
+          "size_px": [
+            162,
+            158
+          ],
+          "z_order": 3,
+          "pivot_canvas_px": [
+            757,
+            1158
+          ]
+        },
+        {
+          "name": "05_wheel_04",
+          "position_px": [
+            807,
+            1080
+          ],
+          "size_px": [
+            167,
+            157
+          ],
+          "z_order": 4,
+          "pivot_canvas_px": [
+            890,
+            1158.5
+          ]
+        },
+        {
+          "name": "06_main_cannon_barrel",
+          "position_px": [
+            1102,
+            405
+          ],
+          "size_px": [
+            246,
+            188
+          ],
+          "z_order": 5,
+          "pivot_canvas_px": [
+            1125,
+            496
+          ]
+        },
+        {
+          "name": "07_body_static",
+          "position_px": [
+            193,
+            67
+          ],
+          "size_px": [
+            957,
+            978
+          ],
+          "z_order": 6,
+          "pivot_canvas_px": [
+            645,
+            1040
+          ]
+        },
+        {
+          "name": "11_front_hull_frame",
+          "position_px": [
+            182,
+            147
+          ],
+          "size_px": [
+            919,
+            928
+          ],
+          "z_order": 7,
+          "pivot_canvas_px": [
+            645,
+            1040
+          ]
+        },
+        {
+          "name": "08_roof_machine_gun",
+          "position_px": [
+            714,
+            72
+          ],
+          "size_px": [
+            449,
+            180
+          ],
+          "z_order": 8,
+          "pivot_canvas_px": [
+            910,
+            231
+          ]
+        },
+        {
+          "name": "09_mortar_barrel",
+          "position_px": [
+            93,
+            235
+          ],
+          "size_px": [
+            145,
+            360
+          ],
+          "z_order": 9,
+          "pivot_canvas_px": [
+            213.14,
+            561.9
+          ]
+        },
+        {
+          "name": "10_mortar_front_support",
+          "position_px": [
+            96,
+            352
+          ],
+          "size_px": [
+            156,
+            257
+          ],
+          "z_order": 10,
+          "pivot_canvas_px": [
+            213.14,
+            561.9
+          ]
+        }
+      ],
+      "stations": {
+        "mg": {
+          "x": 670,
+          "y": 244,
+          "scale": 0.52
+        },
+        "cannon": {
+          "x": 735,
+          "y": 614,
+          "scale": 0.53
+        },
+        "mortar": {
+          "x": 386,
+          "y": 661,
+          "scale": 0.49
+        },
+        "driver": {
+          "x": 494,
+          "y": 974,
+          "scale": 0.52
+        },
+        "front": {
+          "x": 835,
+          "y": 1023,
+          "scale": 0.49
+        }
+      },
+      "guns": {
+        "cannon": {
+          "pivot": [
+            1125,
+            496
+          ],
+          "tip": [
+            1348,
+            496
+          ]
+        },
+        "mg": {
+          "pivot": [
+            910,
+            231
+          ],
+          "tip": [
+            1160,
+            156
+          ]
+        },
+        "mortar": {
+          "pivot": [
+            166,
+            235
+          ],
+          "tip": [
+            166,
+            235
+          ]
+        }
+      },
+      "frontX": 1150,
+      "centerY": 582.5
+    },
+    "speed": {
+      "id": "speed",
+      "name": "Tank đỏ tốc độ",
+      "prefix": "tank_speed_",
+      "layers": [
+        {
+          "name": "01_track_chassis",
+          "file": "parts/01_track_chassis.png",
+          "position_px": [
+            -35.11015624999993,
+            1012.603515625
+          ],
+          "size_px": [
+            1280.15166015625,
+            245.396484375
+          ],
+          "pivot_canvas_px": [
+            652,
+            1116.2153645833332
+          ],
+          "pivot_local_px": [
+            504,
+            76
+          ],
+          "parent": "root",
+          "role": "Track belt, backing and fixed suspension",
+          "z_order": 0,
+          "original_position_px": [
+            268,
+            808
+          ],
+          "original_size_px": [
+            915,
+            156
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "02_wheel_01",
+          "file": "parts/02_wheel_01.png",
+          "position_px": [
+            183.02005208333333,
+            1011.2402018229167
+          ],
+          "size_px": [
+            241.30654296875,
+            209.95032552083333
+          ],
+          "pivot_canvas_px": [
+            303.67332356770834,
+            1116.2153645833332
+          ],
+          "pivot_local_px": [
+            88.5,
+            77
+          ],
+          "parent": "root",
+          "role": "Complete independently rotating road wheel",
+          "z_order": 1,
+          "original_position_px": [
+            428,
+            807
+          ],
+          "original_size_px": [
+            153,
+            130
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "03_wheel_02",
+          "file": "parts/03_wheel_02.png",
+          "position_px": [
+            388.88043619791665,
+            1011.2402018229167
+          ],
+          "size_px": [
+            242.66985677083332,
+            209.95032552083333
+          ],
+          "pivot_canvas_px": [
+            510.2153645833333,
+            1116.2153645833332
+          ],
+          "pivot_local_px": [
+            89,
+            77
+          ],
+          "parent": "root",
+          "role": "Complete independently rotating road wheel",
+          "z_order": 2,
+          "original_position_px": [
+            579,
+            807
+          ],
+          "original_size_px": [
+            154,
+            130
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "04_wheel_03",
+          "file": "parts/04_wheel_03.png",
+          "position_px": [
+            602.920703125,
+            1011.2402018229167
+          ],
+          "size_px": [
+            241.30654296875,
+            209.95032552083333
+          ],
+          "pivot_canvas_px": [
+            723.573974609375,
+            1116.2153645833332
+          ],
+          "pivot_local_px": [
+            88.5,
+            77
+          ],
+          "parent": "root",
+          "role": "Complete independently rotating road wheel",
+          "z_order": 3,
+          "original_position_px": [
+            736,
+            807
+          ],
+          "original_size_px": [
+            153,
+            130
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "05_wheel_04",
+          "file": "parts/05_wheel_04.png",
+          "position_px": [
+            807.4177734375,
+            1011.2402018229167
+          ],
+          "size_px": [
+            241.30654296875,
+            209.95032552083333
+          ],
+          "pivot_canvas_px": [
+            928.071044921875,
+            1116.2153645833332
+          ],
+          "pivot_local_px": [
+            88.5,
+            77
+          ],
+          "parent": "root",
+          "role": "Complete independently rotating road wheel",
+          "z_order": 4,
+          "original_position_px": [
+            886,
+            807
+          ],
+          "original_size_px": [
+            153,
+            130
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "06_main_cannon_barrel",
+          "file": "parts/06_main_cannon_barrel.png",
+          "position_px": [
+            1305.0273111979168,
+            434.5584635416667
+          ],
+          "size_px": [
+            280.84264322916664,
+            220.8568359375
+          ],
+          "pivot_canvas_px": [
+            1326.84033203125,
+            544.9868815104167
+          ],
+          "pivot_local_px": [
+            16,
+            81
+          ],
+          "parent": "body",
+          "role": "Cannon tube with independent horizontal recoil",
+          "z_order": 5,
+          "original_position_px": [
+            1251,
+            384
+          ],
+          "original_size_px": [
+            182,
+            138
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "07_body_static",
+          "file": "parts/07_body_static.png",
+          "position_px": [
+            5.789257812500068,
+            32.38089192708344
+          ],
+          "size_px": [
+            1278.7883463541666,
+            967.9527994791666
+          ],
+          "pivot_canvas_px": [
+            652,
+            1018.0567708333333
+          ],
+          "pivot_local_px": [
+            474,
+            723
+          ],
+          "parent": "root",
+          "role": "All fixed interiors, seats, ammunition, controls, pipes and exhaust combined",
+          "z_order": 6,
+          "original_position_px": [
+            298,
+            89
+          ],
+          "original_size_px": [
+            914,
+            686
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "11_front_hull_frame",
+          "file": "parts/11_front_hull_frame.png",
+          "position_px": [
+            -249.15042317708333,
+            125.08623046875005
+          ],
+          "size_px": [
+            1694.5990559895833,
+            1010.21552734375
+          ],
+          "pivot_canvas_px": [
+            652,
+            1018.0567708333333
+          ],
+          "pivot_local_px": [
+            661,
+            655
+          ],
+          "parent": "body",
+          "role": "Outer armor, middle floor beam, fixed cannon housing and fenders, with two transparent cabin openings",
+          "z_order": 7,
+          "original_position_px": [
+            111,
+            157
+          ],
+          "original_size_px": [
+            1219,
+            717
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "08_roof_machine_gun",
+          "file": "parts/08_roof_machine_gun.png",
+          "position_px": [
+            743.3420247395834,
+            33.74420572916665
+          ],
+          "size_px": [
+            568.50185546875,
+            218.13020833333331
+          ],
+          "pivot_canvas_px": [
+            964.1988606770833,
+            224.6081380208334
+          ],
+          "pivot_local_px": [
+            162,
+            140
+          ],
+          "parent": "body",
+          "role": "Roof machine gun combined; fixed base remains on frame",
+          "z_order": 8,
+          "original_position_px": [
+            839,
+            90
+          ],
+          "original_size_px": [
+            393,
+            136
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "09_mortar_barrel",
+          "file": "parts/09_mortar_barrel.png",
+          "position_px": [
+            127.12418619791663,
+            294.13714192708335
+          ],
+          "size_px": [
+            167.68759765625,
+            374.9112955729167
+          ],
+          "pivot_canvas_px": [
+            213.01295572916666,
+            630.8756510416666
+          ],
+          "pivot_local_px": [
+            63,
+            247
+          ],
+          "parent": "body",
+          "role": "Full continuous mortar tube behind fixed front collars",
+          "z_order": 9,
+          "original_position_px": [
+            387,
+            281
+          ],
+          "original_size_px": [
+            99,
+            251
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "10_mortar_front_support",
+          "file": "parts/10_mortar_front_support.png",
+          "position_px": [
+            125.7608723958333,
+            404.5655598958333
+          ],
+          "size_px": [
+            186.77399088541665,
+            279.4793294270833
+          ],
+          "pivot_canvas_px": [
+            213.01295572916666,
+            630.8756510416666
+          ],
+          "pivot_local_px": [
+            64,
+            166
+          ],
+          "parent": "body",
+          "role": "Two front collars and bottom cradle as one fixed foreground sprite",
+          "z_order": 10,
+          "original_position_px": [
+            386,
+            362
+          ],
+          "original_size_px": [
+            113,
+            181
+          ],
+          "padding_px": 12
+        }
+      ],
+      "stations": {
+        "mg": {
+          "x": 665.6331380208334,
+          "y": 249.14778645833337,
+          "scale": 0.52
+        },
+        "cannon": {
+          "x": 801.9645182291666,
+          "y": 598.1561197916667,
+          "scale": 0.53
+        },
+        "mortar": {
+          "x": 372.5206705729167,
+          "y": 647.2354166666667,
+          "scale": 0.49
+        },
+        "driver": {
+          "x": 447.5029296875,
+          "y": 908.9916666666667,
+          "scale": 0.52
+        },
+        "front": {
+          "x": 992.8284505208333,
+          "y": 971.7041015625,
+          "scale": 0.49
+        }
+      },
+      "guns": {
+        "cannon": {
+          "pivot": [
+            1326.84033203125,
+            544.9868815104167
+          ],
+          "tip": [
+            1558.6036783854165,
+            544.9868815104167
+          ]
+        },
+        "mg": {
+          "pivot": [
+            964.1988606770833,
+            224.6081380208334
+          ],
+          "tip": [
+            1284.5776041666668,
+            174.16552734375
+          ]
+        },
+        "mortar": {
+          "pivot": [
+            213.01295572916666,
+            630.8756510416666
+          ],
+          "tip": [
+            208.92301432291669,
+            336.3998697916667
+          ]
+        }
+      },
+      "frontX": 1445.4486328125,
+      "centerY": 516.3572916666667
+    },
+    "heavy": {
+      "id": "heavy",
+      "name": "Tank xanh bọc thép",
+      "prefix": "tank_heavy_",
+      "layers": [
+        {
+          "name": "01_track_chassis",
+          "file": "parts/01_track_chassis.png",
+          "position_px": [
+            65.994555353902,
+            1027.5208711433756
+          ],
+          "size_px": [
+            1115.6170598911071,
+            230.47912885662433
+          ],
+          "pivot_canvas_px": [
+            652,
+            1117.0154264972778
+          ],
+          "pivot_local_px": [
+            478,
+            73
+          ],
+          "parent": "root",
+          "role": "Track belt, backing and fixed suspension",
+          "z_order": 0,
+          "original_position_px": [
+            214,
+            943
+          ],
+          "original_size_px": [
+            886,
+            164
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "02_wheel_01",
+          "file": "parts/02_wheel_01.png",
+          "position_px": [
+            225.36842105263156,
+            1021.3911070780399
+          ],
+          "size_px": [
+            214.54174228675137,
+            191.2486388384755
+          ],
+          "pivot_canvas_px": [
+            332.63929219600726,
+            1117.0154264972778
+          ],
+          "pivot_local_px": [
+            87.5,
+            78
+          ],
+          "parent": "root",
+          "role": "Complete independently rotating road wheel",
+          "z_order": 1,
+          "original_position_px": [
+            344,
+            938
+          ],
+          "original_size_px": [
+            151,
+            132
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "03_wheel_02",
+          "file": "parts/03_wheel_02.png",
+          "position_px": [
+            399.45372050816695,
+            1021.3911070780399
+          ],
+          "size_px": [
+            215.76769509981852,
+            191.2486388384755
+          ],
+          "pivot_canvas_px": [
+            507.3375680580762,
+            1117.0154264972778
+          ],
+          "pivot_local_px": [
+            88,
+            78
+          ],
+          "parent": "root",
+          "role": "Complete independently rotating road wheel",
+          "z_order": 2,
+          "original_position_px": [
+            486,
+            938
+          ],
+          "original_size_px": [
+            152,
+            132
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "04_wheel_03",
+          "file": "parts/04_wheel_03.png",
+          "position_px": [
+            640.9664246823957,
+            1021.3911070780399
+          ],
+          "size_px": [
+            215.76769509981852,
+            191.2486388384755
+          ],
+          "pivot_canvas_px": [
+            748.2372958257713,
+            1117.0154264972778
+          ],
+          "pivot_local_px": [
+            87.5,
+            78
+          ],
+          "parent": "root",
+          "role": "Complete independently rotating road wheel",
+          "z_order": 3,
+          "original_position_px": [
+            683,
+            938
+          ],
+          "original_size_px": [
+            152,
+            132
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "05_wheel_04",
+          "file": "parts/05_wheel_04.png",
+          "position_px": [
+            817.5036297640654,
+            1021.3911070780399
+          ],
+          "size_px": [
+            215.76769509981852,
+            191.2486388384755
+          ],
+          "pivot_canvas_px": [
+            925.3874773139746,
+            1117.0154264972778
+          ],
+          "pivot_local_px": [
+            88,
+            78
+          ],
+          "parent": "root",
+          "role": "Complete independently rotating road wheel",
+          "z_order": 4,
+          "original_position_px": [
+            827,
+            938
+          ],
+          "original_size_px": [
+            152,
+            132
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "06_main_cannon_barrel",
+          "file": "parts/06_main_cannon_barrel.png",
+          "position_px": [
+            1260.0725952813068,
+            289.49727767695094
+          ],
+          "size_px": [
+            247.64246823956444,
+            230.47912885662433
+          ],
+          "pivot_canvas_px": [
+            1278.4618874773141,
+            404.7368421052631
+          ],
+          "pivot_local_px": [
+            15,
+            94
+          ],
+          "parent": "body",
+          "role": "Cannon tube with independent horizontal recoil",
+          "z_order": 5,
+          "original_position_px": [
+            1188,
+            341
+          ],
+          "original_size_px": [
+            178,
+            164
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "07_body_static",
+          "file": "parts/07_body_static.png",
+          "position_px": [
+            62.316696914700515,
+            -117.51905626134294
+          ],
+          "size_px": [
+            1010.1851179673322,
+            1073.934664246824
+          ],
+          "pivot_canvas_px": [
+            652,
+            1016.4872958257713
+          ],
+          "pivot_local_px": [
+            481,
+            925
+          ],
+          "parent": "root",
+          "role": "All fixed interiors, seats, ammunition, controls, pipes and exhaust combined",
+          "z_order": 6,
+          "original_position_px": [
+            211,
+            9
+          ],
+          "original_size_px": [
+            800,
+            852
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "11_front_hull_frame",
+          "file": "parts/11_front_hull_frame.png",
+          "position_px": [
+            -52.92286751361166,
+            -40.28402903811252
+          ],
+          "size_px": [
+            1467.4655172413793,
+            1162.2032667876588
+          ],
+          "pivot_canvas_px": [
+            652,
+            1016.4872958257713
+          ],
+          "pivot_local_px": [
+            575,
+            862
+          ],
+          "parent": "body",
+          "role": "Outer armor, middle floor beam, fixed cannon housing and fenders, with two transparent cabin openings",
+          "z_order": 7,
+          "original_position_px": [
+            117,
+            72
+          ],
+          "original_size_px": [
+            1173,
+            924
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "08_roof_machine_gun",
+          "file": "parts/08_roof_machine_gun.png",
+          "position_px": [
+            768.4655172413793,
+            -118.74500907441029
+          ],
+          "size_px": [
+            527.1597096188748,
+            198.60435571687842
+          ],
+          "pivot_canvas_px": [
+            968.2958257713249,
+            60.24410163339371
+          ],
+          "pivot_local_px": [
+            163,
+            146
+          ],
+          "parent": "body",
+          "role": "Roof machine gun combined; fixed base remains on frame",
+          "z_order": 8,
+          "original_position_px": [
+            787,
+            8
+          ],
+          "original_size_px": [
+            406,
+            138
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "09_mortar_barrel",
+          "file": "parts/09_mortar_barrel.png",
+          "position_px": [
+            -52.92286751361166,
+            100.70054446460972
+          ],
+          "size_px": [
+            167.95553539019963,
+            424.17967332123413
+          ],
+          "pivot_canvas_px": [
+            31.667876588021727,
+            486.87568058076226
+          ],
+          "pivot_local_px": [
+            69,
+            315
+          ],
+          "parent": "body",
+          "role": "Full continuous mortar tube behind fixed front collars",
+          "z_order": 9,
+          "original_position_px": [
+            117,
+            187
+          ],
+          "original_size_px": [
+            113,
+            322
+          ],
+          "padding_px": 12
+        },
+        {
+          "name": "10_mortar_front_support",
+          "file": "parts/10_mortar_front_support.png",
+          "position_px": [
+            -48.01905626134305,
+            229.4255898366605
+          ],
+          "size_px": [
+            202.28221415607985,
+            313.84392014519057
+          ],
+          "pivot_canvas_px": [
+            31.667876588021727,
+            486.87568058076226
+          ],
+          "pivot_local_px": [
+            65,
+            210
+          ],
+          "parent": "body",
+          "role": "Two front collars and bottom cradle as one fixed foreground sprite",
+          "z_order": 10,
+          "original_position_px": [
+            121,
+            292
+          ],
+          "original_size_px": [
+            141,
+            232
+          ],
+          "padding_px": 12
+        }
+      ],
+      "stations": {
+        "mg": {
+          "x": 676.519056261343,
+          "y": 82.31125226860263,
+          "scale": 0.52
+        },
+        "cannon": {
+          "x": 786.8548094373866,
+          "y": 517.524500907441,
+          "scale": 0.53
+        },
+        "mortar": {
+          "x": 333.2522686025408,
+          "y": 544.4954627949184,
+          "scale": 0.49
+        },
+        "driver": {
+          "x": 455.8475499092559,
+          "y": 891.4401088929219,
+          "scale": 0.52
+        },
+        "front": {
+          "x": 952.3584392014519,
+          "y": 929.4446460980037,
+          "scale": 0.49
+        }
+      },
+      "guns": {
+        "cannon": {
+          "pivot": [
+            1278.4618874773141,
+            404.7368421052631
+          ],
+          "tip": [
+            1475.8402903811252,
+            404.7368421052631
+          ]
+        },
+        "mg": {
+          "pivot": [
+            968.2958257713249,
+            60.24410163339371
+          ],
+          "tip": [
+            1269.8802177858438,
+            2.624319419237736
+          ]
+        },
+        "mortar": {
+          "pivot": [
+            31.667876588021727,
+            486.87568058076226
+          ],
+          "tip": [
+            31.667876588021727,
+            143.60889292195998
+          ]
+        }
+      },
+      "frontX": 1414.5426497277676,
+      "centerY": 419.44827586206907
+    },
+    "base-cannon-mg": {
+      "id": "base-cannon-mg",
+      "name": "Tank gốc · Pháo + MG",
+      "prefix": "",
+      "layers": [
+        {
+          "name": "01_track_chassis",
+          "position_px": [
+            240,
+            1035
+          ],
+          "size_px": [
+            819,
+            235
+          ],
+          "z_order": 0,
+          "pivot_canvas_px": [
+            652,
+            1156
+          ]
+        },
+        {
+          "name": "02_wheel_01",
+          "position_px": [
+            331,
+            1080
+          ],
+          "size_px": [
+            161,
+            158
+          ],
+          "z_order": 1,
+          "pivot_canvas_px": [
+            410.5,
+            1159
+          ]
+        },
+        {
+          "name": "03_wheel_02",
+          "position_px": [
+            456,
+            1080
+          ],
+          "size_px": [
+            163,
+            157
+          ],
+          "z_order": 2,
+          "pivot_canvas_px": [
+            537,
+            1158.5
+          ]
+        },
+        {
+          "name": "04_wheel_03",
+          "position_px": [
+            676,
+            1079
+          ],
+          "size_px": [
+            162,
+            158
+          ],
+          "z_order": 3,
+          "pivot_canvas_px": [
+            757,
+            1158
+          ]
+        },
+        {
+          "name": "05_wheel_04",
+          "position_px": [
+            807,
+            1080
+          ],
+          "size_px": [
+            167,
+            157
+          ],
+          "z_order": 4,
+          "pivot_canvas_px": [
+            890,
+            1158.5
+          ]
+        },
+        {
+          "name": "06_main_cannon_barrel",
+          "position_px": [
+            1102,
+            405
+          ],
+          "size_px": [
+            246,
+            188
+          ],
+          "z_order": 5,
+          "pivot_canvas_px": [
+            1125,
+            496
+          ]
+        },
+        {
+          "name": "07_body_static",
+          "position_px": [
+            193,
+            67
+          ],
+          "size_px": [
+            957,
+            978
+          ],
+          "z_order": 6,
+          "pivot_canvas_px": [
+            645,
+            1040
+          ]
+        },
+        {
+          "name": "11_front_hull_frame",
+          "position_px": [
+            182,
+            147
+          ],
+          "size_px": [
+            919,
+            928
+          ],
+          "z_order": 7,
+          "pivot_canvas_px": [
+            645,
+            1040
+          ]
+        },
+        {
+          "name": "08_roof_machine_gun",
+          "position_px": [
+            714,
+            72
+          ],
+          "size_px": [
+            449,
+            180
+          ],
+          "z_order": 8,
+          "pivot_canvas_px": [
+            910,
+            231
+          ]
+        },
+        {
+          "name": "09_mortar_barrel",
+          "position_px": [
+            93,
+            235
+          ],
+          "size_px": [
+            145,
+            360
+          ],
+          "z_order": 9,
+          "pivot_canvas_px": [
+            213.14,
+            561.9
+          ]
+        },
+        {
+          "name": "10_mortar_front_support",
+          "position_px": [
+            96,
+            352
+          ],
+          "size_px": [
+            156,
+            257
+          ],
+          "z_order": 10,
+          "pivot_canvas_px": [
+            213.14,
+            561.9
+          ]
+        }
+      ],
+      "stations": {
+        "mg": {
+          "x": 670,
+          "y": 244,
+          "scale": 0.52
+        },
+        "cannon": {
+          "x": 735,
+          "y": 614,
+          "scale": 0.53
+        },
+        "mortar": {
+          "x": 386,
+          "y": 661,
+          "scale": 0.49
+        },
+        "driver": {
+          "x": 494,
+          "y": 974,
+          "scale": 0.52
+        },
+        "front": {
+          "x": 835,
+          "y": 1023,
+          "scale": 0.49
+        }
+      },
+      "guns": {
+        "cannon": {
+          "pivot": [
+            1125,
+            496
+          ],
+          "tip": [
+            1348,
+            496
+          ]
+        },
+        "mg": {
+          "pivot": [
+            910,
+            231
+          ],
+          "tip": [
+            1160,
+            156
+          ]
+        },
+        "mortar": {
+          "pivot": [
+            166,
+            235
+          ],
+          "tip": [
+            166,
+            235
+          ]
+        }
+      },
+      "frontX": 1150,
+      "centerY": 582.5
+    },
+    "base-cannon-mortar": {
+      "id": "base-cannon-mortar",
+      "name": "Tank gốc · Pháo + mortar",
+      "prefix": "",
+      "layers": [
+        {
+          "name": "01_track_chassis",
+          "position_px": [
+            240,
+            1035
+          ],
+          "size_px": [
+            819,
+            235
+          ],
+          "z_order": 0,
+          "pivot_canvas_px": [
+            652,
+            1156
+          ]
+        },
+        {
+          "name": "02_wheel_01",
+          "position_px": [
+            331,
+            1080
+          ],
+          "size_px": [
+            161,
+            158
+          ],
+          "z_order": 1,
+          "pivot_canvas_px": [
+            410.5,
+            1159
+          ]
+        },
+        {
+          "name": "03_wheel_02",
+          "position_px": [
+            456,
+            1080
+          ],
+          "size_px": [
+            163,
+            157
+          ],
+          "z_order": 2,
+          "pivot_canvas_px": [
+            537,
+            1158.5
+          ]
+        },
+        {
+          "name": "04_wheel_03",
+          "position_px": [
+            676,
+            1079
+          ],
+          "size_px": [
+            162,
+            158
+          ],
+          "z_order": 3,
+          "pivot_canvas_px": [
+            757,
+            1158
+          ]
+        },
+        {
+          "name": "05_wheel_04",
+          "position_px": [
+            807,
+            1080
+          ],
+          "size_px": [
+            167,
+            157
+          ],
+          "z_order": 4,
+          "pivot_canvas_px": [
+            890,
+            1158.5
+          ]
+        },
+        {
+          "name": "06_main_cannon_barrel",
+          "position_px": [
+            1102,
+            405
+          ],
+          "size_px": [
+            246,
+            188
+          ],
+          "z_order": 5,
+          "pivot_canvas_px": [
+            1125,
+            496
+          ]
+        },
+        {
+          "name": "07_body_static",
+          "position_px": [
+            193,
+            67
+          ],
+          "size_px": [
+            957,
+            978
+          ],
+          "z_order": 6,
+          "pivot_canvas_px": [
+            645,
+            1040
+          ]
+        },
+        {
+          "name": "11_front_hull_frame",
+          "position_px": [
+            182,
+            147
+          ],
+          "size_px": [
+            919,
+            928
+          ],
+          "z_order": 7,
+          "pivot_canvas_px": [
+            645,
+            1040
+          ]
+        },
+        {
+          "name": "08_roof_machine_gun",
+          "position_px": [
+            714,
+            72
+          ],
+          "size_px": [
+            449,
+            180
+          ],
+          "z_order": 8,
+          "pivot_canvas_px": [
+            910,
+            231
+          ]
+        },
+        {
+          "name": "09_mortar_barrel",
+          "position_px": [
+            93,
+            235
+          ],
+          "size_px": [
+            145,
+            360
+          ],
+          "z_order": 9,
+          "pivot_canvas_px": [
+            213.14,
+            561.9
+          ]
+        },
+        {
+          "name": "10_mortar_front_support",
+          "position_px": [
+            96,
+            352
+          ],
+          "size_px": [
+            156,
+            257
+          ],
+          "z_order": 10,
+          "pivot_canvas_px": [
+            213.14,
+            561.9
+          ]
+        }
+      ],
+      "stations": {
+        "mg": {
+          "x": 670,
+          "y": 244,
+          "scale": 0.52
+        },
+        "cannon": {
+          "x": 735,
+          "y": 614,
+          "scale": 0.53
+        },
+        "mortar": {
+          "x": 386,
+          "y": 661,
+          "scale": 0.49
+        },
+        "driver": {
+          "x": 494,
+          "y": 974,
+          "scale": 0.52
+        },
+        "front": {
+          "x": 835,
+          "y": 1023,
+          "scale": 0.49
+        }
+      },
+      "guns": {
+        "cannon": {
+          "pivot": [
+            1125,
+            496
+          ],
+          "tip": [
+            1348,
+            496
+          ]
+        },
+        "mg": {
+          "pivot": [
+            910,
+            231
+          ],
+          "tip": [
+            1160,
+            156
+          ]
+        },
+        "mortar": {
+          "pivot": [
+            166,
+            235
+          ],
+          "tip": [
+            166,
+            235
+          ]
+        }
+      },
+      "frontX": 1150,
+      "centerY": 582.5
+    },
+    "base-cannon": {
+      "id": "base-cannon",
+      "name": "Tank gốc · Chỉ có pháo",
+      "prefix": "",
+      "layers": [
+        {
+          "name": "01_track_chassis",
+          "position_px": [
+            240,
+            1035
+          ],
+          "size_px": [
+            819,
+            235
+          ],
+          "z_order": 0,
+          "pivot_canvas_px": [
+            652,
+            1156
+          ]
+        },
+        {
+          "name": "02_wheel_01",
+          "position_px": [
+            331,
+            1080
+          ],
+          "size_px": [
+            161,
+            158
+          ],
+          "z_order": 1,
+          "pivot_canvas_px": [
+            410.5,
+            1159
+          ]
+        },
+        {
+          "name": "03_wheel_02",
+          "position_px": [
+            456,
+            1080
+          ],
+          "size_px": [
+            163,
+            157
+          ],
+          "z_order": 2,
+          "pivot_canvas_px": [
+            537,
+            1158.5
+          ]
+        },
+        {
+          "name": "04_wheel_03",
+          "position_px": [
+            676,
+            1079
+          ],
+          "size_px": [
+            162,
+            158
+          ],
+          "z_order": 3,
+          "pivot_canvas_px": [
+            757,
+            1158
+          ]
+        },
+        {
+          "name": "05_wheel_04",
+          "position_px": [
+            807,
+            1080
+          ],
+          "size_px": [
+            167,
+            157
+          ],
+          "z_order": 4,
+          "pivot_canvas_px": [
+            890,
+            1158.5
+          ]
+        },
+        {
+          "name": "06_main_cannon_barrel",
+          "position_px": [
+            1102,
+            405
+          ],
+          "size_px": [
+            246,
+            188
+          ],
+          "z_order": 5,
+          "pivot_canvas_px": [
+            1125,
+            496
+          ]
+        },
+        {
+          "name": "07_body_static",
+          "position_px": [
+            193,
+            67
+          ],
+          "size_px": [
+            957,
+            978
+          ],
+          "z_order": 6,
+          "pivot_canvas_px": [
+            645,
+            1040
+          ]
+        },
+        {
+          "name": "11_front_hull_frame",
+          "position_px": [
+            182,
+            147
+          ],
+          "size_px": [
+            919,
+            928
+          ],
+          "z_order": 7,
+          "pivot_canvas_px": [
+            645,
+            1040
+          ]
+        },
+        {
+          "name": "08_roof_machine_gun",
+          "position_px": [
+            714,
+            72
+          ],
+          "size_px": [
+            449,
+            180
+          ],
+          "z_order": 8,
+          "pivot_canvas_px": [
+            910,
+            231
+          ]
+        },
+        {
+          "name": "09_mortar_barrel",
+          "position_px": [
+            93,
+            235
+          ],
+          "size_px": [
+            145,
+            360
+          ],
+          "z_order": 9,
+          "pivot_canvas_px": [
+            213.14,
+            561.9
+          ]
+        },
+        {
+          "name": "10_mortar_front_support",
+          "position_px": [
+            96,
+            352
+          ],
+          "size_px": [
+            156,
+            257
+          ],
+          "z_order": 10,
+          "pivot_canvas_px": [
+            213.14,
+            561.9
+          ]
+        }
+      ],
+      "stations": {
+        "mg": {
+          "x": 670,
+          "y": 244,
+          "scale": 0.52
+        },
+        "cannon": {
+          "x": 735,
+          "y": 614,
+          "scale": 0.53
+        },
+        "mortar": {
+          "x": 386,
+          "y": 661,
+          "scale": 0.49
+        },
+        "driver": {
+          "x": 494,
+          "y": 974,
+          "scale": 0.52
+        },
+        "front": {
+          "x": 835,
+          "y": 1023,
+          "scale": 0.49
+        }
+      },
+      "guns": {
+        "cannon": {
+          "pivot": [
+            1125,
+            496
+          ],
+          "tip": [
+            1348,
+            496
+          ]
+        },
+        "mg": {
+          "pivot": [
+            910,
+            231
+          ],
+          "tip": [
+            1160,
+            156
+          ]
+        },
+        "mortar": {
+          "pivot": [
+            166,
+            235
+          ],
+          "tip": [
+            166,
+            235
+          ]
+        }
+      },
+      "frontX": 1150,
+      "centerY": 582.5
+    }
+  }
+}

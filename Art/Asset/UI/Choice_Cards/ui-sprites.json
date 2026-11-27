@@ -1,0 +1,135 @@
+{
+  "baseDesign": [
+    250,
+    382
+  ],
+  "baseTexture": [
+    500,
+    764
+  ],
+  "baseMode": "Simple, fixed aspect ratio; text and icons separate",
+  "rarities": [
+    {
+      "id": "common",
+      "base": "bases/base_common.png",
+      "frame": "bases/frame_common.png",
+      "frameSize": [
+        128,
+        128
+      ],
+      "frameBorderLTRB": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "frameType": "Sliced"
+    },
+    {
+      "id": "rare",
+      "base": "bases/base_rare.png",
+      "frame": "bases/frame_rare.png",
+      "frameSize": [
+        128,
+        128
+      ],
+      "frameBorderLTRB": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "frameType": "Sliced"
+    },
+    {
+      "id": "epic",
+      "base": "bases/base_epic.png",
+      "frame": "bases/frame_epic.png",
+      "frameSize": [
+        128,
+        128
+      ],
+      "frameBorderLTRB": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "frameType": "Sliced"
+    },
+    {
+      "id": "legendary",
+      "base": "bases/base_legendary.png",
+      "frame": "bases/frame_legendary.png",
+      "frameSize": [
+        128,
+        128
+      ],
+      "frameBorderLTRB": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "frameType": "Sliced"
+    },
+    {
+      "id": "ad",
+      "base": "bases/base_ad.png",
+      "frame": "bases/frame_ad.png",
+      "frameSize": [
+        128,
+        128
+      ],
+      "frameBorderLTRB": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "frameType": "Sliced"
+    }
+  ],
+  "layoutNormalized": {
+    "hero": {
+      "x": 0.1,
+      "y": 0.107,
+      "w": 0.8,
+      "h": 0.37
+    },
+    "name": {
+      "x": 0.03,
+      "y": 0.49,
+      "w": 0.94,
+      "h": 0.13
+    },
+    "tag": {
+      "x": 0.03,
+      "y": 0.64,
+      "w": 0.94
+    },
+    "copy": {
+      "x": 0.08,
+      "y": 0.73,
+      "w": 0.84,
+      "h": 0.12
+    },
+    "action": {
+      "x": 0.08,
+      "y": 0.87,
+      "w": 0.84,
+      "h": 0.09
+    },
+    "rarity": {
+      "x": 0.08,
+      "y": 0.034
+    },
+    "info": {
+      "x": 0.91,
+      "y": -0.027,
+      "w": 0.14
+    }
+  },
+  "skewDegrees": -3,
+  "textBaked": false
+}

@@ -1,0 +1,158 @@
+MEGATANK — BÀN GIAO UNITY MỚI NHẤT
+Cập nhật: 26/11/2026. Các đường dẫn dưới đây tính từ root repository MegaTank.
+
+Hướng dẫn port chi tiết: PORT_HTML_TO_UNITY.txt. Prompt cho chat máy khác: AI_START_HERE.txt.
+Asset nguồn duy nhất là Art/; không trích hình từ HTML.
+
+Hãy đọc file này trước, sau đó xem ảnh trong Design/UnityDesignHandoff/Preview/.
+Art/Equipment-test.html là demo tương tác mới nhất. Đây là bản tham chiếu design;
+chưa có prefab Unity mới và chưa chạy kiểm tra trong Unity Editor.
+Không port các con số minh họa của HTML thành balance. Không có bảng balance kèm theo.
+
+1. PROFILE NGƯỜI CHƠI / RESOURCE HUD
+- Góc trái Main đã đổi ô tên màn thành avatar, Tank Level và thanh EXP.
+  Tên stage vẫn nằm ở bộ chọn stage phía dưới. Tank Level tách khỏi level nhân vật.
+- Avatar đang dùng mèo driver; binding thực tế là playerProfile.avatarId.
+- Coin vàng; bánh răng đã đổi sang bạc, sáu răng, lỗ tâm rõ.
+- Khung tài nguyên màu tối, đầu vát, bỏ viền trắng. Chỉ background của khung có
+  opacity 80%; icon và số giữ nguyên alpha. Main và Gameplay dùng cùng wallet.
+- Top HUD canh theo cùng đường tâm quang học. Xem Preview/main-profile.png.
+- Asset: Art/Asset/UI/Resource_Counters/ và Art/Asset/UI/Player_Profile/.
+
+2. TANK LEVEL, EXP VÀ SLOT
+- Profile lưu Tank EXP lâu dài; bắt đầu Tank Lv1. Hoàn thành stage nhận EXP,
+  kiểm tra lên cấp và cập nhật slot được mở. Nhận reward đúng một lần cho lượt đó.
+- Prototype hiện trao EXP khi thắng stage. Reward khi thua/chơi dở chưa được chốt.
+- Mốc người dùng đưa làm ví dụ: MG Lv5, Melee Lv10. Demo tạm đặt Driver/Cannon
+  sẵn ở đầu game và Mortar Lv15 để thử đủ luồng. Mortar Lv15 là giả định của demo.
+  Đưa toàn bộ unlockLevel và đường EXP vào config Unity để designer chỉnh.
+- Phân biệt slot chưa mở và slot đã mở nhưng tank thiếu vũ khí/hết đạn.
+  Slot chưa mở chưa triển khai crew vào đội hình chiến đấu. Slot đã mở mà thiếu
+  súng hoặc hết đạn dùng luật mèo xuống hỗ trợ/chạy theo xe đã có.
+- Crew scene vẫn xem được slot khóa; có nhãn cấp yêu cầu và Equip bị khóa.
+  Equipment scene cũng hiển thị trạng thái khóa. Không xóa assignment đã lưu
+  chỉ vì cấp tank hiện chưa đạt yêu cầu.
+- Mỗi trận/stage có baseTankLevel và temporaryTankLevel riêng; tính cấp hiệu lực
+  rồi mới kiểm tra slot. Các mức nâng tạm không cộng thẳng vào EXP profile.
+
+3. TRẠM NÂNG CẤP TỰ ĐỘNG TRÊN MAP — QUYẾT ĐỊNH CUỐI CÙNG
+- Dọn hết wave, xe đi tiếp gặp trạm xưởng nâng cấp, tới gần thì dừng.
+- KHÔNG mở bảng chọn thẻ ở trạm này. Không yêu cầu bấm nút để nhận nâng cấp.
+- Khi dừng: hiện vòng aura dưới xe, glow/particle đi lên và chữ lên cấp.
+  Cộng nâng cấp một lần trong đoạn hiệu ứng; xong xe đi tiếp và vào phần kế tiếp.
+- Còn slot khóa: nâng cấp tạm đủ tới mốc mở slot kế tiếp.
+  Demo mở lần lượt MG, Melee rồi Mortar; slot súng mới có súng base để nhìn được
+  kết quả. Quy tắc cấp súng/đạn khởi đầu cho slot mới đưa vào config hệ thống.
+- Đã mở đủ slot: tự tăng các base stat của tank cho stage đó (máu tối đa,
+  hỏa lực, chống chịu và xác suất crit trong demo). Không có lựa chọn ở bước này.
+- Cấp tạm và buff trạm chỉ tồn tại trong stage hiện tại; khởi tạo stage mới sẽ
+  lấy lại cấp profile và xóa buff tạm. Chỉ EXP kết quả stage đi vào profile.
+- Guard nhận thưởng: stationInstanceId + upgradeApplied. Pause giữ nguyên thời
+  gian aura; tải/hủy/pooling không được cấp nâng cấp thêm lần nữa.
+- State tham khảo: Approach -> UpgradeStop -> ApplyOnce -> Depart.
+- Bố trí thử trong HTML: khi profile chưa mở MG, có một trạm ở đầu stage để
+  nhận MG tạm trước wave đầu. Việc này tránh kẹt do Cannon không đánh được chó
+  đã áp sát. Vị trí/tần suất trạm đầu màn là cấu hình demo, cần designer chốt.
+- Art trạm: Art/Asset/BG/upgrade_station.png. Aura: Art/VFX/Tank_Level_Up/.
+  Xem Preview/upgrade-station.png. Icon timeline hiện dùng bánh răng bạc, nhãn UPGRADE.
+
+4. THẺ CHỌN / 5 BASE DÙNG CHUNG
+- Base: Common xám, Rare xanh dương, Epic tím, Legendary vàng và Rewarded AD đa sắc.
+- Thẻ dọc kiểu comic: viền đen, nền sáng, xoáy màu sau icon lớn, tên tiếng Anh
+  trắng có viền/bóng đen, mô tả ngắn và nút hành động. Hình lều/phố xám ở dưới.
+- Đã bỏ panel nền vàng bao ngoài. Tiêu đề và thẻ nằm trực tiếp trên gameplay
+  được làm tối/tím và blur. Hai lựa chọn căn giữa; ba lựa chọn cùng cỡ.
+- Chọn loại súng: ARMOR-PIERCING CANNON / BLAST MORTAR / PLASMA MG.
+- Tiếp tế: MG SUPPLY / CANNON SUPPLY / MORTAR SUPPLY, dùng hình hộp tiếp đạn riêng.
+- Y tế: FIRST AID KIT / SPARE GEARS. Hộp cứu thương đang hồi máu tank.
+- Đổi xe: SCOUT TANK / HEAVY TANK / CANNON + MG / CANNON + MORTAR /
+  CANNON TANK / KEEP MY TANK. Hình xe trống có đúng cấu hình súng.
+- Plasma có nhãn AD. Nối rewarded ad thành công mới áp dụng; hủy không nhận thẻ.
+  Khóa tương tác lúc đang xử lý; chỉ áp dụng một lựa chọn, một lần.
+- Rarity từng thẻ hiện là mapping minh họa, chưa là bảng tỷ lệ xuất hiện.
+- Asset/source/catalog: Art/Asset/UI/Choice_Cards/. Đọc HUONG_DAN_UNITY.txt.
+  Xem Preview/choice-bases.png, choice-cards.png và choice-scenes.png.
+
+5. BIẾN THỂ SÚNG — KHÔNG DÙNG LOẠI ĐẠN CHUNG CHO CẢ XE
+- cannon_ap -> slot Cannon -> Armor-Piercing Cannon.
+- mortar_blast -> slot Mortar -> Blast Mortar.
+- mg_plasma -> slot MG -> Plasma MG.
+- Lưu weaponVariantId theo từng slot; thay một khẩu không đổi hai khẩu khác.
+  Số lượng đạn dự trữ vẫn theo từng slot; đổi biến thể trong demo giữ số đạn đó.
+- Slot khóa hoặc tank không có khẩu tương ứng thì lựa chọn bị disabled.
+- HTML đã chuyển lựa chọn và hiệu ứng đạn/sát thương sang slot tương ứng.
+- Ba hình súng mới là illustration/icon cho card. Visual khẩu súng đang gắn trên
+  thân tank trong HTML vẫn dùng part base cũ; khi port Unity, thay visual qua
+  WeaponDefinition và socket/pivot của tank, cần tách part gameplay nếu muốn nòng giật.
+- Tránh đưa cả ảnh chứa bệ/stock của icon vào nòng hiện tại mà không chỉnh pivot.
+
+6. BỘ 4 ICON TĂNG STAT — ẢNH ĐỂ LẮP THẺ
+Art/Asset/UI/Stat_Upgrades/:
+- cannon_damage.png: một viên đạn pháo lớn + dấu tăng, tăng damage Cannon.
+- mg_damage.png: dây đạn MG nhỏ + dấu tăng, tăng damage MG.
+- tank_hp.png: tank base xanh + tim/khiên, tăng máu tối đa toàn tank.
+- crit_chance_up.png: đạn + tia chí mạng + xúc xắc, tăng xác suất crit.
+Hai icon damage dùng đạn base, không dùng ba khẩu biến thể mới.
+PNG RGBA nền trong suốt; bản HD và prompt ở source/. Chữ tên để Text/TMP động.
+Người dùng xin ảnh để tự lắp card; bộ này chưa tự thêm bốn lựa chọn vào pool thẻ.
+Target/scope/stacking của Crit Chance Up do CardDefinition quy định khi lắp.
+
+7. MÁU TỪNG MÈO / CHARACTER STATS
+- Mỗi crewId có sáu trường như icon scene Crew: atk, hp, accuracy, defense,
+  move_speed, crit_rate. HP stat là maxHP của nhân vật; currentHP là state chiến đấu.
+- Dùng chung CharacterDefinition/resolver cho bảng Crew và actor trong màn.
+  Bảng Crew đã bỏ số 9999 đồng loạt, hiển thị dữ liệu minh họa theo nhân vật.
+- Mèo xuống đất có thanh máu và tên nhỏ trên đầu. Mỗi người có currentHP riêng;
+  nhảy lên/xuống xe không tạo lại actor để hồi đầy hoặc nhân đôi người.
+- Chó đánh trúng mèo thì trừ máu mèo; nếu không có mèo chắn thì đánh tank.
+  Đạn địch có thể trúng mèo dưới đất. Defense, tốc độ, độ chính xác và crit trong
+  demo đã đọc từ bộ stat nhân vật cho phần cận chiến.
+- HP về 0: anim chết, dừng AI/attack/targeting, không giữ xe đứng yên, xác neo
+  worldX và trôi theo mặt đường rồi fade. Không xóa nhân vật khỏi roster.
+- Demo dùng trạng thái ngã trong stage và reset khi tạo trận mới. Cơ chế cứu
+  người/hồi sinh/chấn thương lâu dài chưa được người dùng chốt.
+- Level/Ascend/skill của mèo tách khỏi Tank Level. Đường tăng stat theo level,
+  sao và skill để hệ thống Unity chốt; các số đang hiển thị chỉ để xem design.
+- Xem schema trong Design/UnityDesignHandoff/data/ và Preview/crew-stats.png.
+  Icon sáu stat gốc ở Art/Asset/UI/Stat_Icons/; tên skill ở UI/Crew/skills.json.
+
+8. ENEMY MỚI ĐÃ LẮP VÀO WAVE HTML
+- Dog_Cannon_Car_v2: xe pháo chó, người lái giữa cabin, bánh quay, pháo khai hỏa
+  từ muzzle/socket đúng part. Giữ xe/máy bay chó cũ làm loại địch khác.
+- Dog_MG_Helicopter_v1: chó phi công, MG bắn phía trước/xuống, cánh đuôi quay;
+  cánh chính là đĩa blur elip, xoay texture trong parent bị ép dọc để hub không lệch.
+- Trojan_Scrap_Cat_v1: mèo gỗ/scrap gọn, chứa đúng ba chó. Áp sát hoặc phá vỏ
+  sớm cùng đi qua guard revealOnce. Hất vỏ và thả ba chó hơi lệch nhịp.
+- Đăng ký ba payload vào wave trước khi bỏ carrier. Chó chỉ bật AI đánh sau
+  khi đáp; wave phải chờ cả ba. Không nhân đôi chó khi trigger/phá vỏ đồng thời.
+- Carrier và payload không được làm lệch điều kiện đếm clear stage: prototype
+  giữ một mục tiêu carrier và hoàn tất mục đó khi cả ba chó đã chết; payload có
+  loot riêng, vỏ là cosmetic wreck trôi theo mặt đường.
+- Đọc metadata/parts_manifest.json, DESIGN_DOC_UNITY_VI.txt, README_IMPORT_VI.txt
+  trong từng folder Art/Asset/Enemies/ ở trên. Pivot/offset/draw order đã có.
+- Dùng lại Spine chó trong Art/Anim; PNG part/atlas preview không phải prefab
+  Unity đã import. Xem Preview/combat-enemies.png và trojan-reveal.png.
+
+9. KỸ THUẬT UI / IMPORT
+- PNG alpha: Sprite, Full Rect, alpha transparency, Bilinear, mipmap off cho UI.
+- Card: frame có bản 9-slice riêng; swirl/scene/icon dùng Simple, Preserve Aspect.
+  Full base preview giữ tỉ lệ thẻ; không 9-slice cả xoáy màu hoặc hình súng.
+- Text/title/badge/icon tách layer. Khung skew riêng, chữ và avatar giữ đọc được.
+- Avatar/icon/portrait không kéo giãn méo; UI atlas rotation/tight packing off
+  khi cần giữ RectTransform và border theo manifest. Không bake toàn thẻ thành nút.
+- Aura Unity có thể dùng SpriteRenderer/Particle System cho glow, ring, spark
+  và mũi tên đi lên; một event nhận nâng cấp, một event rời trạm. Texture kèm theo
+  chỉ là phần hình, cần tạo prefab/material/animation trong Unity.
+
+10. KIỂM TRA ĐÃ CHẠY / GIỚI HẠN THỰC TẾ
+- HTML load/render Main, Crew, Gameplay và bốn tình huống chọn thẻ; không có lỗi JS.
+- Chọn súng đúng slot; hủy/nhận AD; lựa chọn thiếu slot bị khóa; tiếp đạn một lần.
+- Máu mèo độc lập với tank, xác trôi đúng nền; Troy chỉ thả đúng ba chó và wave chờ đủ.
+- EXP stage không cộng lặp và lưu qua reload. Profile mặc định bắt đầu Lv1.
+- Trạm upgrade không mở choice modal, xe dừng/BG dừng, tự mở slot và đi tiếp;
+  buff/cấp tạm reset ở stage mới, EXP profile không bị cộng bởi trạm.
+- Ảnh kiểm tra combat có thể dùng mức mở đủ slot để nhìn hết đội hình. URL demo
+  Art/Equipment-test.html?tankLevel=15 là chế độ xem thử, không lưu đè profile.
+- Chưa kiểm tra trong Unity Editor. Việc tạo prefab, nối save/economy/rewarded ad,
+  data-driven stats và balance thuộc phần triển khai Unity.
+- Nhánh bàn giao: Thai-edit, theo yêu cầu ngày 27/11/2026. Chưa push; máy khác cần đồng bộ nhánh này.

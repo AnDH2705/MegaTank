@@ -1,0 +1,36 @@
+{
+  "profile_frame": {
+    "imageType": "Sliced",
+    "borderLTRB": [
+      8,
+      8,
+      8,
+      8
+    ]
+  },
+  "exp_rail": {
+    "imageType": "Sliced",
+    "borderLTRB": [
+      3,
+      3,
+      3,
+      3
+    ]
+  },
+  "exp_fill": {
+    "imageType": "Filled",
+    "method": "Horizontal",
+    "origin": "Left"
+  },
+  "avatar": {
+    "imageType": "Simple",
+    "preserveAspect": true
+  },
+  "binding": [
+    "playerProfile.avatarId",
+    "tankLevel",
+    "tankXP",
+    "nextLevelXP"
+  ],
+  "skewBackgroundDegrees": -4
+}

@@ -1,0 +1,237 @@
+MEGATANK — PORT HTML SANG UNITY: HỢP ĐỒNG HÌNH ẢNH VÀ HÀNH VI
+Cập nhật 27/11/2026; nhánh Thai-edit. Đường dẫn tính từ root repository.
+
+A. NGUỒN CHUẨN VÀ CÁCH DÙNG ASSET
+
+Nguồn asset: Art/. Nguồn bố cục/hành vi: Art/Equipment-test.html.
+Dùng PNG, part rời, Spine runtime và manifest gốc có trong Art/ để import Unity.
+Không extract base64 từ HTML, không chụp/cắt lại ảnh canvas hay biến GIF demo
+thành sprite. Web có thể dùng bản WebP đã resize/nén để xem thử; import bản PNG
+hoặc Spine gốc trong Art/ sẽ giữ chất lượng, alpha và pivot tốt hơn.
+
+File chỉ đường: Reference/data/art-source-inventory.json.
+- Manifest part chứa position_px, size_px, pivot_canvas_px, parent, z_order.
+- Spine: dùng bộ runtime .json/.skel + .atlas + PNG cùng bộ; .spine là nguồn sửa.
+- Clip metadata trong Reference/data/ mô tả pose, thời gian, foot/seat anchor và
+  hình học bản xem thử; ảnh vẫn lấy ở Art/. Các pose ngồi nóc/đứng không vũ khí
+  là biến thể pose của rig có sẵn, xử lý bằng bones/attachments và socket.
+- Nếu không tìm được một pose/runtime export, đối chiếu README/rig source và
+  xuất đúng runtime từ nguồn Spine; không chế lại part bằng cách cắt HTML.
+- sprite-asset-map.json chỉ là đối chiếu logical key/checksum. Key cache WebP
+  không khớp file PNG từng byte thì tra manifest gốc; không dùng key đó để cắt ảnh.
+
+Project hiện tại: Sources/CatTanks. Theo ProjectSettings/ProjectVersion.txt hiện
+là Unity 2022.3.62f2. README cũ có ghi f1; ưu tiên ProjectVersion.txt của checkout.
+Project đang dùng Built-in pipeline, uGUI và TMP. Không tự chuyển render pipeline
+chỉ để làm glow. Dùng material/sprite/particle phù hợp pipeline hiện có.
+
+README Unity hiện mô tả bản port Art/complete_cat/CHOI_NGAY.html. Bản yêu cầu
+này lấy Equipment-test.html làm chuẩn, vì vậy UI/world cũ không phải ảnh nghiệm thu.
+
+B. FILE NÀO ĐỂ THAM KHẢO
+
+NOTE_LATEST_UNITY.txt: các quyết định design mới nhất và phạm vi đã làm.
+Reference/data/coordinate-contract.json: hệ tọa độ và thứ tự vẽ.
+Reference/data/ui-layout-reference.json: Rect/anchor chuẩn hóa và kích thước đo
+  trên canvas 1920x1080, Main/Gameplay/Boss/4 tình huống thẻ.
+Reference/data/tank-parts.json, tank-skins-geometry.json: geometry tank và ghế.
+Reference/data/crew-clips-and-stations.json: clip, feet/seat pivot, scale và mask.
+Reference/data/vehicle-parts.json: xe/plane chó đã có.
+Reference/data/parallax-layers.json: đúng thứ tự và tốc độ riêng từng layer.
+Reference/data/arcade-vfx-clips.json: sheet, frame, FPS/pivot của VFX đã có.
+Reference/source/: code vẽ, layout CSS và SVG/markup thanh boss để đọc thuật toán;
+  đây là tham chiếu cho C#, không phải đề nghị nhúng JavaScript runtime/WebView.
+Art/Asset/UI/Choice_Cards/: base 5 rarity, frame 9-slice, xoáy riêng, icon, catalog.
+
+Các nhóm trong source tham chiếu vẫn có logical key của web. Resolve key sang
+asset Art/ bằng inventory/manifest; không copy URL tuyệt đối C:/ hoặc D:/ vào game.
+
+C. HỆ TỌA ĐỘ, CAMERA, SCALE
+
+Khung world HTML: 1920x1080, gốc trái trên, Y hướng xuống. Ground chính Y=930.
+Nếu chọn PPU=100: Unity world X=(htmlX-960)/100, Y=(540-htmlY)/100;
+camera ortho bao chiều cao 10.8 world units. Có thể chọn PPU khác nhưng phải
+nhân đồng đều cả world, camera, socket và khoảng cách. Không scale từng loại riêng.
+Local offset: (dx/PPU,-dy/PPU). Góc Unity Z là âm của góc canvas HTML.
+
+Tank native canvas 1351x1277, anchor [652,1258]. Với actor.w, factor=actor.w/1351.
+Lắp part theo local offset từ anchor, rồi scale cả geometry tank bằng factor.
+Root actor ở feet/ground anchor; không lấy tâm bounding box tự trim làm root.
+Player quay phải; enemy quay trái bằng một root flip X. Không flip lặp từng part.
+Pivot pixel góc trái trên -> normalized Unity: (px/width,1-py/height).
+Manifest nào đã ghi pivot_normalized theo Unity thì dùng nguyên giá trị đó.
+
+Sprite Full Rect, giữ padding trong suốt, alpha đúng. Atlas/tight mesh hoặc trim
+làm mất padding sẽ đổi registration nếu không bù lại offset. Metadata luôn đi
+kèm đúng ảnh, không trộn manifest của phiên bản khác.
+
+Xe xanh/đỏ phải giữ cỡ mèo như xe gốc. Copy stations/guns/layers từ profile
+geometry tương ứng, không thu nhỏ crew để nhét vào khoang.
+
+D. DRAW ORDER, MASK VÀ NHÂN VẬT
+
+Đúng thứ tự chung trong coordinate-contract.json. Các lớp chính:
+BG sau -> prop trạm -> particle sau -> wreck/lửa/xác -> xe địch -> tank player ->
+người dưới đất theo Y -> aura -> loot -> BG tiền cảnh -> particle/đạn/effect trước.
+Trong từng actor, z_order/parent của manifest là chuẩn. Dùng SortingGroup cho
+cả actor và sorting trong group cho part, thay vì dựa vào thứ tự tạo GameObject.
+
+Crew aboard nằm sau khung/hull trước để chân chìm trong khoang. Giữ clip/mask
+ở từng station. Trong lúc nhảy còn nằm trong thân xe, phải giữ occlusion với
+khung xe, ra khỏi thân mới hiển thị toàn người. Tránh chân nổi ra ngoài vỏ.
+Một crewId là một instance xuyên suốt aboard/jump/combat/return; detach khỏi
+transform tank khi xuống đất, giữ world transform và scale. Không respawn crew
+mỗi lần đổi phase vì sẽ làm hồi máu hoặc nhân đôi người.
+
+Clip gốc và nguồn rig xem inventory. Foot/seat pivot trong clip metadata là
+điểm đăng ký, không phải góc trái ảnh. Với Spine, căn foot/seat anchor tương ứng
+và kiểm tra chiều cao world với ảnh Preview/; không kéo xương/part để bù scale sai.
+Giữ draw order đùi trước/pelvis/đùi sau trong rig gốc; không cắt lại PNG chân tay.
+
+E. PARALLAX VÀ NEO WORLD
+
+Mỗi layer BG có factor riêng trong parallax-layers.json. Sky factor 0 đứng yên,
+cảnh xa chậm, đường/tường/tiền cảnh có tốc độ riêng. Giữ layer.front và thứ tự
+file, không ghép cả BG thành một hình cuộn.
+Tile mirror xen kẽ theo chiều ngang đúng như TankParallax.reference.js để nối
+mép. Giữ đủ tile ở hai bên camera khi rung hoặc đi qua biên.
+Xác, vỏ Troy, lửa, loot và trạm neo bằng world position/road scroll. Xe đứng khi
+đánh cận chiến hoặc dừng trạm thì road và các layer dừng đồng thời.
+Camera shake tác động world; HUD nằm trên Canvas ổn định.
+
+F. UI MAIN / CREW / GAMEPLAY
+
+UI là Canvas native; dùng một vùng landscape 16:9 trong Safe Area. Các rect
+trong ui-layout-reference.json dùng chuẩn 1920x1080, có normalized anchor để
+co theo vùng game. Giữ tỉ lệ ảnh; áp dụng min-size/spacing theo CSS tham chiếu.
+Rect đo là screen bounding box sau transform, dùng để so ảnh. Khi dựng parent
+skew, lấy box trước skew từ manifest/CSS; không áp cùng skew lần nữa lên box đã đo.
+
+Main: góc trái là avatar + Tank Level + EXP, không còn bảng tên màn ở chỗ đó.
+Tên stage ở bộ chọn stage dưới. Resource và menu trên cùng canh cùng đường tâm.
+Frame resource: dark, đầu vát, alpha 80% riêng frame; icon/text alpha 100%.
+Gear bạc, coin vàng. Không dùng CanvasGroup 0.8 cho cả counter.
+
+Crew giữ design Art/Asset/UI/Crew/Crew_demo.psd và PNG đã tách. Layout gốc
+770x436, scale đồng đều theo chiều ngang như HTML. Dùng ui-layout/ui-sprites
+và helper skew có sẵn trong pack. Đặt text/portrait thẳng, skew background riêng.
+Viền xanh roster = selectedCrewId; tick xanh = equippedCrewId của slot đang mở.
+Click preview đổi bảng giữa, Equip mới đổi assignment. Slot khóa vẫn xem được,
+có nhãn level và không Equip được. Sáu stat bảng giữa lấy cùng resolver với combat.
+5/20 là mảnh; đủ mảnh nút vàng ASCEND. Level Up, Ascend và Tank Level tách riêng.
+Tên skill/id/icon có đủ trong Art/Asset/UI/Crew/skills.json.
+
+Gameplay: pause dùng nút menu như Main; timeline top center; resource top right.
+HP ở dưới trái, ammo nhỏ gom sát bên phải và gióng top theo khung HP chính.
+Không có nhãn loại đạn chung hay chữ Tiếp tục hành trình trong HUD dưới.
+
+Boss HP: khung bình hành, viền trắng dày, nền đen tứ giác lệch, màu máu bẹt.
+Chữ BOSS có stroke/drop shadow dày và burst comic sau chữ. Không có xN/combo.
+Đọc boss-health-component.html và CSS tham chiếu để giữ đúng outline/skew.
+Bind currentHP/maxHP boss thật; không đổi logic máu thành nhiều mạng/stack.
+
+Thẻ: Common/Rare/Epic/Legendary/AD đa sắc; dùng base/frame/swirl và art có sẵn.
+Hai hoặc ba lựa chọn cùng kích thước, căn giữa; panel ngoài trong suốt, gameplay
+tối/blur phía sau. Title/description/action là text động; giữ nameLines nếu có.
+Source CSS có đúng tỉ lệ, font size, outline và khoảng trống. Font dùng font comic
+đã được cấp phép trong project; Impact trên máy Windows chỉ là font tham chiếu.
+9-slice frame riêng; swirl/hero/scene/portrait giữ aspect. Không 9-slice full icon.
+
+G. TIMELINE / TRANSITION
+
+Timeline luôn có 3 slot data: 2 event thường + boss cuối. Pointer giữ giữa.
+Event đang diễn ra ở giữa. Event tiếp theo sinh sau icon boss, đi dần sang trái
+theo khoảng cách tank thật. Qua event, icon cũ trôi trái, icon tiếp thế vào giữa.
+Battle giữ icon đó qua toàn bộ nhóm wave; caption WAVE xx/yy theo nhóm, clear
+cả nhóm mới tiến route. Boss ghim phải và trượt vào giữa khi vào boss cuối.
+Trượt marker 0.32s, nhả marker mới 0.18s; pause đóng băng animation/progress.
+Trạm upgrade là event riêng có icon gear và nhãn UPGRADE.
+Scene mới fade và trượt từ phải (0.36s), scene cũ fade out (0.2s). Khóa thao tác
+chuyển scene chồng nhau; dùng unscaled time khi UI vẫn cần chạy lúc game pause.
+
+H. HÀNH VI CREW / BOSS / VŨ KHÍ
+
+Gặp địch trong vùng MG, mèo melee xuống đánh; xe dừng, súng còn vận hành được
+vẫn auto-aim/bắn. Hết địch mèo quay về và nhảy lên, xe mới chạy tiếp.
+Khẩu hết đạn: người ở ghế đó xuống cận chiến. Tank thiếu khẩu nhưng slot đã
+mở: người chạy theo xe, gặp địch thì hỗ trợ. State Following không giữ xe đứng.
+Slot còn khóa theo Tank Level chưa triển khai crew xuống chạy theo.
+Boss dừng hai xe: cả hai bên xuống người melee; driver và người ở khẩu không
+còn bắn được cũng xuống. MG còn dùng được phải tiếp tục bắn, tránh tắt cả hệ súng.
+
+Mỗi mèo có HP riêng, atk/accuracy/defense/move_speed/crit_rate riêng. Chó đánh
+mèo trừ đúng mèo, không trừ tank đồng thời. HP không reset khi lên/xuống xe.
+Dead: ngừng AI/target/giữ xe, anim death không loop, xác neo road rồi fade.
+
+Variant súng lưu theo slot: cannon_ap/cannon, mortar_blast/mortar, mg_plasma/mg.
+Ảnh biến thể hiện dùng cho card. Muốn khớp HTML hiện tại, khẩu đang gắn trên
+thân tank vẫn là part base. Thay art gameplay sang variant là phần thiết kế thêm,
+không gắn nguyên ảnh icon có bệ/stock vào nòng cũ rồi sai pivot.
+
+I. TANK LEVEL / TRẠM NÂNG CẤP
+
+Permanent Tank EXP thuộc profile, bắt đầu Lv1. Award stage có guard một lần,
+lưu qua reload. Level/EXP của nhân vật, sao và mảnh không nhập chung vào tank.
+Run có baseTankLevel/temporaryTankLevel/effectiveLevel, kiểm tra unlock theo
+cấp hiệu lực. Cấp tạm reset ở stage mới, không ghi vào EXP profile.
+
+Trạm: approach trên BG -> stop -> aura -> applyOnce -> depart. Không mở lựa
+chọn, không chờ click. Aura vòng dưới xe + glow + spark/arrow đi lên + chữ level.
+Apply ở 0.5s, đi tiếp ở 2.1s, hiệu ứng fade hết khoảng 2.6s trong demo.
+Còn slot: lên tạm tới mốc kế tiếp để mở súng/crew. Đủ slot: tăng base stat cho
+stage đó. Texture ở Art/VFX/Tank_Level_Up, art trạm ở Art/Asset/BG/upgrade_station.png.
+Demo có trạm đầu màn khi MG chưa mở để Lv1 không kẹt trước chó áp sát.
+Mốc unlock/EXP/buff là config; các ví dụ MG5/Melee10 và Mortar15 tạm dùng
+được giải thích trong NOTE_LATEST_UNITY.txt, không xem là bảng balance chốt.
+
+J. ENEMY / VFX / LOOT
+
+Ba enemy mới: Dog_Cannon_Car_v2, Dog_MG_Helicopter_v1, Trojan_Scrap_Cat_v1.
+Đọc manifest gốc để lắp xe/chó/vũ khí. Muzzle/fire/rotation phải dùng đúng socket
+cùng geometry, đặc biệt súng trực thăng vốn có rest angle chéo xuống.
+Rotor chính: texture tròn quay trong parent squash thành ellipse; hub cố định.
+Không quay cả sprite ellipse làm đầu cánh co giãn/lệch trục. Cánh đuôi quay quanh hub.
+Troy guard revealOnce cho cả proximity và phá vỏ sớm; đăng ký đúng ba payload
+trước khi bỏ carrier khỏi active wave. Chó đáp rồi mới AI đánh. Vỏ cosmetic,
+không spawn payload thêm trong OnDisable/pool. Wave chờ đủ ba chó.
+
+Lửa pháo là burst ở muzzle, không phải trail bám đạn; MG nhìn rõ ở kích thước nhỏ.
+Pháo/nổ rung camera; UI không rung theo. Mortar dùng bộ VFX đã có trong Art/VFX.
+VFX/playback scale/pivot/FPS theo arcades JSON và source reference. Particle glow
+dùng texture alpha/additive; không dùng đèn 3D đổi màu toàn bộ sprite comic.
+Loot neo road, rơi xuống rồi hút về counter tương ứng; lấy đích từ RectTransform
+counter hiện tại. Wallet Main/Battle là một nguồn. Thắng boss mở rương ngay,
+reward chỉ một lần, không có ô rương tích lũy ở góc.
+
+K. CHỖ GẮN VÀO SOURCE UNITY HIỆN CÓ
+
+Sources/CatTanks/Assets/CatTanks/Scripts/:
+- Profile.cs: persistent Tank EXP/avatar + crew assignment/progress; migration save.
+- Catalog.cs: Character/Weapon/Stage/Encounter definitions, logical asset ID.
+- Battle.cs: phase wave/travel/stop/boss, HP crew, effective tank level, reward guards.
+- BattleView.cs, BattleView.Scenery.cs: part hierarchy, anchors, parallax, sorting/mask.
+- BattleView.WeaponEffects.cs, CombatVfxPlayer.cs: muzzle, projectile, hit, shake, aura.
+- StudioBattleHUD.cs / Studio UI: đặt prefab comic mới theo reference layout.
+- BarracksUI/BarracksSectionsUI: nối Crew theo asset/PSD và binding selected/equipped.
+Đây là điểm tích hợp, chưa khẳng định source hiện có đã đáp ứng luồng mới.
+Art/ nằm ngoài Assets/ của Unity project: dùng importer/copy có kiểm soát hoặc
+asset reference của project để đưa asset gốc vào Assets; giữ logical ID ổn định.
+
+L. NGHIỆM THU ĐỂ GIỐNG HTML
+
+Chụp Unity cùng tỷ lệ 16:9 và cùng state như Preview/, chồng ảnh 50% để so:
+1. Main profile, resource/menu thẳng hàng; tank/crew giữ đúng kích thước.
+2. Crew: layout PSD, viền selected/tick equipped độc lập, mảnh/ASCEND đúng state.
+3. Thẻ 2/3 lựa chọn: geometry/tint/outline/art/name wrap/action/AD đúng ảnh.
+4. HP + ammo + timeline + boss frame đúng hình, không thêm panel/label lạ.
+5. Tank đỏ/xanh: crew cùng cỡ với tank gốc; chân ngồi chìm trong khoang.
+6. Đi/dừng trạm/đánh cận: layer parallax độc lập, xác/lửa/loot trôi đúng road.
+7. Mỗi mèo bị đánh giảm HP riêng, dead không giữ xe đứng, không respawn hồi đầy.
+8. Boss deploy crew hai bên đúng khả năng bắn; MG còn bắn được vẫn hoạt động.
+9. Troy đồng thời proximity/phá vỏ vẫn đúng ba chó; wave chưa clear sớm.
+10. Garage tự nâng có aura, không chọn thẻ; cấp tạm không làm tăng EXP profile.
+11. Award stage/loot/chest/AD chỉ áp dụng một lần; save/load giữ profile.
+12. Ở màn rộng/hẹp hơn, artwork giữ aspect, outline không méo, safe area đúng.
+
+Thực hiện ảnh static trước, rồi đối chiếu animation/video/GIF gốc trong Art/ ở
+các thời điểm key pose. Gói này đã kiểm tra HTML, chưa compile/test port Unity.

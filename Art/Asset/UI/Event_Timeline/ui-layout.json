@@ -1,0 +1,175 @@
+{
+  "reference": [
+    640,
+    184
+  ],
+  "markers": 3,
+  "bossAnchor": [
+    580,
+    82
+  ],
+  "currentAnchor": [
+    320,
+    82
+  ],
+  "futureTarget": [
+    460,
+    82
+  ],
+  "finalBossAnchor": [
+    320,
+    82
+  ],
+  "pointerAnchor": [
+    320,
+    25
+  ],
+  "newEventSpawn": [
+    580,
+    82
+  ],
+  "rules": {
+    "bossFixedUntilFinal": true,
+    "bossAlwaysVisible": true,
+    "pointerAlwaysCentered": true,
+    "slots": "current event + next event + boss",
+    "travel": "Advance incoming event approach from actual tank distance; hold current battle at center across its waves",
+    "handoff": "Completed current icon exits left; next replaces center; outgoing slot is reused behind boss only after it leaves the clip",
+    "finalBoss": "Boss slides from right anchor into center when final boss battle begins",
+    "end": "Keep two most recent completed events dimmed so the marker count remains three"
+  },
+  "parts": {
+    "rail_empty": {
+      "file": "sprites/rail_empty.png",
+      "pixels": [
+        1280,
+        80
+      ],
+      "borderLTRB": [
+        152,
+        28,
+        152,
+        28
+      ]
+    },
+    "rail_progress": {
+      "file": "sprites/rail_progress.png",
+      "pixels": [
+        1280,
+        32
+      ],
+      "borderLTRB": [
+        152,
+        0,
+        152,
+        0
+      ]
+    },
+    "player_pointer": {
+      "file": "sprites/player_pointer.png",
+      "pixels": [
+        72,
+        56
+      ],
+      "borderLTRB": null
+    },
+    "node_current": {
+      "file": "sprites/node_current.png",
+      "pixels": [
+        176,
+        176
+      ],
+      "borderLTRB": null
+    },
+    "node_future": {
+      "file": "sprites/node_future.png",
+      "pixels": [
+        176,
+        176
+      ],
+      "borderLTRB": null
+    },
+    "boss_anchor": {
+      "file": "sprites/boss_anchor.png",
+      "pixels": [
+        232,
+        232
+      ],
+      "borderLTRB": null
+    },
+    "node_outer": {
+      "file": "sprites/node_outer.png",
+      "pixels": [
+        176,
+        176
+      ],
+      "borderLTRB": null
+    },
+    "node_inner": {
+      "file": "sprites/node_inner.png",
+      "pixels": [
+        176,
+        176
+      ],
+      "borderLTRB": null
+    },
+    "boss_outer": {
+      "file": "sprites/boss_outer.png",
+      "pixels": [
+        232,
+        232
+      ],
+      "borderLTRB": null
+    },
+    "boss_inner": {
+      "file": "sprites/boss_inner.png",
+      "pixels": [
+        232,
+        232
+      ],
+      "borderLTRB": null
+    }
+  },
+  "combatHUD": {
+    "pause": {
+      "left": 0.015,
+      "top": 0.03,
+      "art": "same Main menu sprite"
+    },
+    "events": {
+      "left": 0.39,
+      "top": 0.03,
+      "width": 0.28
+    },
+    "resources": {
+      "left": 0.7,
+      "right": 0.014,
+      "top": 0.061
+    },
+    "hp": {
+      "left": 0.014,
+      "bottom": 0.024,
+      "width": 0.445,
+      "journeyPlate": false,
+      "weaponVariantLabel": false
+    },
+    "ammo": {
+      "nextTo": "hp",
+      "align": "top of HP frame; excludes raised HP label",
+      "iconWidth": 0.031,
+      "textReferenceWidth": 0.0205,
+      "gapBetweenCounters": 0.0125,
+      "topOffsetFromGroup": "HP width * 28/1000"
+    },
+    "bossHealth": {
+      "top": 0.23
+    },
+    "bottomGroup": {
+      "left": 0.014,
+      "bottom": 0.024,
+      "layout": "horizontal, top aligned",
+      "hpWidth": 0.445,
+      "hpToAmmoGap": 0.012
+    }
+  }
+}

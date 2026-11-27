@@ -13,7 +13,7 @@ TRẠNG THÁI UI / BINDING
 - 5/20 = mảnh đang có / mảnh cần cho sao kế tiếp, tính RIÊNG theo nhân vật. Icon mảnh: decor/hero_fragment.png (miếng ghép).
 - Thiếu mảnh: nút xám, phần vàng thể hiện tiến độ, có icon và số mảnh. Đủ mảnh: nút đầy vàng, chữ ASCEND, enabled; không hiện bộ đếm nữa. Bấm trừ mảnh và tăng sao rồi cập nhật ngưỡng tiếp theo.
 - Skill chưa mở dùng grayscale. Tooltip cho biết tên, tác dụng và điều kiện mở. Không bake grayscale vào toàn bộ bộ icon.
-- Demo HTML lưu đội hình/progress; chưa nối stat/economy/rig ngoài UI. Nối hệ thống Unity thật vào các binding trên. Không kèm bảng thông số balance.
+- Demo HTML lưu đội hình/progress và hiện đã nối sáu stat minh họa với crew combat. Xem Design/UnityDesignHandoff/NOTE_LATEST_UNITY.txt; economy/level scaling/rig Unity cần hệ thống thật. Nối hệ thống Unity thật vào các binding trên. Không kèm bảng thông số balance.
 
 UNITY / ASSET
 - ui-layout.json chứa vị trí crop và tên layer PSD; không tự đổi bố cục. PNG part 4x đặt RectTransform theo box_native (770x436). Canvas Scaler reference 770x436; có thể nhân đồng đều toàn hierarchy sang 1920.

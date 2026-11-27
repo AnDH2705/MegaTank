@@ -1,3 +1,6 @@
+CẬP NHẬT MỚI: đọc NOTE_LATEST_UNITY.txt trước. Có profile, Tank Level/EXP, slot khóa,
+trạm tự nâng cấp, stat/HP từng mèo, thẻ và art mới. Phần dưới là mô tả chi tiết trước đó.
+
 CREW UI — bản giữ design Crew_demo.psd
 
 Đọc: Art/Asset/UI/Crew/DESIGN_UNITY_VI.txt

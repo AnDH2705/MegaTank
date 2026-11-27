@@ -1,0 +1,106 @@
+EVENT TIMELINE + COMIC COMBAT HUD — MEGATANK
+
+ĐIỂM BẮT ĐẦU TRÊN MÁY KHÁC
+Đọc Design/UnityDesignHandoff/NOTE_EVENT_TIMELINE_HUD.txt.
+HTML mẫu: Art/Equipment-test.html. Vào PLAY để xem HUD mới.
+Ảnh bố cục: layout-preview.png và layout-boss.png trong thư mục này.
+preview.html là demo riêng của thanh sự kiện; event-timeline.js là renderer tham khảo.
+
+ART
+6 icon: Battle, Hard battle, Ammo, Unknown, HP, Boss.
+Vẽ lại theo ba ref mới của người dùng: màu tươi, khối gọn, viền đen dày, cel highlight.
+icons/event_*.png: RGBA256×256, cùng canvas/pivot; icons/32/ có bản32px.
+Boss có sừng vàng để phân biệt hard battle (kiếm + impact đỏ).
+File sprite đường ray, vòng node và pointer nằm ở sprites/; SVG editable ở source/.
+PROMPTS.txt lưu prompt built-in imagegen. Không có ZIP.
+
+QUY TẮC THANH MỐC — BẢN CHỐT
+- Luôn có3 slot hiển thị. Bình thường là current event + next event + boss cuối.
+- Mũi tên cố định đúng giữa khung: x320 trong canvas640×184. Không chạy theo icon.
+- Thanh dày, phần thân thanh và các vòng icon liên thông thành cùng một hình.
+- Boss luôn thấy, ở x580 trong hành trình. Icon tiếp theo được sinh phía sau boss.
+- Khi sự kiện hoàn tất, icon hiện tại trôi sang trái ra khỏi vùng clip; icon kế tiếp
+  trượt vào giữa thế chỗ. Chỉ sau khi icon cũ ra khỏi clip mới tái sử dụng slot đó
+  ở phía boss để đưa mốc tiếp theo ra. Không tạo mốc thứ4 khi đang chuyển.
+- Battle/Hard battle là một sự kiện chứa nhiều wave. Giữ nguyên icon giữa trong
+  suốt battle, bên dưới ghi WAVE và currentWave / waveCount của chính battle đó.
+  Clear hết wave và hết địch/đội melee của battle mới CompleteEvent và chuyển mốc.
+- Với Ammo/Unknown/HP, hoàn tất hoặc skip tương tác điểm dừng mới chuyển tiếp.
+- Đến final boss, icon boss trượt từ đầu phải vào giữa dưới mũi tên. Boss luôn hiện,
+  luôn là event cuối, không sinh thêm sự kiện ở sau. Đây là lựa chọn người dùng đã chốt.
+- Gần cuối không bịa thêm event: giữ hai mốc gần nhất đã hoàn tất mờ + tick để đủ3 slot.
+
+NỐI VÀO UNITY
+Tách model RouteEvent khỏi view. Event cần id duy nhất, type, trạng thái và wave group.
+Tuyến gồm danh sách ordinary events và đúng1 boss cuối. EventType gồm battle,
+hard_battle, ammo, unknown, hp, boss; alias "unknow" map sang "unknown" nếu dữ liệu cũ dùng sai chính tả.
+Chỉ cấp tiến độ approach từ quãng đường tank thực sự đi/world distance; không dùng
+clock tự chạy khi tank đứng, pause, mở lựa chọn hoặc giữ xe vì cận chiến.
+Handoff khi CompleteEvent là một tween UI ngắn riêng; pause phải giữ nguyên tween.
+UI không tự clear wave, spawn địch, chọn reward, đổi đạn, trừ HP hay quyết định route.
+
+Tham khảo API JS:
+  view = new TankEventTimeline.EventTimeline(container, iconURLs);
+  view.setRoute([{id:'battle1',type:'battle'}, ...,{id:'boss',type:'boss'}]);
+  view.render({cursor,progress,heading:'WAVE',caption:'01 / 02',paused});
+cursor là current event trong danh sách; progress chỉ là approach0..1 của incoming node.
+Không tăng cursor cho mỗi wave. Chỉ tăng sau khi cả battle/event hoàn tất.
+HTML demo hiện có điểm dừng sau mỗi2 wave, nên adapter nhóm2 wave thành1 battle node;
+đây là cách đọc nhịp game hiện có, không thêm/bớt wave hay đổi balance.
+Trong Unity, lấy số wave thực tế từ event data thay vì hard-code số2.
+
+LẮP ĐƯỜNG RAY LIÊN THÔNG
+Để vòng và thanh không có vách viền chặn nhau, vẽ lớp silhouette đen trước:
+thân ray dày + các đĩa node đen. Vẽ phần lõi ray sáng lên trên, sau đó lõi tròn
+của node, icon và pointer. Chỗ ray gặp vòng phải thông nhau, không vẽ viền tròn
+đen chắn ngang phần lõi ray. Có thể dùng UI custom mesh/shape union hoặc tách
+outer-node và inner-node thành hai lớp theo thứ tự này; code SVG có cấu trúc tương tự.
+Đã xuất riêng node_outer/node_inner và boss_outer/boss_inner trong sprites/ để ghép
+bằng UI Image theo thứ tự trên. node_current/node_future/boss_anchor là ảnh ghép tham khảo.
+Rail có border9-slice trong ui-layout.json; chỉ kéo ngang. Icon/circle/pointer dùng Simple.
+Tất cả texture import Sprite (2D and UI), Single, Full Rect, alpha transparency,
+mipmap off, Bilinear. Tránh kéo dài ảnh icon.
+
+BỐ CỤC COMBAT HUD — CHỐT SAU CÁC CHỈNH SỬA
+- Pause góc trên trái, dùng đúng sprite menu ngoài Main. sprites/pause_menu.png.
+- Thanh sự kiện ở giữa phía trên; tài nguyên tiền/bánh răng góc trên phải.
+- HP dưới trái, dùng part ở Art/Asset/UI/HP_Bar. Không còn chữ/nút "Tiếp tục hành trình".
+- Ba counter đạn Cannon / MG / Mortar gom sát ngay bên phải HP, canh trái,
+  không justify-space-between trải đến mép phải. Icon ở Art/Asset/UI/Ammo_Icons.
+- Main stage/count/HP panel cũ ở trên đã ẩn trong battle; các logic đó giữ nguyên.
+- Boss health bar cũ giữ nguyên art và logic, đặt dưới khu timeline để không chồng nhau.
+- Tọa độ anchor chuẩn hóa và reference canvas ở ui-layout.json. Dùng CanvasScaler,
+  cùng safe area/reference aspect với HUD game. Đối chiếu ảnh layout-preview.png.
+
+HP / AMMO / RESOURCE BINDING
+Fill HP = clamp(currentHP/maxHP,0..1), không đổi hệ thống máu đã có.
+Hai instance fill: máu hiện tại và damage-chip vàng nhạt ở dưới.
+Màu/threshold và nhịp chip trong demo chỉ là preview trình bày, không phải bảng balance.
+Counter đọc player.ammo[cannon|mg|mortar]. Hết đạn hiện0/màu cảnh báo, súng không
+được lắp thì dim; không tự xóa lượng đạn trong data khi đổi tank.
+Tiền/bánh răng vẫn lấy resource wallet hiện có, không tạo wallet mới.
+
+MÃ THAM KHẢO VÀ PHẠM VI ĐÃ LÀM
+event-timeline.js: renderer và layout model; source/combat-hud.js: adapter đọc state HTML;
+source/combat-hud.css: bố cục hiện tại; ui-layout.json/icons.json: atlas/anchor/import.
+Art/Equipment-test.html đã nhúng toàn bộ ảnh và code, chạy offline trên máy khác.
+HTML chỉ là design demo. Chưa sửa Sources/MegaTanks hoặc cài prefab Unity.
+Đã kiểm trong trình duyệt; Unity target project/pipeline cần dev import và kiểm lại.
+Không kèm bảng balance, không tạo ZIP, chưa commit Git.
+
+CHỈNH HUD / MODEL CHỌN SÚNG — 2026-11-26
+- Icon/số đạn nhỏ hơn, canh top với phần khung HP (phía dưới tab HP nhô cao).
+  Cả HP và ammo dùng một nhóm layout; ammo đi sát bên HP, không rải đến mép phải.
+- Đã bỏ tên "Đạn nổ mạnh" / "Đạn tiêu chuẩn" / loại đạn khỏi thanh HP.
+- "Chọn loại đạn" trong mô tả cũ thực chất là CHỌN BIẾN THỂ SÚNG, ví dụ Cannon băng,
+  MG plasma. Đây là lựa chọn gắn với súng/slot tương ứng, không phải đổi loại đạn
+  hoặc buff nguyên tố chung cho mọi súng trên tank.
+- Model Unity nên lưu weaponSlot + weaponVariantId cho từng súng. Counter HUD tiếp
+  tục thể hiện số lượng đạn còn lại; không dùng tên biến thể như nhãn loại đạn chung.
+- Hiện chưa có art riêng cho các biến thể súng. Dùng art súng/icon cơ bản hiện tại
+  làm placeholder; thay visual theo weaponVariantId khi bộ art bổ sung xong.
+- Prototype ammoType/TYPES chung trong engine HTML là logic demo cũ, không phải
+  model chốt để port sang Unity. Khi triển khai hệ thống lựa chọn, thay bằng biến thể
+  riêng từng súng theo quyết định trên. Bản chỉnh này chỉ sửa HUD và handoff,
+  chưa triển khai lại hiệu ứng chiến đấu của từng biến thể.
+- Không kèm bảng balance hoặc tự đặt quy tắc đổi lượng đạn khi đổi biến thể.

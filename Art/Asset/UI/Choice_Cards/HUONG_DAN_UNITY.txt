@@ -1,0 +1,15 @@
+CHOICE CARDS — UNITY
+
+card-catalog.json: ID, tên English, loại lựa chọn, slot, rarity và tên icon. Rarity đang minh họa.
+illustrations/: art 600x420 alpha cho card; icons/: bản 256x256. source/illustrations/: bản HD.
+bases/base_*.png: 5 nền không chữ/hero, 500x764, giữ ratio 250:382 bằng Simple.
+bases/frame_*.png: frame 128x128, Sliced; Border LEFT/BOTTOM/RIGHT/TOP đều 8 px.
+bases/swirl_*.png: xoáy riêng 512x512, Simple+Preserve Aspect.
+Không 9-slice full base có xoáy. Muốn đổi chiều cao thì dùng frame sliced và decor riêng.
+parts/action_plate.png: Sliced, border mỗi cạnh 6 px; info_badge.png: Simple. Chữ i để TMP.
+ui-sprites.json có vị trí chuẩn hóa. Tên/copy/badge/action để TMP và button động.
+Skew background riêng; icon và text giữ thẳng. Title dùng font comic bold italic đã có license
+trong project, outline/underlay đen. Impact trong HTML chỉ là font xem thử trên máy hiện tại.
+Một button cho mỗi card, một listener, khóa khi xử lý reward/ad. Hủy AD không nhận lựa chọn.
+Group ammo trong JSON là tên legacy của nhóm CHỌN SÚNG; effect lưu theo weapon slot.
+Trạm upgrade tự động không dùng panel thẻ. Xem NOTE_LATEST_UNITY.txt.

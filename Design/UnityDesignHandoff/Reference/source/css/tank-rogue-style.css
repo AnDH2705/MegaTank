@@ -1,0 +1,43 @@
+#tank-autobattle-flow .rg-run-hud{position:absolute;left:1.5%;bottom:2.5%;display:flex;align-items:stretch;gap:.55cqw;pointer-events:none;color:#fff;z-index:3;font-weight:900}
+#tank-autobattle-flow .rg-wave,#tank-autobattle-flow .rg-ammo,#tank-autobattle-flow .rg-ammo-type{background:#292836eF;border:2px solid #15151e;border-radius:5px;box-shadow:0 3px #16151d;padding:.45cqw .7cqw}
+#tank-autobattle-flow .rg-wave{display:flex;flex-direction:column;gap:3px;border-left:5px solid #ffda24;min-width:10cqw}
+#tank-autobattle-flow .rg-wave small{font-size:clamp(8px,.65cqw,13px);color:#cbc9d0;line-height:1}
+#tank-autobattle-flow .rg-wave strong{font-size:clamp(12px,1.1cqw,21px);white-space:nowrap;color:#ffe44e;line-height:1.2}
+#tank-autobattle-flow .rg-ammo{display:flex;gap:.65cqw;align-items:center;min-width:6.5cqw;justify-content:space-between}
+#tank-autobattle-flow .rg-ammo span{font-size:clamp(9px,.72cqw,14px);color:#d8d9e3}
+#tank-autobattle-flow .rg-ammo strong{font-size:clamp(16px,1.5cqw,29px);font-variant-numeric:tabular-nums;line-height:1}
+#tank-autobattle-flow .rg-ammo.is-empty{border-color:#de6653;color:#ff8b75}
+#tank-autobattle-flow .rg-ammo.is-unequipped{opacity:.45}
+#tank-autobattle-flow .rg-ammo-type{display:flex;align-items:center;color:#bee3d4;font-size:clamp(9px,.8cqw,15px);max-width:16cqw}
+#tank-autobattle-flow .rg-notice{position:absolute;z-index:4;top:26%;left:50%;translate:-50% 0;padding:9px 16px;color:#fff1a1;background:#252634ed;border:2px solid #15151e;border-radius:6px;font:900 clamp(12px,1.25cqw,24px)/1.2 system-ui,sans-serif;text-align:center;pointer-events:none}
+#tank-autobattle-flow .rg-overlay{position:absolute;inset:0;z-index:6;display:grid;place-items:center;padding:2cqw;background:#161820b8;backdrop-filter:blur(2px);pointer-events:auto}
+#tank-autobattle-flow .rg-overlay[hidden],#tank-autobattle-flow .rg-notice[hidden]{display:none}
+#tank-autobattle-flow .rg-panel{width:76%;max-height:95%;overflow:auto;padding:1.7cqw;background:#f0e3c3;border:4px solid #24212d;border-radius:12px;box-shadow:0 7px #14141c;color:#2b2935;font-family:system-ui,sans-serif;animation:rg-arrive .18s ease-out}
+#tank-autobattle-flow .rg-heading{display:flex;align-items:center;justify-content:space-between;gap:2cqw;margin-bottom:1.3cqw}
+#tank-autobattle-flow .rg-heading small{display:block;margin-bottom:.45cqw;font-weight:950;font-size:clamp(9px,.85cqw,16px);color:#806744;letter-spacing:.06em}
+#tank-autobattle-flow .rg-heading h2{margin:0 0 .5cqw;font:950 clamp(20px,2.5cqw,48px)/1.05 system-ui,sans-serif;letter-spacing:-.04em;color:#272331;text-shadow:0 2px #fff8e6}
+#tank-autobattle-flow .rg-heading p{margin:0;max-width:47cqw;font-size:clamp(11px,1.05cqw,20px);line-height:1.4;font-weight:650;color:#615644}
+#tank-autobattle-flow .rg-scene{flex:0 0 16cqw;height:9cqw;max-height:150px}
+#tank-autobattle-flow .rg-scene svg,#tank-autobattle-flow .rg-scene img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 3px #6b503b33)}
+#tank-autobattle-flow .rg-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1cqw}
+#tank-autobattle-flow .rg-options.is-two{grid-template-columns:repeat(2,minmax(0,1fr))}
+#tank-autobattle-flow .rg-card{position:relative;display:flex;flex-direction:column;align-items:stretch;min-width:0;padding:1.15cqw;background:#fff8e6;border:3px solid #292631;border-radius:8px;box-shadow:0 4px #b4a180;text-align:left;color:#2b2935;cursor:pointer;font-family:inherit;transition:translate .1s,box-shadow .1s}
+#tank-autobattle-flow .rg-card:hover:not(:disabled){translate:0 -4px;box-shadow:0 8px #b4a180}
+#tank-autobattle-flow .rg-card:focus-visible{outline:4px solid #e79a20;outline-offset:3px}
+#tank-autobattle-flow .rg-card:disabled{cursor:default;opacity:.5}
+#tank-autobattle-flow .rg-card.is-rare{background:#efe9ff;border-color:#66509c;box-shadow:0 4px #a894ca}
+#tank-autobattle-flow .rg-ad{position:absolute;right:8px;top:8px;background:#ffe473;border:2px solid #493a53;border-radius:4px;padding:3px 6px;color:#3b2f49;font-size:clamp(10px,.9cqw,17px);font-weight:950}
+#tank-autobattle-flow .rg-card-art{display:grid;place-items:center;height:7.1cqw;min-height:60px;margin-bottom:.5cqw}
+#tank-autobattle-flow .rg-card-art svg{height:100%;width:70%;max-width:150px}
+#tank-autobattle-flow .rg-card-art img{height:100%;width:100%;object-fit:contain}
+#tank-autobattle-flow .rg-card small{font-size:clamp(9px,.7cqw,13px);font-weight:950;color:#9c772c;letter-spacing:.08em;margin-bottom:.3cqw}
+#tank-autobattle-flow .rg-card strong{font-size:clamp(14px,1.45cqw,28px);line-height:1.15;letter-spacing:-.025em;margin-bottom:.65cqw}
+#tank-autobattle-flow .rg-card p{margin:0 0 .6cqw;font-size:clamp(11px,1cqw,19px);line-height:1.35;font-weight:650;color:#5e5548}
+#tank-autobattle-flow .rg-card em{font-size:clamp(9px,.8cqw,15px);line-height:1.3;color:#8a7962;font-style:normal;margin-bottom:1cqw}
+#tank-autobattle-flow .rg-card-action{display:block;margin-top:auto;text-align:center;padding:.65cqw .6cqw;background:#ffdb32;border:2px solid #2f2933;border-radius:5px;font-size:clamp(12px,1.05cqw,20px);font-weight:950;color:#2d2730}
+#tank-autobattle-flow .rg-panel footer{display:flex;justify-content:space-between;align-items:center;gap:1cqw;margin-top:1.4cqw}
+#tank-autobattle-flow .rg-panel footer span{font-size:clamp(9px,.75cqw,14px);font-weight:650;color:#88785e;max-width:75%}
+#tank-autobattle-flow .rg-panel footer button{border:0;background:none;text-decoration:underline;text-underline-offset:4px;color:#65553f;font-weight:900;font-size:clamp(11px,.9cqw,17px);cursor:pointer;padding:5px}
+#tank-autobattle-flow .rg-overlay[data-busy="true"] .rg-card{pointer-events:none;opacity:.6}
+@keyframes rg-arrive{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){#tank-autobattle-flow .rg-panel{width:95%;padding:12px;border-width:3px}#tank-autobattle-flow .rg-heading{gap:8px;margin-bottom:9px}#tank-autobattle-flow .rg-heading h2{font-size:19px}#tank-autobattle-flow .rg-heading p{font-size:11px;max-width:none}#tank-autobattle-flow .rg-scene{height:58px;flex-basis:90px}#tank-autobattle-flow .rg-card{padding:8px;border-width:2px}#tank-autobattle-flow .rg-card strong{font-size:13px}#tank-autobattle-flow .rg-card p{font-size:10px}#tank-autobattle-flow .rg-card-art{min-height:45px;height:45px}#tank-autobattle-flow .rg-ad{right:3px;top:3px;padding:2px 3px;font-size:8px}#tank-autobattle-flow .rg-ammo-type{display:none}#tank-autobattle-flow .rg-run-hud{bottom:2%;gap:4px}#tank-autobattle-flow .rg-ammo,#tank-autobattle-flow .rg-wave{padding:5px 7px}#tank-autobattle-flow .rg-ammo{min-width:62px}}

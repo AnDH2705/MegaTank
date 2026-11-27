@@ -1,0 +1,22 @@
+YÊU CẦU CHO AI PORT UNITY — MEGATANK
+
+Port bản design Art/Equipment-test.html vào Unity native trong Sources/CatTanks.
+Lấy đúng hình và hành vi hiện tại, không tự thiết kế lại giao diện.
+
+NGUỒN ASSET DUY NHẤT LÀ THƯ MỤC Art/ TRONG REPOSITORY:
+Import PNG/part rời/Spine runtime/atlas/manifest đã có trong Art/. Không trích
+base64, chụp canvas, cắt screenshot, lấy GIF thành sprite hoặc vẽ lại asset từ HTML.
+HTML chỉ dùng để xem bố cục, state, animation và hành vi. Nếu thiếu đường dẫn,
+tra manifest/README trong Art/ trước, báo thiếu file cụ thể thay vì tự tạo ảnh.
+
+Đọc theo thứ tự:
+1. Design/UnityDesignHandoff/PORT_HTML_TO_UNITY.txt
+2. Design/UnityDesignHandoff/NOTE_LATEST_UNITY.txt
+3. Design/UnityDesignHandoff/Reference/data/art-source-inventory.json
+4. Các file geometry/layout trong Reference/data/ theo phần đang triển khai.
+
+Dùng các ảnh Preview/ làm chuẩn đối chiếu 16:9. Dựng prefab và UI native Unity,
+giữ đúng alpha, tỉ lệ nhân vật, pivot, layer, mask, layout và thời điểm VFX.
+Đọc manifest gốc của từng bộ để lắp part, ưu tiên runtime Spine gốc cho nhân vật.
+Thông số balance dùng config hệ thống; gói này không chốt balance.
+Khi hoàn thành, chụp cùng state/cùng aspect ratio và so ảnh với Preview/.

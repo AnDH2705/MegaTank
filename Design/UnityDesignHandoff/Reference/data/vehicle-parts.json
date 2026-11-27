@@ -1,0 +1,510 @@
+{
+  "tankMeta": {
+    "layers": [
+      {
+        "name": "01_track_chassis",
+        "position_px": [
+          240,
+          1035
+        ],
+        "size_px": [
+          819,
+          235
+        ],
+        "z_order": 0,
+        "pivot_canvas_px": [
+          652,
+          1156
+        ]
+      },
+      {
+        "name": "02_wheel_01",
+        "position_px": [
+          331,
+          1080
+        ],
+        "size_px": [
+          161,
+          158
+        ],
+        "z_order": 1,
+        "pivot_canvas_px": [
+          410.5,
+          1159
+        ]
+      },
+      {
+        "name": "03_wheel_02",
+        "position_px": [
+          456,
+          1080
+        ],
+        "size_px": [
+          163,
+          157
+        ],
+        "z_order": 2,
+        "pivot_canvas_px": [
+          537,
+          1158.5
+        ]
+      },
+      {
+        "name": "04_wheel_03",
+        "position_px": [
+          676,
+          1079
+        ],
+        "size_px": [
+          162,
+          158
+        ],
+        "z_order": 3,
+        "pivot_canvas_px": [
+          757,
+          1158
+        ]
+      },
+      {
+        "name": "05_wheel_04",
+        "position_px": [
+          807,
+          1080
+        ],
+        "size_px": [
+          167,
+          157
+        ],
+        "z_order": 4,
+        "pivot_canvas_px": [
+          890,
+          1158.5
+        ]
+      },
+      {
+        "name": "06_main_cannon_barrel",
+        "position_px": [
+          1102,
+          405
+        ],
+        "size_px": [
+          246,
+          188
+        ],
+        "z_order": 5,
+        "pivot_canvas_px": [
+          1125,
+          496
+        ]
+      },
+      {
+        "name": "07_body_static",
+        "position_px": [
+          193,
+          67
+        ],
+        "size_px": [
+          957,
+          978
+        ],
+        "z_order": 6,
+        "pivot_canvas_px": [
+          645,
+          1040
+        ]
+      },
+      {
+        "name": "11_front_hull_frame",
+        "position_px": [
+          182,
+          147
+        ],
+        "size_px": [
+          919,
+          928
+        ],
+        "z_order": 7,
+        "pivot_canvas_px": [
+          645,
+          1040
+        ]
+      },
+      {
+        "name": "08_roof_machine_gun",
+        "position_px": [
+          714,
+          72
+        ],
+        "size_px": [
+          449,
+          180
+        ],
+        "z_order": 8,
+        "pivot_canvas_px": [
+          910,
+          231
+        ]
+      },
+      {
+        "name": "09_mortar_barrel",
+        "position_px": [
+          93,
+          235
+        ],
+        "size_px": [
+          145,
+          360
+        ],
+        "z_order": 9,
+        "pivot_canvas_px": [
+          213.14,
+          561.9
+        ]
+      },
+      {
+        "name": "10_mortar_front_support",
+        "position_px": [
+          96,
+          352
+        ],
+        "size_px": [
+          156,
+          257
+        ],
+        "z_order": 10,
+        "pivot_canvas_px": [
+          213.14,
+          561.9
+        ]
+      }
+    ]
+  },
+  "enemyMeta": {
+    "car": {
+      "asset": "car",
+      "canvas_px": [
+        1536,
+        1024
+      ],
+      "coordinates": "Top-left origin; +x right; +y down; cropped PNGs reassemble using position_px.",
+      "layers": [
+        {
+          "name": "01_body_static",
+          "file": "parts/01_body_static.png",
+          "position_px": [
+            71,
+            45
+          ],
+          "size_px": [
+            1340,
+            842
+          ],
+          "pivot_canvas_px": [
+            748,
+            800
+          ],
+          "pivot_local_px": [
+            677,
+            755
+          ],
+          "role": "Static car, driver and fittings; restored wheel-well backings",
+          "source_position_px": [
+            87,
+            61
+          ],
+          "source_size_px": [
+            1308,
+            810
+          ],
+          "padding_px": 16
+        },
+        {
+          "name": "02_wheel_rear",
+          "file": "parts/02_wheel_rear.png",
+          "position_px": [
+            156,
+            617
+          ],
+          "size_px": [
+            401,
+            399
+          ],
+          "pivot_canvas_px": [
+            355,
+            822
+          ],
+          "pivot_local_px": [
+            199,
+            205
+          ],
+          "role": "Complete independently rotating rear tire",
+          "source_position_px": [
+            172,
+            633
+          ],
+          "source_size_px": [
+            369,
+            367
+          ],
+          "padding_px": 16
+        },
+        {
+          "name": "03_wheel_front",
+          "file": "parts/03_wheel_front.png",
+          "position_px": [
+            877,
+            617
+          ],
+          "size_px": [
+            399,
+            399
+          ],
+          "pivot_canvas_px": [
+            1079,
+            822
+          ],
+          "pivot_local_px": [
+            202,
+            205
+          ],
+          "role": "Complete independently rotating front tire",
+          "source_position_px": [
+            893,
+            633
+          ],
+          "source_size_px": [
+            367,
+            367
+          ],
+          "padding_px": 16
+        }
+      ],
+      "note": "Animation attachment points and canvas pivots retained. PNGs have 16 px additional transparent padding; import the updated local pivots and positions. Painted revisions were uniformly registered, with no anisotropic stretching.",
+      "appearance_revision": "Contrast v2: cobalt car / cool crimson plane, near-black heavy contours, ivory light planes",
+      "registration": [
+        {
+          "name": "01_body_static",
+          "uniform_scale_from_repaint": 0.8204158790170132,
+          "paste_xy": [
+            19,
+            21
+          ]
+        },
+        {
+          "name": "02_wheel_rear",
+          "uniform_scale_from_repaint": 1.03125,
+          "paste_xy": [
+            20,
+            24
+          ]
+        },
+        {
+          "name": "03_wheel_front",
+          "uniform_scale_from_repaint": 1.0255681818181819,
+          "paste_xy": [
+            23,
+            24
+          ]
+        }
+      ],
+      "driver_revision": {
+        "species": "dog",
+        "style_reference": "dog enemy/spine_v3",
+        "outfit": "Olive steel helmet, mustard khaki field jacket, dark olive harness, teal scarf, brown driving gloves",
+        "method": "Character/cockpit-only ImageGen edit; vehicle pixels outside edit mask preserved",
+        "date": "2026-11-18"
+      }
+    },
+    "plane": {
+      "asset": "plane",
+      "canvas_px": [
+        1536,
+        1024
+      ],
+      "coordinates": "Top-left origin; +x right; +y down; cropped PNGs reassemble using position_px.",
+      "layers": [
+        {
+          "name": "01_propeller_blades",
+          "file": "parts/01_propeller_blades.png",
+          "position_px": [
+            1256,
+            137
+          ],
+          "size_px": [
+            129,
+            824
+          ],
+          "pivot_canvas_px": [
+            1326,
+            576
+          ],
+          "pivot_local_px": [
+            70,
+            439
+          ],
+          "role": "Two continuous propeller blades, hidden center restored; spinner remains fixed",
+          "source_position_px": [
+            1272,
+            153
+          ],
+          "source_size_px": [
+            97,
+            792
+          ],
+          "padding_px": 16
+        },
+        {
+          "name": "02_wheel_rear",
+          "file": "parts/02_wheel_rear.png",
+          "position_px": [
+            181,
+            722
+          ],
+          "size_px": [
+            127,
+            127
+          ],
+          "pivot_canvas_px": [
+            244,
+            785
+          ],
+          "pivot_local_px": [
+            63,
+            63
+          ],
+          "role": "Complete tail wheel under fixed strut",
+          "source_position_px": [
+            197,
+            738
+          ],
+          "source_size_px": [
+            95,
+            95
+          ],
+          "padding_px": 16
+        },
+        {
+          "name": "03_wheel_main",
+          "file": "parts/03_wheel_main.png",
+          "position_px": [
+            707,
+            809
+          ],
+          "size_px": [
+            230,
+            229
+          ],
+          "pivot_canvas_px": [
+            822,
+            923
+          ],
+          "pivot_local_px": [
+            115,
+            114
+          ],
+          "role": "Complete main landing wheel under fixed strut",
+          "source_position_px": [
+            723,
+            825
+          ],
+          "source_size_px": [
+            198,
+            197
+          ],
+          "padding_px": 16
+        },
+        {
+          "name": "04_body_static",
+          "file": "parts/04_body_static.png",
+          "position_px": [
+            52,
+            32
+          ],
+          "size_px": [
+            1388,
+            872
+          ],
+          "pivot_canvas_px": [
+            763,
+            780
+          ],
+          "pivot_local_px": [
+            711,
+            748
+          ],
+          "role": "Static aircraft and pilot, gear struts and nose spinner",
+          "source_position_px": [
+            68,
+            48
+          ],
+          "source_size_px": [
+            1356,
+            840
+          ],
+          "padding_px": 16
+        }
+      ],
+      "note": "Animation attachment points and canvas pivots retained. PNGs have 16 px additional transparent padding; import the updated local pivots and positions. Painted revisions were uniformly registered, with no anisotropic stretching.",
+      "propeller_animation": {
+        "axis": "aircraft longitudinal X axis",
+        "projection": "Scale the blade sprite in Y by cos(angle), including a sign flip; keep the nose spinner fixed. Do not spin this side-view blade flat in image XY.",
+        "frame_count": 12,
+        "frame_canvas_px": [
+          160,
+          900
+        ],
+        "frame_pivot_px": [
+          80,
+          450
+        ],
+        "frame_time_ms": 40,
+        "attachment_canvas_px": [
+          1326,
+          576
+        ]
+      },
+      "appearance_revision": "Contrast v2: cobalt car / cool crimson plane, near-black heavy contours, ivory light planes",
+      "registration": [
+        {
+          "name": "01_propeller_blades",
+          "uniform_scale_from_repaint": 0.7660818713450293,
+          "paste_xy": [
+            12,
+            19
+          ]
+        },
+        {
+          "name": "02_wheel_rear",
+          "uniform_scale_from_repaint": 0.26646706586826346,
+          "paste_xy": [
+            20,
+            18
+          ]
+        },
+        {
+          "name": "03_wheel_main",
+          "uniform_scale_from_repaint": 0.5565217391304348,
+          "paste_xy": [
+            20,
+            18
+          ]
+        },
+        {
+          "name": "04_body_static",
+          "uniform_scale_from_repaint": 0.8580246913580247,
+          "paste_xy": [
+            25,
+            19
+          ]
+        }
+      ],
+      "driver_revision": {
+        "species": "dog",
+        "style_reference": "dog enemy/spine_v3",
+        "outfit": "Burgundy leather flight cap and blue goggles, slate-blue jacket, cream shearling collar, yellow scarf, tan harness, brown gloves",
+        "method": "Character/cockpit-only ImageGen edit; vehicle pixels outside edit mask preserved",
+        "date": "2026-11-18"
+      }
+    }
+  }
+}

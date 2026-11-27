@@ -1,0 +1,28 @@
+{
+  "tool": "built-in image_gen",
+  "prompts": [
+    {
+      "name": "cannon_damage",
+      "prompt": "One isolated detailed 2D comic game stat upgrade ICON on genuine TRANSPARENT alpha background. Chunky cartoon shapes, thick clean BLACK outline, vivid gold/orange/red colors, gray steel hardware, crisp cel shaded faces and angular white highlights, same detailed comic style as a military ammo supply crate. Compact square composition with ample transparent padding, not pixel art, not photoreal, not a 3D render. No guns, no futuristic energy coils, no plasma, no machines, no typography, no frame, no backdrop or floor. Subject: CANNON DAMAGE UP. ONE BIG classic artillery cartridge pointing diagonally up-right: orange pointed nose, golden yellow/brass shell casing, wide reinforced base with a thick dark rim. Behind the tip is a short red-orange comic impact starburst. Beside the lower casing place one big solid bright green upward arrow with a black outline. The oversized single shell is unmistakably CANNON ammunition, not multiple rifle bullets. Bold simple readable silhouette, attractive detailed bevels and a few metal seam lines."
+    },
+    {
+      "name": "mg_damage",
+      "prompt": "One isolated detailed 2D comic game stat upgrade ICON on genuine TRANSPARENT alpha background. Chunky cartoon shapes, thick clean BLACK outline, vivid gold/orange/red colors, gray steel hardware, crisp cel shaded faces and angular white highlights, same detailed comic style as a military ammo supply crate. Compact square composition with ample transparent padding, not pixel art, not photoreal, not a 3D render. No guns, no futuristic energy coils, no plasma, no machines, no typography, no frame, no backdrop or floor. Subject: MACHINE GUN DAMAGE UP. A compact slightly curved ammunition belt with FOUR SMALL classic brass/golden rifle cartridges, orange pointed tips and dark gray steel belt links. Arrange the connected small cartridges diagonally up-right, with a short red-orange comic impact burst behind their tips, and a solid bright green upward arrow with a black outline at the lower right. Clearly a group of small MG rounds rather than a single large cannon shell. Crisp bold readable silhouette, attractive metallic cel shading and clean details."
+    },
+    {
+      "name": "tank_hp",
+      "prompt": "One isolated detailed 2D comic mobile game upgrade ICON on genuine TRANSPARENT alpha background, chunky readable silhouette, bold clean black outlines, golden yellow and charcoal mechanical panels, vivid cel shading, angular highlights, cheerful stylized game art, not pixel art, not photoreal and not a 3D render. No labels, no text, no numbers, no card frame, no ground, no background. Entire object visible with transparent padding. Subject: upgrade icon for TOTAL TANK MAXIMUM HP. A cute compact emerald-green tank in side three-quarter view, one right-pointing cannon, chunky body and black tracks with gold wheel hubs. In front of the tank's upper hull is a large red heart in a chunky white/silver shield with a simple white plus symbol on the heart. A short bright green up arrow beside the heart. The mini tank and heart/shield read as ONE compact integrated game icon, protection/total vehicle health, not a character health icon. Gold bolts and white hard highlights, clean comic shapes. Do not add any people, cats or dogs.",
+      "referenced_image_paths": null
+    },
+    {
+      "name": "crit_chance_up",
+      "prompt": "One isolated detailed 2D comic mobile game upgrade ICON on genuine TRANSPARENT alpha background, chunky readable silhouette, bold clean black outlines, golden yellow and charcoal mechanical panels, vivid cel shading, angular highlights, cheerful stylized game art, not pixel art, not photoreal and not a 3D render. No labels, no text, no numbers, no card frame, no ground, no background. Entire object visible with transparent padding. Subject: upgrade icon for CRITICAL HIT CHANCE. A chunky golden cartridge pointing diagonally up-right, in front of a bold red-orange four-point comic critical-hit starburst. A small white six-sided die with three large BLACK pips visible on its main face sits partly behind the cartridge, to communicate probability/luck. One thick magenta upward arrow tucked at the lower right. Three compact overlapping symbols form one coherent game icon. Emphasize a sharp critical-hit spark and the lucky die rather than an accuracy crosshair. Black contours, vivid flat colors, strong cel-shaded gold, small bright highlights. No text.",
+      "referenced_image_paths": null
+    },
+    {
+      "name": "upgrade_station",
+      "prompt": "Create one full roadside TANK UPGRADE STATION environment prop for a cheerful 2D comic side-scrolling military game. Genuine transparent background. Matches a detailed brown/golden military supply tent with black ink outlines, warm cel shading, hand-painted chunky Metal Slug-inspired comic proportions, not pixel art, not realistic and not a 3D render. Front three-quarter view but broad side-scroller silhouette: compact olive canvas workshop canopy over a short open garage bay, golden yellow steel supports, a repair workbench visible in the dark bay, a chunky hoist arm and a few big spare gears and tool crates at the sides, small ramp on ground. Put a large simple GOLD GEAR with a GREEN UP ARROW on a sign above the entrance so it is clearly an upgrade stop, NOT a medical tent. No letters/numbers/text, no characters, no vehicle inside, no scenic backdrop, no border. Complete isolated object with ample transparent padding. Detailed and bright but clear at 500px wide. Preserve transparency including between canopy poles.",
+      "referenced_image_paths": null
+    }
+  ]
+}

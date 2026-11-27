@@ -1,0 +1,13 @@
+AMMO COUNTER ICONS — CANNON / MG / MORTAR
+
+ammo_cannon.png: một viên đạn pháo lớn, đầu cam, thân vàng.
+ammo_mg.png: cụm ba viên MG, đầu cam, thân vàng.
+ammo_mortar.png: đạn mortar xanh olive, có đuôi cánh.
+
+PNG nền trong suốt 256×256; bản nhỏ trong 24/ và 32/.
+Cùng canvas và chiều cao hình, dùng cạnh Text số đạn; icon không chứa chữ hay số.
+Các số10/200/5 trong preview.png là ví dụ bố cục theo phác thảo, không phải balance.
+Unity: Sprite (2D and UI), Single, alpha transparency, mipmaps off, Bilinear.
+UI Image giữ preserveAspect, kích thước gợi ý24–32px. Không dùng 9-slice cho icon.
+Mapping ở icons.json. Chưa tự thay HUD trong Equipment-test.html.
+Vẽ bằng built-in imagegen; prompt ở PROMPTS.txt. Không có ZIP.

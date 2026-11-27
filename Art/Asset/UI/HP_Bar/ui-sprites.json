@@ -1,0 +1,105 @@
+{
+  "referenceCanvas": {
+    "width": 1000,
+    "height": 112,
+    "pngScale": 2
+  },
+  "parts": {
+    "hp_panel": {
+      "file": "hp_panel.png",
+      "pixels": [
+        2000,
+        224
+      ],
+      "borderLTRB": [
+        24,
+        76,
+        116,
+        24
+      ],
+      "spriteImportMode": "Single",
+      "imageType": "Sliced"
+    },
+    "hp_frame": {
+      "file": "hp_frame.png",
+      "pixels": [
+        2000,
+        224
+      ],
+      "borderLTRB": [
+        36,
+        76,
+        124,
+        28
+      ],
+      "spriteImportMode": "Single",
+      "imageType": "Sliced"
+    },
+    "hp_label": {
+      "file": "hp_label.png",
+      "pixels": [
+        236,
+        84
+      ],
+      "borderLTRB": null,
+      "spriteImportMode": "Single",
+      "imageType": "Simple"
+    },
+    "hp_rail": {
+      "file": "hp_rail.png",
+      "pixels": [
+        1920,
+        36
+      ],
+      "borderLTRB": [
+        0,
+        0,
+        28,
+        0
+      ],
+      "spriteImportMode": "Single",
+      "imageType": "Sliced"
+    },
+    "hp_fill": {
+      "file": "hp_fill.png",
+      "pixels": [
+        1920,
+        36
+      ],
+      "borderLTRB": null,
+      "spriteImportMode": "Single",
+      "imageType": "Filled",
+      "tintable": true,
+      "fillMethod": "Horizontal LeftToRight"
+    }
+  },
+  "positions": {
+    "hp_panel": [
+      0,
+      0
+    ],
+    "hp_frame": [
+      0,
+      0
+    ],
+    "hp_label": [
+      0,
+      0
+    ],
+    "hp_rail": [
+      20,
+      39
+    ],
+    "hp_fill": [
+      20,
+      39
+    ]
+  },
+  "colors": {
+    "normal": "#54dc91",
+    "warning": "#ffd43b",
+    "low": "#ff655c",
+    "damageChip": "#ffe5a0"
+  },
+  "note": "Color thresholds are preview examples only. Amount follows existing currentHP/maxHP. Keep height112; stretch frame horizontally. Label and ammo widgets are separate."
+}

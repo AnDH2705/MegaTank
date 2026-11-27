@@ -1,0 +1,182 @@
+{
+  "assetRoot": "Art",
+  "policy": "Import existing original PNG/parts/Spine/manifest from Art. Never extract images/base64/GIF/canvas from HTML.",
+  "characterPoseSource": "Approved Spine rigs plus station/clip geometry; pose variants use bones/attachments, not new cutout artwork.",
+  "groups": [
+    {
+      "id": "tank_base",
+      "root": "Art/Asset/Tanks/Tank_1_optimizedPart/Tank_Mortar_Frame_v4",
+      "manifest": "metadata/parts_manifest.json",
+      "layoutOverride": "Art/Anim/tank crew html/tank-variants.json"
+    },
+    {
+      "id": "tank_speed",
+      "root": "Art/Asset/Tanks/Tank_2_speed",
+      "manifest": "metadata/parts_manifest.json",
+      "layoutOverride": "Art/Anim/tank crew html/tank-variants.json"
+    },
+    {
+      "id": "tank_heavy",
+      "root": "Art/Asset/Tanks/Tank_3_HP",
+      "manifest": "metadata/parts_manifest.json",
+      "layoutOverride": "Art/Anim/tank crew html/tank-variants.json"
+    },
+    {
+      "id": "cat_driver",
+      "root": "Art/Anim/default driver/spine_v3_guided",
+      "runtime": "runtime",
+      "rig": "default-driver-guided.spine",
+      "runtimeFiles": [
+        "Art/Anim/default driver/spine_v3_guided/runtime/default-driver-guided.atlas",
+        "Art/Anim/default driver/spine_v3_guided/runtime/default-driver-guided.json",
+        "Art/Anim/default driver/spine_v3_guided/runtime/default-driver-guided.png"
+      ]
+    },
+    {
+      "id": "cat_melee",
+      "root": "Art/Anim/fat cat melee/spine_v3_army",
+      "runtime": "runtime",
+      "rig": "fat-cat-army.spine",
+      "runtimeFiles": [
+        "Art/Anim/fat cat melee/spine_v3_army/runtime/fat-cat-army.atlas",
+        "Art/Anim/fat cat melee/spine_v3_army/runtime/fat-cat-army.json",
+        "Art/Anim/fat cat melee/spine_v3_army/runtime/fat-cat-army.png"
+      ]
+    },
+    {
+      "id": "dog_melee",
+      "root": "Art/Anim/dog enemy/spine_v3",
+      "runtime": "runtime",
+      "rig": "dog-enemy-v3.spine",
+      "runtimeFiles": [
+        "Art/Anim/dog enemy/spine_v3/runtime/dog-enemy-v3.atlas",
+        "Art/Anim/dog enemy/spine_v3/runtime/dog-enemy-v3.json",
+        "Art/Anim/dog enemy/spine_v3/runtime/dog-enemy-v3.png"
+      ]
+    },
+    {
+      "id": "dog_driver",
+      "root": "Art/Anim/dog jeep driver/spine_v1",
+      "runtime": "runtime",
+      "rig": "dog-jeep-driver.spine",
+      "runtimeFiles": [
+        "Art/Anim/dog jeep driver/spine_v1/runtime/dog-jeep-driver.atlas",
+        "Art/Anim/dog jeep driver/spine_v1/runtime/dog-jeep-driver.json",
+        "Art/Anim/dog jeep driver/spine_v1/runtime/dog-jeep-driver.png"
+      ]
+    },
+    {
+      "id": "dog_pilot",
+      "root": "Art/Anim/dog pilot/spine_v1",
+      "runtime": "runtime",
+      "rig": "dog-pilot.spine",
+      "runtimeFiles": [
+        "Art/Anim/dog pilot/spine_v1/runtime/dog-pilot.atlas",
+        "Art/Anim/dog pilot/spine_v1/runtime/dog-pilot.json",
+        "Art/Anim/dog pilot/spine_v1/runtime/dog-pilot.png"
+      ]
+    },
+    {
+      "id": "dog_cannon_car",
+      "root": "Art/Asset/Enemies/Dog_Cannon_Car_v2",
+      "manifest": "metadata/parts_manifest.json"
+    },
+    {
+      "id": "dog_helicopter",
+      "root": "Art/Asset/Enemies/Dog_MG_Helicopter_v1",
+      "manifest": "metadata/parts_manifest.json"
+    },
+    {
+      "id": "trojan_cat",
+      "root": "Art/Asset/Enemies/Trojan_Scrap_Cat_v1",
+      "manifest": "metadata/parts_manifest.json"
+    },
+    {
+      "id": "other_dog_vehicles",
+      "root": "Art/Asset/Enemies/Enemies_vehicles_Contrast_v2"
+    },
+    {
+      "id": "bg_sunset",
+      "root": "Art/Asset/BG/parallax_bg",
+      "layers": "layers",
+      "layerFiles": [
+        "Art/Asset/BG/parallax_bg/layers/00_sky_static.png",
+        "Art/Asset/BG/parallax_bg/layers/01_far_city.png",
+        "Art/Asset/BG/parallax_bg/layers/02_viaduct.png",
+        "Art/Asset/BG/parallax_bg/layers/03_road.png",
+        "Art/Asset/BG/parallax_bg/layers/04_street_buildings.png",
+        "Art/Asset/BG/parallax_bg/layers/05_foreground_debris.png",
+        "Art/Asset/BG/parallax_bg/layers/06_overhead_cables.png"
+      ]
+    },
+    {
+      "id": "bg_industrial",
+      "root": "Art/Asset/BG/industrial_bg",
+      "layers": "layers",
+      "layerFiles": [
+        "Art/Asset/BG/industrial_bg/layers/00_sky_static.png",
+        "Art/Asset/BG/industrial_bg/layers/01_far_factories.png",
+        "Art/Asset/BG/industrial_bg/layers/02_mid_industry.png",
+        "Art/Asset/BG/industrial_bg/layers/03_road.png",
+        "Art/Asset/BG/industrial_bg/layers/04_street_buildings.png",
+        "Art/Asset/BG/industrial_bg/layers/05_rubble_weeds.png"
+      ]
+    },
+    {
+      "id": "roadside_props",
+      "root": "Art/Asset/BG",
+      "files": [
+        "tent.png",
+        "upgrade_station.png"
+      ]
+    },
+    {
+      "id": "ui_Crew",
+      "root": "Art/Asset/UI/Crew"
+    },
+    {
+      "id": "ui_Choice_Cards",
+      "root": "Art/Asset/UI/Choice_Cards"
+    },
+    {
+      "id": "ui_Avatars",
+      "root": "Art/Asset/UI/Avatars"
+    },
+    {
+      "id": "ui_Ammo_Icons",
+      "root": "Art/Asset/UI/Ammo_Icons"
+    },
+    {
+      "id": "ui_HP_Bar",
+      "root": "Art/Asset/UI/HP_Bar"
+    },
+    {
+      "id": "ui_Event_Timeline",
+      "root": "Art/Asset/UI/Event_Timeline"
+    },
+    {
+      "id": "ui_Resource_Counters",
+      "root": "Art/Asset/UI/Resource_Counters"
+    },
+    {
+      "id": "ui_Player_Profile",
+      "root": "Art/Asset/UI/Player_Profile"
+    },
+    {
+      "id": "ui_Stat_Icons",
+      "root": "Art/Asset/UI/Stat_Icons"
+    },
+    {
+      "id": "ui_Stat_Upgrades",
+      "root": "Art/Asset/UI/Stat_Upgrades"
+    },
+    {
+      "id": "combat_vfx",
+      "root": "Art/VFX/Reference_Arcade_v1"
+    },
+    {
+      "id": "upgrade_aura",
+      "root": "Art/VFX/Tank_Level_Up"
+    }
+  ]
+}
