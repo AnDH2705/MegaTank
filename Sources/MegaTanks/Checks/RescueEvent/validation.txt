@@ -1,0 +1,14 @@
+PASS: stage 1 entry upgrade opens MG; empty seat/gun remains inert.
+PASS: stage 1 natural opening reaches RESCUE; no shots/ammo consumed by unstaffed weapon.
+PASS: stage 1 live Spine prisoner visible behind bars: 4334 rendered pixels checked.
+PASS: skip reoffers without recruiting; pause freezes rescue animation and walking.
+PASS: temporary companion boards without respawn/save; gun operates; abort/restart discards companion.
+PASS: stage 1 boss: sufficient permanent Tank EXP; pending Common reward survives reload; dialogue comes before claim; no early recruitment.
+PASS: Common card claimed once, ownership/loadout survive reload, duplicate card and EXP rejected.
+PASS: stage 2 entry upgrade opens next slot (Mortar); MG retained from stage 1 Common card.
+PASS: stage 2 natural opening reaches RESCUE; no shots/ammo consumed by unstaffed weapon.
+PASS: stage 2 live Spine prisoner visible behind bars: 4214 rendered pixels checked.
+PASS: temporary companion boards without respawn/save; gun operates; abort/restart discards companion.
+PASS: stage 2 boss: sufficient permanent Tank EXP; pending Common reward survives reload; dialogue comes before claim; no early recruitment.
+PASS: Common card claimed once, ownership/loadout survive reload, duplicate card and EXP rejected.
+PASS: 12 rescue/story/recruitment states; no Error, Exception or Assert. Player save restored.

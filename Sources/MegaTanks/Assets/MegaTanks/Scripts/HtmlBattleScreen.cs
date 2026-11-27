@@ -32,7 +32,7 @@ namespace MegaTanks
             var r=new GameObject(name,typeof(RectTransform),typeof(CanvasRenderer)).GetComponent<RectTransform>();r.SetParent(p,false);
             r.anchorMin=r.anchorMax=r.pivot=new Vector2(0,1);r.anchoredPosition=new Vector2(x,-y);r.sizeDelta=new Vector2(w,h);return r;
         }
-        Sprite Sprite(string key)=>artwork.TryGetValue(key,out var a)?a.sprite:null;
+        Sprite Sprite(string key)=>artwork.TryGetValue(key,out var a)?a.sprite:key=="prisoner_cage"?RescueEventArt.Cage:null;
         Image StaticImage(Transform p,string name,string key,float x,float y,float w,float h,Color? color=null)
         {
             var image=Rect(p,name,x,y,w,h).gameObject.AddComponent<Image>();image.sprite=Sprite(key);image.color=color??Color.white;image.raycastTarget=false;return image;
@@ -73,7 +73,7 @@ namespace MegaTanks
         void Update()
         {
             if(Simulation==null)return;
-            if(Input.GetKeyDown(KeyCode.Escape)){paused=!paused;leaving=false;modalKey="";}
+            if(Input.GetKeyDown(KeyCode.Escape)&&!CrewRecruitmentRewardUI.IsOpen){paused=!paused;leaving=false;modalKey="";}
             if(!paused&&!reviewFreeze)Simulation.Tick(Time.unscaledDeltaTime);
             CreditLoot();Render();UpdateHUD();UpdateModal();
         }
@@ -173,10 +173,12 @@ namespace MegaTanks
         void ClearModal(){foreach(Transform child in modal)Destroy(child.gameObject);modal.gameObject.SetActive(true);}
         void UpdateModal()
         {
+            if(Simulation.phase=="won"&&game.Crew.Pending!=null)CrewRecruitmentRewardUI.ShowPending(game);
+            if(CrewRecruitmentRewardUI.IsOpen){modal.gameObject.SetActive(false);modalKey="";return;}
             var s=Simulation;string key=leaving?"leave":paused?"pause":s.phase=="choice"?"choice:"+s.encounterIndex:s.Terminal?s.phase:"";
             if(key==modalKey){if(key=="")modal.gameObject.SetActive(false);return;}modalKey=key;if(key==""){modal.gameObject.SetActive(false);return;}ClearModal();
             var dim=StaticImage(modal,"Backdrop","",0,0,1920,1080,new Color(0,0,0,.55f));dim.raycastTarget=true;
-            if(s.phase=="choice"&&!paused&&!leaving)dim.color=new Color(.11f,.07f,.18f,.76f);
+            if(s.phase=="choice"&&!paused&&!leaving)dim.color=new Color(.11f,.07f,.18f,s.encounter=="rescue"?.38f:.76f);
             if(leaving||paused||s.Terminal)
             {
                 StaticImage(modal,"Panel","",500,230,920,600,new Color(.188f,.212f,.286f));

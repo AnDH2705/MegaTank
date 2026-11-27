@@ -64,12 +64,15 @@ namespace MegaTanks
             player=new Actor{kind="player",x=c.playerX,y=c.groundY,width=c.playerWidth,hp=c.playerHP,maxHP=c.playerHP,speed=c.cruiseSpeed};
             ammo=(int[])stage.startingAmmo.Clone();
             var list=Enumerable.Range(0,stage.total).Select(i=>i<stage.helicopters?"helicopter":i<stage.helicopters+stage.cannonCars?"cannon_car":i<stage.helicopters+stage.cannonCars+stage.trojans?"trojan":i<stage.helicopters+stage.cannonCars+stage.trojans+stage.planes?"plane":i<stage.helicopters+stage.cannonCars+stage.trojans+stage.planes+stage.dogs?"dog":"car").ToList();
-            for(int i=list.Count-1;i>0;i--){int j=rng.Next(i+1);var value=list[i];list[i]=list[j];list[j]=value;}foreach(var kind in list)queue.Enqueue(kind);
+            for(int i=list.Count-1;i>0;i--){int j=rng.Next(i+1);var value=list[i];list[i]=list[j];list[j]=value;}
+            if(c.rescue.enabled&&c.rescue.Stage(stageIndex)?.removeOpeningMeleeEnemies==true)
+            {int safeCount=Mathf.CeilToInt((float)stage.total*Math.Min(c.wavesPerStage,(c.rescue.firstEncounter+1)*c.wavesPerEncounter)/c.wavesPerStage);for(int i=0;i<safeCount;i++)if(list[i]=="dog"||list[i]=="trojan")list[i]="car";}
+            foreach(var kind in list)queue.Enqueue(kind);
             string[] roles={"mg","cannon","mortar","driver","front"};
             for(int i=0;i<5;i++)fighters.Add(new Fighter{role=roles[i],skin=i==4?"fat":"cat",x=c.playerX-100-i*30,y=c.groundY+(i%2)*25,hp=c.meleeHP,maxHP=c.meleeHP,atk=c.meleeDamage,moveSpeed=c.meleeSpeed});
         }
         public Vector2 Center(Actor a)=>new Vector2(a.x,(a.kind=="plane"||a.kind=="helicopter")?a.y:a.kind=="dog"?a.y-65:a.y-a.width*(a.kind=="car"||a.kind=="cannon_car"?.3f:.5f));
-        public bool CanFire(int w)=>player.weapons[w]&&SlotUnlocked(w)&&ammo[w]>0;
+        public bool CanFire(int w)=>player.weapons[w]&&SlotUnlocked(w)&&ammo[w]>0&&HasOperator(w);
         public void Tick(float dt)
         {
             if(Terminal)return;dt=Mathf.Clamp(dt,0,.05f);time+=dt;shake=Mathf.Max(0,shake-dt*25);
@@ -79,7 +82,7 @@ namespace MegaTanks
             {
                 float oldRoad=road;Travel(config.stationTravelSpeed,dt);landmarkX-=road-oldRoad;
                 foreach(var f in fighters.Where(f=>!f.aboard&&!f.dead&&!f.locked))Follow(f,dt);
-                if(phase=="approach"&&landmarkX<=config.encounterStopX){landmarkX=config.encounterStopX;travelSpeed=0;phase=encounter=="upgrade"?"upgrade":"choice";}
+                if(phase=="approach"&&landmarkX<=EncounterStopX){landmarkX=EncounterStopX;travelSpeed=0;phase=encounter=="upgrade"?"upgrade":"choice";}
                 else if(phase=="depart"&&landmarkX<-600){if(initialUpgrade){initialUpgrade=false;phase="wave";}else NextWave();}return;
             }
             if(phase=="break") { Travel(config.cruiseSpeed,dt);waitTimer-=dt;if(waitTimer<=0)NextWave();return; }
@@ -89,7 +92,7 @@ namespace MegaTanks
                 waitTimer-=dt;if(waitTimer<=0&&!fighters.Any(f=>!f.dead&&!f.locked&&!f.aboard&&f.motion!="following"))AfterWave();return;
             }
             float nearest=enemies.Where(e=>!e.dead&&e.kind!="plane"&&e.kind!="helicopter").Select(e=>e.x-player.x).DefaultIfEmpty(2000).Min();
-            bool close=nearest<600||fighters.Any(f=>!f.dead&&!f.locked&&!f.aboard&&(f.target!=null||f.motion=="return"||f.jump>0));Travel(bossSpawned||close?0:config.cruiseSpeed,dt,close);
+            bool close=nearest<(!HasAssignedOperator(0)&&HasOperator(1)?config.weapons[1].minRange+100:600)||fighters.Any(f=>!f.dead&&!f.locked&&!f.aboard&&(f.target!=null||f.motion=="return"||f.jump>0));Travel(bossSpawned||close?0:config.cruiseSpeed,dt,close);
             if(boss!=null&&!boss.dead)StepBossDuel(dt);
             if(!bossSpawned)
             {
@@ -159,6 +162,7 @@ namespace MegaTanks
         void UpdateEnemy(Actor e,float dt)
         {
             e.age+=dt;e.attack-=dt;if(e.landing>0){e.landing=Mathf.Max(0,e.landing-dt);float t=1-e.landing/e.landingDuration;e.x=Mathf.Lerp(e.landingStartX,e.landingEndX,t);e.y=Mathf.Lerp(e.landingStartY,config.groundY+e.lane*config.crewLaneSpacing,t)-Mathf.Sin(t*Mathf.PI)*100;return;}if(e.kind=="trojan"){if(e.x-player.x<config.trojanRevealRange)RevealTrojan(e);else e.x-=(e.speed+travelSpeed)*dt;return;}float stop=player.x+(e.kind=="boss"?550:e.kind=="dog"?90:(e.kind=="plane"||e.kind=="helicopter")?650:540);
+            if(e.kind!="dog"&&e.kind!="boss"&&!HasAssignedOperator(0)&&HasOperator(1))stop=Mathf.Max(stop,player.x+config.weapons[1].minRange+80);
             Fighter blocking=null;
             if(e.kind=="dog")
             {blocking=fighters.Where(f=>!f.aboard&&!f.dead&&!f.locked&&f.jump<=0).OrderBy(f=>Mathf.Abs(CrewLane(f.role)-e.lane)*90+Mathf.Abs(e.x-f.x)).FirstOrDefault();stop=(blocking!=null?blocking.x:player.x+(1150-652)*player.width/1351+15)+108;}
@@ -200,7 +204,7 @@ namespace MegaTanks
                 bool deploy=missing||f.role=="front"&&target!=null||bossClose&&(f.role=="driver"||wi>=0&&!canOperate);
                 if(deploy&&f.aboard)BeginJump(f,false);
                 if(f.aboard){f.motion="aboard";continue;}
-                if(f.jump>0){f.jump=Mathf.Max(0,f.jump-dt);float t=1-f.jump/f.jumpDuration;f.x=Mathf.Lerp(f.jumpStartX,f.jumpEndX,t);f.y=Mathf.Lerp(f.jumpStartY,f.jumpEndY,t)-Mathf.Sin(t*Mathf.PI)*90;if(f.jump<=0&&f.jumpIn){f.aboard=true;f.motion="aboard";}continue;}
+                if(f.jump>0){AdvanceJump(f,dt);continue;}
                 if(target!=null)
                 {
                     f.target=target;float surface=target.x-(target.kind=="dog"?0:target.width*.35f),reach=config.meleeRange+Mathf.Abs(CrewLane(f.role))*16,dx=surface-f.x;
@@ -310,10 +314,10 @@ namespace MegaTanks
         {
             if(wave%config.wavesPerEncounter==0)
             {
-                encounter=stage.requireRecovery&&encounterIndex==0?"wreck":config.encounterDeck[encounterIndex%config.encounterDeck.Length];encounterIndex++;
+                encounter=EncounterType(encounterIndex);encounterHistory.Add(encounter);encounterIndex++;
                 offeredSkin=stage.requireRecovery&&!recovered?"base":rng.Next(2)==0?"speed":"heavy";
                 offeredWeapons=stage.requireRecovery&&!recovered?new[]{true,true,false}:rng.Next(3)==0?new[]{true,true,false}:rng.Next(2)==0?new[]{false,true,true}:new[]{false,true,false};
-                if(encounterIndex%config.upgradeEveryGroups==0)encounter="upgrade";BeginStation(encounter);
+                BeginStation(encounter);
             }
             else {phase="break";waitTimer=config.waveBreakSeconds;}
         }
@@ -321,6 +325,7 @@ namespace MegaTanks
         public bool Choose(string choice,bool rewardedAdCompleted=false)
         {
             if(phase!="choice")return false;
+            if(encounter=="rescue")return BeginRescue(choice);
             if(choice!="skip")
             {
                 if(encounter=="ammo")

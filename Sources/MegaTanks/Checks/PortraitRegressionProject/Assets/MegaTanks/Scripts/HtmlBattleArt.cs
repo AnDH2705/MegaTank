@@ -11,6 +11,7 @@ namespace MegaTanks
     {
         [NonSerialized] public int[] unlockLevels={5,1,10,1,10};
         [NonSerialized] public EquipmentUnlockConfig equipmentUnlock=new EquipmentUnlockConfig();
+        [NonSerialized] public RescueEventConfig rescue=new RescueEventConfig();
         public int tankXPBase=100,maxTankLevel=100; public float tankXPGrowth=1.2f; public int tankXPReward=100; public bool initialUpgradeStation=true; public float crewDefaultAccuracy=100,stationSpawnX=2150,upgradeApplySeconds=.5f,upgradeDepartSeconds=2.1f,upgradeAuraSeconds=2.6f,stationHPBonus=.12f,stationDamageBonus=10; public int upgradeEveryGroups=2;public float trojanRevealRange=700;
         public int version,seed,wavesPerStage,wavesPerEncounter,medicalGears,bossMoney,bossGears,chestMoney,chestGears,enemyMoney,enemyGears;
         public float playerHP,playerWidth,playerX,groundY,cruiseSpeed,stationTravelSpeed,waveBreakSeconds,encounterStopX,medicalHP,bossKnockback,meleeDamage,meleeHP,meleeSpeed,meleeCooldown,meleeRange;
@@ -26,7 +27,7 @@ namespace MegaTanks
         public static HtmlBattleConfig Load()
         {
             var text=Resources.Load<TextAsset>("HtmlBattleConfig");if(text==null)throw new InvalidOperationException("Missing HtmlBattleConfig.json");
-            var c=JsonUtility.FromJson<HtmlBattleConfig>(text.text);c.equipmentUnlock=EquipmentUnlockConfig.Load();c.unlockLevels=c.equipmentUnlock.CrewAndWeaponLevels;c.Validate();return c;
+            var c=JsonUtility.FromJson<HtmlBattleConfig>(text.text);c.equipmentUnlock=EquipmentUnlockConfig.Load();c.unlockLevels=c.equipmentUnlock.CrewAndWeaponLevels;c.rescue=RescueEventConfig.Load();c.Validate();return c;
         }
         public void Validate()
         {

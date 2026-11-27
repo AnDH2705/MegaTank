@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "enabled": true,
+  "firstEncounter": 0,
+  "repeatIfSkipped": true,
+  "stages": [
+    {
+      "stageIndex": 0,
+      "weaponSlot": 0,
+      "crewId": "ember",
+      "removeOpeningMeleeEnemies": true,
+      "dialogue": [
+        { "speaker": "Ember", "text": "You came back for me... and we made it past their boss!" },
+        { "speaker": "Milo", "text": "That roof gun finally has a proper gunner." },
+        { "speaker": "Ember", "text": "Then let me stay. I want to keep fighting with you!" }
+      ]
+    },
+    {
+      "stageIndex": 1,
+      "weaponSlot": 2,
+      "crewId": "mochi",
+      "removeOpeningMeleeEnemies": false,
+      "dialogue": [
+        { "speaker": "Mochi", "text": "Your crew got me out of that cage. I owe you one." },
+        { "speaker": "Ember", "text": "You kept that mortar firing all the way to their boss." },
+        { "speaker": "Mochi", "text": "There's an empty seat with my name on it. Can I come along?" }
+      ]
+    }
+  ],
+  "stopX": 1550,
+  "cageSize": 300,
+  "cageFeetInset": 22,
+  "prisonerHeight": 155,
+  "unlockSeconds": 0.45,
+  "cageLiftSeconds": 0.6,
+  "walkSpeed": 400
+}

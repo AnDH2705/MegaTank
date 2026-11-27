@@ -17,7 +17,7 @@ namespace MegaTanks
         CrewBitmapText upgradeMessage;
         HtmlBattleWorld nativeWorld;RawImage nativeView;
         RectTransform timeline,bossPanel;RectTransform[] markers=new RectTransform[3];Image[] markerIcons=new Image[3];Text timelineCaption,runLevel,runProgress;Image bossFill,runExperience;
-        string awardedRun;bool adPending;int adTicket;Card[] cardCatalog;HtmlEventTimeline routeTimeline;Image hpChip;float chip=1,lastHP=1,chipHold;
+        string awardedRun;int awardedTankXP;bool adPending;int adTicket;Card[] cardCatalog;HtmlEventTimeline routeTimeline;Image hpChip;float chip=1,lastHP=1,chipHold;
         void BuildDesign()
         {
             artwork["menu"]=new HtmlArtImage{key="menu",sprite=game.UI.Skin.homeMenu};
@@ -85,6 +85,7 @@ namespace MegaTanks
         void UpdateDesign()
         {
             var s=Simulation;
+            UpdateCrewNotice();
             AnimateChest();
             upgradeMessage.gameObject.SetActive(s.phase=="upgrade"||s.effects.Any(f=>f.clip=="UpgradeAura"));
             hpLabel.text=Mathf.CeilToInt(s.player.hp)+" / "+Mathf.CeilToInt(s.player.maxHP)+" HP";float ratio=Mathf.Clamp01(s.player.hp/Mathf.Max(1,s.player.maxHP));hpFill.fillAmount=ratio;
@@ -92,10 +93,15 @@ namespace MegaTanks
             if(!paused&&s.time>=chipHold)chip=Mathf.MoveTowards(chip,ratio,Time.unscaledDeltaTime*.7f);lastHP=ratio;hpChip.fillAmount=Mathf.Max(chip,ratio);
             hpFill.color=ratio<=.25f?new Color(1,.396f,.36f):ratio<=.5f?new Color(1,.831f,.231f):new Color(.329f,.863f,.569f);
             moneyLabel.text=game.Wallet.Parts.ToString("N0");gearsLabel.text=game.Wallet.PetFood.ToString("N0");
-            for(int i=0;i<3;i++){ammoLabels[i].text=s.ammo[i].ToString();ammoLabels[i].color=!s.SlotUnlocked(i)||!s.player.weapons[i]?Color.gray:s.ammo[i]<=0?Color.red:Color.white;}
+            for(int i=0;i<3;i++){ammoLabels[i].text=s.ammo[i].ToString();ammoLabels[i].color=!s.SlotUnlocked(i)||!s.player.weapons[i]||!s.HasAssignedOperator(i)?Color.gray:s.ammo[i]<=0?Color.red:Color.white;}
             routeTimeline.Render(s,paused);
             bossPanel.gameObject.SetActive(s.boss!=null&&!s.boss.dead);if(s.boss!=null)bossFill.rectTransform.sizeDelta=new Vector2(788*Mathf.Clamp01(s.boss.hp/s.boss.maxHP),36);
-            if(s.phase=="won"&&awardedRun!=s.runId){new PlayerTankProfile(config).Award(s.runId,config.tankXPReward);awardedRun=s.runId;}
+            if(s.phase=="won"&&awardedRun!=s.runId)
+            {
+                var profile=new PlayerTankProfile(config);awardedTankXP=s.StageExperienceReward(profile);profile.Award(s.runId,awardedTankXP);
+                if(s.rescuedMember!=null)game.Crew.QueueCommonRecruit(s.rescuedMember,s.runId,s.stageIndex);
+                awardedRun=s.runId;
+            }
             UpdateRunLevelHUD();
         }
         void RenderDesign(){nativeWorld.Draw(Simulation,paused?0:Time.unscaledDeltaTime);}
@@ -107,6 +113,7 @@ namespace MegaTanks
         void EncounterDesign()
         {
             var s=Simulation;
+            if(s.encounter=="rescue"){RescueDesign();return;}
             var layout=s.encounter=="ammo"?designLayout.cards.ammo:s.encounter=="supply"?designLayout.cards.supply:s.encounter=="medical"?designLayout.cards.medical:designLayout.cards.wreck;
             var titleRect=layout.title.rect1920x1080;var optionsRect=layout.options.rect1920x1080;var skipRect=layout.skip.rect1920x1080;
             string title=s.encounter=="ammo"?"CHOOSE YOUR WEAPON":s.encounter=="supply"?"RESTOCK & ROLL":s.encounter=="medical"?"PATCH UP OR STOCK UP":"TIME FOR A NEW RIDE?";

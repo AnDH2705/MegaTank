@@ -8,7 +8,7 @@ namespace MegaTanks
     // Projects the simulation route without changing wave/spawn/reward state.
     public sealed class HtmlEventTimeline : MonoBehaviour
     {
-        sealed class Node { public string type;public int first,last; }
+        sealed class Node { public string type;public int first,last,eventIndex=-1; }
         readonly List<Node> route=new List<Node>();
         readonly RectTransform[] outer=new RectTransform[3],inner=new RectTransform[3];
         readonly Image[] icons=new Image[3],cores=new Image[3];
@@ -47,7 +47,7 @@ namespace MegaTanks
             int stop=0;for(int start=1;start<=s.config.wavesPerStage;start+=s.config.wavesPerEncounter)
             {
                 int end=Math.Min(s.config.wavesPerStage,start+s.config.wavesPerEncounter-1);route.Add(new Node{type=s.stageIndex>0?"hard_battle":"battle",first=start,last=end});
-                if(end%s.config.wavesPerEncounter==0){string type=s.stage.requireRecovery&&stop==0?"wreck":s.config.encounterDeck[stop%s.config.encounterDeck.Length];if(++stop%s.config.upgradeEveryGroups==0)type="upgrade";route.Add(new Node{type=Alias(type),last=end});}
+                if(end%s.config.wavesPerEncounter==0){route.Add(new Node{type=Alias(s.EncounterType(stop)),last=end,eventIndex=stop});stop++;}
             }
             route.Add(new Node{type="boss"});
         }
@@ -55,9 +55,10 @@ namespace MegaTanks
         public void Render(HtmlBattleSimulation s,bool paused)
         {
             if(simulation!=s)Route(s);int n=route.Count-1,next;
+            foreach(var item in route)if(item.eventIndex>=0)item.type=Alias(s.EncounterType(item.eventIndex));
             if(s.bossSpawned)next=n;
             else if(s.IsEntryUpgrade)next=0;
-            else if(s.phase=="approach"||s.phase=="choice"||s.phase=="depart"||s.phase=="upgrade")next=route.FindIndex(e=>e.first==0&&e.last==s.wave);
+            else if(s.phase=="approach"||s.phase=="choice"||s.phase=="depart"||s.phase=="upgrade"||s.phase=="rescue_release")next=route.FindIndex(e=>e.first==0&&e.last==s.wave);
             else next=route.FindIndex(e=>e.first>0&&e.first<=s.wave&&e.last>=s.wave);
             next=Math.Max(0,next);
             if(next!=cursor){oldCursor=cursor;Array.Copy(visualX,oldX,3);cursor=next;clock=oldCursor<0?1:0;entryRoad=s.road;}
@@ -72,7 +73,7 @@ namespace MegaTanks
                 float x=clock<.32f?Mathf.Lerp(from,targets[i],t):targets[i];
                 if(clock>=.32f&&clock<.5f&&i==1&&cursor<n-2)x=Mathf.Lerp(580,targets[i],1-Mathf.Pow(1-Mathf.Clamp01((clock-.32f)/.18f),3));
                 visualX[i]=x;outer[i].anchoredPosition=inner[i].anchoredPosition=new Vector2(x*scale,-(i==2?82:56)*scale);
-                bool complete=indices[i]<cursor;icons[i].sprite=art.Image("timeline_event_"+route[indices[i]].type)?.sprite;
+                bool complete=indices[i]<cursor;icons[i].sprite=route[indices[i]].type=="rescue"?RescueEventArt.Cage:art.Image("timeline_event_"+route[indices[i]].type)?.sprite;icons[i].preserveAspect=true;
                 icons[i].color=new Color(1,1,1,complete?.42f:1);cores[i].color=indices[i]==cursor?new Color(1,.855f,.376f):new Color(1,.96f,.875f);
                 if(i<2)ticks[i].gameObject.SetActive(complete);
             }

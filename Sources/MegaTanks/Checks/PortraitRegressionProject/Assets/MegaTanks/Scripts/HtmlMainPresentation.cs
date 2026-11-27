@@ -17,12 +17,13 @@ namespace MegaTanks
             game=BattleGame.Instance;if(game==null)return;art=Resources.Load<HtmlBattleArt>("HtmlBattleArt");if(art==null)return;
             var rect=R(transform,"Original Art Main World",0,0,1920,1080);rect.SetAsFirstSibling();var raw=rect.gameObject.AddComponent<RawImage>();raw.raycastTarget=false;
             world=gameObject.AddComponent<HtmlBattleWorld>();world.Initialize(art,raw);
-            var c=HtmlBattleConfig.Load();preview=new HtmlBattleSimulation(c,0);preview.Geometry=art;preview.ConfigureProfile(new PlayerTankProfile(c).Level);preview.ConfigureCrew(game.Crew,game.Progression);preview.phase="main";
+            var c=HtmlBattleConfig.Load();preview=new HtmlBattleSimulation(c,0);preview.Geometry=art;preview.ConfigureProfile(new PlayerTankProfile(c).Level);preview.ConfigureCrew(game.Crew,game.Progression);preview.phase="main";game.Crew.Changed+=RefreshCrew;
             I(transform,"Player Profile Frame","profile_profile_frame",25,20,430,106).type=Image.Type.Sliced;
             var avatar=I(transform,"Player Avatar","profile_avatar_default",38,28,90,90);avatar.preserveAspect=true;
             level=T(transform,"Permanent Tank Level",155,27,275,42,32);xp=T(transform,"Permanent Tank EXP",155,71,260,24,18);
             I(transform,"EXP Rail","profile_exp_rail",153,98,275,9);exp=I(transform,"EXP Progress","profile_exp_fill",153,98,275,9);exp.type=Image.Type.Filled;exp.fillMethod=Image.FillMethod.Horizontal;
             Counter(1213,"counter_coin",out money);Counter(1495,"counter_gear",out gears);
+            CrewRecruitmentRewardUI.ShowPending(game);
         }
         void Counter(float x,string icon,out Text text)
         {var frame=I(transform,"Main Counter Frame "+icon,"counter_counter_frame",x+45,49,220,48);frame.color=new Color(1,1,1,.8f);frame.type=Image.Type.Sliced;I(transform,icon,icon,x,37,66,66).preserveAspect=true;text=T(transform,"Amount "+icon,x+60,47,190,52,32);text.alignment=TextAnchor.MiddleRight;}
@@ -35,5 +36,7 @@ namespace MegaTanks
             world.Draw(preview,Time.unscaledDeltaTime);level.text="TANK LV. "+profile.Level;xp.text="EXP "+profile.IntoLevel+" / "+profile.Cost(profile.Level);exp.fillAmount=(float)profile.IntoLevel/profile.Cost(profile.Level);
             money.text=game.Wallet.Parts.ToString("N0");gears.text=game.Wallet.PetFood.ToString("N0");
         }
+        void RefreshCrew(){if(preview!=null&&game!=null)preview.ConfigureCrew(game.Crew,game.Progression);}
+        void OnDestroy(){if(game?.Crew!=null)game.Crew.Changed-=RefreshCrew;}
     }
 }

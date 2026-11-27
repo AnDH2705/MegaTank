@@ -9,7 +9,7 @@ using UnityEngine.UI;
 namespace MegaTanks
 {
     // A dedicated native 2D scene. Each vehicle has one flipped root and a SortingGroup.
-    public sealed class HtmlBattleWorld : MonoBehaviour
+    public sealed partial class HtmlBattleWorld : MonoBehaviour
     {
         sealed class Vehicle { public GameObject root;public string skin;public readonly Dictionary<string,Transform> parts=new Dictionary<string,Transform>(); }
         sealed class Person { public SkeletonAnimation spine;public string pose;public float height;public Text name;public Material clipped;public bool named; }
@@ -31,7 +31,7 @@ namespace MegaTanks
             white=UnityEngine.Sprite.Create(Texture2D.whiteTexture,new Rect(0,0,1,1),Vector2.one*.5f,100);
         }
         Vector3 World(float x,float y)=>new Vector3((x-960)/100,altitude+(540-y)/100,0);
-        Sprite Sprite(string key)=>string.IsNullOrEmpty(key)?white:sourceSprite?.Invoke(key)??EquipmentHtmlCatalog.Sprite(art,key);
+        Sprite Sprite(string key)=>string.IsNullOrEmpty(key)?white:sourceSprite?.Invoke(key)??(key=="prisoner_cage"?RescueEventArt.Cage:EquipmentHtmlCatalog.Sprite(art,key));
         SpriteRenderer Quad(string key,float x,float y,float w,float h,int order,float alpha=1,bool flip=false,float rotation=0)
         {
             SpriteRenderer r;
@@ -42,7 +42,7 @@ namespace MegaTanks
         public void Draw(HtmlBattleSimulation simulation,float dt)
         {
             s=simulation;delta=dt;cursor=0;
-            blur.SetFloat("_Blur",s.phase=="choice"?3:0);
+            blur.SetFloat("_Blur",s.phase=="choice"?(s.encounter=="rescue"?.75f:3):0);
             visibleVehicles.Clear();visiblePeople.Clear();foreach(var person in people.Values)person.named=false;
             var bg=art.data.backgrounds.First(b=>b.id==s.stage.background);
             for(int i=0;i<bg.keys.Length;i++)
@@ -54,7 +54,8 @@ namespace MegaTanks
             }
             if((s.phase=="approach"||s.phase=="choice"||s.phase=="depart"||s.phase=="upgrade")&&!s.LandmarkConsumed)
             {
-                if(s.encounter=="wreck")VehicleAt(parked,s.offeredSkin,s.landmarkX,s.config.groundY,s.config.playerWidth,false,s.offeredWeapons,100,false,0);
+                if(s.encounter=="rescue")DrawRescue(dt);
+                else if(s.encounter=="wreck")VehicleAt(parked,s.offeredSkin,s.landmarkX,s.config.groundY,s.config.playerWidth,false,s.offeredWeapons,100,false,0);
                 else if(s.encounter=="upgrade")Quad("upgrade_station",s.landmarkX,s.config.groundY-300,960,640,100);
                 else
                 {
@@ -72,6 +73,7 @@ namespace MegaTanks
                 }
             }
             else if(vehicles.TryGetValue(parked,out var parkedView))parkedView.root.SetActive(false);
+            if(s.phase=="rescue_release")DrawRescue(dt);
             foreach(var a in s.abandoned)VehicleAt(a,a.skin,a.x,a.y,a.width,false,a.weapons,110,false,0);
             foreach(var a in s.enemies.Where(e=>!e.dead).ToArray())Actor(a,300,1);
             var mounted=s.player.weapons.Select((v,i)=>v&&s.SlotUnlocked(i)).ToArray();

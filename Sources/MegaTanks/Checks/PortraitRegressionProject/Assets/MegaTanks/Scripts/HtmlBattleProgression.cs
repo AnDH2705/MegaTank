@@ -30,10 +30,17 @@ namespace MegaTanks
             HasEntryUpgrade=initialUpgrade=false;
             baseTankLevel=temporaryTankLevel=Math.Max(1,permanentLevel);
             foreach(var f in fighters)f.locked=!RoleUnlocked(f.role);
-            if(config.initialUpgradeStation&&!SlotUnlocked(0)){HasEntryUpgrade=initialUpgrade=true;BeginStation("upgrade");}
+            int nextWeapon=RescueStory?.weaponSlot??0;
+            if(config.initialUpgradeStation&&!SlotUnlocked(nextWeapon)){HasEntryUpgrade=initialUpgrade=true;BeginStation("upgrade");}
         }
         public void ConfigureCrew(PlayerCrew crew,PlayerProgression progression)
         {
+            crewSource=crew;crewProgression=progression;
+            foreach(var role in new[]{"mg","cannon","mortar","driver","front"})
+            {
+                var member=crew.Get(Role(role));
+                if(member!=null&&!fighters.Any(f=>f.role==role))fighters.Add(ResolveFighter(member,progression.Get(member)));
+            }
             foreach(var f in fighters.ToArray())
             {
                 var member=crew.Get(Role(f.role));if(member==null){fighters.Remove(f);continue;}
@@ -80,6 +87,7 @@ namespace MegaTanks
                 bool sweep=bossKilled&&!fighters.Any(f=>!f.dead&&!f.locked&&!f.aboard&&f.motion!="following");
                 if(near||sweep){item.phase=2;item.flyX=item.x;item.flyY=item.y;}
             }
+            if(TickRescue(dt))return true;
             if(phase!="upgrade")return false;
             travelSpeed=0;upgradeClock+=dt;
             if(upgradeClock>=config.upgradeApplySeconds&&upgradedStations.Add(stationSerial))ApplyUpgrade();

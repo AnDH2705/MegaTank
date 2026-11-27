@@ -1,0 +1,50 @@
+MEGATANKS — RESCUE STORY CONFIG
+
+Edit Assets/MegaTanks/Resources/RescueEventConfig.json, then restart Play.
+All level thresholds remain in EquipmentUnlockConfig.json (MG 5, Mortar 10).
+
+STORY
+- stages[].stageIndex is zero-based: 0 = Stage 1, 1 = Stage 2.
+- weaponSlot: 0 = MG, 1 = Cannon, 2 = Mortar.
+- crewId must match a stable CrewDefinition ID of the corresponding role.
+- Stage 1: entry upgrade temporarily opens MG -> rescue Ember -> MG operates.
+- Stage 2: entry upgrade temporarily opens Mortar -> rescue Mochi -> Mortar operates.
+- Rescue gives a companion for the current run only. Unlocking a weapon alone
+  does not create a gunner, aim the gun, fire it, or consume its ammo.
+- Winning the stage awards at least the permanent Tank EXP needed for that
+  story's weapon threshold. Existing higher levels and EXP are preserved.
+- After the boss: configured dialogue -> Common crew card -> CLAIM. Only CLAIM
+  permanently recruits/assigns the cat. Duplicate callbacks cannot grant twice.
+- Unclaimed post-boss rewards persist across restart and resume on Main.
+- Leaving/losing before the boss discards the temporary rescued companion.
+- Existing crew upgrade levels are retained; these two story cats need their
+  Common recruitment cards before they can be equipped permanently.
+
+EVENT / PRESENTATION
+- firstEncounter: zero-based stop within that stage (0 = first stop).
+- repeatIfSkipped: reoffer at later stops until rescued. A later replay also
+  offers the event while that cat has not permanently joined.
+- removeOpeningMeleeEnemies: replace early dogs/Trojan carriers with cars
+  until the first rescue, keeping the Cannon-only opening playable.
+- dialogue: English speaker names and lines shown before the Common card.
+- stopX, cageSize, cageFeetInset, prisonerHeight: 1920x1080 design coordinates.
+- unlockSeconds, cageLiftSeconds: seconds. walkSpeed: design pixels/second.
+- enabled: disables rescue encounters; existing recruited cats remain owned.
+
+ORIGINAL ART
+- Art/Asset/Props/Prisoner_Cage/prisoner_cage.png, original whole transparent PNG.
+- Art/Asset/UI/Crew/illustrations/cat_driver.png, reused original portrait.
+- Art/Anim/default driver/spine_v3_guided, original live character rig.
+- Existing native Choice_Cards bases, atlas font and game UI components.
+- preview_on_map.png is a comparison image only; it is not used as a sprite.
+
+SOURCE LIMITATION
+The cage source has no separate door/lock parts or opening animation. Current
+release uses a native lock-hit effect, whole-cage lift/tilt/dissolve, then the
+live Spine cat walks and boards the tank. A hinged opening needs original
+separate door/frame/lock parts; no parts were cut from the preview or HTML.
+
+EDITOR VALIDATION
+MegaTanks > Rescue > Check two-stage story
+Checks/RescueEvent contains validation, runtime errors and captured states.
+The review restores player wallet, crew, recruitment and Tank EXP afterwards.

@@ -15,6 +15,7 @@ namespace MegaTanks
         Actor AimTarget(Actor owner,int weapon,bool enemy)
         {
             if(enemy)return player;
+            if(!HasOperator(weapon))return null;
             var gun=config.weapons[weapon];
             return enemies.Where(e=>!e.dead&&(e.kind!="boss"||bossPhase!="entry")&&e.x-owner.x>=gun.minRange&&e.x-owner.x<=gun.maxRange&&(e.kind!="dog"||weapon==0)).OrderBy(e=>e.x).FirstOrDefault();
         }

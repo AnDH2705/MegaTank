@@ -20,7 +20,7 @@ namespace MegaTanks
             for(int x=18;x<=82;x+=64)StaticImage(chestLid,"Lid Band","",x,4,13,36,new Color(1,.83f,.35f));
             StaticImage(root,"Coins","counter_coin",68,130,44,44).preserveAspect=true;Label(root,"Coin Reward","+"+config.chestMoney,120,130,105,44,27);
             StaticImage(root,"Gears","counter_gear",270,130,44,44).preserveAspect=true;Label(root,"Gear Reward","+"+config.chestGears,325,130,100,44,27);
-            Label(root,"Permanent EXP","TANK EXP +"+config.tankXPReward,50,175,400,35,22,new Color(1,.9f,.55f),TextAnchor.MiddleCenter);
+            Label(root,"Permanent EXP","TANK EXP +"+awardedTankXP,50,175,400,35,22,new Color(1,.9f,.55f),TextAnchor.MiddleCenter);
         }
         void AnimateChest()
         {

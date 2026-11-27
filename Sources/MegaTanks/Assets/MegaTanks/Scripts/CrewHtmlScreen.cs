@@ -46,8 +46,8 @@ namespace MegaTanks
             for(int i=0;i<candidates.Length;i++) { int index=i; candidates[i].button.onClick.AddListener(()=>SelectCandidate(index)); }
             for(int i=0;i<skillIcons.Length;i++) { int index=i; skillIcons[i].GetComponentInParent<Button>().onClick.AddListener(()=>ShowSkill(index)); }
             equip.onClick.AddListener(Equip);
-            levelUp.onClick.AddListener(()=> { if(game!=null && selected!=null && !game.Deployed && game.Progression.TryLevelUp(selected)) { Refresh(); Message("LEVEL UP!"); } });
-            ascend.onClick.AddListener(()=> { if(game!=null && selected!=null && !game.Deployed && game.Progression.TryStarUp(selected)) { Refresh(); Message("ASCENDED!"); } });
+            levelUp.onClick.AddListener(()=> { if(game!=null && selected!=null && game.Crew.IsRecruited(selected) && !game.Deployed && game.Progression.TryLevelUp(selected)) { Refresh(); Message("LEVEL UP!"); } });
+            ascend.onClick.AddListener(()=> { if(game!=null && selected!=null && game.Crew.IsRecruited(selected) && !game.Deployed && game.Progression.TryStarUp(selected)) { Refresh(); Message("ASCENDED!"); } });
         }
         void OnDisable() { if(tooltip!=null) tooltip.SetActive(false); selected=null; }
         void Update()
@@ -58,7 +58,7 @@ namespace MegaTanks
         public void SelectStation(CrewRole role)
         {
             if(game==null)return; activeRole=role;
-            eligible=(game.Frontend.crew?.members??Array.Empty<CrewDefinition>()).Where(m=>game.Crew.CanEquip(m,(int)role)).ToArray();
+            eligible=(game.Frontend.crew?.members??Array.Empty<CrewDefinition>()).Where(m=>m!=null&&m.role==role).ToArray();
             selected=game.Crew.Get(role)??eligible.FirstOrDefault();
             rosterScroll.verticalNormalizedPosition=1; tooltip.SetActive(false); Refresh();
         }
@@ -104,12 +104,14 @@ namespace MegaTanks
             {
                 var c=candidates[i];var member=i<eligible.Length?eligible[i]:null;
                 c.portrait.sprite=Portrait(member);c.button.interactable=member!=null;
+                c.portrait.material=member!=null&&!game.Crew.IsRecruited(member)?lockedMaterial:null;
                 c.selected.gameObject.SetActive(member!=null&&member==selected);
                 c.equipped.gameObject.SetActive(member!=null&&game.Crew.Get(activeRole)==member);
                 c.name.Value=member!=null?member.displayName:"";
             }
             roleLabel.Value=RoleTitle(activeRole);
             bool has=selected!=null;hero.gameObject.SetActive(has);hero.sprite=Portrait(selected);
+            bool owned=has&&game.Crew.IsRecruited(selected);hero.material=owned?null:lockedMaterial;
             nameLabel.Value=has?selected.displayName:"EMPTY";
             var p=game.Progression.Get(selected);stars.Stars=has?p.Stars:0;levelLabel.Value=has?"LV."+p.Level:"";
             if(has)
@@ -127,13 +129,14 @@ namespace MegaTanks
                 if(exists){skillIcons[i].sprite=roleSkills[i].icon;skillIcons[i].material=p.Stars<new[]{1,2,4}[i]?lockedMaterial:null;skillNames[i].Value=roleSkills[i].name.Replace(" ","\n");}
             }
             bool assigned=has&&game.Crew.Get(activeRole)==selected;
-            bool unlocked=new PlayerTankProfile(HtmlBattleConfig.Load()).Level>=HtmlBattleConfig.Load().unlockLevels[(int)(activeRole==CrewRole.SubGunner?0:activeRole==CrewRole.Gunner?1:activeRole==CrewRole.WeaponSpecialist?2:activeRole==CrewRole.Driver?3:4)];equip.interactable=has&&!game.Deployed&&!assigned&&unlocked;
+            bool unlocked=new PlayerTankProfile(HtmlBattleConfig.Load()).Level>=HtmlBattleConfig.Load().unlockLevels[(int)(activeRole==CrewRole.SubGunner?0:activeRole==CrewRole.Gunner?1:activeRole==CrewRole.WeaponSpecialist?2:activeRole==CrewRole.Driver?3:4)];equip.interactable=owned&&!game.Deployed&&!assigned&&unlocked;
             equipLabel.Value=!unlocked?"TANK LV. "+HtmlBattleConfig.Load().unlockLevels[activeRole==CrewRole.SubGunner?0:activeRole==CrewRole.Gunner?1:activeRole==CrewRole.WeaponSpecialist?2:activeRole==CrewRole.Driver?3:4]:assigned?"Equipped":"Equip";
             int cost=ProgressionRules.LevelCost(p.Level), fragments=ProgressionRules.StarCost(p.Stars);
-            levelUp.interactable=has&&!game.Deployed&&game.Progression.CanLevelUp(selected);
+            if(unlocked&&!owned)equipLabel.Value="RESCUE FIRST";
+            levelUp.interactable=owned&&!game.Deployed&&game.Progression.CanLevelUp(selected);
             levelUpLabel.Value=cost>0?"LEVEL UP!":"MAX LEVEL";
             levelUp.GetComponent<Image>().color=levelUp.interactable?Color.white:new Color(.7f,.7f,.7f);
-            bool ready=has&&game.Progression.CanStarUp(selected);
+            bool ready=owned&&game.Progression.CanStarUp(selected);
             ascend.interactable=ready&&!game.Deployed;ascend.image.sprite=ready?yellowButton:grayButton;
             ascendLabel.Value=!has?"--":fragments<=0?"MAX":ready?"ASCEND":p.Fragments+"/"+fragments;
             ascendLabel.color=ready?Color.black:Color.white;
@@ -142,6 +145,7 @@ namespace MegaTanks
             ascendProgress.fillAmount=fragments>0?Mathf.Clamp01((float)p.Fragments/fragments):0;
             // Costs are live values; the reference's placeholder 9999 stats are never used.
             feedback.Value=has?"LEVEL UP: "+(cost>0?cost.ToString("N0")+" COINS":"MAX")+"   |   PET TAGS: "+p.Fragments:"Select a crew member";
+            if(has&&!owned){var story=RescueEventConfig.Load().ForMember(selected.id);feedback.Value="RESCUE THIS CAT IN STAGE "+((story?.stageIndex??0)+1);}
             feedback.gameObject.SetActive(true);feedbackUntil=float.PositiveInfinity;
         }
         void Message(string value){feedback.Value=value;feedback.gameObject.SetActive(true);feedbackUntil=Time.unscaledTime+2;}

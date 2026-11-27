@@ -27,3 +27,8 @@ PASS: original green mortar; every enemy/boss disappears on death with explosion
 PASS: HTML boss entry 260 px/s, both tanks approach at 60 px/s and meet at the configured center/contact spacing.
 PASS: original illustrations on all four choice screens; actual card/pause listeners, choice closes, pause freezes road/time, resume hides overlay; cancelled AD rejects duplicate callbacks.
 Runtime capture: no Error, Exception or Assert across all 15 captured states.
+PASS: main VFX catalog, long-lived projectile follow, particle/trail pause, one-shot guard, road-anchored fire, detached tail drain and release.
+PASS: original green mortar; every enemy/boss disappears on death with explosion, no corpse fade, no duplicate kill/loot.
+PASS: HTML boss entry 260 px/s, both tanks approach at 60 px/s and meet at the configured center/contact spacing.
+PASS: original illustrations on all four choice screens; actual card/pause listeners, choice closes, pause freezes road/time, resume hides overlay; cancelled AD rejects duplicate callbacks.
+Runtime capture: no Error, Exception or Assert across all 15 captured states.

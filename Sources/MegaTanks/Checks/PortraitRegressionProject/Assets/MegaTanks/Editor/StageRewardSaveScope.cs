@@ -10,7 +10,7 @@ namespace MegaTanks.Editor
         readonly HashSet<string> existed=new HashSet<string>();
         public StageRewardSaveScope()
         {
-            foreach(string key in new[]{PlayerWallet.DefaultSaveKey,PlayerProgression.DefaultSaveKey,StageCompletionRewards.DefaultSaveKey,PlaytestResources.SaveKey,PlaytestResources.ArmorSaveKey})
+            foreach(string key in new[]{PlayerWallet.DefaultSaveKey,PlayerProgression.DefaultSaveKey,StageCompletionRewards.DefaultSaveKey,PlaytestResources.SaveKey,PlaytestResources.ArmorSaveKey,PlayerCrew.RecruitmentSaveKey,"MegaTanks.Crew.Loadout"})
             {if(PlayerPrefs.HasKey(key))existed.Add(key);values[key]=PlayerPrefs.GetString(key,"");}
         }
         public void Dispose()
