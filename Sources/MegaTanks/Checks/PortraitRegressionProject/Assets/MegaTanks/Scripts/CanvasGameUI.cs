@@ -173,6 +173,7 @@ namespace MegaTanks
             game.RefreshEquipmentArtwork();
             if(portraitTank==null)return;
             portraitTank.GetComponent<TankArtwork>().EquipMachineGunVisual(game.Equipment.MachineGun);
+            portraitTank.GetComponent<TankArtwork>().EquipMortarVisual(game.Equipment.MissilePack);
             foreach(var behaviour in portraitTank.GetComponentsInChildren<MonoBehaviour>(true))behaviour.enabled=false;
             FramePortrait();portraitCamera.Render();
         }

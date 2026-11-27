@@ -100,7 +100,9 @@ namespace MegaTanks
                     "\nHIT "+combat.accuracy.ToString("0.#")+"% · PEN "+combat.armorPenetration.ToString("0.#")+"%\nCRIT "+combat.criticalChance.ToString("0.#")+"% / +"+combat.criticalDamage.ToString("0.#")+"% · "+combat.damageType.ToString().ToUpperInvariant();
             }
             if(combat!=null&&current!=null&&current!=selected)detail+="\n"+WeaponLevelDetail(selected);
-            v.Get<Text>("Item Stats").fontSize=18;
+            if (selected is GunDefinition missile && missile.stats.homingMissile)
+                detail += "\nTARGET "+(missile.stats.preferredTarget==EnemyKind.Ground?"GROUND ONLY":"AIR ONLY")+" | TURN "+missile.stats.missileTurnRate.ToString("0.#")+"°/s | FLIGHT "+missile.stats.missileLifetime.ToString("0.#")+"s";
+            v.Get<Text>("Item Stats").fontSize=selected is GunDefinition guided && guided.stats.homingMissile?16:18;
             if(selected is ArmorDefinition plate) detail=ArmorDetail(plate);
             if(selected is AccessoryDefinition accessory)detail=AccessoryDetail(accessory);
             Text(v,"Item Stats",detail);var slot=activeSlot??selected.Type;bool compatible=selected.Type==slot;

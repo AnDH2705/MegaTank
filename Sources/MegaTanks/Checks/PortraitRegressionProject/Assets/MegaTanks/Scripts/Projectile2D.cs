@@ -20,8 +20,11 @@ namespace MegaTanks
         BattleVfxEffect projectileEffect;
         float age;
         const float SafetyLifetime = 30f;
+        bool released;
         void Release()
         {
+            if(released)return;
+            released=true;
             if(projectileEffect!=null)projectileEffect.Detach(transform.position);
             projectileEffect=null;
             Destroy(gameObject);
@@ -35,6 +38,36 @@ namespace MegaTanks
         static readonly List<RaycastHit2D> hits = new List<RaycastHit2D>(32);
         public ProjectileTeam Team => team;
         public bool IsMortar { get; private set; }
+        public bool IsMissile { get; private set; }
+        public EnemyEntity LockedTarget { get; private set; }
+        EnemyKind missileTargetKind;
+        float turnRate, missileLifetime, lockRange;
+
+        public void InitializeMissile(Vector2 origin, Vector2 forward, GunStats stats, EnemyEntity target)
+        {
+            IsMissile = true;
+            missileTargetKind = stats.preferredTarget;
+            turnRate = Mathf.Max(0, stats.missileTurnRate);
+            missileLifetime = Mathf.Max(.1f, stats.missileLifetime);
+            lockRange = stats.range;
+            LockedTarget = target != null && target.Kind == missileTargetKind ? target : null;
+            Initialize(origin, forward, stats.projectileSpeed, stats.damage, new Color(.8f,.8f,.75f), true,
+                float.PositiveInfinity, 0, ProjectileTeam.Player, stats.projectileSprite, stats.projectileWidth, false, stats);
+            var motor = new GameObject("Missile exhaust socket").transform;
+            motor.SetParent(shellVisual, false);
+            motor.localPosition = Vector3.left * shellVisual.GetComponent<SpriteRenderer>().sprite.bounds.extents.x;
+            projectileEffect = BattleGame.Instance.Vfx.Play(BattleVfxKind.Smoke, motor.position, .6f,
+                -forward, motor, missileLifetime);
+        }
+
+        public static Vector2 Steer(Vector2 currentVelocity, Vector2 desiredDirection, float degreesPerSecond, float delta)
+        {
+            if (desiredDirection.sqrMagnitude < .000001f) return currentVelocity;
+            float angle = Mathf.Atan2(currentVelocity.y,currentVelocity.x)*Mathf.Rad2Deg;
+            float desired = Mathf.Atan2(desiredDirection.y,desiredDirection.x)*Mathf.Rad2Deg;
+            angle = Mathf.MoveTowardsAngle(angle,desired,Mathf.Max(0,degreesPerSecond)*delta)*Mathf.Deg2Rad;
+            return new Vector2(Mathf.Cos(angle),Mathf.Sin(angle))*currentVelocity.magnitude;
+        }
         bool detonated;
         bool heavyProjectile;
         float fullDamageRadius, halfDamageRadius;
@@ -107,7 +140,7 @@ namespace MegaTanks
             trailCount = 1;
             trail.positionCount = 1;
             trail.SetPosition(0, origin);
-            if(game.Vfx.Projectile(shellVisual,heavy,out projectileEffect))
+            if(!IsMissile && game.Vfx.Projectile(shellVisual,heavy,out projectileEffect))
             {
                 trail.enabled=false;
                 visual.enabled=false;
@@ -120,10 +153,13 @@ namespace MegaTanks
                 shellVisual.localRotation = Quaternion.Euler(0, 0, Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg);
         }
 
-        void Update()
+        void Update() => Tick(Time.deltaTime);
+
+        void Tick(float delta)
         {
-            if (!BattleGame.Instance.Running) return;
-            age+=Time.deltaTime;
+            if (released || !BattleGame.Instance.Running) return;
+            age+=delta;
+            if(IsMissile && age>=missileLifetime){Release();return;}
             if(age>=SafetyLifetime){Release();return;}
             // Contact is at the shell's lower edge, rather than waiting for its center to sink below ground.
             if (transform.position.y - radius <= BattleGame.GroundHeight)
@@ -134,11 +170,18 @@ namespace MegaTanks
             }
             // Small exact ballistic steps keep curved sweeps accurate even on slow frames.
             if(!IsMortar)Physics2D.SyncTransforms();
-            float remainingTime = Time.deltaTime;
+            float remainingTime = delta;
             while (remainingTime > 0)
             {
                 float step = Mathf.Min(remainingTime, 1f / 120);
                 remainingTime -= step;
+                if (IsMissile)
+                {
+                    if (LockedTarget == null || !LockedTarget.Alive || !LockedTarget.gameObject.activeInHierarchy || LockedTarget.Kind != missileTargetKind)
+                        LockedTarget = BattleGame.Instance.FindTarget(transform.position, missileTargetKind, lockRange, true);
+                    if (LockedTarget != null)
+                        velocity = Steer(velocity, (Vector2)LockedTarget.transform.position-(Vector2)transform.position, turnRate, step);
+                }
                 Vector2 displacement = velocity * step + Vector2.down * (.5f * gravity * step * step);
                 velocity += Vector2.down * (gravity * step);
                 Vector2 offset = (Vector2)transform.position - launchOrigin;
@@ -175,6 +218,7 @@ namespace MegaTanks
                         var hull = hit.collider.GetComponent<TankHitbox>();
                         var commando=hit.collider.GetComponent<CommandoUnit>();
                         bool valid = team == ProjectileTeam.Player ? enemy != null && enemy.Alive : hull != null||(commando!=null&&commando.Active);
+                        if (IsMissile && enemy != null && enemy.Kind != missileTargetKind) valid = false;
                         if (valid && hit.distance < closest)
                         {
                             closest = hit.distance;
@@ -206,7 +250,7 @@ namespace MegaTanks
             }
             AlignVisual();
             if(!trail.enabled)return;
-            trailTimer -= Time.deltaTime;
+            trailTimer -= delta;
             if (trailTimer <= 0)
             {
                 trailTimer = .02f;

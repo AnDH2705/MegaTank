@@ -36,4 +36,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 64191e86cfd30ff4f81e430c58bdc8fd, type: 2}
   - {fileID: 11400000, guid: dacb876fa3f9277449c4429e77611d12, type: 2}
   - {fileID: 11400000, guid: 3486bb19235f9654bbedc402d60ee6c6, type: 2}
+  - {fileID: 11400000, guid: 3e322f0adb316524ab07b25ec385c896, type: 2}
+  - {fileID: 11400000, guid: d94f8bbe8bc24174a8f730044f907da9, type: 2}
   crew: {fileID: 11400000, guid: 0dd248fcd5c56d642806a4c03d069bb6, type: 2}

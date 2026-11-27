@@ -1,0 +1,7 @@
+Restored the original image_gen sprites from the previous missile implementation.
+Transparent alpha preserved; no new image generation performed.
+Original directory: C:/Users/seagu/.codex/generated_images/01a1ec68-eb7b-7973-84d4-fff379a8b993
+MissilePackAT.png: exec-de8d6327-8c3c-421c-ab82-71c2d180a1d2.png
+MissilePackAA.png: exec-57ba01be-7850-4e1b-8be0-c20ece7d1d52.png
+HomingMissile.png: exec-0e748661-70d7-4e27-a89b-b63cbed77dbc.png
+Existing BattleVfx muzzle, looping smoke and impact explosion effects are reused.

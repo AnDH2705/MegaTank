@@ -17,6 +17,11 @@ namespace MegaTanks
         [Min(0)] public float gravity = .35f;
         [Min(0), InspectorName("Max Ammo")] public int reserveCapacity = 150;
         public bool heavyProjectile;
+        [Header("Missile guidance")]
+        public bool homingMissile;
+        [Min(0), Tooltip("Maximum steering in degrees per second, including after retargeting.")]
+        public float missileTurnRate = 240;
+        [Min(.1f)] public float missileLifetime = 5;
         public Sprite projectileSprite;
         [Min(.01f)] public float projectileWidth = .65f;
         public GunStats Copy() => (GunStats)MemberwiseClone();
@@ -27,6 +32,6 @@ namespace MegaTanks
         public GunStats stats = new GunStats();
         [Tooltip("Optional replacement artwork for this weapon's tank mount.")]
         public GunArtwork artworkPrefab;
-        public override EquipmentType Type => stats.heavyProjectile ? EquipmentType.Cannon : EquipmentType.MachineGun;
+        public override EquipmentType Type => stats.homingMissile ? EquipmentType.Mortar : stats.heavyProjectile ? EquipmentType.Cannon : EquipmentType.MachineGun;
     }
 }

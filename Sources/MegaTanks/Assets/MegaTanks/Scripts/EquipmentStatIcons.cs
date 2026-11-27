@@ -20,7 +20,7 @@ namespace MegaTanks
             public string icon,label,value;
             public Row(string icon,string label,string value){this.icon=icon;this.label=label;this.value=value;}
         }
-        static readonly string[] Prefixes={"BASE RELOAD TIME","BONUS RELOAD SPEED","BATTLE RELOAD","RELOAD SPEED","TANK EVASION","CRIT DMG","CRIT","DMG","BASE","BONUS","HIT","PEN","RANGE","AMMO","HP","ARMOR","ARM","SPD","SPEED","EVASION","EVA","ACCURACY"};
+        static readonly string[] Prefixes={"BASE RELOAD TIME","BONUS RELOAD SPEED","BATTLE RELOAD","RELOAD SPEED","TANK EVASION","CRIT DMG","CRIT","DMG","BASE","BONUS","HIT","PEN","RANGE","AMMO","HP","ARMOR","ARM","SPD","SPEED","EVASION","EVA","ACCURACY","TARGET","TURN","FLIGHT"};
         public static List<Row> Parse(EquipmentDefinition selected,string source)
         {
             var rows=new List<Row>();
@@ -46,7 +46,7 @@ namespace MegaTanks
                     }
                     if(matched)continue;
                     var accessory=selected as AccessoryDefinition;
-                    if(accessory!=null&&(upper.StartsWith("MG ")||upper.StartsWith("CANNON ")||upper.StartsWith("MORTAR ")))
+                    if(accessory!=null&&(upper.StartsWith("MG ")||upper.StartsWith("CANNON ")||upper.StartsWith("MORTAR ")||upper.StartsWith("MISSILES ")))
                     {
                         int space=text.IndexOf(' ');string id=accessory.bonusType==AccessoryBonusType.Accuracy?"accuracy":accessory.bonusType==AccessoryBonusType.Evasion?"evasion":"reload_time";
                         rows.Add(new Row(id,text.Substring(0,space)+(id=="accuracy"?" ACCURACY":" RELOAD"),text.Substring(space+1)));continue;
@@ -82,6 +82,7 @@ namespace MegaTanks
         {
             switch(prefix)
             {
+                case "TARGET":return "accuracy";case "TURN":return "move_speed";case "FLIGHT":return "reload_time";
                 case "BASE RELOAD TIME":case "BATTLE RELOAD":return "reload_time";
                 case "RELOAD SPEED":case "BONUS RELOAD SPEED":return "reload_speed";
                 case "TANK EVASION":case "EVASION":case "EVA":return "evasion";

@@ -18,6 +18,8 @@ namespace MegaTanks
         void UpdateHud()
         {
             var v=View(UIScreen.BattleHUD);
+            Text(v,"mortar Title",game.Mortar.IsMissile
+                ? (game.Mortar.MissileDefinition.stats.preferredTarget==EnemyKind.Ground?"AT MISSILES":"AA MISSILES") : "MORTAR SHELLS");
             Text(v,"Round","ROUND "+((game.Stage.Current?.round??0)+1)+" / "+game.Stage.Definition.rounds+"    "+game.EnemyCount+" HOSTILES");
             string tent = game.Stage.CampType.ToString().ToUpperInvariant() + " TENT";
             string encounter = game.Stage.Mode == StageMode.ApproachingEvent ? "APPROACHING " + tent
