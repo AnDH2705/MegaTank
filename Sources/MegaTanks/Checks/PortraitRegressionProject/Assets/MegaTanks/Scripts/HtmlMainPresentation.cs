@@ -30,6 +30,7 @@ namespace MegaTanks
         {
             if(game==null||preview==null)return;var c=preview.config;var profile=new PlayerTankProfile(c);
             preview.baseTankLevel=preview.temporaryTankLevel=profile.Level;preview.time+=Time.unscaledDeltaTime;
+            EquipmentHtmlCatalog.Apply(game,preview,false);
             foreach(var f in preview.fighters)f.locked=!preview.RoleUnlocked(f.role);
             world.Draw(preview,Time.unscaledDeltaTime);level.text="TANK LV. "+profile.Level;xp.text="EXP "+profile.IntoLevel+" / "+profile.Cost(profile.Level);exp.fillAmount=(float)profile.IntoLevel/profile.Cost(profile.Level);
             money.text=game.Wallet.Parts.ToString("N0");gears.text=game.Wallet.PetFood.ToString("N0");

@@ -8,6 +8,8 @@ namespace MegaTanks
     {
         void DrawEquipment()
         {
+            var native=View(UIScreen.Equipment).GetComponent<EquipmentHtmlScreen>();
+            if(native!=null){native.Show(game);InventoryVisibleCount=native.VisibleCount;return;}
             var v=View(UIScreen.Equipment);v.Get<RawImage>("Tank Avatar").texture=portrait;
             bool heavy=game.TankProfile.ArmorSlots>1;
             Text(v,"Tank Selection/Label",game.TankProfile.displayName.ToUpperInvariant()+"  ›\nCHANGE TANK");

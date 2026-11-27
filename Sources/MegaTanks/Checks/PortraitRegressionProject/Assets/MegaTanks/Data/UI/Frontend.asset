@@ -17,6 +17,7 @@ MonoBehaviour:
   tanks:
   - {fileID: 11400000, guid: 0488649f9cad33646b4cf7cefbe8a6f5, type: 2}
   - {fileID: 11400000, guid: b25137e5557e4e841bbe412840aa44d1, type: 2}
+  - {fileID: 11400000, guid: cac80521ba3aaec4fa9e44eb2c35b6e8, type: 2}
   inventory:
   - {fileID: 11400000, guid: 04dd40d1d9121a448be946904a021c8b, type: 2}
   - {fileID: 11400000, guid: e0b6f0ae42462a9489a9c5391903a5ed, type: 2}
@@ -29,4 +30,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3486bb19235f9654bbedc402d60ee6c6, type: 2}
   - {fileID: 11400000, guid: 3e322f0adb316524ab07b25ec385c896, type: 2}
   - {fileID: 11400000, guid: d94f8bbe8bc24174a8f730044f907da9, type: 2}
+  - {fileID: 11400000, guid: e061fd1af43cfbd4f9f3ee8ae3cbf21f, type: 2}
+  - {fileID: 11400000, guid: 5c6649aed7df53d45b74d85e85b645a6, type: 2}
+  - {fileID: 11400000, guid: 6e29884e592f5724381b44b49b39d225, type: 2}
+  - {fileID: 11400000, guid: ad162cf30511069409d8064c4981dcba, type: 2}
   crew: {fileID: 11400000, guid: 0dd248fcd5c56d642806a4c03d069bb6, type: 2}

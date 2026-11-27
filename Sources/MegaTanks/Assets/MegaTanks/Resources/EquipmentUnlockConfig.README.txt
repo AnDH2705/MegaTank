@@ -1,0 +1,18 @@
+MỐC MỞ TRANG BỊ THEO TANK LEVEL
+
+Sửa EquipmentUnlockConfig.json trong cùng thư mục Resources.
+machineGun = MG, cannon = Cannon, mortar = Mortar, wheels = Wheels,
+tankHull = Tank Hull, driver = ghế Driver, melee = ghế Melee.
+
+Mốc hiện tại: MG 5 / Cannon 1 / Mortar 10 / Wheels 15 / Tank Hull 20.
+Driver 1 và Melee 10 giữ mốc hiện tại của Crew.
+
+Nút chưa đủ cấp: tối màu, hiện icon ổ khóa + LV yêu cầu, không chọn/Equip/nâng cấp.
+Đủ cấp: nút tự mở khi màn được cập nhật/mở lại.
+Đây là Tank Level lâu dài, không phải level riêng của món trang bị.
+Súng và Crew trong trận lấy cùng mốc config này; level tạm trong màn vẫn chỉ
+dùng cho trận và không mở trang bị lâu dài trong garage.
+
+Chỉnh số nguyên >= 1 rồi lưu file. Unity sẽ import khi trở lại Editor;
+thoát Play và chạy lại để nạp cấu hình mới. Không cần sửa code hoặc prefab.
+Không sửa mốc mở ở HtmlBattleConfig.json: file đó chứa balance/trạm/trận đấu.

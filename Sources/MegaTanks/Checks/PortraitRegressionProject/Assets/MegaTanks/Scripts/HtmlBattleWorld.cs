@@ -31,7 +31,7 @@ namespace MegaTanks
             white=UnityEngine.Sprite.Create(Texture2D.whiteTexture,new Rect(0,0,1,1),Vector2.one*.5f,100);
         }
         Vector3 World(float x,float y)=>new Vector3((x-960)/100,altitude+(540-y)/100,0);
-        Sprite Sprite(string key)=>string.IsNullOrEmpty(key)?white:sourceSprite?.Invoke(key)??art.Image(key)?.sprite;
+        Sprite Sprite(string key)=>string.IsNullOrEmpty(key)?white:sourceSprite?.Invoke(key)??EquipmentHtmlCatalog.Sprite(art,key);
         SpriteRenderer Quad(string key,float x,float y,float w,float h,int order,float alpha=1,bool flip=false,float rotation=0)
         {
             SpriteRenderer r;
@@ -72,10 +72,10 @@ namespace MegaTanks
                 }
             }
             else if(vehicles.TryGetValue(parked,out var parkedView))parkedView.root.SetActive(false);
-            foreach(var a in s.abandoned)VehicleAt(a,a.skin,a.x,s.config.groundY,a.width,false,a.weapons,110,false,0);
+            foreach(var a in s.abandoned)VehicleAt(a,a.skin,a.x,a.y,a.width,false,a.weapons,110,false,0);
             foreach(var a in s.enemies.Where(e=>!e.dead).ToArray())Actor(a,300,1);
             var mounted=s.player.weapons.Select((v,i)=>v&&s.SlotUnlocked(i)).ToArray();
-            VehicleAt(s.player,s.player.skin,s.player.x,s.config.groundY,s.player.width,false,mounted,400,true,dt);
+            VehicleAt(s.player,s.player.skin,s.player.x,s.player.y,s.player.width,false,mounted,400,true,dt);
             foreach(var f in s.fighters)
             {
                 if(f.locked||f.dead&&f.deathAge>4){HidePerson(f);continue;}
@@ -170,7 +170,7 @@ namespace MegaTanks
             visibleVehicles.Add(actor);
             var profile=art.Profile(skin);bool tank=actor.kind=="player"||actor.kind=="boss"||actor.kind=="parked"||actor==parked;
             var enemyArt=tank?null:art.data.enemies.FirstOrDefault(e=>e.id==actor.kind);if(!tank&&enemyArt==null)return;
-            var parts=tank?profile.parts:enemyArt.parts;float[] origin=tank?new float[]{652,1258}:enemyArt.origin?.Length==2?enemyArt.origin:new float[]{768,actor.kind=="plane"?550:1002};
+            var parts=tank?EquipmentHtmlCatalog.Parts(art,skin,actor.wheelSkin):enemyArt.parts;float[] origin=tank?new float[]{652,1258}:enemyArt.origin?.Length==2?enemyArt.origin:new float[]{768,actor.kind=="plane"?550:1002};
             float nativeWidth=tank?1351:actor.kind=="helicopter"?1400:actor.kind=="cannon_car"||actor.kind=="trojan"?1200:1536;
             if(!vehicles.TryGetValue(actor,out var visual))
             {visual=new Vehicle{root=new GameObject("Actor "+actor.id+" "+actor.kind)};visual.root.layer=29;visual.root.transform.SetParent(scene.transform);visual.root.AddComponent<SortingGroup>();vehicles.Add(actor,visual);}

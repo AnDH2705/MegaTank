@@ -1,0 +1,16 @@
+Equipment native integration - 2026-11-27
+Branch: Thai-edit. Unity project: Sources/MegaTanks.
+Approved Crew layout installed in the existing Equipment prefab with its GUID preserved.
+English part buttons: MG / CANNON / MORTAR / WHEELS (driver position) / TANK HULL (below tracks).
+Selection previews independently; Equip / USE HULL changes the saved loadout.
+Wheels: STANDARD and OFFROAD. Original pack: Art/Asset/Tanks/Changeable_parts/Tank_Modules_Upgrade_Offroad_v1.
+Only chassis + two wheel PNGs per hull are imported; all 9 PNG hashes match the originals.
+Native placement geometry converted to the current tank coordinate contract. Original gun/body/crew registration retained. Tire road contact corrected as a whole-vehicle offset.
+Coins (wallet Parts) upgrade crew. Gears (wallet PetFood) upgrade guns, hulls and wheels.
+Existing levels/stars/balances preserved. Hull/wheel levels do not award Tank EXP or change temporary run levels.
+Main and actual Play use the selected hull/wheels and upgraded gun damage. Mounted gun parts still follow the HTML; mortar has no legacy missile replacement.
+Balance starting values live in Resources/HtmlBattleConfig.json and its README; values are editable, not a final balance approval.
+Validation: EquipmentHtmlReview - 10 native screen states, preview/equip, actual buttons, correct currencies, reload persistence, independent loadouts, 3 native wheel fits, combat stats, road contact; no Error/Exception/Assert.
+Regression: OriginalPortCapture - 15 states including Main, Crew, choices, upgrade, boss, melee, VFX and win; no Error/Exception/Assert. Boss speed, immediate enemy removal, green mortar and VFX regressions pass.
+Audit scopes restored the player's wallet/profile/loadout after tests.
+No commit or push performed.

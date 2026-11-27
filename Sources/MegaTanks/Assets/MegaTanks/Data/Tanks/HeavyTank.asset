@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HeavyTank
   m_EditorClassIdentifier: 
   id: tank.heavy
+  htmlSkin: heavy
   displayName: Heavy Tank
   artworkPrefab: {fileID: 5669496337232274860, guid: 899865886f9c61e4fad1444be6996cb2, type: 3}
   armorSlots: 2

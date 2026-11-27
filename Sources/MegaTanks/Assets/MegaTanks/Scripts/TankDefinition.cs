@@ -15,6 +15,7 @@ namespace MegaTanks
     public sealed class TankDefinition : ScriptableObject
     {
         public string id;
+        public string htmlSkin;
         public string displayName = "Medium Tank";
         public TankArtwork artworkPrefab;
         [Range(1,2)] public int armorSlots = 1;

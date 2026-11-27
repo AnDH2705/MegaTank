@@ -25,6 +25,7 @@ namespace MegaTanks
         }
         void DrawProgression(UIView v, Object definition, bool crew)
         {
+            if(!crew&&v.GetComponent<EquipmentHtmlScreen>()!=null){if(popup=="Equipment")v.GetComponent<EquipmentHtmlScreen>().Refresh();return;}
             if(crew&&v.GetComponent<CrewHtmlScreen>()!=null){if(popup=="Crew")v.GetComponent<CrewHtmlScreen>().Refresh();return;}
             bool supported = game.Progression.Supports(definition);
             foreach (string key in new[] { "Progression Panel", "Progression Summary", "Level Up", "Star Up" }) Active(v, key, supported);
@@ -38,7 +39,7 @@ namespace MegaTanks
                 v.Get<Button>("Star Up").onClick.RemoveAllListeners();
                 Text(v,"Progression Summary","LEVEL "+state.Level+"   •   "+accessory.displayName.ToUpperInvariant()+
                     "\n"+accessory.StatLabel.ToUpperInvariant()+" +"+accessory.Bonus(state.Level).ToString("0.##")+"%   •   NEXT LEVEL +"+accessory.Bonus(state.Level+1).ToString("0.##")+"%");
-                Text(v,"Level Up/Label",levelCost>0?"LEVEL UP • "+levelCost.ToString("N0")+" PARTS":"LEVEL COST LIMIT");
+                Text(v,"Level Up/Label",levelCost>0?"LEVEL UP • "+levelCost.ToString("N0")+" GEARS":"LEVEL COST LIMIT");
                 v.Get<Button>("Level Up").interactable=!game.Deployed&&game.Progression.CanLevelUp(definition);
                 Click(v,"Level Up",()=>{if(!game.Deployed)game.Progression.TryLevelUp(definition);});return;
             }
@@ -55,7 +56,7 @@ namespace MegaTanks
                 Text(v,"Detail Description",CrewStatSummary(member,state.Level,state.Stars));
 
             }
-            Text(v, "Level Up/Label", levelCost > 0 ? "LEVEL UP • " + levelCost.ToString("N0") + (crew ? " FOOD" : " PARTS") : "LEVEL COST LIMIT");
+            Text(v, "Level Up/Label", levelCost > 0 ? "LEVEL UP • " + levelCost.ToString("N0") + (crew ? " COINS" : " GEARS") : "LEVEL COST LIMIT");
             Text(v, "Star Up/Label", starCost > 0 ? "STAR UP • " + starCost + (crew ? " PET TAGS" : " BLUEPRINTS") : "MAX STARS");
             v.Get<Button>("Level Up").interactable = !game.Deployed && game.Progression.CanLevelUp(definition);
             v.Get<Button>("Star Up").interactable = !game.Deployed && game.Progression.CanStarUp(definition);

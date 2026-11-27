@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MegaTanks
 {
-    public enum EquipmentType { MachineGun, Cannon, Mortar, Armor, Accessory }
+    public enum EquipmentType { MachineGun, Cannon, Mortar, Armor, Accessory, Wheels }
     public abstract class EquipmentDefinition : ScriptableObject
     {
         public string displayName;

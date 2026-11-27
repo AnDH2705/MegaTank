@@ -45,6 +45,8 @@ namespace MegaTanks
             foreach (var member in (catalog?.crew?.members ?? Array.Empty<CrewDefinition>()).Where(m => m != null).Distinct()) Register(member, "crew:" + member.id, member.id);
             foreach (var armor in (catalog?.inventory ?? Array.Empty<EquipmentDefinition>()).OfType<ArmorDefinition>().Distinct()) Register(armor, "armor:" + armor.id, armor.id);
             foreach(var accessory in (catalog?.inventory??Array.Empty<EquipmentDefinition>()).OfType<AccessoryDefinition>().Distinct())Register(accessory,"accessory:"+accessory.id,accessory.id);
+            foreach(var hull in (catalog?.tanks??Array.Empty<TankDefinition>()).Where(t=>t!=null).Distinct())Register(hull,"hull:"+hull.id,hull.id);
+            foreach(var wheels in (catalog?.inventory??Array.Empty<EquipmentDefinition>()).OfType<WheelsDefinition>().Distinct())Register(wheels,"wheels:"+wheels.id,wheels.id);
             SaveData saved = null;
             try { saved = JsonUtility.FromJson<SaveData>(PlayerPrefs.GetString(saveKey, "{}")); }
             catch (ArgumentException) { }
@@ -82,14 +84,14 @@ namespace MegaTanks
         {
             if (!Supports(definition)) return false;
             int cost = ProgressionRules.LevelCost(Get(definition).Level);
-            return cost > 0 && wallet.CanAfford(definition is CrewDefinition ? CurrencyType.PetFood : CurrencyType.Parts, cost);
+            return cost > 0 && wallet.CanAfford(UpgradeCurrency(definition), cost);
         }
         public bool TryLevelUp(Object definition)
         {
             if (!CanLevelUp(definition)) return false;
             var e = Find(definition);
             // Both keys are staged before one local save; listeners only see the completed upgrade.
-            bool result = wallet.TrySpendWithCommit(definition is CrewDefinition ? CurrencyType.PetFood : CurrencyType.Parts,
+            bool result = wallet.TrySpendWithCommit(UpgradeCurrency(definition),
                 ProgressionRules.LevelCost(e.level), () => { e.level++; SavePending(); });
             if (result) Changed?.Invoke();
             return result;
@@ -97,8 +99,9 @@ namespace MegaTanks
         public bool CanStarUp(Object definition)
         {
             var s = Get(definition); int cost = ProgressionRules.StarCost(s.Stars);
-            return !(definition is AccessoryDefinition) && Supports(definition) && cost > 0 && s.Fragments >= cost;
+            return !(definition is AccessoryDefinition) && !(definition is TankDefinition) && !(definition is WheelsDefinition) && Supports(definition) && cost > 0 && s.Fragments >= cost;
         }
+        public static CurrencyType UpgradeCurrency(Object definition)=>definition is CrewDefinition?CurrencyType.Parts:CurrencyType.PetFood;
         public bool TryStarUp(Object definition)
         {
             if (!CanStarUp(definition)) return false;

@@ -1,0 +1,226 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f66c42afee6580742812bc75db510024, type: 3}
+  m_Name: EquipmentHtmlCatalog
+  m_EditorClassIdentifier: 
+  weapons:
+  - definition: {fileID: 11400000, guid: e0b6f0ae42462a9489a9c5391903a5ed, type: 2}
+    title: MACHINE GUN
+    variant: mg
+    artKey: tank_base_08_roof_machine_gun
+    slot: 0
+  - definition: {fileID: 11400000, guid: 5c6649aed7df53d45b74d85e85b645a6, type: 2}
+    title: PLASMA MG
+    variant: mg_plasma
+    artKey: card_mg_plasma
+    slot: 0
+  - definition: {fileID: 11400000, guid: 04dd40d1d9121a448be946904a021c8b, type: 2}
+    title: CANNON
+    variant: cannon
+    artKey: tank_base_06_main_cannon_barrel
+    slot: 1
+  - definition: {fileID: 11400000, guid: e061fd1af43cfbd4f9f3ee8ae3cbf21f, type: 2}
+    title: AP CANNON
+    variant: cannon_ap
+    artKey: card_cannon_ap
+    slot: 1
+  - definition: {fileID: 11400000, guid: 2edf608ec9b350441a30b24ce7011d34, type: 2}
+    title: MORTAR
+    variant: mortar
+    artKey: tank_base_09_mortar_barrel
+    slot: 2
+  hulls:
+  - {fileID: 11400000, guid: 0488649f9cad33646b4cf7cefbe8a6f5, type: 2}
+  - {fileID: 11400000, guid: cac80521ba3aaec4fa9e44eb2c35b6e8, type: 2}
+  - {fileID: 11400000, guid: b25137e5557e4e841bbe412840aa44d1, type: 2}
+  wheels:
+  - {fileID: 11400000, guid: 6e29884e592f5724381b44b49b39d225, type: 2}
+  - {fileID: 11400000, guid: ad162cf30511069409d8064c4981dcba, type: 2}
+  offroadFits:
+  - hull: base
+    parts:
+    - key: offroad_base_01_offroad_chassis
+      name: 01_offroad_chassis
+      position:
+      - 252
+      - 1047
+      size:
+      - 795
+      - 154
+      pivot:
+      - 649.5
+      - 1051.5975
+      order: 0
+      parent: 
+    - key: offroad_base_02_offroad_wheel_rear
+      name: 02_offroad_wheel_rear
+      position:
+      - 343
+      - 1040
+      size:
+      - 278
+      - 278
+      pivot:
+      - 480.73013
+      - 1179.3723
+      order: 1
+      parent: 
+    - key: offroad_base_03_offroad_wheel_front
+      name: 03_offroad_wheel_front
+      position:
+      - 680
+      - 1040
+      size:
+      - 278
+      - 278
+      pivot:
+      - 817.8867
+      - 1179.3723
+      order: 2
+      parent: 
+  - hull: speed
+    parts:
+    - key: offroad_speed_01_offroad_chassis
+      name: 01_offroad_chassis
+      position:
+      - -18.750391
+      - 1028.9633
+      size:
+      - 1247.4321
+      - 241.30655
+      pivot:
+      - 604.9657
+      - 1036.1774
+      order: 0
+      parent: 
+    - key: offroad_speed_02_offroad_wheel_rear
+      name: 02_offroad_wheel_rear
+      position:
+      - 172.11354
+      - 1065.7727
+      size:
+      - 340.82846
+      - 340.82846
+      pivot:
+      - 340.14938
+      - 1236.6682
+      order: 1
+      parent: 
+    - key: offroad_speed_03_offroad_wheel_front
+      name: 03_offroad_wheel_front
+      position:
+      - 701.0793
+      - 1065.7727
+      size:
+      - 340.82846
+      - 340.82846
+      pivot:
+      - 869.1808
+      - 1236.6682
+      order: 2
+      parent: 
+  - hull: heavy
+    parts:
+    - key: offroad_heavy_01_offroad_chassis
+      name: 01_offroad_chassis
+      position:
+      - 80.705986
+      - 1042.2323
+      size:
+      - 1086.1942
+      - 210.86389
+      pivot:
+      - 623.8031
+      - 1048.5139
+      order: 0
+      parent: 
+    - key: offroad_heavy_02_offroad_wheel_rear
+      name: 02_offroad_wheel_rear
+      position:
+      - 233.95009
+      - 1063.0735
+      size:
+      - 321.19965
+      - 321.19965
+      pivot:
+      - 393.21585
+      - 1223.0901
+      order: 1
+      parent: 
+    - key: offroad_heavy_03_offroad_wheel_front
+      name: 03_offroad_wheel_front
+      position:
+      - 694.9084
+      - 1063.0735
+      size:
+      - 321.19965
+      - 321.19965
+      pivot:
+      - 853.8669
+      - 1223.0901
+      order: 2
+      parent: 
+  wheelImages:
+  - key: offroad_base_01_offroad_chassis
+    file: 
+    source: Asset/Tanks/Changeable_parts/Tank_Modules_Upgrade_Offroad_v1/native_fits/00_Tank_Goc/parts/01_offroad_chassis.png
+    sprite: {fileID: 21300000, guid: 29e808e3977cdb14784dcc2c724ddd1f, type: 3}
+    texture: {fileID: 0}
+    border: []
+  - key: offroad_base_02_offroad_wheel_rear
+    file: 
+    source: Asset/Tanks/Changeable_parts/Tank_Modules_Upgrade_Offroad_v1/native_fits/00_Tank_Goc/parts/02_offroad_wheel_rear.png
+    sprite: {fileID: 21300000, guid: cf2af8b9003de9a4a8c18cf341a965a9, type: 3}
+    texture: {fileID: 0}
+    border: []
+  - key: offroad_base_03_offroad_wheel_front
+    file: 
+    source: Asset/Tanks/Changeable_parts/Tank_Modules_Upgrade_Offroad_v1/native_fits/00_Tank_Goc/parts/03_offroad_wheel_front.png
+    sprite: {fileID: 21300000, guid: 54fdda1924772304b991110a3abd70e1, type: 3}
+    texture: {fileID: 0}
+    border: []
+  - key: offroad_speed_01_offroad_chassis
+    file: 
+    source: Asset/Tanks/Changeable_parts/Tank_Modules_Upgrade_Offroad_v1/native_fits/01_Tank_Do_Toc_Do/parts/01_offroad_chassis.png
+    sprite: {fileID: 21300000, guid: 0aa5595ba6d2c1f44a885f6189bcc697, type: 3}
+    texture: {fileID: 0}
+    border: []
+  - key: offroad_speed_02_offroad_wheel_rear
+    file: 
+    source: Asset/Tanks/Changeable_parts/Tank_Modules_Upgrade_Offroad_v1/native_fits/01_Tank_Do_Toc_Do/parts/02_offroad_wheel_rear.png
+    sprite: {fileID: 21300000, guid: f96126e8c4ceaca488076216e56580c2, type: 3}
+    texture: {fileID: 0}
+    border: []
+  - key: offroad_speed_03_offroad_wheel_front
+    file: 
+    source: Asset/Tanks/Changeable_parts/Tank_Modules_Upgrade_Offroad_v1/native_fits/01_Tank_Do_Toc_Do/parts/03_offroad_wheel_front.png
+    sprite: {fileID: 21300000, guid: 2180c8b6826e5a849a5cd902dcf898e2, type: 3}
+    texture: {fileID: 0}
+    border: []
+  - key: offroad_heavy_01_offroad_chassis
+    file: 
+    source: Asset/Tanks/Changeable_parts/Tank_Modules_Upgrade_Offroad_v1/native_fits/02_Tank_Xanh_Chong_Chiu/parts/01_offroad_chassis.png
+    sprite: {fileID: 21300000, guid: 30f3ba2f2ec12054b9294339cb5461c8, type: 3}
+    texture: {fileID: 0}
+    border: []
+  - key: offroad_heavy_02_offroad_wheel_rear
+    file: 
+    source: Asset/Tanks/Changeable_parts/Tank_Modules_Upgrade_Offroad_v1/native_fits/02_Tank_Xanh_Chong_Chiu/parts/02_offroad_wheel_rear.png
+    sprite: {fileID: 21300000, guid: ae891601a0e22b349b0e5b6046c6958d, type: 3}
+    texture: {fileID: 0}
+    border: []
+  - key: offroad_heavy_03_offroad_wheel_front
+    file: 
+    source: Asset/Tanks/Changeable_parts/Tank_Modules_Upgrade_Offroad_v1/native_fits/02_Tank_Xanh_Chong_Chiu/parts/03_offroad_wheel_front.png
+    sprite: {fileID: 21300000, guid: f8ded7cfb495f6249ab63a810f1cf8bc, type: 3}
+    texture: {fileID: 0}
+    border: []

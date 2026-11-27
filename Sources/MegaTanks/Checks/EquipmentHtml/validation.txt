@@ -1,0 +1,11 @@
+PASS: all 5 part buttons use named config; lock icons/disabled state and callbacks checked below/at each unlock, including Mortar/Wheels/Hull; combat shares gun unlocks; assignments/wallet/item levels preserved.
+PASS: cannon preview/equip separate; gun upgrade spends gears only, persists, improves combat damage and preserves Tank EXP.
+PASS: only original green mortar; no legacy missile weapon images.
+PASS: WHEELS opens STANDARD/OFFROAD; preview leaves equipped wheels unchanged.
+PASS: wheel upgrade/equip spends gears only, saves and keeps hull/guns unchanged.
+PASS: hull-speed: gears upgrade saves; Equip keeps wheels/guns; all 3 original native Offroad fits have exactly 2 wheels, no old track.
+PASS: hull-heavy: gears upgrade saves; Equip keeps wheels/guns; all 3 original native Offroad fits have exactly 2 wheels, no old track.
+PASS: actual Crew Level Up button spends coins only and saves independently of Tank EXP.
+PASS: gameplay-offroad: real battle uses selected hull, Offroad visuals/stats, permanent gun upgrades and AP slot variant; green mortar retained.
+PASS: boss-offroad: real battle uses selected hull, Offroad visuals/stats, permanent gun upgrades and AP slot variant; green mortar retained.
+PASS: all native Equipment states completed with no Error, Exception or Assert. Player save restored.

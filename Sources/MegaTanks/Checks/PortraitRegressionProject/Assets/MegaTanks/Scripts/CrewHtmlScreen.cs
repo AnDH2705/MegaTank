@@ -141,7 +141,7 @@ namespace MegaTanks
             ascendProgress.gameObject.SetActive(has&&!ready&&fragments>0);
             ascendProgress.fillAmount=fragments>0?Mathf.Clamp01((float)p.Fragments/fragments):0;
             // Costs are live values; the reference's placeholder 9999 stats are never used.
-            feedback.Value=has?"LEVEL UP: "+(cost>0?cost.ToString("N0")+" FOOD":"MAX")+"   |   PET TAGS: "+p.Fragments:"Select a crew member";
+            feedback.Value=has?"LEVEL UP: "+(cost>0?cost.ToString("N0")+" COINS":"MAX")+"   |   PET TAGS: "+p.Fragments:"Select a crew member";
             feedback.gameObject.SetActive(true);feedbackUntil=float.PositiveInfinity;
         }
         void Message(string value){feedback.Value=value;feedback.gameObject.SetActive(true);feedbackUntil=Time.unscaledTime+2;}

@@ -66,6 +66,7 @@ namespace MegaTanks
             var driver=game.Crew.Get(CrewRole.Driver);
             // Keep the mounted gun parts from the HTML art; saved legacy loadouts never replace the mortar.
             if(driver!=null){var state=game.Progression.Get(driver);Simulation.player.hp=Simulation.player.maxHP=config.playerHP+driver.stats.hp.AtLevel(state.Level,state.Stars);Simulation.driverSpeedBonus=driver.stats.speed.AtLevel(state.Level,state.Stars);}
+            EquipmentHtmlCatalog.Apply(game,Simulation,true);
             Simulation.fighters.RemoveAll(f=>game.Crew.Get(f.role=="mg"?CrewRole.SubGunner:f.role=="cannon"?CrewRole.Gunner:f.role=="mortar"?CrewRole.WeaponSpecialist:f.role=="driver"?CrewRole.Driver:CrewRole.Commando)==null);
             Simulation.ConfigureCrew(game.Crew,game.Progression);Simulation.ConfigureProfile(new PlayerTankProfile(config).Level);modal.gameObject.SetActive(false);Render();
         }

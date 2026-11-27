@@ -11,6 +11,7 @@ namespace MegaTanks
         public sealed class Actor
         {
             public int id;public string kind,skin="base";public float x,y,width,hp,maxHP,speed,attack,age,wheel,gunAngle;
+            public string wheelSkin;
             public bool dead,bossCrew,revealed;public Actor carrier;public float landing,landingDuration,landingStartX,landingStartY,landingEndX,releaseAge;public bool[] weapons={true,true,true};public float[] cooldown=new float[3];
             public UnitDefenseStats defenses=new UnitDefenseStats();
             public int lane;public string crewRole;public Actor bossOwner;public readonly HashSet<string> deployedRoles=new HashSet<string>();
@@ -34,6 +35,9 @@ namespace MegaTanks
         public readonly int[] ammo;public string phase="wave",ammoType="standard",encounter="",offeredSkin="base";
         public float[] weaponDamageBonus=new float[3],weaponReloadBonus=new float[3];
         public float driverSpeedBonus;
+        public float wheelSpeedMultiplier=1,permanentDefense;
+        public readonly HtmlWeaponConfig[] playerGuns;
+        public readonly float[] weaponCriticalChance=new float[3];
         public GunStats MissileStats { get; private set; }
         int missileSalvo;
         public void EquipMissile(GunStats stats)
@@ -56,6 +60,7 @@ namespace MegaTanks
         public HtmlBattleSimulation(HtmlBattleConfig c,int index,int? seed=null)
         {
             config=c;c.Validate();stageIndex=Mathf.Clamp(index,0,c.stages.Length-1);stage=c.stages[stageIndex];rng=new System.Random(seed??c.seed+stageIndex);
+            playerGuns=c.weapons.Select(w=>new HtmlWeaponConfig{id=w.id,minRange=w.minRange,maxRange=w.maxRange,damage=w.damage,cooldown=w.cooldown,projectileSpeed=w.projectileSpeed,startingAmmo=w.startingAmmo,supply=w.supply}).ToArray();
             player=new Actor{kind="player",x=c.playerX,y=c.groundY,width=c.playerWidth,hp=c.playerHP,maxHP=c.playerHP,speed=c.cruiseSpeed};
             ammo=(int[])stage.startingAmmo.Clone();
             var list=Enumerable.Range(0,stage.total).Select(i=>i<stage.helicopters?"helicopter":i<stage.helicopters+stage.cannonCars?"cannon_car":i<stage.helicopters+stage.cannonCars+stage.trojans?"trojan":i<stage.helicopters+stage.cannonCars+stage.trojans+stage.planes?"plane":i<stage.helicopters+stage.cannonCars+stage.trojans+stage.planes+stage.dogs?"dog":"car").ToList();
@@ -63,7 +68,7 @@ namespace MegaTanks
             string[] roles={"mg","cannon","mortar","driver","front"};
             for(int i=0;i<5;i++)fighters.Add(new Fighter{role=roles[i],skin=i==4?"fat":"cat",x=c.playerX-100-i*30,y=c.groundY+(i%2)*25,hp=c.meleeHP,maxHP=c.meleeHP,atk=c.meleeDamage,moveSpeed=c.meleeSpeed});
         }
-        public Vector2 Center(Actor a)=>new Vector2(a.x,(a.kind=="plane"||a.kind=="helicopter")?a.y:a.kind=="dog"?a.y-65:config.groundY-a.width*(a.kind=="car"||a.kind=="cannon_car"?.3f:.5f));
+        public Vector2 Center(Actor a)=>new Vector2(a.x,(a.kind=="plane"||a.kind=="helicopter")?a.y:a.kind=="dog"?a.y-65:a.y-a.width*(a.kind=="car"||a.kind=="cannon_car"?.3f:.5f));
         public bool CanFire(int w)=>player.weapons[w]&&SlotUnlocked(w)&&ammo[w]>0;
         public void Tick(float dt)
         {
@@ -105,7 +110,7 @@ namespace MegaTanks
                     missileSalvo--;player.cooldown[w]=missileSalvo>0?MissileStats.shotDelay:MissileStats.EffectiveReloadTime;
                     continue;
                 }
-                var gun=config.weapons[w];
+                var gun=playerGuns[w];
                 var targets=enemies.Where(e=>!e.dead&&(e.kind!="boss"||bossPhase!="entry")&&e.x-player.x>=gun.minRange&&e.x-player.x<=gun.maxRange&&e.x-e.width*.25f<1920&&(e.kind!="dog"||w==0));
                 var target=(w==0?targets.OrderBy(e=>(e.kind=="plane"||e.kind=="helicopter")?0:1).ThenBy(e=>e.x):targets.OrderBy(e=>(e.kind=="plane"||e.kind=="helicopter")?1:0).ThenBy(e=>e.x)).FirstOrDefault();
                 if(target==null)continue;
@@ -136,7 +141,7 @@ namespace MegaTanks
         void Travel(float speed,float dt,bool hardStop=true)
         {
             float multiplier=Geometry!=null?Geometry.Profile(player.skin).speed:player.skin=="speed"?1.25f:player.skin=="heavy"?.85f:1;
-            travelSpeed=Mathf.MoveTowards(travelSpeed,speed*multiplier,(phase=="approach"||phase=="depart"?config.stationAcceleration:config.travelAcceleration)*dt);
+            travelSpeed=Mathf.MoveTowards(travelSpeed,speed*multiplier*wheelSpeedMultiplier,(phase=="approach"||phase=="depart"?config.stationAcceleration:config.travelAcceleration)*dt);
             if(speed==0&&hardStop)travelSpeed=0;float roadStep=travelSpeed*dt*config.roadScrollFactor;road+=roadStep;if(!bossSpawned)player.wheel+=travelSpeed*dt;
             if(!bossSpawned&&player.x<config.playerGoalX)player.x=Mathf.Min(config.playerGoalX,player.x+travelSpeed*dt*3);
             foreach(var corpse in corpses)corpse.actor.x-=roadStep;
@@ -214,16 +219,16 @@ namespace MegaTanks
         }
         void BeginJump(Fighter f,bool inward)
         {
-            var seat=Geometry?.Profile(player.skin).seats.FirstOrDefault(p=>p.id==f.role);float z=player.width/1351,sx=player.x+(seat==null?0:(seat.x-652)*z),sy=config.groundY+(seat==null?-150:(seat.y+(f.role=="mg"||f.role=="cannon"||f.role=="driver"?seat.scale*100:0)-1258)*z);
+            var seat=Geometry?.Profile(player.skin).seats.FirstOrDefault(p=>p.id==f.role);float z=player.width/1351,sx=player.x+(seat==null?0:(seat.x-652)*z),sy=player.y+(seat==null?-150:(seat.y+(f.role=="mg"||f.role=="cannon"||f.role=="driver"?seat.scale*100:0)-1258)*z);
             f.jumpIn=inward;f.jump=f.jumpDuration=inward?.5f:seat!=null&&seat.y<800?.85f:.65f;f.jumpStartX=inward?f.x:sx;f.jumpStartY=inward?f.y:sy;f.jumpEndX=inward?sx:player.x+(1150-652)*z+30+CrewLane(f.role)*5;f.jumpEndY=inward?sy:CrewGround(f);f.x=f.jumpStartX;f.y=f.jumpStartY;f.aboard=false;f.motion=inward?"jump_in":"jump_out";f.motionTime=0;
         }
         void Follow(Fighter f,float dt){float goal=player.x-95-fighters.IndexOf(f)*40;f.x=Mathf.MoveTowards(f.x,goal,f.moveSpeed*dt);f.y=CrewGround(f);f.motion=Mathf.Abs(f.x-goal)<3?"following":"walk_follow";}
         void Fire(Actor owner,Actor target,int w,bool enemy)
         {
-            var gun=config.weapons[w];var center=Center(target);int face=enemy?-1:1;
+            var gun=enemy?config.weapons[w]:playerGuns[w];var center=Center(target);int face=enemy?-1:1;
             var origin=ShotOrigin(owner,w,enemy);
             float damage=enemy?(owner.kind=="boss"?w==0?4:13:config.enemies.First(e=>e.id==owner.kind).damage):gun.damage*(1+weaponDamageBonus[w]/100)*VariantDamage(w);
-            if(!enemy&&rng.NextDouble()*100<temporaryCrit)damage*=2;
+            if(!enemy&&rng.NextDouble()*100<temporaryCrit+weaponCriticalChance[w])damage*=2;
             bullets.Add(new Bullet{weapon=gun.id,enemy=enemy,x=origin.x,y=origin.y,sx=origin.x,sy=origin.y,tx=center.x,ty=center.y,target=target,owner=owner,damage=damage,life=w==2?1.35f:Mathf.Max(.1f,Vector2.Distance(origin,center)/gun.projectileSpeed)});
             var flash=AddEffect("Muzzle",origin.x,origin.y,w==1?110:65,.12f);flash.owner=owner;flash.weapon=w;flash.angle=Mathf.Atan2(center.y-origin.y,center.x-origin.x);
             if(w==1)shake=2;
@@ -249,7 +254,7 @@ namespace MegaTanks
                 bullets.Remove(b);
             }
         }
-        void HitPlayer(float damage){player.hp=Mathf.Max(0,player.hp-Mathf.Max(0,damage-temporaryDefense));shake=2;AddEffect("Hit",player.x+100,config.groundY-200,75,.16f);}
+        void HitPlayer(float damage){player.hp=Mathf.Max(0,player.hp-Mathf.Max(0,damage-temporaryDefense-permanentDefense));shake=2;AddEffect("Hit",player.x+100,config.groundY-200,75,.16f);}
         void FireMissile(Actor target)
         {
             var origin=new Vector2(player.x-120,config.groundY-player.width*.83f);var direction=(Center(target)-origin).normalized;
@@ -333,7 +338,7 @@ namespace MegaTanks
                     if(choice!="keep"&&choice!="swap")return false;
                     if(choice=="swap")
                     {
-                        abandoned.Add(new Actor{kind="parked",skin=player.skin,x=landmarkX,y=config.groundY,width=player.width,weapons=(bool[])player.weapons.Clone()});landmarkConsumed=true;float ratio=player.hp/player.maxHP;player.skin=offeredSkin;player.maxHP=offeredSkin=="speed"?300:offeredSkin=="heavy"?480:config.playerHP;player.hp=Mathf.Max(1,player.maxHP*ratio);player.weapons=(bool[])offeredWeapons.Clone();
+                        abandoned.Add(new Actor{kind="parked",skin=player.skin,wheelSkin=player.wheelSkin,x=landmarkX,y=player.y,width=player.width,weapons=(bool[])player.weapons.Clone()});landmarkConsumed=true;float ratio=player.hp/player.maxHP;player.skin=offeredSkin;if(Geometry!=null)player.y=EquipmentHtmlCatalog.GroundY(Geometry,player.skin,player.wheelSkin,player.width,config.groundY);player.maxHP=offeredSkin=="speed"?300:offeredSkin=="heavy"?480:config.playerHP;player.hp=Mathf.Max(1,player.maxHP*ratio);player.weapons=(bool[])offeredWeapons.Clone();
                         if(stage.requireRecovery&&!recovered){for(int i=0;i<3;i++)ammo[i]=stage.recoveredAmmo[i];recovered=true;}
                     }
                 }

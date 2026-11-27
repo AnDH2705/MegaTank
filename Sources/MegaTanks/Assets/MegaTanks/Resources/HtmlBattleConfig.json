@@ -231,13 +231,6 @@
       "trojans": 1
     }
   ],
-  "unlockLevels": [
-    5,
-    1,
-    15,
-    1,
-    10
-  ],
   "tankXPBase": 100,
   "tankXPGrowth": 1.2,
   "maxTankLevel": 100,
@@ -269,5 +262,16 @@
   "playerGoalX": 400,
   "travelAcceleration": 90,
   "stationAcceleration": 480,
-  "roadScrollFactor": 1.2
+  "roadScrollFactor": 1.2,
+  "permanentWeaponDamagePerLevel": 1,
+  "permanentHullHPPerLevel": 12,
+  "permanentWheelSpeedPerLevel": 0.01,
+  "wheelSpeedMultipliers": [
+    1,
+    1.15
+  ],
+  "wheelDefense": [
+    0,
+    0
+  ]
 }

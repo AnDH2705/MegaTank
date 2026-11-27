@@ -9,7 +9,9 @@ namespace MegaTanks
     [Serializable] public sealed class HtmlStageConfig { public string title,background;public int total,planes,dogs,maxActive;public float spawnInterval,bossHP;public string[] bossWeapons;public int[] startingAmmo,supply,recoveredAmmo;public bool requireRecovery;public int cannonCars,helicopters,trojans; }
     [Serializable] public sealed class HtmlBattleConfig
     {
-        public int[] unlockLevels={5,1,15,1,10}; public int tankXPBase=100,maxTankLevel=100; public float tankXPGrowth=1.2f; public int tankXPReward=100; public bool initialUpgradeStation=true; public float crewDefaultAccuracy=100,stationSpawnX=2150,upgradeApplySeconds=.5f,upgradeDepartSeconds=2.1f,upgradeAuraSeconds=2.6f,stationHPBonus=.12f,stationDamageBonus=10; public int upgradeEveryGroups=2;public float trojanRevealRange=700;
+        [NonSerialized] public int[] unlockLevels={5,1,10,1,10};
+        [NonSerialized] public EquipmentUnlockConfig equipmentUnlock=new EquipmentUnlockConfig();
+        public int tankXPBase=100,maxTankLevel=100; public float tankXPGrowth=1.2f; public int tankXPReward=100; public bool initialUpgradeStation=true; public float crewDefaultAccuracy=100,stationSpawnX=2150,upgradeApplySeconds=.5f,upgradeDepartSeconds=2.1f,upgradeAuraSeconds=2.6f,stationHPBonus=.12f,stationDamageBonus=10; public int upgradeEveryGroups=2;public float trojanRevealRange=700;
         public int version,seed,wavesPerStage,wavesPerEncounter,medicalGears,bossMoney,bossGears,chestMoney,chestGears,enemyMoney,enemyGears;
         public float playerHP,playerWidth,playerX,groundY,cruiseSpeed,stationTravelSpeed,waveBreakSeconds,encounterStopX,medicalHP,bossKnockback,meleeDamage,meleeHP,meleeSpeed,meleeCooldown,meleeRange;
         public float piercingMultiplier,explosiveMultiplier,plasmaMultiplier,splashRadius,splashMultiplier;
@@ -17,15 +19,18 @@ namespace MegaTanks
         public bool grantNewSlotWeapon=true;public int[] newSlotAmmo={90,12,8};public float stationDefenseBonus=2,stationCritBonus=2;
         public float crewLaneSpacing=46;public bool legacyCrewStatBonuses=true;
         public bool useMainBattleVfx=true;
+        public float permanentWeaponDamagePerLevel=1,permanentHullHPPerLevel=12,permanentWheelSpeedPerLevel=.01f;
+        public float[] wheelSpeedMultipliers={1,1.15f},wheelDefense={0,0};
         public float bossEntrySpeed=260,bossDuelSpeed=60,bossDuelCenter=960,bossContactFactor=.52f,playerGoalX=400,travelAcceleration=90,stationAcceleration=480,roadScrollFactor=1.2f;
         public HtmlWeaponConfig[] weapons;public HtmlEnemyConfig[] enemies;public HtmlStageConfig[] stages;
         public static HtmlBattleConfig Load()
         {
             var text=Resources.Load<TextAsset>("HtmlBattleConfig");if(text==null)throw new InvalidOperationException("Missing HtmlBattleConfig.json");
-            var c=JsonUtility.FromJson<HtmlBattleConfig>(text.text);c.Validate();return c;
+            var c=JsonUtility.FromJson<HtmlBattleConfig>(text.text);c.equipmentUnlock=EquipmentUnlockConfig.Load();c.unlockLevels=c.equipmentUnlock.CrewAndWeaponLevels;c.Validate();return c;
         }
         public void Validate()
         {
+            if(wheelSpeedMultipliers?.Length!=2||wheelDefense?.Length!=2||wheelSpeedMultipliers.Any(v=>v<=0)||permanentWeaponDamagePerLevel<0||permanentHullHPPerLevel<0||permanentWheelSpeedPerLevel<0)throw new InvalidOperationException("Invalid permanent equipment progression config.");
             if(version!=1||stages==null||stages.Length==0||weapons==null||weapons.Length!=3||enemies==null||enemies.Length<3||wavesPerStage<1||wavesPerEncounter<1||playerHP<=0||meleeCooldown<=0||cruiseSpeed<=0||stationTravelSpeed<=0||encounterDeck==null||encounterDeck.Length==0)throw new InvalidOperationException("Invalid battle config: check version, stages, weapon/enemy arrays and positive timings.");
             if(!weapons.Select(w=>w.id).SequenceEqual(new[]{"mg","cannon","mortar"}))throw new InvalidOperationException("Weapon order must be mg, cannon, mortar (ammo arrays use this order).");
             if(unlockLevels==null||unlockLevels.Length!=5||unlockLevels.Any(n=>n<1)||tankXPBase<1||tankXPGrowth<1||maxTankLevel<1||upgradeEveryGroups<1||upgradeApplySeconds<0||upgradeDepartSeconds<upgradeApplySeconds||newSlotAmmo?.Length!=3)throw new InvalidOperationException("Invalid progression/station config.");

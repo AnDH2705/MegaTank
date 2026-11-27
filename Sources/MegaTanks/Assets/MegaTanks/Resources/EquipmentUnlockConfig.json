@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "machineGun": 5,
+  "cannon": 1,
+  "mortar": 10,
+  "wheels": 15,
+  "tankHull": 20,
+  "driver": 1,
+  "melee": 10
+}
