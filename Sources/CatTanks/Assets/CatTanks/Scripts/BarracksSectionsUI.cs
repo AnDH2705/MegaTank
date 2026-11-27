@@ -18,6 +18,11 @@ namespace CatTanks
         const string FortView="barracks-fort",TeamView="barracks-team",SavesView="barracks-saves",SkillView="barracks-skill",PetView="barracks-pet",CrystalView="barracks-crystal";
         string teamSlot="op-0";
         int skillSlotPick,selectedSkill,teamCatPage;
+        static readonly string[] SkillCardFrames = { "Gold", "Violet", "Cyan", "Blue", "Violet", "Violet", "Blue", "Violet", "Gold", "Detail" };
+        static readonly Color[] SkillCardColors = { Color.white, C("#ff94bf"), Color.white, C("#9ef178"), Color.white,
+            Color.white, C("#b7ddff"), C("#ff9bd9"), C("#ffaf67"), C("#ffadba") };
+        static readonly Vector2[] AnchorCards = { new Vector2(227, 242), new Vector2(468, 160), new Vector2(713, 118),
+            new Vector2(958, 160), new Vector2(1199, 242) };
 
         string BarracksSectionView()=>tab switch
         {
@@ -167,126 +172,195 @@ namespace CatTanks
             }
         }
 
-        // ================= Kỹ năng (Battle Deck) =================
+
+        // ================= Kỹ năng =================
         void SkillDeckUI()
         {
-            Text(130,108,1000,"Kỹ năng chiến thuật",title,55);
-            Text(830,122,650,"Lõi kỹ năng nhận ở ải trùm · phím 1–4 trong trận",small,30,align:TextAnchor.UpperRight);
+            SectionBackdrop();
+            Art(52, 91, 64, 66, "Book_1_Purple");
+            Text(124, 98, 824, "Kỹ năng chiến thuật", title, 54, size: 46);
+            Art(1010, 102, 39, 39, "Interface/Cats/InfoIcon");
+            Text(1058, 108, 486, "Lõi kỹ năng nhận ở ải trùm · phím 1–4 trong trận", small, 38, size: 21);
 
-            // Bộ đang dùng: 4 ô.
-            Surface(118,166,1364,150,Color.white,catsFrame:"Ink");
-            Text(134,176,300,"BỘ KỸ NĂNG",subtitle,36);
-            Text(134,214,300,"Chọn một ô, rồi chọn kỹ năng ở dưới và bấm DÙNG.",small,80);
-            for(int slot=0;slot<4;slot++)
+            SectionPanel(40, 158, 1520, 154);
+            Surface(58, 175, 308, 118, Color.white, catsFrame: "CombatPlate");
+            Text(76, 184, 286, "BỘ KỸ NĂNG", subtitle, 36, size: 29);
+            Text(76, 221, 270, "Chọn một ô, rồi chọn kỹ năng ở dưới và bấm DÙNG.", small, 64, size: 19);
+            for (int slot = 0; slot < 4; slot++)
             {
-                string id=profile.skillSlots[slot];var skill=db.skills.Find(s=>s.id==id);
-                if(IllustratedButton(450+slot*254,176,240,128,$"[{slot+1}] {(skill==null?"Trống":skill.name)}",skill==null?"Gear":"skill-"+id,selected:skillSlotPick==slot))
+                string id = profile.skillSlots[slot];
+                var skill = db.skills.Find(s => s.id == id);
+                float x = 378 + slot * 291;
+                string caption = skill == null ? "Ô " + (slot + 1) + " · Trống" : $"[{slot + 1}] {skill.name}";
+                if (IllustratedButton(x, 175, 278, 118, caption, skill == null ? "Interface/Barracks/Plus" : "skill-" + id,
+                    selected: skillSlotPick == slot))
                 {
-                    skillSlotPick=slot;int at=db.skills.FindIndex(s=>s.id==id);if(at>=0)selectedSkill=at;
+                    skillSlotPick = slot;
+                    int at = db.skills.FindIndex(s => s.id == id);
+                    if (at >= 0) selectedSkill = at;
                 }
-                if(!dispatchOnly&&lastButton.layout)lastButton.layout.iconSize=72;
-                Enlarge(20);
-            }
-
-            // Bộ sưu tập.
-            Surface(118,330,900,560,Color.white,catsFrame:"Roster");
-            for(int i=0;i<db.skills.Count&&i<10;i++)
-            {
-                var s=db.skills[i];bool open=profile.SkillUnlocked(s);int level=SkillLevel(s.id);
-                float x=134+i%5*176,y=346+i/5*268;
-                if(IllustratedButton(x,y,164,254,s.name,"skill-"+s.id,content:StudioButtonLayout.Content.Tile,selected:selectedSkill==i))selectedSkill=i;
-                if(!dispatchOnly&&!open&&lastButton.layout&&lastButton.layout.icon)lastButton.layout.icon.color=new Color(1,1,1,.35f);
-                Enlarge(19);
-                Text(x+10,y+8,90,open?"Lv "+level:"KHÓA",subtitle,32);
-                if(profile.skillSlots.Contains(s.id))Text(x+60,y+8,94,"["+(Array.IndexOf(profile.skillSlots,s.id)+1)+"]",title,40,align:TextAnchor.UpperRight,size:26);
-            }
-
-            // Chi tiết kỹ năng đang chọn.
-            selectedSkill=Mathf.Clamp(selectedSkill,0,db.skills.Count-1);
-            var pick=db.skills[selectedSkill];bool unlocked=profile.SkillUnlocked(pick);int lv=SkillLevel(pick.id);
-            Surface(1034,330,448,560,Color.white,catsFrame:"Detail");
-            Text(1058,344,400,pick.name,title,56,size:38);
-            Art(1178,404,160,160,"skill-"+pick.id);
-            Text(1058,576,400,unlocked?$"Cấp {lv} / 8\n{pick.baseCost} năng lượng · hồi {pick.baseCd}s\n{(pick.duration>0?pick.duration+" giây hiệu lực":"Kích hoạt tức thì")}":"Mở tại "+(pick.unlock["stage"]!=null?"ải "+pick.unlock["stage"]:"cấp "+pick.unlock["accountLevel"]),label,110);
-            int inDeck=Array.IndexOf(profile.skillSlots,pick.id);
-            if(inDeck>=0)
-            {
-                if(Button(1050,694,416,56,$"GỠ KHỎI Ô [{inDeck+1}]",true,normalSpriteKey:"blue"))
+                if (!dispatchOnly)
                 {
-                    if(profile.skillSlots.Count(v=>!string.IsNullOrEmpty(v))==1)Notify("Giữ ít nhất một kỹ năng trong đội hình");
-                    else{profile.skillSlots[inDeck]="";Changed("Đã gỡ kỹ năng");}
+                    if (lastButton.layout) lastButton.layout.iconSize = 82;
+                    int palette = db.skills.IndexOf(skill);
+                    if (skillSlotPick != slot && palette >= 0 && palette < SkillCardFrames.Length)
+                    {
+                        StudioNineSlice.Apply(lastButton.image, CatsFrame(SkillCardFrames[palette]), 18);
+                        lastButton.image.color = SkillCardColors[palette];
+                    }
+                }
+                Enlarge(25);
+            }
+
+            SectionPanel(40, 320, 990, 536);
+            for (int i = 0; i < db.skills.Count && i < SkillCardFrames.Length; i++)
+            {
+                var skill = db.skills[i];
+                bool open = profile.SkillUnlocked(skill);
+                float x = 62 + i % 5 * 191, y = 342 + i / 5 * 244;
+                bool selected = selectedSkill == i;
+                if (SectionTile(x, y, 179, 232, skill.name, "skill-" + skill.id,
+                    selected ? "Gold" : SkillCardFrames[i], tint: selected ? Color.white : SkillCardColors[i]))
+                    selectedSkill = i;
+                Text(x + 13, y + 10, 112, open ? "Lv " + SkillLevel(skill.id) : "KHÓA", subtitle, 36, size: 25);
+                int equippedSlot = Array.IndexOf(profile.skillSlots, skill.id);
+                if (equippedSlot >= 0)
+                    Text(x + 106, y + 10, 57, $"[{equippedSlot + 1}]", title, 34, align: TextAnchor.UpperRight, size: 25);
+                if (!open) Art(x + 68, y + 135, 43, 47, "Lock");
+            }
+
+            selectedSkill = Mathf.Clamp(selectedSkill, 0, db.skills.Count - 1);
+            var pick = db.skills[selectedSkill];
+            bool unlocked = profile.SkillUnlocked(pick);
+            int level = SkillLevel(pick.id);
+            SectionPanel(1042, 320, 518, 536);
+            Surface(1060, 336, 482, 216, Color.white, catsFrame: "Blue");
+            Text(1076, 346, 451, pick.name, title, 58, size: 47);
+            Art(1194, 393, 216, 142, "skill-" + pick.id);
+            Surface(1073, 514, 147, 44, Color.white, catsFrame: "CombatPlate");
+            Text(1084, 519, 125, $"Cấp {level} / 8", subtitle, 37, align: TextAnchor.UpperCenter, size: 23);
+            if (unlocked)
+            {
+                Text(1090, 565, 419, $"{pick.baseCost} năng lượng · Hồi {pick.baseCd}s", subtitle, 36, size: 24);
+                Text(1090, 606, 419, pick.duration > 0 ? $"{pick.duration}s hiệu lực" : "Kích hoạt tức thì", label, 36, size: 22);
+            }
+            else
+            {
+                string requirement = pick.unlock["stage"] != null ? "ải " + pick.unlock["stage"] : "cấp " + pick.unlock["accountLevel"];
+                Text(1090, 565, 419, "Mở tại " + requirement, label, 72, size: 25);
+            }
+            int inDeck = Array.IndexOf(profile.skillSlots, pick.id);
+            if (inDeck >= 0)
+            {
+                if (Button(1073, 665, 456, 64, $"GỠ KHỎI Ô [{inDeck + 1}]", normalSpriteKey: "blue"))
+                {
+                    if (profile.skillSlots.Count(v => !string.IsNullOrEmpty(v)) == 1) Notify("Giữ ít nhất một kỹ năng trong đội hình");
+                    else { profile.skillSlots[inDeck] = ""; Changed("Đã gỡ kỹ năng"); }
                 }
             }
-            else if(Button(1050,694,416,56,$"DÙNG VÀO Ô [{skillSlotPick+1}]",unlocked,normalSpriteKey:"blue")){profile.skillSlots[skillSlotPick]=pick.id;Changed("Đã đổi kỹ năng");}
-            Enlarge(20);
-            if(Button(1050,762,416,108,lv>=8?"ĐẠT CẤP TỐI ĐA":$"NÂNG CẤP · {lv} lõi",unlocked&&lv<8,true)){if(Pay(("skillCore",lv))){profile.skillLevels[pick.id]=lv+1;Changed();}}
-            Enlarge(26);
+            else if (Button(1073, 665, 456, 64, $"DÙNG VÀO Ô [{skillSlotPick + 1}]", unlocked, normalSpriteKey: "blue"))
+            {
+                profile.skillSlots[skillSlotPick] = pick.id;
+                Changed("Đã đổi kỹ năng");
+            }
+            Enlarge(25);
+            if (IllustratedButton(1073, 742, 456, 87, level >= 8 ? "ĐẠT CẤP TỐI ĐA" : $"NÂNG CẤP · {level} LÕI",
+                "item-skillCore", unlocked && level < 8, primary: true) && Pay(("skillCore", level)))
+            {
+                profile.skillLevels[pick.id] = level + 1;
+                Changed();
+            }
+            Enlarge(29);
         }
-        int SkillLevel(string id)=>profile.skillLevels.TryGetValue(id,out int n)?n:1;
+        int SkillLevel(string id) => profile.skillLevels.TryGetValue(id, out int n) ? n : 1;
 
-        // ================= Pháo đài (Hangar / Workshop) =================
+        // ================= Pháo đài =================
         void FortWorkshopUI()
         {
-            int hpCost=Mathf.FloorToInt(400*Mathf.Pow(profile.hpLevel,1.4f));
-            Surface(118,108,1364,96,Color.white,catsFrame:"Ink");
-            Art(134,116,240,80,"fortress-chassis");
-            Text(392,116,700,$"PHÁO ĐÀI · HP {N(profile.MaxHp)} · {profile.FloorCount}/5 tầng",subtitle,36);
-            Text(392,154,700,$"Giáp cấp {profile.hpLevel} · Mở tầng tại cấp chỉ huy 20 / 40 / 60 / 80",small,30);
-            if(Button(1110,120,356,72,$"GIA CỐ · {N(hpCost)} xu",profile.hpLevel<240,normalSpriteKey:"blue")){if(Pay(("coins",hpCost))){profile.hpLevel++;profile.Track("upgrade");Changed("Pháo đài được gia cố");}}
-            Enlarge(22);
-
-            // Danh sách tháp pháo.
-            Surface(118,218,360,672,Color.white,catsFrame:"Roster");
-            for(int i=0;i<profile.turrets.Count&&i<10;i++)
+            SectionBackdrop();
+            int hpCost = Mathf.FloorToInt(400 * Mathf.Pow(profile.hpLevel, 1.4f));
+            SectionPanel(64, 100, 1472, 119);
+            Art(101, 120, 250, 76, "fortress-chassis");
+            Text(376, 117, 740, $"PHÁO ĐÀI · HP {N(profile.MaxHp)} · {profile.FloorCount}/5 tầng", subtitle, 39, size: 30);
+            Text(376, 164, 740, $"Giáp cấp {profile.hpLevel} · Mở tầng tại cấp chỉ huy 20 / 40 / 60 / 80", small, 38, size: 21);
+            if (IllustratedButton(1130, 122, 372, 71, $"GIA CỐ · {N(hpCost)} xu", "Gear_Sword",
+                profile.hpLevel < 240, normalSpriteKey: "blue") && Pay(("coins", hpCost)))
             {
-                var t=profile.turrets[i];
-                if(IllustratedButton(134+i%2*168,234+i/2*128,156,118,"Cấp "+t.level,t.id,content:StudioButtonLayout.Content.Tile,selected:selectedTurret==i))selectedTurret=i;
-                Enlarge(17);
-                if(t.stars>0)Text(140+i%2*168,236+i/2*128,144,new string('★',t.stars),title,30,align:TextAnchor.UpperRight,size:18);
+                profile.hpLevel++;
+                profile.Track("upgrade");
+                Changed("Pháo đài được gia cố");
+            }
+            Enlarge(26);
+
+            SectionPanel(64, 228, 420, 642);
+            for (int i = 0; i < profile.turrets.Count && i < 10; i++)
+            {
+                var item = profile.turrets[i];
+                float x = 88 + i % 2 * 183, y = 247 + i / 2 * 119;
+                if (SectionTile(x, y, 174, 111, "Cấp " + item.level, item.id, selectedTurret == i ? "Cyan" : "Tile"))
+                    selectedTurret = i;
+                if (item.stars > 0)
+                    Text(x + 8, y + 3, 104, new string('★', item.stars), title, 32, size: 18);
             }
 
-            selectedTurret=Mathf.Clamp(selectedTurret,0,profile.turrets.Count-1);
-            var turret=profile.turrets[selectedTurret];var weapon=db.Weapon(turret.id);
-            int cap=40+8*turret.stars;
-            // Pháo lớn ở giữa, hai ô chim chiến (module) bên dưới.
-            Art(500,240,546,340,turret.id);
-            int floor=profile.floors.FindIndex(v=>v.turret==turret.id);
-            Text(500,586,546,floor>=0?$"ĐANG LẮP Ở TẦNG {floor+1}":"CHƯA LẮP · đổi ở mục Đội hình",small,30,align:TextAnchor.UpperCenter);
-            for(int slot=0;slot<2;slot++)
+            selectedTurret = Mathf.Clamp(selectedTurret, 0, profile.turrets.Count - 1);
+            var turret = profile.turrets[selectedTurret];
+            var weapon = db.Weapon(turret.id);
+            int cap = 40 + 8 * turret.stars;
+            Art(481, 455, 578, 135, "Interface/Barracks/Podium");
+            Art(532, 227, 478, 301, turret.id);
+            int floor = profile.floors.FindIndex(v => v.turret == turret.id);
+            Surface(585, 592, 373, 49, Color.white, catsFrame: "CombatPlate");
+            Text(594, 596, 355, floor >= 0 ? $"ĐANG LẮP Ở TẦNG {floor + 1}" : "CHƯA LẮP · đổi ở mục Đội hình",
+                title, 38, align: TextAnchor.UpperCenter, size: 23);
+            for (int slot = 0; slot < 2; slot++)
             {
-                string id=turret.modules[slot];bool empty=string.IsNullOrEmpty(id);
-                if(IllustratedButton(560+slot*236,630,220,250,empty?$"Chim {slot+1}":db.Weapon(id).name,empty?"Gear":id,content:StudioButtonLayout.Content.Tile))
+                string id = turret.modules[slot];
+                bool empty = string.IsNullOrEmpty(id);
+                float x = 526 + slot * 248;
+                if (SectionTile(x, 650, 235, 201, empty ? $"Lắp chim {slot + 1}" : db.Weapon(id).name,
+                    empty ? "Interface/Barracks/Plus" : id, "Tile"))
                 {
-                    var options=new[]{""}.Concat(profile.modules).ToArray();int chosen=slot;
-                    Pick("Chọn chim "+(slot+1),options.Select(v=>string.IsNullOrEmpty(v)?"Gỡ chim":db.Weapon(v).name),at=>{turret.modules[chosen]=options[at];Changed("Đã đổi chim");},options.Select(v=>string.IsNullOrEmpty(v)?"Gear":v));
+                    var options = new[] { "" }.Concat(profile.modules).ToArray();
+                    int chosen = slot;
+                    Pick("Chọn chim " + (slot + 1), options.Select(v => string.IsNullOrEmpty(v) ? "Gỡ chim" : db.Weapon(v).name),
+                        at => { turret.modules[chosen] = options[at]; Changed("Đã đổi chim"); },
+                        options.Select(v => string.IsNullOrEmpty(v) ? "Interface/Barracks/Plus" : v));
                 }
-                if(!dispatchOnly&&empty&&lastButton.layout&&lastButton.layout.icon)lastButton.layout.icon.color=new Color(1,1,1,.35f);
-                Enlarge(18);
-                Text(560+slot*236,636,220,"CHIM CHIẾN "+(slot+1),small,26,align:TextAnchor.UpperCenter);
+                Text(x + 12, 657, 211, $"MODULE {slot + 1}", subtitle, 33, align: TextAnchor.UpperCenter, size: 23);
             }
 
-            // Bảng nâng cấp bên phải.
-            Surface(1066,218,416,672,Color.white,catsFrame:"Detail");
-            Text(1088,232,380,weapon.name,title,56,size:36);
-            Text(1088,290,380,turret.stars>0?new string('★',turret.stars)+new string('☆',5-turret.stars):"☆☆☆☆☆",title,40,size:28);
-            Text(1088,334,380,$"Cấp {turret.level} / {cap}",subtitle,36);
-            Text(1088,376,380,weapon.description,small,170);
-            int coin=Mathf.FloorToInt(60*Mathf.Pow(turret.level,1.4f)),dust=Mathf.FloorToInt(30*Mathf.Pow(turret.level,1.3f));
-            int starCoin=200*(turret.stars+1),starStone=5+5*turret.stars;
-            if(Button(1082,560,384,60,turret.stars<5?"NÂNG SAO · "+Cost(("coins",starCoin),("forgeStone",starStone)):"ĐÃ ĐỦ 5 SAO",turret.stars<5,normalSpriteKey:"blue"))
+            SectionPanel(1056, 228, 480, 642);
+            Text(1082, 245, 434, weapon.name, title, 60, size: 43);
+            Text(1082, 307, 425, new string('★', turret.stars) + new string('☆', 5 - turret.stars), title, 42, size: 31);
+            Text(1082, 354, 425, $"Cấp {turret.level} / {cap}", subtitle, 39, size: 29);
+            Text(1082, 401, 425, weapon.description, small, 106, size: 23);
+            int coin = Mathf.FloorToInt(60 * Mathf.Pow(turret.level, 1.4f)), dust = Mathf.FloorToInt(30 * Mathf.Pow(turret.level, 1.3f));
+            int starCoin = 200 * (turret.stars + 1), starStone = 5 + 5 * turret.stars;
+            if (Button(1080, 523, 432, 65, turret.stars < 5 ? "NÂNG SAO · " + Cost(("coins", starCoin), ("forgeStone", starStone)) :
+                "ĐÃ ĐỦ 5 SAO", turret.stars < 5) && Pay(("coins", starCoin), ("forgeStone", starStone)))
             {
-                if(Pay(("coins",starCoin),("forgeStone",starStone))){turret.stars++;Changed("Đã nâng sao pháo");}
+                turret.stars++;
+                Changed("Đã nâng sao pháo");
             }
-            Surface(1082,636,384,240,Color.white,catsFrame:"Ink");
-            Art(1100,652,38,38,"item-coins");Text(1144,656,120,N(coin),subtitle,36);
-            Art(1266,652,38,38,"item-spiritDust");Text(1310,656,140,N(dust),subtitle,36);
-            Text(1100,704,350,turret.level>=cap?"Cần nâng sao để tăng giới hạn cấp":$"Cấp {turret.level} → {turret.level+1}",small,30);
-            if(Button(1098,756,352,104,"NÂNG CẤP",turret.level<cap&&profile.Get("coins")>=coin&&profile.Get("spiritDust")>=dust,true))
+            Enlarge(22);
+            Surface(1076, 604, 440, 243, Color.white, catsFrame: "CombatPlate");
+            Art(1093, 622, 44, 44, RewardIcon("coins"));
+            Text(1146, 628, 138, N(coin), subtitle, 40, size: 29);
+            Art(1283, 622, 44, 44, "item-spiritDust");
+            Text(1336, 628, 155, N(dust), subtitle, 40, size: 29);
+            Text(1094, 672, 400, turret.level >= cap ? "Cần nâng sao để tăng giới hạn cấp" : $"Cấp {turret.level} → {turret.level + 1}", small, 38, size: 22);
+            if (Button(1092, 715, 408, 109, "NÂNG CẤP",
+                turret.level < cap && profile.Get("coins") >= coin && profile.Get("spiritDust") >= dust, true) &&
+                Pay(("coins", coin), ("spiritDust", dust)))
             {
-                if(Pay(("coins",coin),("spiritDust",dust))){turret.level++;profile.Track("upgrade");Changed();}
+                turret.level++;
+                profile.Track("upgrade");
+                Changed();
             }
-            Enlarge(30);
+            Enlarge(35);
         }
+
 
         // ================= Quái thú (kho quái) =================
         void PetStorageUI()
@@ -363,43 +437,107 @@ namespace CatTanks
             Enlarge(24);
         }
 
-        // ================= Cộng hưởng (Resonating Crystal) =================
+
+        // ================= Cộng hưởng =================
         void CrystalUI()
         {
-            var anchors=profile.cats.OrderByDescending(c=>c.level).Take(5).ToList();
-            for(int i=0;i<profile.nexus.Length;i++)if(anchors.Any(c=>c.id==profile.nexus[i]))profile.nexus[i]="";
-            int level=anchors.Count==5?anchors.Min(c=>c.level):0;
+            var anchors = profile.cats.OrderByDescending(c => c.level).Take(5).ToList();
+            for (int i = 0; i < profile.nexus.Length; i++)
+                if (anchors.Any(c => c.id == profile.nexus[i])) profile.nexus[i] = "";
+            int level = anchors.Count == 5 ? anchors.Min(c => c.level) : 0;
 
-            Text(130,108,700,"Cộng hưởng ánh trăng",title,55);
-            Text(830,122,650,"5 mèo cấp cao nhất làm neo",small,30,align:TextAnchor.UpperRight);
-            // 5 mèo neo xếp vòng cung quanh pha lê.
-            float[] ax={232,452,720,988,1208},ay={330,214,166,214,330};
-            for(int i=0;i<5;i++)
-            {
-                var c=i<anchors.Count?anchors[i]:null;
-                Surface(ax[i],ay[i],160,180,Color.white,catsFrame:c==null?"Ink":"Tile");
-                if(c!=null)Art(ax[i]+12,ay[i]+8,136,120,c.id);
-                Text(ax[i],ay[i]+132,160,c==null?"Cần thêm mèo":db.Cat(c.id).name+"\nCấp "+c.level,small,48,align:TextAnchor.UpperCenter);
-            }
-            Art(700,360,200,190,"item-soulEssence");
-            Text(520,548,560,"CẤP CỘNG HƯỞNG",subtitle,36,align:TextAnchor.UpperCenter);
-            Text(520,580,560,level.ToString(),title,60,align:TextAnchor.UpperCenter,size:48);
+            SectionBackdrop();
+            Art(103, 99, 50, 49, "Interface/Barracks/Moon");
+            Text(166, 101, 540, "Cộng hưởng ánh trăng", title, 53, size: 40);
+            Text(1115, 115, 354, "5 mèo cấp cao nhất làm neo", small, 33, align: TextAnchor.UpperRight, size: 22);
+            Art(264, 207, 1072, 254, "Interface/Barracks/ResonanceArc");
+            Art(354, 337, 892, 239, "Interface/Barracks/Podium");
 
-            // Hàng ô cộng hưởng.
-            Surface(118,648,1364,242,Color.white,catsFrame:"Ink");
-            Text(134,656,800,$"Ô CỘNG HƯỞNG · {profile.NexusSlots}/8 ô mở",subtitle,36);
-            for(int i=0;i<8;i++)
+            for (int i = 0; i < AnchorCards.Length; i++)
             {
-                float x=134+i*168;string current=profile.nexus[i];bool open=i<profile.NexusSlots;bool empty=string.IsNullOrEmpty(current);
-                if(IllustratedButton(x,694,156,158,!open?"Chưa mở":empty?"Trống":db.Cat(current).name,!open?"Lock":empty?"item-soulEssence":current,open,content:StudioButtonLayout.Content.Tile))
+                var cat = i < anchors.Count ? anchors[i] : null;
+                float x = AnchorCards[i].x, y = AnchorCards[i].y;
+                Surface(x, y, 174, 188, Color.white, catsFrame: cat == null ? "CombatPlate" : "Violet");
+                if (cat != null)
                 {
-                    var options=new[]{""}.Concat(profile.cats.Where(c=>!anchors.Contains(c)&&(!profile.nexus.Contains(c.id)||c.id==current)).Select(c=>c.id)).ToArray();int chosen=i;
-                    Pick("Chọn mèo Cộng hưởng",options.Select(id=>string.IsNullOrEmpty(id)?"Để trống ô":db.Cat(id).name),at=>{profile.nexus[chosen]=options[at];Changed("Đã cập nhật Cộng hưởng");},options.Select(id=>string.IsNullOrEmpty(id)?"item-soulEssence":id));
+                    Art(x + 21, y + 12, 132, 111, cat.id);
+                    Text(x + 7, y + 118, 160, db.Cat(cat.id).name, subtitle, 37, align: TextAnchor.UpperCenter, size: 23);
+                    Text(x + 7, y + 147, 160, $"Cấp {cat.level}", title, 35, align: TextAnchor.UpperCenter, size: 22);
                 }
-                if(!dispatchOnly&&open&&empty&&lastButton.layout&&lastButton.layout.icon)lastButton.layout.icon.color=new Color(1,1,1,.35f);
-                Enlarge(17);
+                else
+                {
+                    Art(x + 58, y + 37, 58, 65, "Lock");
+                    Text(x + 7, y + 121, 160, "Cần thêm mèo", small, 44, align: TextAnchor.UpperCenter, size: 19);
+                }
             }
-            Text(134,858,1340,"Thêm ô khi vượt ải 4 / 6 / 8 / 10 / 13. Mèo trong ô nhận cấp của neo thấp nhất, giới hạn theo bậc; không tiêu XP.",small,30);
+
+            Art(718, 302, 164, 169, "item-soulEssence");
+            Text(600, 478, 400, "CẤP CỘNG HƯỞNG", subtitle, 43, align: TextAnchor.UpperCenter, size: 30);
+            Surface(702, 517, 196, 62, Color.white, catsFrame: "Violet");
+            Text(713, 510, 174, level.ToString(), title, 67, align: TextAnchor.UpperCenter, size: 54);
+
+            SectionPanel(64, 590, 1472, 277);
+            Art(87, 608, 45, 40, "Chest_Gold");
+            Text(145, 610, 810, $"Ô CỘNG HƯỞNG · {profile.NexusSlots}/8 ô mở", subtitle, 44, size: 28);
+            for (int i = 0; i < 8; i++)
+            {
+                float x = 104 + i * 175;
+                string current = profile.nexus[i];
+                bool open = i < profile.NexusSlots, empty = string.IsNullOrEmpty(current);
+                if (SectionTile(x, 651, 164, 150, !open ? "Chưa mở" : empty ? "Trống" : db.Cat(current).name,
+                    !open ? "Lock" : empty ? "item-soulEssence" : current, empty || !open ? "Tile" : "Violet", open))
+                {
+                    var options = new[] { "" }.Concat(profile.cats
+                        .Where(c => !anchors.Contains(c) && (!profile.nexus.Contains(c.id) || c.id == current))
+                        .Select(c => c.id)).ToArray();
+                    int chosen = i;
+                    Pick("Chọn mèo Cộng hưởng", options.Select(id => string.IsNullOrEmpty(id) ? "Để trống ô" : db.Cat(id).name),
+                        at => { profile.nexus[chosen] = options[at]; Changed("Đã cập nhật Cộng hưởng"); },
+                        options.Select(id => string.IsNullOrEmpty(id) ? "item-soulEssence" : id));
+                }
+            }
+            Art(96, 814, 31, 31, "Interface/Cats/InfoIcon");
+            Text(139, 816, 1366, "Thêm ô khi vượt ải 4 / 6 / 8 / 10 / 13. Mèo trong ô nhận cấp của neo thấp nhất, giới hạn theo bậc; không tiêu XP.",
+                small, 37, size: 21);
         }
+
+        void SectionBackdrop() => Art(0, 0, 1600, 900, "Interface/Barracks/Hangar");
+
+        void BarracksSectionChrome()
+        {
+            Surface(0, 0, 1600, 92, Color.white, catsFrame: "Header");
+            if (IllustratedButton(12, 10, 83, 69, "‹", "UiBack", primary: true, content: StudioButtonLayout.Content.Symbol)) StepBack();
+            Text(111, 3, 605, PageTitle, title, 77, align: TextAnchor.MiddleLeft, size: 49);
+            SectionWallet(751, "coins", "XU");
+            SectionWallet(971, "gem", "NGỌC");
+            SectionWallet(1191, "summonScroll", "VÉ GỌI MÈO");
+            if (IllustratedButton(1412, 11, 176, 66, "Cài đặt", "Interface/Cats/SettingsIcon", normalSpriteKey: "blue"))
+                modal = "settings";
+            Enlarge(23);
+        }
+
+        void SectionWallet(float x, string resource, string caption)
+        {
+            Surface(x, 11, 208, 66, Color.white, catsFrame: "CombatPlate");
+            Art(x + 7, 15, 58, 58, RewardIcon(resource));
+            Text(x + 68, 12, 131, N(profile.Get(resource)), subtitle, 34, size: 25);
+            Text(x + 68, 45, 131, caption, small, 26, size: 17);
+        }
+
+        void SectionPanel(float x, float y, float width, float height) =>
+            Surface(x, y, width, height, Color.white, catsFrame: "BarracksFrame");
+
+        bool SectionTile(float x, float y, float width, float height, string caption, string icon, string frame,
+            bool enabled = true, Color? tint = null)
+        {
+            bool clicked = IllustratedButton(x, y, width, height, caption, icon, enabled, content: StudioButtonLayout.Content.Tile);
+            if (dispatchOnly) return clicked;
+            StudioNineSlice.Apply(lastButton.image, CatsFrame(frame), 18);
+            lastButton.image.color = tint ?? Color.white;
+            Enlarge(height > 180 ? 22 : 20);
+            return clicked;
+        }
+
+
     }
 }

@@ -1,0 +1,184 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>CatTanks battle sim</title>
+<style>html,body{margin:0;background:#000}canvas{display:block}</style></head>
+<body><canvas id="c" width="1600" height="900"></canvas>
+<script src="state.js"></script>
+<script>
+// Vẽ lại BattleView.cs + StudioBattleHUD.cs trên canvas 1600x900 (tọa độ thế giới y hướng lên, giống camera Unity).
+const RES = "file:///F:/tank/MegaTank/Sources/CatTanks/Assets/CatTanks/Resources/";
+const S = window.STATE, cv = document.getElementById("c"), g = cv.getContext("2d");
+const LAYOUT = window.LAYOUT;
+const imgs = {};
+function need(key, path) { if (!imgs[key]) { const i = new Image(); i.src = RES + path; imgs[key] = i; } return imgs[key]; }
+const art = k => need(k, "Art/" + k + ".png");
+// Preload
+const keys = ["fortress-chassis", "fortress-floor", "fortress-roof", "item-coins", "item-beastCage", "item-moonCage"];
+S.units.forEach(u => { keys.push(u.weapon); if (u.cat) keys.push(u.cat, "uniform-" + u.index % 10, "hat-" + u.index % 10); });
+S.enemies.forEach(e => keys.push(e.asset === "beast-0" ? "wolf-frames/run-" + (Math.floor(e.age * 10) % 6) : e.asset));
+S.skills.forEach(s => keys.push("skill-" + s.id));
+keys.forEach(art);
+const scenery = need("scenery", "Scenery/stage-" + String(S.stage).padStart(2, "0") + ".png");
+Promise.all(Object.values(imgs).map(i => i.complete ? 0 : new Promise(r => { i.onload = r; i.onerror = r; }))).then(draw);
+
+const W2C = y => 900 - y;
+const ops = []; // {order, fn}
+const push = (order, fn) => ops.push({ order, n: ops.length, fn });
+
+// Image(name,pos,width) giữ tỉ lệ, tâm ở pos; group: {x,y} gốc; rot quanh pivot
+function sprite(key, gx, gy, lx, ly, w, order, opt = {}) {
+  const im = art(key); if (!im.naturalWidth) return;
+  const h = opt.h || w * im.naturalHeight / im.naturalWidth;
+  push(order, () => {
+    g.save(); g.translate(gx, W2C(gy));
+    if (opt.pivotRot) g.rotate(-opt.pivotRot);
+    g.translate(lx, -ly);
+    if (opt.rot) g.rotate(-opt.rot);
+    if (opt.flip) g.scale(-1, 1);
+    g.globalAlpha = opt.alpha ?? 1;
+    if (opt.tint) g.drawImage(tinted(im, opt.tint), -w / 2, -h / 2, w, h);
+    else g.drawImage(im, -w / 2, -h / 2, w, h);
+    g.restore();
+  });
+}
+const tintCache = {};
+function tinted(im, color) {
+  const k = im.src + color; if (tintCache[k]) return tintCache[k];
+  const c = document.createElement("canvas"); c.width = im.naturalWidth; c.height = im.naturalHeight; const x = c.getContext("2d");
+  x.drawImage(im, 0, 0); x.globalCompositeOperation = "multiply"; x.fillStyle = color; x.fillRect(0, 0, c.width, c.height);
+  x.globalCompositeOperation = "destination-in"; x.drawImage(im, 0, 0); return tintCache[k] = c;
+}
+function rect(x, y, w, h, color, order) { push(order, () => { g.fillStyle = color; g.fillRect(x - w / 2, W2C(y) - h / 2, w, h); }); }
+
+function draw() {
+  // --- Cảnh nền (BattleView.Scenery.cs): 4 lớp cắt từ atlas, scale 1600/1920, parallax theo playerX
+  const L = LAYOUT.stages.find(s => s.index === S.stage), sc = 1600 / 1920, travel = S.playerX - 290, motion = [.003, .010, .022, 0];
+  L.layers.forEach((l, i) => push(-110 + i, () => {
+    const sy = scenery.naturalHeight - l.atlasY - l.height; // rect Unity tính từ đáy ảnh
+    const w = scenery.naturalWidth * sc, h = l.height * sc, cx = 800 - travel * motion[i];
+    g.drawImage(scenery, 0, sy, scenery.naturalWidth, l.height, cx - w / 2, l.sceneTop * sc, w, h);
+  }));
+
+  // --- Pháo đài
+  const floors = S.units.filter(u => u.role === "tower").length || 1;
+  const tx = S.playerX, ty = 175 + Math.sin(S.time * 9) * .8;
+  sprite("fortress-chassis", tx, ty, 0, 35, 320, 13, { h: 73 });
+  for (let i = 0; i < floors; i++) sprite("fortress-floor", tx, ty, 0, 94 + i * 80, 272, 11, { h: 101 });
+  sprite("fortress-roof", tx, ty, 0, floors * 80 + 88, 274, 13, { h: 82 });
+  if ((S.buffs.shield || 0) > 0) push(29, () => { g.save(); g.strokeStyle = "rgba(102,255,255,.6)"; g.lineWidth = 6; g.beginPath(); g.ellipse(S.playerX, W2C(440), 205, 330, 0, 0, 7); g.stroke(); g.restore(); });
+
+  // --- Quái
+  const live = S.enemies.filter(e => e.x < 1720);
+  for (const e of live) {
+    push(5, () => { g.fillStyle = "rgba(0,25,51,.3)"; g.beginPath(); g.ellipse(e.x, W2C(175), e.size * .45, e.size * .06, 0, 0, 7); g.fill(); });
+    const tint = (e.slow > 0 || (S.buffs.freeze || 0) > 0) ? "#8ad7ff" : e.poison > 0 ? "#bbf78b" : e.burn > 0 ? "#ffb479" : null;
+    if (e.asset === "beast-0") {
+      const w = e.size * 272 / 235;
+      sprite("wolf-frames/run-" + (Math.floor(e.age * 10) % 6), e.x, e.y, 0, -e.size * .43 + 89 * e.size / 235, w, 16, { flip: true, tint, h: w });
+    } else sprite(e.asset, e.x, e.y, 0, 0, e.size, 16, { flip: true, tint, rot: Math.sin(e.age * 6 + e.phase) * (e.flying ? 4 : 2) * Math.PI / 180 });
+    const full = e.size * .64, r = Math.max(0, Math.min(1, e.hp / e.maxHp)), hy = e.y + e.size * .52;
+    rect(e.x, hy, full, 7, "#10263b", 50);
+    rect(e.x - (1 - r) * full / 2, hy, full * r, 4, e.boss ? "#ff6a76" : "#e8b46a", 51);
+  }
+  const target = live.find(e => e.id === S.targetId);
+  if (target) push(49, () => { g.strokeStyle = "#ffcf75"; g.lineWidth = 4; g.beginPath(); g.arc(target.x, W2C(target.y), target.size * .55, 0, 7); g.stroke(); });
+
+  // --- Đơn vị (ActorView): tháp pháo / chim / bộ binh
+  const nearest = u => live.filter(e => Math.hypot(e.x - u.x, e.y - u.y) < 1500).sort((a, b) => Math.hypot(a.x - u.x, a.y - u.y) - Math.hypot(b.x - u.x, b.y - u.y))[0];
+  for (const u of S.units) {
+    const tower = u.role === "tower";
+    if (u.cat) {
+      sprite(u.cat, u.x, u.y, tower ? -63 : -8, tower ? 8 : 14, tower ? 74 : 60, 20);
+      sprite("uniform-" + u.index % 10, u.x, u.y, tower ? -61 : -6, tower ? -4 : 2, tower ? 44 : 38, 21);
+      sprite("hat-" + u.index % 10, u.x, u.y, tower ? -52 : 2, tower ? 31 : 33, tower ? 40 : 34, 22);
+    }
+    if (u.role === "aux") {
+      const flap = S.time * 3.2 + u.index * 1.7;
+      sprite(u.weapon, u.x, u.y, 13, Math.sin(flap * 1.3) * 6, 80, 24, { pivotRot: Math.sin(flap) * 5 * Math.PI / 180, flip: u.flip });
+    } else {
+      const t = nearest(u), ang = t ? Math.atan2(t.y - u.y, t.x - u.x) : 0;
+      sprite(u.weapon, u.x, u.y, tower ? 20 : 13, 0, tower ? 117 : 57, 24, { pivotRot: ang, flip: u.flip });
+    }
+    const r = Math.max(0, u.hp / u.maxHp);
+    rect(u.x, u.y + 55, 60, 7, "#10263b", 50); rect(u.x - (1 - r) * 29, u.y + 55, 58 * r, 4, "#8ef587", 51);
+  }
+
+  // --- Đạn
+  for (const b of S.bullets) push(35, () => {
+    const x = b.x, y = W2C(b.y), a = -b.angle;
+    g.save();
+    // vệt đuôi
+    const tl = b.kind === "rocket" ? 46 : b.kind === "rapid" ? 34 : 24;
+    const gr = g.createLinearGradient(x, y, x - Math.cos(a) * tl, y - Math.sin(a) * tl);
+    gr.addColorStop(0, b.color); gr.addColorStop(1, "rgba(255,255,255,0)");
+    g.strokeStyle = gr; g.lineWidth = b.kind === "rocket" ? 7 : 4; g.lineCap = "round"; g.globalAlpha = .7;
+    g.beginPath(); g.moveTo(x, y); g.lineTo(x - Math.cos(a) * tl, y - Math.sin(a) * tl); g.stroke();
+    g.globalAlpha = 1; g.translate(x, y); g.rotate(a);
+    g.shadowColor = b.color; g.shadowBlur = 14;
+    if (b.kind === "rocket") { g.fillStyle = "#d9dee6"; g.fillRect(-14, -5, 26, 10); g.fillStyle = "#ff5a3c"; g.beginPath(); g.moveTo(12, -5); g.lineTo(19, 0); g.lineTo(12, 5); g.fill(); g.fillStyle = "#ffcf5a"; g.fillRect(-20, -3, 7, 6); }
+    else if (b.kind === "rapid") { g.fillStyle = "#fff3b8"; g.fillRect(-14, -3, 29, 6); }
+    else if (b.kind === "shell") { g.fillStyle = "#fff3b8"; g.beginPath(); g.ellipse(0, 0, 10, 5, 0, 0, 7); g.fill(); }
+    else if (["plasma", "poison", "ice", "mortar", "bomb", "gravity"].includes(b.kind)) { g.fillStyle = b.color; g.beginPath(); g.arc(0, 0, 11, 0, 7); g.fill(); g.fillStyle = "rgba(255,255,255,.7)"; g.beginPath(); g.arc(-3, -3, 4, 0, 7); g.fill(); }
+    else { g.fillStyle = b.color; g.fillRect(-13, -3.5, 26, 7); }
+    g.restore();
+  });
+
+  ops.sort((a, b) => a.order - b.order || a.n - b.n).forEach(o => o.fn());
+  hud();
+}
+
+// --- HUD (StudioBattleHUD.cs, toạ độ UI y hướng xuống)
+function panel(x, y, w, h) {
+  g.save();
+  const r = 14;
+  const path = () => { g.beginPath(); g.roundRect(x, y, w, h, r); };
+  g.shadowColor = "rgba(0,0,0,.45)"; g.shadowBlur = 10; g.shadowOffsetY = 3;
+  path(); const gr = g.createLinearGradient(0, y, 0, y + h); gr.addColorStop(0, "#1d3f8f"); gr.addColorStop(1, "#0b1f57"); g.fillStyle = gr; g.fill();
+  g.shadowColor = "transparent";
+  g.lineWidth = 5; g.strokeStyle = "#7fb2ff"; path(); g.stroke();
+  g.lineWidth = 2; g.strokeStyle = "#cfe3ff"; g.beginPath(); g.roundRect(x + 4, y + 4, w - 8, h - 8, r - 4); g.stroke();
+  g.restore();
+}
+function btn(x, y, w, h, on) {
+  g.save(); g.beginPath(); g.roundRect(x, y, w, h, 10);
+  const gr = g.createLinearGradient(0, y, 0, y + h);
+  if (on) { gr.addColorStop(0, "#3fd7ff"); gr.addColorStop(1, "#0d8fe0"); } else { gr.addColorStop(0, "#2a4a8c"); gr.addColorStop(1, "#16306a"); }
+  g.fillStyle = gr; g.fill(); g.lineWidth = 3; g.strokeStyle = on ? "#d8f6ff" : "#6d8fd4"; g.stroke(); g.restore();
+}
+function text(x, y, s, size, opt = {}) {
+  g.save(); g.font = `${opt.bold ? "700 " : ""}${size}px "Segoe UI", Arial, sans-serif`; g.fillStyle = opt.color || "#fff";
+  g.textAlign = opt.align || "left"; g.textBaseline = "top";
+  if (opt.stroke !== false) { g.lineWidth = 3; g.strokeStyle = "rgba(4,14,40,.85)"; g.strokeText(s, x, y); }
+  g.fillText(s, x, y); g.restore();
+}
+function bar(x, y, w, h, v, color) {
+  g.save(); g.beginPath(); g.roundRect(x, y, w, h, h / 2); g.fillStyle = "#0a1636"; g.fill(); g.lineWidth = 2; g.strokeStyle = "#5b7fc4"; g.stroke();
+  if (v > 0) { g.beginPath(); g.roundRect(x + 2, y + 2, Math.max(h - 4, (w - 4) * Math.min(1, v)), h - 4, (h - 4) / 2); g.fillStyle = color; g.fill(); g.fillStyle = "rgba(255,255,255,.3)"; g.fillRect(x + 6, y + 3, (w - 12) * Math.min(1, v), 2); }
+  g.restore();
+}
+const N = v => Math.floor(v).toLocaleString("en-US");
+function icon(key, x, y, w, h) { const i = art(key); if (i.naturalWidth) g.drawImage(i, x, y, w, h); }
+function hud() {
+  panel(24, 19, 434, 75); btn(35, 27, 62, 56, false); text(66, 40, "II", 24, { bold: true, align: "center" });
+  icon("item-coins", 111, 31, 44, 44); text(169, 27, N(S.kills * 37) + " xu", 26, { bold: true }); text(169, 61, S.kills + " mục tiêu bị hạ", 17);
+  panel(490, 19, 620, 75); text(514, 27, `ẢI ${S.stage} • ${S.stageName}`, 26, { bold: true });
+  const t = S.time; text(514, 61, `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(Math.floor(t % 60)).padStart(2, "0")}   •   ${S.spawned}/${S.total} đã xuất hiện`, 17);
+  btn(1212, 27, 198, 56, false); text(1311, 42, "BÁCH KHOA", 22, { bold: true, align: "center" });
+  btn(1422, 27, 154, 56, false); text(1499, 42, "Âm: Bật", 22, { bold: true, align: "center" });
+  panel(24, 106, 496, 65); text(42, 111, `PHÁO ĐÀI   ${N(S.hp)} / ${N(S.maxHp)} HP`, 18); bar(42, 142, 460, 15, S.hp / S.maxHp, "#81e65a");
+  const live = S.enemies.filter(e => e.x < 1720), ehp = live.reduce((s, e) => s + e.hp, 0), emax = live.reduce((s, e) => s + e.maxHp, 0);
+  panel(1080, 106, 496, 65); text(1098, 111, `${live.length} QUÁI ĐANG TIẾN ĐẾN`, 18); bar(1098, 142, 460, 15, ehp / Math.max(1, emax), "#ff6973");
+  panel(24, 728, 1552, 143);
+  text(46, 749, "NĂNG LƯỢNG", 18); text(46, 779, `${N(S.energy)} / 600`, 26, { bold: true }); bar(46, 819, 254, 18, S.energy / 600, "#ffc83d");
+  S.skills.forEach((s, i) => {
+    const x = 330 + i * 145, ok = s.cd <= 0 && S.energy >= s.cost;
+    btn(x, 742, 135, 112, ok); icon("skill-" + s.id, x + 48, 750, 34, 34);
+    text(x + 10, 750, String(i + 1), 15, { color: "#e8f4ff" });
+    text(x + 67, 791, s.name, 18, { bold: true, align: "center" });
+    text(x + 67, 828, s.cd > 0 ? Math.ceil(s.cd) + "s hồi" : s.cost + " NL", 15, { align: "center", color: ok ? "#fff" : "#b9c9ea" });
+    if (!ok) { g.save(); g.fillStyle = "rgba(5,12,35,.35)"; g.beginPath(); g.roundRect(x, 742, 135, 112, 10); g.fill(); g.restore(); }
+  });
+  btn(1250, 744, 145, 108, true); icon("item-beastCage", 1296, 752, 52, 52); text(1322, 806, "Lồng thú ×4", 17, { bold: true, align: "center" }); text(1322, 828, "[C]", 15, { align: "center" });
+  btn(1410, 744, 150, 108, false); icon("item-moonCage", 1459, 752, 52, 52); text(1485, 806, "Lồng trăng ×0", 17, { bold: true, align: "center" }); text(1485, 828, "[Shift+C]", 15, { align: "center" });
+  document.title = "done";
+}
+</script></body></html>

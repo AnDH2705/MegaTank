@@ -19,7 +19,7 @@ namespace CatTanks
             {
                 // Các màn theo bố cục game idle: view tạo lúc chạy, toạ độ 1600×900 không thu phóng.
                 useCodeGeometry=true;
-                if (renderViewKey != TownHubView && renderViewKey != CatView)
+                if (renderViewKey is not (TownHubView or CatView or SkillView or FortView or CrystalView))
                     Surface(100,84,1400,830,Color.white,catsFrame:"Board");
                 switch(renderViewKey)
                 {
@@ -53,13 +53,13 @@ namespace CatTanks
             // Thanh trên: chỉ huy (cấp + thanh kinh nghiệm), ví tiền, cài đặt.
             Art(0,0,1600,92,"Interface/Cats/Header");
             Surface(14,10,330,84,Color.white,catsFrame:"Ink");
-            Art(24,16,70,70,"cat-0");
+            Art(24,16,70,70,MascotArt("mascot_commander"));
             Text(102,14,232,profile.name,subtitle,32);
             Text(102,48,70,"CẤP "+profile.accountLevel,small,26);
             Bar(172,54,154,14,profile.accountXp/(float)(15+profile.accountLevel*4),cyan);
-            HomeWallet(820,"CoinIcon",N(profile.Get("coins")));
-            HomeWallet(1035,"GemIcon",N(profile.Get("gem")));
-            HomeWallet(1250,"TicketIcon",N(profile.Get("summonScroll")));
+            HomeWallet(820,"coins");
+            HomeWallet(1035,"gem");
+            HomeWallet(1250,"summonScroll");
             if(IllustratedButton(1468,14,114,68,"Cài đặt","Interface/Cats/SettingsIcon",normalSpriteKey:"blue",content:StudioButtonLayout.Content.Symbol))modal="settings";
 
             // Lối tắt phụ bên trái.
@@ -90,10 +90,10 @@ namespace CatTanks
             // Ải hiện tại và nút xuất kích ở góc phải dưới.
             Surface(1176,548,410,226,Color.white,catsFrame:"Board");
             Text(1196,560,370,$"ẢI {stage.index:00} / {db.stages.Count}   ·   "+(stage.boss?"TRẬN TRÙM":"HÀNH QUÂN"),small,26,align:TextAnchor.UpperCenter);
-            if(Button(1196,592,48,58,"‹",profile.selected>1,true))SelectStage(profile.selected-1);
+            if(IllustratedButton(1196,592,48,58,"‹","UiBack",profile.selected>1,true,StudioButtonLayout.Content.Symbol))SelectStage(profile.selected-1);
             Enlarge(36);
             Text(1250,592,262,stage.name,title,58,align:TextAnchor.MiddleCenter,size:30);
-            if(Button(1518,592,48,58,"›",profile.selected<lastOpen,true))SelectStage(profile.selected+1);
+            if(IllustratedButton(1518,592,48,58,"›","UiNext",profile.selected<lastOpen,true,StudioButtonLayout.Content.Symbol))SelectStage(profile.selected+1);
             Enlarge(36);
             Text(1196,648,370,$"Lực chiến {N(power)} / {N(stage.recommendedPower)}   ·   "+(power>=stage.recommendedPower?"Sẵn sàng":"Nên nâng cấp"),small,26,align:TextAnchor.UpperCenter);
             if(IllustratedButton(1196,684,370,78,"XUẤT KÍCH","Battle",primary:true))modal="prebattle";
@@ -137,11 +137,11 @@ namespace CatTanks
             Enlarge(16);
             return clicked;
         }
-        void HomeWallet(float x,string icon,string value)
+        void HomeWallet(float x,string resource)
         {
             Surface(x,16,200,64,Color.white,catsFrame:"Ink");
-            Art(x+10,26,44,44,"Interface/Cats/"+icon);
-            Text(x+62,26,130,value,subtitle,40);
+            Art(x+10,26,44,44,RewardIcon(resource));
+            Text(x+62,26,130,N(profile.Get(resource)),subtitle,40);
         }
         static string CompactNumber(int n)=>n>=1000000?(n/1000000f).ToString("0.#")+"M":n>=10000?(n/1000)+"K":n.ToString("N0");
         // Nút lớn ở màn chính cần chữ to hơn mức mặc định của nút.
@@ -152,7 +152,8 @@ namespace CatTanks
         }
         void SubPageChrome()
         {
-            bool upgradedChrome = renderViewKey == TownHubView || renderViewKey == CatView;
+            bool sectionChrome = renderViewKey is SkillView or FortView or CrystalView;
+            bool upgradedChrome = renderViewKey is TownHubView or CatView or SkillView or FortView or CrystalView;
             SelectView(upgradedChrome ? TownCatChromeView : ChromeView, "screen");
             // View tạo lúc chạy sau chrome sẽ nằm đè lên; luôn đưa chrome lên trên cùng.
             if(!dispatchOnly&&uiParent.GetSiblingIndex()!=uiParent.parent.childCount-1)uiParent.SetAsLastSibling();
@@ -160,7 +161,8 @@ namespace CatTanks
             {
                 useCodeGeometry = true;
                 drawingHubChrome = true;
-                UpgradedTownCatChrome();
+                if (sectionChrome) BarracksSectionChrome();
+                else UpgradedTownCatChrome();
                 return;
             }
             Art(0,0,1600,100,"Interface/Cats/Header");
@@ -193,15 +195,15 @@ namespace CatTanks
         string PageTitle=>page switch{"barracks"=>BarracksTitle,"town"=>TownTitle,"chest"=>"Rương AFK","quests"=>"Nhiệm vụ",_=>""};
         void HubWallet()
         {
-            Resource(800,"CoinIcon",N(profile.Get("coins")),"XU");
-            Resource(1010,"GemIcon",N(profile.Get("gem")),"NGỌC");
-            Resource(1220,"TicketIcon",N(profile.Get("summonScroll")),"VÉ GỌI MÈO");
+            Resource(800,"coins","XU");
+            Resource(1010,"gem","NGỌC");
+            Resource(1220,"summonScroll","VÉ GỌI MÈO");
             if(IllustratedButton(1432,22,150,62,"Cài đặt","Interface/Cats/SettingsIcon",normalSpriteKey:"blue"))modal="settings";
         }
-        void Resource(float x,string icon,string value,string caption)
+        void Resource(float x,string resource,string caption)
         {
-            Surface(x,22,195,76,Color.white,catsFrame:"Ink"); Art(x+10,37,44,44,"Interface/Cats/"+icon);
-            Text(x+64,30,125,value,subtitle); Text(x+64,63,125,caption,small);
+            Surface(x,22,195,76,Color.white,catsFrame:"Ink"); Art(x+10,37,44,44,RewardIcon(resource));
+            Text(x+64,30,125,N(profile.Get(resource)),subtitle); Text(x+64,63,125,caption,small);
         }
         void SelectStage(int index)
         {
@@ -225,7 +227,8 @@ namespace CatTanks
             float bw=Mathf.Clamp(heading.Length*24+90,360,w-150);
             Surface(x+(w-bw)/2,y-34,bw,76,Color.white,catsFrame:"Violet");
             Text(x+(w-bw)/2,y-34,bw,heading,title,76,align:TextAnchor.MiddleCenter);
-            if(closable&&Button(x+w-54,y-26,66,66,"X",normalSpriteKey:"blue"))modal="";
+            if(closable&&IllustratedButton(x+w-54,y-26,66,66,"X","UiClose",
+                content:StudioButtonLayout.Content.Symbol,normalSpriteKey:"blue"))modal="";
             if(closable)Enlarge(30);
         }
         // Một dòng cài đặt: khung tối, icon, nhãn; phần điều khiển đặt ở bên phải (x≥920).
@@ -241,10 +244,14 @@ namespace CatTanks
             Enlarge(22);
             return clicked;
         }
+        string MascotArt(string key)=>UiArt(key)?key:"cat-0";
         static string RewardIcon(string key)=>key switch
         {
             "accountXp"=>"Badge_Crown",
-            "coins" or "gem" or "catXp" or "spiritDust" or "forgeStone" or "soulEssence" or "summonScroll" or "skillCore" or "beastCage" or "moonCage" or "monsterChow" or "arenaToken" or "relicStone" or "artifact"=>"item-"+key,
+            "coins"=>"Interface/Cats/CoinIcon",
+            "gem"=>"Interface/Cats/GemIcon",
+            "summonScroll"=>"Interface/Cats/TicketIcon",
+            "catXp" or "spiritDust" or "forgeStone" or "soulEssence" or "skillCore" or "beastCage" or "moonCage" or "monsterChow" or "arenaToken" or "relicStone" or "artifact"=>"item-"+key,
             _=>null
         };
         static string StagePreview(Stage stage) => $"StagePreviews/stage-{stage.index:00}";

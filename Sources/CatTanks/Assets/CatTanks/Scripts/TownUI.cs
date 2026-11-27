@@ -96,9 +96,9 @@ namespace CatTanks
             Surface(400,656,800,84,Color.white,catsFrame:"Ink");
             Text(420,664,760,$"{profile.Get("summonScroll")} VÉ ĐANG CÓ   •   Còn {10-profile.pityElite} lượt đến mèo Elite",subtitle,36,align:TextAnchor.UpperCenter);
             Bar(440,708,720,18,profile.pityElite/10f,gold);
-            if(IllustratedButton(230,762,540,90,"GỌI 1 LẦN  •  1 VÉ","item-summonScroll",unlocked&&profile.Get("summonScroll")>=1,normalSpriteKey:"blue")){Notify(profile.Summon(db,1));Changed(toast);}
+            if(IllustratedButton(230,762,540,90,"GỌI 1 LẦN  •  1 VÉ",RewardIcon("summonScroll"),unlocked&&profile.Get("summonScroll")>=1,normalSpriteKey:"blue")){Notify(profile.Summon(db,1));Changed(toast);}
             Enlarge(26);
-            if(IllustratedButton(830,762,540,90,"GỌI 10 LẦN  •  10 VÉ","item-summonScroll",unlocked&&profile.Get("summonScroll")>=10,true)){Notify(profile.Summon(db,10));Changed(toast);}
+            if(IllustratedButton(830,762,540,90,"GỌI 10 LẦN  •  10 VÉ",RewardIcon("summonScroll"),unlocked&&profile.Get("summonScroll")>=10,true)){Notify(profile.Summon(db,10));Changed(toast);}
             Enlarge(26);
         }
 
@@ -116,7 +116,7 @@ namespace CatTanks
             Text(130,108,700,"Trạm tiếp tế",title,55);
             Text(700,120,780,$"Làm mới mỗi ngày  •  {profile.Get("arenaToken")} huy hiệu  •  {N(profile.Get("spiritDust"))} bụi",small,30,align:TextAnchor.UpperRight);
             string[] filters={"","coins","gem","arenaToken"},names={"Tất cả","Xu","Ngọc","Huy hiệu"};
-            string[] icons={"Chest_Gold","Interface/Cats/CoinIcon","Interface/Cats/GemIcon","item-arenaToken"};
+            string[] icons={"Chest_Gold",RewardIcon("coins"),RewardIcon("gem"),"item-arenaToken"};
             Surface(118,210,222,660,Color.white,catsFrame:"Ink");
             for(int i=0;i<filters.Length;i++)
                 if(TabButton(134,226+i*88,190,74,names[i],shopFilter==filters[i],icons[i])){shopFilter=filters[i];}
@@ -129,7 +129,7 @@ namespace CatTanks
                 string key="shop-"+i;int bought=profile.bought.TryGetValue(key,out int n)?n:0;
                 float x=372+shown%4*276,y=226+shown/4*212;shown++;
                 Surface(x,y,264,200,Color.white,catsFrame:"Tile");
-                Art(x+14,y+14,76,76,"item-"+v.item);
+                Art(x+14,y+14,76,76,RewardIcon(v.item)??"item-"+v.item);
                 Text(x+100,y+14,152,v.name,subtitle,52,size:24);
                 Text(x+100,y+72,152,$"Còn {v.limit-bought}/{v.limit}",small,26);
                 bool open=TownUnlocked(3);
@@ -145,7 +145,7 @@ namespace CatTanks
         {
             bool unlocked=TownUnlocked(5);
             Surface(118,112,440,660,Color.white,catsFrame:"Detail");
-            Art(198,136,280,240,"cat-0");
+            Art(198,136,280,240,MascotArt("mascot_commander"));
             Text(138,384,400,profile.name,title,56,align:TextAnchor.UpperCenter,size:36);
             Text(138,444,400,$"{N(profile.rating)} ĐIỂM",subtitle,40,align:TextAnchor.UpperCenter,size:30);
             Surface(150,500,376,64,Color.white,catsFrame:"Ink");
@@ -197,7 +197,7 @@ namespace CatTanks
                 Text(226,y+10,640,names[i],subtitle,36);
                 Bar(226,y+56,420,20,Mathf.Min(n,need)/(float)need,cyan);
                 Text(660,y+52,100,$"{Mathf.Min(n,need)}/{need}",small,28);
-                Art(800,y+24,46,46,"item-coins");Text(852,y+32,70,"40",subtitle,36);
+                Art(800,y+24,46,46,RewardIcon("coins"));Text(852,y+32,70,"40",subtitle,36);
                 Art(930,y+24,46,46,"item-catXp");Text(982,y+32,70,"10",subtitle,36);
                 if(Button(1220,y+18,242,60,claimed?"ĐÃ NHẬN":ready?"NHẬN":"ĐI",!claimed,ready,ready?"button":"blue"))
                 {

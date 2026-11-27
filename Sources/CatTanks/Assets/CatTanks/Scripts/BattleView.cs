@@ -23,7 +23,7 @@ namespace CatTanks
         readonly List<int> retired=new List<int>();
         readonly List<GameObject> spriteFxPool = new List<GameObject>(), lineFxPool = new List<GameObject>();
         int spriteFxCursor, lineFxCursor;
-        Transform tank, shield, decoyView, targetRing;
+        Transform tank, shield, decoyView, targetRing, targetMarker;
         Sprite square, disk, ring;
         Material lineMaterial;
         Mesh skyMesh;
@@ -199,6 +199,8 @@ namespace CatTanks
             shield = Sprite("Energy Shield", ring, new Vector2(290, 440), new Vector2(410, 660), new Color(.4f, 1, 1, .6f), 29);
             decoyView = Image("cat-0", Vector2.zero, 95, 25); decoyView.name = "Decoy"; decoyView.gameObject.SetActive(false);
             targetRing = Sprite("Locked Target", ring, Vector2.zero, Vector2.one * 150, Catalog.Color("#ffcf75"), 49); targetRing.gameObject.SetActive(false);
+            targetMarker = Sprite("Target Marker", Art("Interface/IconRefresh/Target"), Vector2.zero, Vector2.one * 47, Color.white, 52);
+            targetMarker.gameObject.SetActive(false);
         }
         void Fortress(int floors)
         {
@@ -261,7 +263,13 @@ namespace CatTanks
             decoyView.gameObject.SetActive(b.decoy != null);
             if (b.decoy != null) decoyView.localPosition = b.decoy.position;
             var target = b.enemies.Find(e => !e.dead && e.id == b.targetId); targetRing.gameObject.SetActive(target != null);
-            if (target != null) {targetRing.localPosition = target.position; targetRing.localScale = Vector3.one * (target.def.size * 1.1f);}
+            targetMarker.gameObject.SetActive(target != null);
+            if (target != null)
+            {
+                targetRing.localPosition = target.position;
+                targetRing.localScale = Vector3.one * (target.def.size * 1.1f);
+                targetMarker.localPosition = target.position + Vector2.up * (target.def.size * .52f + 28);
+            }
             alive.Clear();
             for(int actorIndex=0;actorIndex<b.enemies.Count+b.units.Count;actorIndex++)
             {

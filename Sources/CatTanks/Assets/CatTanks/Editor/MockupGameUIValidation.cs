@@ -77,7 +77,7 @@ namespace CatTanks.Editor
                 game.profile.highestCleared = 0;
                 await Show(game);
                 var stageTwo = stageCards.Single(l => l.icon.sprite.name == "stage-02");
-                Check(stageTwo.badge.sprite == game.CanvasRoot.theme.Get("Lock"), "Locked stage shows a lock badge");
+                Check(stageTwo.badge.sprite == Resources.Load<Sprite>("Art/Interface/IconRefresh/Lock"), "Locked stage shows the refreshed lock badge");
                 ClickBinding(game, "button::360:440", false);
                 Check(game.profile.selected == 1, "Locked stage node cannot change the selection");
                 game.profile.highestCleared = 20;
@@ -94,7 +94,7 @@ namespace CatTanks.Editor
                 Check(game.profile.cats[0].level==level+1&&game.profile.Get("coins")<gold,"Cat upgrade button changes level and charges actual cost");
                 await Page(game,"barracks","squad");ClickBinding(game,"button::810:226");await Show(game);
                 Click(game,"Gỡ khỏi ô");await Show(game);Check(game.profile.squad[0]=="","Formation slot clears the actual squad member");
-                await Page(game,"barracks","fortress");Click(game,"Chim 1");await Show(game);
+                await Page(game,"barracks","fortress");Click(game,"Lắp chim 1");await Show(game);
                 Check(game.modal=="choice","Bird (module) slot opens the choice prefab");
                 Check(!Buttons(game).First(b=>Label(b)=="‹").interactable,"Choice popup blocks background navigation");
                 Click(game,"Gỡ chim");await Show(game);Check(game.modal=="","Picker closes after choosing");

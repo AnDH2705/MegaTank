@@ -9,7 +9,7 @@ namespace CatTanks
         {
             Panel(24,19,434,75,.97f);
             if(IllustratedButton(35,27,62,56,"II","Pause",content:StudioButtonLayout.Content.Symbol,normalSpriteKey:"blue"))paused=!paused;
-            Art(111,31,44,44,"item-coins");Text(169,27,271,N(battle.coins)+" xu",subtitle);Text(169,61,271,battle.kills+" mục tiêu bị hạ",small,25);
+            Art(111,31,44,44,RewardIcon("coins"));Text(169,27,271,N(battle.coins)+" xu",subtitle);Text(169,61,271,battle.kills+" mục tiêu bị hạ",small,25);
             Panel(490,19,620,75,.97f);
             Text(514,27,572,battle.classic?$"THỬ THÁCH • ĐỢT {battle.wave+1}/6":battle.arena?"ĐẤU TRƯỜNG • MÔ PHỎNG":$"ẢI {battle.stage.index} • {battle.stage.name}",subtitle);
             Text(514,61,572,$"{Mathf.FloorToInt(battle.time/60):00}:{Mathf.FloorToInt(battle.time%60):00}   •   {battle.spawned}/{battle.waves[battle.wave].count} đã xuất hiện",small,25);

@@ -32,7 +32,7 @@ namespace CatTanks
 
             Art(380,110,840,210,"Interface/Cats/Brand");
             Text(300,330,1000,"Giữ pháo đài dưới ánh trăng xanh",subtitle,40,align:TextAnchor.UpperCenter,size:30);
-            Art(650,390,300,240,"cat-0");
+            Art(650,390,300,240,MascotArt("mascot_ready"));
 
             if(progress<1)
             {

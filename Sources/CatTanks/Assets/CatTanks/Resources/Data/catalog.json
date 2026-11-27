@@ -572,7 +572,7 @@
       "id": "pack-17",
       "asset": "pack-17",
       "family": "CHIM CHIẾN",
-      "flip": true
+      "flip": false
     },
     {
       "name": "Giẻ cùi tinh thạch",
@@ -588,7 +588,7 @@
       "id": "pack-18",
       "asset": "pack-18",
       "family": "CHIM CHIẾN",
-      "flip": true
+      "flip": false
     },
     {
       "name": "Bồ câu cứu thương",

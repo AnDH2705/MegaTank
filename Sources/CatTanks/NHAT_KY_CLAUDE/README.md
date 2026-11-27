@@ -13,3 +13,4 @@ Mỗi phiên làm việc có một file, đặt tên theo mẫu `YYYY-MM-DD_<m�
 | 25/11/2026 | [2026-11-25_UI_UX.md](2026-11-25_UI_UX.md) | Doanh trại, Thành mèo, Đấu trường, Nhiệm vụ theo bố cục game idle (chỉ cách sắp xếp) |
 | 25/11/2026 | [2026-11-25_CHUAN_HOA_ANH.md](2026-11-25_CHUAN_HOA_ANH.md) | Quét và làm sạch ảnh nhân vật/đồ/vũ khí/quái: công cụ Tools/ArtClean, cắt lại 20 quái từ ảnh gốc (đã duyệt, đã áp) |
 | 25/11/2026 | [2026-11-25_TONG_KET_PHIEN.md](2026-11-25_TONG_KET_PHIEN.md) | Tổng kết phiên gameplay + bộ ảnh mới: cân bằng v1 (a52b0fb2), ảnh nhân vật mới/20 mèo/chim chiến (dc81cf37), trạng thái push, việc còn mở |
+| 26/11/2026 | [2026-11-26_MO_PHONG_MAN_CHOI.md](2026-11-26_MO_PHONG_MAN_CHOI.md) | Mô phỏng màn chiến đấu bằng code (không có Unity), chụp ảnh ải 1/3/4 vào Captures/SimBattle, quan sát quái dồn cụm |

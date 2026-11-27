@@ -108,10 +108,10 @@ namespace CatTanks
             Enlarge(46);
             if(Button(831,382,66,105,"›",count>1,true))selectedCat=(selectedCat+1)%count;
             Enlarge(46);
-            GearSlotButton(194,200,cat,"weapon","Vũ khí","gun-0");
-            GearSlotButton(194,360,cat,"helm","Mũ","hat-0");
-            GearSlotButton(675,200,cat,"chest","Áo giáp","armor-0");
-            GearSlotButton(675,360,cat,"boots","Giày","gear-boots");
+            GearSlotButton(194,200,cat,"weapon","Vũ khí");
+            GearSlotButton(194,360,cat,"helm","Mũ");
+            GearSlotButton(675,200,cat,"chest","Áo giáp");
+            GearSlotButton(675,360,cat,"boots","Giày");
             ArtifactSlotButton(442,669,cat);
 
             // Bảng thông tin bên phải.
@@ -150,7 +150,7 @@ namespace CatTanks
             // Khối nâng cấp: giá ngay trên nút NÂNG CẤP lớn.
             int goldCost=Mathf.FloorToInt(80*Mathf.Pow(cat.level,1.45f)),xpCost=Mathf.FloorToInt(25*Mathf.Pow(cat.level,1.22f));
             Surface(945,617,554,182,Color.white,catsFrame:"Ink");
-            Art(968,633,44,44,"item-coins");
+            Art(968,633,44,44,RewardIcon("coins"));
             Text(1018,633,120,N(goldCost),subtitle,44,align:TextAnchor.MiddleLeft,size:24);
             Art(1142,633,40,44,"item-catXp");
             Text(1187,633,105,N(xpCost),subtitle,44,align:TextAnchor.MiddleLeft,size:24);
@@ -165,16 +165,22 @@ namespace CatTanks
         string GearName(Gear g)=>g.id.StartsWith("gun")?db.Weapon(g.id).name:g.id=="gear-helm"?"Mũ giáp":g.id=="gear-chest"?"Áo giáp":"Giày hành quân";
 
         // Ô trang bị quanh mèo: bấm để rèn, tháo hoặc đổi món cùng loại.
-        void GearSlotButton(float x,float y,OwnedCat cat,string slot,string caption,string placeholder)
+        void GearSlotButton(float x,float y,OwnedCat cat,string slot,string caption)
         {
             var current=cat.gear.TryGetValue(slot,out var uid)?profile.gear.Find(g=>g.uid==uid):null;
-            if(IllustratedButton(x,y,143,139,caption,current==null?placeholder:GearAsset(current),content:StudioButtonLayout.Content.Tile))PickGear(cat,slot,caption,current);
-            if(!dispatchOnly)SetButtonSprite(lastButton,"button");
-            if(!dispatchOnly&&current==null&&lastButton.layout&&lastButton.layout.icon)lastButton.layout.icon.color=new Color(1,1,1,.35f);
-            Enlarge(20);
+            if(EquipmentSlotButton(x,y,143,139,caption,current==null?null:GearAsset(current)))PickGear(cat,slot,caption,current);
             if (current != null)
                 for (int i = 0; i < current.stars; i++)
                     Art(x + 10 + i * 18, y + 8, 18, 18, "Interface/Cats/CatDetailStar");
+        }
+        bool EquipmentSlotButton(float x,float y,float w,float h,string caption,string icon)
+        {
+            bool empty=icon==null;
+            bool clicked=IllustratedButton(x,y,w,h,empty?caption+"\nÔ trống":caption,icon,
+                content:empty?StudioButtonLayout.Content.Centered:StudioButtonLayout.Content.Tile);
+            if(!dispatchOnly)SetButtonSprite(lastButton,empty?"blue":"button");
+            Enlarge(20);
+            return clicked;
         }
         void PickGear(OwnedCat cat,string slot,string caption,Gear current)
         {
@@ -203,7 +209,7 @@ namespace CatTanks
         void ArtifactSlotButton(float x,float y,OwnedCat cat)
         {
             var artifact=profile.artifacts.Find(a=>a.id==cat.artifact);
-            if(IllustratedButton(x,y,152,141,artifact==null?"Cổ vật":artifact.name,"item-artifact",content:StudioButtonLayout.Content.Tile))
+            if(EquipmentSlotButton(x,y,152,141,artifact?.name??"Cổ vật",artifact==null?null:"item-artifact"))
             {
                 if(profile.artifacts.Count==0){Notify("Chưa có cổ vật.");return;}
                 var choices=new[]{""}.Concat(profile.artifacts.Select(a=>a.id)).ToArray();
@@ -213,9 +219,6 @@ namespace CatTanks
                     cat.artifact=next;Changed("Đã cập nhật cổ vật");
                 },choices.Select(id=>"item-artifact"));
             }
-            if(!dispatchOnly)SetButtonSprite(lastButton,"button");
-            if(!dispatchOnly&&artifact==null&&lastButton.layout&&lastButton.layout.icon)lastButton.layout.icon.color=new Color(1,1,1,.35f);
-            Enlarge(20);
         }
     }
 }

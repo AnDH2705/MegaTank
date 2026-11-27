@@ -348,7 +348,7 @@ namespace CatTanks
             else if(theme&&item.image.sprite!=theme.Get(key))StudioNineSlice.Apply(item.image,theme.Get(key),key=="bar"?5:key=="panel"?16:14,preserve);
         }
         void Surface(float x,float y,float w,float h,Color color,string marchFrame=null,string catsFrame=null)=>SpriteBox(x,y,w,h,"panel",color,marchFrame:marchFrame,catsFrame:catsFrame);
-        void Icon(float x,float y,float size,string key)=>SpriteBox(x,y,size,size,key,Color.white,true);
+        void Icon(float x,float y,float size,string key)=>Art(x,y,size,size,key);
         void Text(float x,float y,float w,string value,StudioTextStyle style=null,float h=35,bool dynamicLayout=false,bool richText=false,TextAnchor? align=null,int? size=null)
         {
             if(dispatchOnly)return;var s=style??label;var item=GetWidget("text",x,y,w,Mathf.Max(h,s.fontSize*1.45f),dynamicLayout);item.text.text=value;
@@ -457,6 +457,7 @@ namespace CatTanks
             if (!layout.icon)
                 layout.icon = ButtonImage("Artwork", item.rect);
             layout.icon.sprite = UiArt(artKey);
+            layout.icon.enabled = layout.icon.sprite;
             layout.icon.preserveAspect = true;
             layout.icon.color = enabled ? Color.white : new Color(.76f, .82f, .92f, .58f);
             if (content == StudioButtonLayout.Content.Stage)
@@ -495,12 +496,84 @@ namespace CatTanks
         Sprite UiArt(string key)
         {
             if (string.IsNullOrEmpty(key)) return null;
+            string replacement = RefreshedIcon(key);
+            if (replacement != null)
+            {
+                var refreshed = ResourceArt("Interface/IconRefresh/" + replacement);
+                if (refreshed) return refreshed;
+            }
             var sprite = theme ? theme.Get(key) : null;
             if (sprite) return sprite;
+            return ResourceArt(key);
+        }
+        Sprite ResourceArt(string key)
+        {
+            Sprite sprite;
             if (uiArtSprites.TryGetValue(key, out sprite)) return sprite;
             sprite = Resources.Load<Sprite>("Art/" + key);
             if (sprite) uiArtSprites.Add(key, sprite);
             return sprite;
+        }
+        string RefreshedIcon(string key)
+        {
+            // The approved v5 and v6 screens retain their original sprites, including shared chrome.
+            if (renderViewKey is RosterView or CatView or TownHubView or TavernView or StoreView or PvpView or QuestView
+                || (renderViewKey is ChromeView or TownCatChromeView) &&
+                    (page is "town" or "quests" || page == "barracks" && (tab is "cats" or "cat")))
+                return null;
+
+            return key switch
+            {
+                "Interface/Cats/Heart" or "icon_heart" => "Heart",
+                "Interface/Cats/Sword" or "Damage" or "icon_attack" => "Sword",
+                "Interface/Cats/Shield" or "icon_defense" => "Shield",
+                "Interface/Cats/Speed" or "icon_speed" => "Speed",
+                "Interface/Cats/PowerIcon" => "Power",
+                "Interface/Cats/CatDetailStar" or "star_gold" => "Star",
+                "Skull" or "icon_skull" or "badge_boss" => "Boss",
+                "Interface/Cats/SettingsIcon" or "icon_settings" => "Settings",
+                "Gear" => "Gear",
+                "Setting" => "SettingAlt",
+                "UI/music" => "Music",
+                "Interface/Cats/InfoIcon" => "Info",
+                "Pause" or "icon_pause" => "Pause",
+                "Play" or "icon_play" => "Play",
+                "UiBack" => "Back",
+                "UiNext" => "Next",
+                "UiClose" or "icon_close" => "Close",
+                "Arrow" or "icon_arrow_right" => "Next",
+                "Check" or "icon_check" => "Check",
+                "Lock" or "icon_lock" => "Lock",
+                "Interface/Cats/Tab-squad" => "Squad",
+                "Interface/Cats/Tab-skills" => "Skills",
+                "Interface/Cats/Tab-monsters" => "Monsters",
+                "Interface/Cats/Tab-nexus" => "Nexus",
+                "Interface/Cats/Tab-fortress" => "Town",
+                "item-arenaToken" => "Arena",
+                "Map" or "icon_map" => "Map",
+                "Interface/Cats/Tab-cats" => "Cats",
+                "Calendar_Check" or "icon_quests" => "Quests",
+                "Book_1_Purple" or "icon_book" => "Book",
+                "Badge_Crown" or "icon_crown" or "icon_commander_xp" => "Crown",
+                "Battle" or "icon_battle" => "Battle",
+                "Interface/Cats/CoinIcon" => "CoinShiny",
+                "Interface/Cats/GemIcon" => "GemShiny",
+                "Interface/Cats/TicketIcon" => "TicketShiny",
+                "item-coins" or "Money_Coin" or "icon_coin" => "Coin",
+                "item-gem" or "Gem_Diamond_Purple" or "icon_gem" => "Gem",
+                "Ticket_Gold" or "icon_ticket" => "Ticket",
+                "item-summonScroll" => "SummonScroll",
+                "item-catXp" => "CatXp",
+                "icon_cat_xp" => "CatXpAlt",
+                "item-spiritDust" or "icon_dust" => "Dust",
+                "item-relicStone" => "RelicStone",
+                "item-monsterChow" or "icon_food" => "MonsterChow",
+                "item-afkChest" => "AfkChest",
+                "Chest_Gold" or "Chest_Premium" or "icon_chest" => "PremiumChest",
+                "mascot_commander" => "Commander",
+                "mascot_ready" => "Ready",
+                _ => null
+            };
         }
         void Panel(float x,float y,float w,float h,float alpha=1)=>Surface(x,y,w,h,new Color(.13f,.18f,.30f,alpha));
         void Art(float x,float y,float w,float h,string key)
