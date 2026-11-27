@@ -10,6 +10,8 @@ namespace MegaTanks
         public GunDefinition MachineGun { get; private set; }
         public GunDefinition Cannon { get; private set; }
         public MortarDefinition Mortar { get; private set; }
+        public GunDefinition MissilePack { get; private set; }
+        public WeaponDefinition MortarSlot => MissilePack != null ? (WeaponDefinition)MissilePack : Mortar;
         public ArmorDefinition Armor { get; private set; }
         public ArmorDefinition SecondArmor { get; private set; }
         public int ArmorSlotCount { get; private set; } = 1;
@@ -21,13 +23,20 @@ namespace MegaTanks
             catalog = available; MachineGun = defaults.machineGun; Cannon = defaults.cannon; Mortar = defaults.mortar;
             if (catalog == null || catalog.inventory == null) return;
             bool migrated = false;
+            string oldCannon=PlayerPrefs.GetString("MegaTanks.Equipment.Cannon","");
+            var oldMissile=catalog.inventory.OfType<GunDefinition>().FirstOrDefault(g=>g.stats.homingMissile&&(g.id==oldCannon||g.name==oldCannon));
+            if(oldMissile!=null)
+            {
+                if(!PlayerPrefs.HasKey("MegaTanks.Equipment.Mortar"))PlayerPrefs.SetString("MegaTanks.Equipment.Mortar",oldMissile.id);
+                PlayerPrefs.DeleteKey("MegaTanks.Equipment.Cannon");migrated=true;
+            }
             foreach (var item in catalog.inventory.Where(i => i != null))
             {
                 string savedId = PlayerPrefs.GetString("MegaTanks.Equipment." + item.Type, "");
                 if (savedId != (item is WeaponDefinition w ? w.id : item is ArmorDefinition a ? a.id : item.name) && savedId != item.name) continue;
                 if (item is WeaponDefinition legacy && savedId == item.name) { PlayerPrefs.SetString("MegaTanks.Equipment." + item.Type, legacy.id); migrated = true; }
                 if (item is ArmorDefinition legacyArmor && savedId == item.name) { PlayerPrefs.SetString("MegaTanks.Equipment." + item.Type, legacyArmor.id); migrated = true; }
-                if (item is GunDefinition gun) { if (gun.Type == EquipmentType.MachineGun) MachineGun = gun; else Cannon = gun; }
+                if (item is GunDefinition gun) { if (gun.Type == EquipmentType.Mortar) MissilePack=gun; else if (gun.Type == EquipmentType.MachineGun) MachineGun = gun; else Cannon = gun; }
                 if (item is ArmorDefinition armor) Armor = armor;
                 if (item is MortarDefinition mortar) Mortar = mortar;
             }
@@ -68,18 +77,18 @@ namespace MegaTanks
             {
                 case EquipmentType.MachineGun: return MachineGun;
                 case EquipmentType.Cannon: return Cannon;
-                case EquipmentType.Mortar: return Mortar;
+                case EquipmentType.Mortar: return MortarSlot;
                 case EquipmentType.Armor: return accessoryIndex==0?Armor:accessoryIndex==1&&ArmorSlotCount>1?SecondArmor:null;
                 case EquipmentType.Accessory: return accessoryIndex >= 0 && accessoryIndex < AccessorySlotCount ? Accessories[accessoryIndex] : null;
                 default: return null;
             }
         }
         public bool IsEquipped(EquipmentDefinition item) => item != null &&
-            (item == MachineGun || item == Cannon || item == Mortar || item == Armor || (ArmorSlotCount>1&&item==SecondArmor) || Accessories.Take(AccessorySlotCount).Contains(item));
+            (item == MachineGun || item == Cannon || item == MortarSlot || item == Armor || (ArmorSlotCount>1&&item==SecondArmor) || Accessories.Take(AccessorySlotCount).Contains(item));
         public bool Equip(EquipmentDefinition item, EquipmentType slot, int accessoryIndex = 0)
         {
             if (item == null || item.Type != slot || catalog == null || !catalog.inventory.Contains(item)) return false;
-            if (item is GunDefinition gun) { if (slot == EquipmentType.MachineGun) MachineGun = gun; else Cannon = gun; }
+            if (item is GunDefinition gun) { if (slot == EquipmentType.Mortar) MissilePack=gun; else if (slot == EquipmentType.MachineGun) MachineGun = gun; else Cannon = gun; }
             else if (item is ArmorDefinition armor)
             {
                 if(accessoryIndex<0||accessoryIndex>=ArmorSlotCount)return false;
@@ -90,7 +99,7 @@ namespace MegaTanks
                 PlayerPrefs.SetString("MegaTanks.Equipment.Armor.1",SecondArmor!=null?SecondArmor.id:"");
                 PlayerPrefs.Save();return true;
             }
-            else if (item is MortarDefinition mortar) Mortar = mortar;
+            else if (item is MortarDefinition mortar) { Mortar = mortar; MissilePack=null; }
             else if (item is AccessoryDefinition accessory)
             {
                 if (accessoryIndex < 0 || accessoryIndex >= AccessorySlotCount) return false;

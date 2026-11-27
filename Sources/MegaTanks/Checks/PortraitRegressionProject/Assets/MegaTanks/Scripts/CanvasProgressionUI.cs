@@ -109,7 +109,7 @@ namespace MegaTanks
                 float current=game.AccuracyBonus,preview=game.Equipment.AccessoryBonus(AccessoryBonusType.Accuracy,game.Progression,accessory,slot);
                 string Accuracy(string label,float value)=>label+" "+(value+current).ToString("0.##")+"% → "+(value+preview).ToString("0.##")+"%";
                 return header+"\n"+Accuracy("MG",game.PreviewWeaponStats(game.Equipment.MachineGun).accuracy)+" | "+Accuracy("CANNON",game.PreviewWeaponStats(game.Equipment.Cannon).accuracy)+
-                    "\n"+Accuracy("MORTAR",game.PreviewWeaponStats(game.Equipment.Mortar).accuracy)+"\nAccuracy above 100% offsets enemy evasion.";
+                    "\n"+Accuracy("MORTAR",game.PreviewWeaponStats(game.Equipment.MortarSlot).accuracy)+"\nAccuracy above 100% offsets enemy evasion.";
             }
             if(accessory.bonusType==AccessoryBonusType.Evasion)
             {
@@ -123,7 +123,7 @@ namespace MegaTanks
             return header+
                 "\nBONUS RELOAD SPEED +"+before.ToString("0.##")+"% → +"+after.ToString("0.##")+"%"+
                 "\n"+Times("MG",game.Equipment.MachineGun.stats.reloadTime,game.PreviewWeaponStats(game.Equipment.MachineGun).reloadSpeed)+" | "+Times("CANNON",game.Equipment.Cannon.stats.reloadTime,game.PreviewWeaponStats(game.Equipment.Cannon).reloadSpeed)+
-                "\n"+Times("MORTAR",game.Equipment.Mortar.stats.reloadTime,game.PreviewWeaponStats(game.Equipment.Mortar).reloadSpeed);
+                "\n"+Times("MORTAR",(game.Equipment.MissilePack!=null?game.Equipment.MissilePack.stats.reloadTime:game.Equipment.Mortar.stats.reloadTime),game.PreviewWeaponStats(game.Equipment.MortarSlot).reloadSpeed);
         }
     }
 }

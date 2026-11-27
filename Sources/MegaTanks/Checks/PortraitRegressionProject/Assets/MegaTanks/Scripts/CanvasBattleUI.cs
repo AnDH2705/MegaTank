@@ -17,6 +17,8 @@ namespace MegaTanks
         void UpdateHud()
         {
             var v=View(UIScreen.BattleHUD);
+            Text(v,"mortar Title",game.Mortar.IsMissile
+                ? (game.Mortar.MissileDefinition.stats.preferredTarget==EnemyKind.Ground?"AT MISSILES":"AA MISSILES") : "MORTAR SHELLS");
             Text(v,"Round","ROUND "+((game.Stage.Current?.round??0)+1)+" / "+game.Stage.Definition.rounds+"    "+game.EnemyCount+" HOSTILES");
             Text(v,"Encounter",game.Stage.Current==null?"":StageNodeIcons.Name(game.Stage.Current.EncounterType).ToUpperInvariant()+" / WAVE "+game.Stage.EncounterWave+" OF "+game.Stage.EncounterWaves);
             Text(v,"Score",game.Score.ToString("000000")+" PTS");

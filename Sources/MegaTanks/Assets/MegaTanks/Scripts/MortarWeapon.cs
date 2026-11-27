@@ -27,15 +27,33 @@ namespace MegaTanks
         public MortarStats Stats => stats;
         public MortarDefinition Definition { get; private set; }
         Sprite projectileSprite;
-        public int Ammo { get; private set; }
-        public int ShotsFired { get; private set; }
+        int mortarAmmo,mortarShots;
+        public AutoTurret MissileLauncher { get; private set; }
+        public GunDefinition MissileDefinition { get; private set; }
+        public bool IsMissile => MissileDefinition != null;
+        public int Ammo { get => IsMissile?MissileLauncher.Ammo:mortarAmmo; private set => mortarAmmo=value; }
+        public int ShotsFired { get => IsMissile?MissileLauncher.ShotsFired:mortarShots; private set => mortarShots=value; }
         public Vector2 LastIntendedTarget { get; private set; }
         public Vector2 LastAimPoint { get; private set; }
         public Vector2 LastLaunchVelocity { get; private set; }
         public void Configure(MortarArtwork visual, MortarDefinition definition, PlayerProgression progression = null, float crewDamage = 0,float reloadSpeedBonus=0,float accuracyBonus=0,CrewDefinition crewMember=null)
-        { artwork = visual; Definition = definition; stats = definition.stats.Copy(); stats.reloadSpeed+=Mathf.Max(0,reloadSpeedBonus); stats.accuracy+=Mathf.Max(0,accuracyBonus); if (progression != null) stats.damage = progression.Damage(definition); if(crewMember!=null)crewMember.ApplyWeapon(stats,progression!=null?progression.Get(crewMember).Level:1,progression!=null?progression.Get(crewMember).Stars:0); projectileSprite = definition.projectileSprite; ResetWeapon(); }
-        public void ResetWeapon() { Ammo = Mathf.Max(0, stats.reserveCapacity); ShotsFired = 0; cooldown = 0; artwork.ResetVisual(); }
-        public void Resupply(float fraction) { Ammo = Mathf.Min(stats.reserveCapacity, Ammo + Mathf.CeilToInt(stats.reserveCapacity * Mathf.Max(0, fraction))); }
+        { MissileDefinition=null; artwork = visual; Definition = definition; stats = definition.stats.Copy(); stats.reloadSpeed+=Mathf.Max(0,reloadSpeedBonus); stats.accuracy+=Mathf.Max(0,accuracyBonus); if (progression != null) stats.damage = progression.Damage(definition); if(crewMember!=null)crewMember.ApplyWeapon(stats,progression!=null?progression.Get(crewMember).Level:1,progression!=null?progression.Get(crewMember).Stars:0); projectileSprite = definition.projectileSprite; ResetWeapon(); }
+        public void ConfigureMissile(GunArtwork visual,GunDefinition definition,PlayerProgression progression,float reloadBonus,float accuracyBonus,CrewDefinition crew)
+        {
+            if(MissileLauncher==null)MissileLauncher=gameObject.AddComponent<AutoTurret>();
+            MissileLauncher.enabled=false;MissileLauncher.BindArtwork(visual);MissileLauncher.Configure(definition,progression,0,reloadBonus,accuracyBonus,crew);
+            MissileDefinition=definition;stats=JsonUtility.FromJson<MortarStats>(JsonUtility.ToJson(MissileLauncher.Stats));
+        }
+        public void ResetWeapon()
+        {
+            if(IsMissile){MissileLauncher.ResetWeapon();return;}
+            Ammo = Mathf.Max(0, stats.reserveCapacity); ShotsFired = 0; cooldown = 0; artwork.ResetVisual();
+        }
+        public void Resupply(float fraction)
+        {
+            if(IsMissile){MissileLauncher.Resupply(fraction);return;}
+            Ammo = Mathf.Min(stats.reserveCapacity, Ammo + Mathf.CeilToInt(stats.reserveCapacity * Mathf.Max(0, fraction)));
+        }
 
         public static float SampleDeviation(Vector2 limits)
         {
@@ -64,6 +82,7 @@ namespace MegaTanks
 
         void Update()
         {
+            if(IsMissile){MissileLauncher.TickWeapon();return;}
             var game = BattleGame.Instance;
             if (!game.Running) return;
             cooldown = Mathf.Max(0, cooldown - Time.deltaTime);
