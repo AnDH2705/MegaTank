@@ -1,6 +1,6 @@
 YÊU CẦU CHO AI PORT UNITY — MEGATANK
 
-Port bản design Art/Equipment-test.html vào Unity native trong Sources/CatTanks.
+Port bản design Art/Equipment-test.html vào Unity native trong Sources/MegaTanks.
 Lấy đúng hình và hành vi hiện tại, không tự thiết kế lại giao diện.
 
 NGUỒN ASSET DUY NHẤT LÀ THƯ MỤC Art/ TRONG REPOSITORY:

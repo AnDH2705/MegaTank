@@ -20,13 +20,16 @@ File chỉ đường: Reference/data/art-source-inventory.json.
 - sprite-asset-map.json chỉ là đối chiếu logical key/checksum. Key cache WebP
   không khớp file PNG từng byte thì tra manifest gốc; không dùng key đó để cắt ảnh.
 
-Project hiện tại: Sources/CatTanks. Theo ProjectSettings/ProjectVersion.txt hiện
-là Unity 2022.3.62f2. README cũ có ghi f1; ưu tiên ProjectVersion.txt của checkout.
-Project đang dùng Built-in pipeline, uGUI và TMP. Không tự chuyển render pipeline
-chỉ để làm glow. Dùng material/sprite/particle phù hợp pipeline hiện có.
+Project tích hợp: Sources/MegaTanks. ProjectSettings/ProjectVersion.txt hiện ghi
+Unity 2022.3.62f3; ưu tiên phiên bản trong checkout đang dùng. Sources/CatTanks
+là project cũ riêng, không phải nơi nhận bản handoff này.
+Giữ render pipeline và hệ thống UI hiện có. Không tự chuyển pipeline chỉ để làm
+glow; dùng material/sprite/particle phù hợp project.
 
-README Unity hiện mô tả bản port Art/complete_cat/CHOI_NGAY.html. Bản yêu cầu
-này lấy Equipment-test.html làm chuẩn, vì vậy UI/world cũ không phải ảnh nghiệm thu.
+Sources/MegaTanks hiện có cả Canvas UI và HtmlBattleScreen/HtmlBattleSimulation.
+Đọc README.md và luồng Play đang dùng trước khi tích hợp, giữ phần code Unity
+mới đã có trên remote. Bản design nghiệm thu là Art/Equipment-test.html cùng
+Preview/; không lấy UI/world cũ làm chuẩn thay cho yêu cầu này.
 
 B. FILE NÀO ĐỂ THAM KHẢO
 
@@ -205,15 +208,22 @@ reward chỉ một lần, không có ô rương tích lũy ở góc.
 
 K. CHỖ GẮN VÀO SOURCE UNITY HIỆN CÓ
 
-Sources/CatTanks/Assets/CatTanks/Scripts/:
-- Profile.cs: persistent Tank EXP/avatar + crew assignment/progress; migration save.
-- Catalog.cs: Character/Weapon/Stage/Encounter definitions, logical asset ID.
-- Battle.cs: phase wave/travel/stop/boss, HP crew, effective tank level, reward guards.
-- BattleView.cs, BattleView.Scenery.cs: part hierarchy, anchors, parallax, sorting/mask.
-- BattleView.WeaponEffects.cs, CombatVfxPlayer.cs: muzzle, projectile, hit, shake, aura.
-- StudioBattleHUD.cs / Studio UI: đặt prefab comic mới theo reference layout.
-- BarracksUI/BarracksSectionsUI: nối Crew theo asset/PSD và binding selected/equipped.
-Đây là điểm tích hợp, chưa khẳng định source hiện có đã đáp ứng luồng mới.
+Sources/MegaTanks/Assets/MegaTanks/Scripts/:
+- PlayerProgression.cs, PlayerCrew.cs, PlayerWallet.cs: kiểm tra save, Tank EXP,
+  avatar, crew assignment/progress và wallet; bổ sung migration khi cần.
+- CrewDefinition.cs, TankDefinition.cs, GunDefinition.cs, StageDefinition.cs và
+  các catalog: kiểm tra schema trước khi nối logical asset ID/config mới.
+- HtmlBattleScreen.cs, HtmlBattleSimulation.cs, HtmlBattleArt.cs: luồng Play hiện
+  đã có simulator và phần hiển thị riêng; nối phase, crew HP, level tạm và event
+  vào luồng thực sự đang dùng, tránh tạo hệ thống song song không được gọi.
+- BattleGame.cs, TankArtwork.cs, BattleBackgroundController.cs, BattleVfx.cs:
+  đối chiếu đường combat native, part hierarchy, parallax, muzzle và aura.
+- CanvasGameUI.cs, CanvasBattleUI.cs, CanvasProgressionUI.cs: nối UI comic,
+  reward/event và HUD theo reference; giữ bindings/prefab cần thiết.
+- CanvasCrewUI.cs, CrewHtmlScreen.cs: nối Crew/PSD và selected/equipped riêng.
+Đây là các file có sẵn cần kiểm tra để tích hợp, không phải xác nhận mọi luồng mới
+đã được port hay hai đường combat hiện có đã tương đương. Không sửa project cũ
+Sources/CatTanks khi triển khai yêu cầu này.
 Art/ nằm ngoài Assets/ của Unity project: dùng importer/copy có kiểm soát hoặc
 asset reference của project để đưa asset gốc vào Assets; giữ logical ID ổn định.
 

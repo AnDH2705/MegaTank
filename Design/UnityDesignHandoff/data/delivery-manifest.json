@@ -529,8 +529,8 @@
     },
     {
       "path": "Design/UnityDesignHandoff/AI_START_HERE.txt",
-      "bytes": 1406,
-      "sha256": "7e98f286f9b7f99e1349f9b149c09e0f626997099a3313668f843dc165f269dc"
+      "bytes": 1429,
+      "sha256": "582bf6251fe3e1a3e2c173fe1b8f5ef7d2664f411cfc3d5fdd5bcf593ac007b8"
     },
     {
       "path": "Design/UnityDesignHandoff/data/runtime-schema.json",
@@ -564,8 +564,8 @@
     },
     {
       "path": "Design/UnityDesignHandoff/PORT_HTML_TO_UNITY.txt",
-      "bytes": 16594,
-      "sha256": "4da68071f090c9ad32d0f35c1afe9fb7bb2faf53d6335f98fe3f3453cd5efdc2"
+      "bytes": 17614,
+      "sha256": "7da51bdd7ea4c8db80750d97106d2798abd0607b442c982fcff74ae3d06f5aa8"
     },
     {
       "path": "Design/UnityDesignHandoff/Preview/choice-bases.png",
